@@ -107,6 +107,7 @@ void Autoware::update()
 
 #ifdef AUTOWARE_AUTO
   setTransform(current_pose);
+  setVehicleKinematicState(current_pose, current_twist);
 #endif
 }
 
@@ -143,6 +144,7 @@ void Autoware::initialize(const geometry_msgs::msg::Pose & initial_pose)
   task_queue.delay(
     [this, initial_pose]() {
       set(initial_pose);
+      setInitialPose(initial_pose);
     }
   );
 #endif
@@ -177,7 +179,13 @@ void Autoware::plan(const std::vector<geometry_msgs::msg::PoseStamped> & route)
 #ifdef AUTOWARE_AUTO
   task_queue.delay(
     [this, route]() {
-
+      std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+      geometry_msgs::msg::PoseStamped gp;
+      gp.pose = route.back().pose;
+      gp.pose.position.z = 0.0;
+      gp.header.stamp = static_cast<Node &>(*this).get_clock()->now();
+      gp.header.frame_id = "map";
+      setGoalPose(gp);
     }
   );
 #endif

@@ -28,6 +28,7 @@
 
 #ifdef AUTOWARE_AUTO
 #include <autoware_auto_msgs/msg/vehicle_control_command.hpp>
+#include <autoware_auto_msgs/msg/vehicle_kinematic_state.hpp>
 #endif
 
 namespace concealer
@@ -282,25 +283,49 @@ class MiscellaneousAPI
 #endif
 
 #ifdef AUTOWARE_AUTO
-  using GoalPose = geometry_msgs::msg::PoseWithCovarianceStamped;
-
+  using GoalPose = geometry_msgs::msg::PoseStamped;
   DEFINE_PUBLISHER(GoalPose);
 
-  decltype(auto) setGoalPose(const geometry_msgs::msg::Pose & pose)
+  using VehicleControlCommand = autoware_auto_msgs::msg::VehicleControlCommand;
+  DEFINE_SUBSCRIPTION(VehicleControlCommand);
+
+  using VehicleKinematicState = autoware_auto_msgs::msg::VehicleKinematicState;
+  DEFINE_PUBLISHER(VehicleKinematicState);
+  decltype(auto) setVehicleKinematicState(const geometry_msgs::msg::Pose & pose, const geometry_msgs::msg::Twist & twist)
   {
-    GoalPose goal_pose;
+    VehicleKinematicState kinematic_state;
     {
-      goal_pose.header.stamp = static_cast<Node &>(*this).get_clock()->now();
-      goal_pose.header.frame_id = "map";
-      goal_pose.pose.pose = pose;
+      kinematic_state.header.stamp = static_cast<Node &>(*this).get_clock()->now();
+      kinematic_state.header.frame_id = "map";
+      autoware_auto_msgs::msg::TrajectoryPoint state;
+      state.x = pose.position.x;
+      state.y = pose.position.y;
+      state.heading.real = 1.0;
+      state.heading.imag = 0.0;
+      state.longitudinal_velocity_mps = twist.linear.x; //this is most probably not true, we translate from map frame to odom frame
+      state.lateral_velocity_mps = twist.linear.y; //this is most probably not true, we translate from map frame to odom frame
+      state.acceleration_mps2 = getVehicleControlCommand().long_accel_mps2;
+      state.heading_rate_rps = 0.0; // ??
+      state.front_wheel_angle_rad = getVehicleControlCommand().front_wheel_angle_rad;
+      kinematic_state.state = state;
     }
 
-    return setGoalPose(goal_pose);
+    return setVehicleKinematicState(kinematic_state);
   }
 
-  using VehicleControlCommand = autoware_auto_msgs::msg::VehicleControlCommand;
+  using InitialPose = geometry_msgs::msg::PoseWithCovarianceStamped;
+  DEFINE_PUBLISHER(InitialPose);
+  decltype(auto) setInitialPose(const geometry_msgs::msg::Pose & pose)
+  {
+    InitialPose initial_pose;
+    {
+      initial_pose.header.stamp = static_cast<Node &>(*this).get_clock()->now();
+      initial_pose.header.frame_id = "map";
+      initial_pose.pose.pose = pose;
+    }
 
-  DEFINE_SUBSCRIPTION(VehicleControlCommand);
+    return setInitialPose(initial_pose);
+  }
 #endif
 
 public:
@@ -323,6 +348,8 @@ public:
 
 #ifdef AUTOWARE_AUTO
     : INIT_PUBLISHER(GoalPose, "/planning/goal_pose"),
+    INIT_PUBLISHER(InitialPose, "/localization/initialpose"),
+    INIT_PUBLISHER(VehicleKinematicState, "/vehicle/vehicle_kinematic_state"),
     INIT_SUBSCRIPTION(VehicleControlCommand, "/vehicle/vehicle_command", []() {})
 #endif
   {
