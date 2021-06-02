@@ -177,6 +177,12 @@ void Autoware::plan(const std::vector<geometry_msgs::msg::PoseStamped> & route)
 #endif
 
 #ifdef AUTOWARE_AUTO
+  if (route.size() > 1)
+  {
+    RCLCPP_WARN_STREAM(get_logger(), "AutowareAuto received route consisting of " << route.size() <<
+      " poses but it does not support checkpoints. Ignoring first " << route.size() - 1 << " poses and treating last pose as goal.");
+  }
+
   task_queue.delay(
     [this, route]() {
       std::this_thread::sleep_for(std::chrono::milliseconds(2000));
