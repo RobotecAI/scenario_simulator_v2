@@ -30,6 +30,7 @@
 #include <autoware_auto_msgs/msg/vehicle_control_command.hpp>
 #include <autoware_auto_msgs/msg/vehicle_state_report.hpp>
 #include <autoware_auto_msgs/msg/vehicle_kinematic_state.hpp>
+#include <autoware_auto_msgs/msg/trajectory.hpp>
 #endif
 
 namespace concealer
@@ -330,6 +331,9 @@ class MiscellaneousAPI
 
     return setInitialPose(initial_pose);
   }
+
+  using Trajectory = autoware_auto_msgs::msg::Trajectory;
+  DEFINE_SUBSCRIPTION(Trajectory);
 #endif
 
 public:
@@ -349,13 +353,13 @@ public:
     INIT_SUBSCRIPTION(TurnSignalCommand, "/control/turn_signal_cmd", []() {}),
     INIT_SUBSCRIPTION(VehicleCommand, "/control/vehicle_cmd", []() {})
 #endif
-
 #ifdef AUTOWARE_AUTO
     : INIT_PUBLISHER(GoalPose, "/planning/goal_pose"),
     INIT_PUBLISHER(InitialPose, "/localization/initialpose"),
     INIT_PUBLISHER(VehicleKinematicState, "/vehicle/vehicle_kinematic_state"),
     INIT_PUBLISHER(VehicleStateReport, "/vehicle/state_report"),
-    INIT_SUBSCRIPTION(VehicleControlCommand, "/vehicle/vehicle_command", []() {})
+    INIT_SUBSCRIPTION(VehicleControlCommand, "/vehicle/vehicle_command", []() {}),
+    INIT_SUBSCRIPTION(Trajectory, "/planning/trajectory", []() {})
 #endif
   {
   }

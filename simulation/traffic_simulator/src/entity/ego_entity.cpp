@@ -218,7 +218,13 @@ auto EgoEntity::getWaypoints() -> const openscenario_msgs::msg::WaypointsArray
   }
 #endif
 #ifdef AUTOWARE_AUTO
-    // TODO: implement
+  for (auto & point : autowares.at(name).getTrajectory().points) {
+    geometry_msgs::msg::Point waypoint;
+    waypoint.x = point.x;
+    waypoint.y = point.y;
+    waypoint.z = 0;
+    waypoints.waypoints.push_back(waypoint);
+  }
 #endif
 
   return waypoints;
