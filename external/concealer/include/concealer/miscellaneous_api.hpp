@@ -304,8 +304,8 @@ class MiscellaneousAPI
       autoware_auto_msgs::msg::TrajectoryPoint state;
       state.x = pose.position.x;
       state.y = pose.position.y;
-      state.heading.real = 1.0;
-      state.heading.imag = 0.0;
+      state.heading.real = pose.orientation.w; // from motion_common package of autoware.auto
+      state.heading.imag = pose.orientation.z; // from motion_common package of autoware.auto
       state.longitudinal_velocity_mps = twist.linear.x; //this is most probably not true, we translate from map frame to odom frame
       state.lateral_velocity_mps = twist.linear.y; //this is most probably not true, we translate from map frame to odom frame
       state.acceleration_mps2 = getVehicleControlCommand().long_accel_mps2;
