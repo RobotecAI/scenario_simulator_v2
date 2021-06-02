@@ -28,6 +28,7 @@
 
 #ifdef AUTOWARE_AUTO
 #include <autoware_auto_msgs/msg/vehicle_control_command.hpp>
+#include <autoware_auto_msgs/msg/vehicle_state_report.hpp>
 #include <autoware_auto_msgs/msg/vehicle_kinematic_state.hpp>
 #endif
 
@@ -289,6 +290,9 @@ class MiscellaneousAPI
   using VehicleControlCommand = autoware_auto_msgs::msg::VehicleControlCommand;
   DEFINE_SUBSCRIPTION(VehicleControlCommand);
 
+  using VehicleStateReport = autoware_auto_msgs::msg::VehicleStateReport;
+  DEFINE_PUBLISHER(VehicleStateReport);
+
   using VehicleKinematicState = autoware_auto_msgs::msg::VehicleKinematicState;
   DEFINE_PUBLISHER(VehicleKinematicState);
   decltype(auto) setVehicleKinematicState(const geometry_msgs::msg::Pose & pose, const geometry_msgs::msg::Twist & twist)
@@ -350,6 +354,7 @@ public:
     : INIT_PUBLISHER(GoalPose, "/planning/goal_pose"),
     INIT_PUBLISHER(InitialPose, "/localization/initialpose"),
     INIT_PUBLISHER(VehicleKinematicState, "/vehicle/vehicle_kinematic_state"),
+    INIT_PUBLISHER(VehicleStateReport, "/vehicle/state_report"),
     INIT_SUBSCRIPTION(VehicleControlCommand, "/vehicle/vehicle_command", []() {})
 #endif
   {

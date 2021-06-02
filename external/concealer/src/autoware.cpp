@@ -108,6 +108,11 @@ void Autoware::update()
 #ifdef AUTOWARE_AUTO
   setTransform(current_pose);
   setVehicleKinematicState(current_pose, current_twist);
+
+  // Forced gear to 1 to bypass behavior planner checks
+  VehicleStateReport report;
+  report.gear = 1;
+  setVehicleStateReport(report);
 #endif
 }
 
