@@ -306,8 +306,8 @@ class MiscellaneousAPI
       state.y = pose.position.y;
       state.heading.real = pose.orientation.w; // from motion_common package of autoware.auto
       state.heading.imag = pose.orientation.z; // from motion_common package of autoware.auto
-      state.longitudinal_velocity_mps = twist.linear.x; //this is most probably not true, we translate from map frame to odom frame
-      state.lateral_velocity_mps = twist.linear.y; //this is most probably not true, we translate from map frame to odom frame
+      state.longitudinal_velocity_mps = twist.linear.x;
+      state.lateral_velocity_mps = twist.linear.y;
       state.acceleration_mps2 = getVehicleControlCommand().long_accel_mps2;
       state.heading_rate_rps = 0.0; // ??
       state.front_wheel_angle_rad = getVehicleControlCommand().front_wheel_angle_rad;
