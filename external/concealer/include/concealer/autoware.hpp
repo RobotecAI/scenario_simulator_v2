@@ -15,14 +15,9 @@
 #ifndef CONCEALER__AUTOWARE_HPP_
 #define CONCEALER__AUTOWARE_HPP_
 
-#define AUTOWARE_AUTO
-#include <exception>
-// #define AUTOWARE_ARCHITECTURE_PROPOSAL
+#include <concealer/autoware_def.hpp>
 
 // #define CONCEALER_ISOLATE_STANDARD_OUTPUT
-
-#include <concealer/fundamental_api.hpp>
-#include <concealer/miscellaneous_api.hpp>
 
 #ifdef AUTOWARE_AUTO
 // twist needs to be included manually when api's are not included
@@ -30,16 +25,18 @@
 #include <concealer/conversion.hpp>
 #endif
 
-#include <sys/wait.h>
-
 #include <chrono>
 #include <concealer/continuous_transform_broadcaster.hpp>
+#include <concealer/fundamental_api.hpp>
 #include <concealer/launch.hpp>
+#include <concealer/miscellaneous_api.hpp>
 #include <concealer/task_queue.hpp>
 #include <concealer/transition_assertion.hpp>
 #include <concealer/utility/visibility.hpp>
+#include <exception>
 #include <future>
 #include <mutex>
+#include <sys/wait.h>
 #include <thread>
 #include <utility>
 
@@ -59,16 +56,14 @@ namespace concealer
  *
  * -------------------------------------------------------------------------- */
 class Autoware : public rclcpp::Node,
-
                  public FundamentalAPI<Autoware>,
                  public MiscellaneousAPI<Autoware>,
-
                  public ContinuousTransformBroadcaster<Autoware>,
                  public TransitionAssertion<Autoware>
 {
+  friend class ContinuousTransformBroadcaster<Autoware>;
   friend class FundamentalAPI<Autoware>;
   friend class MiscellaneousAPI<Autoware>;
-  friend class ContinuousTransformBroadcaster<Autoware>;
   friend class TransitionAssertion<Autoware>;
 
   std::mutex mutex;

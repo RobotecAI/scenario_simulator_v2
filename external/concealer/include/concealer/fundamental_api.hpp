@@ -15,6 +15,8 @@
 #ifndef CONCEALER__FUNDAMENTAL_API_HPP_
 #define CONCEALER__FUNDAMENTAL_API_HPP_
 
+#include <concealer/autoware_def.hpp>
+
 #if defined AUTOWARE_ARCHITECTURE_PROPOSAL
 #include <autoware_api_msgs/msg/awapi_autoware_status.hpp>
 #include <autoware_api_msgs/msg/awapi_vehicle_status.hpp>
@@ -27,7 +29,8 @@
 #include <autoware_system_msgs/msg/autoware_state.hpp>
 #include <autoware_vehicle_msgs/msg/engage.hpp>
 #elif defined AUTOWARE_AUTO
-// TODO (robotec.ai)
+  // TODO (robotec.ai)
+  // No integration between AutowareAuto and fundamental_api yet
 #endif
 
 #include <cassert>
@@ -211,10 +214,8 @@ public:
       // throw common::AutowareError("Autoware is in emergency state now");
     }
   }
-#endif
+#endif  // AUTOWARE_ARCHITECTURE_PROPOSAL
 
-#ifdef AUTOWARE_AUTO
-#endif
 public:
   explicit FundamentalAPI()
 #ifdef AUTOWARE_ARCHITECTURE_PROPOSAL
@@ -227,9 +228,6 @@ public:
     INIT_SUBSCRIPTION(AutowareStatus, "/awapi/autoware/get/status", checkAutowareState),
     // INIT_SUBSCRIPTION(TrafficLightStatus, "/awapi/traffic_light/get/status", []() {}),
     INIT_SUBSCRIPTION(VehicleStatus, "/awapi/vehicle/get/status", []() {})
-#endif
-
-#ifdef AUTOWARE_AUTO
 #endif
   {
   }

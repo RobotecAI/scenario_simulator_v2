@@ -31,13 +31,14 @@ from pathlib import Path
 
 
 def generate_launch_description():
-    # We are disabling launching AutowareArchitectureProposal by trying to launch non
-    # existing files. For now, we launch Autoware.Auto separately.
+    # TODO (Robotec.ai)
+    # To keep temporary changes minimal, launch non-existing file here.
+    # For now, we launch Autoware.Auto separately.
     autoware_launch_file = LaunchConfiguration(
         "autoware-launch-file", default="__planning_simulator.launch.xml"
     )
     autoware_launch_package = LaunchConfiguration(
-        "autoware-launch-package", default="__autoware_launch"
+        "autoware-launch-package", default="autoware_launch"
     )
     global_frame_rate = LaunchConfiguration("global-frame-rate", default=30.0)
     global_real_time_factor = LaunchConfiguration(

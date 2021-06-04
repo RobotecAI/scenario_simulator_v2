@@ -21,6 +21,9 @@ namespace concealer
 #define AUTOWARE_INFO_STREAM(...) \
   RCLCPP_INFO_STREAM(get_logger(), "\x1b[32m" << __VA_ARGS__ << "\x1b[0m")
 
+#define AUTOWARE_WARN_STREAM(...) \
+  RCLCPP_WARN_STREAM(get_logger(), "\x1b[33m" << __VA_ARGS__ << "\x1b[0m")
+
 #define AUTOWARE_ERROR_STREAM(...) \
   RCLCPP_ERROR_STREAM(get_logger(), "\x1b[1;31m" << __VA_ARGS__ << "\x1b[0m")
 
@@ -112,6 +115,7 @@ void Autoware::update()
   // Forced gear to 1 to bypass behavior planner checks
   VehicleStateReport report;
   report.gear = 1;
+  // TODO (Robotec.ai): Handle gear change request properly as in AutowareIvAdapter::callbackGear, only send state here
   setVehicleStateReport(report);
 #endif
 }
@@ -148,6 +152,7 @@ void Autoware::initialize(const geometry_msgs::msg::Pose & initial_pose)
 #ifdef AUTOWARE_AUTO
   task_queue.delay(
     [this, initial_pose]() {
+      // TODO (Robotec.ai) - handle autoware states - wait for a correct state if necessary
       set(initial_pose);
       setInitialPose(initial_pose);
     }
@@ -179,27 +184,28 @@ void Autoware::plan(const std::vector<geometry_msgs::msg::PoseStamped> & route)
     waitForAutowareStateToBePlanning();
     waitForAutowareStateToBeWaitingForEngage();  // NOTE: Autoware.IV 0.11.1 waits about 3 sec from the completion of Planning until the transition to WaitingForEngage.
   });
-#endif
+#endif  // AUTOWARE_ARCHITECTURE_PROPOSAL
 
 #ifdef AUTOWARE_AUTO
   if (route.size() > 1)
   {
-    RCLCPP_WARN_STREAM(get_logger(), "AutowareAuto received route consisting of " << route.size() <<
-      " poses but it does not support checkpoints. Ignoring first " << route.size() - 1 << " poses and treating last pose as goal.");
+    AUTOWARE_WARN_STREAM("AutowareAuto received route consisting of " << route.size() <<
+      " poses but it does not support checkpoints. Ignoring first " << route.size() - 1 << " poses and treating last pose as the goal.");
   }
 
   task_queue.delay(
     [this, route]() {
+      // TODO (Robotec.ai): replace this sleep with proper state wait logic once state support is there (waitForAutowareStateToBeWaitingForRoute)
       std::this_thread::sleep_for(std::chrono::milliseconds(2000));
       geometry_msgs::msg::PoseStamped gp;
       gp.pose = route.back().pose;
-      gp.pose.position.z = 0.0;
+      gp.pose.position.z = 0.0;  // TODO(pjaroszek): explain please why this is set to 0.0
       gp.header.stamp = static_cast<Node &>(*this).get_clock()->now();
       gp.header.frame_id = "map";
       setGoalPose(gp);
     }
   );
-#endif
+#endif  // AUTOWARE_AUTO
 }
 
 /* ---- NOTE -------------------------------------------------------------------
@@ -217,9 +223,9 @@ void Autoware::engage()
 
 #ifdef AUTOWARE_AUTO
   task_queue.delay(
-    [this]() {}
+    [this]() { }  // TODO (Robotec.ai) - handle engage equivalent
   );
-  // TODO (Robotec.ai)
+
 #endif
 }
 }  // namespace concealer

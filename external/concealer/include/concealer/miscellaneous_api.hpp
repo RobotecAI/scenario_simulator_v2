@@ -15,6 +15,8 @@
 #ifndef CONCEALER__MISCELLANEOUS_API_HPP_
 #define CONCEALER__MISCELLANEOUS_API_HPP_
 
+#include <concealer/autoware_def.hpp>
+
 #include <concealer/conversion.hpp>
 #include <concealer/define_macro.hpp>
 
@@ -282,7 +284,7 @@ class MiscellaneousAPI
 
   DEFINE_SUBSCRIPTION(VehicleCommand);
 
-#endif
+#endif  // AUTOWARE_ARCHITECTURE_PROPOSAL
 
 #ifdef AUTOWARE_AUTO
   using GoalPose = geometry_msgs::msg::PoseStamped;
@@ -305,12 +307,12 @@ class MiscellaneousAPI
       autoware_auto_msgs::msg::TrajectoryPoint state;
       state.x = pose.position.x;
       state.y = pose.position.y;
-      state.heading.real = pose.orientation.w; // from motion_common package of autoware.auto
-      state.heading.imag = pose.orientation.z; // from motion_common package of autoware.auto
+      state.heading.real = pose.orientation.w;  // from motion_common package of autoware.auto
+      state.heading.imag = pose.orientation.z;  // from motion_common package of autoware.auto
       state.longitudinal_velocity_mps = twist.linear.x;
       state.lateral_velocity_mps = twist.linear.y;
       state.acceleration_mps2 = getVehicleControlCommand().long_accel_mps2;
-      state.heading_rate_rps = 0.0; // ??
+      state.heading_rate_rps = 0.0;  // TODO - what should be the value here?
       state.front_wheel_angle_rad = getVehicleControlCommand().front_wheel_angle_rad;
       kinematic_state.state = state;
     }
@@ -334,7 +336,7 @@ class MiscellaneousAPI
 
   using Trajectory = autoware_auto_msgs::msg::Trajectory;
   DEFINE_SUBSCRIPTION(Trajectory);
-#endif
+#endif  // AUTOWARE_AUTO
 
 public:
   explicit MiscellaneousAPI()
@@ -352,7 +354,7 @@ public:
     INIT_SUBSCRIPTION(Trajectory, "/planning/scenario_planning/trajectory", []() {}),
     INIT_SUBSCRIPTION(TurnSignalCommand, "/control/turn_signal_cmd", []() {}),
     INIT_SUBSCRIPTION(VehicleCommand, "/control/vehicle_cmd", []() {})
-#endif
+#endif  // AUTOWARE_ARCHITECTURE_PROPOSAL
 #ifdef AUTOWARE_AUTO
     : INIT_PUBLISHER(GoalPose, "/planning/goal_pose"),
     INIT_PUBLISHER(InitialPose, "/localization/initialpose"),
@@ -360,7 +362,7 @@ public:
     INIT_PUBLISHER(VehicleStateReport, "/vehicle/state_report"),
     INIT_SUBSCRIPTION(VehicleControlCommand, "/vehicle/vehicle_command", []() {}),
     INIT_SUBSCRIPTION(Trajectory, "/planning/trajectory", []() {})
-#endif
+#endif  // AUTOWARE_AUTO
   {
   }
 };

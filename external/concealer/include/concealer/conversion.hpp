@@ -15,6 +15,8 @@
 #ifndef CONCEALER__CONVERSION_HPP_
 #define CONCEALER__CONVERSION_HPP_
 
+#include <concealer/autoware_def.hpp>
+
 // NOTE: headers are lexicographically sorted.
 
 #ifdef AUTOWARE_ARCHITECTURE_PROPOSAL
@@ -22,7 +24,8 @@
 #endif
 
 #ifdef AUTOWARE_AUTO
-// TODO(yamacir-kit)
+  // TODO(yamacir-kit)
+  // No equivalent for engage in AutowareAuto yet
 #endif
 
 #include <boost/mpl/and.hpp>
@@ -102,7 +105,7 @@ struct converter<From, autoware_vehicle_msgs::msg::Engage>
     return to;
   }
 };
-#endif
+#endif  // AUTOWARE_ARCHITECTURE_PROPOSAL
 
 }  // namespace concealer
 

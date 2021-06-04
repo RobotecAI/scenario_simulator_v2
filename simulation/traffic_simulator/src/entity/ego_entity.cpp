@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <concealer/autoware_def.hpp>
+
 #include <quaternion_operation/quaternion_operation.h>
 
 #include <ament_index_cpp/get_package_share_directory.hpp>
@@ -113,7 +115,7 @@ auto EgoEntity::getCurrentAction() const -> const std::string
             << ")";
 #endif
 #ifdef AUTOWARE_AUTO
-    // TODO: implement
+    // TODO (Robotec.ai): implement AutowareAuto equivalent
 #endif
   }
 
@@ -211,14 +213,15 @@ auto EgoEntity::getWaypoints() -> const openscenario_msgs::msg::WaypointsArray
 {
   openscenario_msgs::msg::WaypointsArray waypoints;
 
+
 #ifdef AUTOWARE_ARCHITECTURE_PROPOSAL
-  // *** getTrajectory - MiscellaneousAPI dependency ***
+  // Trajectory returned by getTrajectory() is a different message between AAP and AA
   for (const auto & point : autowares.at(name).getTrajectory().points) {
     waypoints.waypoints.emplace_back(point.pose.position);
   }
 #endif
 #ifdef AUTOWARE_AUTO
-  for (auto & point : autowares.at(name).getTrajectory().points) {
+  for (const auto & point : autowares.at(name).getTrajectory().points) {
     geometry_msgs::msg::Point waypoint;
     waypoint.x = point.x;
     waypoint.y = point.y;
