@@ -361,7 +361,14 @@ void EgoEntity::setTargetSpeed(double value, bool)
 {
   Eigen::VectorXd v(5);
   {
+#ifdef AUTOWARE_ARCHITECTURE_PROPOSAL
     v << 0, 0, 0, value, 0;
+#endif
+#ifdef AUTOWARE_AUTO
+    // non-zero initial speed prevents behavioral planner from planning
+    // TODO (Robotec.ai) should we support non-zero initial speed?
+    v << 0, 0, 0, 0, 0;
+#endif
   }
 
   (*vehicle_model_ptr_).setState(v);
