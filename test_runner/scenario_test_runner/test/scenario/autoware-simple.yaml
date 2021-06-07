@@ -85,6 +85,8 @@ OpenSCENARIO:
                       dynamicsShape: step
                     SpeedActionTarget:
                       AbsoluteTargetSpeed:
+                        # non-zero initial speed prevents bahavioral planner from planning
+                        # TODO (Robotec.ai) should we support non-zero initial speed?
                         value: 0.0
     Story:
       - name: ''
