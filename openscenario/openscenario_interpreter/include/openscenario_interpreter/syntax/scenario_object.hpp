@@ -95,27 +95,25 @@ struct ScenarioObject
         assignController(name, object_controller);
         if (object_controller.isEgo()) {
           attachLidarSensor(traffic_simulator::helper::constructLidarConfiguration(
-            traffic_simulator::helper::LidarType::VLP16, name
+            traffic_simulator::helper::LidarType::VLP16, name,
 #ifdef AUTOWARE_ARCHITECTURE_PROPOSAL
-            ,
             "/sensing/lidar/no_ground/pointcloud"
 #endif
 #ifdef AUTOWARE_AUTO
-            ,
             "/perception/points_nonground"
 #endif
             ));
+#ifdef AUTOWARE_ARCHITECTURE_PROPOSAL
           attachDetectionSensor(traffic_simulator::helper::constructDetectionSensorConfiguration(
             name,
-#ifdef AUTOWARE_ARCHITECTURE_PROPOSAL
-            "/perception/object_recognition/objects",
-#endif
-#ifdef AUTOWARE_AUTO
-            // TODO: figure out Autoware.Auto equivalent
             // publishing autoware_perception_msgs::msg::DynamicObjectArray
             "/perception/object_recognition/objects",
-#endif
             0.1));
+#endif
+          // Autoware.Auto does not currently support object prediction
+          // however it is work-in-progress for Cargo ODD
+          // msgs are already implemented and autoware_auto_msgs::msg::PredictedObjects will probably be used here
+          // topic name is yet unknown
         }
       }
       return unspecified;
