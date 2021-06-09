@@ -30,6 +30,7 @@
 
 #ifdef AUTOWARE_AUTO
 #include <autoware_auto_msgs/msg/vehicle_control_command.hpp>
+#include <autoware_auto_msgs/msg/vehicle_state_command.hpp>
 #include <autoware_auto_msgs/msg/vehicle_state_report.hpp>
 #include <autoware_auto_msgs/msg/vehicle_kinematic_state.hpp>
 #include <autoware_auto_msgs/msg/trajectory.hpp>
@@ -293,14 +294,24 @@ class MiscellaneousAPI
   using VehicleControlCommand = autoware_auto_msgs::msg::VehicleControlCommand;
   DEFINE_SUBSCRIPTION(VehicleControlCommand);
 
+  using VehicleStateCommand = autoware_auto_msgs::msg::VehicleStateCommand;
+  DEFINE_SUBSCRIPTION(VehicleStateCommand);
+
   using VehicleStateReport = autoware_auto_msgs::msg::VehicleStateReport;
   DEFINE_PUBLISHER(VehicleStateReport);
-  decltype(auto) setVehicleStateReport(const geometry_msgs::msg::Twist & twist)
+  decltype(auto) setVehicleStateReport()
   {
     VehicleStateReport report;
     {
-      report.gear = twist.linear.x >= 0 ? autoware_auto_msgs::msg::VehicleStateReport::GEAR_DRIVE :
-                                          autoware_auto_msgs::msg::VehicleStateReport::GEAR_REVERSE;
+      auto current_state_command = getVehicleStateCommand();
+      report.stamp = static_cast<Node &>(*this).get_clock()->now();
+      report.blinker = current_state_command.blinker;
+      report.headlight = current_state_command.headlight;
+      report.wiper = current_state_command.wiper;
+      report.gear = current_state_command.gear;
+      report.mode = current_state_command.mode;
+      report.hand_brake = current_state_command.hand_brake;
+      report.horn = current_state_command.horn;
     }
 
     return setVehicleStateReport(report);
@@ -371,6 +382,7 @@ public:
     INIT_PUBLISHER(VehicleKinematicState, "/vehicle/vehicle_kinematic_state"),
     INIT_PUBLISHER(VehicleStateReport, "/vehicle/state_report"),
     INIT_SUBSCRIPTION(VehicleControlCommand, "/vehicle/vehicle_command", []() {}),
+    INIT_SUBSCRIPTION(VehicleStateCommand, "/vehicle/state_command", []() {}),
     INIT_SUBSCRIPTION(Trajectory, "/planning/trajectory", []() {})
 #endif  // AUTOWARE_AUTO
   {

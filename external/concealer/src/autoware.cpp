@@ -111,7 +111,7 @@ void Autoware::update()
 #ifdef AUTOWARE_AUTO
   setTransform(current_pose);
   setVehicleKinematicState(current_pose, current_twist);
-  setVehicleStateReport(current_twist);
+  setVehicleStateReport();
 #endif
 }
 
