@@ -295,6 +295,16 @@ class MiscellaneousAPI
 
   using VehicleStateReport = autoware_auto_msgs::msg::VehicleStateReport;
   DEFINE_PUBLISHER(VehicleStateReport);
+  decltype(auto) setVehicleStateReport(const geometry_msgs::msg::Twist & twist)
+  {
+    VehicleStateReport report;
+    {
+      report.gear = twist.linear.x >= 0 ? autoware_auto_msgs::msg::VehicleStateReport::GEAR_DRIVE :
+                                          autoware_auto_msgs::msg::VehicleStateReport::GEAR_REVERSE;
+    }
+
+    return setVehicleStateReport(report);
+  }
 
   using VehicleKinematicState = autoware_auto_msgs::msg::VehicleKinematicState;
   DEFINE_PUBLISHER(VehicleKinematicState);
