@@ -12,7 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <err.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
+#include <iostream>
 
 #include <concealer/execute.hpp>
 #include <type_traits>
@@ -45,4 +51,28 @@ int execute(const std::vector<std::string> & f_xs)
 
   return ::execvp(argv[0], argv.data());
 }
+
+void sudokill(pid_t process_id)
+{
+    char *process_str;
+    int status;
+    pid_t pid;
+
+    if (asprintf(&process_str, "%d", process_id) < 0)
+        err(1, "asprintf() failed");
+
+    pid = fork();
+    switch (pid) {
+    case -1:
+        err(1, "fork() failed");
+    case 0:
+        execlp("sudo", "sudo", "kill", "-2", process_str, (char *) NULL);
+        err(1, "execlp() failed");
+    default:
+        wait(&status);
+    }
+
+    free(process_str);
+}
+
 }  // namespace concealer

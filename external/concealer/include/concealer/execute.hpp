@@ -21,6 +21,7 @@
 namespace concealer
 {
 int execute(const std::vector<std::string> &);
+void sudokill(pid_t process_id);
 }  // namespace concealer
 
 #endif  // CONCEALER__EXECUTE_HPP_
