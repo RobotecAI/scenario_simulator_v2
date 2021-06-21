@@ -54,25 +54,24 @@ int execute(const std::vector<std::string> & f_xs)
 
 void sudokill(pid_t process_id)
 {
-    char *process_str;
-    int status;
-    pid_t pid;
+  char *process_str;
+  int status;
+  pid_t pid;
 
-    if (asprintf(&process_str, "%d", process_id) < 0)
-        err(1, "asprintf() failed");
+  if (asprintf(&process_str, "%d", process_id) < 0)
+    std::cout << std::system_error(errno, std::system_category()).what() << std::endl;
 
-    pid = fork();
-    switch (pid) {
-    case -1:
-        err(1, "fork() failed");
-    case 0:
-        execlp("sudo", "sudo", "kill", "-2", process_str, (char *) NULL);
-        err(1, "execlp() failed");
-    default:
-        wait(&status);
-    }
+  pid = fork();
+  
+  switch (pid) {
+  case -1:
+    std::cout << std::system_error(errno, std::system_category()).what() << std::endl;
+  case 0:
+    execlp("sudo", "sudo", "kill", "-2", process_str, (char *) NULL);
+    std::cout << std::system_error(errno, std::system_category()).what() << std::endl;
+  }
 
-    free(process_str);
+  free(process_str);
 }
 
 }  // namespace concealer

@@ -33,7 +33,7 @@ namespace concealer
 
 Autoware::~Autoware()
 {
-  AUTOWARE_INFO_STREAM("Shutting down Autoware: (1/3) Stop publlishing/subscribing.");
+  AUTOWARE_INFO_STREAM("Shutting down Autoware: (1/2) Stop publlishing/subscribing.");
   {
     if (spinner.joinable()) {
       promise.set_value();
@@ -41,7 +41,7 @@ Autoware::~Autoware()
     }
   }
 
-  AUTOWARE_INFO_STREAM("Shutting down Autoware: (2/3) Send SIGINT to Autoware launch process.");
+  AUTOWARE_INFO_STREAM("Shutting down Autoware: (2/2) Send SIGINT to Autoware launch process.");
   {
     sudokill(process_id);
   }
