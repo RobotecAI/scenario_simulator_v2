@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classhdmap__utils_1_1CenterPointsCache" kind="class" language="C++" prot="public">
+    <compoundname>hdmap_utils::CenterPointsCache</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classhdmap__utils_1_1CenterPointsCache_1ae236ebb9c3ee62d0d6ff850fc1a731c9" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::int64_t, std::vector&lt; geometry_msgs::msg::Point &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::int64_t, std::vector&lt;geometry_msgs::msg::Point&gt; &gt; hdmap_utils::CenterPointsCache::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="99" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhdmap__utils_1_1CenterPointsCache_1a5d9620f62bf60e5a7efe6840f865b811" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::int64_t, std::shared_ptr&lt; <ref refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline" kindref="compound">traffic_simulator::math::CatmullRomSpline</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::int64_t, std::shared_ptr&lt;traffic_simulator::math::CatmullRomSpline&gt; &gt; hdmap_utils::CenterPointsCache::splines_</definition>
+        <argsstring></argsstring>
+        <name>splines_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="101" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhdmap__utils_1_1CenterPointsCache_1a4d38c076ade2c381ef1a20e215718577" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex hdmap_utils::CenterPointsCache::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="102" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classhdmap__utils_1_1CenterPointsCache_1a318660da306a297e7488eacad18f22d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hdmap_utils::CenterPointsCache::exists</definition>
+        <argsstring>(std::int64_t lanelet_id)</argsstring>
+        <name>exists</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>lanelet_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="66" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="66" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classhdmap__utils_1_1CenterPointsCache_1a556065144c7a5e2b8b6ebdb0ba6b3d8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; geometry_msgs::msg::Point &gt;</type>
+        <definition>std::vector&lt;geometry_msgs::msg::Point&gt; hdmap_utils::CenterPointsCache::getCenterPoints</definition>
+        <argsstring>(std::int64_t lanelet_id)</argsstring>
+        <name>getCenterPoints</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>lanelet_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="74" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="74" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classhdmap__utils_1_1CenterPointsCache_1abc799c8c944366e91aa9c59f21972cdc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline" kindref="compound">traffic_simulator::math::CatmullRomSpline</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;traffic_simulator::math::CatmullRomSpline&gt; hdmap_utils::CenterPointsCache::getCenterPointsSpline</definition>
+        <argsstring>(std::int64_t lanelet_id)</argsstring>
+        <name>getCenterPointsSpline</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>lanelet_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="82" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="82" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classhdmap__utils_1_1CenterPointsCache_1a13e066ee4de7a0682c5ff42b2f780592" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hdmap_utils::CenterPointsCache::appendData</definition>
+        <argsstring>(std::int64_t lanelet_id, const std::vector&lt; geometry_msgs::msg::Point &gt; &amp;route)</argsstring>
+        <name>appendData</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>lanelet_id</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; geometry_msgs::msg::Point &gt; &amp;</type>
+          <declname>route</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="91" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="91" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="64" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="63" bodyend="103"/>
+    <listofallmembers>
+      <member refid="classhdmap__utils_1_1CenterPointsCache_1a13e066ee4de7a0682c5ff42b2f780592" prot="public" virt="non-virtual"><scope>hdmap_utils::CenterPointsCache</scope><name>appendData</name></member>
+      <member refid="classhdmap__utils_1_1CenterPointsCache_1ae236ebb9c3ee62d0d6ff850fc1a731c9" prot="private" virt="non-virtual"><scope>hdmap_utils::CenterPointsCache</scope><name>data_</name></member>
+      <member refid="classhdmap__utils_1_1CenterPointsCache_1a318660da306a297e7488eacad18f22d4" prot="public" virt="non-virtual"><scope>hdmap_utils::CenterPointsCache</scope><name>exists</name></member>
+      <member refid="classhdmap__utils_1_1CenterPointsCache_1a556065144c7a5e2b8b6ebdb0ba6b3d8d" prot="public" virt="non-virtual"><scope>hdmap_utils::CenterPointsCache</scope><name>getCenterPoints</name></member>
+      <member refid="classhdmap__utils_1_1CenterPointsCache_1abc799c8c944366e91aa9c59f21972cdc" prot="public" virt="non-virtual"><scope>hdmap_utils::CenterPointsCache</scope><name>getCenterPointsSpline</name></member>
+      <member refid="classhdmap__utils_1_1CenterPointsCache_1a4d38c076ade2c381ef1a20e215718577" prot="private" virt="non-virtual"><scope>hdmap_utils::CenterPointsCache</scope><name>mutex_</name></member>
+      <member refid="classhdmap__utils_1_1CenterPointsCache_1a5d9620f62bf60e5a7efe6840f865b811" prot="private" virt="non-virtual"><scope>hdmap_utils::CenterPointsCache</scope><name>splines_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

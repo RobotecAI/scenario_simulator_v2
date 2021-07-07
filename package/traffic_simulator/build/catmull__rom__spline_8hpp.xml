@@ -11,6 +11,7 @@
     <includes local="no">vector</includes>
     <includedby refid="action__node_8hpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/action_node.hpp</includedby>
     <includedby refid="vehicle__action__node_8hpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/vehicle_action_node.hpp</includedby>
+    <includedby refid="cache_8hpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp</includedby>
     <includedby refid="follow__front__entity__action_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.cpp</includedby>
     <includedby refid="vehicle_2follow__lane__sequence_2follow__lane__action_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/vehicle/follow_lane_sequence/follow_lane_action.cpp</includedby>
     <includedby refid="stop__at__crossing__entity__action_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/vehicle/follow_lane_sequence/stop_at_crossing_entity_action.cpp</includedby>
@@ -23,254 +24,370 @@
     <includedby refid="catmull__rom__visualization_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/moc/catmull_rom_visualization.cpp</includedby>
     <includedby refid="test__math_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/test_math.cpp</includedby>
     <incdepgraph>
-      <node id="2034">
+      <node id="2313">
         <label>geometry_msgs/msg/pose.hpp</label>
       </node>
-      <node id="2036">
+      <node id="2315">
         <label>openscenario_msgs/msg/hermite_curve.hpp</label>
       </node>
-      <node id="2030">
+      <node id="2309">
         <label>string</label>
       </node>
-      <node id="2031">
+      <node id="2310">
         <label>traffic_simulator/math/hermite_curve.hpp</label>
         <link refid="hermite__curve_8hpp_source"/>
-        <childnode refid="2032" relation="include">
+        <childnode refid="2311" relation="include">
         </childnode>
-        <childnode refid="2033" relation="include">
+        <childnode refid="2312" relation="include">
         </childnode>
-        <childnode refid="2028" relation="include">
+        <childnode refid="2307" relation="include">
         </childnode>
-        <childnode refid="2034" relation="include">
+        <childnode refid="2313" relation="include">
         </childnode>
-        <childnode refid="2035" relation="include">
+        <childnode refid="2314" relation="include">
         </childnode>
-        <childnode refid="2036" relation="include">
+        <childnode refid="2315" relation="include">
         </childnode>
-        <childnode refid="2037" relation="include">
+        <childnode refid="2316" relation="include">
         </childnode>
-        <childnode refid="2038" relation="include">
+        <childnode refid="2317" relation="include">
         </childnode>
       </node>
-      <node id="2027">
+      <node id="2306">
         <label>exception</label>
       </node>
-      <node id="2035">
+      <node id="2314">
         <label>geometry_msgs/msg/vector3.hpp</label>
       </node>
-      <node id="2032">
+      <node id="2311">
         <label>quaternion_operation/quaternion_operation.h</label>
       </node>
-      <node id="2028">
+      <node id="2307">
         <label>geometry_msgs/msg/point.hpp</label>
       </node>
-      <node id="2029">
+      <node id="2308">
         <label>openscenario_msgs/msg/catmull_rom_spline.hpp</label>
       </node>
-      <node id="2038">
+      <node id="2317">
         <label>vector</label>
       </node>
-      <node id="2039">
+      <node id="2318">
         <label>utility</label>
       </node>
-      <node id="2037">
+      <node id="2316">
         <label>traffic_simulator/math/polynomial_solver.hpp</label>
         <link refid="polynomial__solver_8hpp_source"/>
-        <childnode refid="2038" relation="include">
+        <childnode refid="2317" relation="include">
         </childnode>
       </node>
-      <node id="2026">
+      <node id="2305">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/math/catmull_rom_spline.hpp</label>
         <link refid="catmull__rom__spline_8hpp"/>
-        <childnode refid="2027" relation="include">
+        <childnode refid="2306" relation="include">
         </childnode>
-        <childnode refid="2028" relation="include">
+        <childnode refid="2307" relation="include">
         </childnode>
-        <childnode refid="2029" relation="include">
+        <childnode refid="2308" relation="include">
         </childnode>
-        <childnode refid="2030" relation="include">
+        <childnode refid="2309" relation="include">
         </childnode>
-        <childnode refid="2031" relation="include">
+        <childnode refid="2310" relation="include">
         </childnode>
-        <childnode refid="2039" relation="include">
+        <childnode refid="2318" relation="include">
         </childnode>
-        <childnode refid="2038" relation="include">
+        <childnode refid="2317" relation="include">
         </childnode>
       </node>
-      <node id="2033">
+      <node id="2312">
         <label>boost/optional.hpp</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2047">
+      <node id="2347">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/route_planner.hpp</label>
+        <link refid="route__planner_8hpp_source"/>
+        <childnode refid="2324" relation="include">
+        </childnode>
+        <childnode refid="2343" relation="include">
+        </childnode>
+      </node>
+      <node id="2326">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/api/api.hpp</label>
         <link refid="api_8hpp_source"/>
       </node>
-      <node id="2053">
+      <node id="2332">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/traveled_distance_metric.hpp</label>
         <link refid="traveled__distance__metric_8hpp_source"/>
-        <childnode refid="2049" relation="include">
+        <childnode refid="2328" relation="include">
         </childnode>
       </node>
-      <node id="2054">
+      <node id="2333">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/walk_straight_action.hpp</label>
         <link refid="walk__straight__action_8hpp"/>
-        <childnode refid="2044" relation="include">
+        <childnode refid="2323" relation="include">
         </childnode>
-        <childnode refid="2055" relation="include">
+        <childnode refid="2334" relation="include">
         </childnode>
       </node>
-      <node id="2057">
+      <node id="2336">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.hpp</label>
         <link refid="follow__front__entity__action_8hpp_source"/>
       </node>
-      <node id="2051">
+      <node id="2330">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/momentary_stop_metric.hpp</label>
         <link refid="momentary__stop__metric_8hpp_source"/>
-        <childnode refid="2049" relation="include">
+        <childnode refid="2328" relation="include">
         </childnode>
       </node>
-      <node id="2059">
+      <node id="2338">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_crossing_entity_action.hpp</label>
         <link refid="stop__at__crossing__entity__action_8hpp_source"/>
       </node>
-      <node id="2044">
+      <node id="2323">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/behavior_tree.hpp</label>
         <link refid="pedestrian_2behavior__tree_8hpp_source"/>
-        <childnode refid="2045" relation="include">
+        <childnode refid="2324" relation="include">
         </childnode>
       </node>
-      <node id="2061">
+      <node id="2340">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_traffic_light_action.hpp</label>
         <link refid="stop__at__traffic__light__action_8hpp_source"/>
       </node>
-      <node id="2048">
+      <node id="2354">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light_phase.hpp</label>
+        <link refid="traffic__light__phase_8hpp_source"/>
+        <childnode refid="2355" relation="include">
+        </childnode>
+      </node>
+      <node id="2327">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metric_base.hpp</label>
         <link refid="metric__base_8hpp_source"/>
-        <childnode refid="2049" relation="include">
+        <childnode refid="2328" relation="include">
         </childnode>
-        <childnode refid="2050" relation="include">
+        <childnode refid="2329" relation="include">
         </childnode>
-        <childnode refid="2051" relation="include">
+        <childnode refid="2330" relation="include">
         </childnode>
-        <childnode refid="2052" relation="include">
+        <childnode refid="2331" relation="include">
         </childnode>
-        <childnode refid="2053" relation="include">
+        <childnode refid="2332" relation="include">
         </childnode>
       </node>
-      <node id="2045">
+      <node id="2324">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/pedestrian_entity.hpp</label>
         <link refid="pedestrian__entity_8hpp_source"/>
-        <childnode refid="2046" relation="include">
+        <childnode refid="2325" relation="include">
         </childnode>
       </node>
-      <node id="2041">
+      <node id="2320">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/action_node.hpp</label>
         <link refid="action__node_8hpp_source"/>
-        <childnode refid="2042" relation="include">
+        <childnode refid="2321" relation="include">
         </childnode>
-        <childnode refid="2056" relation="include">
+        <childnode refid="2335" relation="include">
         </childnode>
       </node>
-      <node id="2055">
+      <node id="2334">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/pedestrian/walk_straight_action.cpp</label>
         <link refid="walk__straight__action_8cpp"/>
       </node>
-      <node id="2060">
+      <node id="2345">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp</label>
+        <link refid="cache_8hpp_source"/>
+        <childnode refid="2346" relation="include">
+        </childnode>
+      </node>
+      <node id="2339">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_stop_line_action.hpp</label>
         <link refid="stop__at__stop__line__action_8hpp_source"/>
       </node>
-      <node id="2063">
+      <node id="2342">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/lane_change_action.hpp</label>
         <link refid="lane__change__action_8hpp_source"/>
-        <childnode refid="2064" relation="include">
+        <childnode refid="2343" relation="include">
         </childnode>
       </node>
-      <node id="2046">
+      <node id="2346">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/hdmap_utils.hpp</label>
+        <link refid="hdmap__utils_8hpp_source"/>
+        <childnode refid="2320" relation="include">
+        </childnode>
+        <childnode refid="2323" relation="include">
+        </childnode>
+        <childnode refid="2322" relation="include">
+        </childnode>
+        <childnode refid="2333" relation="include">
+        </childnode>
+        <childnode refid="2347" relation="include">
+        </childnode>
+        <childnode refid="2348" relation="include">
+        </childnode>
+        <childnode refid="2349" relation="include">
+        </childnode>
+        <childnode refid="2325" relation="include">
+        </childnode>
+        <childnode refid="2351" relation="include">
+        </childnode>
+        <childnode refid="2353" relation="include">
+        </childnode>
+        <childnode refid="2354" relation="include">
+        </childnode>
+      </node>
+      <node id="2325">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_manager.hpp</label>
         <link refid="entity__manager_8hpp_source"/>
-        <childnode refid="2047" relation="include">
+        <childnode refid="2326" relation="include">
         </childnode>
-        <childnode refid="2048" relation="include">
+        <childnode refid="2327" relation="include">
         </childnode>
-        <childnode refid="2050" relation="include">
+        <childnode refid="2329" relation="include">
         </childnode>
       </node>
-      <node id="2052">
+      <node id="2331">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/reaction_time_metric.hpp</label>
         <link refid="reaction__time__metric_8hpp_source"/>
-        <childnode refid="2049" relation="include">
+        <childnode refid="2328" relation="include">
         </childnode>
       </node>
-      <node id="2050">
+      <node id="2329">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp</label>
         <link refid="metrics__manager_8hpp_source"/>
-        <childnode refid="2047" relation="include">
+        <childnode refid="2326" relation="include">
         </childnode>
       </node>
-      <node id="2064">
+      <node id="2350">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/misc_object_entity.hpp</label>
+        <link refid="misc__object__entity_8hpp_source"/>
+        <childnode refid="2325" relation="include">
+        </childnode>
+      </node>
+      <node id="2352">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/traffic/traffic_controller.cpp</label>
+        <link refid="traffic__controller_8cpp"/>
+      </node>
+      <node id="2343">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp</label>
         <link refid="vehicle__entity_8hpp_source"/>
-        <childnode refid="2065" relation="include">
+        <childnode refid="2344" relation="include">
         </childnode>
-        <childnode refid="2046" relation="include">
+        <childnode refid="2325" relation="include">
         </childnode>
       </node>
-      <node id="2043">
+      <node id="2322">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/follow_lane_action.hpp</label>
         <link refid="pedestrian_2follow__lane__action_8hpp_source"/>
-        <childnode refid="2044" relation="include">
+        <childnode refid="2323" relation="include">
         </childnode>
       </node>
-      <node id="2049">
+      <node id="2348">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/behavior_tree.hpp</label>
+        <link refid="vehicle_2behavior__tree_8hpp_source"/>
+        <childnode refid="2337" relation="include">
+        </childnode>
+        <childnode refid="2343" relation="include">
+        </childnode>
+      </node>
+      <node id="2328">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics.hpp</label>
         <link refid="metrics_8hpp_source"/>
       </node>
-      <node id="2065">
+      <node id="2344">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp</label>
         <link refid="ego__entity_8hpp_source"/>
-        <childnode refid="2046" relation="include">
+        <childnode refid="2325" relation="include">
         </childnode>
       </node>
-      <node id="2040">
+      <node id="2319">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/math/catmull_rom_spline.hpp</label>
         <link refid="catmull__rom__spline_8hpp"/>
-        <childnode refid="2041" relation="include">
+        <childnode refid="2320" relation="include">
         </childnode>
-        <childnode refid="2056" relation="include">
+        <childnode refid="2335" relation="include">
+        </childnode>
+        <childnode refid="2345" relation="include">
         </childnode>
       </node>
-      <node id="2042">
+      <node id="2321">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/pedestrian_action_node.hpp</label>
         <link refid="pedestrian__action__node_8hpp_source"/>
-        <childnode refid="2043" relation="include">
+        <childnode refid="2322" relation="include">
         </childnode>
-        <childnode refid="2054" relation="include">
+        <childnode refid="2333" relation="include">
         </childnode>
       </node>
-      <node id="2056">
+      <node id="2335">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/vehicle_action_node.hpp</label>
         <link refid="vehicle__action__node_8hpp_source"/>
-        <childnode refid="2057" relation="include">
+        <childnode refid="2336" relation="include">
         </childnode>
-        <childnode refid="2058" relation="include">
+        <childnode refid="2337" relation="include">
         </childnode>
-        <childnode refid="2059" relation="include">
+        <childnode refid="2338" relation="include">
         </childnode>
-        <childnode refid="2060" relation="include">
+        <childnode refid="2339" relation="include">
         </childnode>
-        <childnode refid="2061" relation="include">
+        <childnode refid="2340" relation="include">
         </childnode>
-        <childnode refid="2062" relation="include">
+        <childnode refid="2341" relation="include">
         </childnode>
-        <childnode refid="2063" relation="include">
+        <childnode refid="2342" relation="include">
         </childnode>
       </node>
-      <node id="2058">
+      <node id="2355">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light.hpp</label>
+        <link refid="traffic__light_8hpp_source"/>
+        <childnode refid="2326" relation="include">
+        </childnode>
+        <childnode refid="2353" relation="include">
+        </childnode>
+      </node>
+      <node id="2353">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light_manager.hpp</label>
+        <link refid="traffic__light__manager_8hpp_source"/>
+        <childnode refid="2320" relation="include">
+        </childnode>
+        <childnode refid="2349" relation="include">
+        </childnode>
+        <childnode refid="2325" relation="include">
+        </childnode>
+      </node>
+      <node id="2349">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_base.hpp</label>
+        <link refid="entity__base_8hpp_source"/>
+        <childnode refid="2320" relation="include">
+        </childnode>
+        <childnode refid="2336" relation="include">
+        </childnode>
+        <childnode refid="2338" relation="include">
+        </childnode>
+        <childnode refid="2339" relation="include">
+        </childnode>
+        <childnode refid="2340" relation="include">
+        </childnode>
+        <childnode refid="2341" relation="include">
+        </childnode>
+        <childnode refid="2325" relation="include">
+        </childnode>
+        <childnode refid="2350" relation="include">
+        </childnode>
+        <childnode refid="2324" relation="include">
+        </childnode>
+        <childnode refid="2343" relation="include">
+        </childnode>
+      </node>
+      <node id="2337">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_lane_action.hpp</label>
         <link refid="vehicle_2follow__lane__sequence_2follow__lane__action_8hpp_source"/>
       </node>
-      <node id="2062">
+      <node id="2351">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic/traffic_controller.hpp</label>
+        <link refid="traffic__controller_8hpp"/>
+        <childnode refid="2326" relation="include">
+        </childnode>
+        <childnode refid="2352" relation="include">
+        </childnode>
+      </node>
+      <node id="2341">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/yield_action.hpp</label>
         <link refid="yield__action_8hpp_source"/>
       </node>
@@ -320,7 +437,7 @@
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;openscenario_msgs::msg::HermiteCurve&gt;<sp/>&amp;<sp/>hermite_curves);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline" kindref="compound">CatmullRomSpline</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>&amp;<sp/>control_points);</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getLength()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>total_length_;<sp/>}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getMaximum2DCurventure()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getMaximum2DCurvature()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Point<sp/>getPoint(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Vector3<sp/>getTangentVector(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Vector3<sp/>getNormalVector(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
@@ -329,7 +446,7 @@
 <codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>getTrajectory(</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start_s,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>end_s,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>resolution)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/>boost::optional&lt;double&gt;<sp/>getSValue(</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>geometry_msgs::msg::Point<sp/>position,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threadhold_distance<sp/>=<sp/>3.0,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>geometry_msgs::msg::Point<sp/>position,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold_distance<sp/>=<sp/>3.0,</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>initial_resolution<sp/>=<sp/>30,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_iteration<sp/>=<sp/>30,</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tolerance<sp/>=<sp/>0.001);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getSquaredDistanceIn2D(geometry_msgs::msg::Point<sp/>point,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>

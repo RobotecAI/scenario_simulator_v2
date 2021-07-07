@@ -4,13 +4,41 @@
     <compoundname>openscenario_interpreter::iterator::CircularIterator</compoundname>
     <templateparamlist>
       <param>
-        <type>typename ForwardIterator</type>
+        <type>typename Container</type>
       </param>
     </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a830e509b8970d2782fac3fd91d8f6e6b" prot="private" static="no">
+        <type>typename Container::iterator</type>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::ForwardIterator =  typename Container::iterator</definition>
+        <argsstring></argsstring>
+        <name>ForwardIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="28" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1af3d1d2d2b8ac9ba954a6a63b0b993286" prot="private" static="no">
+        <type>typename Container::const_iterator</type>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::ForwardConstIterator =  typename Container::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>ForwardConstIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="29" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1aa6ad6af16b20017cb0283a0cd48cbe16" prot="public" static="no">
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a621a443fc05a15dbc67c955c98589d69" prot="public" static="no">
         <type>std::forward_iterator_tag</type>
-        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::iterator_category =  std::forward_iterator_tag</definition>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::iterator_category =  std::forward_iterator_tag</definition>
         <argsstring></argsstring>
         <name>iterator_category</name>
         <briefdescription>
@@ -19,11 +47,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="31" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="31" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="34" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a77fa577ad5da2f3f43e03fef67e8f23a" prot="public" static="no">
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a37c95d23c2018356bc96bb065d5069a9" prot="public" static="no">
         <type>typename std::iterator_traits&lt; ForwardIterator &gt;::value_type</type>
-        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::value_type =  typename std::iterator_traits&lt;ForwardIterator&gt;::value_type</definition>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::value_type =  typename std::iterator_traits&lt;ForwardIterator&gt;::value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
         <briefdescription>
@@ -32,11 +60,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="33" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="33" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a9a32398be31b8a7c97eeecf152479dcf" prot="public" static="no">
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a7c29b488dd97a39719618f7263edc76f" prot="public" static="no">
         <type>typename std::add_lvalue_reference&lt; value_type &gt;::type</type>
-        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::reference =  typename std::add_lvalue_reference&lt;value_type&gt;::type</definition>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::reference =  typename std::add_lvalue_reference&lt;value_type&gt;::type</definition>
         <argsstring></argsstring>
         <name>reference</name>
         <briefdescription>
@@ -45,11 +73,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="35" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8a9d1f704697f4d9dd22983c68f6106f" prot="public" static="no">
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1afc02c426c3d662a22d3fba6702083bca" prot="public" static="no">
         <type>typename std::add_const&lt; reference &gt;::type</type>
-        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::const_reference =  typename std::add_const&lt;reference&gt;::type</definition>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::const_reference =  typename std::add_const&lt;reference&gt;::type</definition>
         <argsstring></argsstring>
         <name>const_reference</name>
         <briefdescription>
@@ -58,11 +86,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="37" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a12e8a0747b8c456a9dbd9e7614da30f2" prot="public" static="no">
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8c89503710e6fa74ff71dfc0574af348" prot="public" static="no">
         <type>typename std::iterator_traits&lt; ForwardIterator &gt;::pointer</type>
-        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::pointer =  typename std::iterator_traits&lt;ForwardIterator&gt;::pointer</definition>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::pointer =  typename std::iterator_traits&lt;ForwardIterator&gt;::pointer</definition>
         <argsstring></argsstring>
         <name>pointer</name>
         <briefdescription>
@@ -71,11 +99,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="39" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="42" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a7bc05ec74309a93646ffa63bb3a4acd2" prot="public" static="no">
+      <memberdef kind="typedef" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ab3e3d7c8d66d4760591fe99bc01c0033" prot="public" static="no">
         <type>typename std::iterator_traits&lt; ForwardIterator &gt;::difference_type</type>
-        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::difference_type =  typename std::iterator_traits&lt;ForwardIterator&gt;::difference_type</definition>
+        <definition>using openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::difference_type =  typename std::iterator_traits&lt;ForwardIterator&gt;::difference_type</definition>
         <argsstring></argsstring>
         <name>difference_type</name>
         <briefdescription>
@@ -84,13 +112,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="41" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="44" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a34557f24b9d4e5280ece579b84bc2390" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a6fb501a8d9a709ed59a43ec395d67edb" prot="private" static="no" mutable="no">
         <type>ForwardIterator</type>
-        <definition>ForwardIterator openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::begin</definition>
+        <definition>ForwardIterator openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::begin</definition>
         <argsstring></argsstring>
         <name>begin</name>
         <briefdescription>
@@ -99,24 +127,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="28" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="28" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="31" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a1f85be59cef1842076846335a87a94ad" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a813fc6f9b934300bb0cb8fb2129af92a" prot="private" static="no" mutable="no">
         <type>ForwardIterator</type>
-        <definition>ForwardIterator openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::current</definition>
-        <argsstring></argsstring>
-        <name>current</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="28" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="28" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a55482deba8317eb6a9078e9cff0b783c" prot="private" static="no" mutable="no">
-        <type>ForwardIterator</type>
-        <definition>ForwardIterator openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::end</definition>
+        <definition>ForwardIterator openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::end</definition>
         <argsstring></argsstring>
         <name>end</name>
         <briefdescription>
@@ -125,13 +140,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="28" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="28" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="31" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ae178e4eb3e6b34f00d31e98e42ec0b25" prot="private" static="no" mutable="no">
+        <type>ForwardIterator</type>
+        <definition>ForwardIterator openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::current</definition>
+        <argsstring></argsstring>
+        <name>current</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="31" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a101b46d7331ffd038cce2d87a7837f16" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a9480e2a1b365e7b14aaa255e90262d32" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
-        <definition>openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::CircularIterator</definition>
+        <definition>openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::CircularIterator</definition>
         <argsstring>(ForwardIterator begin, ForwardIterator end, ForwardIterator current)</argsstring>
         <name>CircularIterator</name>
         <param>
@@ -152,11 +180,54 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="43" bodyend="46"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="46" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a7944f765123a62a914fc8a65a5e8dd43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1aab715e1a303c8412b69314712789f01b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator" kindref="compound">CircularIterator</ref> &amp;</type>
+        <definition>CircularIterator&amp; openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::operator=</definition>
+        <argsstring>(const ForwardIterator &amp;iterator)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const ForwardIterator &amp;</type>
+          <declname>iterator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="51" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ac3b76dd9624e178909090a53f3bdecc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::operator ForwardConstIterator</definition>
+        <argsstring>() const</argsstring>
+        <name>operator ForwardConstIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="57" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ab206c3e73837329b68fefb27e4167aec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::operator ForwardIterator</definition>
+        <argsstring>()</argsstring>
+        <name>operator ForwardIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8170ca8d9101ae12394e92b4c9877d05" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>reference</type>
-        <definition>reference openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::operator*</definition>
+        <definition>reference openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::operator*</definition>
         <argsstring>() const</argsstring>
         <name>operator*</name>
         <briefdescription>
@@ -165,11 +236,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="48" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="48" bodyend="48"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="60" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
-      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8e075870c0d93ecb42a0c91d05b7fdfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a66e257954804f00111524bb9d95d7c9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto &amp;</type>
-        <definition>auto&amp; openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::operator++</definition>
+        <definition>auto&amp; openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::operator++</definition>
         <argsstring>()</argsstring>
         <name>operator++</name>
         <briefdescription>
@@ -178,11 +249,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="50" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="50" bodyend="57"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="62" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="62" bodyend="71"/>
       </memberdef>
-      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a90b453256201dac8bd74433357e642cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a61409529345db001553003358670c0c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
-        <definition>auto openscenario_interpreter::iterator::CircularIterator&lt; ForwardIterator &gt;::operator++</definition>
+        <definition>auto openscenario_interpreter::iterator::CircularIterator&lt; Container &gt;::operator++</definition>
         <argsstring>(int)</argsstring>
         <name>operator++</name>
         <param>
@@ -194,28 +265,33 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="59" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="59" bodyend="64"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="73" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="73" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="27" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="26" bodyend="65"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" line="27" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/iterator/circular_iterator.hpp" bodystart="26" bodyend="79"/>
     <listofallmembers>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a34557f24b9d4e5280ece579b84bc2390" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>begin</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a101b46d7331ffd038cce2d87a7837f16" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>CircularIterator</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8a9d1f704697f4d9dd22983c68f6106f" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>const_reference</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a1f85be59cef1842076846335a87a94ad" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>current</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a7bc05ec74309a93646ffa63bb3a4acd2" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>difference_type</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a55482deba8317eb6a9078e9cff0b783c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>end</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1aa6ad6af16b20017cb0283a0cd48cbe16" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>iterator_category</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a7944f765123a62a914fc8a65a5e8dd43" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator*</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8e075870c0d93ecb42a0c91d05b7fdfc" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator++</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a90b453256201dac8bd74433357e642cb" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator++</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a12e8a0747b8c456a9dbd9e7614da30f2" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>pointer</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a9a32398be31b8a7c97eeecf152479dcf" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>reference</name></member>
-      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a77fa577ad5da2f3f43e03fef67e8f23a" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>value_type</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a6fb501a8d9a709ed59a43ec395d67edb" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>begin</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a9480e2a1b365e7b14aaa255e90262d32" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>CircularIterator</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1afc02c426c3d662a22d3fba6702083bca" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>const_reference</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ae178e4eb3e6b34f00d31e98e42ec0b25" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>current</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ab3e3d7c8d66d4760591fe99bc01c0033" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>difference_type</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a813fc6f9b934300bb0cb8fb2129af92a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>end</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1af3d1d2d2b8ac9ba954a6a63b0b993286" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>ForwardConstIterator</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a830e509b8970d2782fac3fd91d8f6e6b" prot="private" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>ForwardIterator</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a621a443fc05a15dbc67c955c98589d69" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>iterator_category</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ac3b76dd9624e178909090a53f3bdecc8" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator ForwardConstIterator</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1ab206c3e73837329b68fefb27e4167aec" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator ForwardIterator</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8170ca8d9101ae12394e92b4c9877d05" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator*</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a66e257954804f00111524bb9d95d7c9d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator++</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a61409529345db001553003358670c0c2" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator++</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1aab715e1a303c8412b69314712789f01b" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>operator=</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a8c89503710e6fa74ff71dfc0574af348" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>pointer</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a7c29b488dd97a39719618f7263edc76f" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>reference</name></member>
+      <member refid="classopenscenario__interpreter_1_1iterator_1_1CircularIterator_1a37c95d23c2018356bc96bb065d5069a9" prot="public" virt="non-virtual"><scope>openscenario_interpreter::iterator::CircularIterator</scope><name>value_type</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

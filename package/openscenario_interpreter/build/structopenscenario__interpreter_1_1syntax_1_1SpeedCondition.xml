@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="36" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1aa7b594cb591cfe792027b98e0d631a65" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1Rule" kindref="compound">Rule</ref></type>
@@ -27,27 +27,43 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="38" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a8e4ea74b4c0d37e9606dc76601e00a4c" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a4bbf4bb46b7fa8acef7fc6ffcb7d3364" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities" kindref="compound">TriggeringEntities</ref></type>
-        <definition>const TriggeringEntities openscenario_interpreter::syntax::SpeedCondition::for_each</definition>
+        <definition>const TriggeringEntities openscenario_interpreter::syntax::SpeedCondition::triggering_entities</definition>
         <argsstring></argsstring>
-        <name>for_each</name>
+        <name>triggering_entities</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="49" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="49" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a60aff5af76fac05dcd21e4efb20a4ef4" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structopenscenario__interpreter_1_1syntax_1_1Double" kindref="compound">Double</ref> &gt;</type>
+        <definition>std::vector&lt;Double&gt; openscenario_interpreter::syntax::SpeedCondition::last_checked_values</definition>
+        <argsstring></argsstring>
+        <name>last_checked_values</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1af3b3eda5dc266f2059edfdff7437500e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a5bf8989cdc785e6c1502d9fbf9569b2c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename AST</type>
+          </param>
+          <param>
+            <type>typename <ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
           </param>
         </templateparamlist>
         <type></type>
@@ -72,7 +88,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="41" bodyend="47"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="48" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="48" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1aaadf71b723dfe4575c65cb6d42af8a40" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::SpeedCondition::description</definition>
+        <argsstring>() const</argsstring>
+        <name>description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="57" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="57" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a96849250d4c7d51ebb80e399f83b0558" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -85,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="51" bodyend="56"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="70" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="70" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -93,55 +122,52 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="685">
+      <node id="719">
         <label>openscenario_interpreter::syntax::Rule</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Rule"/>
       </node>
-      <node id="681">
+      <node id="716">
         <label>openscenario_interpreter::syntax::SpeedCondition</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition"/>
-        <childnode refid="682" relation="usage">
-          <edgelabel>for_each</edgelabel>
+        <childnode refid="717" relation="usage">
+          <edgelabel>triggering_entities</edgelabel>
         </childnode>
-        <childnode refid="685" relation="usage">
+        <childnode refid="719" relation="usage">
           <edgelabel>compare</edgelabel>
         </childnode>
-        <childnode refid="686" relation="usage">
+        <childnode refid="720" relation="usage">
           <edgelabel>value</edgelabel>
         </childnode>
       </node>
-      <node id="684">
+      <node id="718">
         <label>openscenario_interpreter::syntax::TriggeringEntitiesRule</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntitiesRule"/>
       </node>
-      <node id="686">
+      <node id="720">
         <label>openscenario_interpreter::syntax::Double</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Double"/>
-        <childnode refid="687" relation="public-inheritance">
+        <childnode refid="721" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="683">
-        <label>std::list&lt; EntityRef &gt;</label>
-      </node>
-      <node id="687">
+      <node id="721">
         <label>std_msgs::msg::Float64</label>
       </node>
-      <node id="682">
+      <node id="717">
         <label>openscenario_interpreter::syntax::TriggeringEntities</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities"/>
-        <childnode refid="683" relation="public-inheritance">
-        </childnode>
-        <childnode refid="684" relation="usage">
-          <edgelabel>quantify</edgelabel>
+        <childnode refid="718" relation="usage">
+          <edgelabel>triggering_entities_rule</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="34" bodyend="57"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_condition.hpp" bodystart="37" bodyend="80"/>
     <listofallmembers>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1aa7b594cb591cfe792027b98e0d631a65" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>compare</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1aaadf71b723dfe4575c65cb6d42af8a40" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>description</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a96849250d4c7d51ebb80e399f83b0558" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>evaluate</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a8e4ea74b4c0d37e9606dc76601e00a4c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>for_each</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1af3b3eda5dc266f2059edfdff7437500e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>SpeedCondition</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a60aff5af76fac05dcd21e4efb20a4ef4" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>last_checked_values</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a5bf8989cdc785e6c1502d9fbf9569b2c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>SpeedCondition</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a4bbf4bb46b7fa8acef7fc6ffcb7d3364" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>triggering_entities</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a9d002f884b253ba991ea714eb02d7f1a" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedCondition</scope><name>value</name></member>
     </listofallmembers>
   </compounddef>

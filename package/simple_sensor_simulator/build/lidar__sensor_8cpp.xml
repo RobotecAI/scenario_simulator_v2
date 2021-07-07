@@ -213,7 +213,7 @@
 <codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>current_time,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;openscenario_msgs::EntityStatus&gt;<sp/>&amp;<sp/>status,</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rclcpp::Time<sp/>&amp;<sp/>stamp)</highlight></codeline>
 <codeline lineno="44"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((current_time<sp/>-<sp/>last_update_stamp_)<sp/>&gt;=<sp/>configuration_.scan_duration())<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>last_update_stamp_<sp/>-<sp/>configuration_.scan_duration()<sp/>&gt;=<sp/>-0.002)<sp/>{</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>last_update_stamp_<sp/>=<sp/>current_time;</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>publisher_ptr_-&gt;publish(raycast(status,<sp/>stamp));</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -252,10 +252,10 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>v<sp/>:<sp/>configuration_.vertical_angles())<sp/>{</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>vertical_angles.emplace_back(v);</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>poincloud<sp/>=<sp/>raycaster.raycast(</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pointcloud<sp/>=<sp/>raycaster.raycast(</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;base_link&quot;</highlight><highlight class="normal">,<sp/>stamp,<sp/>ego_pose.get(),<sp/>configuration_.horizontal_resolution(),<sp/>vertical_angles);</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>detected_objects_<sp/>=<sp/>raycaster.getDetectedObject();</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>poincloud;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pointcloud;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classsimple__sensor__simulator_1_1SimulationRuntimeError" kindref="compound">simple_sensor_simulator::SimulationRuntimeError</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>found<sp/>ego<sp/>vehicle&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal">}</highlight></codeline>

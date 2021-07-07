@@ -3,6 +3,7 @@
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1EntityCondition" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::EntityCondition</compoundname>
     <basecompoundref refid="classopenscenario__interpreter_1_1Pointer" prot="public" virt="non-virtual">openscenario_interpreter::Pointer&lt; Expression &gt;</basecompoundref>
+    <derivedcompoundref refid="structopenscenario__interpreter_1_1syntax_1_1ByEntityCondition" prot="public" virt="non-virtual">openscenario_interpreter::syntax::ByEntityCondition</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1EntityCondition_1a7170df55f28238ec3867bb802d8d7239" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -41,23 +42,6 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="215">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
-      </node>
-      <node id="213">
-        <label>openscenario_interpreter::syntax::EntityCondition</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1EntityCondition"/>
-        <childnode refid="214" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="214">
-        <label>Element</label>
-        <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="215" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="218">
         <label>std::shared_ptr&lt; Expression  &gt;</label>
       </node>
@@ -67,10 +51,33 @@
         <childnode refid="217" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="219">
+        <label>openscenario_interpreter::syntax::ByEntityCondition</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1ByEntityCondition"/>
+        <childnode refid="216" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="217">
         <label>Element</label>
         <link refid="classopenscenario__interpreter_1_1Pointer"/>
         <childnode refid="218" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="222">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="220">
+        <label>openscenario_interpreter::syntax::EntityCondition</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1EntityCondition"/>
+        <childnode refid="221" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="221">
+        <label>Element</label>
+        <link refid="classopenscenario__interpreter_1_1Pointer"/>
+        <childnode refid="222" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

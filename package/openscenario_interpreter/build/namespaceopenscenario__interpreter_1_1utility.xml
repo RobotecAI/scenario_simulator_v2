@@ -3,7 +3,9 @@
   <compounddef id="namespaceopenscenario__interpreter_1_1utility" kind="namespace" language="C++">
     <compoundname>openscenario_interpreter::utility</compoundname>
     <innerclass refid="structopenscenario__interpreter_1_1utility_1_1AttributeHighlighter" prot="public">openscenario_interpreter::utility::AttributeHighlighter</innerclass>
+    <innerclass refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer" prot="public">openscenario_interpreter::utility::ExecutionTimer</innerclass>
     <innerclass refid="structopenscenario__interpreter_1_1utility_1_1Indent" prot="public">openscenario_interpreter::utility::Indent</innerclass>
+    <innernamespace refid="namespaceopenscenario__interpreter_1_1utility_1_1detail">openscenario_interpreter::utility::detail</innernamespace>
       <sectiondef kind="var">
       <memberdef kind="variable" id="indent_8hpp_1a9a1de3a09943bbd8a4c729a86e390f03" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structopenscenario__interpreter_1_1utility_1_1Indent" kindref="compound">openscenario_interpreter::utility::Indent</ref></type>
@@ -48,6 +50,97 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
+      <memberdef kind="function" id="circular__check_8hpp_1a49b869fe83970d72298e1a6ae4aa8d47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Node</type>
+          </param>
+          <param>
+            <type>class NodeToChildren</type>
+          </param>
+          <param>
+            <type>class Hash</type>
+            <defval>std::hash&lt;Node&gt;</defval>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool openscenario_interpreter::utility::circular_check</definition>
+        <argsstring>(const Node &amp;init, NodeToChildren &amp;&amp;node_to_children)</argsstring>
+        <name>circular_check</name>
+        <param>
+          <type>const Node &amp;</type>
+          <declname>init</declname>
+        </param>
+        <param>
+          <type>NodeToChildren &amp;&amp;</type>
+          <declname>node_to_children</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/circular_check.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/circular_check.hpp" bodystart="51" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="demangle_8hpp_1a7628e4480fc8547241fb34e5711cfd69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::utility::demangle</definition>
+        <argsstring>(const char *name) -&gt; std::string</argsstring>
+        <name>demangle</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/demangle.hpp" line="25" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/utility/demangle.cpp" bodystart="26" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="demangle_8hpp_1a26b2941c5d9c2685861c2e7344f001b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::utility::demangle</definition>
+        <argsstring>(const std::type_info &amp;) -&gt; std::string</argsstring>
+        <name>demangle</name>
+        <param>
+          <type>const std::type_info &amp;</type>
+          <defname>info</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/demangle.hpp" line="27" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/utility/demangle.cpp" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="demangle_8hpp_1a26b81872a2c77b932a253b12e091220c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::utility::makeTypename</definition>
+        <argsstring>(Ts &amp;&amp;... xs)</argsstring>
+        <name>makeTypename</name>
+        <param>
+          <type>Ts &amp;&amp;...</type>
+          <declname>xs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/demangle.hpp" line="30" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/demangle.hpp" bodystart="30" bodyend="35"/>
+      </memberdef>
       <memberdef kind="function" id="highlighter_8hpp_1af81f10f7f1e17c9902bbf16aacd27aef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -221,6 +314,32 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/pair.hpp" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="print_8hpp_1ae1daaf17fe788f906c81f81bec4dba1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename SequenceContainer</type>
+          </param>
+        </templateparamlist>
+        <type>auto &amp;</type>
+        <definition>auto&amp; openscenario_interpreter::utility::print_to</definition>
+        <argsstring>(std::ostream &amp;os, const SequenceContainer &amp;sequence_container)</argsstring>
+        <name>print_to</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const SequenceContainer &amp;</type>
+          <declname>sequence_container</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/print.hpp" line="26" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/print.hpp" bodystart="26" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

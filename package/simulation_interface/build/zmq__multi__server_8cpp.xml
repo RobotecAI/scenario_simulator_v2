@@ -5,59 +5,59 @@
     <includes refid="zmq__multi__server_8hpp" local="no">simulation_interface/zmq_multi_server.hpp</includes>
     <includes local="no">string</includes>
     <incdepgraph>
-      <node id="150">
+      <node id="174">
         <label>scenario_simulator_exception/exception.hpp</label>
       </node>
-      <node id="148">
+      <node id="172">
         <label>functional</label>
       </node>
-      <node id="152">
+      <node id="176">
         <label>string</label>
       </node>
-      <node id="149">
+      <node id="173">
         <label>rclcpp/rclcpp.hpp</label>
       </node>
-      <node id="146">
+      <node id="170">
         <label>simulation_interface/zmq_multi_server.hpp</label>
         <link refid="zmq__multi__server_8hpp_source"/>
-        <childnode refid="147" relation="include">
+        <childnode refid="171" relation="include">
         </childnode>
-        <childnode refid="148" relation="include">
+        <childnode refid="172" relation="include">
         </childnode>
-        <childnode refid="149" relation="include">
+        <childnode refid="173" relation="include">
         </childnode>
-        <childnode refid="150" relation="include">
+        <childnode refid="174" relation="include">
         </childnode>
-        <childnode refid="151" relation="include">
+        <childnode refid="175" relation="include">
         </childnode>
-        <childnode refid="152" relation="include">
+        <childnode refid="176" relation="include">
         </childnode>
-        <childnode refid="153" relation="include">
+        <childnode refid="177" relation="include">
         </childnode>
-        <childnode refid="154" relation="include">
+        <childnode refid="178" relation="include">
         </childnode>
       </node>
-      <node id="151">
+      <node id="175">
         <label>simulation_interface/constants.hpp</label>
         <link refid="constants_8hpp_source"/>
-        <childnode refid="152" relation="include">
+        <childnode refid="176" relation="include">
         </childnode>
       </node>
-      <node id="145">
+      <node id="169">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/src/zmq_multi_server.cpp</label>
         <link refid="zmq__multi__server_8cpp"/>
-        <childnode refid="146" relation="include">
+        <childnode refid="170" relation="include">
         </childnode>
-        <childnode refid="152" relation="include">
+        <childnode refid="176" relation="include">
         </childnode>
       </node>
-      <node id="153">
+      <node id="177">
         <label>thread</label>
       </node>
-      <node id="154">
+      <node id="178">
         <label>zmqpp/zmqpp.hpp</label>
       </node>
-      <node id="147">
+      <node id="171">
         <label>simulation_api_schema.pb.h</label>
       </node>
     </incdepgraph>
@@ -128,161 +128,179 @@
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::SpawnPedestrianEntityResponse<sp/>&amp;)&gt;</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_pedestrian_entity_func,</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::DespawnEntityRequest<sp/>&amp;,</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::DespawnEntityResponse<sp/>&amp;)&gt;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_func,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::SpawnMiscObjectEntityRequest<sp/>&amp;,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::SpawnMiscObjectEntityResponse<sp/>&amp;)&gt;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_misc_object_entity_func,</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::UpdateEntityStatusRequest<sp/>&amp;,</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateEntityStatusResponse<sp/>&amp;)&gt;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_func,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::DespawnEntityRequest<sp/>&amp;,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::DespawnEntityResponse<sp/>&amp;)&gt;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_func,</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::AttachLidarSensorRequest<sp/>&amp;,</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachLidarSensorResponse<sp/>&amp;)&gt;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_func,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::UpdateEntityStatusRequest<sp/>&amp;,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateEntityStatusResponse<sp/>&amp;)&gt;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_func,</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::AttachDetectionSensorRequest<sp/>&amp;,</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachDetectionSensorResponse<sp/>&amp;)&gt;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_func)</highlight></codeline>
-<codeline lineno="77"><highlight class="normal">:<sp/>context_(zmqpp::context()),</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/>type_(zmqpp::socket_type::reply),</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/>initialize_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/>initialize_func_(initialize_func),</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/>update_frame_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/>update_frame_func_(update_frame_func),</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/>update_sensor_frame_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/>update_sensor_frame_func_(update_sensor_frame_func),</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>spawn_vehicle_entity_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/>spawn_vehicle_entity_func_(spawn_vehicle_entity_func),</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/>spawn_pedestrian_entity_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/>spawn_pedestrian_entity_func_(spawn_pedestrian_entity_func),</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/>despawn_entity_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/>despawn_entity_func_(despawn_entity_func),</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/>update_entity_status_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/>update_entity_status_func_(update_entity_status_func),</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/>attach_lidar_sensor_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/>attach_lidar_sensor_func_(attach_lidar_sensor_func),</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/>attach_detection_sensor_sock_(context_,<sp/>type_),</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/>attach_detection_sensor_func_(attach_detection_sensor_func)</highlight></codeline>
-<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/>initialize_sock_.bind(</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_interface::getEndPoint(protocol,<sp/>hostname,<sp/>simulation_interface::ports::initialize));</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/>update_entity_status_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::update_entity_status));</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/>update_frame_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::update_frame));</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/>spawn_vehicle_entity_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::spawn_vehicle_entity));</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/>spawn_pedestrian_entity_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::spawn_pedestrian_entity));</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/>despawn_entity_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::despawn_entity));</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/>update_sensor_frame_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::update_sensor_frame));</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/>attach_lidar_sensor_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::attach_lidar_sensor));</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/>attach_detection_sensor_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::attach_detection_sensor));</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/>poller_.add(initialize_sock_);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/>poller_.add(update_frame_sock_);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/>poller_.add(update_sensor_frame_sock_);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/>poller_.add(spawn_vehicle_entity_sock_);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/>poller_.add(spawn_pedestrian_entity_sock_);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/>poller_.add(despawn_entity_sock_);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/>poller_.add(update_entity_status_sock_);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/>poller_.add(attach_lidar_sensor_sock_);</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/>poller_.add(attach_detection_sensor_sock_);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/>thread_<sp/>=<sp/>std::thread(&amp;MultiServer::start_poll,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>MultiServer::poll()</highlight></codeline>
-<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/>poller_.poll(0.0001);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(initialize_sock_))<sp/>{</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>initialize_sock_.receive(request);</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::InitializeResponse<sp/>response;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>initialize_func_(toProto&lt;simulation_api_schema::InitializeRequest&gt;(request),<sp/>response);</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>initialize_sock_.send(msg);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(update_frame_sock_))<sp/>{</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>update_frame_sock_.receive(request);</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateFrameResponse<sp/>response;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>update_frame_func_(toProto&lt;simulation_api_schema::UpdateFrameRequest&gt;(request),<sp/>response);</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>update_frame_sock_.send(msg);</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(update_sensor_frame_sock_))<sp/>{</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>update_sensor_frame_sock_.receive(request);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateSensorFrameResponse<sp/>response;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>update_sensor_frame_func_(</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::UpdateSensorFrameRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::AttachLidarSensorRequest<sp/>&amp;,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachLidarSensorResponse<sp/>&amp;)&gt;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_func,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::AttachDetectionSensorRequest<sp/>&amp;,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachDetectionSensorResponse<sp/>&amp;)&gt;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_func)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">:<sp/>context_(zmqpp::context()),</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>type_(zmqpp::socket_type::reply),</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>initialize_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>initialize_func_(initialize_func),</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>update_frame_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>update_frame_func_(update_frame_func),</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>update_sensor_frame_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>update_sensor_frame_func_(update_sensor_frame_func),</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>spawn_vehicle_entity_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>spawn_vehicle_entity_func_(spawn_vehicle_entity_func),</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>spawn_pedestrian_entity_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>spawn_pedestrian_entity_func_(spawn_pedestrian_entity_func),</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>spawn_misc_object_entity_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>spawn_misc_object_entity_func_(spawn_misc_object_entity_func),</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>despawn_entity_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>despawn_entity_func_(despawn_entity_func),</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>update_entity_status_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>update_entity_status_func_(update_entity_status_func),</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>attach_lidar_sensor_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>attach_lidar_sensor_func_(attach_lidar_sensor_func),</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>attach_detection_sensor_sock_(context_,<sp/>type_),</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>attach_detection_sensor_func_(attach_detection_sensor_func)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>initialize_sock_.bind(</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_interface::getEndPoint(protocol,<sp/>hostname,<sp/>simulation_interface::ports::initialize));</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>update_entity_status_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::update_entity_status));</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>update_frame_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::update_frame));</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>spawn_vehicle_entity_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::spawn_vehicle_entity));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>spawn_pedestrian_entity_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::spawn_pedestrian_entity));</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>spawn_misc_object_entity_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::spawn_misc_object_entity));</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>despawn_entity_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::despawn_entity));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>update_sensor_frame_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::update_sensor_frame));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>attach_lidar_sensor_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::attach_lidar_sensor));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>attach_detection_sensor_sock_.bind(simulation_interface::getEndPoint(</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>protocol,<sp/>hostname,<sp/>simulation_interface::ports::attach_detection_sensor));</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>poller_.add(initialize_sock_);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>poller_.add(update_frame_sock_);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>poller_.add(update_sensor_frame_sock_);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>poller_.add(spawn_vehicle_entity_sock_);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>poller_.add(spawn_pedestrian_entity_sock_);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>poller_.add(spawn_misc_object_entity_sock_);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>poller_.add(despawn_entity_sock_);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>poller_.add(update_entity_status_sock_);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>poller_.add(attach_lidar_sensor_sock_);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>poller_.add(attach_detection_sensor_sock_);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>thread_<sp/>=<sp/>std::thread(&amp;MultiServer::start_poll,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>MultiServer::poll()</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>poller_.poll(0.0001);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(initialize_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>initialize_sock_.receive(request);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::InitializeResponse<sp/>response;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>initialize_func_(toProto&lt;simulation_api_schema::InitializeRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>initialize_sock_.send(msg);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(update_frame_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>update_frame_sock_.receive(request);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateFrameResponse<sp/>response;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>update_frame_func_(toProto&lt;simulation_api_schema::UpdateFrameRequest&gt;(request),<sp/>response);</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>update_sensor_frame_sock_.send(msg);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>update_frame_sock_.send(msg);</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(spawn_vehicle_entity_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(update_sensor_frame_sock_))<sp/>{</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_vehicle_entity_sock_.receive(request);</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::SpawnVehicleEntityResponse<sp/>response;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_vehicle_entity_func_(</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::SpawnVehicleEntityRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>update_sensor_frame_sock_.receive(request);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateSensorFrameResponse<sp/>response;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>update_sensor_frame_func_(</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::UpdateSensorFrameRequest&gt;(request),<sp/>response);</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_vehicle_entity_sock_.send(msg);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>update_sensor_frame_sock_.send(msg);</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(spawn_pedestrian_entity_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(spawn_vehicle_entity_sock_))<sp/>{</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_pedestrian_entity_sock_.receive(request);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::SpawnPedestrianEntityResponse<sp/>response;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_pedestrian_entity_func_(</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::SpawnPedestrianEntityRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_vehicle_entity_sock_.receive(request);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::SpawnVehicleEntityResponse<sp/>response;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_vehicle_entity_func_(</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::SpawnVehicleEntityRequest&gt;(request),<sp/>response);</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_pedestrian_entity_sock_.send(msg);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_vehicle_entity_sock_.send(msg);</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(despawn_entity_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(spawn_pedestrian_entity_sock_))<sp/>{</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_sock_.receive(request);</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::DespawnEntityResponse<sp/>response;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_func_(toProto&lt;simulation_api_schema::DespawnEntityRequest&gt;(request),<sp/>response);</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_sock_.send(msg);</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(update_entity_status_sock_))<sp/>{</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_sock_.receive(request);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateEntityStatusResponse<sp/>response;</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_func_(</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::UpdateEntityStatusRequest&gt;(request),<sp/>response);</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_sock_.send(msg);</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(attach_lidar_sensor_sock_))<sp/>{</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_sock_.receive(request);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachLidarSensorResponse<sp/>response;</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_func_(</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::AttachLidarSensorRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_pedestrian_entity_sock_.receive(request);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::SpawnPedestrianEntityResponse<sp/>response;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_pedestrian_entity_func_(</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::SpawnPedestrianEntityRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_pedestrian_entity_sock_.send(msg);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(spawn_misc_object_entity_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_misc_object_entity_sock_.receive(request);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::SpawnMiscObjectEntityResponse<sp/>response;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_misc_object_entity_func_(</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::SpawnMiscObjectEntityRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>spawn_misc_object_entity_sock_.send(msg);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(despawn_entity_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_sock_.receive(request);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::DespawnEntityResponse<sp/>response;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_func_(toProto&lt;simulation_api_schema::DespawnEntityRequest&gt;(request),<sp/>response);</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_sock_.send(msg);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>despawn_entity_sock_.send(msg);</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(attach_detection_sensor_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(update_entity_status_sock_))<sp/>{</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_sock_.receive(request);</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachDetectionSensorResponse<sp/>response;</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_func_(</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::AttachDetectionSensorRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_sock_.receive(request);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::UpdateEntityStatusResponse<sp/>response;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_func_(</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::UpdateEntityStatusRequest&gt;(request),<sp/>response);</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_sock_.send(msg);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>update_entity_status_sock_.send(msg);</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>MultiServer::start_poll()</highlight></codeline>
-<codeline lineno="211"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(rclcpp::ok())<sp/>{</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>poll();</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="215"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="216"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>zeromq</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(attach_lidar_sensor_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_sock_.receive(request);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachLidarSensorResponse<sp/>response;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_func_(</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::AttachLidarSensorRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_lidar_sensor_sock_.send(msg);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(poller_.has_input(attach_detection_sensor_sock_))<sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>request;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_sock_.receive(request);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>simulation_api_schema::AttachDetectionSensorResponse<sp/>response;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_func_(</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>toProto&lt;simulation_api_schema::AttachDetectionSensorRequest&gt;(request),<sp/>response);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>toZMQ(response);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>attach_detection_sensor_sock_.send(msg);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>MultiServer::start_poll()</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(rclcpp::ok())<sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>poll();</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>zeromq</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/src/zmq_multi_server.cpp"/>
   </compounddef>

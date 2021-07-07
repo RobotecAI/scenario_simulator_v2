@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer" kind="struct" language="C++" prot="public">
+    <compoundname>openscenario_interpreter::utility::ExecutionTimer</compoundname>
+    <innerclass refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1_1Statistics" prot="public">openscenario_interpreter::utility::ExecutionTimer::Statistics</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename ClockType</type>
+        <defval>std::chrono::system_clock</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1ab572ecf3ab4cb447ee7ad85e34bef8c2" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1_1Statistics" kindref="compound">Statistics</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, Statistics&gt; openscenario_interpreter::utility::ExecutionTimer&lt; ClockType &gt;::statistics_map</definition>
+        <argsstring></argsstring>
+        <name>statistics_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="97" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1ae64498d487edc5975f39c9c0ff71e09c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::utility::ExecutionTimer&lt; ClockType &gt;::invoke</definition>
+        <argsstring>(const std::string &amp;tag, F &amp;&amp;func, Args &amp;&amp;... args) -&gt; std::enable_if_t&lt; std::is_same&lt; typename std::result_of&lt; F(Args...)&gt;::type, void &gt;::value, typename ClockType::duration &gt;</argsstring>
+        <name>invoke</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="65" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="65" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1a732aa77457dafdc9e1c418e8f8ba7201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename F</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::utility::ExecutionTimer&lt; ClockType &gt;::invoke</definition>
+        <argsstring>(const std::string &amp;tag, F &amp;&amp;func, Args &amp;&amp;... args) -&gt; std::enable_if_t&lt; std::is_same&lt; typename std::result_of&lt; F(Args...)&gt;::type, bool &gt;::value, typename ClockType::duration &gt;</argsstring>
+        <name>invoke</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>F &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="77" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="77" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1af20b8831aa3bbf1f217fc54c147dca65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openscenario_interpreter::utility::ExecutionTimer&lt; ClockType &gt;::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="90" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1a89fadfac16d04fa94b38ef898607d447" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1_1Statistics" kindref="compound">Statistics</ref> &amp;</type>
+        <definition>const Statistics&amp; openscenario_interpreter::utility::ExecutionTimer&lt; ClockType &gt;::getStatistics</definition>
+        <argsstring>(const std::string &amp;tag)</argsstring>
+        <name>getStatistics</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="92" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1ae9472dffdf0059cfe208781272abbdd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::utility::ExecutionTimer&lt; ClockType &gt;::begin</definition>
+        <argsstring>() const</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="93" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1a2f08108f67599db79d9652b6ae6c5fcb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::utility::ExecutionTimer&lt; ClockType &gt;::end</definition>
+        <argsstring>() const</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="94" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="94" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" line="29" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/execution_timer.hpp" bodystart="28" bodyend="98"/>
+    <listofallmembers>
+      <member refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1ae9472dffdf0059cfe208781272abbdd9" prot="public" virt="non-virtual"><scope>openscenario_interpreter::utility::ExecutionTimer</scope><name>begin</name></member>
+      <member refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1af20b8831aa3bbf1f217fc54c147dca65" prot="public" virt="non-virtual"><scope>openscenario_interpreter::utility::ExecutionTimer</scope><name>clear</name></member>
+      <member refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1a2f08108f67599db79d9652b6ae6c5fcb" prot="public" virt="non-virtual"><scope>openscenario_interpreter::utility::ExecutionTimer</scope><name>end</name></member>
+      <member refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1a89fadfac16d04fa94b38ef898607d447" prot="public" virt="non-virtual"><scope>openscenario_interpreter::utility::ExecutionTimer</scope><name>getStatistics</name></member>
+      <member refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1ae64498d487edc5975f39c9c0ff71e09c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::utility::ExecutionTimer</scope><name>invoke</name></member>
+      <member refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1a732aa77457dafdc9e1c418e8f8ba7201" prot="public" virt="non-virtual"><scope>openscenario_interpreter::utility::ExecutionTimer</scope><name>invoke</name></member>
+      <member refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer_1ab572ecf3ab4cb447ee7ad85e34bef8c2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::utility::ExecutionTimer</scope><name>statistics_map</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

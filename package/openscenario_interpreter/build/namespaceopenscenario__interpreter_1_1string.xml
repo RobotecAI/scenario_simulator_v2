@@ -2,33 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="namespaceopenscenario__interpreter_1_1string" kind="namespace" language="C++">
     <compoundname>openscenario_interpreter::string</compoundname>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="cat_8hpp_1a33959f838ac27df323c891714fe7a128" prot="public" static="no" mutable="no">
-        <type>auto</type>
-        <definition>auto openscenario_interpreter::string::cat</definition>
-        <argsstring></argsstring>
-        <name>cat</name>
-        <initializer>= [](auto &amp;&amp;... xs) {
-  std::stringstream ss;
-
-  auto write = [](auto &amp;&amp; os, auto &amp;&amp; x) {
-    os.get() &lt;&lt; x;
-    return std::forward&lt;decltype(os)&gt;(os);
-  };
-
-  fold_left(write, std::ref(ss), std::forward&lt;decltype(xs)&gt;(xs)...);
-
-  return ss.str();
-}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/string/cat.hpp" line="27" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/string/cat.hpp" bodystart="27" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="split_8hpp_1ab057b2db1da5814aba13c8f0a3dbb041" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>auto</type>
@@ -52,6 +25,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/string/cat.hpp" line="26" column="1"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/string/split.hpp" line="26" column="1"/>
   </compounddef>
 </doxygen>

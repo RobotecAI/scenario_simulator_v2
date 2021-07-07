@@ -147,11 +147,11 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/math/catmull_rom_spline.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/math/catmull_rom_spline.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a2c696d16cd9227e467079cf96a69d235" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a43d63eab9cfd14609df8863f8b6c52db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double traffic_simulator::math::CatmullRomSpline::getMaximum2DCurventure</definition>
+        <definition>double traffic_simulator::math::CatmullRomSpline::getMaximum2DCurvature</definition>
         <argsstring>() const</argsstring>
-        <name>getMaximum2DCurventure</name>
+        <name>getMaximum2DCurvature</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -270,10 +270,10 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/math/catmull_rom_spline.hpp" line="44" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/catmull_rom_spline.cpp" bodystart="107" bodyend="127"/>
       </memberdef>
-      <memberdef kind="function" id="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a8e267a2674def7f84d23c62330c52a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a10215a5646b382adc88c66d3e9ecf402" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>boost::optional&lt; double &gt;</type>
         <definition>boost::optional&lt; double &gt; traffic_simulator::math::CatmullRomSpline::getSValue</definition>
-        <argsstring>(geometry_msgs::msg::Point position, double threadhold_distance=3.0, unsigned int initial_resolution=30, unsigned int max_iteration=30, double tolerance=0.001)</argsstring>
+        <argsstring>(geometry_msgs::msg::Point position, double threshold_distance=3.0, unsigned int initial_resolution=30, unsigned int max_iteration=30, double tolerance=0.001)</argsstring>
         <name>getSValue</name>
         <param>
           <type>geometry_msgs::msg::Point</type>
@@ -281,7 +281,7 @@
         </param>
         <param>
           <type>double</type>
-          <declname>threadhold_distance</declname>
+          <declname>threshold_distance</declname>
           <defval>3.0</defval>
         </param>
         <param>
@@ -617,7 +617,7 @@
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a0972008c44717aed958b37dc31621e75" prot="private" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getLeftBounds</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a83d9ff77867ca6db62317461ac88871b" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getLeftBoundsPoint</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a4882552609c5d464a6202683ddc2ae30" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getLength</name></member>
-      <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a2c696d16cd9227e467079cf96a69d235" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getMaximum2DCurventure</name></member>
+      <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a43d63eab9cfd14609df8863f8b6c52db" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getMaximum2DCurvature</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a6a1fd62558e00d829c3640a0489b9618" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getNormalVector</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a5fe42be509098d453ff6812f76c3c97b" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getPoint</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1ae998453f5c12a5ede3f6fe5e3cd4bffa" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getPolygon</name></member>
@@ -626,7 +626,7 @@
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a6498cdee4a53d1dfce9b2b661476f481" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getRightBoundsPoint</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a03b610cf98a14a94b56204e8fee15949" prot="private" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getSInSplineCurve</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1ab013ab32161293bed6ba0304f51f2ecd" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getSquaredDistanceIn2D</name></member>
-      <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a8e267a2674def7f84d23c62330c52a74" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getSValue</name></member>
+      <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a10215a5646b382adc88c66d3e9ecf402" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getSValue</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a12b98fa62c9d42a371e81a334e8fe583" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getTangentVector</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a7eab089b81e86c58bc40dac26aa1dfa2" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getTrajectory</name></member>
       <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a8739e87a3e27ae24b162358d522e3a90" prot="public" virt="non-virtual"><scope>traffic_simulator::math::CatmullRomSpline</scope><name>getTrajectory</name></member>

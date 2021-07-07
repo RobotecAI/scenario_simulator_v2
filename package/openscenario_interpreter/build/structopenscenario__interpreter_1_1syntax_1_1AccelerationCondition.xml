@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="36" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a13838227b84abe3070aa661d96843f21" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1Rule" kindref="compound">Rule</ref></type>
@@ -27,32 +27,48 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="38" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a0e6ec4173aadeab0158a98b6e5394a5c" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1aa857656a59cb2f8cc779a1b6725b1960" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities" kindref="compound">TriggeringEntities</ref></type>
-        <definition>const TriggeringEntities openscenario_interpreter::syntax::AccelerationCondition::trigger</definition>
+        <definition>const TriggeringEntities openscenario_interpreter::syntax::AccelerationCondition::triggering_entities</definition>
         <argsstring></argsstring>
-        <name>trigger</name>
+        <name>triggering_entities</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="40" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1aa504c9422c55cf291644bf456c0d2aed" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; openscenario_interpreter::syntax::AccelerationCondition::last_checked_values</definition>
+        <argsstring></argsstring>
+        <name>last_checked_values</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a6022f986c5c560d612609bdd161c101a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1af585ec63aa6ce10a768e5e8e8ba6065d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Node</type>
           </param>
+          <param>
+            <type>typename <ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
+          </param>
         </templateparamlist>
         <type></type>
         <definition>openscenario_interpreter::syntax::AccelerationCondition::AccelerationCondition</definition>
-        <argsstring>(const Node &amp;node, Scope &amp;outer_scope, const TriggeringEntities &amp;trigger)</argsstring>
+        <argsstring>(const Node &amp;node, Scope &amp;outer_scope, const TriggeringEntities &amp;triggering_entities)</argsstring>
         <name>AccelerationCondition</name>
         <param>
           <type>const Node &amp;</type>
@@ -64,7 +80,7 @@
         </param>
         <param>
           <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities" kindref="compound">TriggeringEntities</ref> &amp;</type>
-          <declname>trigger</declname>
+          <declname>triggering_entities</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -72,12 +88,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="43" bodyend="49"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="46" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a1695ee10f707c45824ae94991e43d942" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1af090e999f06d6f7d9cb602fdd864be66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::AccelerationCondition::description</definition>
+        <argsstring>() const</argsstring>
+        <name>description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="55" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1abde07b653c0baca9fa8155bab2263539" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
         <definition>auto openscenario_interpreter::syntax::AccelerationCondition::evaluate</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>()</argsstring>
         <name>evaluate</name>
         <briefdescription>
         </briefdescription>
@@ -85,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="51" bodyend="56"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="68" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="68" bodyend="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -93,55 +122,52 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="11">
+      <node id="10">
         <label>openscenario_interpreter::syntax::Rule</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Rule"/>
       </node>
-      <node id="10">
+      <node id="9">
         <label>openscenario_interpreter::syntax::TriggeringEntitiesRule</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntitiesRule"/>
       </node>
-      <node id="12">
+      <node id="11">
         <label>openscenario_interpreter::syntax::Double</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Double"/>
-        <childnode refid="13" relation="public-inheritance">
+        <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
-        <label>std::list&lt; EntityRef &gt;</label>
-      </node>
-      <node id="13">
+      <node id="12">
         <label>std_msgs::msg::Float64</label>
       </node>
       <node id="8">
         <label>openscenario_interpreter::syntax::TriggeringEntities</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities"/>
-        <childnode refid="9" relation="public-inheritance">
-        </childnode>
-        <childnode refid="10" relation="usage">
-          <edgelabel>quantify</edgelabel>
+        <childnode refid="9" relation="usage">
+          <edgelabel>triggering_entities_rule</edgelabel>
         </childnode>
       </node>
       <node id="7">
         <label>openscenario_interpreter::syntax::AccelerationCondition</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition"/>
         <childnode refid="8" relation="usage">
-          <edgelabel>trigger</edgelabel>
+          <edgelabel>triggering_entities</edgelabel>
         </childnode>
-        <childnode refid="11" relation="usage">
+        <childnode refid="10" relation="usage">
           <edgelabel>compare</edgelabel>
         </childnode>
-        <childnode refid="12" relation="usage">
+        <childnode refid="11" relation="usage">
           <edgelabel>value</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="34" bodyend="57"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/acceleration_condition.hpp" bodystart="35" bodyend="78"/>
     <listofallmembers>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a6022f986c5c560d612609bdd161c101a" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>AccelerationCondition</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1af585ec63aa6ce10a768e5e8e8ba6065d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>AccelerationCondition</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a13838227b84abe3070aa661d96843f21" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>compare</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a1695ee10f707c45824ae94991e43d942" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>evaluate</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1a0e6ec4173aadeab0158a98b6e5394a5c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>trigger</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1af090e999f06d6f7d9cb602fdd864be66" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>description</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1abde07b653c0baca9fa8155bab2263539" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>evaluate</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1aa504c9422c55cf291644bf456c0d2aed" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>last_checked_values</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1aa857656a59cb2f8cc779a1b6725b1960" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>triggering_entities</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1ae821fc60b8f07739cdb94e97fcdb3302" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AccelerationCondition</scope><name>value</name></member>
     </listofallmembers>
   </compounddef>

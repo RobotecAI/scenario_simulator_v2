@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classhdmap__utils_1_1LaneletLengthCache" kind="class" language="C++" prot="public">
+    <compoundname>hdmap_utils::LaneletLengthCache</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classhdmap__utils_1_1LaneletLengthCache_1a991babb6f573584ce7a0a7636684660a" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::int64_t, double &gt;</type>
+        <definition>std::unordered_map&lt;std::int64_t, double&gt; hdmap_utils::LaneletLengthCache::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="131" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classhdmap__utils_1_1LaneletLengthCache_1ac7f917108f534ee2a3653ca4de0a3b29" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex hdmap_utils::LaneletLengthCache::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="132" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classhdmap__utils_1_1LaneletLengthCache_1a69dbf968abe80b9c09016941406851c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hdmap_utils::LaneletLengthCache::exists</definition>
+        <argsstring>(std::int64_t lanelet_id)</argsstring>
+        <name>exists</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>lanelet_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="108" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="108" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classhdmap__utils_1_1LaneletLengthCache_1aa50f96ab4be545e30ce80a485a4c2dac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double hdmap_utils::LaneletLengthCache::getLength</definition>
+        <argsstring>(std::int64_t lanelet_id)</argsstring>
+        <name>getLength</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>lanelet_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="116" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="116" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classhdmap__utils_1_1LaneletLengthCache_1a0a22c79a8a140b19cc03fca8d0dc25e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hdmap_utils::LaneletLengthCache::appendData</definition>
+        <argsstring>(std::int64_t lanelet_id, double length)</argsstring>
+        <name>appendData</name>
+        <param>
+          <type>std::int64_t</type>
+          <declname>lanelet_id</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="124" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="124" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" line="106" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp" bodystart="105" bodyend="133"/>
+    <listofallmembers>
+      <member refid="classhdmap__utils_1_1LaneletLengthCache_1a0a22c79a8a140b19cc03fca8d0dc25e5" prot="public" virt="non-virtual"><scope>hdmap_utils::LaneletLengthCache</scope><name>appendData</name></member>
+      <member refid="classhdmap__utils_1_1LaneletLengthCache_1a991babb6f573584ce7a0a7636684660a" prot="private" virt="non-virtual"><scope>hdmap_utils::LaneletLengthCache</scope><name>data_</name></member>
+      <member refid="classhdmap__utils_1_1LaneletLengthCache_1a69dbf968abe80b9c09016941406851c0" prot="public" virt="non-virtual"><scope>hdmap_utils::LaneletLengthCache</scope><name>exists</name></member>
+      <member refid="classhdmap__utils_1_1LaneletLengthCache_1aa50f96ab4be545e30ce80a485a4c2dac" prot="public" virt="non-virtual"><scope>hdmap_utils::LaneletLengthCache</scope><name>getLength</name></member>
+      <member refid="classhdmap__utils_1_1LaneletLengthCache_1ac7f917108f534ee2a3653ca4de0a3b29" prot="private" virt="non-virtual"><scope>hdmap_utils::LaneletLengthCache</scope><name>mutex_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

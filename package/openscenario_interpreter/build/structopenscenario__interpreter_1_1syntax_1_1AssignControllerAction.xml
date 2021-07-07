@@ -2,22 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::AssignControllerAction</compoundname>
+    <basecompoundref refid="structopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
     <basecompoundref refid="classopenscenario__interpreter_1_1Pointer" prot="public" virt="non-virtual">openscenario_interpreter::Pointer&lt; Expression &gt;</basecompoundref>
-      <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction_1a3578a5a709402cf69ea31968daaba56d" prot="public" static="no" mutable="no">
-        <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
-        <definition>Scope openscenario_interpreter::syntax::AssignControllerAction::inner_scope</definition>
-        <argsstring></argsstring>
-        <name>inner_scope</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction_1abc7820e8388caf29ccc47fddaa6a1c44" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -43,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" line="49" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" bodystart="49" bodyend="58"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" bodystart="47" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction_1a53ee8b94c24f0f4e12d5cd2fffe91e21" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -56,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" line="60" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" bodystart="60" bodyend="65"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" bodystart="58" bodyend="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -64,30 +50,12 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="55">
-        <label>openscenario_interpreter::syntax::AssignControllerAction</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction"/>
-        <childnode refid="56" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="57">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
-      </node>
-      <node id="56">
-        <label>ComplexType</label>
-        <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="57" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="58">
         <label>openscenario_interpreter::syntax::AssignControllerAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction"/>
-        <childnode refid="59" relation="public-inheritance">
+        <childnode refid="58" relation="private-inheritance">
         </childnode>
-        <childnode refid="61" relation="usage">
-          <edgelabel>inner_scope</edgelabel>
+        <childnode refid="59" relation="public-inheritance">
         </childnode>
       </node>
       <node id="60">
@@ -99,17 +67,55 @@
         <childnode refid="60" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="58">
+        <label>openscenario_interpreter::Scope</label>
+        <link refid="structopenscenario__interpreter_1_1Scope"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="61">
+        <label>openscenario_interpreter::syntax::AssignControllerAction</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction"/>
+        <childnode refid="62" relation="private-inheritance">
+        </childnode>
+        <childnode refid="63" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="63">
+        <label>ComplexType</label>
+        <link refid="classopenscenario__interpreter_1_1Pointer"/>
+        <childnode refid="64" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="62">
         <label>openscenario_interpreter::Scope</label>
         <link refid="structopenscenario__interpreter_1_1Scope"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" bodystart="44" bodyend="66"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/assign_controller_action.hpp" bodystart="44" bodyend="64"/>
     <listofallmembers>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a71adbadb72f848f4dd4d08ea00bb351e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>Actor</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8f47946a2ec4238dffdb1fa25137ac43" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>Actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a7e23ddea0b69991cc161f7a2c4b05304" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>actors</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction_1abc7820e8388caf29ccc47fddaa6a1c44" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>AssignControllerAction</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction_1a3578a5a709402cf69ea31968daaba56d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>inner_scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a0682dea0459bee5fbc795e2fc9baebb2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>entities</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>logic_file</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction_1a53ee8b94c24f0f4e12d5cd2fffe91e21" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>operator()</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a9e9eb5015e45940c1215cbb5f7d87fc5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>parameters</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>pathname</name></member>
       <member refid="classopenscenario__interpreter_1_1Pointer_1a7cd639fabe0abf89dd1a83e91e97c225" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>Pointer</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>scene_graph_file</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a4dc48c7507093c3c205a179c1ab80f16" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8a6de30a3b47eb5c3d9117456fdf15e0" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>storyboard_elements</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1abd3ff1e82f05e59c7f453316ceb6a1a7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AssignControllerAction</scope><name>traffic_signal_controllers</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -9,79 +9,79 @@
     <includes refid="hermite__curve_8hpp" local="no">traffic_simulator/math/hermite_curve.hpp</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
-      <node id="5182">
+      <node id="5749">
         <label>limits</label>
       </node>
-      <node id="5187">
+      <node id="5754">
         <label>geometry_msgs/msg/pose.hpp</label>
       </node>
-      <node id="5180">
+      <node id="5747">
         <label>cmath</label>
       </node>
-      <node id="5189">
+      <node id="5756">
         <label>openscenario_msgs/msg/hermite_curve.hpp</label>
       </node>
-      <node id="5183">
+      <node id="5750">
         <label>traffic_simulator/math/hermite_curve.hpp</label>
         <link refid="hermite__curve_8hpp_source"/>
-        <childnode refid="5184" relation="include">
+        <childnode refid="5751" relation="include">
         </childnode>
-        <childnode refid="5185" relation="include">
+        <childnode refid="5752" relation="include">
         </childnode>
-        <childnode refid="5186" relation="include">
+        <childnode refid="5753" relation="include">
         </childnode>
-        <childnode refid="5187" relation="include">
+        <childnode refid="5754" relation="include">
         </childnode>
-        <childnode refid="5188" relation="include">
+        <childnode refid="5755" relation="include">
         </childnode>
-        <childnode refid="5189" relation="include">
+        <childnode refid="5756" relation="include">
         </childnode>
-        <childnode refid="5190" relation="include">
+        <childnode refid="5757" relation="include">
         </childnode>
-        <childnode refid="5191" relation="include">
+        <childnode refid="5758" relation="include">
         </childnode>
       </node>
-      <node id="5188">
+      <node id="5755">
         <label>geometry_msgs/msg/vector3.hpp</label>
       </node>
-      <node id="5184">
+      <node id="5751">
         <label>quaternion_operation/quaternion_operation.h</label>
       </node>
-      <node id="5186">
+      <node id="5753">
         <label>geometry_msgs/msg/point.hpp</label>
       </node>
-      <node id="5178">
+      <node id="5745">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/hermite_curve.cpp</label>
         <link refid="hermite__curve_8cpp"/>
-        <childnode refid="5179" relation="include">
+        <childnode refid="5746" relation="include">
         </childnode>
-        <childnode refid="5180" relation="include">
+        <childnode refid="5747" relation="include">
         </childnode>
-        <childnode refid="5181" relation="include">
+        <childnode refid="5748" relation="include">
         </childnode>
-        <childnode refid="5182" relation="include">
+        <childnode refid="5749" relation="include">
         </childnode>
-        <childnode refid="5183" relation="include">
+        <childnode refid="5750" relation="include">
         </childnode>
-        <childnode refid="5191" relation="include">
+        <childnode refid="5758" relation="include">
         </childnode>
       </node>
-      <node id="5191">
+      <node id="5758">
         <label>vector</label>
       </node>
-      <node id="5190">
+      <node id="5757">
         <label>traffic_simulator/math/polynomial_solver.hpp</label>
         <link refid="polynomial__solver_8hpp_source"/>
-        <childnode refid="5191" relation="include">
+        <childnode refid="5758" relation="include">
         </childnode>
       </node>
-      <node id="5181">
+      <node id="5748">
         <label>iostream</label>
       </node>
-      <node id="5185">
+      <node id="5752">
         <label>boost/optional.hpp</label>
       </node>
-      <node id="5179">
+      <node id="5746">
         <label>algorithm</label>
       </node>
     </incdepgraph>
@@ -131,343 +131,346 @@
 <codeline lineno="37"><highlight class="normal"><sp/><sp/>az_(az),</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/>bz_(bz),</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/>cz_(cz),</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/>dz_(dz)</highlight></codeline>
-<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal">HermiteCurve::HermiteCurve(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::HermiteCurve<sp/>&amp;<sp/>curve)</highlight></codeline>
-<codeline lineno="45"><highlight class="normal">:<sp/>ax_(curve.ax),</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/>bx_(curve.bx),</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/>cx_(curve.cx),</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/>dx_(curve.dx),</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/>ay_(curve.ax),</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/>by_(curve.by),</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/>cy_(curve.cy),</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/>dy_(curve.dy),</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/>az_(curve.ax),</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/>bz_(curve.bz),</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/>cz_(curve.cz),</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/>dz_(curve.dz)</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal">HermiteCurve::HermiteCurve(</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>start_pose,<sp/>geometry_msgs::msg::Pose<sp/>goal_pose,</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>start_vec,<sp/>geometry_msgs::msg::Vector3<sp/>goal_vec)</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/>ax_<sp/>=<sp/>2<sp/>*<sp/>start_pose.position.x<sp/>-<sp/>2<sp/>*<sp/>goal_pose.position.x<sp/>+<sp/>start_vec.x<sp/>+<sp/>goal_vec.x;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/>bx_<sp/>=<sp/>-3<sp/>*<sp/>start_pose.position.x<sp/>+<sp/>3<sp/>*<sp/>goal_pose.position.x<sp/>-<sp/>2<sp/>*<sp/>start_vec.x<sp/>-<sp/>goal_vec.x;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/>cx_<sp/>=<sp/>start_vec.x;</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>dx_<sp/>=<sp/>start_pose.position.x;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/>ay_<sp/>=<sp/>2<sp/>*<sp/>start_pose.position.y<sp/>-<sp/>2<sp/>*<sp/>goal_pose.position.y<sp/>+<sp/>start_vec.y<sp/>+<sp/>goal_vec.y;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/>by_<sp/>=<sp/>-3<sp/>*<sp/>start_pose.position.y<sp/>+<sp/>3<sp/>*<sp/>goal_pose.position.y<sp/>-<sp/>2<sp/>*<sp/>start_vec.y<sp/>-<sp/>goal_vec.y;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/>cy_<sp/>=<sp/>start_vec.y;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/>dy_<sp/>=<sp/>start_pose.position.y;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/>az_<sp/>=<sp/>2<sp/>*<sp/>start_pose.position.z<sp/>-<sp/>2<sp/>*<sp/>goal_pose.position.z<sp/>+<sp/>start_vec.z<sp/>+<sp/>goal_vec.z;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/>bz_<sp/>=<sp/>-3<sp/>*<sp/>start_pose.position.z<sp/>+<sp/>3<sp/>*<sp/>goal_pose.position.z<sp/>-<sp/>2<sp/>*<sp/>start_vec.z<sp/>-<sp/>goal_vec.z;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/>cz_<sp/>=<sp/>start_vec.z;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/>dz_<sp/>=<sp/>start_pose.position.z;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::HermiteCurve<sp/>HermiteCurve::toRosMsg()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="81"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/>openscenario_msgs::msg::HermiteCurve<sp/>curve;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/>curve.ax<sp/>=<sp/>ax_;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/>curve.bx<sp/>=<sp/>bx_;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>curve.cx<sp/>=<sp/>cx_;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/>curve.dx<sp/>=<sp/>dx_;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/>curve.ay<sp/>=<sp/>ay_;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/>curve.by<sp/>=<sp/>by_;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/>curve.cy<sp/>=<sp/>cy_;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/>curve.dy<sp/>=<sp/>dy_;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/>curve.az<sp/>=<sp/>az_;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/>curve.bz<sp/>=<sp/>bz_;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/>curve.cz<sp/>=<sp/>cz_;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/>curve.dz<sp/>=<sp/>dz_;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>curve;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getSquaredDistanceIn2D(</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="100"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>point_on_curve<sp/>=<sp/>getPoint(s,<sp/>autoscale);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_term<sp/>=<sp/>std::pow(point.x<sp/>-<sp/>point_on_curve.x,<sp/>2);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_term<sp/>=<sp/>std::pow(point.y<sp/>-<sp/>point_on_curve.y,<sp/>2);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>x_term<sp/>+<sp/>y_term;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getNewtonMethodStepSize(</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="110"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>point_on_curve<sp/>=<sp/>getPoint(s,<sp/>autoscale);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s2<sp/>=<sp/>std::pow(s,<sp/>2);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_term_diff<sp/>=<sp/>2<sp/>*<sp/>(point.x<sp/>-<sp/>point_on_curve.x)<sp/>*<sp/>(-3<sp/>*<sp/>ax_<sp/>*<sp/>s2<sp/>-<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>-<sp/>cx_);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_term_diff<sp/>=<sp/>2<sp/>*<sp/>(point.y<sp/>-<sp/>point_on_curve.y)<sp/>*<sp/>(-3<sp/>*<sp/>ay_<sp/>*<sp/>s2<sp/>-<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>-<sp/>cy_);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>s,<sp/>autoscale)<sp/>/<sp/>(x_term_diff<sp/>+<sp/>y_term_diff);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal">boost::optional&lt;double&gt;<sp/>HermiteCurve::getCollisionPointIn2D(</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>polygon,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>search_backward)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="124"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>polygon.size();</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n<sp/>&lt;=<sp/>1)<sp/>{</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>s_values;</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>(n<sp/>-<sp/>1);<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p0<sp/>=<sp/>polygon[i];</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p1<sp/>=<sp/>polygon[i<sp/>+<sp/>1];</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>getCollisionPointIn2D(p0,<sp/>p1,<sp/>search_backward);</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s)<sp/>{</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(s.get());</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s_values.empty())<sp/>{</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>dz_(dz),</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>length_(getLength(100))</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">HermiteCurve::HermiteCurve(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::HermiteCurve<sp/>&amp;<sp/>curve)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">:<sp/>ax_(curve.ax),</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>bx_(curve.bx),</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>cx_(curve.cx),</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>dx_(curve.dx),</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>ay_(curve.ax),</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>by_(curve.by),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>cy_(curve.cy),</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>dy_(curve.dy),</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>az_(curve.ax),</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>bz_(curve.bz),</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>cz_(curve.cz),</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>dz_(curve.dz),</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>length_(getLength(100))</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">HermiteCurve::HermiteCurve(</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>start_pose,<sp/>geometry_msgs::msg::Pose<sp/>goal_pose,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>start_vec,<sp/>geometry_msgs::msg::Vector3<sp/>goal_vec)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>ax_<sp/>=<sp/>2<sp/>*<sp/>start_pose.position.x<sp/>-<sp/>2<sp/>*<sp/>goal_pose.position.x<sp/>+<sp/>start_vec.x<sp/>+<sp/>goal_vec.x;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>bx_<sp/>=<sp/>-3<sp/>*<sp/>start_pose.position.x<sp/>+<sp/>3<sp/>*<sp/>goal_pose.position.x<sp/>-<sp/>2<sp/>*<sp/>start_vec.x<sp/>-<sp/>goal_vec.x;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>cx_<sp/>=<sp/>start_vec.x;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>dx_<sp/>=<sp/>start_pose.position.x;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>ay_<sp/>=<sp/>2<sp/>*<sp/>start_pose.position.y<sp/>-<sp/>2<sp/>*<sp/>goal_pose.position.y<sp/>+<sp/>start_vec.y<sp/>+<sp/>goal_vec.y;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>by_<sp/>=<sp/>-3<sp/>*<sp/>start_pose.position.y<sp/>+<sp/>3<sp/>*<sp/>goal_pose.position.y<sp/>-<sp/>2<sp/>*<sp/>start_vec.y<sp/>-<sp/>goal_vec.y;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>cy_<sp/>=<sp/>start_vec.y;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>dy_<sp/>=<sp/>start_pose.position.y;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>az_<sp/>=<sp/>2<sp/>*<sp/>start_pose.position.z<sp/>-<sp/>2<sp/>*<sp/>goal_pose.position.z<sp/>+<sp/>start_vec.z<sp/>+<sp/>goal_vec.z;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>bz_<sp/>=<sp/>-3<sp/>*<sp/>start_pose.position.z<sp/>+<sp/>3<sp/>*<sp/>goal_pose.position.z<sp/>-<sp/>2<sp/>*<sp/>start_vec.z<sp/>-<sp/>goal_vec.z;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>cz_<sp/>=<sp/>start_vec.z;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>dz_<sp/>=<sp/>start_pose.position.z;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>length_<sp/>=<sp/>getLength(100);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::HermiteCurve<sp/>HermiteCurve::toRosMsg()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="84"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>openscenario_msgs::msg::HermiteCurve<sp/>curve;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>curve.ax<sp/>=<sp/>ax_;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>curve.bx<sp/>=<sp/>bx_;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>curve.cx<sp/>=<sp/>cx_;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>curve.dx<sp/>=<sp/>dx_;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>curve.ay<sp/>=<sp/>ay_;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>curve.by<sp/>=<sp/>by_;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>curve.cy<sp/>=<sp/>cy_;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>curve.dy<sp/>=<sp/>dy_;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>curve.az<sp/>=<sp/>az_;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>curve.bz<sp/>=<sp/>bz_;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>curve.cz<sp/>=<sp/>cz_;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>curve.dz<sp/>=<sp/>dz_;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>curve;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getSquaredDistanceIn2D(</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="103"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>point_on_curve<sp/>=<sp/>getPoint(s,<sp/>autoscale);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_term<sp/>=<sp/>std::pow(point.x<sp/>-<sp/>point_on_curve.x,<sp/>2);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_term<sp/>=<sp/>std::pow(point.y<sp/>-<sp/>point_on_curve.y,<sp/>2);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>x_term<sp/>+<sp/>y_term;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getNewtonMethodStepSize(</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="113"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>point_on_curve<sp/>=<sp/>getPoint(s,<sp/>autoscale);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s2<sp/>=<sp/>std::pow(s,<sp/>2);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_term_diff<sp/>=<sp/>2<sp/>*<sp/>(point.x<sp/>-<sp/>point_on_curve.x)<sp/>*<sp/>(-3<sp/>*<sp/>ax_<sp/>*<sp/>s2<sp/>-<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>-<sp/>cx_);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_term_diff<sp/>=<sp/>2<sp/>*<sp/>(point.y<sp/>-<sp/>point_on_curve.y)<sp/>*<sp/>(-3<sp/>*<sp/>ay_<sp/>*<sp/>s2<sp/>-<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>-<sp/>cy_);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>s,<sp/>autoscale)<sp/>/<sp/>(x_term_diff<sp/>+<sp/>y_term_diff);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">boost::optional&lt;double&gt;<sp/>HermiteCurve::getCollisionPointIn2D(</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>polygon,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>search_backward)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="127"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>polygon.size();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n<sp/>&lt;=<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>s_values;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>(n<sp/>-<sp/>1);<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p0<sp/>=<sp/>polygon[i];</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>p1<sp/>=<sp/>polygon[i<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>getCollisionPointIn2D(p0,<sp/>p1,<sp/>search_backward);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(s.get());</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(search_backward)<sp/>{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::max_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s_values.empty())<sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::min_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
-<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal">boost::optional&lt;double&gt;<sp/>HermiteCurve::getCollisionPointIn2D(</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point0,<sp/>geometry_msgs::msg::Point<sp/>point1,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>search_backward)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="149"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>s_values;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>l<sp/>=<sp/>std::hypot(point0.x<sp/>-<sp/>point1.x,<sp/>point0.y<sp/>-<sp/>point1.y);</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>fx<sp/>=<sp/>point0.x;</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ex<sp/>=<sp/>(point0.x<sp/>-<sp/>point1.x)<sp/>/<sp/>l;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>fy<sp/>=<sp/>point0.y;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ey<sp/>=<sp/>(point0.y<sp/>-<sp/>point1.y)<sp/>/<sp/>l;</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>e<sp/>=<sp/>std::numeric_limits&lt;double&gt;::epsilon();</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::abs(point0.x<sp/>-<sp/>point1.x)<sp/>&lt;=<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::abs(point0.y<sp/>-<sp/>point1.y)<sp/>&lt;=<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solutions<sp/>=<sp/>solver_.solveCubicEquation(ax_,<sp/>bx_,<sp/>cx_,<sp/>dx_<sp/>-<sp/>fx);</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solution<sp/>:<sp/>solutions)<sp/>{</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>(point0.y<sp/>-<sp/>fy)<sp/>/<sp/>ey;</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(t)<sp/>&lt;<sp/>l)<sp/>{</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(solution);</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::abs(point0.y<sp/>-<sp/>point1.y)<sp/>&lt;=<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solutions<sp/>=<sp/>solver_.solveCubicEquation(ay_,<sp/>by_,<sp/>cy_,<sp/>dy_<sp/>-<sp/>fy);</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solution<sp/>:<sp/>solutions)<sp/>{</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>(point0.x<sp/>-<sp/>fx)<sp/>/<sp/>ex;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(t)<sp/>&lt;<sp/>l)<sp/>{</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(solution);</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ratio<sp/>=<sp/>ey<sp/>/<sp/>ex;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a<sp/>=<sp/>ax_<sp/>*<sp/>ratio<sp/>-<sp/>ay_;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>bx_<sp/>*<sp/>ratio<sp/>-<sp/>by_;</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>cx_<sp/>*<sp/>ratio<sp/>-<sp/>cy_;</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>(dx_<sp/>-<sp/>fx)<sp/>*<sp/>ratio<sp/>-<sp/>(dy_<sp/>-<sp/>fy);</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solutions<sp/>=<sp/>solver_.solveCubicEquation(a,<sp/>b,<sp/>c,<sp/>d);</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solution<sp/>:<sp/>solutions)<sp/>{</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>solver_.cubicFunction(ay_,<sp/>by_,<sp/>cy_,<sp/>dy_,<sp/>solution);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>(y<sp/>-<sp/>fy)<sp/>/<sp/>ratio;</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(t)<sp/>&lt;<sp/>l)<sp/>{</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(solution);</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s_values.empty())<sp/>{</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(search_backward)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::max_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::min_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">boost::optional&lt;double&gt;<sp/>HermiteCurve::getCollisionPointIn2D(</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point0,<sp/>geometry_msgs::msg::Point<sp/>point1,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>search_backward)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="152"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>s_values;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>l<sp/>=<sp/>std::hypot(point0.x<sp/>-<sp/>point1.x,<sp/>point0.y<sp/>-<sp/>point1.y);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>fx<sp/>=<sp/>point0.x;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ex<sp/>=<sp/>(point0.x<sp/>-<sp/>point1.x)<sp/>/<sp/>l;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>fy<sp/>=<sp/>point0.y;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ey<sp/>=<sp/>(point0.y<sp/>-<sp/>point1.y)<sp/>/<sp/>l;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>e<sp/>=<sp/>std::numeric_limits&lt;double&gt;::epsilon();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::abs(point0.x<sp/>-<sp/>point1.x)<sp/>&lt;=<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::abs(point0.y<sp/>-<sp/>point1.y)<sp/>&lt;=<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solutions<sp/>=<sp/>solver_.solveCubicEquation(ax_,<sp/>bx_,<sp/>cx_,<sp/>dx_<sp/>-<sp/>fx);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solution<sp/>:<sp/>solutions)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>(point0.y<sp/>-<sp/>fy)<sp/>/<sp/>ey;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(t)<sp/>&lt;<sp/>l)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(solution);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::abs(point0.y<sp/>-<sp/>point1.y)<sp/>&lt;=<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solutions<sp/>=<sp/>solver_.solveCubicEquation(ay_,<sp/>by_,<sp/>cy_,<sp/>dy_<sp/>-<sp/>fy);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solution<sp/>:<sp/>solutions)<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>(point0.x<sp/>-<sp/>fx)<sp/>/<sp/>ex;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(t)<sp/>&lt;<sp/>l)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(solution);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ratio<sp/>=<sp/>ey<sp/>/<sp/>ex;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>a<sp/>=<sp/>ax_<sp/>*<sp/>ratio<sp/>-<sp/>ay_;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>bx_<sp/>*<sp/>ratio<sp/>-<sp/>by_;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>cx_<sp/>*<sp/>ratio<sp/>-<sp/>cy_;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d<sp/>=<sp/>(dx_<sp/>-<sp/>fx)<sp/>*<sp/>ratio<sp/>-<sp/>(dy_<sp/>-<sp/>fy);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solutions<sp/>=<sp/>solver_.solveCubicEquation(a,<sp/>b,<sp/>c,<sp/>d);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>solution<sp/>:<sp/>solutions)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>solver_.cubicFunction(ay_,<sp/>by_,<sp/>cy_,<sp/>dy_,<sp/>solution);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/>(y<sp/>-<sp/>fy)<sp/>/<sp/>ratio;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(t)<sp/>&lt;<sp/>l)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s_values.emplace_back(solution);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(search_backward)<sp/>{</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::max_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s_values.empty())<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::min_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
-<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal">boost::optional&lt;double&gt;<sp/>HermiteCurve::getSValue(</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threadhold_distance,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>initial_resolution,</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_iteration,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tolerance,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="203"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>step_size<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(1.0)<sp/>/<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(initial_resolution);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>initial_value_candidates(initial_resolution);</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>initial_errors(initial_resolution);</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>initial_resolution;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>initial_value_candidates[i]<sp/>=<sp/>(0.5<sp/>+<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i))<sp/>*<sp/>step_size;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>initial_errors[i]<sp/>=<sp/>std::fabs(getSquaredDistanceIn2D(point,<sp/>initial_value_candidates[i]));</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;::iterator<sp/>iter<sp/>=</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>std::min_element(initial_errors.begin(),<sp/>initial_errors.end());</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>std::distance(initial_errors.begin(),<sp/>iter);</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/>initial_value_candidates[index];</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>errors;</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>s_values;</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>max_iteration;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>error<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>ret);</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(error)<sp/>&lt;<sp/>(tolerance<sp/>*<sp/>tolerance))<sp/>{</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>s_values.push_back(ret);</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>errors.push_back(error);</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>ret<sp/>-<sp/>getNewtonMethodStepSize(point,<sp/>ret);</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;::iterator<sp/>min_iter<sp/>=<sp/>std::min_element(errors.begin(),<sp/>errors.end());</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>min_error<sp/>=<sp/>*std::min_element(errors.begin(),<sp/>errors.end());</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(min_error<sp/>&gt;<sp/>(threadhold_distance<sp/>*<sp/>threadhold_distance))<sp/>{</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>value_index<sp/>=<sp/>std::distance(errors.begin(),<sp/>min_iter);</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/>s_values[value_index];</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>error<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>0,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>&lt;<sp/>(threadhold_distance<sp/>*<sp/>threadhold_distance))<sp/>{</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>&gt;<sp/>1)<sp/>{</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>error<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>0,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>&lt;<sp/>(threadhold_distance<sp/>*<sp/>threadhold_distance))<sp/>{</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>ret<sp/>*<sp/>getLength();</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(search_backward)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::max_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::min_element(s_values.begin(),<sp/>s_values.end());</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal">boost::optional&lt;double&gt;<sp/>HermiteCurve::getSValue(</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>point,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold_distance,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>initial_resolution,</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max_iteration,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tolerance,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="206"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>step_size<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(1.0)<sp/>/<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(initial_resolution);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>initial_value_candidates(initial_resolution);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>initial_errors(initial_resolution);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>initial_resolution;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>initial_value_candidates[i]<sp/>=<sp/>(0.5<sp/>+<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i))<sp/>*<sp/>step_size;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>initial_errors[i]<sp/>=<sp/>std::fabs(getSquaredDistanceIn2D(point,<sp/>initial_value_candidates[i]));</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;::iterator<sp/>iter<sp/>=</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>std::min_element(initial_errors.begin(),<sp/>initial_errors.end());</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>std::distance(initial_errors.begin(),<sp/>iter);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/>initial_value_candidates[index];</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>errors;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>s_values;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>max_iteration;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>error<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>ret);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::fabs(error)<sp/>&lt;<sp/>(tolerance<sp/>*<sp/>tolerance))<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>s_values.push_back(ret);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>errors.push_back(error);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>ret<sp/>-<sp/>getNewtonMethodStepSize(point,<sp/>ret);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;::iterator<sp/>min_iter<sp/>=<sp/>std::min_element(errors.begin(),<sp/>errors.end());</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>min_error<sp/>=<sp/>*std::min_element(errors.begin(),<sp/>errors.end());</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(min_error<sp/>&gt;<sp/>(threshold_distance<sp/>*<sp/>threshold_distance))<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>value_index<sp/>=<sp/>std::distance(errors.begin(),<sp/>min_iter);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/>s_values[value_index];</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>error<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>0,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>&lt;<sp/>(threshold_distance<sp/>*<sp/>threshold_distance))<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>&gt;<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>error<sp/>=<sp/>getSquaredDistanceIn2D(point,<sp/>0,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>&lt;<sp/>(threshold_distance<sp/>*<sp/>threshold_distance))<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>HermiteCurve::getTrajectory(</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start_s,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>end_s,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="258"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/>resolution<sp/>=<sp/>std::fabs(resolution);</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(start_s<sp/>&lt;=<sp/>end_s)<sp/>{</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>start_s;</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(s<sp/>&lt;=<sp/>end_s)<sp/>{</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>+<sp/>resolution;</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.emplace_back(getPoint(s,<sp/>autoscale));</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>start_s;</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(s<sp/>&gt;=<sp/>end_s)<sp/>{</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>-<sp/>resolution;</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.emplace_back(getPoint(s,<sp/>autoscale));</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal">std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>HermiteCurve::getTrajectory(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_points)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="280"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;=<sp/>num_points;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i)<sp/>/<sp/>100.0;</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.emplace_back(getPoint(t,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="287"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Vector3<sp/>HermiteCurve::getNormalVector(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="290"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>vec;</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/>vec.x<sp/>=<sp/>3<sp/>*<sp/>ay_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>+<sp/>cy_;</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/>vec.y<sp/>=<sp/>(3<sp/>*<sp/>ax_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>+<sp/>cx_)<sp/>*<sp/>-1;</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vec;</highlight></codeline>
-<codeline lineno="298"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Vector3<sp/>HermiteCurve::getTangentVector(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="301"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>vec;</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/>vec.x<sp/>=<sp/>3<sp/>*<sp/>ax_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>+<sp/>cx_;</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/>vec.y<sp/>=<sp/>3<sp/>*<sp/>ay_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>+<sp/>cy_;</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/>vec.z<sp/>=<sp/>3<sp/>*<sp/>az_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bz_<sp/>*<sp/>s<sp/>+<sp/>cz_;</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vec;</highlight></codeline>
-<codeline lineno="310"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Pose<sp/>HermiteCurve::getPose(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="313"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>pose;</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>tangent_vec<sp/>=<sp/>getTangentVector(s,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>rpy;</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/>rpy.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/>rpy.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/>rpy.z<sp/>=<sp/>std::atan2(tangent_vec.y,<sp/>tangent_vec.x);</highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/>pose.orientation<sp/>=<sp/>quaternion_operation::convertEulerAngleToQuaternion(rpy);</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/>pose.position<sp/>=<sp/>getPoint(s);</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pose;</highlight></codeline>
-<codeline lineno="326"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="327"><highlight class="normal"></highlight></codeline>
-<codeline lineno="328"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::get2DCurvature(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="329"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="330"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s2<sp/>=<sp/>s<sp/>*<sp/>s;</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_dot<sp/>=<sp/>3<sp/>*<sp/>ax_<sp/>*<sp/>s2<sp/>+<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>+<sp/>cx_;</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_dot_dot<sp/>=<sp/>6<sp/>*<sp/>ax_<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bx_;</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_dot<sp/>=<sp/>3<sp/>*<sp/>ay_<sp/>*<sp/>s2<sp/>+<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>+<sp/>cy_;</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_dot_dot<sp/>=<sp/>6<sp/>*<sp/>ay_<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>by_;</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(x_dot<sp/>*<sp/>y_dot_dot<sp/>-<sp/>x_dot_dot<sp/>*<sp/>y_dot)<sp/>/<sp/>std::pow(x_dot<sp/>*<sp/>x_dot<sp/>+<sp/>y_dot<sp/>*<sp/>y_dot,<sp/>1.5);</highlight></codeline>
-<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"></highlight></codeline>
-<codeline lineno="341"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getMaximu2DCurvature()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="342"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="343"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>curvatures;</highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;<sp/>s<sp/>&lt;=<sp/>1;<sp/>s<sp/>=<sp/>s<sp/>+<sp/>0.01)<sp/>{</highlight></codeline>
-<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>curvature<sp/>=<sp/>get2DCurvature(s);</highlight></codeline>
-<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>curvatures.push_back(curvature);</highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::max_element(curvatures.begin(),<sp/>curvatures.end());</highlight></codeline>
-<codeline lineno="349"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="350"><highlight class="normal"></highlight></codeline>
-<codeline lineno="351"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getLength(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_points)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="352"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>trajectory<sp/>=<sp/>getTrajectory(num_points);</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>trajectory.size()<sp/>-<sp/>1;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>ret<sp/>+<sp/>std::sqrt(</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pow(trajectory[i<sp/>+<sp/>1].x<sp/>-<sp/>trajectory[i].x,<sp/>2)<sp/>+</highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pow(trajectory[i<sp/>+<sp/>1].y<sp/>-<sp/>trajectory[i].y,<sp/>2)<sp/>+</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pow(trajectory[i<sp/>+<sp/>1].z<sp/>-<sp/>trajectory[i].z,<sp/>2));</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="362"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"></highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Point<sp/>HermiteCurve::getPoint(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="365"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
-<codeline lineno="368"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p;</highlight></codeline>
-<codeline lineno="370"><highlight class="normal"><sp/><sp/>p.x<sp/>=<sp/>ax_<sp/>*<sp/>std::pow(s,<sp/>3)<sp/>+<sp/>bx_<sp/>*<sp/>std::pow(s,<sp/>2)<sp/>+<sp/>cx_<sp/>*<sp/>s<sp/>+<sp/>dx_;</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/>p.y<sp/>=<sp/>ay_<sp/>*<sp/>std::pow(s,<sp/>3)<sp/>+<sp/>by_<sp/>*<sp/>std::pow(s,<sp/>2)<sp/>+<sp/>cy_<sp/>*<sp/>s<sp/>+<sp/>dy_;</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/>p.z<sp/>=<sp/>az_<sp/>*<sp/>std::pow(s,<sp/>3)<sp/>+<sp/>bz_<sp/>*<sp/>std::pow(s,<sp/>2)<sp/>+<sp/>cz_<sp/>*<sp/>s<sp/>+<sp/>dz_;</highlight></codeline>
-<codeline lineno="373"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p;</highlight></codeline>
-<codeline lineno="374"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="375"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="376"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>ret<sp/>*<sp/>getLength();</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>HermiteCurve::getTrajectory(</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start_s,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>end_s,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>resolution,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="261"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>resolution<sp/>=<sp/>std::fabs(resolution);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(start_s<sp/>&lt;=<sp/>end_s)<sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>start_s;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(s<sp/>&lt;=<sp/>end_s)<sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>+<sp/>resolution;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.emplace_back(getPoint(s,<sp/>autoscale));</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>start_s;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(s<sp/>&gt;=<sp/>end_s)<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>-<sp/>resolution;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.emplace_back(getPoint(s,<sp/>autoscale));</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal">std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>HermiteCurve::getTrajectory(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_points)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="283"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;=<sp/>num_points;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>t<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i)<sp/>/<sp/>100.0;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.emplace_back(getPoint(t,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Vector3<sp/>HermiteCurve::getNormalVector(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="293"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>vec;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/>vec.x<sp/>=<sp/>3<sp/>*<sp/>ay_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>+<sp/>cy_;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/>vec.y<sp/>=<sp/>(3<sp/>*<sp/>ax_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>+<sp/>cx_)<sp/>*<sp/>-1;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vec;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Vector3<sp/>HermiteCurve::getTangentVector(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="304"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>vec;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>vec.x<sp/>=<sp/>3<sp/>*<sp/>ax_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>+<sp/>cx_;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/>vec.y<sp/>=<sp/>3<sp/>*<sp/>ay_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>+<sp/>cy_;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/>vec.z<sp/>=<sp/>3<sp/>*<sp/>az_<sp/>*<sp/>s<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bz_<sp/>*<sp/>s<sp/>+<sp/>cz_;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vec;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Pose<sp/>HermiteCurve::getPose(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="316"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>pose;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>tangent_vec<sp/>=<sp/>getTangentVector(s,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>rpy;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/>rpy.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/>rpy.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/>rpy.z<sp/>=<sp/>std::atan2(tangent_vec.y,<sp/>tangent_vec.x);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/>pose.orientation<sp/>=<sp/>quaternion_operation::convertEulerAngleToQuaternion(rpy);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/>pose.position<sp/>=<sp/>getPoint(s);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pose;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::get2DCurvature(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="332"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s2<sp/>=<sp/>s<sp/>*<sp/>s;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_dot<sp/>=<sp/>3<sp/>*<sp/>ax_<sp/>*<sp/>s2<sp/>+<sp/>2<sp/>*<sp/>bx_<sp/>*<sp/>s<sp/>+<sp/>cx_;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x_dot_dot<sp/>=<sp/>6<sp/>*<sp/>ax_<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>bx_;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_dot<sp/>=<sp/>3<sp/>*<sp/>ay_<sp/>*<sp/>s2<sp/>+<sp/>2<sp/>*<sp/>by_<sp/>*<sp/>s<sp/>+<sp/>cy_;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y_dot_dot<sp/>=<sp/>6<sp/>*<sp/>ay_<sp/>*<sp/>s<sp/>+<sp/>2<sp/>*<sp/>by_;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(x_dot<sp/>*<sp/>y_dot_dot<sp/>-<sp/>x_dot_dot<sp/>*<sp/>y_dot)<sp/>/<sp/>std::pow(x_dot<sp/>*<sp/>x_dot<sp/>+<sp/>y_dot<sp/>*<sp/>y_dot,<sp/>1.5);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getMaximum2DCurvature()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="345"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/>std::vector&lt;double&gt;<sp/>curvatures;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;<sp/>s<sp/>&lt;=<sp/>1;<sp/>s<sp/>=<sp/>s<sp/>+<sp/>0.1)<sp/>{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>curvature<sp/>=<sp/>get2DCurvature(s);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>curvatures.push_back(curvature);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*std::max_element(curvatures.begin(),<sp/>curvatures.end());</highlight></codeline>
+<codeline lineno="355"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>HermiteCurve::getLength(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_points)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="358"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>trajectory<sp/>=<sp/>getTrajectory(num_points);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>trajectory.size()<sp/>-<sp/>1;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>ret<sp/>+<sp/>std::sqrt(</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pow(trajectory[i<sp/>+<sp/>1].x<sp/>-<sp/>trajectory[i].x,<sp/>2)<sp/>+</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pow(trajectory[i<sp/>+<sp/>1].y<sp/>-<sp/>trajectory[i].y,<sp/>2)<sp/>+</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pow(trajectory[i<sp/>+<sp/>1].z<sp/>-<sp/>trajectory[i].z,<sp/>2));</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Point<sp/>HermiteCurve::getPoint(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>autoscale)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="371"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(autoscale)<sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>s<sp/>/<sp/>getLength();</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/>p.x<sp/>=<sp/>ax_<sp/>*<sp/>std::pow(s,<sp/>3)<sp/>+<sp/>bx_<sp/>*<sp/>std::pow(s,<sp/>2)<sp/>+<sp/>cx_<sp/>*<sp/>s<sp/>+<sp/>dx_;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/>p.y<sp/>=<sp/>ay_<sp/>*<sp/>std::pow(s,<sp/>3)<sp/>+<sp/>by_<sp/>*<sp/>std::pow(s,<sp/>2)<sp/>+<sp/>cy_<sp/>*<sp/>s<sp/>+<sp/>dy_;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/>p.z<sp/>=<sp/>az_<sp/>*<sp/>std::pow(s,<sp/>3)<sp/>+<sp/>bz_<sp/>*<sp/>std::pow(s,<sp/>2)<sp/>+<sp/>cz_<sp/>*<sp/>s<sp/>+<sp/>dz_;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/hermite_curve.cpp"/>
   </compounddef>

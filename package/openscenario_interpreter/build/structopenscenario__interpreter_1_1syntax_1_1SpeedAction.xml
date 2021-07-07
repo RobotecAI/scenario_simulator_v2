@@ -2,20 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::SpeedAction</compoundname>
+    <basecompoundref refid="structopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1acd69ee5a370b29aaf4354b2b9acde423" prot="public" static="no" mutable="no">
-        <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
-        <definition>Scope openscenario_interpreter::syntax::SpeedAction::inner_scope</definition>
-        <argsstring></argsstring>
-        <name>inner_scope</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aff272ab107ce475844658c7df743c4f4" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1TransitionDynamics" kindref="compound">TransitionDynamics</ref></type>
         <definition>const TransitionDynamics openscenario_interpreter::syntax::SpeedAction::speed_action_dynamics</definition>
@@ -27,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="43" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a27c463e3b86c86e415275272db6db8e8" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget" kindref="compound">SpeedActionTarget</ref></type>
@@ -40,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="45" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a255768efd68c1a73b7994484976f412c" prot="public" static="no" mutable="no">
         <type>std::unordered_map&lt; String, <ref refid="structopenscenario__interpreter_1_1syntax_1_1Boolean" kindref="compound">Boolean</ref> &gt;</type>
@@ -53,7 +41,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="56" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="56" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="54" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a98028fdfb13b81b44ed0825d61c8b45f" prot="private" static="no" mutable="no">
+        <type>std::function&lt; bool(const Scope::Actor &amp;)&gt;</type>
+        <definition>std::function&lt;bool(const Scope::Actor &amp;)&gt; openscenario_interpreter::syntax::SpeedAction::update_and_check</definition>
+        <argsstring></argsstring>
+        <name>update_and_check</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="131" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -81,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="48" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="48" bodyend="54"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="46" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1ad4e2072c5bf19000bf94af9353831513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -94,76 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="58" bodyend="64"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a1a85bcf8c2345990e0e42880dd61ffed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename T</type>
-          </param>
-        </templateparamlist>
-        <type>decltype(auto)</type>
-        <definition>decltype(auto) openscenario_interpreter::syntax::SpeedAction::setLinearTransition</definition>
-        <argsstring>(const Scope::Actor &amp;actor, const T value) const</argsstring>
-        <name>setLinearTransition</name>
-        <param>
-          <type>const Scope::Actor &amp;</type>
-          <declname>actor</declname>
-        </param>
-        <param>
-          <type>const T</type>
-          <declname>value</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="67" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="67" bodyend="70"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a29020c33f11f4aa67aac73497ea06b26" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename T</type>
-          </param>
-        </templateparamlist>
-        <type>decltype(auto)</type>
-        <definition>decltype(auto) openscenario_interpreter::syntax::SpeedAction::setStepTransition</definition>
-        <argsstring>(const Scope::Actor &amp;actor, const T value) const</argsstring>
-        <name>setStepTransition</name>
-        <param>
-          <type>const Scope::Actor &amp;</type>
-          <declname>actor</declname>
-        </param>
-        <param>
-          <type>const T</type>
-          <declname>value</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="73" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="73" bodyend="79"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a8d053b33f5c21eebba7bb53b7580a04e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>decltype(auto)</type>
-        <definition>decltype(auto) openscenario_interpreter::syntax::SpeedAction::operator()</definition>
-        <argsstring>(const Scope::Actor &amp;actor) const</argsstring>
-        <name>operator()</name>
-        <param>
-          <type>const Scope::Actor &amp;</type>
-          <declname>actor</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="81" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="81" bodyend="95"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="56" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="56" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a73b8fb1782d92635b6ad5480ec63e493" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -176,24 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="97" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="97" bodyend="106"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aeb3cc6346aae665128dac55a331a81b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>auto</type>
-        <definition>auto openscenario_interpreter::syntax::SpeedAction::check</definition>
-        <argsstring>(const String &amp;actor)</argsstring>
-        <name>check</name>
-        <param>
-          <type>const String &amp;</type>
-          <declname>actor</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="108" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="108" bodyend="121"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="99" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="99" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aa6dec30455b50d07acc8e8c77629e6fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -206,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="123" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="123" bodyend="128"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="110" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="110" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1afabc4900aab2c068a8cdf38d98aabe5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -219,92 +136,149 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="130" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="130" bodyend="134"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="118" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="118" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a56261a704858724b3320c57e94cd7809" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openscenario_interpreter::syntax::SpeedAction::endsImmediately</definition>
+        <argsstring>() const</argsstring>
+        <name>endsImmediately</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="124" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="124" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a6c4f592763bf7678056e9f6e3e5e8867" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openscenario_interpreter::syntax::SpeedAction::startImpl</definition>
+        <argsstring>(const Scope::Actor &amp;actor)</argsstring>
+        <name>startImpl</name>
+        <param>
+          <type>const Scope::Actor &amp;</type>
+          <declname>actor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="65" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="65" bodyend="96"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="667">
-        <label>std::shared_ptr&lt; T &gt;</label>
+    <inheritancegraph>
+      <node id="697">
+        <label>openscenario_interpreter::syntax::SpeedAction</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction"/>
+        <childnode refid="698" relation="private-inheritance">
+        </childnode>
       </node>
-      <node id="669">
+      <node id="698">
+        <label>openscenario_interpreter::Scope</label>
+        <link refid="structopenscenario__interpreter_1_1Scope"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="703">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="704">
         <label>openscenario_interpreter::syntax::TransitionDynamics</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TransitionDynamics"/>
-        <childnode refid="670" relation="usage">
+        <childnode refid="705" relation="usage">
           <edgelabel>dynamics_dimension</edgelabel>
         </childnode>
-        <childnode refid="671" relation="usage">
+        <childnode refid="706" relation="usage">
           <edgelabel>value</edgelabel>
         </childnode>
-        <childnode refid="673" relation="usage">
+        <childnode refid="708" relation="usage">
           <edgelabel>dynamics_shape</edgelabel>
         </childnode>
       </node>
-      <node id="673">
+      <node id="708">
         <label>openscenario_interpreter::syntax::DynamicsShape</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1DynamicsShape"/>
       </node>
-      <node id="671">
+      <node id="706">
         <label>openscenario_interpreter::syntax::Double</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Double"/>
-        <childnode refid="672" relation="public-inheritance">
+        <childnode refid="707" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="664">
+      <node id="699">
         <label>openscenario_interpreter::syntax::SpeedAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction"/>
-        <childnode refid="665" relation="usage">
+        <childnode refid="700" relation="private-inheritance">
+        </childnode>
+        <childnode refid="701" relation="usage">
           <edgelabel>speed_action_target</edgelabel>
         </childnode>
-        <childnode refid="668" relation="usage">
-          <edgelabel>inner_scope</edgelabel>
-        </childnode>
-        <childnode refid="669" relation="usage">
+        <childnode refid="704" relation="usage">
           <edgelabel>speed_action_dynamics</edgelabel>
         </childnode>
       </node>
-      <node id="670">
+      <node id="705">
         <label>openscenario_interpreter::syntax::DynamicsDimension</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1DynamicsDimension"/>
       </node>
-      <node id="672">
+      <node id="707">
         <label>std_msgs::msg::Float64</label>
       </node>
-      <node id="665">
+      <node id="701">
         <label>openscenario_interpreter::syntax::SpeedActionTarget</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget"/>
-        <childnode refid="666" relation="public-inheritance">
+        <childnode refid="702" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="666">
+      <node id="702">
         <label>Element</label>
         <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="667" relation="public-inheritance">
+        <childnode refid="703" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="668">
+      <node id="700">
         <label>openscenario_interpreter::Scope</label>
         <link refid="structopenscenario__interpreter_1_1Scope"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="39" bodyend="135"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/speed_action.hpp" bodystart="39" bodyend="132"/>
     <listofallmembers>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1afabc4900aab2c068a8cdf38d98aabe5e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>accomplished</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a255768efd68c1a73b7994484976f412c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>accomplishments</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aeb3cc6346aae665128dac55a331a81b2" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>check</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1acd69ee5a370b29aaf4354b2b9acde423" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>inner_scope</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a8d053b33f5c21eebba7bb53b7580a04e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>operator()</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a71adbadb72f848f4dd4d08ea00bb351e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>Actor</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a7e23ddea0b69991cc161f7a2c4b05304" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8f47946a2ec4238dffdb1fa25137ac43" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>Actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a56261a704858724b3320c57e94cd7809" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>endsImmediately</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a0682dea0459bee5fbc795e2fc9baebb2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>entities</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>logic_file</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a9e9eb5015e45940c1215cbb5f7d87fc5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>parameters</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>pathname</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1ad4e2072c5bf19000bf94af9353831513" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>reset</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a1a85bcf8c2345990e0e42880dd61ffed" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>setLinearTransition</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a29020c33f11f4aa67aac73497ea06b26" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>setStepTransition</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>scene_graph_file</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a4dc48c7507093c3c205a179c1ab80f16" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>Scope</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aff272ab107ce475844658c7df743c4f4" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>speed_action_dynamics</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a27c463e3b86c86e415275272db6db8e8" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>speed_action_target</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a607ebdd41dbd4fb469feb3916c37fd18" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>SpeedAction</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a73b8fb1782d92635b6ad5480ec63e493" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>start</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a6c4f592763bf7678056e9f6e3e5e8867" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>startImpl</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8a6de30a3b47eb5c3d9117456fdf15e0" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>storyboard_elements</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1abd3ff1e82f05e59c7f453316ceb6a1a7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>traffic_signal_controllers</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aa6dec30455b50d07acc8e8c77629e6fc" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>update</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a98028fdfb13b81b44ed0825d61c8b45f" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::SpeedAction</scope><name>update_and_check</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

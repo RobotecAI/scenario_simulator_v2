@@ -3,52 +3,6 @@
   <compounddef id="structopenscenario__interpreter_1_1Expression" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::Expression</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1a43fdc4ac3faa5eb198dd2a55644dd9a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const std::type_info &amp;</type>
-        <definition>virtual const std::type_info&amp; openscenario_interpreter::Expression::type</definition>
-        <argsstring>() const noexcept</argsstring>
-        <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="24" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="24" bodyend="24"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1afba5927b6c2d2ec10c2a92b1d82edc14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::ostream &amp;</type>
-        <definition>virtual std::ostream&amp; openscenario_interpreter::Expression::write</definition>
-        <argsstring>(std::ostream &amp;os) const</argsstring>
-        <name>write</name>
-        <param>
-          <type>std::ostream &amp;</type>
-          <declname>os</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="26" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="26" bodyend="29"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1a29531ebdcc786db4800a6f903cda686c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Pointer</ref>&lt; <ref refid="structopenscenario__interpreter_1_1Expression" kindref="compound">Expression</ref> &gt;</type>
-        <definition>virtual Pointer&lt;Expression&gt; openscenario_interpreter::Expression::evaluate</definition>
-        <argsstring>(const Pointer&lt; Expression &gt; &amp;)</argsstring>
-        <name>evaluate</name>
-        <param>
-          <type>const <ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Pointer</ref>&lt; <ref refid="structopenscenario__interpreter_1_1Expression" kindref="compound">Expression</ref> &gt; &amp;</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="31" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="31" bodyend="36"/>
-      </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1acafe152e266b53f63a15cc72385a1380" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>virtual bool openscenario_interpreter::Expression::accomplished</definition>
@@ -60,20 +14,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="38" bodyend="38"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="24" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="24" bodyend="24"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1ae18663f2f9dda4b21fed47f239a3fb69" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Pointer</ref>&lt; <ref refid="structopenscenario__interpreter_1_1Expression" kindref="compound">Expression</ref> &gt; &amp;</type>
-        <definition>virtual const Pointer&lt;Expression&gt;&amp; openscenario_interpreter::Expression::state</definition>
-        <argsstring>() const</argsstring>
-        <name>state</name>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1a5b2b0502610148c14affd9023e9b10f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>auto</type>
+        <definition>virtual auto openscenario_interpreter::Expression::description</definition>
+        <argsstring>() const -&gt; std::string</argsstring>
+        <name>description</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="40" bodyend="45"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="26" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1a354ae0c104982edb7cc8fb4130d03033" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>auto</type>
+        <definition>virtual auto openscenario_interpreter::Expression::evaluate</definition>
+        <argsstring>(const Pointer&lt; Expression &gt; &amp;) -&gt; Pointer&lt; Expression &gt;</argsstring>
+        <name>evaluate</name>
+        <param>
+          <type>const <ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Pointer</ref>&lt; <ref refid="structopenscenario__interpreter_1_1Expression" kindref="compound">Expression</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="28" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1a1c77bcdbe274e4c1c7f32c6d4d98a27c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -86,21 +56,65 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="47" bodyend="52"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="33" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1a8cd8c2a849965b632b9042252c939588" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>auto</type>
+        <definition>virtual auto openscenario_interpreter::Expression::currentState</definition>
+        <argsstring>() const -&gt; const Pointer&lt; Expression &gt; &amp;</argsstring>
+        <name>currentState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1abd692ef906feb03711ae4f028bfa924d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>auto</type>
+        <definition>virtual auto openscenario_interpreter::Expression::type</definition>
+        <argsstring>() const noexcept -&gt; const std::type_info &amp;</argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1Expression_1af17f914e6d85b401ac539d571e37c3f1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>auto</type>
+        <definition>virtual auto openscenario_interpreter::Expression::write</definition>
+        <argsstring>(std::ostream &amp;os) const -&gt; std::ostream &amp;</argsstring>
+        <name>write</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="45" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="23" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="22" bodyend="53"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" line="23" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/expression.hpp" bodystart="22" bodyend="49"/>
     <listofallmembers>
       <member refid="structopenscenario__interpreter_1_1Expression_1acafe152e266b53f63a15cc72385a1380" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>accomplished</name></member>
-      <member refid="structopenscenario__interpreter_1_1Expression_1a29531ebdcc786db4800a6f903cda686c" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>evaluate</name></member>
+      <member refid="structopenscenario__interpreter_1_1Expression_1a8cd8c2a849965b632b9042252c939588" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>currentState</name></member>
+      <member refid="structopenscenario__interpreter_1_1Expression_1a5b2b0502610148c14affd9023e9b10f7" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>description</name></member>
+      <member refid="structopenscenario__interpreter_1_1Expression_1a354ae0c104982edb7cc8fb4130d03033" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>evaluate</name></member>
       <member refid="structopenscenario__interpreter_1_1Expression_1a1c77bcdbe274e4c1c7f32c6d4d98a27c" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>start</name></member>
-      <member refid="structopenscenario__interpreter_1_1Expression_1ae18663f2f9dda4b21fed47f239a3fb69" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>state</name></member>
-      <member refid="structopenscenario__interpreter_1_1Expression_1a43fdc4ac3faa5eb198dd2a55644dd9a6" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>type</name></member>
-      <member refid="structopenscenario__interpreter_1_1Expression_1afba5927b6c2d2ec10c2a92b1d82edc14" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>write</name></member>
+      <member refid="structopenscenario__interpreter_1_1Expression_1abd692ef906feb03711ae4f028bfa924d" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>type</name></member>
+      <member refid="structopenscenario__interpreter_1_1Expression_1af17f914e6d85b401ac539d571e37c3f1" prot="public" virt="virtual"><scope>openscenario_interpreter::Expression</scope><name>write</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -12,12 +12,95 @@
     <innerclass refid="classtraffic__simulator_1_1entity_1_1EntityManager" prot="public">traffic_simulator::entity::EntityManager</innerclass>
     <innerclass refid="classtraffic__simulator_1_1entity_1_1EntityMarkerQoS" prot="public">traffic_simulator::entity::EntityMarkerQoS</innerclass>
     <innerclass refid="classtraffic__simulator_1_1entity_1_1LaneletMarkerQoS" prot="public">traffic_simulator::entity::LaneletMarkerQoS</innerclass>
+    <innerclass refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity" prot="public">traffic_simulator::entity::MiscObjectEntity</innerclass>
     <innerclass refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity" prot="public">traffic_simulator::entity::PedestrianEntity</innerclass>
     <innerclass refid="structtraffic__simulator_1_1entity_1_1PedestrianParameters" prot="public">traffic_simulator::entity::PedestrianParameters</innerclass>
     <innerclass refid="structtraffic__simulator_1_1entity_1_1Performance" prot="public">traffic_simulator::entity::Performance</innerclass>
     <innerclass refid="classtraffic__simulator_1_1entity_1_1VehicleEntity" prot="public">traffic_simulator::entity::VehicleEntity</innerclass>
     <innerclass refid="structtraffic__simulator_1_1entity_1_1VehicleParameters" prot="public">traffic_simulator::entity::VehicleParameters</innerclass>
       <sectiondef kind="enum">
+      <memberdef kind="enum" id="ego__entity_8hpp_1ad302e23fac01bd493bdbc3d9569f7b2c" prot="public" static="no">
+        <name>VehicleModelType</name>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2caa2221ddbe85a59308905a0f4e793fc3a" prot="public">
+          <name>IDEAL_TWIST</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2ca1dda0752d2a3e45196adcb7d227b484d" prot="public">
+          <name>IDEAL_STEER</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2ca42649016ba2c51dfffd7f42ebd622dd4" prot="public">
+          <name>DELAY_TWIST</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2ca53e78c00e646e543d2ae43fbf9405ae9" prot="public">
+          <name>DELAY_STEER</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2ca9aa7059650a820b2c1da771c992f3619" prot="public">
+          <name>CONST_ACCEL_TWIST</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2ca5014cd1b35b8c66c81014d065a03f635" prot="public">
+          <name>IDEAL_FORKLIFT_RLS</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2cab1f2a29866d467ea97a39616198dc4be" prot="public">
+          <name>DELAY_FORKLIFT_RLS</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2cac01abd3d51abe46c10ca9735194fb86d" prot="public">
+          <name>IDEAL_ACCEL</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dummy_1ad302e23fac01bd493bdbc3d9569f7b2caf519d33be26dd0b3b0cbe60267b13e9f" prot="public">
+          <name>DELAY_STEER_ACC</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="35" bodyend="45"/>
+      </memberdef>
       <memberdef kind="enum" id="entity__base_8hpp_1ab6ba6fbc387fc75d84fcb72bfaa1791c" prot="public" static="no">
         <name>Direction</name>
         <enumvalue id="dummy_1ab6ba6fbc387fc75d84fcb72bfaa1791ca8c5e50fab3748e9c53a6863b3dce1401" prot="public">
@@ -50,13 +133,70 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_base.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_base.hpp" bodystart="39" bodyend="39"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_base.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_base.hpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ego__entity_8cpp_1ac44caef21eab1d12faeeefb2c6631e79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto traffic_simulator::entity::toString</definition>
+        <argsstring>(const VehicleModelType datum) -&gt; std::string</argsstring>
+        <name>toString</name>
+        <param>
+          <type>const VehicleModelType</type>
+          <declname>datum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" line="54" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="54" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="ego__entity_8cpp_1a59147159c5c3a714e96d468b2e95850a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto traffic_simulator::entity::getVehicleModelType</definition>
+        <argsstring>()</argsstring>
+        <name>getVehicleModelType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" line="76" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="76" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="ego__entity_8cpp_1a5372408b8c4763542f75b83de313adf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto traffic_simulator::entity::makeSimulationModel</definition>
+        <argsstring>(const VehicleModelType vehicle_model_type, const double step_time, const openscenario_msgs::msg::VehicleParameters &amp;parameters) -&gt; std::shared_ptr&lt; SimModelInterface &gt;</argsstring>
+        <name>makeSimulationModel</name>
+        <param>
+          <type>const VehicleModelType</type>
+          <declname>vehicle_model_type</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>step_time</declname>
+        </param>
+        <param>
+          <type>const openscenario_msgs::msg::VehicleParameters &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" line="101" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="101" bodyend="164"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="33" column="1"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="34" column="1"/>
   </compounddef>
 </doxygen>

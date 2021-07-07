@@ -138,7 +138,7 @@
         <definition>void traffic_simulator::entity::PedestrianEntity::onUpdate</definition>
         <argsstring>(double current_time, double step_time) override</argsstring>
         <name>onUpdate</name>
-        <reimplements refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a2ca560ba0e1d878e734635b021deb5a6">onUpdate</reimplements>
+        <reimplements refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a8d9a2869ccabffc62d3746393aa655e6">onUpdate</reimplements>
         <param>
           <type>double</type>
           <declname>current_time</declname>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/pedestrian_entity.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/pedestrian_entity.cpp" bodystart="85" bodyend="133"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/pedestrian_entity.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/pedestrian_entity.cpp" bodystart="85" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a2ea589f878fb800c1324ec05d2dc924a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -241,7 +241,7 @@
         <definition>void traffic_simulator::entity::PedestrianEntity::setTargetSpeed</definition>
         <argsstring>(double target_speed, bool continuous) override</argsstring>
         <name>setTargetSpeed</name>
-        <reimplements refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a10010a867a1628b54c3b95e45e033b20">setTargetSpeed</reimplements>
+        <reimplements refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a93bec8c41a87b1ceac517143e526ee48">setTargetSpeed</reimplements>
         <param>
           <type>double</type>
           <declname>target_speed</declname>
@@ -357,26 +357,26 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="117">
+      <node id="126">
         <label>traffic_simulator::entity::EntityBase</label>
         <link refid="classtraffic__simulator_1_1entity_1_1EntityBase"/>
       </node>
-      <node id="116">
+      <node id="125">
         <label>traffic_simulator::entity::PedestrianEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity"/>
-        <childnode refid="117" relation="public-inheritance">
+        <childnode refid="126" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="119">
+      <node id="128">
         <label>traffic_simulator::entity::EntityBase</label>
         <link refid="classtraffic__simulator_1_1entity_1_1EntityBase"/>
       </node>
-      <node id="118">
+      <node id="127">
         <label>traffic_simulator::entity::PedestrianEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity"/>
-        <childnode refid="119" relation="public-inheritance">
+        <childnode refid="128" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
@@ -392,6 +392,7 @@
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a75205791d99680ba884e6045abe2b370" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>EntityBase</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a11aa789219bf39127244ae02d8faa649" prot="public" virt="virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getBoundingBox</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1aac894c52324b81c539985f2bd08de8f8" prot="public" virt="virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getCurrentAction</name></member>
+      <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a28a0a0bf8237644e7aaed07c493d8485" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getEntityStatusBeforeUpdate</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1ad8890dfebc275fdb8b7e6844036ae23e" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getEntityType</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a53a6d180f19d0357ca3294aef39c50ab" prot="public" virt="virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getEntityTypename</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a61901fd8d051423b362e0b67934129d2" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getLinearJerk</name></member>
@@ -399,6 +400,7 @@
       <member refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a7013266a9204695fac4563a64db5e703" prot="public" virt="virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getRouteLanelets</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a85915279a462bcbf118f2b82a0c2dc7c" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getStandStillDuration</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1ae823189422b1044c5432308282974f8f" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getStatus</name></member>
+      <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a98d9e60aa5abe92d631ee91d23e71935" prot="public" virt="virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getVehicleCommand</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a1ae9994146a73567c18f02ab76f8770b" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getVehicleParameters</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a10e0abb8722358feb09ff8c097987f86" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getVisibility</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a0f0171b8b3d260de7a82398f1d1b9f07" prot="public" virt="virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>getWaypoints</name></member>
@@ -428,6 +430,7 @@
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1ac91115ed599bea1fb02448c3b964afe2" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>setVisibility</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a1f739bcfbcc58012323926ed846c34a0" prot="protected" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>stand_still_duration_</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a59fa0432bf01dfd7a55433b4d1fb409c" prot="protected" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>status_</name></member>
+      <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1acf6bf95b2dee1990fb3cf81b495c3779" prot="protected" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>status_before_update_</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1ab29fd9d271ee4710b7f93ef143ded4c4" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>statusSet</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1adaa0eee865fbbcaf8e3ebfc0d8065224" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>stopAtEndOfRoad</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a13e760bf527853a2da6d129107150df3" prot="private" virt="non-virtual"><scope>traffic_simulator::entity::PedestrianEntity</scope><name>target_speed_</name></member>

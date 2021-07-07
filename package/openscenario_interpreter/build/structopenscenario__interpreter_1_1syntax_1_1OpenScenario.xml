@@ -2,11 +2,37 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::OpenScenario</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">xml_document</basecompoundref>
+    <basecompoundref refid="structopenscenario__interpreter_1_1Scope" prot="public" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ae29e4e8b9222aba24cf84add70aada66" prot="public" static="no" mutable="no">
-        <type><ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Element</ref></type>
-        <definition>Element openscenario_interpreter::syntax::OpenScenario::category</definition>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1abf4de4f933bca49f0f0c81d31dd443b0" prot="public" static="no" mutable="no">
+        <type>pugi::xml_document</type>
+        <definition>pugi::xml_document openscenario_interpreter::syntax::OpenScenario::script</definition>
+        <argsstring></argsstring>
+        <name>script</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a939c9966c8b71f30b3a5114bd5f7694c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1FileHeader" kindref="compound">FileHeader</ref></type>
+        <definition>const FileHeader openscenario_interpreter::syntax::OpenScenario::file_header</definition>
+        <argsstring></argsstring>
+        <name>file_header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ab0985325769fa68349b168707863f5af" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenarioCategory" kindref="compound">OpenScenarioCategory</ref></type>
+        <definition>const OpenScenarioCategory openscenario_interpreter::syntax::OpenScenario::category</definition>
         <argsstring></argsstring>
         <name>category</name>
         <briefdescription>
@@ -15,48 +41,31 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="115" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="115" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a594303021496d7582699a2d7caafe056" prot="public" static="no" mutable="no">
-        <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
-        <definition>Scope openscenario_interpreter::syntax::OpenScenario::scope</definition>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1af5ff4af7c8407015c667dd8306e39529" prot="public" static="no" mutable="no">
+        <type>std::size_t</type>
+        <definition>std::size_t openscenario_interpreter::syntax::OpenScenario::frame</definition>
         <argsstring></argsstring>
-        <name>scope</name>
+        <name>frame</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="117" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="117" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="49" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a7fe6da47b583581b71b694f44ed06a20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a68205732df987b1e1c0d70a765f58d68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const auto &amp;</type>
         <definition>const auto&amp; openscenario_interpreter::syntax::OpenScenario::load</definition>
-        <argsstring>(const std::string &amp;scenario)</argsstring>
-        <name>load</name>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>scenario</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="119" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="119" bodyend="130"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a28c27aef6b155f0be6816d902507c506" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>decltype(auto)</type>
-        <definition>decltype(auto) openscenario_interpreter::syntax::OpenScenario::load</definition>
-        <argsstring>(const boost::filesystem::path &amp;scenario)</argsstring>
+        <argsstring>(const boost::filesystem::path &amp;pathname)</argsstring>
         <name>load</name>
         <param>
           <type>const boost::filesystem::path &amp;</type>
-          <declname>scenario</declname>
+          <declname>pathname</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -64,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="132" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="132" bodyend="132"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="51" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ae656f619922d2da04d022fe4b8d023e9" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -88,79 +97,33 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="135" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="135" bodyend="142"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="63" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="63" bodyend="70"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a45892ba2e2cfe8d8122beba0086352b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename...</type>
-            <declname>Ts</declname>
-            <defname>Ts</defname>
-          </param>
-        </templateparamlist>
-        <type>decltype(auto)</type>
-        <definition>decltype(auto) openscenario_interpreter::syntax::OpenScenario::complete</definition>
-        <argsstring>(Ts &amp;&amp;... xs)</argsstring>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a09e3c24104962c7ebe545312ce106c85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::OpenScenario::complete</definition>
+        <argsstring>() const</argsstring>
         <name>complete</name>
-        <param>
-          <type>Ts &amp;&amp;...</type>
-          <declname>xs</declname>
-        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="145" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="145" bodyend="152"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="72" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a5155bd685b1758696b529f5be3af389e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename...</type>
-            <declname>Ts</declname>
-            <defname>Ts</defname>
-          </param>
-        </templateparamlist>
-        <type>decltype(auto)</type>
-        <definition>decltype(auto) openscenario_interpreter::syntax::OpenScenario::evaluate</definition>
-        <argsstring>(Ts &amp;&amp;... xs)</argsstring>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ab26d389a861a5785195ab9af9e0b7cff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::OpenScenario::evaluate</definition>
+        <argsstring>()</argsstring>
         <name>evaluate</name>
-        <param>
-          <type>Ts &amp;&amp;...</type>
-          <declname>xs</declname>
-        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="155" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="155" bodyend="158"/>
-      </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ac2afcc92fd4073fac8e38525ccae6765" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename...</type>
-            <declname>Ts</declname>
-            <defname>Ts</defname>
-          </param>
-        </templateparamlist>
-        <type>decltype(auto)</type>
-        <definition>decltype(auto) openscenario_interpreter::syntax::OpenScenario::operator()</definition>
-        <argsstring>(Ts &amp;&amp;... xs)</argsstring>
-        <name>operator()</name>
-        <param>
-          <type>Ts &amp;&amp;...</type>
-          <declname>xs</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="161" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="161" bodyend="164"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="74" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="74" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -168,56 +131,93 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="445">
-        <label>pugi::xml_document</label>
-      </node>
-      <node id="444">
+      <node id="450">
         <label>openscenario_interpreter::syntax::OpenScenario</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario"/>
-        <childnode refid="445" relation="public-inheritance">
+        <childnode refid="451" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="451">
+        <label>openscenario_interpreter::Scope</label>
+        <link refid="structopenscenario__interpreter_1_1Scope"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="447">
-        <label>pugi::xml_document</label>
+      <node id="459">
+        <label>std::shared_ptr&lt; T &gt;</label>
       </node>
-      <node id="450">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      <node id="454">
+        <label>openscenario_interpreter::syntax::FileHeader</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1FileHeader"/>
+        <childnode refid="455" relation="usage">
+          <edgelabel>revMajor</edgelabel>
+          <edgelabel>revMinor</edgelabel>
+        </childnode>
       </node>
-      <node id="446">
+      <node id="452">
         <label>openscenario_interpreter::syntax::OpenScenario</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario"/>
-        <childnode refid="447" relation="public-inheritance">
+        <childnode refid="453" relation="public-inheritance">
         </childnode>
-        <childnode refid="448" relation="usage">
-          <edgelabel>scope</edgelabel>
+        <childnode refid="454" relation="usage">
+          <edgelabel>file_header</edgelabel>
         </childnode>
-        <childnode refid="449" relation="usage">
+        <childnode refid="457" relation="usage">
           <edgelabel>category</edgelabel>
         </childnode>
       </node>
-      <node id="449">
-        <label>openscenario_interpreter::Pointer&lt; Expression &gt;</label>
+      <node id="458">
+        <label>Group</label>
         <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="450" relation="public-inheritance">
+        <childnode refid="459" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="448">
+      <node id="455">
+        <label>openscenario_interpreter::syntax::UnsignedShort</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1UnsignedShort"/>
+        <childnode refid="456" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="457">
+        <label>openscenario_interpreter::syntax::OpenScenarioCategory</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenarioCategory"/>
+        <childnode refid="458" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="456">
+        <label>std_msgs::msg::UInt16</label>
+      </node>
+      <node id="453">
         <label>openscenario_interpreter::Scope</label>
         <link refid="structopenscenario__interpreter_1_1Scope"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="114" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="113" bodyend="165"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" line="42" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp" bodystart="41" bodyend="79"/>
     <listofallmembers>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ae29e4e8b9222aba24cf84add70aada66" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>category</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a45892ba2e2cfe8d8122beba0086352b5" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>complete</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a5155bd685b1758696b529f5be3af389e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>evaluate</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a7fe6da47b583581b71b694f44ed06a20" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>load</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a28c27aef6b155f0be6816d902507c506" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>load</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a71adbadb72f848f4dd4d08ea00bb351e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>Actor</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8f47946a2ec4238dffdb1fa25137ac43" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>Actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a7e23ddea0b69991cc161f7a2c4b05304" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ab0985325769fa68349b168707863f5af" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>category</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a09e3c24104962c7ebe545312ce106c85" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>complete</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a0682dea0459bee5fbc795e2fc9baebb2" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>entities</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ab26d389a861a5785195ab9af9e0b7cff" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>evaluate</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a939c9966c8b71f30b3a5114bd5f7694c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>file_header</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1af5ff4af7c8407015c667dd8306e39529" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>frame</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a68205732df987b1e1c0d70a765f58d68" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>load</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>logic_file</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ae656f619922d2da04d022fe4b8d023e9" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>OpenScenario</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ac2afcc92fd4073fac8e38525ccae6765" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>operator()</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a594303021496d7582699a2d7caafe056" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a9e9eb5015e45940c1215cbb5f7d87fc5" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>parameters</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>pathname</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>scene_graph_file</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a4dc48c7507093c3c205a179c1ab80f16" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1abf4de4f933bca49f0f0c81d31dd443b0" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>script</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8a6de30a3b47eb5c3d9117456fdf15e0" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>storyboard_elements</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1abd3ff1e82f05e59c7f453316ceb6a1a7" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::OpenScenario</scope><name>traffic_signal_controllers</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

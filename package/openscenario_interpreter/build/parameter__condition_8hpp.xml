@@ -2,6 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="parameter__condition_8hpp" kind="file" language="C++">
     <compoundname>parameter_condition.hpp</compoundname>
+    <includes local="no">iomanip</includes>
+    <includes refid="scope_8hpp" local="no">openscenario_interpreter/scope.hpp</includes>
     <includes refid="rule_8hpp" local="no">openscenario_interpreter/syntax/rule.hpp</includes>
     <includes local="no">string</includes>
     <includes local="no">typeindex</includes>
@@ -9,508 +11,693 @@
     <includes local="no">utility</includes>
     <includedby refid="by__value__condition_8hpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/by_value_condition.hpp</includedby>
     <incdepgraph>
-      <node id="7758">
+      <node id="8229">
         <label>list</label>
       </node>
-      <node id="7749">
-        <label>iomanip</label>
+      <node id="8226">
+        <label>scenario_simulator_exception/exception.hpp</label>
       </node>
-      <node id="7739">
+      <node id="8213">
         <label>functional</label>
       </node>
-      <node id="7742">
+      <node id="8210">
+        <label>iomanip</label>
+      </node>
+      <node id="8214">
         <label>limits</label>
       </node>
-      <node id="7751">
-        <label>openscenario_interpreter/string/cat.hpp</label>
-        <link refid="cat_8hpp_source"/>
-        <childnode refid="7752" relation="include">
-        </childnode>
-        <childnode refid="7754" relation="include">
-        </childnode>
-        <childnode refid="7755" relation="include">
-        </childnode>
-        <childnode refid="7753" relation="include">
-        </childnode>
+      <node id="8270">
+        <label>iterator</label>
       </node>
-      <node id="7776">
+      <node id="8249">
         <label>openscenario_interpreter/type_traits/has_stream_output_operator.hpp</label>
         <link refid="has__stream__output__operator_8hpp_source"/>
-        <childnode refid="7775" relation="include">
+        <childnode refid="8220" relation="include">
         </childnode>
-        <childnode refid="7764" relation="include">
+        <childnode refid="8234" relation="include">
         </childnode>
       </node>
-      <node id="7781">
+      <node id="8253">
         <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="7737">
+      <node id="8223">
+        <label>openscenario_interpreter/utility/demangle.hpp</label>
+        <link refid="demangle_8hpp_source"/>
+        <childnode refid="8224" relation="include">
+        </childnode>
+        <childnode refid="8225" relation="include">
+        </childnode>
+      </node>
+      <node id="8275">
+        <label>openscenario_interpreter/syntax/traffic_signal_state.hpp</label>
+        <link refid="traffic__signal__state_8hpp_source"/>
+        <childnode refid="8276" relation="include">
+        </childnode>
+        <childnode refid="8217" relation="include">
+        </childnode>
+        <childnode refid="8278" relation="include">
+        </childnode>
+        <childnode refid="8281" relation="include">
+        </childnode>
+        <childnode refid="8257" relation="include">
+        </childnode>
+      </node>
+      <node id="8209">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/parameter_condition.hpp</label>
         <link refid="parameter__condition_8hpp"/>
-        <childnode refid="7738" relation="include">
+        <childnode refid="8210" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8211" relation="include">
         </childnode>
-        <childnode refid="7796" relation="include">
+        <childnode refid="8283" relation="include">
         </childnode>
-        <childnode refid="7795" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8286" relation="include">
+        </childnode>
+        <childnode refid="8267" relation="include">
+        </childnode>
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
-      <node id="7738">
+      <node id="8216">
+        <label>openscenario_interpreter/syntax/entity_ref.hpp</label>
+        <link refid="entity__ref_8hpp_source"/>
+        <childnode refid="8217" relation="include">
+        </childnode>
+        <childnode refid="8242" relation="include">
+        </childnode>
+      </node>
+      <node id="8278">
+        <label>openscenario_interpreter/syntax/arrow.hpp</label>
+        <link refid="arrow_8hpp_source"/>
+        <childnode refid="8279" relation="include">
+        </childnode>
+        <childnode refid="8220" relation="include">
+        </childnode>
+        <childnode refid="8280" relation="include">
+        </childnode>
+      </node>
+      <node id="8283">
         <label>openscenario_interpreter/syntax/rule.hpp</label>
         <link refid="rule_8hpp_source"/>
-        <childnode refid="7739" relation="include">
+        <childnode refid="8213" relation="include">
         </childnode>
-        <childnode refid="7740" relation="include">
+        <childnode refid="8284" relation="include">
         </childnode>
-        <childnode refid="7744" relation="include">
+        <childnode refid="8217" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
-      <node id="7794">
+      <node id="8238">
+        <label>openscenario_interpreter/type_traits/if_has_member_function_description.hpp</label>
+        <link refid="if__has__member__function__description_8hpp_source"/>
+        <childnode refid="8239" relation="include">
+        </childnode>
+      </node>
+      <node id="8265">
         <label>pugixml.hpp</label>
       </node>
-      <node id="7757">
+      <node id="8228">
         <label>openscenario_interpreter/object.hpp</label>
         <link refid="object_8hpp_source"/>
-        <childnode refid="7758" relation="include">
+        <childnode refid="8229" relation="include">
         </childnode>
-        <childnode refid="7759" relation="include">
+        <childnode refid="8230" relation="include">
         </childnode>
-        <childnode refid="7743" relation="include">
+        <childnode refid="8235" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
-      <node id="7759">
+      <node id="8230">
         <label>openscenario_interpreter/expression.hpp</label>
         <link refid="expression_8hpp_source"/>
-        <childnode refid="7760" relation="include">
+        <childnode refid="8231" relation="include">
         </childnode>
       </node>
-      <node id="7741">
+      <node id="8269">
+        <label>openscenario_interpreter/iterator/circular_iterator.hpp</label>
+        <link refid="circular__iterator_8hpp_source"/>
+        <childnode refid="8270" relation="include">
+        </childnode>
+        <childnode refid="8235" relation="include">
+        </childnode>
+      </node>
+      <node id="8285">
         <label>cmath</label>
       </node>
-      <node id="7756">
+      <node id="8227">
         <label>stdexcept</label>
       </node>
-      <node id="7784">
+      <node id="8237">
+        <label>openscenario_interpreter/type_traits/has_member_function_current_state.hpp</label>
+        <link refid="has__member__function__current__state_8hpp_source"/>
+        <childnode refid="8234" relation="include">
+        </childnode>
+      </node>
+      <node id="8255">
         <label>openscenario_interpreter/syntax/integer.hpp</label>
         <link refid="integer_8hpp_source"/>
-        <childnode refid="7781" relation="include">
+        <childnode refid="8253" relation="include">
         </childnode>
-        <childnode refid="7750" relation="include">
+        <childnode refid="8222" relation="include">
         </childnode>
-        <childnode refid="7785" relation="include">
+        <childnode refid="8256" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7785">
+      <node id="8256">
         <label>std_msgs/msg/int64.hpp</label>
       </node>
-      <node id="7755">
+      <node id="8211">
+        <label>openscenario_interpreter/scope.hpp</label>
+        <link refid="scope_8hpp_source"/>
+        <childnode refid="8212" relation="include">
+        </childnode>
+        <childnode refid="8213" relation="include">
+        </childnode>
+        <childnode refid="8214" relation="include">
+        </childnode>
+        <childnode refid="8215" relation="include">
+        </childnode>
+        <childnode refid="8216" relation="include">
+        </childnode>
+        <childnode refid="8268" relation="include">
+        </childnode>
+        <childnode refid="8267" relation="include">
+        </childnode>
+        <childnode refid="8242" relation="include">
+        </childnode>
+        <childnode refid="8282" relation="include">
+        </childnode>
+      </node>
+      <node id="8224">
         <label>string</label>
       </node>
-      <node id="7780">
+      <node id="8252">
         <label>openscenario_interpreter/syntax/double.hpp</label>
         <link refid="double_8hpp_source"/>
-        <childnode refid="7781" relation="include">
+        <childnode refid="8253" relation="include">
         </childnode>
-        <childnode refid="7742" relation="include">
+        <childnode refid="8214" relation="include">
         </childnode>
-        <childnode refid="7750" relation="include">
+        <childnode refid="8222" relation="include">
         </childnode>
-        <childnode refid="7782" relation="include">
+        <childnode refid="8254" relation="include">
         </childnode>
-        <childnode refid="7783" relation="include">
-        </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7764">
+      <node id="8280">
+        <label>traffic_simulator/traffic_lights/traffic_light_state.hpp</label>
+      </node>
+      <node id="8234">
         <label>openscenario_interpreter/type_traits/void_t.hpp</label>
         <link refid="void__t_8hpp_source"/>
-        <childnode refid="7743" relation="include">
+        <childnode refid="8235" relation="include">
         </childnode>
       </node>
-      <node id="7760">
+      <node id="8231">
         <label>openscenario_interpreter/pointer.hpp</label>
         <link refid="pointer_8hpp_source"/>
-        <childnode refid="7761" relation="include">
+        <childnode refid="8215" relation="include">
         </childnode>
-        <childnode refid="7750" relation="include">
+        <childnode refid="8222" relation="include">
         </childnode>
-        <childnode refid="7762" relation="include">
+        <childnode refid="8232" relation="include">
         </childnode>
-        <childnode refid="7765" relation="include">
+        <childnode refid="8236" relation="include">
         </childnode>
-        <childnode refid="7767" relation="include">
+        <childnode refid="8238" relation="include">
         </childnode>
-        <childnode refid="7769" relation="include">
+        <childnode refid="8240" relation="include">
         </childnode>
-        <childnode refid="7771" relation="include">
+        <childnode refid="8243" relation="include">
         </childnode>
-        <childnode refid="7778" relation="include">
+        <childnode refid="8245" relation="include">
         </childnode>
-        <childnode refid="7779" relation="include">
+        <childnode refid="8251" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8225" relation="include">
+        </childnode>
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
-      <node id="7772">
+      <node id="8246">
         <label>openscenario_interpreter/console/escape_sequence.hpp</label>
         <link refid="escape__sequence_8hpp_source"/>
-        <childnode refid="7773" relation="include">
+        <childnode refid="8247" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7782">
+      <node id="8266">
         <label>regex</label>
       </node>
-      <node id="7767">
+      <node id="8243">
         <label>openscenario_interpreter/type_traits/if_has_member_function_start.hpp</label>
         <link refid="if__has__member__function__start_8hpp_source"/>
-        <childnode refid="7768" relation="include">
+        <childnode refid="8244" relation="include">
         </childnode>
       </node>
-      <node id="7786">
+      <node id="8274">
+        <label>openscenario_interpreter/type_traits/must_be_default_constructible.hpp</label>
+        <link refid="must__be__default__constructible_8hpp_source"/>
+        <childnode refid="8222" relation="include">
+        </childnode>
+        <childnode refid="8235" relation="include">
+        </childnode>
+      </node>
+      <node id="8257">
         <label>openscenario_interpreter/syntax/string.hpp</label>
         <link refid="string_8hpp_source"/>
-        <childnode refid="7757" relation="include">
-        </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7793">
+      <node id="8277">
+        <label>traffic_simulator/api/api.hpp</label>
+      </node>
+      <node id="8264">
         <label>ostream</label>
       </node>
-      <node id="7790">
+      <node id="8261">
         <label>std_msgs/msg/u_int16.hpp</label>
       </node>
-      <node id="7750">
+      <node id="8239">
+        <label>openscenario_interpreter/type_traits/has_member_function_description.hpp</label>
+        <link refid="has__member__function__description_8hpp_source"/>
+        <childnode refid="8234" relation="include">
+        </childnode>
+      </node>
+      <node id="8222">
         <label>openscenario_interpreter/error.hpp</label>
         <link refid="error_8hpp_source"/>
-        <childnode refid="7751" relation="include">
+        <childnode refid="8210" relation="include">
         </childnode>
-        <childnode refid="7756" relation="include">
+        <childnode refid="8223" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8226" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8227" relation="include">
         </childnode>
       </node>
-      <node id="7765">
+      <node id="8281">
+        <label>openscenario_interpreter/syntax/color.hpp</label>
+        <link refid="color_8hpp_source"/>
+        <childnode refid="8279" relation="include">
+        </childnode>
+        <childnode refid="8220" relation="include">
+        </childnode>
+        <childnode refid="8280" relation="include">
+        </childnode>
+      </node>
+      <node id="8240">
         <label>openscenario_interpreter/type_traits/if_has_member_function_evaluate.hpp</label>
         <link refid="if__has__member__function__evaluate_8hpp_source"/>
-        <childnode refid="7766" relation="include">
+        <childnode refid="8241" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
-      <node id="7746">
+      <node id="8219">
         <label>openscenario_interpreter/syntax/parameter_type.hpp</label>
         <link refid="parameter__type_8hpp_source"/>
-        <childnode refid="7747" relation="include">
+        <childnode refid="8220" relation="include">
         </childnode>
-        <childnode refid="7780" relation="include">
+        <childnode refid="8221" relation="include">
         </childnode>
-        <childnode refid="7784" relation="include">
+        <childnode refid="8252" relation="include">
         </childnode>
-        <childnode refid="7786" relation="include">
+        <childnode refid="8255" relation="include">
         </childnode>
-        <childnode refid="7787" relation="include">
+        <childnode refid="8257" relation="include">
         </childnode>
-        <childnode refid="7789" relation="include">
+        <childnode refid="8258" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8260" relation="include">
         </childnode>
       </node>
-      <node id="7744">
+      <node id="8217">
         <label>openscenario_interpreter/reader/attribute.hpp</label>
         <link refid="attribute_8hpp_source"/>
-        <childnode refid="7745" relation="include">
+        <childnode refid="8218" relation="include">
         </childnode>
-        <childnode refid="7739" relation="include">
+        <childnode refid="8213" relation="include">
         </childnode>
-        <childnode refid="7746" relation="include">
+        <childnode refid="8219" relation="include">
         </childnode>
-        <childnode refid="7791" relation="include">
+        <childnode refid="8262" relation="include">
         </childnode>
-        <childnode refid="7792" relation="include">
+        <childnode refid="8263" relation="include">
         </childnode>
-        <childnode refid="7782" relation="include">
+        <childnode refid="8266" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
-        <childnode refid="7795" relation="include">
+        <childnode refid="8267" relation="include">
         </childnode>
       </node>
-      <node id="7745">
+      <node id="8276">
+        <label>openscenario_interpreter/procedure.hpp</label>
+        <link refid="procedure_8hpp_source"/>
+        <childnode refid="8214" relation="include">
+        </childnode>
+        <childnode refid="8215" relation="include">
+        </childnode>
+        <childnode refid="8222" relation="include">
+        </childnode>
+        <childnode refid="8277" relation="include">
+        </childnode>
+        <childnode refid="8242" relation="include">
+        </childnode>
+      </node>
+      <node id="8218">
         <label>ament_index_cpp/get_package_share_directory.hpp</label>
       </node>
-      <node id="7779">
+      <node id="8225">
         <label>typeinfo</label>
       </node>
-      <node id="7768">
+      <node id="8244">
         <label>openscenario_interpreter/type_traits/has_member_function_start.hpp</label>
         <link refid="has__member__function__start_8hpp_source"/>
-        <childnode refid="7764" relation="include">
+        <childnode refid="8234" relation="include">
         </childnode>
       </node>
-      <node id="7783">
+      <node id="8254">
         <label>std_msgs/msg/float64.hpp</label>
       </node>
-      <node id="7763">
+      <node id="8236">
+        <label>openscenario_interpreter/type_traits/if_has_member_function_current_state.hpp</label>
+        <link refid="if__has__member__function__current__state_8hpp_source"/>
+        <childnode refid="8222" relation="include">
+        </childnode>
+        <childnode refid="8237" relation="include">
+        </childnode>
+      </node>
+      <node id="8233">
         <label>openscenario_interpreter/type_traits/has_member_function_accomplished.hpp</label>
         <link refid="has__member__function__accomplished_8hpp_source"/>
-        <childnode refid="7764" relation="include">
+        <childnode refid="8234" relation="include">
         </childnode>
       </node>
-      <node id="7787">
+      <node id="8258">
         <label>openscenario_interpreter/syntax/unsigned_integer.hpp</label>
         <link refid="unsigned__integer_8hpp_source"/>
-        <childnode refid="7781" relation="include">
+        <childnode refid="8253" relation="include">
         </childnode>
-        <childnode refid="7788" relation="include">
+        <childnode refid="8222" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8259" relation="include">
+        </childnode>
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7774">
+      <node id="8248">
         <label>unistd.h</label>
       </node>
-      <node id="7769">
-        <label>openscenario_interpreter/type_traits/if_has_member_function_state.hpp</label>
-        <link refid="if__has__member__function__state_8hpp_source"/>
-        <childnode refid="7770" relation="include">
-        </childnode>
-        <childnode refid="7754" relation="include">
-        </childnode>
+      <node id="8282">
+        <label>vector</label>
       </node>
-      <node id="7747">
+      <node id="8221">
         <label>openscenario_interpreter/syntax/boolean.hpp</label>
         <link refid="boolean_8hpp_source"/>
-        <childnode refid="7748" relation="include">
+        <childnode refid="8210" relation="include">
         </childnode>
-        <childnode refid="7749" relation="include">
+        <childnode refid="8220" relation="include">
         </childnode>
-        <childnode refid="7750" relation="include">
+        <childnode refid="8222" relation="include">
         </childnode>
-        <childnode refid="7757" relation="include">
+        <childnode refid="8228" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7740">
+      <node id="8212">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="8284">
         <label>openscenario_interpreter/functional/equal_to.hpp</label>
         <link refid="equal__to_8hpp_source"/>
-        <childnode refid="7741" relation="include">
+        <childnode refid="8285" relation="include">
         </childnode>
-        <childnode refid="7739" relation="include">
+        <childnode refid="8213" relation="include">
         </childnode>
-        <childnode refid="7742" relation="include">
+        <childnode refid="8214" relation="include">
         </childnode>
-        <childnode refid="7743" relation="include">
+        <childnode refid="8235" relation="include">
         </childnode>
       </node>
-      <node id="7748">
-        <label>boost/io/ios_state.hpp</label>
-      </node>
-      <node id="7792">
+      <node id="8263">
         <label>openscenario_interpreter/utility/pugi_extension.hpp</label>
         <link refid="pugi__extension_8hpp_source"/>
-        <childnode refid="7793" relation="include">
+        <childnode refid="8264" relation="include">
         </childnode>
-        <childnode refid="7794" relation="include">
+        <childnode refid="8265" relation="include">
         </childnode>
       </node>
-      <node id="7753">
+      <node id="8242">
         <label>utility</label>
       </node>
-      <node id="7754">
-        <label>sstream</label>
-      </node>
-      <node id="7791">
+      <node id="8262">
         <label>openscenario_interpreter/utility/highlighter.hpp</label>
         <link refid="highlighter_8hpp_source"/>
-        <childnode refid="7775" relation="include">
+        <childnode refid="8220" relation="include">
         </childnode>
-        <childnode refid="7776" relation="include">
+        <childnode refid="8249" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
-      <node id="7766">
+      <node id="8273">
+        <label>openscenario_interpreter/iterator/size.hpp</label>
+        <link refid="size_8hpp_source"/>
+        <childnode refid="8270" relation="include">
+        </childnode>
+      </node>
+      <node id="8241">
         <label>openscenario_interpreter/type_traits/has_member_function_evaluate.hpp</label>
         <link refid="has__member__function__evaluate_8hpp_source"/>
-        <childnode refid="7764" relation="include">
+        <childnode refid="8234" relation="include">
         </childnode>
       </node>
-      <node id="7752">
-        <label>openscenario_interpreter/functional/fold.hpp</label>
-        <link refid="fold_8hpp_source"/>
-        <childnode refid="7739" relation="include">
+      <node id="8268">
+        <label>openscenario_interpreter/syntax/traffic_signal_controller.hpp</label>
+        <link refid="traffic__signal__controller_8hpp_source"/>
+        <childnode refid="8269" relation="include">
         </childnode>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8252" relation="include">
+        </childnode>
+        <childnode refid="8271" relation="include">
+        </childnode>
+        <childnode refid="8257" relation="include">
         </childnode>
       </node>
-      <node id="7775">
+      <node id="8271">
+        <label>openscenario_interpreter/syntax/phase.hpp</label>
+        <link refid="phase_8hpp_source"/>
+        <childnode refid="8272" relation="include">
+        </childnode>
+        <childnode refid="8252" relation="include">
+        </childnode>
+        <childnode refid="8257" relation="include">
+        </childnode>
+        <childnode refid="8275" relation="include">
+        </childnode>
+      </node>
+      <node id="8220">
         <label>iostream</label>
       </node>
-      <node id="7788">
+      <node id="8259">
         <label>std_msgs/msg/u_int64.hpp</label>
       </node>
-      <node id="7795">
+      <node id="8267">
         <label>unordered_map</label>
       </node>
-      <node id="7770">
-        <label>openscenario_interpreter/type_traits/has_member_function_state.hpp</label>
-        <link refid="has__member__function__state_8hpp_source"/>
-        <childnode refid="7764" relation="include">
+      <node id="8279">
+        <label>boost/optional.hpp</label>
+      </node>
+      <node id="8272">
+        <label>openscenario_interpreter/reader/element.hpp</label>
+        <link refid="element_8hpp_source"/>
+        <childnode refid="8213" relation="include">
+        </childnode>
+        <childnode refid="8270" relation="include">
+        </childnode>
+        <childnode refid="8214" relation="include">
+        </childnode>
+        <childnode refid="8273" relation="include">
+        </childnode>
+        <childnode refid="8228" relation="include">
+        </childnode>
+        <childnode refid="8274" relation="include">
+        </childnode>
+        <childnode refid="8263" relation="include">
+        </childnode>
+        <childnode refid="8224" relation="include">
+        </childnode>
+        <childnode refid="8267" relation="include">
+        </childnode>
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
-      <node id="7762">
+      <node id="8232">
         <label>openscenario_interpreter/type_traits/if_has_member_function_accomplished.hpp</label>
         <link refid="if__has__member__function__accomplished_8hpp_source"/>
-        <childnode refid="7763" relation="include">
+        <childnode refid="8233" relation="include">
         </childnode>
       </node>
-      <node id="7771">
+      <node id="8245">
         <label>openscenario_interpreter/type_traits/if_has_stream_output_operator.hpp</label>
         <link refid="if__has__stream__output__operator_8hpp_source"/>
-        <childnode refid="7772" relation="include">
+        <childnode refid="8246" relation="include">
         </childnode>
-        <childnode refid="7776" relation="include">
+        <childnode refid="8249" relation="include">
         </childnode>
-        <childnode refid="7777" relation="include">
+        <childnode refid="8223" relation="include">
+        </childnode>
+        <childnode refid="8250" relation="include">
         </childnode>
       </node>
-      <node id="7743">
+      <node id="8235">
         <label>type_traits</label>
       </node>
-      <node id="7773">
+      <node id="8247">
         <label>openscenario_interpreter/console/is_console.hpp</label>
         <link refid="is__console_8hpp_source"/>
-        <childnode refid="7774" relation="include">
+        <childnode refid="8248" relation="include">
         </childnode>
-        <childnode refid="7775" relation="include">
+        <childnode refid="8220" relation="include">
         </childnode>
       </node>
-      <node id="7789">
+      <node id="8260">
         <label>openscenario_interpreter/syntax/unsigned_short.hpp</label>
         <link refid="unsigned__short_8hpp_source"/>
-        <childnode refid="7781" relation="include">
+        <childnode refid="8253" relation="include">
         </childnode>
-        <childnode refid="7790" relation="include">
+        <childnode refid="8220" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8222" relation="include">
+        </childnode>
+        <childnode refid="8261" relation="include">
+        </childnode>
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7777">
+      <node id="8250">
         <label>openscenario_interpreter/utility/indent.hpp</label>
         <link refid="indent_8hpp_source"/>
-        <childnode refid="7775" relation="include">
+        <childnode refid="8220" relation="include">
         </childnode>
-        <childnode refid="7755" relation="include">
+        <childnode refid="8224" relation="include">
         </childnode>
       </node>
-      <node id="7761">
+      <node id="8215">
         <label>memory</label>
       </node>
-      <node id="7796">
+      <node id="8286">
         <label>typeindex</label>
       </node>
-      <node id="7778">
+      <node id="8251">
         <label>openscenario_interpreter/utility/pair.hpp</label>
         <link refid="pair_8hpp_source"/>
-        <childnode refid="7753" relation="include">
+        <childnode refid="8242" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="7804">
+      <node id="8294">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver_group.hpp</label>
         <link refid="maneuver__group_8hpp_source"/>
-        <childnode refid="7805" relation="include">
+        <childnode refid="8295" relation="include">
         </childnode>
       </node>
-      <node id="7797">
+      <node id="8287">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/parameter_condition.hpp</label>
         <link refid="parameter__condition_8hpp"/>
-        <childnode refid="7798" relation="include">
+        <childnode refid="8288" relation="include">
         </childnode>
       </node>
-      <node id="7798">
+      <node id="8288">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/by_value_condition.hpp</label>
         <link refid="by__value__condition_8hpp_source"/>
-        <childnode refid="7799" relation="include">
+        <childnode refid="8289" relation="include">
         </childnode>
       </node>
-      <node id="7800">
+      <node id="8290">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/condition_group.hpp</label>
         <link refid="condition__group_8hpp_source"/>
-        <childnode refid="7801" relation="include">
+        <childnode refid="8291" relation="include">
         </childnode>
       </node>
-      <node id="7799">
+      <node id="8289">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/condition.hpp</label>
         <link refid="condition_8hpp_source"/>
-        <childnode refid="7800" relation="include">
+        <childnode refid="8290" relation="include">
         </childnode>
       </node>
-      <node id="7807">
+      <node id="8297">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/storyboard.hpp</label>
         <link refid="storyboard_8hpp_source"/>
-        <childnode refid="7808" relation="include">
+        <childnode refid="8298" relation="include">
         </childnode>
       </node>
-      <node id="7809">
+      <node id="8301">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/openscenario_interpreter.hpp</label>
         <link refid="openscenario__interpreter_8hpp_source"/>
       </node>
-      <node id="7802">
+      <node id="8292">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/event.hpp</label>
         <link refid="event_8hpp_source"/>
-        <childnode refid="7803" relation="include">
+        <childnode refid="8293" relation="include">
         </childnode>
       </node>
-      <node id="7805">
+      <node id="8295">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/act.hpp</label>
         <link refid="act_8hpp_source"/>
-        <childnode refid="7806" relation="include">
+        <childnode refid="8296" relation="include">
         </childnode>
       </node>
-      <node id="7808">
+      <node id="8300">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/openscenario.hpp</label>
         <link refid="openscenario_8hpp_source"/>
-        <childnode refid="7809" relation="include">
+        <childnode refid="8301" relation="include">
         </childnode>
       </node>
-      <node id="7806">
+      <node id="8299">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/open_scenario_category.hpp</label>
+        <link refid="open__scenario__category_8hpp_source"/>
+        <childnode refid="8300" relation="include">
+        </childnode>
+      </node>
+      <node id="8296">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/story.hpp</label>
         <link refid="story_8hpp_source"/>
-        <childnode refid="7807" relation="include">
+        <childnode refid="8297" relation="include">
         </childnode>
       </node>
-      <node id="7803">
+      <node id="8293">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp</label>
         <link refid="maneuver_8hpp_source"/>
-        <childnode refid="7804" relation="include">
+        <childnode refid="8294" relation="include">
         </childnode>
       </node>
-      <node id="7801">
+      <node id="8298">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/scenario_definition.hpp</label>
+        <link refid="scenario__definition_8hpp_source"/>
+        <childnode refid="8299" relation="include">
+        </childnode>
+      </node>
+      <node id="8291">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/trigger.hpp</label>
         <link refid="trigger_8hpp_source"/>
-        <childnode refid="7802" relation="include">
+        <childnode refid="8292" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -539,102 +726,91 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_CONDITION_HPP_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_CONDITION_HPP_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;openscenario_interpreter/syntax/rule.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeindex&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenscenario__interpreter" kindref="compound">openscenario_interpreter</ref></highlight></codeline>
-<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">syntax</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;openscenario_interpreter/scope.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;openscenario_interpreter/syntax/rule.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeindex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenscenario__interpreter" kindref="compound">openscenario_interpreter</ref></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>----<sp/>ParameterCondition<sp/>-----------------------------------------------------</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>&lt;xsd:complexType<sp/>name=&quot;ParameterCondition&quot;&gt;</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&lt;xsd:attribute<sp/>name=&quot;parameterRef&quot;<sp/>type=&quot;String&quot;<sp/>use=&quot;required&quot;/&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&lt;xsd:attribute<sp/>name=&quot;value&quot;<sp/>type=&quot;String&quot;<sp/>use=&quot;required&quot;/&gt;</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/>&lt;xsd:attribute<sp/>name=&quot;rule&quot;<sp/>type=&quot;Rule&quot;<sp/>use=&quot;required&quot;/&gt;</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>&lt;/xsd:complexType&gt;</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>--------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="structopenscenario__interpreter_1_1syntax_1_1ParameterCondition" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenscenario__interpreter_1_1syntax_1_1ParameterCondition" kindref="compound">ParameterCondition</ref></highlight></codeline>
-<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>parameter_ref;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>value;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">syntax</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>----<sp/>ParameterCondition<sp/>-----------------------------------------------------</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/>&lt;xsd:complexType<sp/>name=&quot;ParameterCondition&quot;&gt;</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>&lt;xsd:attribute<sp/>name=&quot;parameterRef&quot;<sp/>type=&quot;String&quot;<sp/>use=&quot;required&quot;/&gt;</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>&lt;xsd:attribute<sp/>name=&quot;value&quot;<sp/>type=&quot;String&quot;<sp/>use=&quot;required&quot;/&gt;</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/>&lt;xsd:attribute<sp/>name=&quot;rule&quot;<sp/>type=&quot;Rule&quot;<sp/>use=&quot;required&quot;/&gt;</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/>&lt;/xsd:complexType&gt;</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>--------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structopenscenario__interpreter_1_1syntax_1_1ParameterCondition" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenscenario__interpreter_1_1syntax_1_1ParameterCondition" kindref="compound">ParameterCondition</ref><sp/>:<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>parameter_ref;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1Rule" kindref="compound">Rule</ref><sp/>compare;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>value;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref><sp/>inner_scope;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1Rule" kindref="compound">Rule</ref><sp/>compare;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Node&gt;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1ParameterCondition" kindref="compound">ParameterCondition</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Node<sp/>&amp;<sp/>node,<sp/><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref><sp/>&amp;<sp/>outer_scope)</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/>:<sp/>parameter_ref(readAttribute&lt;String&gt;(</highlight><highlight class="stringliteral">&quot;parameterRef&quot;</highlight><highlight class="normal">,<sp/>node,<sp/>outer_scope)),</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>value(readAttribute&lt;String&gt;(</highlight><highlight class="stringliteral">&quot;value&quot;</highlight><highlight class="normal">,<sp/>node,<sp/>outer_scope)),</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>compare(readAttribute&lt;Rule&gt;(</highlight><highlight class="stringliteral">&quot;rule&quot;</highlight><highlight class="normal">,<sp/>node,<sp/>outer_scope)),</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>inner_scope(outer_scope)</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>evaluate()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="57"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::type_index,<sp/>std::function&lt;bool(const<sp/>Rule,<sp/>const<sp/>Element<sp/>&amp;,<sp/>const<sp/>String<sp/>&amp;)&gt;<sp/>&gt;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>overloads{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1Integer" kindref="compound">Integer</ref>),</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;Integer&gt;(),<sp/>boost::lexical_cast&lt;Integer&gt;(rhs));</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}},</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1ParameterCondition" kindref="compound">ParameterCondition</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Node<sp/>&amp;<sp/>node,<sp/><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref><sp/>&amp;<sp/>current_scope)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>off</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>:<sp/><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref>(current_scope),</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>parameter_ref(readAttribute&lt;String&gt;(</highlight><highlight class="stringliteral">&quot;parameterRef&quot;</highlight><highlight class="normal">,<sp/>node,<sp/>localScope())),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>value<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(readAttribute&lt;String&gt;(</highlight><highlight class="stringliteral">&quot;value&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node,<sp/>localScope())),</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>compare<sp/><sp/><sp/><sp/><sp/><sp/>(readAttribute&lt;Rule&gt;<sp/><sp/>(</highlight><highlight class="stringliteral">&quot;rule&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node,<sp/>localScope()))</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>description()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="59"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>description;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>description<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>value<sp/>of<sp/>parameter<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::quoted(parameter_ref)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>=<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>localScope().parameters.at(parameter_ref)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>compare<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>value</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;?&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1Double" kindref="compound">Double</ref>),</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;Double&gt;(),<sp/>boost::lexical_cast&lt;Double&gt;(rhs));</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}},</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(String),</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;String&gt;(),<sp/>rhs);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}},</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1UnsignedInteger" kindref="compound">UnsignedInteger</ref>),</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lhs.template<sp/>as&lt;UnsignedInteger&gt;(),<sp/>boost::lexical_cast&lt;UnsignedInteger&gt;(rhs));</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}},</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1UnsignedShort" kindref="compound">UnsignedShort</ref>),</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lhs.template<sp/>as&lt;UnsignedShort&gt;(),<sp/>boost::lexical_cast&lt;UnsignedShort&gt;(rhs));</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}},</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1Boolean" kindref="compound">Boolean</ref>),</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;Boolean&gt;(),<sp/>boost::lexical_cast&lt;Boolean&gt;(rhs));</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}},</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>target{inner_scope.parameters.find(parameter_ref)};</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(target<sp/>!=<sp/>std::end(inner_scope.parameters))<sp/>{</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>iter{overloads.find(std::get&lt;1&gt;(*target).type())};</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(iter<sp/>!=<sp/>std::end(overloads))<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::get&lt;1&gt;(*iter)(compare,<sp/>std::get&lt;1&gt;(*target),<sp/>value)<sp/>?<sp/>true_v<sp/>:<sp/>false_v;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1SemanticError" kindref="compound">SemanticError</ref>(</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;No<sp/>viable<sp/>operation<sp/>&apos;&quot;</highlight><highlight class="normal">,<sp/>compare,<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>with<sp/>parameter<sp/>&apos;&quot;</highlight><highlight class="normal">,<sp/>parameter_ref,<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>and<sp/>value<sp/>&apos;&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value,<sp/></highlight><highlight class="stringliteral">&quot;&apos;&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1SemanticError" kindref="compound">SemanticError</ref>(</highlight><highlight class="stringliteral">&quot;No<sp/>such<sp/>parameter<sp/>&apos;&quot;</highlight><highlight class="normal">,<sp/>parameter_ref,<sp/></highlight><highlight class="stringliteral">&quot;&apos;&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="110"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>syntax</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_interpreter</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_CONDITION_HPP_</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>description.str();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>evaluate()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="70"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::type_index,<sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;bool(const<sp/>Rule,<sp/>const<sp/>Element<sp/>&amp;,<sp/>const<sp/>String<sp/>&amp;)&gt;&gt;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>overloads{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>off</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1Boolean" kindref="compound">Boolean</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>),<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;Boolean<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&gt;(),<sp/>boost::lexical_cast&lt;Boolean<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&gt;(rhs));<sp/>}<sp/>},</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1Double" kindref="compound">Double</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>),<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;Double<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&gt;(),<sp/>boost::lexical_cast&lt;Double<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&gt;(rhs));<sp/>}<sp/>},</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1Integer" kindref="compound">Integer</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>),<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;Integer<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&gt;(),<sp/>boost::lexical_cast&lt;Integer<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&gt;(rhs));<sp/>}<sp/>},</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(String<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>),<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;String<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&gt;(),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rhs<sp/>);<sp/>}<sp/>},</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1UnsignedInteger" kindref="compound">UnsignedInteger</ref>),<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;UnsignedInteger&gt;(),<sp/>boost::lexical_cast&lt;UnsignedInteger&gt;(rhs));<sp/>}<sp/>},</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="structopenscenario__interpreter_1_1syntax_1_1UnsignedShort" kindref="compound">UnsignedShort</ref><sp/><sp/>),<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>compare,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>lhs,<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>rhs)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compare(lhs.template<sp/>as&lt;UnsignedShort<sp/><sp/>&gt;(),<sp/>boost::lexical_cast&lt;UnsignedShort<sp/><sp/>&gt;(rhs));<sp/>}<sp/>},</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<sp/>parameter<sp/>=<sp/>localScope().parameters.at(parameter_ref);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>asBoolean(overloads.at(parameter.type())(compare,<sp/>parameter,<sp/>value));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::out_of_range<sp/>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>SemanticError(</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;No<sp/>viable<sp/>operation<sp/>&quot;</highlight><highlight class="normal">,<sp/>std::quoted(boost::lexical_cast&lt;String&gt;(compare)),</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>with<sp/>parameter<sp/>&quot;</highlight><highlight class="normal">,<sp/>std::quoted(parameter_ref),<sp/></highlight><highlight class="stringliteral">&quot;<sp/>and<sp/>value<sp/>&quot;</highlight><highlight class="normal">,<sp/>std::quoted(value));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::out_of_range<sp/>&amp;)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>SemanticError(</highlight><highlight class="stringliteral">&quot;No<sp/>such<sp/>parameter<sp/>&quot;</highlight><highlight class="normal">,<sp/>std::quoted(parameter_ref));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>syntax</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_interpreter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_CONDITION_HPP_</highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/parameter_condition.hpp"/>
   </compounddef>

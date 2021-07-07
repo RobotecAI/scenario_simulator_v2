@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1Maneuver" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::Maneuver</compoundname>
+    <basecompoundref refid="structopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
     <basecompoundref refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement" prot="public" virt="non-virtual">openscenario_interpreter::syntax::StoryboardElement&lt; Maneuver &gt;</basecompoundref>
     <basecompoundref prot="public" virt="non-virtual">Elements</basecompoundref>
       <sectiondef kind="public-attrib">
@@ -16,20 +17,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="39" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a0d9bb115fbad7ab458669dd1c352fc6d" prot="public" static="no" mutable="no">
-        <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
-        <definition>Scope openscenario_interpreter::syntax::Maneuver::inner_scope</definition>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a815cace1b9c19aac94ce8c55b258c664" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations" kindref="compound">ParameterDeclarations</ref></type>
+        <definition>const ParameterDeclarations openscenario_interpreter::syntax::Maneuver::parameter_declarations</definition>
         <argsstring></argsstring>
-        <name>inner_scope</name>
+        <name>parameter_declarations</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="41" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="42" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -60,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="44" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="44" bodyend="54"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="45" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a9b79157cbb1a3082ea9ba0c22e5e31a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -135,50 +136,67 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="406">
-        <label>openscenario_interpreter::syntax::Maneuver</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver"/>
-        <childnode refid="407" relation="public-inheritance">
-        </childnode>
-        <childnode refid="408" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="408">
-        <label>Elements</label>
-      </node>
-      <node id="407">
-        <label>openscenario_interpreter::syntax::StoryboardElement&lt; Maneuver &gt;</label>
-        <link refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="412">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
-      </node>
       <node id="409">
         <label>openscenario_interpreter::syntax::Maneuver</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver"/>
-        <childnode refid="410" relation="public-inheritance">
+        <childnode refid="410" relation="private-inheritance">
         </childnode>
-        <childnode refid="413" relation="public-inheritance">
+        <childnode refid="411" relation="public-inheritance">
         </childnode>
-        <childnode refid="414" relation="usage">
-          <edgelabel>inner_scope</edgelabel>
-        </childnode>
-      </node>
-      <node id="413">
-        <label>Elements</label>
-      </node>
-      <node id="411">
-        <label>openscenario_interpreter::Pointer&lt; Expression &gt;</label>
-        <link refid="classopenscenario__interpreter_1_1Pointer"/>
         <childnode refid="412" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="410">
+      <node id="412">
+        <label>Elements</label>
+      </node>
+      <node id="411">
         <label>openscenario_interpreter::syntax::StoryboardElement&lt; Maneuver &gt;</label>
         <link refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement"/>
-        <childnode refid="411" relation="usage">
+      </node>
+      <node id="410">
+        <label>openscenario_interpreter::Scope</label>
+        <link refid="structopenscenario__interpreter_1_1Scope"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="417">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="413">
+        <label>openscenario_interpreter::syntax::Maneuver</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver"/>
+        <childnode refid="414" relation="private-inheritance">
+        </childnode>
+        <childnode refid="415" relation="public-inheritance">
+        </childnode>
+        <childnode refid="418" relation="public-inheritance">
+        </childnode>
+        <childnode refid="419" relation="usage">
+          <edgelabel>parameter_declarations</edgelabel>
+        </childnode>
+      </node>
+      <node id="419">
+        <label>openscenario_interpreter::syntax::ParameterDeclarations</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations"/>
+        <childnode refid="420" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="420">
+        <label>std::vector&lt; ParameterDeclaration &gt;</label>
+      </node>
+      <node id="418">
+        <label>Elements</label>
+      </node>
+      <node id="416">
+        <label>openscenario_interpreter::Pointer&lt; Expression &gt;</label>
+        <link refid="classopenscenario__interpreter_1_1Pointer"/>
+        <childnode refid="417" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="415">
+        <label>openscenario_interpreter::syntax::StoryboardElement&lt; Maneuver &gt;</label>
+        <link refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement"/>
+        <childnode refid="416" relation="usage">
           <edgelabel>current_state</edgelabel>
         </childnode>
       </node>
@@ -187,9 +205,12 @@
         <link refid="structopenscenario__interpreter_1_1Scope"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="37" bodyend="90"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/maneuver.hpp" bodystart="38" bodyend="90"/>
     <listofallmembers>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a9b79157cbb1a3082ea9ba0c22e5e31a9" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>accomplished</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a71adbadb72f848f4dd4d08ea00bb351e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>Actor</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a7e23ddea0b69991cc161f7a2c4b05304" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8f47946a2ec4238dffdb1fa25137ac43" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>Actors</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a3d6376cdd71d856ebe66fe010e33b1d9" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>BOILERPLATE</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a8fd935130dd8bf3ab092b306e5539892" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>BOILERPLATE</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1aad74e154570fa18f301f248834a4fea6" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>BOILERPLATE</name></member>
@@ -202,21 +223,34 @@
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1acf1f12befabf2370168c0d81930d0bc1" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>changeStateIf</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1aac977dac659f036d2ef5738ab663194d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>current_execution_count</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a97c3157e1903d4c666786446c85f600e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>current_state</name></member>
+      <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a5c58cb6613e2c78d4c0f0e6789fc24fd" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>currentState</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a0682dea0459bee5fbc795e2fc9baebb2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>entities</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1aa12168a962ee2670628bcb2a2c053a9b" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>evaluate</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a0d9bb115fbad7ab458669dd1c352fc6d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>inner_scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>logic_file</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a3b97f6c99cbb8bf9d9997bb834684ec7" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>Maneuver</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1ae2c6c00f125749d26c125696896dcdc8" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>maximum_execution_count</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a60da96ab1a8bf3d4c2d455c54815c860" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>name</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a47fca6e7d7a020124f344edb848a361c" prot="protected" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>names</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a25c9cefa5515185a7f250bf04b136821" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>override</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a815cace1b9c19aac94ce8c55b258c664" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>parameter_declarations</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a9e9eb5015e45940c1215cbb5f7d87fc5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>parameters</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>pathname</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a6b8c10dd416b76048512c4dad993a7b5" prot="protected" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>readStoryboardElement</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a0d29127aa6827108dff7ea85c2bf013b" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>ready</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a25bb156fc90a357c41b0811c9ff951af" prot="protected" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>rename</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a45dd70c6eeeac06ef12582bef67d04b8" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>run</name></member>
-      <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1ae1d4c67ff7f6f262f7fb2c0c5ced2dc0" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>state</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>scene_graph_file</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a4dc48c7507093c3c205a179c1ab80f16" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>Scope</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a8b356ac1229812dcfa70e6910a11df23" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>stop</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1aaac0c8e9ddd9fe90e2c19fe3ef1f0074" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>stopTriggered</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8a6de30a3b47eb5c3d9117456fdf15e0" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>storyboard_elements</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a83bd148967e638f8b8739c5e469b6ead" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>StoryboardElement</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1abd3ff1e82f05e59c7f453316ceb6a1a7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>traffic_signal_controllers</name></member>
       <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1ab0e671a56fd9826aa3edf6b1498447f6" prot="protected" virt="non-virtual"><scope>openscenario_interpreter::syntax::Maneuver</scope><name>unique</name></member>
     </listofallmembers>
   </compounddef>

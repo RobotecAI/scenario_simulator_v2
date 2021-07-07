@@ -2,21 +2,56 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="if__not__nothrow__default__constructible_8hpp" kind="file" language="C++">
     <compoundname>if_not_nothrow_default_constructible.hpp</compoundname>
+    <includes refid="error_8hpp" local="no">openscenario_interpreter/error.hpp</includes>
     <includes local="no">string</includes>
     <includes local="no">type_traits</includes>
     <incdepgraph>
-      <node id="14075">
+      <node id="15404">
+        <label>scenario_simulator_exception/exception.hpp</label>
+      </node>
+      <node id="15400">
+        <label>iomanip</label>
+      </node>
+      <node id="15401">
+        <label>openscenario_interpreter/utility/demangle.hpp</label>
+        <link refid="demangle_8hpp_source"/>
+        <childnode refid="15402" relation="include">
+        </childnode>
+        <childnode refid="15403" relation="include">
+        </childnode>
+      </node>
+      <node id="15405">
+        <label>stdexcept</label>
+      </node>
+      <node id="15402">
         <label>string</label>
       </node>
-      <node id="14074">
-        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/type_traits/if_not_nothrow_default_constructible.hpp</label>
-        <link refid="if__not__nothrow__default__constructible_8hpp"/>
-        <childnode refid="14075" relation="include">
+      <node id="15399">
+        <label>openscenario_interpreter/error.hpp</label>
+        <link refid="error_8hpp_source"/>
+        <childnode refid="15400" relation="include">
         </childnode>
-        <childnode refid="14076" relation="include">
+        <childnode refid="15401" relation="include">
+        </childnode>
+        <childnode refid="15404" relation="include">
+        </childnode>
+        <childnode refid="15405" relation="include">
         </childnode>
       </node>
-      <node id="14076">
+      <node id="15403">
+        <label>typeinfo</label>
+      </node>
+      <node id="15398">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/type_traits/if_not_nothrow_default_constructible.hpp</label>
+        <link refid="if__not__nothrow__default__constructible_8hpp"/>
+        <childnode refid="15399" relation="include">
+        </childnode>
+        <childnode refid="15402" relation="include">
+        </childnode>
+        <childnode refid="15406" relation="include">
+        </childnode>
+      </node>
+      <node id="15406">
         <label>type_traits</label>
       </node>
     </incdepgraph>
@@ -46,22 +81,22 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>OPENSCENARIO_INTERPRETER__TYPE_TRAITS__IF_NOT_NOTHROW_DEFAULT_CONSTRUCTIBLE_HPP_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OPENSCENARIO_INTERPRETER__TYPE_TRAITS__IF_NOT_NOTHROW_DEFAULT_CONSTRUCTIBLE_HPP_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenscenario__interpreter" kindref="compound">openscenario_interpreter</ref></highlight></codeline>
-<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">type_traits</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">&gt;</highlight></codeline>
-<codeline lineno="26" refid="structopenscenario__interpreter_1_1type__traits_1_1IfNotNothrowDefaultConstructible" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenscenario__interpreter_1_1type__traits_1_1IfNotNothrowDefaultConstructible" kindref="compound">IfNotNothrowDefaultConstructible</ref></highlight></codeline>
-<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>T<sp/>error(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>parent_name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>child_name)</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ss{};</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>ss<sp/>&lt;&lt;<sp/>parent_name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>requires<sp/>class<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>child_name</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>as<sp/>element,<sp/>but<sp/>there<sp/>is<sp/>no<sp/>specification&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1SyntaxError" kindref="compound">SyntaxError</ref>{ss.str()};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;openscenario_interpreter/error.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceopenscenario__interpreter" kindref="compound">openscenario_interpreter</ref></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">type_traits</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="27" refid="structopenscenario__interpreter_1_1type__traits_1_1IfNotNothrowDefaultConstructible" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenscenario__interpreter_1_1type__traits_1_1IfNotNothrowDefaultConstructible" kindref="compound">IfNotNothrowDefaultConstructible</ref></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>T<sp/>error(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>parent_name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>child_name)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>SyntaxError(</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Class<sp/>&quot;</highlight><highlight class="normal">,<sp/>parent_name,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>requires<sp/>class<sp/>&quot;</highlight><highlight class="normal">,<sp/>child_name,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>as<sp/>element,<sp/>but<sp/>there<sp/>is<sp/>no<sp/>declaration&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="35"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
@@ -72,7 +107,7 @@
 <codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Ts&gt;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>T<sp/>error(Ts<sp/>&amp;&amp;...)</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>T{};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>T();</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="46"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="47"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>type_traits</highlight><highlight class="normal"></highlight></codeline>

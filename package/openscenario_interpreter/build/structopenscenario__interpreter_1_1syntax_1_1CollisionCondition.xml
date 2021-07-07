@@ -3,11 +3,11 @@
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::CollisionCondition</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1aa135da3e1319f8e05070621cefbe1f4c" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a0f45e08f4e4d9e3e9ca5b41c8ca1761d" prot="public" static="no" mutable="no">
         <type>const <ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Element</ref></type>
-        <definition>const Element openscenario_interpreter::syntax::CollisionCondition::given</definition>
+        <definition>const Element openscenario_interpreter::syntax::CollisionCondition::another_given_entity</definition>
         <argsstring></argsstring>
-        <name>given</name>
+        <name>another_given_entity</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -16,11 +16,11 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="42" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a9a8b35e7b5e28b4ece72dc71e06886b5" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a9d297736bbd660b06110b6afa0c79eea" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities" kindref="compound">TriggeringEntities</ref></type>
-        <definition>const TriggeringEntities openscenario_interpreter::syntax::CollisionCondition::for_each</definition>
+        <definition>const TriggeringEntities openscenario_interpreter::syntax::CollisionCondition::triggering_entities</definition>
         <argsstring></argsstring>
-        <name>for_each</name>
+        <name>triggering_entities</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -62,7 +62,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="47" bodyend="54"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="47" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a975552968a079b37757b18302a02fe26" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::CollisionCondition::description</definition>
+        <argsstring>() const</argsstring>
+        <name>description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="59" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="59" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a1f6dc12b537306f7e95c2dc8ec256697" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -75,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="56" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="56" bodyend="65"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="72" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="72" bodyend="81"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -83,48 +96,44 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="130">
+      <node id="139">
         <label>std::shared_ptr&lt; T &gt;</label>
       </node>
-      <node id="128">
+      <node id="137">
         <label>openscenario_interpreter::syntax::TriggeringEntitiesRule</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntitiesRule"/>
       </node>
-      <node id="129">
+      <node id="138">
         <label>openscenario_interpreter::Pointer&lt; T &gt;</label>
         <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="130" relation="public-inheritance">
+        <childnode refid="139" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="127">
-        <label>std::list&lt; EntityRef &gt;</label>
-      </node>
-      <node id="125">
+      <node id="135">
         <label>openscenario_interpreter::syntax::CollisionCondition</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition"/>
-        <childnode refid="126" relation="usage">
-          <edgelabel>for_each</edgelabel>
+        <childnode refid="136" relation="usage">
+          <edgelabel>triggering_entities</edgelabel>
         </childnode>
-        <childnode refid="129" relation="usage">
-          <edgelabel>given</edgelabel>
+        <childnode refid="138" relation="usage">
+          <edgelabel>another_given_entity</edgelabel>
         </childnode>
       </node>
-      <node id="126">
+      <node id="136">
         <label>openscenario_interpreter::syntax::TriggeringEntities</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities"/>
-        <childnode refid="127" relation="public-inheritance">
-        </childnode>
-        <childnode refid="128" relation="usage">
-          <edgelabel>quantify</edgelabel>
+        <childnode refid="137" relation="usage">
+          <edgelabel>triggering_entities_rule</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="40" bodyend="66"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/collision_condition.hpp" bodystart="40" bodyend="82"/>
     <listofallmembers>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a0f45e08f4e4d9e3e9ca5b41c8ca1761d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::CollisionCondition</scope><name>another_given_entity</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a68d266dc4056d8fd9f90e0823e923a41" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::CollisionCondition</scope><name>CollisionCondition</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a975552968a079b37757b18302a02fe26" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::CollisionCondition</scope><name>description</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a1f6dc12b537306f7e95c2dc8ec256697" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::CollisionCondition</scope><name>evaluate</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a9a8b35e7b5e28b4ece72dc71e06886b5" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::CollisionCondition</scope><name>for_each</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1aa135da3e1319f8e05070621cefbe1f4c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::CollisionCondition</scope><name>given</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1CollisionCondition_1a9d297736bbd660b06110b6afa0c79eea" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::CollisionCondition</scope><name>triggering_entities</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

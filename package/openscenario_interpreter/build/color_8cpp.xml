@@ -6,79 +6,72 @@
     <includes refid="color_8hpp" local="no">openscenario_interpreter/syntax/color.hpp</includes>
     <includes local="no">unordered_map</includes>
     <incdepgraph>
-      <node id="15577">
-        <label>functional</label>
+      <node id="17568">
+        <label>scenario_simulator_exception/exception.hpp</label>
       </node>
-      <node id="15575">
-        <label>openscenario_interpreter/string/cat.hpp</label>
-        <link refid="cat_8hpp_source"/>
-        <childnode refid="15576" relation="include">
+      <node id="17564">
+        <label>iomanip</label>
+      </node>
+      <node id="17565">
+        <label>openscenario_interpreter/utility/demangle.hpp</label>
+        <link refid="demangle_8hpp_source"/>
+        <childnode refid="17566" relation="include">
         </childnode>
-        <childnode refid="15579" relation="include">
-        </childnode>
-        <childnode refid="15580" relation="include">
-        </childnode>
-        <childnode refid="15578" relation="include">
+        <childnode refid="17567" relation="include">
         </childnode>
       </node>
-      <node id="15581">
+      <node id="17569">
         <label>stdexcept</label>
       </node>
-      <node id="15580">
+      <node id="17566">
         <label>string</label>
       </node>
-      <node id="15584">
+      <node id="17573">
         <label>traffic_simulator/traffic_lights/traffic_light_state.hpp</label>
       </node>
-      <node id="15573">
+      <node id="17562">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/color.cpp</label>
         <link refid="color_8cpp"/>
-        <childnode refid="15574" relation="include">
+        <childnode refid="17563" relation="include">
         </childnode>
-        <childnode refid="15582" relation="include">
+        <childnode refid="17570" relation="include">
         </childnode>
-        <childnode refid="15585" relation="include">
+        <childnode refid="17574" relation="include">
         </childnode>
       </node>
-      <node id="15574">
+      <node id="17563">
         <label>openscenario_interpreter/error.hpp</label>
         <link refid="error_8hpp_source"/>
-        <childnode refid="15575" relation="include">
+        <childnode refid="17564" relation="include">
         </childnode>
-        <childnode refid="15581" relation="include">
+        <childnode refid="17565" relation="include">
         </childnode>
-        <childnode refid="15580" relation="include">
+        <childnode refid="17568" relation="include">
         </childnode>
-        <childnode refid="15578" relation="include">
+        <childnode refid="17569" relation="include">
         </childnode>
       </node>
-      <node id="15582">
+      <node id="17570">
         <label>openscenario_interpreter/syntax/color.hpp</label>
         <link refid="color_8hpp_source"/>
-        <childnode refid="15583" relation="include">
+        <childnode refid="17571" relation="include">
         </childnode>
-        <childnode refid="15584" relation="include">
+        <childnode refid="17572" relation="include">
         </childnode>
-      </node>
-      <node id="15578">
-        <label>utility</label>
-      </node>
-      <node id="15579">
-        <label>sstream</label>
-      </node>
-      <node id="15576">
-        <label>openscenario_interpreter/functional/fold.hpp</label>
-        <link refid="fold_8hpp_source"/>
-        <childnode refid="15577" relation="include">
-        </childnode>
-        <childnode refid="15578" relation="include">
+        <childnode refid="17573" relation="include">
         </childnode>
       </node>
-      <node id="15583">
+      <node id="17567">
+        <label>typeinfo</label>
+      </node>
+      <node id="17572">
         <label>iostream</label>
       </node>
-      <node id="15585">
+      <node id="17574">
         <label>unordered_map</label>
+      </node>
+      <node id="17571">
+        <label>boost/optional.hpp</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceopenscenario__interpreter">openscenario_interpreter</innernamespace>
@@ -113,43 +106,64 @@
 <codeline lineno="23"><highlight class="normal">std::istream<sp/>&amp;<sp/>operator&gt;&gt;(std::istream<sp/>&amp;<sp/>is,<sp/>Color<sp/>&amp;<sp/>datum)</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/>std::string<sp/>value;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>value;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;std::string,<sp/>Color::value_type&gt;<sp/>conversions{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(</highlight><highlight class="stringliteral">&quot;noColor&quot;</highlight><highlight class="normal">,<sp/>Color::noColor),</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(</highlight><highlight class="stringliteral">&quot;green&quot;</highlight><highlight class="normal">,<sp/>Color::green),</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(</highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">,<sp/>Color::red),</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>std::make_pair(</highlight><highlight class="stringliteral">&quot;yellow&quot;</highlight><highlight class="normal">,<sp/>Color::yellow),</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>datum.value<sp/>=<sp/>conversions.at(value);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::out_of_range<sp/>&amp;)<sp/>{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>SyntaxError::invalidValue(</highlight><highlight class="stringliteral">&quot;Color&quot;</highlight><highlight class="normal">,<sp/>value);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal">std::ostream<sp/>&amp;<sp/>operator&lt;&lt;(std::ostream<sp/>&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Color<sp/>&amp;<sp/>datum)</highlight></codeline>
-<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(datum.value)<sp/>{</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::noColor:</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;noColor&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::green:</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;green&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::red:</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::yellow:</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;yellow&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="61"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>syntax</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_interpreter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>value;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;noColor&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::noColor;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;green&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::green;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::red;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;yellow&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::yellow;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>UNEXPECTED_ENUMERATION_VALUE_SPECIFIED(Color,<sp/>value);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">std::istream<sp/>&amp;<sp/>operator&gt;&gt;(std::istream<sp/>&amp;<sp/>is,<sp/>boost::optional&lt;Color&gt;<sp/>&amp;<sp/>datum)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>std::string<sp/>value;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>is<sp/>&gt;&gt;<sp/>value;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;noColor&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::noColor;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;green&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::green;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::red;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;yellow&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>Color::yellow;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>datum<sp/>=<sp/>boost::none;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">std::ostream<sp/>&amp;<sp/>operator&lt;&lt;(std::ostream<sp/>&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Color<sp/>&amp;<sp/>datum)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(datum.value)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::noColor:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;noColor&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::green:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;green&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::red:</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>Color::yellow:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>os<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;yellow&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>UNEXPECTED_ENUMERATION_VALUE_ASSIGNED(Color,<sp/>datum);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>syntax</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_interpreter</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/color.cpp"/>
   </compounddef>

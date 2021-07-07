@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1Route" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::Route</compoundname>
+    <basecompoundref refid="structopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1Route_1aba8f82092a498e3083f037dca5a92bdd" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -29,11 +30,11 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" line="44" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1Route_1a5e26b2ea2b3ca58ab1a773503d63acf2" prot="public" static="no" mutable="no">
-        <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
-        <definition>Scope openscenario_interpreter::syntax::Route::inner_scope</definition>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1Route_1a50c3a9e2620ee749d69bdf70ca392389" prot="public" static="no" mutable="no">
+        <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations" kindref="compound">ParameterDeclarations</ref></type>
+        <definition>const ParameterDeclarations openscenario_interpreter::syntax::Route::parameter_declarations</definition>
         <argsstring></argsstring>
-        <name>inner_scope</name>
+        <name>parameter_declarations</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -81,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" bodystart="51" bodyend="63"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" bodystart="51" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Route_1af2da982200bbd4ef00a2685f445fab99" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -94,40 +95,79 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" line="65" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" bodystart="65" bodyend="74"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" line="63" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" bodystart="63" bodyend="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="596">
+    <inheritancegraph>
+      <node id="611">
         <label>openscenario_interpreter::syntax::Route</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Route"/>
-        <childnode refid="597" relation="usage">
-          <edgelabel>closed</edgelabel>
-        </childnode>
-        <childnode refid="598" relation="usage">
-          <edgelabel>inner_scope</edgelabel>
+        <childnode refid="612" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="597">
+      <node id="612">
+        <label>openscenario_interpreter::Scope</label>
+        <link refid="structopenscenario__interpreter_1_1Scope"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="613">
+        <label>openscenario_interpreter::syntax::Route</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1Route"/>
+        <childnode refid="614" relation="private-inheritance">
+        </childnode>
+        <childnode refid="615" relation="usage">
+          <edgelabel>parameter_declarations</edgelabel>
+        </childnode>
+        <childnode refid="617" relation="usage">
+          <edgelabel>closed</edgelabel>
+        </childnode>
+      </node>
+      <node id="615">
+        <label>openscenario_interpreter::syntax::ParameterDeclarations</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations"/>
+        <childnode refid="616" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="616">
+        <label>std::vector&lt; ParameterDeclaration &gt;</label>
+      </node>
+      <node id="617">
         <label>openscenario_interpreter::syntax::Boolean</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Boolean"/>
       </node>
-      <node id="598">
+      <node id="614">
         <label>openscenario_interpreter::Scope</label>
         <link refid="structopenscenario__interpreter_1_1Scope"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" bodystart="40" bodyend="75"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/route.hpp" bodystart="40" bodyend="73"/>
     <listofallmembers>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a71adbadb72f848f4dd4d08ea00bb351e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>Actor</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8f47946a2ec4238dffdb1fa25137ac43" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>Actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a7e23ddea0b69991cc161f7a2c4b05304" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>actors</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1a0fd6f2482e3f14504c3697366d3d6972" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>closed</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1a5e26b2ea2b3ca58ab1a773503d63acf2" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>inner_scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a0682dea0459bee5fbc795e2fc9baebb2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>entities</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>localScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>logic_file</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1aba8f82092a498e3083f037dca5a92bdd" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>name</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1af2da982200bbd4ef00a2685f445fab99" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>operator std::vector&lt; openscenario_msgs::msg::LaneletPose &gt;</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1a50c3a9e2620ee749d69bdf70ca392389" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>parameter_declarations</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a9e9eb5015e45940c1215cbb5f7d87fc5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>parameters</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>pathname</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1a49c20e1f5559946ddfac68c5380e7777" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>Route</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>scene_graph_file</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a4dc48c7507093c3c205a179c1ab80f16" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1a8a6de30a3b47eb5c3d9117456fdf15e0" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>storyboard_elements</name></member>
+      <member refid="structopenscenario__interpreter_1_1Scope_1abd3ff1e82f05e59c7f453316ceb6a1a7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>traffic_signal_controllers</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1aa8a7f1333feea7a0231160dae3366973" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Route</scope><name>waypoints</name></member>
     </listofallmembers>
   </compounddef>

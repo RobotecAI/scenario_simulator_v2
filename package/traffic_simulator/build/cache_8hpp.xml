@@ -1,0 +1,547 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="cache_8hpp" kind="file" language="C++">
+    <compoundname>cache.hpp</compoundname>
+    <includes local="no">boost/optional.hpp</includes>
+    <includes local="no">geometry_msgs/msg/point.hpp</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">scenario_simulator_exception/exception.hpp</includes>
+    <includes refid="catmull__rom__spline_8hpp" local="no">traffic_simulator/math/catmull_rom_spline.hpp</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="hdmap__utils_8hpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/hdmap_utils.hpp</includedby>
+    <incdepgraph>
+      <node id="2119">
+        <label>scenario_simulator_exception/exception.hpp</label>
+      </node>
+      <node id="2126">
+        <label>geometry_msgs/msg/pose.hpp</label>
+      </node>
+      <node id="2128">
+        <label>openscenario_msgs/msg/hermite_curve.hpp</label>
+      </node>
+      <node id="2123">
+        <label>string</label>
+      </node>
+      <node id="2115">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp</label>
+        <link refid="cache_8hpp"/>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2117" relation="include">
+        </childnode>
+        <childnode refid="2118" relation="include">
+        </childnode>
+        <childnode refid="2119" relation="include">
+        </childnode>
+        <childnode refid="2120" relation="include">
+        </childnode>
+        <childnode refid="2132" relation="include">
+        </childnode>
+        <childnode refid="2130" relation="include">
+        </childnode>
+      </node>
+      <node id="2124">
+        <label>traffic_simulator/math/hermite_curve.hpp</label>
+        <link refid="hermite__curve_8hpp_source"/>
+        <childnode refid="2125" relation="include">
+        </childnode>
+        <childnode refid="2116" relation="include">
+        </childnode>
+        <childnode refid="2117" relation="include">
+        </childnode>
+        <childnode refid="2126" relation="include">
+        </childnode>
+        <childnode refid="2127" relation="include">
+        </childnode>
+        <childnode refid="2128" relation="include">
+        </childnode>
+        <childnode refid="2129" relation="include">
+        </childnode>
+        <childnode refid="2130" relation="include">
+        </childnode>
+      </node>
+      <node id="2121">
+        <label>exception</label>
+      </node>
+      <node id="2127">
+        <label>geometry_msgs/msg/vector3.hpp</label>
+      </node>
+      <node id="2125">
+        <label>quaternion_operation/quaternion_operation.h</label>
+      </node>
+      <node id="2117">
+        <label>geometry_msgs/msg/point.hpp</label>
+      </node>
+      <node id="2122">
+        <label>openscenario_msgs/msg/catmull_rom_spline.hpp</label>
+      </node>
+      <node id="2130">
+        <label>vector</label>
+      </node>
+      <node id="2131">
+        <label>utility</label>
+      </node>
+      <node id="2129">
+        <label>traffic_simulator/math/polynomial_solver.hpp</label>
+        <link refid="polynomial__solver_8hpp_source"/>
+        <childnode refid="2130" relation="include">
+        </childnode>
+      </node>
+      <node id="2120">
+        <label>traffic_simulator/math/catmull_rom_spline.hpp</label>
+        <link refid="catmull__rom__spline_8hpp_source"/>
+        <childnode refid="2121" relation="include">
+        </childnode>
+        <childnode refid="2117" relation="include">
+        </childnode>
+        <childnode refid="2122" relation="include">
+        </childnode>
+        <childnode refid="2123" relation="include">
+        </childnode>
+        <childnode refid="2124" relation="include">
+        </childnode>
+        <childnode refid="2131" relation="include">
+        </childnode>
+        <childnode refid="2130" relation="include">
+        </childnode>
+      </node>
+      <node id="2132">
+        <label>unordered_map</label>
+      </node>
+      <node id="2118">
+        <label>mutex</label>
+      </node>
+      <node id="2116">
+        <label>boost/optional.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2160">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/route_planner.hpp</label>
+        <link refid="route__planner_8hpp_source"/>
+        <childnode refid="2139" relation="include">
+        </childnode>
+        <childnode refid="2158" relation="include">
+        </childnode>
+      </node>
+      <node id="2141">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/api/api.hpp</label>
+        <link refid="api_8hpp_source"/>
+      </node>
+      <node id="2147">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/traveled_distance_metric.hpp</label>
+        <link refid="traveled__distance__metric_8hpp_source"/>
+        <childnode refid="2143" relation="include">
+        </childnode>
+      </node>
+      <node id="2148">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/walk_straight_action.hpp</label>
+        <link refid="walk__straight__action_8hpp"/>
+        <childnode refid="2138" relation="include">
+        </childnode>
+        <childnode refid="2149" relation="include">
+        </childnode>
+      </node>
+      <node id="2151">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.hpp</label>
+        <link refid="follow__front__entity__action_8hpp_source"/>
+      </node>
+      <node id="2145">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/momentary_stop_metric.hpp</label>
+        <link refid="momentary__stop__metric_8hpp_source"/>
+        <childnode refid="2143" relation="include">
+        </childnode>
+      </node>
+      <node id="2153">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_crossing_entity_action.hpp</label>
+        <link refid="stop__at__crossing__entity__action_8hpp_source"/>
+      </node>
+      <node id="2138">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/behavior_tree.hpp</label>
+        <link refid="pedestrian_2behavior__tree_8hpp_source"/>
+        <childnode refid="2139" relation="include">
+        </childnode>
+      </node>
+      <node id="2155">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_traffic_light_action.hpp</label>
+        <link refid="stop__at__traffic__light__action_8hpp_source"/>
+      </node>
+      <node id="2167">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light_phase.hpp</label>
+        <link refid="traffic__light__phase_8hpp_source"/>
+        <childnode refid="2168" relation="include">
+        </childnode>
+      </node>
+      <node id="2142">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metric_base.hpp</label>
+        <link refid="metric__base_8hpp_source"/>
+        <childnode refid="2143" relation="include">
+        </childnode>
+        <childnode refid="2144" relation="include">
+        </childnode>
+        <childnode refid="2145" relation="include">
+        </childnode>
+        <childnode refid="2146" relation="include">
+        </childnode>
+        <childnode refid="2147" relation="include">
+        </childnode>
+      </node>
+      <node id="2139">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/pedestrian_entity.hpp</label>
+        <link refid="pedestrian__entity_8hpp_source"/>
+        <childnode refid="2140" relation="include">
+        </childnode>
+      </node>
+      <node id="2135">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/action_node.hpp</label>
+        <link refid="action__node_8hpp_source"/>
+        <childnode refid="2136" relation="include">
+        </childnode>
+        <childnode refid="2150" relation="include">
+        </childnode>
+      </node>
+      <node id="2149">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/pedestrian/walk_straight_action.cpp</label>
+        <link refid="walk__straight__action_8cpp"/>
+      </node>
+      <node id="2133">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp</label>
+        <link refid="cache_8hpp"/>
+        <childnode refid="2134" relation="include">
+        </childnode>
+      </node>
+      <node id="2154">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_stop_line_action.hpp</label>
+        <link refid="stop__at__stop__line__action_8hpp_source"/>
+      </node>
+      <node id="2157">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/lane_change_action.hpp</label>
+        <link refid="lane__change__action_8hpp_source"/>
+        <childnode refid="2158" relation="include">
+        </childnode>
+      </node>
+      <node id="2134">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/hdmap_utils.hpp</label>
+        <link refid="hdmap__utils_8hpp_source"/>
+        <childnode refid="2135" relation="include">
+        </childnode>
+        <childnode refid="2138" relation="include">
+        </childnode>
+        <childnode refid="2137" relation="include">
+        </childnode>
+        <childnode refid="2148" relation="include">
+        </childnode>
+        <childnode refid="2160" relation="include">
+        </childnode>
+        <childnode refid="2161" relation="include">
+        </childnode>
+        <childnode refid="2162" relation="include">
+        </childnode>
+        <childnode refid="2140" relation="include">
+        </childnode>
+        <childnode refid="2164" relation="include">
+        </childnode>
+        <childnode refid="2166" relation="include">
+        </childnode>
+        <childnode refid="2167" relation="include">
+        </childnode>
+      </node>
+      <node id="2140">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_manager.hpp</label>
+        <link refid="entity__manager_8hpp_source"/>
+        <childnode refid="2141" relation="include">
+        </childnode>
+        <childnode refid="2142" relation="include">
+        </childnode>
+        <childnode refid="2144" relation="include">
+        </childnode>
+      </node>
+      <node id="2146">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/reaction_time_metric.hpp</label>
+        <link refid="reaction__time__metric_8hpp_source"/>
+        <childnode refid="2143" relation="include">
+        </childnode>
+      </node>
+      <node id="2144">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp</label>
+        <link refid="metrics__manager_8hpp_source"/>
+        <childnode refid="2141" relation="include">
+        </childnode>
+      </node>
+      <node id="2163">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/misc_object_entity.hpp</label>
+        <link refid="misc__object__entity_8hpp_source"/>
+        <childnode refid="2140" relation="include">
+        </childnode>
+      </node>
+      <node id="2165">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/traffic/traffic_controller.cpp</label>
+        <link refid="traffic__controller_8cpp"/>
+      </node>
+      <node id="2158">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp</label>
+        <link refid="vehicle__entity_8hpp_source"/>
+        <childnode refid="2159" relation="include">
+        </childnode>
+        <childnode refid="2140" relation="include">
+        </childnode>
+      </node>
+      <node id="2137">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/follow_lane_action.hpp</label>
+        <link refid="pedestrian_2follow__lane__action_8hpp_source"/>
+        <childnode refid="2138" relation="include">
+        </childnode>
+      </node>
+      <node id="2161">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/behavior_tree.hpp</label>
+        <link refid="vehicle_2behavior__tree_8hpp_source"/>
+        <childnode refid="2152" relation="include">
+        </childnode>
+        <childnode refid="2158" relation="include">
+        </childnode>
+      </node>
+      <node id="2143">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics.hpp</label>
+        <link refid="metrics_8hpp_source"/>
+      </node>
+      <node id="2159">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp</label>
+        <link refid="ego__entity_8hpp_source"/>
+        <childnode refid="2140" relation="include">
+        </childnode>
+      </node>
+      <node id="2136">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/pedestrian/pedestrian_action_node.hpp</label>
+        <link refid="pedestrian__action__node_8hpp_source"/>
+        <childnode refid="2137" relation="include">
+        </childnode>
+        <childnode refid="2148" relation="include">
+        </childnode>
+      </node>
+      <node id="2150">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/vehicle_action_node.hpp</label>
+        <link refid="vehicle__action__node_8hpp_source"/>
+        <childnode refid="2151" relation="include">
+        </childnode>
+        <childnode refid="2152" relation="include">
+        </childnode>
+        <childnode refid="2153" relation="include">
+        </childnode>
+        <childnode refid="2154" relation="include">
+        </childnode>
+        <childnode refid="2155" relation="include">
+        </childnode>
+        <childnode refid="2156" relation="include">
+        </childnode>
+        <childnode refid="2157" relation="include">
+        </childnode>
+      </node>
+      <node id="2168">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light.hpp</label>
+        <link refid="traffic__light_8hpp_source"/>
+        <childnode refid="2141" relation="include">
+        </childnode>
+        <childnode refid="2166" relation="include">
+        </childnode>
+      </node>
+      <node id="2166">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light_manager.hpp</label>
+        <link refid="traffic__light__manager_8hpp_source"/>
+        <childnode refid="2135" relation="include">
+        </childnode>
+        <childnode refid="2162" relation="include">
+        </childnode>
+        <childnode refid="2140" relation="include">
+        </childnode>
+      </node>
+      <node id="2162">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/entity_base.hpp</label>
+        <link refid="entity__base_8hpp_source"/>
+        <childnode refid="2135" relation="include">
+        </childnode>
+        <childnode refid="2151" relation="include">
+        </childnode>
+        <childnode refid="2153" relation="include">
+        </childnode>
+        <childnode refid="2154" relation="include">
+        </childnode>
+        <childnode refid="2155" relation="include">
+        </childnode>
+        <childnode refid="2156" relation="include">
+        </childnode>
+        <childnode refid="2140" relation="include">
+        </childnode>
+        <childnode refid="2163" relation="include">
+        </childnode>
+        <childnode refid="2139" relation="include">
+        </childnode>
+        <childnode refid="2158" relation="include">
+        </childnode>
+      </node>
+      <node id="2152">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_lane_action.hpp</label>
+        <link refid="vehicle_2follow__lane__sequence_2follow__lane__action_8hpp_source"/>
+      </node>
+      <node id="2164">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic/traffic_controller.hpp</label>
+        <link refid="traffic__controller_8hpp"/>
+        <childnode refid="2141" relation="include">
+        </childnode>
+        <childnode refid="2165" relation="include">
+        </childnode>
+      </node>
+      <node id="2156">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/yield_action.hpp</label>
+        <link refid="yield__action_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classhdmap__utils_1_1RouteCache" prot="public">hdmap_utils::RouteCache</innerclass>
+    <innerclass refid="classhdmap__utils_1_1CenterPointsCache" prot="public">hdmap_utils::CenterPointsCache</innerclass>
+    <innerclass refid="classhdmap__utils_1_1LaneletLengthCache" prot="public">hdmap_utils::LaneletLengthCache</innerclass>
+    <innernamespace refid="namespacehdmap__utils">hdmap_utils</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2020<sp/>Tier<sp/>IV,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TRAFFIC_SIMULATOR__HDMAP_UTILS__CACHE_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRAFFIC_SIMULATOR__HDMAP_UTILS__CACHE_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/optional.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;geometry_msgs/msg/point.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scenario_simulator_exception/exception.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;traffic_simulator/math/catmull_rom_spline.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehdmap__utils" kindref="compound">hdmap_utils</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28" refid="classhdmap__utils_1_1RouteCache" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classhdmap__utils_1_1RouteCache" kindref="compound">RouteCache</ref></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists(std::int64_t<sp/>from,<sp/>std::int64_t<sp/>to)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;std::int64_t,<sp/>std::int64_t&gt;<sp/>key;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>key.first<sp/>=<sp/>from;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>key.second<sp/>=<sp/>to;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data_.find(key)<sp/>==<sp/>data_.end())<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>std::vector&lt;std::int64_t&gt;<sp/>getRoute(std::int64_t<sp/>from,<sp/>std::int64_t<sp/>to)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists(from,<sp/>to))<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>THROW_SIMULATION_ERROR(</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;route<sp/>from<sp/>:<sp/>&quot;</highlight><highlight class="normal">,<sp/>from,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>to<sp/>:<sp/>&quot;</highlight><highlight class="normal">,<sp/>to,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exists<sp/>on<sp/>route<sp/>chache.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>data_.at({from,<sp/>to});</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>appendData(std::int64_t<sp/>from,<sp/>std::int64_t<sp/>to,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::int64_t&gt;<sp/>&amp;<sp/>route)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>data_[{from,<sp/>to}]<sp/>=<sp/>route;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::pair&lt;std::int64_t,<sp/>std::int64_t&gt;,<sp/>std::vector&lt;std::int64_t&gt;&gt;<sp/>data_;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>std::mutex<sp/>mutex_;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classhdmap__utils_1_1CenterPointsCache" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classhdmap__utils_1_1CenterPointsCache" kindref="compound">CenterPointsCache</ref></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists(std::int64_t<sp/>lanelet_id)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data_.find(lanelet_id)<sp/>==<sp/>data_.end())<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>getCenterPoints(std::int64_t<sp/>lanelet_id)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists(lanelet_id))<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>THROW_SIMULATION_ERROR(</highlight><highlight class="stringliteral">&quot;center<sp/>point<sp/>of<sp/>:<sp/>&quot;</highlight><highlight class="normal">,<sp/>lanelet_id,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exists<sp/>on<sp/>route<sp/>chache.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_.at(lanelet_id);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;traffic_simulator::math::CatmullRomSpline&gt;<sp/>getCenterPointsSpline(</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>std::int64_t<sp/>lanelet_id)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists(lanelet_id))<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>THROW_SIMULATION_ERROR(</highlight><highlight class="stringliteral">&quot;center<sp/>point<sp/>of<sp/>:<sp/>&quot;</highlight><highlight class="normal">,<sp/>lanelet_id,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exists<sp/>on<sp/>route<sp/>chache.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>splines_[lanelet_id];</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>appendData(std::int64_t<sp/>lanelet_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>&amp;<sp/>route)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>data_[lanelet_id]<sp/>=<sp/>route;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>splines_[lanelet_id]<sp/>=<sp/>std::make_shared&lt;traffic_simulator::math::CatmullRomSpline&gt;(route);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::int64_t,<sp/>std::vector&lt;geometry_msgs::msg::Point&gt;&gt;<sp/>data_;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::int64_t,<sp/>std::shared_ptr&lt;traffic_simulator::math::CatmullRomSpline&gt;&gt;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>splines_;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>std::mutex<sp/>mutex_;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classhdmap__utils_1_1LaneletLengthCache" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classhdmap__utils_1_1LaneletLengthCache" kindref="compound">LaneletLengthCache</ref></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists(std::int64_t<sp/>lanelet_id)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data_.find(lanelet_id)<sp/>==<sp/>data_.end())<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>getLength(std::int64_t<sp/>lanelet_id)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists(lanelet_id))<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>THROW_SIMULATION_ERROR(</highlight><highlight class="stringliteral">&quot;length<sp/>of<sp/>:<sp/>&quot;</highlight><highlight class="normal">,<sp/>lanelet_id,<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exists<sp/>on<sp/>route<sp/>chache.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_[lanelet_id];</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>appendData(std::int64_t<sp/>lanelet_id,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>length)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>data_[lanelet_id]<sp/>=<sp/>length;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::int64_t,<sp/>double&gt;<sp/>data_;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>std::mutex<sp/>mutex_;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hdmap_utils</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>TRAFFIC_SIMULATOR__HDMAP_UTILS__CACHE_HPP_</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/hdmap_utils/cache.hpp"/>
+  </compounddef>
+</doxygen>

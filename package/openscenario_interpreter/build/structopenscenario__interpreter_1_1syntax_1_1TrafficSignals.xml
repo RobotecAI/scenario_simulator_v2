@@ -2,10 +2,25 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::TrafficSignals</compoundname>
-      <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1ae5fb2a6171606167fc2e0f8d074168a0" prot="public" static="no" mutable="no">
-        <type>std::list&lt; <ref refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalController" kindref="compound">TrafficSignalController</ref> &gt;</type>
-        <definition>std::list&lt;TrafficSignalController&gt; openscenario_interpreter::syntax::TrafficSignals::traffic_signal_controllers</definition>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1ad1fe404ce1fafce3b8d9c92edfff36c2" prot="private" static="no">
+        <type>std::unordered_map&lt; std::string, std::shared_ptr&lt; <ref refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalController" kindref="compound">TrafficSignalController</ref> &gt; &gt;</type>
+        <definition>using openscenario_interpreter::syntax::TrafficSignals::NameToController =  std::unordered_map&lt;std::string, std::shared_ptr&lt;TrafficSignalController&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>NameToController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="42" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1ac809d321239cf79f60c6a8a9a7b26cc2" prot="private" static="no" mutable="no">
+        <type>std::list&lt; std::shared_ptr&lt; <ref refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalController" kindref="compound">TrafficSignalController</ref> &gt; &gt;</type>
+        <definition>std::list&lt;std::shared_ptr&lt;TrafficSignalController&gt; &gt; openscenario_interpreter::syntax::TrafficSignals::traffic_signal_controllers</definition>
         <argsstring></argsstring>
         <name>traffic_signal_controllers</name>
         <briefdescription>
@@ -14,7 +29,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="36" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1a03ad4ba4f7e5add03b6cecc50f744cb7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void openscenario_interpreter::syntax::TrafficSignals::resolve_reference</definition>
+        <argsstring>(const NameToController &amp;controllers)</argsstring>
+        <name>resolve_reference</name>
+        <param>
+          <type>const NameToController &amp;</type>
+          <declname>controllers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="45" bodyend="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -29,15 +63,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="38" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="68" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1afbaf33a6f0880c0d8d1ee290c7471cef" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1a8dfcaeedae551fc1a66443b3eeaf05ad" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Node</type>
-          </param>
-          <param>
-            <type>typename <ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
           </param>
         </templateparamlist>
         <type></type>
@@ -58,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="41" bodyend="45"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="71" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="71" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1a9ec15c254b1c4454ad1a306417c435d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -71,19 +102,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="47" bodyend="54"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="87" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="87" bodyend="94"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="34" bodyend="55"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signals.hpp" bodystart="37" bodyend="95"/>
     <listofallmembers>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1a9ec15c254b1c4454ad1a306417c435d4" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>evaluate</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1ae5fb2a6171606167fc2e0f8d074168a0" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>traffic_signal_controllers</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1ad1fe404ce1fafce3b8d9c92edfff36c2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>NameToController</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1a03ad4ba4f7e5add03b6cecc50f744cb7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>resolve_reference</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1ac809d321239cf79f60c6a8a9a7b26cc2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>traffic_signal_controllers</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1a975e9008b0835feaf45a2adcb53772e1" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>TrafficSignals</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1afbaf33a6f0880c0d8d1ee290c7471cef" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>TrafficSignals</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals_1a8dfcaeedae551fc1a66443b3eeaf05ad" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignals</scope><name>TrafficSignals</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
