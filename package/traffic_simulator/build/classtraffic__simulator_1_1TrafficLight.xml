@@ -188,13 +188,13 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light.hpp" line="50" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light.hpp" bodystart="50" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1acdf978fecd50a112245a08c81d7922cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1ac1acf46f3c0949c7b393b34c34d1b81d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void traffic_simulator::TrafficLight::setColor</definition>
-        <argsstring>(TrafficLightColor color)</argsstring>
+        <argsstring>(const TrafficLightColor color)</argsstring>
         <name>setColor</name>
         <param>
-          <type>TrafficLightColor</type>
+          <type>const TrafficLightColor</type>
           <declname>color</declname>
         </param>
         <briefdescription>
@@ -205,13 +205,13 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/traffic_lights/traffic_light.cpp" bodystart="40" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1aeaf9833b232a7d34425dc0fdbd256bb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1a79ed997041917a89997e7503bf49e8a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void traffic_simulator::TrafficLight::setArrow</definition>
-        <argsstring>(TrafficLightArrow arrow)</argsstring>
+        <argsstring>(const TrafficLightArrow arrow)</argsstring>
         <name>setArrow</name>
         <param>
-          <type>TrafficLightArrow</type>
+          <type>const TrafficLightArrow</type>
           <declname>arrow</declname>
         </param>
         <briefdescription>
@@ -291,10 +291,10 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light.hpp" line="64" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/traffic_lights/traffic_light.cpp" bodystart="47" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1aba651d8243d0927aecb9860d288c97a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const geometry_msgs::msg::Point</type>
-        <definition>const geometry_msgs::msg::Point traffic_simulator::TrafficLight::getPosition</definition>
-        <argsstring>(const TrafficLightColor &amp;color)</argsstring>
+      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1aaf851bd7a7fd7b558d259ffbbee07b66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const geometry_msgs::msg::Point &amp;</type>
+        <definition>const geometry_msgs::msg::Point &amp; traffic_simulator::TrafficLight::getPosition</definition>
+        <argsstring>(const TrafficLightColor &amp;color) const</argsstring>
         <name>getPosition</name>
         <param>
           <type>const TrafficLightColor &amp;</type>
@@ -308,10 +308,10 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/traffic_lights/traffic_light.hpp" line="66" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/traffic_lights/traffic_light.cpp" bodystart="60" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1a4a71a8ce3fb7aa3896ec6141d3c7b396" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const geometry_msgs::msg::Point</type>
-        <definition>const geometry_msgs::msg::Point traffic_simulator::TrafficLight::getPosition</definition>
-        <argsstring>(const TrafficLightArrow &amp;arrow)</argsstring>
+      <memberdef kind="function" id="classtraffic__simulator_1_1TrafficLight_1a7b4c1572e311b8b25e6c6053487fb7d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const geometry_msgs::msg::Point &amp;</type>
+        <definition>const geometry_msgs::msg::Point &amp; traffic_simulator::TrafficLight::getPosition</definition>
+        <argsstring>(const TrafficLightArrow &amp;arrow) const</argsstring>
         <name>getPosition</name>
         <param>
           <type>const TrafficLightArrow &amp;</type>
@@ -408,13 +408,13 @@
       <member refid="classtraffic__simulator_1_1TrafficLight_1ab91996294d3794d5f08a8888c0e1e816" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>getArrowPhaseDuration</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1afb837b5eaa6c21dd4e54ccaab0ca054b" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>getColor</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1adb7c1c91149fd013b05fd45ed5c5f5a0" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>getColorPhaseDuration</name></member>
-      <member refid="classtraffic__simulator_1_1TrafficLight_1aba651d8243d0927aecb9860d288c97a1" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>getPosition</name></member>
-      <member refid="classtraffic__simulator_1_1TrafficLight_1a4a71a8ce3fb7aa3896ec6141d3c7b396" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>getPosition</name></member>
+      <member refid="classtraffic__simulator_1_1TrafficLight_1aaf851bd7a7fd7b558d259ffbbee07b66" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>getPosition</name></member>
+      <member refid="classtraffic__simulator_1_1TrafficLight_1a7b4c1572e311b8b25e6c6053487fb7d4" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>getPosition</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1ab88b3cfd5c3ea4aa005ddd976ef88e48" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>id</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1a06b9245800f116e3b23a8f993328f3ef" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>operator autoware_perception_msgs::msg::TrafficLightState</name></member>
-      <member refid="classtraffic__simulator_1_1TrafficLight_1aeaf9833b232a7d34425dc0fdbd256bb5" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>setArrow</name></member>
+      <member refid="classtraffic__simulator_1_1TrafficLight_1a79ed997041917a89997e7503bf49e8a9" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>setArrow</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1a554836df3750694631149caf6e05c10a" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>setArrowPhase</name></member>
-      <member refid="classtraffic__simulator_1_1TrafficLight_1acdf978fecd50a112245a08c81d7922cc" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>setColor</name></member>
+      <member refid="classtraffic__simulator_1_1TrafficLight_1ac1acf46f3c0949c7b393b34c34d1b81d" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>setColor</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1a0d2b03f827383d5349f1c4888dc7cb6e" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>setColorPhase</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1abb09cf448da8b56ec45fe352910f5e96" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>setPosition</name></member>
       <member refid="classtraffic__simulator_1_1TrafficLight_1a320cf0ebf8184d5106fdc3e28a28b6cd" prot="public" virt="non-virtual"><scope>traffic_simulator::TrafficLight</scope><name>TrafficLight</name></member>

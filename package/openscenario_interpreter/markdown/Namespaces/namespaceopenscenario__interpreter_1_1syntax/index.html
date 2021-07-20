@@ -1,0 +1,3133 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../../../image/icon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>openscenario_interpreter::syntax - Scenario testing framework for Autoware</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheet/tierivcolor.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#openscenario_interpretersyntax" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Scenario testing framework for Autoware" class="md-header__button md-logo" aria-label="Scenario testing framework for Autoware" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5 11 1.5-4.5h11L19 11m-1.5 5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-11 0A1.5 1.5 0 0 1 5 14.5 1.5 1.5 0 0 1 6.5 13 1.5 1.5 0 0 1 8 14.5 1.5 1.5 0 0 1 6.5 16M18.92 6c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.22.42-1.42 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8l-2.08-6z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scenario testing framework for Autoware
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              openscenario_interpreter::syntax
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/tier4/scenario_simulator.auto/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Scenario testing framework for Autoware" class="md-nav__button md-logo" aria-label="Scenario testing framework for Autoware" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5 11 1.5-4.5h11L19 11m-1.5 5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-11 0A1.5 1.5 0 0 1 5 14.5 1.5 1.5 0 0 1 6.5 13 1.5 1.5 0 0 1 8 14.5 1.5 1.5 0 0 1 6.5 16M18.92 6c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.22.42-1.42 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8l-2.08-6z"/></svg>
+
+    </a>
+    Scenario testing framework for Autoware
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/tier4/scenario_simulator.auto/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/BuildInstructions/" class="md-nav__link">
+        Build Instructions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/SimpleDemo/" class="md-nav__link">
+        Simple demo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/RunWithDocker/" class="md-nav__link">
+        Run with docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        User Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Scenario Editor
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Scenario Editor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Scenario Editor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/ScenarioEditorUserGuide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/CreateSimpleScenario/" class="md-nav__link">
+        Create a simple scenario
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/EditExistingScenario/" class="md-nav__link">
+        Edit an existing scenario
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/ChangeCoordinate/" class="md-nav__link">
+        Topic : Changing the coordinate system
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/RelativePosition/" class="md-nav__link">
+        Place an entity to relative position
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Scenario Test Runner
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Scenario Test Runner" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Scenario Test Runner
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/ScenarioTestRunner/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/ScenarioFormatConversion/" class="md-nav__link">
+        Scenario Format Conversion
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/HowToWriteWorkflowFile/" class="md-nav__link">
+        How to write workflow file
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/Tips/" class="md-nav__link">
+        Tips about writing scenarios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Design
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/About/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/AutowareAPI/" class="md-nav__link">
+        Autoware API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/ErrorCategories/" class="md-nav__link">
+        Error Categories
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/OpenSCENARIOSupport/" class="md-nav__link">
+        OpenSCENARIO Support
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimpleSensorSimulator/" class="md-nav__link">
+        Simple sensor simulator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SystemArchitecture/" class="md-nav__link">
+        System Architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/TrafficSimulator/" class="md-nav__link">
+        Traffic simulator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/ZeroMQ/" class="md-nav__link">
+        Communication with simulator and interpreter
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../About/" class="md-nav__link">
+        Package Details
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ReleaseNotes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../etc/ContactUs/" class="md-nav__link">
+        Contact Infomation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LICENSE/" class="md-nav__link">
+        LICENSE
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-documentation" class="md-nav__link">
+    Types Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Types Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-unsignedint" class="md-nav__link">
+    using UnsignedInt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-string" class="md-nav__link">
+    using String
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-defaultcontroller" class="md-nav__link">
+    using DefaultController
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-documentation" class="md-nav__link">
+    Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-operator" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_1" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_2" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_3" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_4" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_5" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_6" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_7" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_8" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_9" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_10" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_11" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_12" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_13" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_14" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_15" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_16" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_17" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_18" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_19" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_20" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_21" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_22" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_23" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_24" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_25" class="md-nav__link">
+    function operator&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_26" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_27" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_28" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_29" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_30" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_31" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_32" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_33" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_34" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_35" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_36" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_37" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_38" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_39" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_40" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_41" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_42" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_43" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_44" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_45" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_46" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_47" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_48" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_49" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_50" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_51" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_52" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_53" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_54" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_55" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_56" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_57" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_58" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_59" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_60" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_61" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_62" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_63" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_64" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_65" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_66" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_67" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_68" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_69" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_70" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_71" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_72" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_73" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_74" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_75" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_76" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_77" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_78" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_79" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_80" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_81" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-operator_82" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-asboolean" class="md-nav__link">
+    function asBoolean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-apply" class="md-nav__link">
+    function apply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-apply_1" class="md-nav__link">
+    function apply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-boilerplate" class="md-nav__link">
+    function BOILERPLATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-boilerplate_1" class="md-nav__link">
+    function BOILERPLATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-boilerplate_2" class="md-nav__link">
+    function BOILERPLATE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-boilerplate_3" class="md-nav__link">
+    function BOILERPLATE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributes-documentation" class="md-nav__link">
+    Attributes Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Attributes Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-true_v" class="md-nav__link">
+    variable true_v
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-stop_transition" class="md-nav__link">
+    variable stop_transition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-start_transition" class="md-nav__link">
+    variable start_transition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-standby_state" class="md-nav__link">
+    variable standby_state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-skip_transition" class="md-nav__link">
+    variable skip_transition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-running_state" class="md-nav__link">
+    variable running_state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-false_v" class="md-nav__link">
+    variable false_v
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-end_transition" class="md-nav__link">
+    variable end_transition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-complete_state" class="md-nav__link">
+    variable complete_state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/tier4/scenario_simulator.auto/edit/master/docs/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="openscenario_interpretersyntax">openscenario_interpreter::syntax<a class="headerlink" href="#openscenario_interpretersyntax" title="Permanent link">#</a></h1>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1equal__to_3_01T_00_01typename_01std_1_1enable__if_36950e835545f4465da1ac88fcd135173">openscenario_interpreter::syntax::equal_to&lt; T, typename std::enable_if&lt; std::is_floating_point&lt; T &gt;::value &gt;::type &gt;</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1equal__to">openscenario_interpreter::syntax::equal_to</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1WorldPosition">openscenario_interpreter::syntax::WorldPosition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Waypoint">openscenario_interpreter::syntax::Waypoint</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1VehicleCategory">openscenario_interpreter::syntax::VehicleCategory</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Vehicle">openscenario_interpreter::syntax::Vehicle</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition">openscenario_interpreter::syntax::UserDefinedValueCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UserDefinedAction">openscenario_interpreter::syntax::UserDefinedAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UnsignedShort">openscenario_interpreter::syntax::UnsignedShort</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UnsignedInteger">openscenario_interpreter::syntax::UnsignedInteger</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TriggeringEntitiesRule">openscenario_interpreter::syntax::TriggeringEntitiesRule</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TriggeringEntities">openscenario_interpreter::syntax::TriggeringEntities</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Trigger">openscenario_interpreter::syntax::Trigger</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TransitionDynamics">openscenario_interpreter::syntax::TransitionDynamics</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignals">openscenario_interpreter::syntax::TrafficSignals</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction">openscenario_interpreter::syntax::TrafficSignalStateAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignalState">openscenario_interpreter::syntax::TrafficSignalState</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerCondition">openscenario_interpreter::syntax::TrafficSignalControllerCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction">openscenario_interpreter::syntax::TrafficSignalControllerAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignalController">openscenario_interpreter::syntax::TrafficSignalController</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignalCondition">openscenario_interpreter::syntax::TrafficSignalCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction">openscenario_interpreter::syntax::TrafficSignalAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TimeHeadwayCondition">openscenario_interpreter::syntax::TimeHeadwayCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TeleportAction">openscenario_interpreter::syntax::TeleportAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StoryboardElementType">openscenario_interpreter::syntax::StoryboardElementType</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StoryboardElementStateCondition">openscenario_interpreter::syntax::StoryboardElementStateCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState">openscenario_interpreter::syntax::StoryboardElementState</a></strong></td>
+</tr>
+<tr>
+<td>class</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1syntax_1_1StoryboardElement">openscenario_interpreter::syntax::StoryboardElement</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Storyboard">openscenario_interpreter::syntax::Storyboard</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Story">openscenario_interpreter::syntax::Story</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StandStillCondition">openscenario_interpreter::syntax::StandStillCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedTargetValueType">openscenario_interpreter::syntax::SpeedTargetValueType</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedCondition">openscenario_interpreter::syntax::SpeedCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget">openscenario_interpreter::syntax::SpeedActionTarget</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedAction">openscenario_interpreter::syntax::SpeedAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpecialAction">openscenario_interpreter::syntax::SpecialAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SimulationTimeCondition">openscenario_interpreter::syntax::SimulationTimeCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SelectedEntities">openscenario_interpreter::syntax::SelectedEntities</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioObject">openscenario_interpreter::syntax::ScenarioObject</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition">openscenario_interpreter::syntax::ScenarioDefinition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Rule">openscenario_interpreter::syntax::Rule</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RoutingAction">openscenario_interpreter::syntax::RoutingAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RouteStrategy">openscenario_interpreter::syntax::RouteStrategy</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Route">openscenario_interpreter::syntax::Route</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RoadNetwork">openscenario_interpreter::syntax::RoadNetwork</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RelativeWorldPosition">openscenario_interpreter::syntax::RelativeWorldPosition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RelativeTargetSpeed">openscenario_interpreter::syntax::RelativeTargetSpeed</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType">openscenario_interpreter::syntax::RelativeDistanceType</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition">openscenario_interpreter::syntax::RelativeDistanceCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ReferenceContext">openscenario_interpreter::syntax::ReferenceContext</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RearAxle">openscenario_interpreter::syntax::RearAxle</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ReachPositionCondition">openscenario_interpreter::syntax::ReachPositionCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Property">openscenario_interpreter::syntax::Property</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Properties">openscenario_interpreter::syntax::Properties</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1PrivateAction">openscenario_interpreter::syntax::PrivateAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Private">openscenario_interpreter::syntax::Private</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Priority">openscenario_interpreter::syntax::Priority</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Position">openscenario_interpreter::syntax::Position</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Phase">openscenario_interpreter::syntax::Phase</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Performance">openscenario_interpreter::syntax::Performance</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1PedestrianCategory">openscenario_interpreter::syntax::PedestrianCategory</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Pedestrian">openscenario_interpreter::syntax::Pedestrian</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterType">openscenario_interpreter::syntax::ParameterType</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction">openscenario_interpreter::syntax::ParameterSetAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterMultiplyByValueRule">openscenario_interpreter::syntax::ParameterMultiplyByValueRule</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction">openscenario_interpreter::syntax::ParameterModifyAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations">openscenario_interpreter::syntax::ParameterDeclarations</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterDeclaration">openscenario_interpreter::syntax::ParameterDeclaration</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterCondition">openscenario_interpreter::syntax::ParameterCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterAddValueRule">openscenario_interpreter::syntax::ParameterAddValueRule</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterAction">openscenario_interpreter::syntax::ParameterAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1OverrideControllerValueAction">openscenario_interpreter::syntax::OverrideControllerValueAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Orientation">openscenario_interpreter::syntax::Orientation</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1OpenScenarioCategory">openscenario_interpreter::syntax::OpenScenarioCategory</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1OpenScenario">openscenario_interpreter::syntax::OpenScenario</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ObjectType">openscenario_interpreter::syntax::ObjectType</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ObjectController">openscenario_interpreter::syntax::ObjectController</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ModifyRule">openscenario_interpreter::syntax::ModifyRule</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1MiscObjectCategory">openscenario_interpreter::syntax::MiscObjectCategory</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1MiscObject">openscenario_interpreter::syntax::MiscObject</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup">openscenario_interpreter::syntax::ManeuverGroup</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Maneuver">openscenario_interpreter::syntax::Maneuver</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1LongitudinalAction">openscenario_interpreter::syntax::LongitudinalAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1LateralAction">openscenario_interpreter::syntax::LateralAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1LanePosition">openscenario_interpreter::syntax::LanePosition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1LaneChangeTarget">openscenario_interpreter::syntax::LaneChangeTarget</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction">openscenario_interpreter::syntax::LaneChangeAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Integer">openscenario_interpreter::syntax::Integer</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1InitActions">openscenario_interpreter::syntax::InitActions</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Init">openscenario_interpreter::syntax::Init</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1InfrastructureAction">openscenario_interpreter::syntax::InfrastructureAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1GlobalAction">openscenario_interpreter::syntax::GlobalAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1FrontAxle">openscenario_interpreter::syntax::FrontAxle</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1FileHeader">openscenario_interpreter::syntax::FileHeader</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1File">openscenario_interpreter::syntax::File</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Event">openscenario_interpreter::syntax::Event</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntitySelection">openscenario_interpreter::syntax::EntitySelection</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityRef">openscenario_interpreter::syntax::EntityRef</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityObject">openscenario_interpreter::syntax::EntityObject</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityCondition">openscenario_interpreter::syntax::EntityCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityAction">openscenario_interpreter::syntax::EntityAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Entities">openscenario_interpreter::syntax::Entities</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DynamicsShape">openscenario_interpreter::syntax::DynamicsShape</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DynamicsDimension">openscenario_interpreter::syntax::DynamicsDimension</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Double">openscenario_interpreter::syntax::Double</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DistanceCondition">openscenario_interpreter::syntax::DistanceCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Directory">openscenario_interpreter::syntax::Directory</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Dimensions">openscenario_interpreter::syntax::Dimensions</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DeleteEntityAction">openscenario_interpreter::syntax::DeleteEntityAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction">openscenario_interpreter::syntax::CustomCommandAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ControllerAction">openscenario_interpreter::syntax::ControllerAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Controller">openscenario_interpreter::syntax::Controller</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ConditionGroup">openscenario_interpreter::syntax::ConditionGroup</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ConditionEdge">openscenario_interpreter::syntax::ConditionEdge</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Condition">openscenario_interpreter::syntax::Condition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Command">openscenario_interpreter::syntax::Command</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Color">openscenario_interpreter::syntax::Color</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1CollisionCondition">openscenario_interpreter::syntax::CollisionCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Center">openscenario_interpreter::syntax::Center</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1CatalogLocations">openscenario_interpreter::syntax::CatalogLocations</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1CatalogLocation">openscenario_interpreter::syntax::CatalogLocation</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1CatalogDefinition">openscenario_interpreter::syntax::CatalogDefinition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ByValueCondition">openscenario_interpreter::syntax::ByValueCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ByType">openscenario_interpreter::syntax::ByType</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ByEntityCondition">openscenario_interpreter::syntax::ByEntityCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1BoundingBox">openscenario_interpreter::syntax::BoundingBox</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Boolean">openscenario_interpreter::syntax::Boolean</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Axles">openscenario_interpreter::syntax::Axles</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Axle">openscenario_interpreter::syntax::Axle</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction">openscenario_interpreter::syntax::AssignRouteAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction">openscenario_interpreter::syntax::AssignControllerAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Arrow">openscenario_interpreter::syntax::Arrow</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AdditionalAxle">openscenario_interpreter::syntax::AdditionalAxle</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AddEntityAction">openscenario_interpreter::syntax::AddEntityAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Actors">openscenario_interpreter::syntax::Actors</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Action">openscenario_interpreter::syntax::Action</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Act">openscenario_interpreter::syntax::Act</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction">openscenario_interpreter::syntax::AcquirePositionAction</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition">openscenario_interpreter::syntax::AccelerationCondition</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AbsoluteTargetSpeed">openscenario_interpreter::syntax::AbsoluteTargetSpeed</a></strong></td>
+</tr>
+<tr>
+<td>struct</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AbsoluteTargetLane">openscenario_interpreter::syntax::AbsoluteTargetLane</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types<a class="headerlink" href="#types" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>using <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UnsignedInteger">UnsignedInteger</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#using-unsignedint">UnsignedInt</a></strong></td>
+</tr>
+<tr>
+<td>using std::string</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#using-string">String</a></strong></td>
+</tr>
+<tr>
+<td>using <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Properties">Properties</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#using-defaultcontroller">DefaultController</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Arrow">Arrow</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, boost::optional&lt; <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Arrow">Arrow</a> &gt; &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Boolean">Boolean</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Color">Color</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, boost::optional&lt; <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Color">Color</a> &gt; &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Command">Command</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ConditionEdge">ConditionEdge</a> &amp; edge)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Double">Double</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DynamicsDimension">DynamicsDimension</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DynamicsShape">DynamicsShape</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Integer">Integer</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1MiscObjectCategory">MiscObjectCategory</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterType">ParameterType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1PedestrianCategory">PedestrianCategory</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Priority">Priority</a> &amp; priority)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ReferenceContext">ReferenceContext</a> &amp; context)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType">RelativeDistanceType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RouteStrategy">RouteStrategy</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Rule">Rule</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedTargetValueType">SpeedTargetValueType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState">StoryboardElementState</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StoryboardElementType">StoryboardElementType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TriggeringEntitiesRule">TriggeringEntitiesRule</a> &amp; rule)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UnsignedInteger">UnsignedInteger</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UnsignedShort">UnsignedShort</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::istream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&gt;&gt;">operator&gt;&gt;</a></strong>(std::istream &amp; is, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1VehicleCategory">VehicleCategory</a> &amp; category)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Act">Act</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Action">Action</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Arrow">Arrow</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; , const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Axle">Axle</a> &amp; )</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; , const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1FrontAxle">FrontAxle</a> &amp; )</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; , const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RearAxle">RearAxle</a> &amp; )</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; , const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AdditionalAxle">AdditionalAxle</a> &amp; )</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Axles">Axles</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Boolean">Boolean</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1BoundingBox">BoundingBox</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Center">Center</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1CollisionCondition">CollisionCondition</a> &amp; )</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Color">Color</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Command">Command</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Condition">Condition</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ConditionEdge">ConditionEdge</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ConditionGroup">ConditionGroup</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Dimensions">Dimensions</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Double">Double</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DynamicsDimension">DynamicsDimension</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1DynamicsShape">DynamicsShape</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Event">Event</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Init">Init</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1InitActions">InitActions</a> &amp; init_actions)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Integer">Integer</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Maneuver">Maneuver</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup">ManeuverGroup</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1MiscObjectCategory">MiscObjectCategory</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1OpenScenario">OpenScenario</a> &amp; )</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1OpenScenario">OpenScenario</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterDeclaration">ParameterDeclaration</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations">ParameterDeclarations</a> &amp; )</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ParameterType">ParameterType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Pedestrian">Pedestrian</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1PedestrianCategory">PedestrianCategory</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Performance">Performance</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Priority">Priority</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Private">Private</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ReferenceContext">ReferenceContext</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType">RelativeDistanceType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RouteStrategy">RouteStrategy</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Rule">Rule</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition">ScenarioDefinition</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition">ScenarioDefinition</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioObject">ScenarioObject</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedTargetValueType">SpeedTargetValueType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Story">Story</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Storyboard">Storyboard</a> &amp; )</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Storyboard">Storyboard</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState">StoryboardElementState</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1StoryboardElementType">StoryboardElementType</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>nlohmann::json &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(nlohmann::json &amp; json, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Trigger">Trigger</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1TriggeringEntitiesRule">TriggeringEntitiesRule</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UnsignedInteger">UnsignedInteger</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1UnsignedShort">UnsignedShort</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Vehicle">Vehicle</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1VehicleCategory">VehicleCategory</a> &amp; datum)</td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-asboolean">asBoolean</a></strong>(bool value)</td>
+</tr>
+<tr>
+<td>template \&lt;typename Result  =void,typename Function ,typename... Ts></br>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-apply">apply</a></strong>(Function &amp;&amp; function, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityObject">EntityObject</a> &amp; entity_object, Ts &amp;&amp;... xs)</td>
+</tr>
+<tr>
+<td>template \&lt;typename Result  =void,typename Function ,typename... Ts></br>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-apply">apply</a></strong>(Function &amp;&amp; function, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Position">Position</a> &amp; position, Ts &amp;&amp;... xs)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-boilerplate">BOILERPLATE</a></strong>(<a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Axle">Axle</a> )</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-boilerplate">BOILERPLATE</a></strong>(<a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1FrontAxle">FrontAxle</a> )</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-boilerplate">BOILERPLATE</a></strong>(<a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1RearAxle">RearAxle</a> )</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#function-boilerplate">BOILERPLATE</a></strong>(<a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1AdditionalAxle">AdditionalAxle</a> )</td>
+</tr>
+</tbody>
+</table>
+<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-true_v">true_v</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-stop_transition">stop_transition</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-start_transition">start_transition</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-standby_state">standby_state</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-skip_transition">skip_transition</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-running_state">running_state</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-false_v">false_v</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-end_transition">end_transition</a></strong></td>
+</tr>
+<tr>
+<td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1syntax#variable-complete_state">complete_state</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="types-documentation">Types Documentation<a class="headerlink" href="#types-documentation" title="Permanent link">#</a></h2>
+<h3 id="using-unsignedint">using UnsignedInt<a class="headerlink" href="#using-unsignedint" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">UnsignedInt</span> <span class="o">=</span> <span class="k">typedef</span> <span class="n">UnsignedInteger</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-string">using String<a class="headerlink" href="#using-string" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">String</span> <span class="o">=</span> <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="using-defaultcontroller">using DefaultController<a class="headerlink" href="#using-defaultcontroller" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">DefaultController</span> <span class="o">=</span> <span class="k">typedef</span> <span class="n">Properties</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
+<h3 id="function-operator">function operator&gt;&gt;<a class="headerlink" href="#function-operator" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Arrow</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_1">function operator&gt;&gt;<a class="headerlink" href="#function-operator_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span> <span class="n">Arrow</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_2">function operator&gt;&gt;<a class="headerlink" href="#function-operator_2" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Boolean</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_3">function operator&gt;&gt;<a class="headerlink" href="#function-operator_3" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Color</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_4">function operator&gt;&gt;<a class="headerlink" href="#function-operator_4" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span> <span class="n">Color</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_5">function operator&gt;&gt;<a class="headerlink" href="#function-operator_5" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Command</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_6">function operator&gt;&gt;<a class="headerlink" href="#function-operator_6" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">ConditionEdge</span> <span class="o">&amp;</span> <span class="n">edge</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_7">function operator&gt;&gt;<a class="headerlink" href="#function-operator_7" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Double</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_8">function operator&gt;&gt;<a class="headerlink" href="#function-operator_8" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">DynamicsDimension</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_9">function operator&gt;&gt;<a class="headerlink" href="#function-operator_9" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">DynamicsShape</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_10">function operator&gt;&gt;<a class="headerlink" href="#function-operator_10" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Integer</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_11">function operator&gt;&gt;<a class="headerlink" href="#function-operator_11" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">MiscObjectCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_12">function operator&gt;&gt;<a class="headerlink" href="#function-operator_12" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">ParameterType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_13">function operator&gt;&gt;<a class="headerlink" href="#function-operator_13" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">PedestrianCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_14">function operator&gt;&gt;<a class="headerlink" href="#function-operator_14" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Priority</span> <span class="o">&amp;</span> <span class="n">priority</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_15">function operator&gt;&gt;<a class="headerlink" href="#function-operator_15" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">ReferenceContext</span> <span class="o">&amp;</span> <span class="n">context</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_16">function operator&gt;&gt;<a class="headerlink" href="#function-operator_16" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">RelativeDistanceType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_17">function operator&gt;&gt;<a class="headerlink" href="#function-operator_17" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">RouteStrategy</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_18">function operator&gt;&gt;<a class="headerlink" href="#function-operator_18" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">Rule</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_19">function operator&gt;&gt;<a class="headerlink" href="#function-operator_19" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">SpeedTargetValueType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_20">function operator&gt;&gt;<a class="headerlink" href="#function-operator_20" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">StoryboardElementState</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_21">function operator&gt;&gt;<a class="headerlink" href="#function-operator_21" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">StoryboardElementType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_22">function operator&gt;&gt;<a class="headerlink" href="#function-operator_22" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">TriggeringEntitiesRule</span> <span class="o">&amp;</span> <span class="n">rule</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_23">function operator&gt;&gt;<a class="headerlink" href="#function-operator_23" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">UnsignedInteger</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_24">function operator&gt;&gt;<a class="headerlink" href="#function-operator_24" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">UnsignedShort</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_25">function operator&gt;&gt;<a class="headerlink" href="#function-operator_25" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
+    <span class="n">VehicleCategory</span> <span class="o">&amp;</span> <span class="n">category</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_26">function operator&lt;&lt;<a class="headerlink" href="#function-operator_26" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Act</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_27">function operator&lt;&lt;<a class="headerlink" href="#function-operator_27" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Action</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_28">function operator&lt;&lt;<a class="headerlink" href="#function-operator_28" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Arrow</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_29">function operator&lt;&lt;<a class="headerlink" href="#function-operator_29" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
+    <span class="k">const</span> <span class="n">Axle</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_30">function operator&lt;&lt;<a class="headerlink" href="#function-operator_30" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
+    <span class="k">const</span> <span class="n">FrontAxle</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_31">function operator&lt;&lt;<a class="headerlink" href="#function-operator_31" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
+    <span class="k">const</span> <span class="n">RearAxle</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_32">function operator&lt;&lt;<a class="headerlink" href="#function-operator_32" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
+    <span class="k">const</span> <span class="n">AdditionalAxle</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_33">function operator&lt;&lt;<a class="headerlink" href="#function-operator_33" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Axles</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_34">function operator&lt;&lt;<a class="headerlink" href="#function-operator_34" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Boolean</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_35">function operator&lt;&lt;<a class="headerlink" href="#function-operator_35" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">BoundingBox</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_36">function operator&lt;&lt;<a class="headerlink" href="#function-operator_36" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Center</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_37">function operator&lt;&lt;<a class="headerlink" href="#function-operator_37" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">CollisionCondition</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_38">function operator&lt;&lt;<a class="headerlink" href="#function-operator_38" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Color</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_39">function operator&lt;&lt;<a class="headerlink" href="#function-operator_39" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Command</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_40">function operator&lt;&lt;<a class="headerlink" href="#function-operator_40" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Condition</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_41">function operator&lt;&lt;<a class="headerlink" href="#function-operator_41" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ConditionEdge</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_42">function operator&lt;&lt;<a class="headerlink" href="#function-operator_42" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ConditionGroup</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_43">function operator&lt;&lt;<a class="headerlink" href="#function-operator_43" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Dimensions</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_44">function operator&lt;&lt;<a class="headerlink" href="#function-operator_44" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Double</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_45">function operator&lt;&lt;<a class="headerlink" href="#function-operator_45" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">DynamicsDimension</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_46">function operator&lt;&lt;<a class="headerlink" href="#function-operator_46" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">DynamicsShape</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_47">function operator&lt;&lt;<a class="headerlink" href="#function-operator_47" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Event</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_48">function operator&lt;&lt;<a class="headerlink" href="#function-operator_48" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Init</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_49">function operator&lt;&lt;<a class="headerlink" href="#function-operator_49" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">InitActions</span> <span class="o">&amp;</span> <span class="n">init_actions</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_50">function operator&lt;&lt;<a class="headerlink" href="#function-operator_50" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Integer</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_51">function operator&lt;&lt;<a class="headerlink" href="#function-operator_51" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Maneuver</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_52">function operator&lt;&lt;<a class="headerlink" href="#function-operator_52" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ManeuverGroup</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_53">function operator&lt;&lt;<a class="headerlink" href="#function-operator_53" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">MiscObjectCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_54">function operator&lt;&lt;<a class="headerlink" href="#function-operator_54" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">OpenScenario</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_55">function operator&lt;&lt;<a class="headerlink" href="#function-operator_55" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">OpenScenario</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_56">function operator&lt;&lt;<a class="headerlink" href="#function-operator_56" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ParameterDeclaration</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_57">function operator&lt;&lt;<a class="headerlink" href="#function-operator_57" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ParameterDeclarations</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_58">function operator&lt;&lt;<a class="headerlink" href="#function-operator_58" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ParameterType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_59">function operator&lt;&lt;<a class="headerlink" href="#function-operator_59" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Pedestrian</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_60">function operator&lt;&lt;<a class="headerlink" href="#function-operator_60" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">PedestrianCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_61">function operator&lt;&lt;<a class="headerlink" href="#function-operator_61" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Performance</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_62">function operator&lt;&lt;<a class="headerlink" href="#function-operator_62" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Priority</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_63">function operator&lt;&lt;<a class="headerlink" href="#function-operator_63" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Private</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_64">function operator&lt;&lt;<a class="headerlink" href="#function-operator_64" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ReferenceContext</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_65">function operator&lt;&lt;<a class="headerlink" href="#function-operator_65" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">RelativeDistanceType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_66">function operator&lt;&lt;<a class="headerlink" href="#function-operator_66" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">RouteStrategy</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_67">function operator&lt;&lt;<a class="headerlink" href="#function-operator_67" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Rule</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_68">function operator&lt;&lt;<a class="headerlink" href="#function-operator_68" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ScenarioDefinition</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_69">function operator&lt;&lt;<a class="headerlink" href="#function-operator_69" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ScenarioDefinition</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_70">function operator&lt;&lt;<a class="headerlink" href="#function-operator_70" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">ScenarioObject</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_71">function operator&lt;&lt;<a class="headerlink" href="#function-operator_71" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">SpeedTargetValueType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_72">function operator&lt;&lt;<a class="headerlink" href="#function-operator_72" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Story</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_73">function operator&lt;&lt;<a class="headerlink" href="#function-operator_73" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Storyboard</span> <span class="o">&amp;</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_74">function operator&lt;&lt;<a class="headerlink" href="#function-operator_74" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Storyboard</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_75">function operator&lt;&lt;<a class="headerlink" href="#function-operator_75" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">StoryboardElementState</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_76">function operator&lt;&lt;<a class="headerlink" href="#function-operator_76" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">StoryboardElementType</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_77">function operator&lt;&lt;<a class="headerlink" href="#function-operator_77" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Trigger</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_78">function operator&lt;&lt;<a class="headerlink" href="#function-operator_78" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">TriggeringEntitiesRule</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_79">function operator&lt;&lt;<a class="headerlink" href="#function-operator_79" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">UnsignedInteger</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_80">function operator&lt;&lt;<a class="headerlink" href="#function-operator_80" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">UnsignedShort</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_81">function operator&lt;&lt;<a class="headerlink" href="#function-operator_81" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Vehicle</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-operator_82">function operator&lt;&lt;<a class="headerlink" href="#function-operator_82" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">VehicleCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-asboolean">function asBoolean<a class="headerlink" href="#function-asboolean" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="o">&amp;</span> <span class="n">asBoolean</span><span class="p">(</span>
+    <span class="kt">bool</span> <span class="n">value</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-apply">function apply<a class="headerlink" href="#function-apply" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Result</span>  <span class="o">=</span><span class="kt">void</span><span class="p">,</span>
+<span class="k">typename</span> <span class="nc">Function</span> <span class="p">,</span>
+<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">apply</span><span class="p">(</span>
+    <span class="n">Function</span> <span class="o">&amp;&amp;</span> <span class="n">function</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">EntityObject</span> <span class="o">&amp;</span> <span class="n">entity_object</span><span class="p">,</span>
+    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-apply_1">function apply<a class="headerlink" href="#function-apply_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Result</span>  <span class="o">=</span><span class="kt">void</span><span class="p">,</span>
+<span class="k">typename</span> <span class="nc">Function</span> <span class="p">,</span>
+<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
+<span class="k">auto</span> <span class="n">apply</span><span class="p">(</span>
+    <span class="n">Function</span> <span class="o">&amp;&amp;</span> <span class="n">function</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Position</span> <span class="o">&amp;</span> <span class="n">position</span><span class="p">,</span>
+    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-boilerplate">function BOILERPLATE<a class="headerlink" href="#function-boilerplate" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
+    <span class="n">Axle</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-boilerplate_1">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
+    <span class="n">FrontAxle</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-boilerplate_2">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_2" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
+    <span class="n">RearAxle</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-boilerplate_3">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_3" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
+    <span class="n">AdditionalAxle</span> 
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="attributes-documentation">Attributes Documentation<a class="headerlink" href="#attributes-documentation" title="Permanent link">#</a></h2>
+<h3 id="variable-true_v">variable true_v<a class="headerlink" href="#variable-true_v" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">true_v</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">Boolean</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1Boolean</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-stop_transition">variable stop_transition<a class="headerlink" href="#variable-stop_transition" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">stop_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span> <span class="n">stopTransition</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-start_transition">variable start_transition<a class="headerlink" href="#variable-start_transition" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">start_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="n">startTransition</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-standby_state">variable standby_state<a class="headerlink" href="#variable-standby_state" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">standby_state</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>   <span class="n">standbyState</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-skip_transition">variable skip_transition<a class="headerlink" href="#variable-skip_transition" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">skip_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span> <span class="n">skipTransition</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-running_state">variable running_state<a class="headerlink" href="#variable-running_state" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">running_state</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>   <span class="n">runningState</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-false_v">variable false_v<a class="headerlink" href="#variable-false_v" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">false_v</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">Boolean</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1Boolean</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-end_transition">variable end_transition<a class="headerlink" href="#variable-end_transition" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">end_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>  <span class="n">endTransition</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="variable-complete_state">variable complete_state<a class="headerlink" href="#variable-complete_state" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">complete_state</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>  <span class="n">completeState</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<p>Updated on 20 July 2021 at 12:21:11 UTC</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020- Tier IV, Inc.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

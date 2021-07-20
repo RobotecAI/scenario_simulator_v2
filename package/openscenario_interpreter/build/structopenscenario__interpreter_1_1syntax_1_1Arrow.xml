@@ -5,8 +5,9 @@
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6f" prot="public" static="no">
         <name>value_type</name>
-        <enumvalue id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6fa58534e6fe346e65592c824dff24c363b" prot="public">
-          <name>noArrow</name>
+        <enumvalue id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6fa1fbf3f935c8917a92f5c830f9af863fb" prot="public">
+          <name>none</name>
+          <initializer>= 0</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -39,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="28" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="28" bodyend="33"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="28" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="28" bodyend="35"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -54,19 +55,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="33" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="35" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1ace9ba62d7622024d2e794318c3503c3e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a07177beab8e1a2d6f9ace385de8a7124" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr</type>
         <definition>constexpr openscenario_interpreter::syntax::Arrow::Arrow</definition>
-        <argsstring>(value_type value=noArrow)</argsstring>
+        <argsstring>(value_type value=none)</argsstring>
         <name>Arrow</name>
         <param>
           <type>value_type</type>
           <declname>value</declname>
-          <defval>noArrow</defval>
+          <defval>none</defval>
         </param>
         <briefdescription>
         </briefdescription>
@@ -74,7 +75,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="35" bodyend="35"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1abb0e14bfc45d25b25505caf079070fc0" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::syntax::Arrow::Arrow</definition>
+        <argsstring>(const traffic_simulator::TrafficLightArrow &amp;arrow)</argsstring>
+        <name>Arrow</name>
+        <param>
+          <type>const traffic_simulator::TrafficLightArrow &amp;</type>
+          <declname>arrow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="39" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a6f57d122b59cca113dd034c46ee7d8a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>constexpr</type>
@@ -87,11 +105,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="37" bodyend="37"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="61" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a60777f6cf8914b14d12742f980781e24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>openscenario_interpreter::syntax::Arrow::operator traffic_simulator::TrafficLightArrow</definition>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a721a8ea6457197565035e082b31fa315" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr openscenario_interpreter::syntax::Arrow::operator traffic_simulator::TrafficLightArrow</definition>
         <argsstring>() const</argsstring>
         <name>operator traffic_simulator::TrafficLightArrow</name>
         <briefdescription>
@@ -100,19 +118,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="39" bodyend="57"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="63" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="63" bodyend="81"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="27" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="26" bodyend="58"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" line="27" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/arrow.hpp" bodystart="26" bodyend="82"/>
     <listofallmembers>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1ace9ba62d7622024d2e794318c3503c3e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>Arrow</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a07177beab8e1a2d6f9ace385de8a7124" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>Arrow</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1abb0e14bfc45d25b25505caf079070fc0" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>Arrow</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6faf7daa3deaa9d79cfe92e369baa2742b6" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>left</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6fa58534e6fe346e65592c824dff24c363b" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>noArrow</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a60777f6cf8914b14d12742f980781e24" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>operator traffic_simulator::TrafficLightArrow</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6fa1fbf3f935c8917a92f5c830f9af863fb" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>none</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a721a8ea6457197565035e082b31fa315" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>operator traffic_simulator::TrafficLightArrow</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a6f57d122b59cca113dd034c46ee7d8a9" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>operator value_type</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6faa880ab202001f666219af463545b2a4e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>right</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1Arrow_1a8bb26ffce3d507e633ec4f0a724cde6fa30d575d74d470d15d4d6cf5fee1781bd" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::Arrow</scope><name>straight</name></member>

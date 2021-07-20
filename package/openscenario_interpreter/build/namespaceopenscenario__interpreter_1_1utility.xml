@@ -5,6 +5,9 @@
     <innerclass refid="structopenscenario__interpreter_1_1utility_1_1AttributeHighlighter" prot="public">openscenario_interpreter::utility::AttributeHighlighter</innerclass>
     <innerclass refid="structopenscenario__interpreter_1_1utility_1_1ExecutionTimer" prot="public">openscenario_interpreter::utility::ExecutionTimer</innerclass>
     <innerclass refid="structopenscenario__interpreter_1_1utility_1_1Indent" prot="public">openscenario_interpreter::utility::Indent</innerclass>
+    <innerclass refid="structopenscenario__interpreter_1_1utility_1_1overloaded" prot="public">openscenario_interpreter::utility::overloaded</innerclass>
+    <innerclass refid="structopenscenario__interpreter_1_1utility_1_1overloaded_3_01T_01_4" prot="public">openscenario_interpreter::utility::overloaded&lt; T &gt;</innerclass>
+    <innerclass refid="structopenscenario__interpreter_1_1utility_1_1overloaded_3_01T_00_01U_00_01Ts_8_8_8_01_4" prot="public">openscenario_interpreter::utility::overloaded&lt; T, U, Ts... &gt;</innerclass>
     <innernamespace refid="namespaceopenscenario__interpreter_1_1utility_1_1detail">openscenario_interpreter::utility::detail</innernamespace>
       <sectiondef kind="var">
       <memberdef kind="variable" id="indent_8hpp_1a9a1de3a09943bbd8a4c729a86e390f03" prot="public" static="no" mutable="no">
@@ -226,6 +229,30 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/indent.hpp" line="32" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/indent.hpp" bodystart="65" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="overload_8hpp_1ae56014c583da8514e5579623f1c5c042" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Ts</declname>
+            <defname>Ts</defname>
+          </param>
+        </templateparamlist>
+        <type>constexpr auto</type>
+        <definition>constexpr auto openscenario_interpreter::utility::overload</definition>
+        <argsstring>(Ts &amp;&amp;... xs) -&gt; typename utility::overloaded&lt; typename std::decay&lt; Ts &gt;::type... &gt;</argsstring>
+        <name>overload</name>
+        <param>
+          <type>Ts &amp;&amp;...</type>
+          <declname>xs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/overload.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/utility/overload.hpp" bodystart="51" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="pair_8hpp_1ac4fd1e75262a488daba8d453d669cd1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

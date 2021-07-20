@@ -1,0 +1,1041 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../../../image/icon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/error.hpp - Scenario testing framework for Autoware</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheet/tierivcolor.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#homerunnerworkscenario_simulator_v2scenario_simulator_v2openscenarioopenscenario_interpreterincludeopenscenario_interpretererrorhpp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Scenario testing framework for Autoware" class="md-header__button md-logo" aria-label="Scenario testing framework for Autoware" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5 11 1.5-4.5h11L19 11m-1.5 5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-11 0A1.5 1.5 0 0 1 5 14.5 1.5 1.5 0 0 1 6.5 13 1.5 1.5 0 0 1 8 14.5 1.5 1.5 0 0 1 6.5 16M18.92 6c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.22.42-1.42 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8l-2.08-6z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scenario testing framework for Autoware
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              /home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/error.hpp
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/tier4/scenario_simulator.auto/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Scenario testing framework for Autoware" class="md-nav__button md-logo" aria-label="Scenario testing framework for Autoware" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5 11 1.5-4.5h11L19 11m-1.5 5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-11 0A1.5 1.5 0 0 1 5 14.5 1.5 1.5 0 0 1 6.5 13 1.5 1.5 0 0 1 8 14.5 1.5 1.5 0 0 1 6.5 16M18.92 6c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.22.42-1.42 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8l-2.08-6z"/></svg>
+
+    </a>
+    Scenario testing framework for Autoware
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/tier4/scenario_simulator.auto/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/BuildInstructions/" class="md-nav__link">
+        Build Instructions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/SimpleDemo/" class="md-nav__link">
+        Simple demo
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/RunWithDocker/" class="md-nav__link">
+        Run with docker
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        User Guide
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User Guide" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          User Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Scenario Editor
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Scenario Editor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Scenario Editor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/ScenarioEditorUserGuide/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/CreateSimpleScenario/" class="md-nav__link">
+        Create a simple scenario
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/EditExistingScenario/" class="md-nav__link">
+        Edit an existing scenario
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/ChangeCoordinate/" class="md-nav__link">
+        Topic : Changing the coordinate system
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_editor/RelativePosition/" class="md-nav__link">
+        Place an entity to relative position
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Scenario Test Runner
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Scenario Test Runner" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Scenario Test Runner
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/ScenarioTestRunner/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/ScenarioFormatConversion/" class="md-nav__link">
+        Scenario Format Conversion
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/HowToWriteWorkflowFile/" class="md-nav__link">
+        How to write workflow file
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../user_guide/scenario_test_runner/Tips/" class="md-nav__link">
+        Tips about writing scenarios
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Design
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/About/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/AutowareAPI/" class="md-nav__link">
+        Autoware API
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/ErrorCategories/" class="md-nav__link">
+        Error Categories
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/OpenSCENARIOSupport/" class="md-nav__link">
+        OpenSCENARIO Support
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimpleSensorSimulator/" class="md-nav__link">
+        Simple sensor simulator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SystemArchitecture/" class="md-nav__link">
+        System Architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/TrafficSimulator/" class="md-nav__link">
+        Traffic simulator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/ZeroMQ/" class="md-nav__link">
+        Communication with simulator and interpreter
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../About/" class="md-nav__link">
+        Package Details
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../ReleaseNotes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../etc/ContactUs/" class="md-nav__link">
+        Contact Infomation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../LICENSE/" class="md-nav__link">
+        LICENSE
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defines" class="md-nav__link">
+    Defines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macro-documentation" class="md-nav__link">
+    Macro Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Macro Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-unsupported_setting_detected" class="md-nav__link">
+    define UNSUPPORTED_SETTING_DETECTED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-unsupported_enumeration_value_specified" class="md-nav__link">
+    define UNSUPPORTED_ENUMERATION_VALUE_SPECIFIED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-unsupported_element_specified" class="md-nav__link">
+    define UNSUPPORTED_ELEMENT_SPECIFIED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-unsupported_conversion_detected" class="md-nav__link">
+    define UNSUPPORTED_CONVERSION_DETECTED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-unexpected_enumeration_value_specified" class="md-nav__link">
+    define UNEXPECTED_ENUMERATION_VALUE_SPECIFIED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-unexpected_enumeration_value_assigned" class="md-nav__link">
+    define UNEXPECTED_ENUMERATION_VALUE_ASSIGNED
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-print" class="md-nav__link">
+    define PRINT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-line" class="md-nav__link">
+    define LINE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-invalid_numeric_literal_specified" class="md-nav__link">
+    define INVALID_NUMERIC_LITERAL_SPECIFIED
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/tier4/scenario_simulator.auto/edit/master/docs/package/openscenario_interpreter/markdown/Files/error_8hpp.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="homerunnerworkscenario_simulator_v2scenario_simulator_v2openscenarioopenscenario_interpreterincludeopenscenario_interpretererrorhpp">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/error.hpp<a class="headerlink" href="#homerunnerworkscenario_simulator_v2scenario_simulator_v2openscenarioopenscenario_interpreterincludeopenscenario_interpretererrorhpp" title="Permanent link">#</a></h1>
+<h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter">openscenario_interpreter</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="defines">Defines<a class="headerlink" href="#defines" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-unsupported_setting_detected">UNSUPPORTED_SETTING_DETECTED</a></strong>(ACTION_OR_CONDITION, ELEMENT)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-unsupported_enumeration_value_specified">UNSUPPORTED_ENUMERATION_VALUE_SPECIFIED</a></strong>(TYPE, VALUE)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-unsupported_element_specified">UNSUPPORTED_ELEMENT_SPECIFIED</a></strong>(ELEMENT)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-unsupported_conversion_detected">UNSUPPORTED_CONVERSION_DETECTED</a></strong>(FROM, TO)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-unexpected_enumeration_value_specified">UNEXPECTED_ENUMERATION_VALUE_SPECIFIED</a></strong>(TYPE, VALUE)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-unexpected_enumeration_value_assigned">UNEXPECTED_ENUMERATION_VALUE_ASSIGNED</a></strong>(TYPE, VALUE)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-print">PRINT</a></strong>(...)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-line">LINE</a></strong>()</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/error_8hpp#define-invalid_numeric_literal_specified">INVALID_NUMERIC_LITERAL_SPECIFIED</a></strong>(VALUE)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
+<h3 id="define-unsupported_setting_detected">define UNSUPPORTED_SETTING_DETECTED<a class="headerlink" href="#define-unsupported_setting_detected" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define UNSUPPORTED_SETTING_DETECTED(</span>
+    <span class="n">ACTION_OR_CONDITION</span><span class="p">,</span>
+    <span class="n">ELEMENT</span>
+<span class="p">)</span> <span class="n">SyntaxError</span><span class="p">(</span><span class="err">#</span><span class="n">ACTION_OR_CONDITION</span> <span class="s">&quot; does not yet support &quot;</span><span class="p">,</span> <span class="n">ELEMENT</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-unsupported_enumeration_value_specified">define UNSUPPORTED_ENUMERATION_VALUE_SPECIFIED<a class="headerlink" href="#define-unsupported_enumeration_value_specified" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define UNSUPPORTED_ENUMERATION_VALUE_SPECIFIED(</span>
+    <span class="n">TYPE</span><span class="p">,</span>
+    <span class="n">VALUE</span>
+<span class="p">)</span> <span class="n">SyntaxError</span><span class="p">(</span>                                               \
+    <span class="s">&quot;Given value &quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">quoted</span><span class="p">(</span><span class="n">VALUE</span><span class="p">),</span>                      \
+    <span class="s">&quot; is valid OpenSCENARIO value of type &quot;</span> <span class="err">#</span><span class="n">TYPE</span> <span class="s">&quot;, but it is not supported yet&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-unsupported_element_specified">define UNSUPPORTED_ELEMENT_SPECIFIED<a class="headerlink" href="#define-unsupported_element_specified" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define UNSUPPORTED_ELEMENT_SPECIFIED(</span>
+    <span class="n">ELEMENT</span>
+<span class="p">)</span> <span class="n">SyntaxError</span><span class="p">(</span>                                                                                    \
+    <span class="s">&quot;Given class &quot;</span><span class="p">,</span> <span class="n">ELEMENT</span><span class="p">,</span> <span class="s">&quot; is valid OpenSCENARIO element of class &quot;</span><span class="p">,</span> <span class="n">demangle</span><span class="p">(</span><span class="k">typeid</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)),</span> \
+    <span class="s">&quot;, but is not supported yet&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-unsupported_conversion_detected">define UNSUPPORTED_CONVERSION_DETECTED<a class="headerlink" href="#define-unsupported_conversion_detected" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define UNSUPPORTED_CONVERSION_DETECTED(</span>
+    <span class="n">FROM</span><span class="p">,</span>
+    <span class="n">TO</span>
+<span class="p">)</span> <span class="n">SyntaxError</span><span class="p">(</span><span class="s">&quot;Converting &quot;</span> <span class="err">#</span><span class="n">FROM</span> <span class="s">&quot; to &quot;</span> <span class="err">#</span><span class="n">TO</span>      \
+              <span class="s">&quot;. This is valid in OpenSCENARIO standard, but is not yet supported&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-unexpected_enumeration_value_specified">define UNEXPECTED_ENUMERATION_VALUE_SPECIFIED<a class="headerlink" href="#define-unexpected_enumeration_value_specified" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define UNEXPECTED_ENUMERATION_VALUE_SPECIFIED(</span>
+    <span class="n">TYPE</span><span class="p">,</span>
+    <span class="n">VALUE</span>
+<span class="p">)</span> <span class="n">SyntaxError</span><span class="p">(</span><span class="s">&quot;Unexpected value &quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">quoted</span><span class="p">(</span><span class="n">VALUE</span><span class="p">),</span> <span class="s">&quot; of type &quot;</span> <span class="err">#</span><span class="n">TYPE</span> <span class="s">&quot; was specified&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-unexpected_enumeration_value_assigned">define UNEXPECTED_ENUMERATION_VALUE_ASSIGNED<a class="headerlink" href="#define-unexpected_enumeration_value_assigned" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define UNEXPECTED_ENUMERATION_VALUE_ASSIGNED(</span>
+    <span class="n">TYPE</span><span class="p">,</span>
+    <span class="n">VALUE</span>
+<span class="p">)</span> <span class="n">SyntaxError</span><span class="p">(</span>                                             \
+    <span class="s">&quot;Unexpected value &quot;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">TYPE</span><span class="o">::</span><span class="n">value_type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">VALUE</span><span class="p">),</span> <span class="s">&quot; was assigned to type &quot;</span> <span class="err">#</span><span class="n">TYPE</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-print">define PRINT<a class="headerlink" href="#define-print" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define PRINT(</span>
+    <span class="p">...</span>
+<span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;; &quot;</span> <span class="err">#</span><span class="n">__VA_ARGS__</span> <span class="s">&quot; = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">boolalpha</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">__VA_ARGS__</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+</code></pre></div>
+<h3 id="define-line">define LINE<a class="headerlink" href="#define-line" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define LINE(</span>
+
+<span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;; </span><span class="se">\x1b</span><span class="s">[33m&quot;</span> <span class="n">__FILE__</span> <span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[31m:</span><span class="se">\x1b</span><span class="s">[36m&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">__LINE__</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+</code></pre></div>
+<h3 id="define-invalid_numeric_literal_specified">define INVALID_NUMERIC_LITERAL_SPECIFIED<a class="headerlink" href="#define-invalid_numeric_literal_specified" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#define INVALID_NUMERIC_LITERAL_SPECIFIED(</span>
+    <span class="n">VALUE</span>
+<span class="p">)</span> <span class="n">SyntaxError</span><span class="p">(</span>                                                                         \
+    <span class="s">&quot;Given value &quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">quoted</span><span class="p">(</span><span class="n">VALUE</span><span class="p">),</span> <span class="s">&quot; is not an external representation of type &quot;</span><span class="p">,</span> \
+    <span class="n">demangle</span><span class="p">(</span><span class="k">typeid</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)))</span>
+</code></pre></div>
+<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
+<span class="c1">//</span>
+<span class="c1">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1">// you may not use this file except in compliance with the License.</span>
+<span class="c1">// You may obtain a copy of the License at</span>
+<span class="c1">//</span>
+<span class="c1">//     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">//</span>
+<span class="c1">// Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1">// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1">// See the License for the specific language governing permissions and</span>
+<span class="c1">// limitations under the License.</span>
+
+<span class="cp">#ifndef OPENSCENARIO_INTERPRETER__ERROR_HPP_</span>
+<span class="cp">#define OPENSCENARIO_INTERPRETER__ERROR_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/utility/demangle.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
+
+<span class="cp">#define LINE() \</span>
+<span class="cp">  std::cout &lt;&lt; &quot;; \x1b[33m&quot; __FILE__ &quot;\x1b[31m:\x1b[36m&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;\x1b[0m&quot; &lt;&lt; std::endl</span>
+
+<span class="cp">#define PRINT(...) \</span>
+<span class="cp">  std::cout &lt;&lt; &quot;; &quot; #__VA_ARGS__ &quot; = &quot; &lt;&lt; std::boolalpha &lt;&lt; (__VA_ARGS__) &lt;&lt; std::endl</span>
+
+<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
+<span class="p">{</span>
+<span class="k">using</span> <span class="n">InternalError</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="p">;</span>
+
+<span class="k">using</span> <span class="n">common</span><span class="o">::</span><span class="n">AutowareError</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">common</span><span class="o">::</span><span class="n">Error</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">common</span><span class="o">::</span><span class="n">SemanticError</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">common</span><span class="o">::</span><span class="n">SimulationError</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">common</span><span class="o">::</span><span class="n">SyntaxError</span><span class="p">;</span>
+
+<span class="cp">#define INVALID_NUMERIC_LITERAL_SPECIFIED(VALUE)                                       \</span>
+<span class="cp">  SyntaxError(                                                                         \</span>
+<span class="cp">    &quot;Given value &quot;, std::quoted(VALUE), &quot; is not an external representation of type &quot;, \</span>
+<span class="cp">    demangle(typeid(*this)))</span>
+
+<span class="cp">#define UNSUPPORTED_ENUMERATION_VALUE_SPECIFIED(TYPE, VALUE) \</span>
+<span class="cp">  SyntaxError(                                               \</span>
+<span class="cp">    &quot;Given value &quot;, std::quoted(VALUE),                      \</span>
+<span class="cp">    &quot; is valid OpenSCENARIO value of type &quot; #TYPE &quot;, but it is not supported yet&quot;)</span>
+
+<span class="cp">#define UNEXPECTED_ENUMERATION_VALUE_SPECIFIED(TYPE, VALUE) \</span>
+<span class="cp">  SyntaxError(&quot;Unexpected value &quot;, std::quoted(VALUE), &quot; of type &quot; #TYPE &quot; was specified&quot;)</span>
+
+<span class="cp">#define UNEXPECTED_ENUMERATION_VALUE_ASSIGNED(TYPE, VALUE) \</span>
+<span class="cp">  SyntaxError(                                             \</span>
+<span class="cp">    &quot;Unexpected value &quot;, static_cast&lt;TYPE::value_type&gt;(VALUE), &quot; was assigned to type &quot; #TYPE)</span>
+
+<span class="cp">#define UNSUPPORTED_ELEMENT_SPECIFIED(ELEMENT)                                                    \</span>
+<span class="cp">  SyntaxError(                                                                                    \</span>
+<span class="cp">    &quot;Given class &quot;, ELEMENT, &quot; is valid OpenSCENARIO element of class &quot;, demangle(typeid(*this)), \</span>
+<span class="cp">    &quot;, but is not supported yet&quot;)</span>
+
+<span class="cp">#define UNSUPPORTED_CONVERSION_DETECTED(FROM, TO) \</span>
+<span class="cp">  SyntaxError(&quot;Converting &quot; #FROM &quot; to &quot; #TO      \</span>
+<span class="cp">              &quot;. This is valid in OpenSCENARIO standard, but is not yet supported&quot;)</span>
+
+<span class="cp">#define UNSUPPORTED_SETTING_DETECTED(ACTION_OR_CONDITION, ELEMENT) \</span>
+<span class="cp">  SyntaxError(#ACTION_OR_CONDITION &quot; does not yet support &quot;, ELEMENT)</span>
+<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+
+<span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__ERROR_HPP_</span>
+</code></pre></div>
+<hr />
+<p>Updated on 20 July 2021 at 12:21:12 UTC</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020- Tier IV, Inc.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+        <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

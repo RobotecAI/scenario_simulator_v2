@@ -5,73 +5,73 @@
     <includes local="no">memory</includes>
     <includes refid="procedure_8hpp" local="no">openscenario_interpreter/procedure.hpp</includes>
     <incdepgraph>
-      <node id="16819">
+      <node id="17243">
         <label>scenario_simulator_exception/exception.hpp</label>
       </node>
-      <node id="16815">
+      <node id="17239">
         <label>iomanip</label>
       </node>
-      <node id="16813">
+      <node id="17237">
         <label>limits</label>
       </node>
-      <node id="16816">
+      <node id="17240">
         <label>openscenario_interpreter/utility/demangle.hpp</label>
         <link refid="demangle_8hpp_source"/>
-        <childnode refid="16817" relation="include">
+        <childnode refid="17241" relation="include">
         </childnode>
-        <childnode refid="16818" relation="include">
+        <childnode refid="17242" relation="include">
         </childnode>
       </node>
-      <node id="16820">
+      <node id="17244">
         <label>stdexcept</label>
       </node>
-      <node id="16817">
+      <node id="17241">
         <label>string</label>
       </node>
-      <node id="16821">
+      <node id="17245">
         <label>traffic_simulator/api/api.hpp</label>
       </node>
-      <node id="16814">
+      <node id="17238">
         <label>openscenario_interpreter/error.hpp</label>
         <link refid="error_8hpp_source"/>
-        <childnode refid="16815" relation="include">
+        <childnode refid="17239" relation="include">
         </childnode>
-        <childnode refid="16816" relation="include">
+        <childnode refid="17240" relation="include">
         </childnode>
-        <childnode refid="16819" relation="include">
+        <childnode refid="17243" relation="include">
         </childnode>
-        <childnode refid="16820" relation="include">
+        <childnode refid="17244" relation="include">
         </childnode>
       </node>
-      <node id="16812">
+      <node id="17236">
         <label>openscenario_interpreter/procedure.hpp</label>
         <link refid="procedure_8hpp_source"/>
-        <childnode refid="16813" relation="include">
+        <childnode refid="17237" relation="include">
         </childnode>
-        <childnode refid="16811" relation="include">
+        <childnode refid="17235" relation="include">
         </childnode>
-        <childnode refid="16814" relation="include">
+        <childnode refid="17238" relation="include">
         </childnode>
-        <childnode refid="16821" relation="include">
+        <childnode refid="17245" relation="include">
         </childnode>
-        <childnode refid="16822" relation="include">
+        <childnode refid="17246" relation="include">
         </childnode>
       </node>
-      <node id="16818">
+      <node id="17242">
         <label>typeinfo</label>
       </node>
-      <node id="16822">
+      <node id="17246">
         <label>utility</label>
       </node>
-      <node id="16810">
+      <node id="17234">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/procedure.cpp</label>
         <link refid="procedure_8cpp"/>
-        <childnode refid="16811" relation="include">
+        <childnode refid="17235" relation="include">
         </childnode>
-        <childnode refid="16812" relation="include">
+        <childnode refid="17236" relation="include">
         </childnode>
       </node>
-      <node id="16811">
+      <node id="17235">
         <label>memory</label>
       </node>
     </incdepgraph>
@@ -104,7 +104,29 @@
 <codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(traffic_simulator::API),<sp/></highlight><highlight class="keyword">alignof</highlight><highlight class="normal">(traffic_simulator::API)&gt;::type<sp/>memory;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal">traffic_simulator::API<sp/>&amp;<sp/>connection<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">traffic_simulator::API<sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(memory);</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_interpreter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>toLanePosition(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Pose<sp/>&amp;<sp/>pose)<sp/>-&gt;<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::decay&lt;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>decltype(connection.toLaneletPose(std::declval&lt;decltype(pose)&gt;()).get())&gt;::type</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>connection.toLaneletPose(pose);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result.get();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>off</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>SimulationError(</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;The<sp/>specified<sp/>WorldPosition<sp/>=<sp/>[&quot;</highlight><highlight class="normal">,<sp/>pose.position.x,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pose.position.y,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pose.position.z,<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>could<sp/>not<sp/>be<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;approximated<sp/>to<sp/>the<sp/>proper<sp/>Lane.<sp/>Perhaps<sp/>the<sp/>WorldPosition<sp/>points<sp/>to<sp/>a<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;location<sp/>where<sp/>multiple<sp/>lanes<sp/>overlap,<sp/>and<sp/>there<sp/>are<sp/>at<sp/>least<sp/>two<sp/>or<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;more<sp/>candidates<sp/>for<sp/>a<sp/>LanePosition<sp/>that<sp/>can<sp/>be<sp/>approximated<sp/>to<sp/>that<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WorldPosition.<sp/>This<sp/>issue<sp/>can<sp/>be<sp/>resolved<sp/>by<sp/>strictly<sp/>specifying<sp/>the<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;location<sp/>using<sp/>LanePosition<sp/>instead<sp/>of<sp/>WorldPosition&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_interpreter</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/procedure.cpp"/>
   </compounddef>
