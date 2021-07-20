@@ -15,10 +15,6 @@
 #define OPENSCENARIO_INTERPRETER_ALLOW_ATTRIBUTES_TO_BE_BLANK
 #define OPENSCENARIO_INTERPRETER_NO_EXTENSION
 
-// clang-format off (NOTE: ament-clang-format does not respect the include order)
-#include <concealer/autoware_def.hpp>
-// clang-format on
-
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
