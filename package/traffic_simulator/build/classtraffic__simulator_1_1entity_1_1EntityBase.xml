@@ -313,8 +313,8 @@
         <argsstring>() const -&gt; const std::string=0</argsstring>
         <name>getCurrentAction</name>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity_1acc29fd3a5b1d63ac40d7e588d0449a66">getCurrentAction</reimplementedby>
-        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1aac894c52324b81c539985f2bd08de8f8">getCurrentAction</reimplementedby>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a9e9efde07636007f1f6a66f96ce393b4">getCurrentAction</reimplementedby>
+        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1aac894c52324b81c539985f2bd08de8f8">getCurrentAction</reimplementedby>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a91b9fb6c08025ff4d8687be9a7313535">getCurrentAction</reimplementedby>
         <briefdescription>
         </briefdescription>
@@ -386,8 +386,8 @@
         <argsstring>() -&gt; boost::optional&lt; openscenario_msgs::msg::Obstacle &gt;=0</argsstring>
         <name>getObstacle</name>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity_1a61032e27bbb74466b17c210d49d232d6">getObstacle</reimplementedby>
-        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a24452bad4a8d3a50a45d88862a7a042e">getObstacle</reimplementedby>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a3b8d356d13f44ac325c35e15ba4656a2">getObstacle</reimplementedby>
+        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a24452bad4a8d3a50a45d88862a7a042e">getObstacle</reimplementedby>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a9591a4efefbdd2340b02ea45ca89480f">getObstacle</reimplementedby>
         <briefdescription>
         </briefdescription>
@@ -462,7 +462,7 @@
         <definition>const autoware_vehicle_msgs::msg::VehicleCommand traffic_simulator::entity::EntityBase::getVehicleCommand</definition>
         <argsstring>() -&gt; const autoware_vehicle_msgs::msg::VehicleCommand</argsstring>
         <name>getVehicleCommand</name>
-        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a0b484028570f968ced76720e5df148af">getVehicleCommand</reimplementedby>
+        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a7d647b9001fa6661cce8014f30107671">getVehicleCommand</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -490,9 +490,9 @@
         <argsstring>() -&gt; const openscenario_msgs::msg::WaypointsArray=0</argsstring>
         <name>getWaypoints</name>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity_1a5cdcf5c19c8143dd5813cb1ae650c0e5">getWaypoints</reimplementedby>
+        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1ad3fed5c3a323b1c7d9713a60f24c8302">getWaypoints</reimplementedby>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity_1a0f0171b8b3d260de7a82398f1d1b9f07">getWaypoints</reimplementedby>
         <reimplementedby refid="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a62bea62bbcea04fd2fd28fadb7e9cacd">getWaypoints</reimplementedby>
-        <reimplementedby refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1ad3fed5c3a323b1c7d9713a60f24c8302">getWaypoints</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -846,32 +846,32 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="48">
+      <node id="50">
         <label>traffic_simulator::entity::EntityBase</label>
         <link refid="classtraffic__simulator_1_1entity_1_1EntityBase"/>
       </node>
-      <node id="50">
+      <node id="52">
         <label>traffic_simulator::entity::PedestrianEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1PedestrianEntity"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="50" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="52">
+      <node id="54">
         <label>traffic_simulator::entity::EgoEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1EgoEntity"/>
-        <childnode refid="51" relation="public-inheritance">
+        <childnode refid="53" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>traffic_simulator::entity::VehicleEntity</label>
+        <link refid="classtraffic__simulator_1_1entity_1_1VehicleEntity"/>
+        <childnode refid="50" relation="public-inheritance">
         </childnode>
       </node>
       <node id="51">
-        <label>traffic_simulator::entity::VehicleEntity</label>
-        <link refid="classtraffic__simulator_1_1entity_1_1VehicleEntity"/>
-        <childnode refid="48" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="49">
         <label>traffic_simulator::entity::MiscObjectEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity"/>
-        <childnode refid="48" relation="public-inheritance">
+        <childnode refid="50" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>

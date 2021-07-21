@@ -729,20 +729,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#define-debug_value" class="md-nav__link">
-    define DEBUG_VALUE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#define-debug_line" class="md-nav__link">
-    define DEBUG_LINE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#define-boilerplate" class="md-nav__link">
     define BOILERPLATE
   </a>
@@ -806,7 +792,7 @@
 <tbody>
 <tr>
 <td>template \&lt;typename T ></br>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/ego__entity_8cpp#function-getparameter">getParameter</a></strong>(const std::string &amp; name, T value)</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/ego__entity_8cpp#function-getparameter">getParameter</a></strong>(const std::string &amp; name, T value ={})</td>
 </tr>
 </tbody>
 </table>
@@ -821,14 +807,6 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/ego__entity_8cpp#define-debug_value">DEBUG_VALUE</a></strong>(...)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/ego__entity_8cpp#define-debug_line">DEBUG_LINE</a></strong>()</td>
-</tr>
-<tr>
-<td></td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/ego__entity_8cpp#define-boilerplate">BOILERPLATE</a></strong>(IDENTIFIER)</td>
 </tr>
 </tbody>
@@ -838,20 +816,10 @@
 <div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">getParameter</span><span class="p">(</span>
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="n">T</span> <span class="n">value</span>
+    <span class="n">T</span> <span class="n">value</span> <span class="o">=</span><span class="p">{}</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
-<h3 id="define-debug_value">define DEBUG_VALUE<a class="headerlink" href="#define-debug_value" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#define DEBUG_VALUE(</span>
-    <span class="p">...</span>
-<span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[32m&quot;</span> <span class="err">#</span><span class="n">__VA_ARGS__</span> <span class="s">&quot; = &quot;</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">__VA_ARGS__</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
-</code></pre></div>
-<h3 id="define-debug_line">define DEBUG_LINE<a class="headerlink" href="#define-debug_line" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#define DEBUG_LINE(</span>
-
-<span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[32m&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">__FILE__</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">__LINE__</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
-</code></pre></div>
 <h3 id="define-boilerplate">define BOILERPLATE<a class="headerlink" href="#define-boilerplate" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define BOILERPLATE(</span>
     <span class="n">IDENTIFIER</span>
@@ -875,7 +843,6 @@
 
 <span class="cp">#include</span> <span class="cpf">&lt;quaternion_operation/quaternion_operation.h&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;ament_index_cpp/get_package_share_directory.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;concealer/autoware_def.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
@@ -889,14 +856,8 @@
 <span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 
-<span class="cp">#define DEBUG_VALUE(...) \</span>
-<span class="cp">  std::cout &lt;&lt; &quot;\x1b[32m&quot; #__VA_ARGS__ &quot; = &quot; &lt;&lt; (__VA_ARGS__) &lt;&lt; &quot;\x1b[0m&quot; &lt;&lt; std::endl</span>
-
-<span class="cp">#define DEBUG_LINE() \</span>
-<span class="cp">  std::cout &lt;&lt; &quot;\x1b[32m&quot; &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;\x1b[0m&quot; &lt;&lt; std::endl</span>
-
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">getParameter</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">T</span> <span class="n">value</span><span class="p">)</span>
+<span class="k">auto</span> <span class="n">getParameter</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">T</span> <span class="n">value</span> <span class="o">=</span> <span class="p">{})</span>
 <span class="p">{</span>
   <span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span> <span class="n">node</span><span class="p">{</span><span class="s">&quot;get_parameter&quot;</span><span class="p">,</span> <span class="s">&quot;simulation&quot;</span><span class="p">};</span>
 
@@ -910,8 +871,6 @@
 <span class="p">{</span>
 <span class="k">namespace</span> <span class="nn">entity</span>
 <span class="p">{</span>
-<span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">concealer</span><span class="o">::</span><span class="n">Autoware</span><span class="o">&gt;</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">ego_entities</span><span class="p">{};</span>
-
 <span class="k">auto</span> <span class="n">toString</span><span class="p">(</span><span class="k">const</span> <span class="n">VehicleModelType</span> <span class="n">datum</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>
 <span class="p">{</span>
 <span class="cp">#define BOILERPLATE(IDENTIFIER)      \</span>
@@ -931,6 +890,7 @@
   <span class="p">}</span>
 
 <span class="cp">#undef BOILERPLATE</span>
+
   <span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;Unsupported vehicle model type, failed to convert to string&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -945,8 +905,6 @@
   <span class="c1">// please, let us know if we should do that</span>
   <span class="k">const</span> <span class="k">auto</span> <span class="n">vehicle_model_type</span> <span class="o">=</span> <span class="s">&quot;IDEAL_STEER&quot;</span><span class="p">;</span>
 <span class="cp">#endif</span>
-
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">vehicle_model_type</span><span class="p">);</span>
 
   <span class="k">if</span> <span class="p">(</span><span class="n">vehicle_model_type</span> <span class="o">==</span> <span class="s">&quot;IDEAL_STEER&quot;</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">VehicleModelType</span><span class="o">::</span><span class="n">IDEAL_STEER</span><span class="p">;</span>
@@ -963,23 +921,8 @@
   <span class="k">const</span> <span class="n">VehicleModelType</span> <span class="n">vehicle_model_type</span><span class="p">,</span>
   <span class="k">const</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">,</span>  <span class="c1">//</span>
   <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleParameters</span> <span class="o">&amp;</span> <span class="n">parameters</span><span class="p">)</span>
-  <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SimModelInterface</span><span class="o">&gt;</span>
+  <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">SimModelInterface</span><span class="o">&gt;</span>
 <span class="p">{</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;vel_lim&quot;</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;steer_lim&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;accel_rate&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;steer_rate_lim&quot;</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span>
-    <span class="s">&quot;wheel_base&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="p">.</span><span class="n">axles</span><span class="p">.</span><span class="n">front_axle</span><span class="p">.</span><span class="n">position_x</span> <span class="o">-</span> <span class="n">parameters</span><span class="p">.</span><span class="n">axles</span><span class="p">.</span><span class="n">rear_axle</span><span class="p">.</span><span class="n">position_x</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">step_time</span><span class="p">);</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;vel_time_delay&quot;</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;vel_time_constant&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;acc_time_delay&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;acc_time_constant&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;steer_time_delay&quot;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;steer_time_constant&quot;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">));</span>
-  <span class="n">DEBUG_VALUE</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;deadzone_delta_steer&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">));</span>
-
   <span class="k">switch</span> <span class="p">(</span><span class="n">vehicle_model_type</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">VehicleModelType</span><span class="o">::</span><span class="nl">IDEAL_STEER</span><span class="p">:</span>
       <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SimModelIdealSteer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getParameter</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span>
@@ -1020,56 +963,44 @@
 
     <span class="k">default</span><span class="o">:</span>
       <span class="n">THROW_SEMANTIC_ERROR</span><span class="p">(</span>
-        <span class="s">&quot;Unsupported vehicle_model_type &quot;</span><span class="p">,</span> <span class="n">toString</span><span class="p">(</span><span class="n">vehicle_model_type</span><span class="p">),</span> <span class="s">&quot;specified&quot;</span><span class="p">);</span>
+        <span class="s">&quot;Unsupported vehicle_model_type &quot;</span><span class="p">,</span> <span class="n">toString</span><span class="p">(</span><span class="n">vehicle_model_type</span><span class="p">),</span> <span class="s">&quot; specified&quot;</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">EgoEntity</span><span class="o">::</span><span class="n">EgoEntity</span><span class="p">(</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>  <span class="c1">//</span>
-  <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="o">&amp;</span> <span class="n">lanelet2_map_osm</span><span class="p">,</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">,</span>  <span class="c1">//</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>             <span class="c1">//</span>
+  <span class="k">const</span> <span class="n">Configuration</span> <span class="o">&amp;</span> <span class="n">configuration</span><span class="p">,</span>  <span class="c1">//</span>
+  <span class="k">const</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">,</span>               <span class="c1">//</span>
   <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleParameters</span> <span class="o">&amp;</span> <span class="n">parameters</span><span class="p">)</span>
 <span class="o">:</span> <span class="n">VehicleEntity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parameters</span><span class="p">),</span>
+  <span class="n">autoware</span><span class="p">(</span>
+    <span class="n">getParameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;autoware_launch_package&quot;</span><span class="p">),</span>
+    <span class="n">getParameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;autoware_launch_file&quot;</span><span class="p">),</span>
+    <span class="s">&quot;map_path:=&quot;</span> <span class="o">+</span> <span class="n">configuration</span><span class="p">.</span><span class="n">map_path</span><span class="p">.</span><span class="n">string</span><span class="p">(),</span>
+    <span class="s">&quot;lanelet2_map_file:=&quot;</span> <span class="o">+</span> <span class="n">configuration</span><span class="p">.</span><span class="n">getLanelet2MapFile</span><span class="p">(),</span>
+    <span class="s">&quot;pointcloud_map_file:=&quot;</span> <span class="o">+</span> <span class="n">configuration</span><span class="p">.</span><span class="n">getPointCloudMapFile</span><span class="p">(),</span>
+    <span class="s">&quot;sensor_model:=&quot;</span> <span class="o">+</span> <span class="n">getParameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;sensor_model&quot;</span><span class="p">),</span>
+    <span class="s">&quot;vehicle_model:=&quot;</span> <span class="o">+</span> <span class="n">getParameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;vehicle_model&quot;</span><span class="p">),</span>
+    <span class="s">&quot;rviz_config:=&quot;</span> <span class="o">+</span> <span class="n">configuration</span><span class="p">.</span><span class="n">rviz_config_path</span><span class="p">.</span><span class="n">string</span><span class="p">(),</span>  <span class="c1">//</span>
+    <span class="s">&quot;scenario_simulation:=true&quot;</span><span class="p">),</span>
   <span class="n">vehicle_model_type_</span><span class="p">(</span><span class="n">getVehicleModelType</span><span class="p">()),</span>
   <span class="n">vehicle_model_ptr_</span><span class="p">(</span><span class="n">makeSimulationModel</span><span class="p">(</span><span class="n">vehicle_model_type_</span><span class="p">,</span> <span class="n">step_time</span><span class="p">,</span> <span class="n">parameters</span><span class="p">))</span>
 <span class="p">{</span>
   <span class="n">entity_type_</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityType</span><span class="o">::</span><span class="n">EGO</span><span class="p">;</span>
-
-  <span class="n">ego_entities</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">piecewise_construct</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">forward_as_tuple</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">forward_as_tuple</span><span class="p">(</span>
-      <span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;autoware_launch_package&quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)),</span>
-      <span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;autoware_launch_file&quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)),</span>
-      <span class="s">&quot;map_path:=&quot;</span> <span class="o">+</span> <span class="n">lanelet2_map_osm</span><span class="p">.</span><span class="n">parent_path</span><span class="p">().</span><span class="n">string</span><span class="p">(),</span>
-      <span class="s">&quot;lanelet2_map_file:=&quot;</span> <span class="o">+</span> <span class="n">lanelet2_map_osm</span><span class="p">.</span><span class="n">filename</span><span class="p">().</span><span class="n">string</span><span class="p">(),</span>
-      <span class="s">&quot;sensor_model:=&quot;</span> <span class="o">+</span> <span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;sensor_model&quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)),</span>
-      <span class="s">&quot;vehicle_model:=&quot;</span> <span class="o">+</span> <span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;vehicle_model&quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)),</span>
-      <span class="s">&quot;rviz_config:=&quot;</span> <span class="o">+</span> <span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;scenario_test_runner&quot;</span><span class="p">)</span> <span class="o">+</span>
-        <span class="s">&quot;/config/scenario_simulator_v2.rviz&quot;</span><span class="p">,</span>
-      <span class="s">&quot;scenario_simulation:=true&quot;</span><span class="p">));</span>
 <span class="p">}</span>
 
-<span class="n">EgoEntity</span><span class="o">::~</span><span class="n">EgoEntity</span><span class="p">()</span> <span class="p">{</span> <span class="n">ego_entities</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">name</span><span class="p">);</span> <span class="p">}</span>
+<span class="kt">void</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">engage</span><span class="p">()</span> <span class="p">{</span> <span class="n">autoware</span><span class="p">.</span><span class="n">engage</span><span class="p">();</span> <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">engage</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="c1">// while (not ready()) {  // guard</span>
-  <span class="c1">//   std::this_thread::sleep_for(std::chrono::seconds(1));</span>
-  <span class="c1">// }</span>
-
-  <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">engage</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="k">const</span> <span class="n">autoware_vehicle_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleCommand</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">getVehicleCommand</span><span class="p">()</span>
+<span class="k">auto</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">getVehicleCommand</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">autoware_vehicle_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleCommand</span>
 <span class="p">{</span>
 <span class="cp">#ifdef AUTOWARE_ARCHITECTURE_PROPOSAL</span>
-  <span class="k">return</span> <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleCommand</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleCommand</span><span class="p">();</span>
 <span class="cp">#endif</span>
 <span class="cp">#ifdef AUTOWARE_AUTO</span>
   <span class="c1">// gathering information and converting it to autoware_vehicle_msgs::msg::VehicleCommand</span>
   <span class="n">autoware_vehicle_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleCommand</span> <span class="n">vehicle_command</span><span class="p">;</span>
 
-  <span class="k">auto</span> <span class="n">vehicle_control_command</span> <span class="o">=</span> <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleControlCommand</span><span class="p">();</span>
+  <span class="k">auto</span> <span class="n">vehicle_control_command</span> <span class="o">=</span> <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleControlCommand</span><span class="p">();</span>
 
   <span class="n">vehicle_command</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">vehicle_control_command</span><span class="p">.</span><span class="n">stamp</span><span class="p">;</span>
 
@@ -1077,7 +1008,7 @@
   <span class="n">vehicle_command</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vehicle_control_command</span><span class="p">.</span><span class="n">velocity_mps</span><span class="p">;</span>
   <span class="n">vehicle_command</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">acceleration</span> <span class="o">=</span> <span class="n">vehicle_control_command</span><span class="p">.</span><span class="n">long_accel_mps2</span><span class="p">;</span>
 
-  <span class="k">auto</span> <span class="n">vehicle_state_command</span> <span class="o">=</span> <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleStateCommand</span><span class="p">();</span>
+  <span class="k">auto</span> <span class="n">vehicle_state_command</span> <span class="o">=</span> <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleStateCommand</span><span class="p">();</span>
 
   <span class="c1">// handle gear enum remapping</span>
   <span class="k">switch</span> <span class="p">(</span><span class="n">vehicle_state_command</span><span class="p">.</span><span class="n">gear</span><span class="p">)</span> <span class="p">{</span>
@@ -1113,7 +1044,7 @@
   <span class="p">{</span>
 <span class="cp">#ifdef AUTOWARE_ARCHITECTURE_PROPOSAL</span>
     <span class="c1">// *** getAutowareStatus - FundamentalAPI dependency ***</span>
-    <span class="k">const</span> <span class="k">auto</span> <span class="n">state</span><span class="p">{</span><span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getAutowareStatus</span><span class="p">().</span><span class="n">autoware_state</span><span class="p">};</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="n">state</span> <span class="o">=</span> <span class="n">autoware</span><span class="p">.</span><span class="n">getAutowareStatus</span><span class="p">().</span><span class="n">autoware_state</span><span class="p">;</span>
 
     <span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">?</span> <span class="s">&quot;Starting&quot;</span> <span class="o">:</span> <span class="n">state</span><span class="p">)</span>  <span class="c1">//</span>
             <span class="o">&lt;&lt;</span> <span class="s">&quot;_(t_=_&quot;</span>                              <span class="c1">//</span>
@@ -1223,12 +1154,12 @@
 
 <span class="cp">#ifdef AUTOWARE_ARCHITECTURE_PROPOSAL</span>
   <span class="c1">// Trajectory returned by getTrajectory() is a different message between AAP and AA</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">point</span> <span class="p">:</span> <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getTrajectory</span><span class="p">().</span><span class="n">points</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">point</span> <span class="p">:</span> <span class="n">autoware</span><span class="p">.</span><span class="n">getTrajectory</span><span class="p">().</span><span class="n">points</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="cp">#endif</span>
 <span class="cp">#ifdef AUTOWARE_AUTO</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">point</span> <span class="p">:</span> <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getTrajectory</span><span class="p">().</span><span class="n">points</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">point</span> <span class="p">:</span> <span class="n">autoware</span><span class="p">.</span><span class="n">getTrajectory</span><span class="p">().</span><span class="n">points</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span> <span class="n">waypoint</span><span class="p">;</span>
     <span class="n">waypoint</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
     <span class="n">waypoint</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
@@ -1263,7 +1194,7 @@
         <span class="n">initial_pose_</span><span class="p">.</span><span class="n">get</span><span class="p">().</span><span class="n">orientation</span> <span class="o">*</span> <span class="n">quaternion_operation</span><span class="o">::</span><span class="n">convertEulerAngleToQuaternion</span><span class="p">(</span><span class="n">rpy</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">set</span><span class="p">(</span><span class="n">current_pose</span><span class="p">);</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">current_pose</span><span class="p">);</span>
 
     <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span> <span class="n">current_twist</span><span class="p">;</span>
     <span class="p">{</span>
@@ -1271,7 +1202,7 @@
       <span class="n">current_twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">vehicle_model_ptr_</span><span class="p">).</span><span class="n">getWz</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">set</span><span class="p">(</span><span class="n">current_twist</span><span class="p">);</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">current_twist</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">vehicle_model_type_</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">case</span> <span class="n">VehicleModelType</span><span class="o">::</span><span class="nl">IDEAL_STEER</span><span class="p">:</span>
@@ -1280,13 +1211,13 @@
 
 <span class="cp">#ifdef AUTOWARE_ARCHITECTURE_PROPOSAL</span>
         <span class="n">input</span> <span class="o">&lt;&lt;</span>  <span class="c1">//</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">velocity</span><span class="p">,</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">steering_angle</span><span class="p">;</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">velocity</span><span class="p">,</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">steering_angle</span><span class="p">;</span>
 <span class="cp">#endif</span>
 <span class="cp">#ifdef AUTOWARE_AUTO</span>
         <span class="n">input</span> <span class="o">&lt;&lt;</span>  <span class="c1">//</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">velocity_mps</span><span class="p">,</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">front_wheel_angle_rad</span><span class="p">;</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">velocity_mps</span><span class="p">,</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">front_wheel_angle_rad</span><span class="p">;</span>
 <span class="cp">#endif</span>
 
         <span class="p">(</span><span class="o">*</span><span class="n">vehicle_model_ptr_</span><span class="p">).</span><span class="n">setInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
@@ -1299,18 +1230,18 @@
         <span class="k">using</span> <span class="n">autoware_vehicle_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Shift</span><span class="p">;</span>
 
         <span class="n">input</span> <span class="o">&lt;&lt;</span>  <span class="c1">//</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">acceleration</span><span class="p">,</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">steering_angle</span><span class="p">,</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">shift</span><span class="p">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">Shift</span><span class="o">::</span><span class="n">REVERSE</span> <span class="o">?</span> <span class="mf">-1.0</span> <span class="o">:</span> <span class="mf">1.0</span><span class="p">;</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">acceleration</span><span class="p">,</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">control</span><span class="p">.</span><span class="n">steering_angle</span><span class="p">,</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleCommand</span><span class="p">().</span><span class="n">shift</span><span class="p">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">Shift</span><span class="o">::</span><span class="n">REVERSE</span> <span class="o">?</span> <span class="mf">-1.0</span> <span class="o">:</span> <span class="mf">1.0</span><span class="p">;</span>
 <span class="cp">#endif</span>
 <span class="cp">#ifdef AUTOWARE_AUTO</span>
         <span class="n">input</span> <span class="o">&lt;&lt;</span>  <span class="c1">//</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">velocity_mps</span><span class="p">,</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">front_wheel_angle_rad</span><span class="p">,</span>
-          <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">getVehicleStateCommand</span><span class="p">().</span><span class="n">gear</span> <span class="o">==</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">velocity_mps</span><span class="p">,</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleControlCommand</span><span class="p">().</span><span class="n">front_wheel_angle_rad</span><span class="p">,</span>
+          <span class="n">autoware</span><span class="p">.</span><span class="n">getVehicleStateCommand</span><span class="p">().</span><span class="n">gear</span> <span class="o">==</span>
               <span class="n">autoware_auto_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleStateReport</span><span class="o">::</span><span class="n">GEAR_REVERSE</span>
             <span class="o">?</span> <span class="mf">-1.0</span>
-            <span class="o">:</span> <span class="mf">1.0</span><span class="p">;</span>
+            <span class="o">:</span> <span class="o">+</span><span class="mf">1.0</span><span class="p">;</span>
 <span class="cp">#endif</span>
 
         <span class="p">(</span><span class="o">*</span><span class="n">vehicle_model_ptr_</span><span class="p">).</span><span class="n">setInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
@@ -1339,7 +1270,7 @@
 <span class="k">auto</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">ready</span><span class="p">()</span> <span class="k">const</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
 <span class="p">{</span>
   <span class="c1">// NOTE: Autoware::ready() will notify you with an exception if Autoware has detected any anomalies at the time of the call.</span>
-  <span class="k">return</span> <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">ready</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">autoware</span><span class="p">.</span><span class="n">ready</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">requestAcquirePosition</span><span class="p">(</span><span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span> <span class="o">&amp;</span> <span class="n">lanelet_pose</span><span class="p">)</span>
@@ -1358,40 +1289,39 @@
 
   <span class="n">assert</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">route</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="n">not</span> <span class="n">std</span><span class="o">::</span><span class="n">exchange</span><span class="p">(</span><span class="n">autoware_initialized</span><span class="p">,</span> <span class="nb">true</span><span class="p">))</span> <span class="p">{</span>
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">initialize</span><span class="p">(</span><span class="n">getStatus</span><span class="p">().</span><span class="n">pose</span><span class="p">);</span>
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">plan</span><span class="p">(</span><span class="n">route</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">not</span> <span class="n">autoware</span><span class="p">.</span><span class="n">initialized</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">getStatus</span><span class="p">().</span><span class="n">pose</span><span class="p">);</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">plan</span><span class="p">(</span><span class="n">route</span><span class="p">);</span>
     <span class="c1">// NOTE: engage() will be executed at simulation-time 0.</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">plan</span><span class="p">(</span><span class="n">route</span><span class="p">);</span>
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">engage</span><span class="p">();</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">plan</span><span class="p">(</span><span class="n">route</span><span class="p">);</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">engage</span><span class="p">();</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">requestLaneChange</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">THROW_SEMANTIC_ERROR</span><span class="p">(</span>
-    <span class="s">&quot;From scenario, a lane change was requested to Ego type entity &quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+    <span class="s">&quot;From scenario, a lane change was requested to Ego type entity &quot;</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">quoted</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
     <span class="s">&quot; In general, such a request is an error, since Ego cars make autonomous decisions about &quot;</span>
-    <span class="s">&quot;everything but their destination.&quot;</span><span class="p">);</span>
+    <span class="s">&quot;everything but their destination&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span> <span class="n">EgoEntity</span><span class="o">::</span><span class="n">setStatus</span><span class="p">(</span><span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="o">&amp;</span> <span class="n">status</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="c1">// NOTE Currently, setStatus always succeeds.</span>
-  <span class="k">const</span> <span class="kt">bool</span> <span class="n">success</span> <span class="o">=</span> <span class="n">VehicleEntity</span><span class="o">::</span><span class="n">setStatus</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">bool</span> <span class="n">success</span> <span class="o">=</span> <span class="n">VehicleEntity</span><span class="o">::</span><span class="n">setStatus</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>  <span class="c1">// NOTE: setStatus always succeeds.</span>
 
   <span class="k">const</span> <span class="k">auto</span> <span class="n">current_pose</span> <span class="o">=</span> <span class="n">getStatus</span><span class="p">().</span><span class="n">pose</span><span class="p">;</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="n">autoware_initialized</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">autoware</span><span class="p">.</span><span class="n">initialized</span><span class="p">())</span> <span class="p">{</span>
     <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span> <span class="n">current_twist</span><span class="p">;</span>
     <span class="p">{</span>
       <span class="n">current_twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">vehicle_model_ptr_</span><span class="p">).</span><span class="n">getVx</span><span class="p">();</span>
       <span class="n">current_twist</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">vehicle_model_ptr_</span><span class="p">).</span><span class="n">getWz</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">set</span><span class="p">(</span><span class="n">current_pose</span><span class="p">);</span>
-    <span class="n">ego_entities</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="n">set</span><span class="p">(</span><span class="n">current_twist</span><span class="p">);</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">current_pose</span><span class="p">);</span>
+    <span class="n">autoware</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">current_twist</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">initial_pose_</span><span class="p">)</span> <span class="p">{</span>
@@ -1453,7 +1383,7 @@
 <span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 21 July 2021 at 00:43:07 UTC</p>
+<p>Updated on 21 July 2021 at 09:39:46 UTC</p>
                 
                   
                 

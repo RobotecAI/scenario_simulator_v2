@@ -687,13 +687,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#public-attributes" class="md-nav__link">
-    Public Attributes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#public-functions-documentation" class="md-nav__link">
     Public Functions Documentation
   </a>
@@ -1063,40 +1056,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#public-attributes-documentation" class="md-nav__link">
-    Public Attributes Documentation
-  </a>
-  
-    <nav class="md-nav" aria-label="Public Attributes Documentation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#variable-standalone_mode" class="md-nav__link">
-    variable standalone_mode
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variable-lanelet2_map_osm" class="md-nav__link">
-    variable lanelet2_map_osm
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variable-initialize_duration" class="md-nav__link">
-    variable initialize_duration
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1141,7 +1100,7 @@
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-spawn">spawn</a></strong>(const bool is_ego, const std::string &amp; name, const openscenario_msgs::msg::MiscObjectParameters &amp; params)</td>
 </tr>
 <tr>
-<td>template \&lt;typename Parameters ,typename... Ts></br>decltype(auto)</td>
+<td>template \&lt;typename Parameters ,typename... Ts></br>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-spawn">spawn</a></strong>(const bool is_ego, const std::string &amp; name, const Parameters &amp; params, Ts &amp;&amp;... xs)</td>
 </tr>
 <tr>
@@ -1326,30 +1285,7 @@
 </tr>
 <tr>
 <td>template \&lt;class NodeT ,class AllocatorT  =std::allocator<void>></br></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-api">API</a></strong>(NodeT &amp;&amp; node, const boost::filesystem::path , const std::string &amp; lanelet2_map_osm, const double initialize_duration =0, const bool auto_sink =true, const bool verbose =false, const bool standalone_mode =false, const std::string &amp; metrics_logfile_path ="/tmp/metrics.json")</td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-attributes">Public Attributes<a class="headerlink" href="#public-attributes" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>const bool</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#variable-standalone_mode">standalone_mode</a></strong></td>
-</tr>
-<tr>
-<td>const std::string</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#variable-lanelet2_map_osm">lanelet2_map_osm</a></strong></td>
-</tr>
-<tr>
-<td>const double</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#variable-initialize_duration">initialize_duration</a></strong></td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-api">API</a></strong>(NodeT &amp;&amp; node, const <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/structtraffic__simulator_1_1Configuration">Configuration</a> &amp; configuration =<a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/structtraffic__simulator_1_1Configuration">Configuration</a>())</td>
 </tr>
 </tbody>
 </table>
@@ -1381,7 +1317,7 @@
 <h3 id="function-spawn_3">function spawn<a class="headerlink" href="#function-spawn_3" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Parameters</span> <span class="p">,</span>
 <span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="n">spawn</span><span class="p">(</span>
+<span class="kr">inline</span> <span class="k">auto</span> <span class="n">spawn</span><span class="p">(</span>
     <span class="k">const</span> <span class="kt">bool</span> <span class="n">is_ego</span><span class="p">,</span>
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
     <span class="k">const</span> <span class="n">Parameters</span> <span class="o">&amp;</span> <span class="n">params</span><span class="p">,</span>
@@ -1639,27 +1575,11 @@
 <span class="k">class</span> <span class="nc">AllocatorT</span>  <span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;&gt;</span>
 <span class="kr">inline</span> <span class="k">explicit</span> <span class="n">API</span><span class="p">(</span>
     <span class="n">NodeT</span> <span class="o">&amp;&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">lanelet2_map_osm</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">initialize_duration</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">auto_sink</span> <span class="o">=</span><span class="nb">true</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span> <span class="o">=</span><span class="nb">false</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">standalone_mode</span> <span class="o">=</span><span class="nb">false</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">metrics_logfile_path</span> <span class="o">=</span><span class="s">&quot;/tmp/metrics.json&quot;</span>
+    <span class="k">const</span> <span class="n">Configuration</span> <span class="o">&amp;</span> <span class="n">configuration</span> <span class="o">=</span><span class="n">Configuration</span><span class="p">()</span>
 <span class="p">)</span>
 </code></pre></div>
-<h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">#</a></h2>
-<h3 id="variable-standalone_mode">variable standalone_mode<a class="headerlink" href="#variable-standalone_mode" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">bool</span> <span class="n">standalone_mode</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-lanelet2_map_osm">variable lanelet2_map_osm<a class="headerlink" href="#variable-lanelet2_map_osm" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">lanelet2_map_osm</span><span class="p">;</span>
-</code></pre></div>
-<h3 id="variable-initialize_duration">variable initialize_duration<a class="headerlink" href="#variable-initialize_duration" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">double</span> <span class="n">initialize_duration</span><span class="p">;</span>
-</code></pre></div>
 <hr />
-<p>Updated on 21 July 2021 at 00:43:07 UTC</p>
+<p>Updated on 21 July 2021 at 09:39:46 UTC</p>
                 
                   
                 

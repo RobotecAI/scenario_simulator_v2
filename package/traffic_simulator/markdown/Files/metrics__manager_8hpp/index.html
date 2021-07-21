@@ -779,27 +779,39 @@
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="k">explicit</span> <span class="n">MetricsManager</span><span class="p">(</span>
-    <span class="kt">bool</span> <span class="n">verbose</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">logfile_path</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">file_out_every_frame</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+    <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="o">&amp;</span> <span class="n">log_path</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">bool</span> <span class="n">write_file_every_frame</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+
   <span class="o">~</span><span class="n">MetricsManager</span><span class="p">()</span> <span class="p">{</span> <span class="n">file_</span> <span class="o">&lt;&lt;</span> <span class="n">log_</span><span class="p">;</span> <span class="p">}</span>
-  <span class="kt">void</span> <span class="n">setVerbose</span><span class="p">(</span><span class="kt">bool</span> <span class="n">verbose</span><span class="p">);</span>
+
+  <span class="kt">void</span> <span class="n">setVerbose</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span><span class="p">);</span>
+
   <span class="kt">void</span> <span class="nf">setEntityManager</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span> <span class="n">entity_manager_ptr</span><span class="p">);</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">entity_manager_ptr</span><span class="p">);</span>
+
   <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-  <span class="kt">void</span> <span class="n">addMetric</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span><span class="p">)</span>
+  <span class="kt">void</span> <span class="n">addMetric</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span><span class="p">)</span>
   <span class="p">{</span>
-    <span class="k">auto</span> <span class="n">metric_ptr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Ts</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span>
-    <span class="n">metric_ptr</span><span class="o">-&gt;</span><span class="n">setEntityManager</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">entity_manager_ptr_</span><span class="p">);</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">metric_ptr</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Ts</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span>
+    <span class="n">metric_ptr</span><span class="o">-&gt;</span><span class="n">setEntityManager</span><span class="p">(</span><span class="n">entity_manager_ptr_</span><span class="p">);</span>
     <span class="n">metrics_</span><span class="p">.</span><span class="n">insert</span><span class="p">({</span><span class="n">name</span><span class="p">,</span> <span class="n">metric_ptr</span><span class="p">});</span>
   <span class="p">}</span>
+
   <span class="kt">void</span> <span class="n">calculate</span><span class="p">();</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">logfile_path</span><span class="p">;</span>
-  <span class="k">const</span> <span class="kt">bool</span> <span class="n">file_output_every_frame</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">log_path</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">bool</span> <span class="n">write_file_every_frame</span><span class="p">;</span>
 
 <span class="k">private</span><span class="o">:</span>
   <span class="kt">bool</span> <span class="n">verbose_</span><span class="p">;</span>
+
   <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="n">log_</span><span class="p">;</span>
+
   <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MetricBase</span><span class="o">&gt;&gt;</span> <span class="n">metrics_</span><span class="p">;</span>
+
   <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span> <span class="n">entity_manager_ptr_</span><span class="p">;</span>
+
   <span class="n">std</span><span class="o">::</span><span class="n">ofstream</span> <span class="n">file_</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="p">}</span>  <span class="c1">// namespace metrics</span>
@@ -807,7 +819,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__METRICS__METRICS_MANAGER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 21 July 2021 at 00:43:07 UTC</p>
+<p>Updated on 21 July 2021 at 09:39:46 UTC</p>
                 
                   
                 
