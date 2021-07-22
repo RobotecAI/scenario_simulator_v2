@@ -814,10 +814,7 @@
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
   <span class="k">explicit</span> <span class="n">ScenarioRunnerMoc</span><span class="p">(</span><span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">NodeOptions</span> <span class="o">&amp;</span> <span class="n">option</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">Node</span><span class="p">(</span><span class="s">&quot;scenario_runner&quot;</span><span class="p">,</span> <span class="n">option</span><span class="p">),</span>
-    <span class="n">api_</span><span class="p">(</span>
-      <span class="k">this</span><span class="p">,</span> <span class="n">__FILE__</span><span class="p">,</span>
-      <span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;kashiwanoha_map&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/map/lanelet2_map.osm&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="o">:</span> <span class="n">Node</span><span class="p">(</span><span class="s">&quot;scenario_runner&quot;</span><span class="p">,</span> <span class="n">option</span><span class="p">),</span> <span class="n">api_</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">configure</span><span class="p">())</span>
   <span class="p">{</span>
     <span class="n">api_</span><span class="p">.</span><span class="n">setVerbose</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
     <span class="n">api_</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">);</span>
@@ -905,6 +902,7 @@
       <span class="s">&quot;obstacle&quot;</span><span class="p">,</span> <span class="s">&quot;ego&quot;</span><span class="p">,</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">helper</span><span class="o">::</span><span class="n">constructPose</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">-1.57</span><span class="p">),</span>
       <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">helper</span><span class="o">::</span><span class="n">constructActionStatus</span><span class="p">());</span>
   <span class="p">}</span>
+
   <span class="kt">void</span> <span class="n">update</span><span class="p">()</span>
   <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">api_</span><span class="p">.</span><span class="n">getCurrentTime</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="n">api_</span><span class="p">.</span><span class="n">entityExists</span><span class="p">(</span><span class="s">&quot;tom&quot;</span><span class="p">))</span> <span class="p">{</span>
@@ -957,6 +955,19 @@
     <span class="p">}</span>
     <span class="n">api_</span><span class="p">.</span><span class="n">updateFrame</span><span class="p">();</span>
   <span class="p">}</span>
+
+  <span class="k">static</span> <span class="k">auto</span> <span class="n">configure</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">Configuration</span>
+  <span class="p">{</span>
+    <span class="k">auto</span> <span class="n">configuration</span> <span class="o">=</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">Configuration</span><span class="p">(</span>
+      <span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;kashiwanoha_map&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/map&quot;</span><span class="p">);</span>
+    <span class="p">{</span>
+      <span class="n">configuration</span><span class="p">.</span><span class="n">initialize_duration</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+      <span class="n">configuration</span><span class="p">.</span><span class="n">scenario_path</span> <span class="o">=</span> <span class="n">__FILE__</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">configuration</span><span class="p">;</span>
+  <span class="p">}</span>
+
   <span class="kt">bool</span> <span class="n">lanechange_executed_</span><span class="p">;</span>
   <span class="kt">bool</span> <span class="n">target_speed_set_</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">port_</span><span class="p">;</span>
@@ -999,7 +1010,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 08:24:48 UTC</p>
+<p>Updated on 22 July 2021 at 08:30:53 UTC</p>
                 
                   
                 

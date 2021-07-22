@@ -3,31 +3,31 @@
   <compounddef id="classmetrics_1_1MetricsManager" kind="class" language="C++" prot="public">
     <compoundname>metrics::MetricsManager</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1a33e66f7bc1e46e0be875f41e8621ea47" prot="public" static="no" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string metrics::MetricsManager::logfile_path</definition>
+      <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1a67ba373737585f16a1c97e9eeb22eda6" prot="public" static="no" mutable="no">
+        <type>const boost::filesystem::path</type>
+        <definition>const boost::filesystem::path metrics::MetricsManager::log_path</definition>
         <argsstring></argsstring>
-        <name>logfile_path</name>
+        <name>log_path</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="46" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="53" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1a67233ea75f43e28b9444992d34f98590" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1a5c9bb66c41ec3087e6332aeaed01861a" prot="public" static="no" mutable="no">
         <type>const bool</type>
-        <definition>const bool metrics::MetricsManager::file_output_every_frame</definition>
+        <definition>const bool metrics::MetricsManager::write_file_every_frame</definition>
         <argsstring></argsstring>
-        <name>file_output_every_frame</name>
+        <name>write_file_every_frame</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="47" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="50" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="50" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1a0c445baee79ba09dfc2f62ed3281bacb" prot="private" static="no" mutable="no">
         <type>nlohmann::json</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="51" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="60" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1ac2dc41d495db6e70cc8e707b9a83f907" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, std::shared_ptr&lt; <ref refid="classmetrics_1_1MetricBase" kindref="compound">MetricBase</ref> &gt; &gt;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="52" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="52" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="62" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1ab1d135dce0bfb3ce49b0ec4c4ab7d05a" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classtraffic__simulator_1_1entity_1_1EntityManager" kindref="compound">traffic_simulator::entity::EntityManager</ref> &gt;</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="53" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="53" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="64" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classmetrics_1_1MetricsManager_1af809df41599aecdb7ea09b4cb35b0d33" prot="private" static="no" mutable="no">
         <type>std::ofstream</type>
@@ -94,26 +94,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="54" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="54" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="66" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1a1ff410b3dab91f03b8f25af187d85d41" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1ac3a645e1e3d4327891ae3029f3789461" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>metrics::MetricsManager::MetricsManager</definition>
-        <argsstring>(bool verbose, const std::string &amp;logfile_path, bool file_out_every_frame=false)</argsstring>
+        <argsstring>(const boost::filesystem::path &amp;log_path, const bool verbose=false, const bool write_file_every_frame=false)</argsstring>
         <name>MetricsManager</name>
         <param>
-          <type>bool</type>
+          <type>const boost::filesystem::path &amp;</type>
+          <declname>log_path</declname>
+        </param>
+        <param>
+          <type>const bool</type>
           <declname>verbose</declname>
+          <defval>false</defval>
         </param>
         <param>
-          <type>const std::string &amp;</type>
-          <declname>logfile_path</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>file_out_every_frame</declname>
+          <type>const bool</type>
+          <declname>write_file_every_frame</declname>
           <defval>false</defval>
         </param>
         <briefdescription>
@@ -135,15 +136,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="34" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="34" bodyend="34"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
-      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1af05e70e9cca117a8ed54e7a47bd48021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1a18cae4551e5992a833c84541248b4749" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void metrics::MetricsManager::setVerbose</definition>
-        <argsstring>(bool verbose)</argsstring>
+        <argsstring>(const bool verbose)</argsstring>
         <name>setVerbose</name>
         <param>
-          <type>bool</type>
+          <type>const bool</type>
           <declname>verbose</declname>
         </param>
         <briefdescription>
@@ -152,15 +153,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/metrics_manager.cpp" bodystart="34" bodyend="34"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/metrics_manager.cpp" bodystart="34" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1af5068f6d2f0d2dceae292465fac479b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1a1c5725ab25c5b4ce8889c23f29d2c965" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void metrics::MetricsManager::setEntityManager</definition>
-        <argsstring>(std::shared_ptr&lt; traffic_simulator::entity::EntityManager &gt; entity_manager_ptr)</argsstring>
+        <argsstring>(const std::shared_ptr&lt; traffic_simulator::entity::EntityManager &gt; &amp;entity_manager_ptr)</argsstring>
         <name>setEntityManager</name>
         <param>
-          <type>std::shared_ptr&lt; <ref refid="classtraffic__simulator_1_1entity_1_1EntityManager" kindref="compound">traffic_simulator::entity::EntityManager</ref> &gt;</type>
+          <type>const std::shared_ptr&lt; <ref refid="classtraffic__simulator_1_1entity_1_1EntityManager" kindref="compound">traffic_simulator::entity::EntityManager</ref> &gt; &amp;</type>
           <declname>entity_manager_ptr</declname>
         </param>
         <briefdescription>
@@ -169,9 +170,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/metrics_manager.cpp" bodystart="70" bodyend="74"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/metrics_manager.cpp" bodystart="69" bodyend="73"/>
       </memberdef>
-      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1a3e53c70f480778efa4127fb2ff5ea4b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classmetrics_1_1MetricsManager_1a8ac51913c6c983bba925465b5b60f238" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename T</type>
@@ -184,10 +185,10 @@
         </templateparamlist>
         <type>void</type>
         <definition>void metrics::MetricsManager::addMetric</definition>
-        <argsstring>(std::string name, Ts &amp;&amp;... xs)</argsstring>
+        <argsstring>(const std::string &amp;name, Ts &amp;&amp;... xs)</argsstring>
         <name>addMetric</name>
         <param>
-          <type>std::string</type>
+          <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
@@ -200,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="39" bodyend="44"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="44" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="44" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classmetrics_1_1MetricsManager_1a1d387eeee19bec3b6e43f19273464110" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -213,27 +214,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/metrics_manager.cpp" bodystart="36" bodyend="68"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/metrics_manager.cpp" bodystart="36" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="30" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="29" bodyend="55"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" line="30" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metrics_manager.hpp" bodystart="29" bodyend="67"/>
     <listofallmembers>
-      <member refid="classmetrics_1_1MetricsManager_1a3e53c70f480778efa4127fb2ff5ea4b6" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>addMetric</name></member>
+      <member refid="classmetrics_1_1MetricsManager_1a8ac51913c6c983bba925465b5b60f238" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>addMetric</name></member>
       <member refid="classmetrics_1_1MetricsManager_1a1d387eeee19bec3b6e43f19273464110" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>calculate</name></member>
       <member refid="classmetrics_1_1MetricsManager_1ab1d135dce0bfb3ce49b0ec4c4ab7d05a" prot="private" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>entity_manager_ptr_</name></member>
       <member refid="classmetrics_1_1MetricsManager_1af809df41599aecdb7ea09b4cb35b0d33" prot="private" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>file_</name></member>
-      <member refid="classmetrics_1_1MetricsManager_1a67233ea75f43e28b9444992d34f98590" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>file_output_every_frame</name></member>
       <member refid="classmetrics_1_1MetricsManager_1a0c445baee79ba09dfc2f62ed3281bacb" prot="private" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>log_</name></member>
-      <member refid="classmetrics_1_1MetricsManager_1a33e66f7bc1e46e0be875f41e8621ea47" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>logfile_path</name></member>
+      <member refid="classmetrics_1_1MetricsManager_1a67ba373737585f16a1c97e9eeb22eda6" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>log_path</name></member>
       <member refid="classmetrics_1_1MetricsManager_1ac2dc41d495db6e70cc8e707b9a83f907" prot="private" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>metrics_</name></member>
-      <member refid="classmetrics_1_1MetricsManager_1a1ff410b3dab91f03b8f25af187d85d41" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>MetricsManager</name></member>
-      <member refid="classmetrics_1_1MetricsManager_1af5068f6d2f0d2dceae292465fac479b6" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>setEntityManager</name></member>
-      <member refid="classmetrics_1_1MetricsManager_1af05e70e9cca117a8ed54e7a47bd48021" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>setVerbose</name></member>
+      <member refid="classmetrics_1_1MetricsManager_1ac3a645e1e3d4327891ae3029f3789461" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>MetricsManager</name></member>
+      <member refid="classmetrics_1_1MetricsManager_1a1c5725ab25c5b4ce8889c23f29d2c965" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>setEntityManager</name></member>
+      <member refid="classmetrics_1_1MetricsManager_1a18cae4551e5992a833c84541248b4749" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>setVerbose</name></member>
       <member refid="classmetrics_1_1MetricsManager_1a9129e674981e745a81cfb17c39069ec6" prot="private" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>verbose_</name></member>
+      <member refid="classmetrics_1_1MetricsManager_1a5c9bb66c41ec3087e6332aeaed01861a" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>write_file_every_frame</name></member>
       <member refid="classmetrics_1_1MetricsManager_1a6aeaa0ae647e515466ad448a482b1df3" prot="public" virt="non-virtual"><scope>metrics::MetricsManager</scope><name>~MetricsManager</name></member>
     </listofallmembers>
   </compounddef>

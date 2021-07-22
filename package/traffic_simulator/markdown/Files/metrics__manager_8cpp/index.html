@@ -753,22 +753,22 @@
 <span class="k">namespace</span> <span class="nn">metrics</span>
 <span class="p">{</span>
 <span class="n">MetricsManager</span><span class="o">::</span><span class="n">MetricsManager</span><span class="p">(</span>
-  <span class="kt">bool</span> <span class="n">verbose</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">logfile_path</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">file_output_every_frame</span><span class="p">)</span>
-<span class="o">:</span> <span class="n">logfile_path</span><span class="p">(</span><span class="n">logfile_path</span><span class="p">),</span>
-  <span class="n">file_output_every_frame</span><span class="p">(</span><span class="n">file_output_every_frame</span><span class="p">),</span>
+  <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="o">&amp;</span> <span class="n">log_path</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span><span class="p">,</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">write_file_every_frame</span><span class="p">)</span>
+<span class="o">:</span> <span class="n">log_path</span><span class="p">(</span><span class="n">log_path</span><span class="p">),</span>
+  <span class="n">write_file_every_frame</span><span class="p">(</span><span class="n">write_file_every_frame</span><span class="p">),</span>
+  <span class="n">verbose_</span><span class="p">(</span><span class="n">verbose</span><span class="p">),</span>
   <span class="n">metrics_</span><span class="p">(),</span>
-  <span class="n">file_</span><span class="p">(</span><span class="n">logfile_path</span><span class="p">)</span>
+  <span class="n">file_</span><span class="p">(</span><span class="n">log_path</span><span class="p">.</span><span class="n">string</span><span class="p">())</span>
 <span class="p">{</span>
-  <span class="n">verbose_</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">MetricsManager</span><span class="o">::</span><span class="n">setVerbose</span><span class="p">(</span><span class="kt">bool</span> <span class="n">verbose</span><span class="p">)</span> <span class="p">{</span> <span class="n">verbose_</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">void</span> <span class="n">MetricsManager</span><span class="o">::</span><span class="n">setVerbose</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span><span class="p">)</span> <span class="p">{</span> <span class="n">verbose_</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">;</span> <span class="p">}</span>
 
 <span class="kt">void</span> <span class="n">MetricsManager</span><span class="o">::</span><span class="n">calculate</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="n">log</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">disable_metrics_list</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">metric</span> <span class="p">:</span> <span class="n">metrics_</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">metric</span> <span class="p">:</span> <span class="n">metrics_</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">metric</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">getLifecycle</span><span class="p">()</span> <span class="o">==</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">INACTIVE</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">metric</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">activateTrigger</span><span class="p">())</span> <span class="p">{</span>
         <span class="n">metric</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">activate</span><span class="p">();</span>
@@ -787,26 +787,25 @@
       <span class="n">disable_metrics_list</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">metric</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="nl">name</span> <span class="p">:</span> <span class="n">disable_metrics_list</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">name</span> <span class="p">:</span> <span class="n">disable_metrics_list</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">metrics_</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">getLifecycle</span><span class="p">()</span> <span class="o">==</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">metrics_</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">throwException</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="n">metrics_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="kt">double</span> <span class="n">current_time</span> <span class="o">=</span> <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">getCurrentTime</span><span class="p">();</span>
-  <span class="n">log_</span><span class="p">[</span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">current_time</span><span class="p">)]</span> <span class="o">=</span> <span class="n">log</span><span class="p">;</span>
+  <span class="n">log_</span><span class="p">[</span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">getCurrentTime</span><span class="p">())]</span> <span class="o">=</span> <span class="n">log</span><span class="p">;</span>
   <span class="n">file_</span> <span class="o">&lt;&lt;</span> <span class="n">log_</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="n">MetricsManager</span><span class="o">::</span><span class="n">setEntityManager</span><span class="p">(</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span> <span class="n">entity_manager_ptr</span><span class="p">)</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">entity_manager_ptr</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">entity_manager_ptr_</span> <span class="o">=</span> <span class="n">entity_manager_ptr</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="p">}</span>  <span class="c1">// namespace metrics</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 08:24:48 UTC</p>
+<p>Updated on 22 July 2021 at 08:30:53 UTC</p>
                 
                   
                 

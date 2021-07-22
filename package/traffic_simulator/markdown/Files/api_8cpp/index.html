@@ -756,7 +756,7 @@
 
 <span class="k">namespace</span> <span class="nn">traffic_simulator</span>
 <span class="p">{</span>
-<span class="kt">void</span> <span class="nf">API::setVerbose</span><span class="p">(</span><span class="kt">bool</span> <span class="n">verbose</span><span class="p">)</span>
+<span class="kt">void</span> <span class="nf">API::setVerbose</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">metrics_manager_</span><span class="p">.</span><span class="n">setVerbose</span><span class="p">(</span><span class="n">verbose</span><span class="p">);</span>
   <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">setVerbose</span><span class="p">(</span><span class="n">verbose</span><span class="p">);</span>
@@ -768,7 +768,7 @@
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">not</span> <span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DespawnEntityRequest</span> <span class="n">req</span><span class="p">;</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DespawnEntityResponse</span> <span class="n">res</span><span class="p">;</span>
     <span class="n">req</span><span class="p">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
@@ -784,12 +784,12 @@
 <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">is_ego</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span>
-      <span class="o">!</span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">entityExists</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
-      <span class="o">!</span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">spawnEntity</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EgoEntity</span><span class="o">&gt;</span><span class="p">(</span>
-        <span class="n">name</span><span class="p">,</span> <span class="n">lanelet2_map_osm</span><span class="p">,</span> <span class="n">clock_</span><span class="p">.</span><span class="n">getStepTime</span><span class="p">(),</span> <span class="n">params</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">not</span> <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">entityExists</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="n">and</span>
+      <span class="n">not</span> <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">spawnEntity</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EgoEntity</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">clock_</span><span class="p">.</span><span class="n">getStepTime</span><span class="p">(),</span> <span class="n">params</span><span class="p">))</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">SpawnVehicleEntityRequest</span> <span class="n">req</span><span class="p">;</span>
@@ -802,7 +802,7 @@
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">spawnEntity</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">VehicleEntity</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">SpawnVehicleEntityRequest</span> <span class="n">req</span><span class="p">;</span>
@@ -812,7 +812,6 @@
     <span class="n">spawn_vehicle_entity_client_</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">result</span><span class="p">().</span><span class="n">success</span><span class="p">();</span>
   <span class="p">}</span>
-  <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span> <span class="nf">API::spawn</span><span class="p">(</span>
@@ -826,7 +825,7 @@
         <span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">SpawnPedestrianEntityRequest</span> <span class="n">req</span><span class="p">;</span>
@@ -847,7 +846,7 @@
         <span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
   <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">SpawnMiscObjectEntityRequest</span> <span class="n">req</span><span class="p">;</span>
@@ -988,39 +987,42 @@
 
 <span class="kt">bool</span> <span class="n">API</span><span class="o">::</span><span class="n">initialize</span><span class="p">(</span><span class="kt">double</span> <span class="n">realtime_factor</span><span class="p">,</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="n">clock_</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="mi">-1</span> <span class="o">*</span> <span class="n">initialize_duration</span><span class="p">,</span> <span class="n">step_time</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">clock_</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="mi">-1</span> <span class="o">*</span> <span class="n">configuration</span><span class="p">.</span><span class="n">initialize_duration</span><span class="p">,</span> <span class="n">step_time</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">InitializeRequest</span> <span class="n">req</span><span class="p">;</span>
+    <span class="n">req</span><span class="p">.</span><span class="n">set_step_time</span><span class="p">(</span><span class="n">step_time</span><span class="p">);</span>
+    <span class="n">req</span><span class="p">.</span><span class="n">set_realtime_factor</span><span class="p">(</span><span class="n">realtime_factor</span><span class="p">);</span>
+    <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">InitializeResponse</span> <span class="n">res</span><span class="p">;</span>
+    <span class="n">initialize_client_</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">result</span><span class="p">().</span><span class="n">success</span><span class="p">();</span>
   <span class="p">}</span>
-  <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">InitializeRequest</span> <span class="n">req</span><span class="p">;</span>
-  <span class="n">req</span><span class="p">.</span><span class="n">set_step_time</span><span class="p">(</span><span class="n">step_time</span><span class="p">);</span>
-  <span class="n">req</span><span class="p">.</span><span class="n">set_realtime_factor</span><span class="p">(</span><span class="n">realtime_factor</span><span class="p">);</span>
-  <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">InitializeResponse</span> <span class="n">res</span><span class="p">;</span>
-  <span class="n">initialize_client_</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">result</span><span class="p">().</span><span class="n">success</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">API</span><span class="o">::</span><span class="n">attachDetectionSensor</span><span class="p">(</span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span> <span class="n">configuration</span><span class="p">)</span>
+<span class="kt">bool</span> <span class="n">API</span><span class="o">::</span><span class="n">attachDetectionSensor</span><span class="p">(</span>
+  <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span> <span class="n">sensor_configuration</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">AttachDetectionSensorRequest</span> <span class="n">req</span><span class="p">;</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">AttachDetectionSensorResponse</span> <span class="n">res</span><span class="p">;</span>
-    <span class="o">*</span><span class="n">req</span><span class="p">.</span><span class="n">mutable_configuration</span><span class="p">()</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">req</span><span class="p">.</span><span class="n">mutable_configuration</span><span class="p">()</span> <span class="o">=</span> <span class="n">sensor_configuration</span><span class="p">;</span>
     <span class="n">attach_detection_sensor_client_</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">result</span><span class="p">().</span><span class="n">success</span><span class="p">();</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">API</span><span class="o">::</span><span class="n">attachLidarSensor</span><span class="p">(</span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span> <span class="n">configuration</span><span class="p">)</span>
+<span class="kt">bool</span> <span class="n">API</span><span class="o">::</span><span class="n">attachLidarSensor</span><span class="p">(</span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span> <span class="n">lidar_configuration</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">AttachLidarSensorRequest</span> <span class="n">req</span><span class="p">;</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">AttachLidarSensorResponse</span> <span class="n">res</span><span class="p">;</span>
-    <span class="o">*</span><span class="n">req</span><span class="p">.</span><span class="n">mutable_configuration</span><span class="p">()</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">req</span><span class="p">.</span><span class="n">mutable_configuration</span><span class="p">()</span> <span class="o">=</span> <span class="n">lidar_configuration</span><span class="p">;</span>
     <span class="n">attach_lidar_sensor_client_</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">result</span><span class="p">().</span><span class="n">success</span><span class="p">();</span>
   <span class="p">}</span>
@@ -1028,16 +1030,17 @@
 
 <span class="kt">bool</span> <span class="n">API</span><span class="o">::</span><span class="n">updateSensorFrame</span><span class="p">()</span>
 <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">UpdateSensorFrameRequest</span> <span class="n">req</span><span class="p">;</span>
+    <span class="n">req</span><span class="p">.</span><span class="n">set_current_time</span><span class="p">(</span><span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentSimulationTime</span><span class="p">());</span>
+    <span class="n">simulation_interface</span><span class="o">::</span><span class="n">toProto</span><span class="p">(</span>
+      <span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentRosTimeAsMsg</span><span class="p">().</span><span class="n">clock</span><span class="p">,</span> <span class="o">*</span><span class="n">req</span><span class="p">.</span><span class="n">mutable_current_ros_time</span><span class="p">());</span>
+    <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">UpdateSensorFrameResponse</span> <span class="n">res</span><span class="p">;</span>
+    <span class="n">update_sensor_frame_client_</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">result</span><span class="p">().</span><span class="n">success</span><span class="p">();</span>
   <span class="p">}</span>
-  <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">UpdateSensorFrameRequest</span> <span class="n">req</span><span class="p">;</span>
-  <span class="n">req</span><span class="p">.</span><span class="n">set_current_time</span><span class="p">(</span><span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentSimulationTime</span><span class="p">());</span>
-  <span class="n">simulation_interface</span><span class="o">::</span><span class="n">toProto</span><span class="p">(</span>
-    <span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentRosTimeAsMsg</span><span class="p">().</span><span class="n">clock</span><span class="p">,</span> <span class="o">*</span><span class="n">req</span><span class="p">.</span><span class="n">mutable_current_ros_time</span><span class="p">());</span>
-  <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">UpdateSensorFrameResponse</span> <span class="n">res</span><span class="p">;</span>
-  <span class="n">update_sensor_frame_client_</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">result</span><span class="p">().</span><span class="n">success</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span> <span class="n">API</span><span class="o">::</span><span class="n">updateEntityStatusInSim</span><span class="p">()</span>
@@ -1099,7 +1102,8 @@
   <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span><span class="o">&gt;</span> <span class="n">ego_status_before_update</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span>
   <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentSimulationTime</span><span class="p">(),</span> <span class="n">clock_</span><span class="p">.</span><span class="n">getStepTime</span><span class="p">());</span>
   <span class="n">traffic_controller_ptr_</span><span class="o">-&gt;</span><span class="n">execute</span><span class="p">();</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">not</span> <span class="n">configuration</span><span class="p">.</span><span class="n">standalone_mode</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">UpdateFrameRequest</span> <span class="n">req</span><span class="p">;</span>
     <span class="n">req</span><span class="p">.</span><span class="n">set_current_time</span><span class="p">(</span><span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentSimulationTime</span><span class="p">());</span>
     <span class="n">simulation_interface</span><span class="o">::</span><span class="n">toProto</span><span class="p">(</span>
@@ -1117,17 +1121,18 @@
       <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">updateSensorFrame</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">broadcastEntityTransform</span><span class="p">();</span>
+    <span class="n">clock_</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+    <span class="n">clock_pub_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentRosTimeAsMsg</span><span class="p">());</span>
+    <span class="n">metrics_manager_</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
   <span class="p">}</span>
-  <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">broadcastEntityTransform</span><span class="p">();</span>
-  <span class="n">clock_</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
-  <span class="n">clock_pub_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">clock_</span><span class="p">.</span><span class="n">getCurrentRosTimeAsMsg</span><span class="p">());</span>
-  <span class="n">metrics_manager_</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span>
-  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 08:24:48 UTC</p>
+<p>Updated on 22 July 2021 at 08:30:54 UTC</p>
                 
                   
                 

@@ -684,32 +684,32 @@
 <codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/>&lt;/xsd:complexType&gt;</highlight></codeline>
 <codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="36"><highlight class="comment"><sp/>*<sp/>--------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork" kindref="compound">RoadNetwork</ref></highlight></codeline>
-<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>----<sp/>NOTE<sp/>-----------------------------------------------------------------</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>File<sp/>path<sp/>of<sp/>the<sp/>road<sp/>network<sp/>file<sp/>(e.g.<sp/>an<sp/>ASAM<sp/>OpenDRIVE<sp/>file).</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/>*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/>ASSERT_IS_OPTIONAL_ELEMENT(<ref refid="structopenscenario__interpreter_1_1syntax_1_1File" kindref="compound">File</ref>);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1File" kindref="compound">File</ref><sp/>logic_file;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>----<sp/>NOTE<sp/>-----------------------------------------------------------------</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>File<sp/>path<sp/>of<sp/>a<sp/>3D<sp/>model<sp/>representing<sp/>the<sp/>virtual<sp/>environment.<sp/>This<sp/>may<sp/>be</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>used<sp/>for<sp/>visual<sp/>representation<sp/>(rendering).</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/>*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/>ASSERT_IS_OPTIONAL_ELEMENT(<ref refid="structopenscenario__interpreter_1_1syntax_1_1File" kindref="compound">File</ref>);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1File" kindref="compound">File</ref><sp/>scene_graph_file;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>----<sp/>NOTE<sp/>-----------------------------------------------------------------</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>Name<sp/>references<sp/>and<sp/>description<sp/>of<sp/>dynamic<sp/>behavior<sp/>for<sp/>traffic<sp/>signals</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>defined<sp/>in<sp/>the<sp/>road<sp/>network<sp/>file.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/>*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/>ASSERT_IS_OPTIONAL_ELEMENT(<ref refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals" kindref="compound">TrafficSignals</ref>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">ASSERT_IS_OPTIONAL_ELEMENT(File);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">ASSERT_IS_OPTIONAL_ELEMENT(TrafficSignals);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork" kindref="compound">RoadNetwork</ref></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>----<sp/>NOTE<sp/>-----------------------------------------------------------------</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>File<sp/>path<sp/>of<sp/>the<sp/>road<sp/>network<sp/>file<sp/>(e.g.<sp/>an<sp/>ASAM<sp/>OpenDRIVE<sp/>file).</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/>*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1File" kindref="compound">File</ref><sp/>logic_file;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>----<sp/>NOTE<sp/>-----------------------------------------------------------------</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>File<sp/>path<sp/>of<sp/>a<sp/>3D<sp/>model<sp/>representing<sp/>the<sp/>virtual<sp/>environment.<sp/>This<sp/>may<sp/>be</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>used<sp/>for<sp/>visual<sp/>representation<sp/>(rendering).</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/>*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1File" kindref="compound">File</ref><sp/>scene_graph_file;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>----<sp/>NOTE<sp/>-----------------------------------------------------------------</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>Name<sp/>references<sp/>and<sp/>description<sp/>of<sp/>dynamic<sp/>behavior<sp/>for<sp/>traffic<sp/>signals</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/>defined<sp/>in<sp/>the<sp/>road<sp/>network<sp/>file.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/>*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals" kindref="compound">TrafficSignals</ref><sp/>traffic_signals;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Node,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Scope&gt;</highlight></codeline>

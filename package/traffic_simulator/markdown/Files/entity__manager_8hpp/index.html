@@ -903,9 +903,6 @@
 <span class="cp">#include</span> <span class="cpf">&lt;tf2_ros/static_transform_broadcaster.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;tf2_ros/transform_broadcaster.h&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;autoware_auto_msgs/msg/vehicle_control_command.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;autoware_auto_msgs/msg/vehicle_kinematic_state.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;autoware_auto_msgs/msg/vehicle_state_command.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;boost/optional.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;openscenario_msgs/msg/bounding_box.hpp&gt;</span><span class="cp"></span>
@@ -916,6 +913,7 @@
 <span class="cp">#include</span> <span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/api/configuration.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/entity/ego_entity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/entity/entity_base.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/entity/misc_object_entity.hpp&gt;</span><span class="cp"></span>
@@ -948,29 +946,24 @@
 
 <span class="k">class</span> <span class="nc">EntityManager</span>
 <span class="p">{</span>
-  <span class="kt">bool</span> <span class="n">verbose_</span><span class="p">;</span>
+  <span class="n">Configuration</span> <span class="n">configuration</span><span class="p">;</span>
 
   <span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span> <span class="n">broadcaster_</span><span class="p">;</span>
   <span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformBroadcaster</span> <span class="n">base_link_broadcaster_</span><span class="p">;</span>
 
-  <span class="n">rclcpp</span><span class="o">::</span><span class="n">Clock</span><span class="o">::</span><span class="n">SharedPtr</span> <span class="n">clock_ptr_</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Clock</span><span class="o">::</span><span class="n">SharedPtr</span> <span class="n">clock_ptr_</span><span class="p">;</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityBase</span><span class="o">&gt;&gt;</span> <span class="n">entities_</span><span class="p">;</span>
 
-  <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">autoware_auto_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleControlCommand</span><span class="o">&gt;</span> <span class="n">control_cmd_</span><span class="p">;</span>
-  <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">autoware_auto_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleStateCommand</span><span class="o">&gt;</span> <span class="n">state_cmd_</span><span class="p">;</span>
-
   <span class="kt">double</span> <span class="n">step_time_</span><span class="p">;</span>
+
   <span class="kt">double</span> <span class="n">current_time_</span><span class="p">;</span>
 
   <span class="k">using</span> <span class="n">EntityStatusWithTrajectoryArray</span> <span class="o">=</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatusWithTrajectoryArray</span><span class="p">;</span>
-  <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">EntityStatusWithTrajectoryArray</span><span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="n">entity_status_array_pub_ptr_</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">EntityStatusWithTrajectoryArray</span><span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="n">entity_status_array_pub_ptr_</span><span class="p">;</span>
 
   <span class="k">using</span> <span class="n">MarkerArray</span> <span class="o">=</span> <span class="n">visualization_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MarkerArray</span><span class="p">;</span>
-  <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">MarkerArray</span><span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="n">lanelet_marker_pub_ptr_</span><span class="p">;</span>
-
-  <span class="k">using</span> <span class="n">VehicleKinematicState</span> <span class="o">=</span> <span class="n">autoware_auto_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleKinematicState</span><span class="p">;</span>
-  <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">VehicleKinematicState</span><span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="n">kinematic_state_pub_ptr_</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">MarkerArray</span><span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="n">lanelet_marker_pub_ptr_</span><span class="p">;</span>
 
   <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">hdmap_utils</span><span class="o">::</span><span class="n">HdMapUtils</span><span class="o">&gt;</span> <span class="n">hdmap_utils_ptr_</span><span class="p">;</span>
 
@@ -999,8 +992,8 @@
   <span class="p">}</span>
 
   <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeT</span><span class="p">,</span> <span class="k">class</span> <span class="nc">AllocatorT</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;&gt;</span>
-  <span class="k">explicit</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">NodeT</span> <span class="o">&amp;&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">map_path</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">verbose_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+  <span class="k">explicit</span> <span class="n">EntityManager</span><span class="p">(</span><span class="n">NodeT</span> <span class="o">&amp;&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="k">const</span> <span class="n">Configuration</span> <span class="o">&amp;</span> <span class="n">configuration</span><span class="p">)</span>
+  <span class="o">:</span> <span class="n">configuration</span><span class="p">(</span><span class="n">configuration</span><span class="p">),</span>
     <span class="n">broadcaster_</span><span class="p">(</span><span class="n">node</span><span class="p">),</span>
     <span class="n">base_link_broadcaster_</span><span class="p">(</span><span class="n">node</span><span class="p">),</span>
     <span class="n">clock_ptr_</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()),</span>
@@ -1010,10 +1003,8 @@
     <span class="n">lanelet_marker_pub_ptr_</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">MarkerArray</span><span class="o">&gt;</span><span class="p">(</span>
       <span class="n">node</span><span class="p">,</span> <span class="s">&quot;lanelet/marker&quot;</span><span class="p">,</span> <span class="n">LaneletMarkerQoS</span><span class="p">(),</span>
       <span class="n">rclcpp</span><span class="o">::</span><span class="n">PublisherOptionsWithAllocator</span><span class="o">&lt;</span><span class="n">AllocatorT</span><span class="o">&gt;</span><span class="p">())),</span>
-    <span class="n">kinematic_state_pub_ptr_</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">VehicleKinematicState</span><span class="o">&gt;</span><span class="p">(</span>
-      <span class="n">node</span><span class="p">,</span> <span class="s">&quot;output/kinematic_state&quot;</span><span class="p">,</span> <span class="n">LaneletMarkerQoS</span><span class="p">(),</span>
-      <span class="n">rclcpp</span><span class="o">::</span><span class="n">PublisherOptionsWithAllocator</span><span class="o">&lt;</span><span class="n">AllocatorT</span><span class="o">&gt;</span><span class="p">())),</span>
-    <span class="n">hdmap_utils_ptr_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">hdmap_utils</span><span class="o">::</span><span class="n">HdMapUtils</span><span class="o">&gt;</span><span class="p">(</span><span class="n">map_path</span><span class="p">,</span> <span class="n">getOrigin</span><span class="p">(</span><span class="o">*</span><span class="n">node</span><span class="p">))),</span>
+    <span class="n">hdmap_utils_ptr_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">hdmap_utils</span><span class="o">::</span><span class="n">HdMapUtils</span><span class="o">&gt;</span><span class="p">(</span>
+      <span class="n">configuration</span><span class="p">.</span><span class="n">lanelet2_map_path</span><span class="p">(),</span> <span class="n">getOrigin</span><span class="p">(</span><span class="o">*</span><span class="n">node</span><span class="p">))),</span>
     <span class="n">markers_raw_</span><span class="p">(</span><span class="n">hdmap_utils_ptr_</span><span class="o">-&gt;</span><span class="n">generateMarker</span><span class="p">()),</span>
     <span class="n">traffic_light_manager_ptr_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">TrafficLightManager</span><span class="o">&gt;</span><span class="p">(</span>
       <span class="n">hdmap_utils_ptr_</span><span class="p">,</span>
@@ -1195,7 +1186,7 @@
 
   <span class="kt">bool</span> <span class="nf">setEntityStatus</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="n">status</span><span class="p">);</span>
 
-  <span class="kt">void</span> <span class="nf">setVerbose</span><span class="p">(</span><span class="kt">bool</span> <span class="n">verbose</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="nf">setVerbose</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span><span class="p">);</span>
 
   <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Entity</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
   <span class="k">auto</span> <span class="n">spawnEntity</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span><span class="p">)</span>
@@ -1224,7 +1215,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__ENTITY__ENTITY_MANAGER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 08:24:48 UTC</p>
+<p>Updated on 22 July 2021 at 08:30:54 UTC</p>
                 
                   
                 
