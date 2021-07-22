@@ -790,9 +790,6 @@
 <span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
 <span class="cm"> * -------------------------------------------------------------------------- */</span>
-<span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">File</span><span class="p">);</span>
-<span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">TrafficSignals</span><span class="p">);</span>
-
 <span class="k">struct</span> <span class="nc">RoadNetwork</span>
 <span class="p">{</span>
   <span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
@@ -800,6 +797,7 @@
 <span class="cm">   *  File path of the road network file (e.g. an ASAM OpenDRIVE file).</span>
 <span class="cm">   *</span>
 <span class="cm">   * ------------------------------------------------------------------------ */</span>
+  <span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">File</span><span class="p">);</span>
   <span class="k">const</span> <span class="n">File</span> <span class="n">logic_file</span><span class="p">;</span>
 
   <span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
@@ -808,6 +806,7 @@
 <span class="cm">   *  used for visual representation (rendering).</span>
 <span class="cm">   *</span>
 <span class="cm">   * ------------------------------------------------------------------------ */</span>
+  <span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">File</span><span class="p">);</span>
   <span class="k">const</span> <span class="n">File</span> <span class="n">scene_graph_file</span><span class="p">;</span>
 
   <span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
@@ -816,6 +815,7 @@
 <span class="cm">   *  defined in the road network file.</span>
 <span class="cm">   *</span>
 <span class="cm">   * ------------------------------------------------------------------------ */</span>
+  <span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">TrafficSignals</span><span class="p">);</span>
   <span class="n">TrafficSignals</span> <span class="n">traffic_signals</span><span class="p">;</span>
 
   <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span>
@@ -840,7 +840,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__ROAD_NETWORK_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 00:42:09 UTC</p>
+<p>Updated on 22 July 2021 at 08:24:51 UTC</p>
                 
                   
                 

@@ -870,13 +870,12 @@
 <span class="cp">#define OPENSCENARIO_INTERPRETER_ALLOW_ATTRIBUTES_TO_BE_BLANK</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER_NO_EXTENSION</span>
 
-<span class="c1">// clang-format off (NOTE: ament-clang-format does not respect the include order)</span>
 <span class="cp">#include</span> <span class="cpf">&lt;concealer/autoware_def.hpp&gt;</span><span class="cp"></span>
-<span class="c1">// clang-format on</span>
+
+<span class="c1">// #undef NDEBUG</span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;boost/filesystem.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;boost/filesystem/operations.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;concealer/execute.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;nlohmann/json.hpp&gt;</span><span class="cp"></span>
@@ -982,34 +981,19 @@
 
   <span class="n">script</span><span class="p">.</span><span class="n">rebind</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">(</span><span class="n">osc_path</span><span class="p">);</span>
 
-  <span class="k">auto</span> <span class="n">configuration</span> <span class="o">=</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">Configuration</span><span class="p">(</span>
-    <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">logic_file</span><span class="p">)</span>
-      <span class="o">?</span> <span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="nl">logic_file</span>
-      <span class="p">:</span> <span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">logic_file</span><span class="p">.</span><span class="n">parent_path</span><span class="p">());</span>
-  <span class="p">{</span>
-    <span class="n">configuration</span><span class="p">.</span><span class="n">auto_sink</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="k">const</span> <span class="k">auto</span> <span class="n">with_autoware</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">any_of</span><span class="p">(</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cbegin</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">entities</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">cend</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">entities</span><span class="p">),</span>
+    <span class="p">[](</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">each</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">each</span><span class="p">).</span><span class="k">template</span> <span class="n">as</span><span class="o">&lt;</span><span class="n">ScenarioObject</span><span class="o">&gt;</span><span class="p">().</span><span class="n">object_controller</span><span class="p">.</span><span class="n">isEgo</span><span class="p">();</span>
+    <span class="p">});</span>
 
-    <span class="n">configuration</span><span class="p">.</span><span class="n">initialize_duration</span> <span class="o">=</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">any_of</span><span class="p">(</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cbegin</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">entities</span><span class="p">),</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cend</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">entities</span><span class="p">),</span>
-        <span class="p">[](</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">each</span><span class="p">)</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">each</span><span class="p">).</span><span class="k">template</span> <span class="n">as</span><span class="o">&lt;</span><span class="n">ScenarioObject</span><span class="o">&gt;</span><span class="p">().</span><span class="n">object_controller</span><span class="p">.</span><span class="n">isEgo</span><span class="p">();</span>
-        <span class="p">})</span>
-        <span class="o">?</span> <span class="mi">30</span>
-        <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="n">configuration</span><span class="p">.</span><span class="n">scenario_path</span> <span class="o">=</span> <span class="n">osc_path</span><span class="p">;</span>
-
-    <span class="c1">// XXX DIRTY HACK!!!</span>
-    <span class="k">if</span> <span class="p">(</span>
-      <span class="n">not</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">logic_file</span><span class="p">)</span> <span class="n">and</span>
-      <span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">logic_file</span><span class="p">.</span><span class="n">extension</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;.osm&quot;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">configuration</span><span class="p">.</span><span class="n">lanelet2_map_file</span> <span class="o">=</span> <span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">logic_file</span><span class="p">.</span><span class="n">filename</span><span class="p">().</span><span class="n">string</span><span class="p">();</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="n">connect</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">(),</span> <span class="n">configuration</span><span class="p">);</span>
+  <span class="n">connect</span><span class="p">(</span>
+    <span class="n">shared_from_this</span><span class="p">(),</span>                                       <span class="c1">//</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">osc_path</span><span class="p">).</span><span class="n">replace_extension</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">),</span>  <span class="c1">// NOTE: /path/to/lanelet2_map.osm</span>
+    <span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">logic_file</span><span class="p">.</span><span class="n">string</span><span class="p">(),</span>            <span class="c1">//</span>
+    <span class="n">with_autoware</span> <span class="o">?</span> <span class="mi">30</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nb">false</span>  <span class="c1">// auto-sink</span>
+  <span class="p">);</span>
 
   <span class="n">initialize</span><span class="p">(</span>
     <span class="n">local_real_time_factor</span><span class="p">,</span>
@@ -1161,7 +1145,7 @@
 <span class="n">RCLCPP_COMPONENTS_REGISTER_NODE</span><span class="p">(</span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">Interpreter</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 00:42:09 UTC</p>
+<p>Updated on 22 July 2021 at 08:24:50 UTC</p>
                 
                   
                 

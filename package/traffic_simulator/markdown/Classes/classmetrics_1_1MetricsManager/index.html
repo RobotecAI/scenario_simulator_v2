@@ -761,15 +761,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#variable-write_file_every_frame" class="md-nav__link">
-    variable write_file_every_frame
+  <a href="#variable-logfile_path" class="md-nav__link">
+    variable logfile_path
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#variable-log_path" class="md-nav__link">
-    variable log_path
+  <a href="#variable-file_output_every_frame" class="md-nav__link">
+    variable file_output_every_frame
   </a>
   
 </li>
@@ -812,11 +812,11 @@
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-setverbose">setVerbose</a></strong>(const bool verbose)</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-setverbose">setVerbose</a></strong>(bool verbose)</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-setentitymanager">setEntityManager</a></strong>(const std::shared_ptr&lt; <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager">traffic_simulator::entity::EntityManager</a> &gt; &amp; entity_manager_ptr)</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-setentitymanager">setEntityManager</a></strong>(std::shared_ptr&lt; <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager">traffic_simulator::entity::EntityManager</a> &gt; entity_manager_ptr)</td>
 </tr>
 <tr>
 <td>void</td>
@@ -824,11 +824,11 @@
 </tr>
 <tr>
 <td>template \&lt;typename T ,typename... Ts></br>void</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-addmetric">addMetric</a></strong>(const std::string &amp; name, Ts &amp;&amp;... xs)</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-addmetric">addMetric</a></strong>(std::string name, Ts &amp;&amp;... xs)</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-metricsmanager">MetricsManager</a></strong>(const boost::filesystem::path &amp; log_path, const bool verbose =false, const bool write_file_every_frame =false)</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#function-metricsmanager">MetricsManager</a></strong>(bool verbose, const std::string &amp; logfile_path, bool file_out_every_frame =false)</td>
 </tr>
 </tbody>
 </table>
@@ -842,12 +842,12 @@
 </thead>
 <tbody>
 <tr>
-<td>const bool</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#variable-write_file_every_frame">write_file_every_frame</a></strong></td>
+<td>const std::string</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#variable-logfile_path">logfile_path</a></strong></td>
 </tr>
 <tr>
-<td>const boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#variable-log_path">log_path</a></strong></td>
+<td>const bool</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricsManager#variable-file_output_every_frame">file_output_every_frame</a></strong></td>
 </tr>
 </tbody>
 </table>
@@ -857,12 +857,12 @@
 </code></pre></div>
 <h3 id="function-setverbose">function setVerbose<a class="headerlink" href="#function-setverbose" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">setVerbose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span>
+    <span class="kt">bool</span> <span class="n">verbose</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-setentitymanager">function setEntityManager<a class="headerlink" href="#function-setentitymanager" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">setEntityManager</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">entity_manager_ptr</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span> <span class="o">&gt;</span> <span class="n">entity_manager_ptr</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-calculate">function calculate<a class="headerlink" href="#function-calculate" title="Permanent link">#</a></h3>
@@ -872,26 +872,26 @@
 <div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
 <span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
 <span class="kr">inline</span> <span class="kt">void</span> <span class="n">addMetric</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span>
     <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-metricsmanager_1">function MetricsManager<a class="headerlink" href="#function-metricsmanager_1" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">explicit</span> <span class="n">MetricsManager</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="o">&amp;</span> <span class="n">log_path</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span> <span class="o">=</span><span class="nb">false</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">write_file_every_frame</span> <span class="o">=</span><span class="nb">false</span>
+    <span class="kt">bool</span> <span class="n">verbose</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">logfile_path</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">file_out_every_frame</span> <span class="o">=</span><span class="nb">false</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">#</a></h2>
-<h3 id="variable-write_file_every_frame">variable write_file_every_frame<a class="headerlink" href="#variable-write_file_every_frame" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">bool</span> <span class="n">write_file_every_frame</span><span class="p">;</span>
+<h3 id="variable-logfile_path">variable logfile_path<a class="headerlink" href="#variable-logfile_path" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">logfile_path</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="variable-log_path">variable log_path<a class="headerlink" href="#variable-log_path" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">log_path</span><span class="p">;</span>
+<h3 id="variable-file_output_every_frame">variable file_output_every_frame<a class="headerlink" href="#variable-file_output_every_frame" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">bool</span> <span class="n">file_output_every_frame</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 00:42:06 UTC</p>
+<p>Updated on 22 July 2021 at 08:24:47 UTC</p>
                 
                   
                 

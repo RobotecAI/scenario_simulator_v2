@@ -778,7 +778,6 @@
 <span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;openscenario_msgs/msg/entity_type.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/api/configuration.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/entity/vehicle_entity.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/vehicle_model/sim_model_ideal.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/vehicle_model/sim_model_time_delay.hpp&gt;</span><span class="cp"></span>
@@ -803,7 +802,10 @@
 
 <span class="k">class</span> <span class="nc">EgoEntity</span> <span class="o">:</span> <span class="k">public</span> <span class="n">VehicleEntity</span>
 <span class="p">{</span>
-  <span class="n">concealer</span><span class="o">::</span><span class="n">Autoware</span> <span class="n">autoware</span><span class="p">;</span>
+  <span class="c1">// NOTE: One day we will have to do simultaneous simulations of multiple Ego entities.</span>
+  <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">concealer</span><span class="o">::</span><span class="n">Autoware</span><span class="o">&gt;</span> <span class="n">ego_entities</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="n">autoware_initialized</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// TODO (yamacir-kit) REMOVE THIS!!!</span>
 
   <span class="k">const</span> <span class="n">VehicleModelType</span> <span class="n">vehicle_model_type_</span><span class="p">;</span>
 
@@ -814,25 +816,38 @@
   <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">previous_linear_velocity_</span><span class="p">,</span> <span class="n">previous_angular_velocity_</span><span class="p">;</span>
 
 <span class="k">public</span><span class="o">:</span>
-  <span class="k">explicit</span> <span class="n">EgoEntity</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+  <span class="n">EgoEntity</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
 
+  <span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
+<span class="cm">   *</span>
+<span class="cm">   *  This constructor builds an Ego-type entity with an ambiguous initial</span>
+<span class="cm">   *  state. In this case, the values for status_ and current_kinematic_state_</span>
+<span class="cm">   *  are boost::none, respectively.</span>
+<span class="cm">   *</span>
+<span class="cm">   *  This constructor is used for the purpose of delaying the transmission of</span>
+<span class="cm">   *  the initial position from the entity&#39;s spawn. If you build an ego-type</span>
+<span class="cm">   *  entity with this constructor, you must explicitly call setStatus at least</span>
+<span class="cm">   *  once before the first onUpdate call to establish location and kinematic</span>
+<span class="cm">   *  state.</span>
+<span class="cm">   *</span>
+<span class="cm">   *  For OpenSCENARIO, setStatus before the onUpdate call is called by</span>
+<span class="cm">   *  TeleportAction in the Storyboard.Init section.</span>
+<span class="cm">   *</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span>
   <span class="k">explicit</span> <span class="n">EgoEntity</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>             <span class="c1">//</span>
-    <span class="k">const</span> <span class="n">Configuration</span> <span class="o">&amp;</span> <span class="n">configuration</span><span class="p">,</span>  <span class="c1">//</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">,</span>               <span class="c1">//</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>                          <span class="c1">//</span>
+    <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="o">&amp;</span> <span class="n">lanelet2_map_osm</span><span class="p">,</span>  <span class="c1">//</span>
+    <span class="k">const</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">,</span>                            <span class="c1">//</span>
     <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleParameters</span> <span class="o">&amp;</span> <span class="n">parameters</span><span class="p">);</span>
 
-  <span class="k">explicit</span> <span class="n">EgoEntity</span><span class="p">(</span><span class="n">EgoEntity</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+  <span class="o">~</span><span class="n">EgoEntity</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
 
-  <span class="k">explicit</span> <span class="n">EgoEntity</span><span class="p">(</span><span class="k">const</span> <span class="n">EgoEntity</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+  <span class="n">EgoEntity</span><span class="p">(</span><span class="k">const</span> <span class="n">EgoEntity</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
 
-  <span class="o">~</span><span class="n">EgoEntity</span><span class="p">()</span> <span class="k">override</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+  <span class="n">EgoEntity</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">EgoEntity</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
 
-  <span class="k">auto</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">EgoEntity</span> <span class="o">&amp;&amp;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EgoEntity</span> <span class="o">&amp;</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
-
-  <span class="k">auto</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">EgoEntity</span> <span class="o">&amp;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EgoEntity</span> <span class="o">&amp;</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
-
-  <span class="kt">void</span> <span class="nf">engage</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="kt">void</span> <span class="n">engage</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
 
   <span class="k">auto</span> <span class="n">getCurrentAction</span><span class="p">()</span> <span class="k">const</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">override</span><span class="p">;</span>
 
@@ -842,8 +857,6 @@
   <span class="k">auto</span> <span class="n">getEntityTypename</span><span class="p">()</span> <span class="k">const</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="k">override</span><span class="p">;</span>
 
   <span class="k">auto</span> <span class="n">getObstacle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Obstacle</span><span class="o">&gt;</span> <span class="k">override</span><span class="p">;</span>
-
-  <span class="k">auto</span> <span class="n">getVehicleCommand</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">autoware_vehicle_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleCommand</span> <span class="k">override</span><span class="p">;</span>
 
   <span class="k">auto</span> <span class="n">getWaypoints</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span> <span class="k">override</span><span class="p">;</span>
 
@@ -860,6 +873,8 @@
   <span class="k">auto</span> <span class="n">setStatus</span><span class="p">(</span><span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="o">&amp;</span> <span class="n">status</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="k">override</span><span class="p">;</span>
 
   <span class="kt">void</span> <span class="nf">setTargetSpeed</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="n">autoware_vehicle_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleCommand</span> <span class="nf">getVehicleCommand</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="p">}</span>  <span class="c1">// namespace entity</span>
 <span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
@@ -867,7 +882,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__ENTITY__EGO_ENTITY_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 22 July 2021 at 00:42:06 UTC</p>
+<p>Updated on 22 July 2021 at 08:24:48 UTC</p>
                 
                   
                 
