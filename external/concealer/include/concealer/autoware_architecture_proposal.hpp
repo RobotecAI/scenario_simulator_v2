@@ -319,7 +319,7 @@ class AutowareArchitectureProposal : public Autoware,
    * ------------------------------------------------------------------------ */
   using VehicleCommand = autoware_vehicle_msgs::msg::VehicleCommand;
 
-  DEFINE_SUBSCRIPTION(VehicleCommand);
+  DEFINE_SUBSCRIPTION_WITH_OVERRIDE(VehicleCommand);
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public:

@@ -23,20 +23,6 @@
 #include <openscenario_interpreter/utility/overload.hpp>
 
 
-// borrowed from "simulation/traffic_simulator/src/entity/ego_entity.cpp"
-// TODO: find some shared space for this function
-template <typename T>
-auto getParameter(const std::string & name, T value)
-{
-  rclcpp::Node node{"get_parameter", "simulation"};
-
-  node.declare_parameter<T>(name, value);
-  node.get_parameter<T>(name, value);
-
-  return value;
-}
-
-
 namespace openscenario_interpreter
 {
 inline namespace syntax
@@ -112,7 +98,7 @@ struct ScenarioObject
         if (object_controller.isEgo()) {
           auto autoware_type = getParameter<std::string>("autoware_type", std::string(""));
 
-          std::cout << "autoware_type = " << autoware_type << std::endl;
+          std::cout << "ScenarioObject::autoware_type = " << autoware_type << std::endl;
 
           if (autoware_type == "proposal") {
             attachLidarSensor(traffic_simulator::helper::constructLidarConfiguration(
