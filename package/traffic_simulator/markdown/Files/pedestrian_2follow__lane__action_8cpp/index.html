@@ -274,6 +274,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/RunTestScenarioWithDocker/" class="md-nav__link">
+        Run test scenario with Docker
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -637,7 +649,7 @@
   
     <li class="md-nav__item">
       <a href="../../../../../etc/ContactUs/" class="md-nav__link">
-        Contact Infomation
+        Contact Information
       </a>
     </li>
   
@@ -776,58 +788,21 @@
     <span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span> <span class="n">stopAtEndOfRoad</span><span class="p">());</span>
     <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">RUNNING</span><span class="p">;</span>
   <span class="p">}</span>
+  <span class="n">RCLCPP_ERROR_STREAM</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">),</span> <span class="n">__FILE__</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">__LINE__</span><span class="p">);</span>
+  <span class="n">RCLCPP_ERROR_STREAM</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">),</span> <span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">);</span>
   <span class="k">auto</span> <span class="n">following_lanelets</span> <span class="o">=</span>
     <span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getFollowingLanelets</span><span class="p">(</span><span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">);</span>
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">target_speed</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">target_speed</span> <span class="o">=</span> <span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getSpeedLimit</span><span class="p">(</span><span class="n">following_lanelets</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Accel</span> <span class="n">accel_new</span><span class="p">;</span>
-  <span class="n">accel_new</span> <span class="o">=</span> <span class="n">entity_status</span><span class="p">.</span><span class="n">action_status</span><span class="p">.</span><span class="n">accel</span><span class="p">;</span>
-
-  <span class="kt">double</span> <span class="n">target_accel</span> <span class="o">=</span>
-    <span class="p">(</span><span class="n">target_speed</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="o">-</span> <span class="n">entity_status</span><span class="p">.</span><span class="n">action_status</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">step_time</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">entity_status</span><span class="p">.</span><span class="n">action_status</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">target_speed</span><span class="p">.</span><span class="n">get</span><span class="p">())</span> <span class="p">{</span>
-    <span class="n">target_accel</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">algorithm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">target_accel</span><span class="p">,</span> <span class="mi">-5</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="cm">/*　target_accel = boost::algorithm::clamp(target_accel,</span>
-<span class="cm">      -1*vehicle_param_ptr-&gt;performance.max_deceleration, vehicle_param_ptr-&gt;performance.max_acceleration);</span>
-<span class="cm">      */</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="n">target_accel</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">algorithm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">target_accel</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="cm">/* target_accel = boost::algorithm::clamp(target_accel,</span>
-<span class="cm">      -1*vehicle_param_ptr-&gt;performance.max_deceleration, vehicle_param_ptr-&gt;performance.max_acceleration);*/</span>
-  <span class="p">}</span>
-  <span class="n">accel_new</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">target_accel</span><span class="p">;</span>
-  <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span> <span class="n">twist_new</span><span class="p">;</span>
-  <span class="n">twist_new</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">algorithm</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span>
-    <span class="n">entity_status</span><span class="p">.</span><span class="n">action_status</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">accel_new</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">step_time</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">);</span>
-  <span class="n">twist_new</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-  <span class="n">twist_new</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-  <span class="n">twist_new</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-  <span class="n">twist_new</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-  <span class="n">twist_new</span><span class="p">.</span><span class="n">angular</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-
-  <span class="kt">double</span> <span class="n">new_s</span> <span class="o">=</span>
-    <span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">s</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">twist_new</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">entity_status</span><span class="p">.</span><span class="n">action_status</span><span class="p">.</span><span class="n">twist</span><span class="p">.</span><span class="n">linear</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">step_time</span><span class="p">;</span>
-  <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span> <span class="n">rpy</span> <span class="o">=</span> <span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">rpy</span><span class="p">;</span>
-
-  <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="n">entity_status_updated</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">current_time</span> <span class="o">+</span> <span class="n">step_time</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span> <span class="o">=</span> <span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">new_s</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">offset</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">rpy</span> <span class="o">=</span> <span class="n">rpy</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">action_status</span><span class="p">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">twist_new</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">action_status</span><span class="p">.</span><span class="n">accel</span> <span class="o">=</span> <span class="n">accel_new</span><span class="p">;</span>
-  <span class="n">entity_status_updated</span><span class="p">.</span><span class="n">pose</span> <span class="o">=</span> <span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">toMapPose</span><span class="p">(</span><span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">).</span><span class="n">pose</span><span class="p">;</span>
-  <span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span> <span class="n">entity_status_updated</span><span class="p">);</span>
+  <span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span> <span class="n">calculateEntityStatusUpdated</span><span class="p">(</span><span class="n">target_speed</span><span class="p">.</span><span class="n">get</span><span class="p">()));</span>
   <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">RUNNING</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="p">}</span>  <span class="c1">// namespace pedestrian</span>
 <span class="p">}</span>  <span class="c1">// namespace entity_behavior</span>
 </code></pre></div>
 <hr />
-<p>Updated on 30 July 2021 at 00:42:10 UTC</p>
+<p>Updated on 30 July 2021 at 14:33:15 UTC</p>
                 
                   
                 

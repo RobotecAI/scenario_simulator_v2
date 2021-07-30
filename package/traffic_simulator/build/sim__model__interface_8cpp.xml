@@ -4,24 +4,24 @@
     <compoundname>sim_model_interface.cpp</compoundname>
     <includes refid="sim__model__interface_8hpp" local="no">traffic_simulator/vehicle_model/sim_model_interface.hpp</includes>
     <incdepgraph>
-      <node id="6961">
+      <node id="6790">
         <label>traffic_simulator/vehicle_model/sim_model_interface.hpp</label>
         <link refid="sim__model__interface_8hpp"/>
-        <childnode refid="6962" relation="include">
+        <childnode refid="6791" relation="include">
         </childnode>
-        <childnode refid="6963" relation="include">
+        <childnode refid="6792" relation="include">
         </childnode>
       </node>
-      <node id="6963">
+      <node id="6792">
         <label>rclcpp/rclcpp.hpp</label>
       </node>
-      <node id="6962">
+      <node id="6791">
         <label>eigen3/Eigen/Core</label>
       </node>
-      <node id="6960">
+      <node id="6789">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/vehicle_model/sim_model_interface.cpp</label>
         <link refid="sim__model__interface_8cpp"/>
-        <childnode refid="6961" relation="include">
+        <childnode refid="6790" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -48,27 +48,27 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><ref refid="classSimModelInterface_1a8381051dda5ee2907e9bb4249cceb469" kindref="member">SimModelInterface::SimModelInterface</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim_x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dim_u)<sp/>:<sp/>dim_x_(dim_x),<sp/>dim_u_(dim_u)</highlight></codeline>
 <codeline lineno="18"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/>state_<sp/>=<sp/>Eigen::VectorXd::Zero(dim_x_);</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/>input_<sp/>=<sp/>Eigen::VectorXd::Zero(dim_u_);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref><sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1ada7a7551a27124e1ff650e47e6f18bf1" kindref="member">dim_x_</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref><sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1a205b3b7d99b9337365018afe1fc62ab0" kindref="member">dim_u_</ref>);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a87f7865253cd118372cfc701215cf2df" kindref="member">SimModelInterface::updateRungeKutta</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>dt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Eigen::VectorXd<sp/>&amp;<sp/>input)</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k1<sp/>=<sp/>calcModel(state_,<sp/>input);</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k2<sp/>=<sp/>calcModel(state_<sp/>+<sp/>k1<sp/>*<sp/>0.5<sp/>*<sp/>dt,<sp/>input);</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k3<sp/>=<sp/>calcModel(state_<sp/>+<sp/>k2<sp/>*<sp/>0.5<sp/>*<sp/>dt,<sp/>input);</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k4<sp/>=<sp/>calcModel(state_<sp/>+<sp/>k3<sp/>*<sp/>dt,<sp/>input);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k1<sp/>=<sp/>calcModel(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>,<sp/>input);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k2<sp/>=<sp/>calcModel(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref><sp/>+<sp/>k1<sp/>*<sp/>0.5<sp/>*<sp/>dt,<sp/>input);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k3<sp/>=<sp/>calcModel(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref><sp/>+<sp/>k2<sp/>*<sp/>0.5<sp/>*<sp/>dt,<sp/>input);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>k4<sp/>=<sp/>calcModel(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref><sp/>+<sp/>k3<sp/>*<sp/>dt,<sp/>input);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/>state_<sp/>+=<sp/>1.0<sp/>/<sp/>6.0<sp/>*<sp/>(k1<sp/>+<sp/>2.0<sp/>*<sp/>k2<sp/>+<sp/>2.0<sp/>*<sp/>k3<sp/>+<sp/>k4)<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref><sp/>+=<sp/>1.0<sp/>/<sp/>6.0<sp/>*<sp/>(k1<sp/>+<sp/>2.0<sp/>*<sp/>k2<sp/>+<sp/>2.0<sp/>*<sp/>k3<sp/>+<sp/>k4)<sp/>*<sp/>dt;</highlight></codeline>
 <codeline lineno="31"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a99fa9bd160c2969a0f500591ed15f327" kindref="member">SimModelInterface::updateEuler</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>dt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Eigen::VectorXd<sp/>&amp;<sp/>input)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>state_<sp/>+=<sp/>calcModel(state_,<sp/>input)<sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref><sp/>+=<sp/>calcModel(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>,<sp/>input)<sp/>*<sp/>dt;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a9c0803727dc5e58c15f51e54e5c23f0d" kindref="member">SimModelInterface::getState</ref>(Eigen::VectorXd<sp/>&amp;<sp/>state)<sp/>{<sp/>state<sp/>=<sp/>state_;<sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1aec1734ae15cfadbe42d35ff3a0eacf1c" kindref="member">SimModelInterface::getInput</ref>(Eigen::VectorXd<sp/>&amp;<sp/>input)<sp/>{<sp/>input<sp/>=<sp/>input_;<sp/>}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a3753071badd72e8036db7559ce317a97" kindref="member">SimModelInterface::setState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Eigen::VectorXd<sp/>&amp;<sp/>state)<sp/>{<sp/>state_<sp/>=<sp/>state;<sp/>}</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a58bf13eb5b2897d599e0ed95c70ea8fe" kindref="member">SimModelInterface::setInput</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Eigen::VectorXd<sp/>&amp;<sp/>input)<sp/>{<sp/>input_<sp/>=<sp/>input;<sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a9c0803727dc5e58c15f51e54e5c23f0d" kindref="member">SimModelInterface::getState</ref>(Eigen::VectorXd<sp/>&amp;<sp/>state)<sp/>{<sp/>state<sp/>=<sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1aec1734ae15cfadbe42d35ff3a0eacf1c" kindref="member">SimModelInterface::getInput</ref>(Eigen::VectorXd<sp/>&amp;<sp/>input)<sp/>{<sp/>input<sp/>=<sp/><ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a3753071badd72e8036db7559ce317a97" kindref="member">SimModelInterface::setState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Eigen::VectorXd<sp/>&amp;<sp/>state)<sp/>{<sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref><sp/>=<sp/>state;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1a58bf13eb5b2897d599e0ed95c70ea8fe" kindref="member">SimModelInterface::setInput</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Eigen::VectorXd<sp/>&amp;<sp/>input)<sp/>{<sp/><ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref><sp/>=<sp/>input;<sp/>}</highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/vehicle_model/sim_model_interface.cpp"/>
   </compounddef>

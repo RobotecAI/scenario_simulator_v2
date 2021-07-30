@@ -5,68 +5,68 @@
     <includes local="no">algorithm</includes>
     <includes refid="sim__model__time__delay_8hpp" local="no">traffic_simulator/vehicle_model/sim_model_time_delay.hpp</includes>
     <incdepgraph>
-      <node id="6967">
+      <node id="6796">
         <label>traffic_simulator/vehicle_model/sim_model_time_delay.hpp</label>
         <link refid="sim__model__time__delay_8hpp"/>
-        <childnode refid="6968" relation="include">
+        <childnode refid="6797" relation="include">
         </childnode>
-        <childnode refid="6969" relation="include">
+        <childnode refid="6798" relation="include">
         </childnode>
-        <childnode refid="6970" relation="include">
+        <childnode refid="6799" relation="include">
         </childnode>
-        <childnode refid="6971" relation="include">
+        <childnode refid="6800" relation="include">
         </childnode>
-        <childnode refid="6972" relation="include">
+        <childnode refid="6801" relation="include">
         </childnode>
-        <childnode refid="6973" relation="include">
+        <childnode refid="6802" relation="include">
         </childnode>
-        <childnode refid="6975" relation="include">
+        <childnode refid="6804" relation="include">
         </childnode>
       </node>
-      <node id="6975">
+      <node id="6804">
         <label>traffic_simulator/vehicle_model/sim_model_util.hpp</label>
         <link refid="sim__model__util_8hpp_source"/>
-        <childnode refid="6976" relation="include">
+        <childnode refid="6805" relation="include">
         </childnode>
       </node>
-      <node id="6972">
+      <node id="6801">
         <label>queue</label>
       </node>
-      <node id="6973">
+      <node id="6802">
         <label>traffic_simulator/vehicle_model/sim_model_interface.hpp</label>
         <link refid="sim__model__interface_8hpp"/>
-        <childnode refid="6969" relation="include">
+        <childnode refid="6798" relation="include">
         </childnode>
-        <childnode refid="6974" relation="include">
+        <childnode refid="6803" relation="include">
         </childnode>
       </node>
-      <node id="6970">
+      <node id="6799">
         <label>eigen3/Eigen/LU</label>
       </node>
-      <node id="6965">
+      <node id="6794">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/vehicle_model/sim_model_time_delay.cpp</label>
         <link refid="sim__model__time__delay_8cpp"/>
-        <childnode refid="6966" relation="include">
+        <childnode refid="6795" relation="include">
         </childnode>
-        <childnode refid="6967" relation="include">
+        <childnode refid="6796" relation="include">
         </childnode>
       </node>
-      <node id="6974">
+      <node id="6803">
         <label>rclcpp/rclcpp.hpp</label>
       </node>
-      <node id="6976">
+      <node id="6805">
         <label>math.h</label>
       </node>
-      <node id="6971">
+      <node id="6800">
         <label>iostream</label>
       </node>
-      <node id="6968">
+      <node id="6797">
         <label>deque</label>
       </node>
-      <node id="6969">
+      <node id="6798">
         <label>eigen3/Eigen/Core</label>
       </node>
-      <node id="6966">
+      <node id="6795">
         <label>algorithm</label>
       </node>
     </incdepgraph>
@@ -124,24 +124,24 @@
 <codeline lineno="47"><highlight class="normal"><sp/><sp/>initializeInputQueue(dt);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getX()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::X);<sp/>}</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getY()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::Y);<sp/>}</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getYaw()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::YAW);<sp/>}</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getVx()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::VX);<sp/>}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getWz()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::WZ);<sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getX()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::X);<sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getY()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::Y);<sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getYaw()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::YAW);<sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getVx()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX);<sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getWz()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::WZ);<sp/>}</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::getSteer()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0;<sp/>}</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::update(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>dt)</highlight></codeline>
 <codeline lineno="57"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>delayed_input<sp/>=<sp/>Eigen::VectorXd::Zero(dim_u_);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>delayed_input<sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1a205b3b7d99b9337365018afe1fc62ab0" kindref="member">dim_u_</ref>);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/>vx_input_queue_.push_back(input_(IDX_U::VX_DES));</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>vx_input_queue_.push_back(<ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>(IDX_U::VX_DES));</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::VX_DES)<sp/>=<sp/>vx_input_queue_.front();</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/>vx_input_queue_.pop_front();</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/>wz_input_queue_.push_back(input_(IDX_U::WZ_DES));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>wz_input_queue_.push_back(<ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>(IDX_U::WZ_DES));</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::WZ_DES)<sp/>=<sp/>wz_input_queue_.front();</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/>wz_input_queue_.pop_front();</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>not<sp/>use<sp/>deadzone_delta_steer<sp/>(Steer<sp/>IF<sp/>does<sp/>not<sp/>exist<sp/>in<sp/>this<sp/>model)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>updateRungeKutta(dt,<sp/>delayed_input);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="classSimModelInterface_1a87f7865253cd118372cfc701215cf2df" kindref="member">updateRungeKutta</ref>(dt,<sp/>delayed_input);</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SimModelTimeDelayTwist::initializeInputQueue(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>dt)</highlight></codeline>
 <codeline lineno="70"><highlight class="normal">{</highlight></codeline>
@@ -170,7 +170,7 @@
 <codeline lineno="93"><highlight class="normal"><sp/><sp/>vx_rate<sp/>=<sp/>std::min(vx_rate_lim_,<sp/>std::max(-vx_rate_lim_,<sp/>vx_rate));</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/>wz_rate<sp/>=<sp/>std::min(wz_rate_lim_,<sp/>std::max(-wz_rate_lim_,<sp/>wz_rate));</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>d_state<sp/>=<sp/>Eigen::VectorXd::Zero(dim_x_);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>d_state<sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1ada7a7551a27124e1ff650e47e6f18bf1" kindref="member">dim_x_</ref>);</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/>d_state(IDX::X)<sp/>=<sp/>vx<sp/>*<sp/>cos(yaw);</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/>d_state(IDX::Y)<sp/>=<sp/>vx<sp/>*<sp/>sin(yaw);</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/>d_state(IDX::YAW)<sp/>=<sp/>wz;</highlight></codeline>
@@ -214,29 +214,29 @@
 <codeline lineno="137"><highlight class="normal"><sp/><sp/>initializeInputQueue(dt);</highlight></codeline>
 <codeline lineno="138"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getX()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::X);<sp/>}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getY()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::Y);<sp/>}</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getYaw()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::YAW);<sp/>}</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getVx()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::VX);<sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getX()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::X);<sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getY()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::Y);<sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getYaw()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::YAW);<sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getVx()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX);<sp/>}</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getWz()</highlight></codeline>
 <codeline lineno="145"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::VX)<sp/>*<sp/>std::tan(state_(IDX::STEER))<sp/>/<sp/>wheelbase_;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>*<sp/>std::tan(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::STEER))<sp/>/<sp/>wheelbase_;</highlight></codeline>
 <codeline lineno="147"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getSteer()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::STEER);<sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::getSteer()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::STEER);<sp/>}</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::update(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>dt)</highlight></codeline>
 <codeline lineno="150"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>delayed_input<sp/>=<sp/>Eigen::VectorXd::Zero(dim_u_);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>delayed_input<sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1a205b3b7d99b9337365018afe1fc62ab0" kindref="member">dim_u_</ref>);</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/>vx_input_queue_.push_back(input_(IDX_U::VX_DES));</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>vx_input_queue_.push_back(<ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>(IDX_U::VX_DES));</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::VX_DES)<sp/>=<sp/>vx_input_queue_.front();</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/>vx_input_queue_.pop_front();</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/>steer_input_queue_.push_back(input_(IDX_U::STEER_DES));</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>steer_input_queue_.push_back(<ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>(IDX_U::STEER_DES));</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>raw_steer_command<sp/>=<sp/>steer_input_queue_.front();</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::STEER_DES)<sp/>=<sp/>sim_model_util::getDummySteerCommandWithFriction(</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>getSteer(),<sp/>raw_steer_command,<sp/>deadzone_delta_steer_);</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/>steer_input_queue_.pop_front();</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/>updateRungeKutta(dt,<sp/>delayed_input);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="classSimModelInterface_1a87f7865253cd118372cfc701215cf2df" kindref="member">updateRungeKutta</ref>(dt,<sp/>delayed_input);</highlight></codeline>
 <codeline lineno="163"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteer::initializeInputQueue(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>dt)</highlight></codeline>
 <codeline lineno="165"><highlight class="normal">{</highlight></codeline>
@@ -265,7 +265,7 @@
 <codeline lineno="188"><highlight class="normal"><sp/><sp/>vx_rate<sp/>=<sp/>std::min(vx_rate_lim_,<sp/>std::max(-vx_rate_lim_,<sp/>vx_rate));</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/>steer_rate<sp/>=<sp/>std::min(steer_rate_lim_,<sp/>std::max(-steer_rate_lim_,<sp/>steer_rate));</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>d_state<sp/>=<sp/>Eigen::VectorXd::Zero(dim_x_);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>d_state<sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1ada7a7551a27124e1ff650e47e6f18bf1" kindref="member">dim_x_</ref>);</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/>d_state(IDX::X)<sp/>=<sp/>vel<sp/>*<sp/>cos(yaw);</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/>d_state(IDX::Y)<sp/>=<sp/>vel<sp/>*<sp/>sin(yaw);</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><sp/><sp/>d_state(IDX::YAW)<sp/>=<sp/>vel<sp/>*<sp/>std::tan(steer)<sp/>/<sp/>wheelbase_;</highlight></codeline>
@@ -304,43 +304,43 @@
 <codeline lineno="227"><highlight class="normal"><sp/><sp/>initializeInputQueue(dt);</highlight></codeline>
 <codeline lineno="228"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getX()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::X);<sp/>}</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getY()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::Y);<sp/>}</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getYaw()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::YAW);<sp/>}</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getVx()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::VX);<sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getX()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::X);<sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getY()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::Y);<sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getYaw()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::YAW);<sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getVx()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX);<sp/>}</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getWz()</highlight></codeline>
 <codeline lineno="235"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::VX)<sp/>*<sp/>std::tan(state_(IDX::STEER))<sp/>/<sp/>wheelbase_;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>*<sp/>std::tan(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::STEER))<sp/>/<sp/>wheelbase_;</highlight></codeline>
 <codeline lineno="237"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getSteer()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>state_(IDX::STEER);<sp/>}</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::getSteer()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::STEER);<sp/>}</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SimModelTimeDelaySteerAccel::update(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>dt)</highlight></codeline>
 <codeline lineno="240"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>delayed_input<sp/>=<sp/>Eigen::VectorXd::Zero(dim_u_);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>delayed_input<sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1a205b3b7d99b9337365018afe1fc62ab0" kindref="member">dim_u_</ref>);</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/>acc_input_queue_.push_back(input_(IDX_U::ACCX_DES));</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>acc_input_queue_.push_back(<ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>(IDX_U::ACCX_DES));</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::ACCX_DES)<sp/>=<sp/>acc_input_queue_.front();</highlight></codeline>
 <codeline lineno="245"><highlight class="normal"><sp/><sp/>acc_input_queue_.pop_front();</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/>steer_input_queue_.push_back(input_(IDX_U::STEER_DES));</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/>steer_input_queue_.push_back(<ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>(IDX_U::STEER_DES));</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>raw_steer_command<sp/>=<sp/>steer_input_queue_.front();</highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::STEER_DES)<sp/>=<sp/>sim_model_util::getDummySteerCommandWithFriction(</highlight></codeline>
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>getSteer(),<sp/>raw_steer_command,<sp/>deadzone_delta_steer_);</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/>steer_input_queue_.pop_front();</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::DRIVE_SHIFT)<sp/>=<sp/>input_(IDX_U::DRIVE_SHIFT);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>delayed_input(IDX_U::DRIVE_SHIFT)<sp/>=<sp/><ref refid="classSimModelInterface_1a604e3dfa204542874cb60bae9df70d97" kindref="member">input_</ref>(IDX_U::DRIVE_SHIFT);</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"></highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/>updateRungeKutta(dt,<sp/>delayed_input);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><ref refid="classSimModelInterface_1a87f7865253cd118372cfc701215cf2df" kindref="member">updateRungeKutta</ref>(dt,<sp/>delayed_input);</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>clip<sp/>velocity<sp/>and<sp/>accel</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(delayed_input(IDX_U::DRIVE_SHIFT)<sp/>&gt;=<sp/>0.0)<sp/>{</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>state_(IDX::VX)<sp/>=<sp/>std::max(0.0,<sp/>std::min(state_(IDX::VX),<sp/>vx_lim_));</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>=<sp/>std::max(0.0,<sp/>std::min(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX),<sp/>vx_lim_));</highlight></codeline>
 <codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::abs((state_(IDX::VX)<sp/>-<sp/>0.0))<sp/>&lt;<sp/>10e-9<sp/>||<sp/>std::abs((state_(IDX::VX)<sp/>-<sp/>vx_lim_))<sp/>&lt;<sp/>10e-9)<sp/>{</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>state_(IDX::ACCX)<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::abs((<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>-<sp/>0.0))<sp/>&lt;<sp/>10e-9<sp/>||<sp/>std::abs((<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>-<sp/>vx_lim_))<sp/>&lt;<sp/>10e-9)<sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::ACCX)<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>state_(IDX::VX)<sp/>=<sp/>std::min(0.0,<sp/>std::max(state_(IDX::VX),<sp/>-vx_lim_));</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>=<sp/>std::min(0.0,<sp/>std::max(<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX),<sp/>-vx_lim_));</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::abs((state_(IDX::VX)<sp/>-<sp/>0.0))<sp/>&lt;<sp/>10e-9<sp/>||</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::abs((state_(IDX::VX)<sp/>-<sp/>(-vx_lim_)))<sp/>&lt;<sp/>10e-9)<sp/>{</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>state_(IDX::ACCX)<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::abs((<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>-<sp/>0.0))<sp/>&lt;<sp/>10e-9<sp/>||</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::abs((<ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::VX)<sp/>-<sp/>(-vx_lim_)))<sp/>&lt;<sp/>10e-9)<sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classSimModelInterface_1ad74e69984c97826011b5a273d3ff9cff" kindref="member">state_</ref>(IDX::ACCX)<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="269"><highlight class="normal">}</highlight></codeline>
@@ -383,7 +383,7 @@
 <codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>vel<sp/>=<sp/>std::min(0.0,<sp/>std::max(vel,<sp/>-vx_lim_));</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>d_state<sp/>=<sp/>Eigen::VectorXd::Zero(dim_x_);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>Eigen::VectorXd<sp/>d_state<sp/>=<sp/>Eigen::VectorXd::Zero(<ref refid="classSimModelInterface_1ada7a7551a27124e1ff650e47e6f18bf1" kindref="member">dim_x_</ref>);</highlight></codeline>
 <codeline lineno="310"><highlight class="normal"><sp/><sp/>d_state(IDX::X)<sp/>=<sp/>vel<sp/>*<sp/>cos(yaw);</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/>d_state(IDX::Y)<sp/>=<sp/>vel<sp/>*<sp/>sin(yaw);</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/>d_state(IDX::YAW)<sp/>=<sp/>vel<sp/>*<sp/>std::tan(steer)<sp/>/<sp/>wheelbase_;</highlight></codeline>

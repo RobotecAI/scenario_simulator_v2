@@ -274,6 +274,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/RunTestScenarioWithDocker/" class="md-nav__link">
+        Run test scenario with Docker
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -637,7 +649,7 @@
   
     <li class="md-nav__item">
       <a href="../../../../../etc/ContactUs/" class="md-nav__link">
-        Contact Infomation
+        Contact Information
       </a>
     </li>
   
@@ -761,7 +773,7 @@
 
 <span class="kt">void</span> <span class="nf">TargetSpeedPlanner::update</span><span class="p">(</span><span class="kt">double</span> <span class="n">current_speed</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">continuous_</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">continuous_</span> <span class="o">&amp;&amp;</span> <span class="n">target_speed_</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">current_speed</span> <span class="o">&gt;=</span> <span class="n">target_speed_</span><span class="p">.</span><span class="n">get</span><span class="p">())</span> <span class="p">{</span>
       <span class="n">target_speed_</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span>
     <span class="p">}</span>
@@ -773,7 +785,7 @@
 <span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 30 July 2021 at 00:42:10 UTC</p>
+<p>Updated on 30 July 2021 at 14:33:15 UTC</p>
                 
                   
                 

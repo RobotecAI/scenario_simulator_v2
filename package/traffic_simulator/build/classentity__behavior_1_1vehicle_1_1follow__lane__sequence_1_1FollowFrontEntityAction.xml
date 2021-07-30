@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.hpp" line="34" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.cpp" bodystart="72" bodyend="127"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.hpp" line="34" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.cpp" bodystart="72" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowFrontEntityAction_1aec47fd54509a966589806637d98d7a70" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>const openscenario_msgs::msg::WaypointsArray</type>
@@ -106,6 +106,29 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="59">
+        <label>entity_behavior::VehicleActionNode</label>
+        <link refid="classentity__behavior_1_1VehicleActionNode"/>
+        <childnode refid="60" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>BT::ActionNodeBase</label>
+      </node>
+      <node id="60">
+        <label>entity_behavior::ActionNode</label>
+        <link refid="classentity__behavior_1_1ActionNode"/>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>entity_behavior::vehicle::follow_lane_sequence::FollowFrontEntityAction</label>
+        <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowFrontEntityAction"/>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="63">
         <label>entity_behavior::VehicleActionNode</label>
         <link refid="classentity__behavior_1_1VehicleActionNode"/>
@@ -125,29 +148,6 @@
         <label>entity_behavior::vehicle::follow_lane_sequence::FollowFrontEntityAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowFrontEntityAction"/>
         <childnode refid="63" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="67">
-        <label>entity_behavior::VehicleActionNode</label>
-        <link refid="classentity__behavior_1_1VehicleActionNode"/>
-        <childnode refid="68" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="69">
-        <label>BT::ActionNodeBase</label>
-      </node>
-      <node id="68">
-        <label>entity_behavior::ActionNode</label>
-        <link refid="classentity__behavior_1_1ActionNode"/>
-        <childnode refid="69" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="66">
-        <label>entity_behavior::vehicle::follow_lane_sequence::FollowFrontEntityAction</label>
-        <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowFrontEntityAction"/>
-        <childnode refid="67" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

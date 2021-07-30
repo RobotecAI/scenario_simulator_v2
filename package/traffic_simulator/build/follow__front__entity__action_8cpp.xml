@@ -747,31 +747,48 @@
 <codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!front_entity_status)<sp/>{</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::FAILURE;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>distance_to_front_entity_.get()<sp/>&gt;=</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>(calculateStopDistance()<sp/>+<sp/>vehicle_parameters.bounding_box.dimensions.x<sp/>+<sp/>5))<sp/>{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entity_status_updated<sp/>=</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calculateEntityStatusUpdated(front_entity_status.get().action_status.twist.linear.x<sp/>+<sp/>2);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!target_speed)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>target_speed<sp/>=<sp/><ref refid="namespacehdmap__utils" kindref="compound">hdmap_utils</ref>-&gt;getSpeedLimit(route_lanelets);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(target_speed.get()<sp/>&lt;=<sp/>front_entity_status.get().action_status.twist.linear.x)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entity_status_updated<sp/>=<sp/>calculateEntityStatusUpdated(target_speed.get());</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>entity_status_updated);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(distance_to_front_entity_.get()<sp/>&lt;=<sp/>calculateStopDistance())<sp/>{</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entity_status_updated<sp/>=</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calculateEntityStatusUpdated(front_entity_status.get().action_status.twist.linear.x<sp/>-<sp/>2);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>entity_status_updated);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entity_status_updated<sp/>=</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calculateEntityStatusUpdated(front_entity_status.get().action_status.twist.linear.x);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>entity_status_updated);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>obstacle<sp/>=<sp/>calculateObstacle(waypoints);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;waypoints&quot;</highlight><highlight class="normal">,<sp/>waypoints);</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;obstacle&quot;</highlight><highlight class="normal">,<sp/>obstacle);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="128"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>follow_lane_sequence</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>vehicle</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>entity_behavior</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>obstacle<sp/>=<sp/>calculateObstacle(waypoints);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;waypoints&quot;</highlight><highlight class="normal">,<sp/>waypoints);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;obstacle&quot;</highlight><highlight class="normal">,<sp/>obstacle);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>distance_to_front_entity_.get()<sp/>&gt;=</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>(calculateStopDistance()<sp/>+<sp/>vehicle_parameters.bounding_box.dimensions.x<sp/>+<sp/>5))<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entity_status_updated<sp/>=</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calculateEntityStatusUpdated(front_entity_status.get().action_status.twist.linear.x<sp/>+<sp/>2);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>entity_status_updated);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>obstacle<sp/>=<sp/>calculateObstacle(waypoints);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;waypoints&quot;</highlight><highlight class="normal">,<sp/>waypoints);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;obstacle&quot;</highlight><highlight class="normal">,<sp/>obstacle);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(distance_to_front_entity_.get()<sp/>&lt;=<sp/>calculateStopDistance())<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entity_status_updated<sp/>=</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calculateEntityStatusUpdated(front_entity_status.get().action_status.twist.linear.x<sp/>-<sp/>2);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>entity_status_updated);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>obstacle<sp/>=<sp/>calculateObstacle(waypoints);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;waypoints&quot;</highlight><highlight class="normal">,<sp/>waypoints);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;obstacle&quot;</highlight><highlight class="normal">,<sp/>obstacle);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entity_status_updated<sp/>=</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calculateEntityStatusUpdated(front_entity_status.get().action_status.twist.linear.x);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>entity_status_updated);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>obstacle<sp/>=<sp/>calculateObstacle(waypoints);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;waypoints&quot;</highlight><highlight class="normal">,<sp/>waypoints);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;obstacle&quot;</highlight><highlight class="normal">,<sp/>obstacle);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>follow_lane_sequence</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>vehicle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>entity_behavior</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.cpp"/>
   </compounddef>

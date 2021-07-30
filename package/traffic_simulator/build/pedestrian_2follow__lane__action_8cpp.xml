@@ -672,55 +672,18 @@
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>stopAtEndOfRoad());</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>following_lanelets<sp/>=</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehdmap__utils" kindref="compound">hdmap_utils</ref>-&gt;getFollowingLanelets(entity_status.lanelet_pose.lanelet_id);</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!target_speed)<sp/>{</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>target_speed<sp/>=<sp/><ref refid="namespacehdmap__utils" kindref="compound">hdmap_utils</ref>-&gt;getSpeedLimit(following_lanelets);</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Accel<sp/>accel_new;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/>accel_new<sp/>=<sp/>entity_status.action_status.accel;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>target_accel<sp/>=</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>(target_speed.get()<sp/>-<sp/>entity_status.action_status.twist.linear.x)<sp/>/<sp/>step_time;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(entity_status.action_status.twist.linear.x<sp/>&gt;<sp/>target_speed.get())<sp/>{</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>target_accel<sp/>=<sp/>boost::algorithm::clamp(target_accel,<sp/>-5,<sp/>0);</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*　target_accel<sp/>=<sp/>boost::algorithm::clamp(target_accel,</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>-1*vehicle_param_ptr-&gt;performance.max_deceleration,<sp/>vehicle_param_ptr-&gt;performance.max_acceleration);</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>target_accel<sp/>=<sp/>boost::algorithm::clamp(target_accel,<sp/>0,<sp/>3);</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>target_accel<sp/>=<sp/>boost::algorithm::clamp(target_accel,</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>-1*vehicle_param_ptr-&gt;performance.max_deceleration,<sp/>vehicle_param_ptr-&gt;performance.max_acceleration);*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/>accel_new.linear.x<sp/>=<sp/>target_accel;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Twist<sp/>twist_new;</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>twist_new.linear.x<sp/>=<sp/>boost::algorithm::clamp(</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>entity_status.action_status.twist.linear.x<sp/>+<sp/>accel_new.linear.x<sp/>*<sp/>step_time,<sp/>0,<sp/>5.0);</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/>twist_new.linear.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/>twist_new.linear.z<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/>twist_new.angular.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/>twist_new.angular.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/>twist_new.angular.z<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>new_s<sp/>=</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>entity_status.lanelet_pose.s<sp/>+</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>(twist_new.linear.x<sp/>+<sp/>entity_status.action_status.twist.linear.x)<sp/>/<sp/>2.0<sp/>*<sp/>step_time;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Vector3<sp/>rpy<sp/>=<sp/>entity_status.lanelet_pose.rpy;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/>openscenario_msgs::msg::EntityStatus<sp/>entity_status_updated;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/>entity_status_updated.time<sp/>=<sp/>current_time<sp/>+<sp/>step_time;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/>entity_status_updated.lanelet_pose.lanelet_id<sp/>=<sp/>entity_status.lanelet_pose.lanelet_id;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/>entity_status_updated.lanelet_pose.s<sp/>=<sp/>new_s;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/>entity_status_updated.lanelet_pose.offset<sp/>=<sp/>entity_status.lanelet_pose.offset;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>entity_status_updated.lanelet_pose.rpy<sp/>=<sp/>rpy;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/>entity_status_updated.action_status.twist<sp/>=<sp/>twist_new;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/>entity_status_updated.action_status.accel<sp/>=<sp/>accel_new;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/>entity_status_updated.pose<sp/>=<sp/><ref refid="namespacehdmap__utils" kindref="compound">hdmap_utils</ref>-&gt;toMapPose(entity_status.lanelet_pose).pose;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>entity_status_updated);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="92"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>pedestrian</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>entity_behavior</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>RCLCPP_ERROR_STREAM(rclcpp::get_logger(</highlight><highlight class="stringliteral">&quot;test&quot;</highlight><highlight class="normal">),<sp/>__FILE__<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>__LINE__);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>RCLCPP_ERROR_STREAM(rclcpp::get_logger(</highlight><highlight class="stringliteral">&quot;test&quot;</highlight><highlight class="normal">),<sp/>entity_status.lanelet_pose.lanelet_id);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>following_lanelets<sp/>=</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacehdmap__utils" kindref="compound">hdmap_utils</ref>-&gt;getFollowingLanelets(entity_status.lanelet_pose.lanelet_id);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!target_speed)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>target_speed<sp/>=<sp/><ref refid="namespacehdmap__utils" kindref="compound">hdmap_utils</ref>-&gt;getSpeedLimit(following_lanelets);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>setOutput(</highlight><highlight class="stringliteral">&quot;updated_status&quot;</highlight><highlight class="normal">,<sp/>calculateEntityStatusUpdated(target_speed.get()));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>BT::NodeStatus::RUNNING;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>pedestrian</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>entity_behavior</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/behavior/pedestrian/follow_lane_action.cpp"/>
   </compounddef>

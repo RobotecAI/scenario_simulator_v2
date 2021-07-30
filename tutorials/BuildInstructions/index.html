@@ -337,6 +337,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RunTestScenarioWithDocker/" class="md-nav__link">
+        Run test scenario with Docker
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -700,7 +712,7 @@
   
     <li class="md-nav__item">
       <a href="../../etc/ContactUs/" class="md-nav__link">
-        Contact Infomation
+        Contact Information
       </a>
     </li>
   
@@ -792,6 +804,8 @@
                 
                 
                 <h1 id="build-instructions">Build Instructions<a class="headerlink" href="#build-instructions" title="Permanent link">#</a></h1>
+<p>This setup instruction is based on ROS2-foxy.
+If you want to setup in galactic environment, please replace foxy to galactic.</p>
 <h2 id="setup-ros-2-environment">Setup ROS 2 environment<a class="headerlink" href="#setup-ros-2-environment" title="Permanent link">#</a></h2>
 <p>This framework only supports ROS 2 Foxy Fitzroy. (<a href="https://docs.ros.org/en/foxy/Installation.html">https://docs.ros.org/en/foxy/Installation.html</a>)<br />
 You can install Foxy by typing the command below in your terminal.</p>
@@ -817,7 +831,7 @@ git clone https://github.com/tier4/scenario_simulator_v2.git
 <span class="c1"># These lines are necessary right now, but it will be removed in the near future</span>
 <span class="nb">cd</span> scenario_simulator_v2
 <span class="c1"># This script clones the part of the source codes in Autoware and add it to the workspace</span>
-sh install_depends.sh
+sh install_depends.sh foxy
 </code></pre></div>
 <h2 id="install-dependencies-via-rosdep">Install dependencies via rosdep<a class="headerlink" href="#install-dependencies-via-rosdep" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/scenario_simulator_ws

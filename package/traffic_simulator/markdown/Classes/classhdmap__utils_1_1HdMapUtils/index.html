@@ -274,6 +274,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tutorials/RunTestScenarioWithDocker/" class="md-nav__link">
+        Run test scenario with Docker
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -637,7 +649,7 @@
   
     <li class="md-nav__item">
       <a href="../../../../../etc/ContactUs/" class="md-nav__link">
-        Contact Infomation
+        Contact Information
       </a>
     </li>
   
@@ -1095,7 +1107,7 @@
 </tr>
 <tr>
 <td>boost::optional&lt; openscenario_msgs::msg::LaneletPose &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classhdmap__utils_1_1HdMapUtils#function-tolaneletpose">toLaneletPose</a></strong>(geometry_msgs::msg::Pose pose)</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classhdmap__utils_1_1HdMapUtils#function-tolaneletpose">toLaneletPose</a></strong>(geometry_msgs::msg::Pose pose, bool include_crosswalk =false)</td>
 </tr>
 <tr>
 <td>bool</td>
@@ -1239,7 +1251,7 @@
 </tr>
 <tr>
 <td>boost::optional&lt; std::int64_t &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classhdmap__utils_1_1HdMapUtils#function-getclosetlaneletid">getClosetLaneletId</a></strong>(geometry_msgs::msg::Pose pose, double distance_thresh =30.0)</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classhdmap__utils_1_1HdMapUtils#function-getclosetlaneletid">getClosetLaneletId</a></strong>(geometry_msgs::msg::Pose pose, double distance_thresh =30.0, bool include_crosswalk =false)</td>
 </tr>
 <tr>
 <td>std::shared_ptr&lt; <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1CatmullRomSpline">traffic_simulator::math::CatmullRomSpline</a> &gt;</td>
@@ -1303,7 +1315,8 @@
 </code></pre></div>
 <h3 id="function-tolaneletpose">function toLaneletPose<a class="headerlink" href="#function-tolaneletpose" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span> <span class="o">&gt;</span> <span class="n">toLaneletPose</span><span class="p">(</span>
-    <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="n">pose</span>
+    <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="n">pose</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">include_crosswalk</span> <span class="o">=</span><span class="nb">false</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-isinroute">function isInRoute<a class="headerlink" href="#function-isinroute" title="Permanent link">#</a></h3>
@@ -1510,7 +1523,8 @@
 <h3 id="function-getclosetlaneletid">function getClosetLaneletId<a class="headerlink" href="#function-getclosetlaneletid" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&gt;</span> <span class="n">getClosetLaneletId</span><span class="p">(</span>
     <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="n">pose</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">distance_thresh</span> <span class="o">=</span><span class="mf">30.0</span>
+    <span class="kt">double</span> <span class="n">distance_thresh</span> <span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">include_crosswalk</span> <span class="o">=</span><span class="nb">false</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-getcenterpointsspline">function getCenterPointsSpline<a class="headerlink" href="#function-getcenterpointsspline" title="Permanent link">#</a></h3>
@@ -1552,7 +1566,7 @@
 <span class="p">)</span>
 </code></pre></div>
 <hr />
-<p>Updated on 30 July 2021 at 00:42:09 UTC</p>
+<p>Updated on 30 July 2021 at 14:33:15 UTC</p>
                 
                   
                 
