@@ -156,11 +156,11 @@ public:
   CONCEALER_PUBLIC explicit AutowareAuto(Ts &&... xs)
   : Autoware(std::forward<decltype(xs)>(xs)...),
     INIT_PUBLISHER(GoalPose, "/planning/goal_pose"),
-    INIT_PUBLISHER(InitialPose, "/localization/initialpose"),
-    INIT_PUBLISHER(VehicleKinematicState, "/vehicle/vehicle_kinematic_state"),
-    INIT_PUBLISHER(VehicleStateReport, "/vehicle/state_report"),
     INIT_SUBSCRIPTION(VehicleControlCommand, "/vehicle/vehicle_command", []() {}),
     INIT_SUBSCRIPTION(VehicleStateCommand, "/vehicle/state_command", []() {}),
+    INIT_PUBLISHER(VehicleStateReport, "/vehicle/state_report"),
+    INIT_PUBLISHER(VehicleKinematicState, "/vehicle/vehicle_kinematic_state"),
+    INIT_PUBLISHER(InitialPose, "/localization/initialpose"),
     INIT_SUBSCRIPTION(Trajectory, "/planning/trajectory", []() {})
   {
     waitpid_options = WNOHANG;
