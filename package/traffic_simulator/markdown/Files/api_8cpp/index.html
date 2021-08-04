@@ -1141,10 +1141,22 @@
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">API</span><span class="o">::</span><span class="n">requestLaneChange</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&amp;</span> <span class="n">lanelet_id</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">requestLaneChange</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lanelet_id</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">API</span><span class="o">::</span><span class="n">requestLaneChange</span><span class="p">(</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">Direction</span> <span class="o">&amp;</span> <span class="n">direction</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">requestLaneChange</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">direction</span><span class="p">);</span>
+<span class="p">}</span>
+
 <span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on  4 August 2021 at 00:40:08 UTC</p>
+<p>Updated on  4 August 2021 at 16:34:44 UTC</p>
                 
                   
                 

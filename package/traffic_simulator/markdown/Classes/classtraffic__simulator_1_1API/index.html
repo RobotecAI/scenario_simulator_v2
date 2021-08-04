@@ -788,6 +788,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-requestlanechange" class="md-nav__link">
+    function requestLaneChange
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-requestlanechange_1" class="md-nav__link">
+    function requestLaneChange
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-reachposition" class="md-nav__link">
     function reachPosition
   </a>
@@ -1054,13 +1068,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#function-forward_to_entity_manager_26" class="md-nav__link">
-    function FORWARD_TO_ENTITY_MANAGER
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#function-api" class="md-nav__link">
     function API
   </a>
@@ -1142,6 +1149,14 @@
 <tr>
 <td>bool</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-setentitystatus">setEntityStatus</a></strong>(const std::string &amp; name, const std::string &amp; reference_entity_name, const geometry_msgs::msg::Point &amp; relative_position, const geometry_msgs::msg::Vector3 &amp; relative_rpy, const openscenario_msgs::msg::ActionStatus &amp; action_status =traffic_simulator::helper::constructActionStatus())</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-requestlanechange">requestLaneChange</a></strong>(const std::string &amp; name, const std::int64_t &amp; lanelet_id)</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-requestlanechange">requestLaneChange</a></strong>(const std::string &amp; name, const traffic_simulator::entity::Direction &amp; direction)</td>
 </tr>
 <tr>
 <td>bool</td>
@@ -1261,10 +1276,6 @@
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-forward_to_entity_manager">FORWARD_TO_ENTITY_MANAGER</a></strong>(requestLaneChange )</td>
-</tr>
-<tr>
-<td></td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1API#function-forward_to_entity_manager">FORWARD_TO_ENTITY_MANAGER</a></strong>(requestWalkStraight )</td>
 </tr>
 <tr>
@@ -1380,6 +1391,18 @@
     <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span> <span class="o">&amp;</span> <span class="n">relative_position</span><span class="p">,</span>
     <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span> <span class="o">&amp;</span> <span class="n">relative_rpy</span><span class="p">,</span>
     <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">ActionStatus</span> <span class="o">&amp;</span> <span class="n">action_status</span> <span class="o">=</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">helper</span><span class="o">::</span><span class="n">constructActionStatus</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-requestlanechange">function requestLaneChange<a class="headerlink" href="#function-requestlanechange" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">requestLaneChange</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&amp;</span> <span class="n">lanelet_id</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="function-requestlanechange_1">function requestLaneChange<a class="headerlink" href="#function-requestlanechange_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">requestLaneChange</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">Direction</span> <span class="o">&amp;</span> <span class="n">direction</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-reachposition">function reachPosition<a class="headerlink" href="#function-reachposition" title="Permanent link">#</a></h3>
@@ -1538,50 +1561,45 @@
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_17">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_17" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">requestLaneChange</span> 
+    <span class="n">requestWalkStraight</span> 
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_18">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_18" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">requestWalkStraight</span> 
+    <span class="n">setDriverModel</span> 
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_19">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_19" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">setDriverModel</span> 
+    <span class="n">setTargetSpeed</span> 
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_20">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_20" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">setTargetSpeed</span> 
+    <span class="n">setTrafficLightArrow</span> 
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_21">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_21" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">setTrafficLightArrow</span> 
+    <span class="n">setTrafficLightArrowPhase</span> 
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_22">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_22" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">setTrafficLightArrowPhase</span> 
+    <span class="n">setTrafficLightColor</span> 
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_23">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_23" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">setTrafficLightColor</span> 
+    <span class="n">setTrafficLightColorPhase</span> 
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_manager_24">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_24" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
-    <span class="n">setTrafficLightColorPhase</span> 
-<span class="p">)</span>
-</code></pre></div>
-<h3 id="function-forward_to_entity_manager_25">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_25" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
     <span class="n">toLaneletPose</span> 
 <span class="p">)</span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_manager_26">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_26" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_manager_25">function FORWARD_TO_ENTITY_MANAGER<a class="headerlink" href="#function-forward_to_entity_manager_25" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY_MANAGER</span><span class="p">(</span>
     <span class="n">toMapPose</span> 
 <span class="p">)</span>
@@ -1595,7 +1613,7 @@
 <span class="p">)</span>
 </code></pre></div>
 <hr />
-<p>Updated on  4 August 2021 at 00:40:08 UTC</p>
+<p>Updated on  4 August 2021 at 16:34:43 UTC</p>
                 
                   
                 
