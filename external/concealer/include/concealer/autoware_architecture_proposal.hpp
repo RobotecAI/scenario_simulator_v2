@@ -522,6 +522,7 @@ public:
   {
     waitpid_options = 0;
 
+    createUpdater();
     setLaneChangeApproval();
   }
 
