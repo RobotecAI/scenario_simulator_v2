@@ -15,13 +15,10 @@
     <member refid="classentity__behavior_1_1ActionNode_1ada616383febbd17f7085eb4d187482e6" kind="function"><name>ActionNode</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1a1798be056a5ce65a9cb8552bb90110d4" kind="function"><name>~ActionNode</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1acb485819b65fc5f241869753192ff7ea" kind="function"><name>foundConflictingEntity</name></member>
-    <member refid="classentity__behavior_1_1ActionNode_1aaff5de0524f98b994df4f1297ce93dec" kind="function"><name>getConflictingEntityStatusOnRoute</name></member>
-    <member refid="classentity__behavior_1_1ActionNode_1a5df4827beeb681f3160d15764f88c782" kind="function"><name>getConflictingEntityStatus</name></member>
-    <member refid="classentity__behavior_1_1ActionNode_1a44936e2421ede9ec79f420f6450927ea" kind="function"><name>getDistanceToConflictingEntity</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1a35a51e6eb45681ed62665907f4a63462" kind="function"><name>getDistanceToConflictingEntity</name></member>
-    <member refid="classentity__behavior_1_1ActionNode_1ac2bf07577b3dbccb6a7f8ff155aa4e78" kind="function"><name>getFrontEntityStatus</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1a65dcb62c41599ad4869ba113dc543329" kind="function"><name>getFrontEntityName</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1a61cefbb442de6345cb0dd6a5d0b47056" kind="function"><name>calculateStopDistance</name></member>
-    <member refid="classentity__behavior_1_1ActionNode_1a19ea62f6ef19a04bef0ce30776798045" kind="function"><name>getDistanceToFrontEntity</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1ad44d82a232894b34e6092348dbbe407f" kind="function"><name>getDistanceToFrontEntity</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1adf29053abde8775a0492365fc8051b7d" kind="function"><name>getDistanceToStopLine</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1a33cbba5e868d3ef54165631389a166d0" kind="function"><name>getDistanceToTrafficLightStopLine</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1a8448d47fa43b989d6494192d23cdf430" kind="function"><name>getRightOfWayEntities</name></member>
@@ -33,7 +30,14 @@
     <member refid="classentity__behavior_1_1ActionNode_1aa8ba485cdb18e7d8f53874a35c6d0ce9" kind="function"><name>executeTick</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1ab7ab140ff29bfa0a3e22477d96633aa2" kind="function"><name>halt</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1a3bd1af629f3096e1601f776a2c6d7197" kind="function"><name>getBlackBoardValues</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1a79ef91964b286b6fe7d3bb4b2a3ba0c3" kind="function"><name>getEntityStatus</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1a820ab518ab9b2d7c999c37bc572945f2" kind="function"><name>getDistanceToTargetEntityPolygon</name></member>
     <member refid="classentity__behavior_1_1ActionNode_1ad0a943a6a0629c5c0efc559381ccf3a0" kind="function"><name>providedPorts</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1a17514231e9bd6523e6fba39eb93ce999" kind="function"><name>getDistanceToTargetEntityOnCrosswalk</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1af5cec2eb8c1fe70dedffbfed0ff7fadb" kind="function"><name>getDistanceToTargetEntityPolygon</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1a362df85b758b9c0ebe5ccb932a80b399" kind="function"><name>getConflictingEntityStatus</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1ac844404b94df45a04ba8bd56df098e1a" kind="function"><name>getConflictingEntityStatusOnCrossWalk</name></member>
+    <member refid="classentity__behavior_1_1ActionNode_1a2805967b38cbd988820aa767eb2c71b4" kind="function"><name>getConflictingEntityStatusOnLane</name></member>
   </compound>
   <compound refid="classtraffic__simulator_1_1API" kind="class"><name>traffic_simulator::API</name>
     <member refid="classtraffic__simulator_1_1API_1a9ab2517db8cc9651d46d57397f04b9e0" kind="typedef"><name>EntityManager</name></member>
@@ -386,7 +390,6 @@
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a84d42477a5463cc73ba44307ffb4a7e4" kind="function"><name>entityExists</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1ad4536ad71969c95b72b3dae2935fa26e" kind="function"><name>entityStatusSet</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1aa5e6f2a6f74680095ca7ac71db36d8e8" kind="function"><name>getBoundingBoxDistance</name></member>
-    <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1acec06bdeb2f5e12c8e0c2c498a5602ff" kind="function"><name>getConflictingEntityOnRouteLanelets</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a6b1b90dc50daac45de872ba94b8c6aa7" kind="function"><name>getCurrentTime</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a0727695422b7b4bb7fe295d7ac7f5312" kind="function"><name>getDistanceToCrosswalk</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1abb187ed5d3b1b5019ba9980c922dfef9" kind="function"><name>getDistanceToStopLine</name></member>
@@ -405,7 +408,6 @@
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a3480a7c0b3b6e81d58d99092d8679ced" kind="function"><name>getRelativePose</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a5e79395e9ad9d8d629a11b602d559b21" kind="function"><name>getRelativePose</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a23a0fe2c8df3d879d14355b4285a36aa" kind="function"><name>getStepTime</name></member>
-    <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1ae5a4c4da67b861101a42abb505cadd95" kind="function"><name>getSValueInRoute</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a95b5c44d015a8957d3a3b4f8159dd438" kind="function"><name>getWaypoints</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a02c42520e1202aea73ac99aa25fc58b4" kind="function"><name>isEgo</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EntityManager_1a4514db8bc75ed89060d73d980bea90a3" kind="function"><name>getEgoName</name></member>
@@ -491,7 +493,8 @@
     <member refid="classhdmap__utils_1_1HdMapUtils_1acc87ede109f43af450d07e3876cc21b2" kind="function"><name>getLaneChangeTrajectory</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1af90ae8bff96aeaf305348487ad3a9d79" kind="function"><name>getTangentVector</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1aaec29af041148541c5de5ae0cfcba494" kind="function"><name>getRoute</name></member>
-    <member refid="classhdmap__utils_1_1HdMapUtils_1a388da431962ae88547ca753eac42054f" kind="function"><name>getConflictingCrosswalkIds</name></member>
+    <member refid="classhdmap__utils_1_1HdMapUtils_1a1fb73778cb3e6595e2816a6ed600e346" kind="function"><name>getConflictingCrosswalkIds</name></member>
+    <member refid="classhdmap__utils_1_1HdMapUtils_1a329258e1e09c5bebadf47ebb7558c9c1" kind="function"><name>getConflictingLaneIds</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1ab807c4fe26355728beed8222132189b4" kind="function"><name>getCollisionPointInLaneCoordinate</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1abcbb3443e352b352773e08f3b8d9db73" kind="function"><name>generateMarker</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1af2dd81ca4051851c81494bfbe08fed8d" kind="function"><name>getRightOfWayLaneletIds</name></member>

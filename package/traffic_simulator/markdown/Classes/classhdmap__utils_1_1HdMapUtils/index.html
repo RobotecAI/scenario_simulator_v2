@@ -984,6 +984,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-getconflictinglaneids" class="md-nav__link">
+    function getConflictingLaneIds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-getconflictingcrosswalkids" class="md-nav__link">
     function getConflictingCrosswalkIds
   </a>
@@ -1243,7 +1250,11 @@
 </tr>
 <tr>
 <td>std::vector&lt; std::int64_t &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classhdmap__utils_1_1HdMapUtils#function-getconflictingcrosswalkids">getConflictingCrosswalkIds</a></strong>(std::vector&lt; std::int64_t &gt; lanelet_ids) const</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classhdmap__utils_1_1HdMapUtils#function-getconflictinglaneids">getConflictingLaneIds</a></strong>(const std::vector&lt; std::int64_t &gt; &amp; lanelet_ids) const</td>
+</tr>
+<tr>
+<td>std::vector&lt; std::int64_t &gt;</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classhdmap__utils_1_1HdMapUtils#function-getconflictingcrosswalkids">getConflictingCrosswalkIds</a></strong>(const std::vector&lt; std::int64_t &gt; &amp; lanelet_ids) const</td>
 </tr>
 <tr>
 <td>boost::optional&lt; double &gt;</td>
@@ -1509,9 +1520,14 @@
     <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">waypoints</span>
 <span class="p">)</span>
 </code></pre></div>
+<h3 id="function-getconflictinglaneids">function getConflictingLaneIds<a class="headerlink" href="#function-getconflictinglaneids" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&gt;</span> <span class="n">getConflictingLaneIds</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">lanelet_ids</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div>
 <h3 id="function-getconflictingcrosswalkids">function getConflictingCrosswalkIds<a class="headerlink" href="#function-getconflictingcrosswalkids" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&gt;</span> <span class="n">getConflictingCrosswalkIds</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&gt;</span> <span class="n">lanelet_ids</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">lanelet_ids</span>
 <span class="p">)</span> <span class="k">const</span>
 </code></pre></div>
 <h3 id="function-getcollisionpointinlanecoordinate">function getCollisionPointInLaneCoordinate<a class="headerlink" href="#function-getcollisionpointinlanecoordinate" title="Permanent link">#</a></h3>
@@ -1566,7 +1582,7 @@
 <span class="p">)</span>
 </code></pre></div>
 <hr />
-<p>Updated on 11 August 2021 at 00:45:03 UTC</p>
+<p>Updated on 11 August 2021 at 12:27:40 UTC</p>
                 
                   
                 

@@ -1125,9 +1125,6 @@
   <span class="k">auto</span> <span class="n">getBoundingBoxDistance</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">from</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">to</span><span class="p">)</span>
     <span class="o">-&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">;</span>
 
-  <span class="k">auto</span> <span class="n">getConflictingEntityOnRouteLanelets</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">horizon</span><span class="p">)</span>
-    <span class="o">-&gt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="p">;</span>
-
   <span class="k">auto</span> <span class="n">getCurrentTime</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">-&gt;</span> <span class="kt">double</span><span class="p">;</span>
 
   <span class="k">auto</span> <span class="n">getDistanceToCrosswalk</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">target_crosswalk_id</span><span class="p">)</span>
@@ -1170,9 +1167,6 @@
   <span class="c1">// clang-format on</span>
 
   <span class="k">auto</span> <span class="n">getStepTime</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">-&gt;</span> <span class="kt">double</span><span class="p">;</span>
-
-  <span class="k">auto</span> <span class="n">getSValueInRoute</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">route</span><span class="p">)</span>
-    <span class="o">-&gt;</span> <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">;</span>
 
   <span class="k">auto</span> <span class="n">getWaypoints</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span><span class="p">;</span>
 
@@ -1226,7 +1220,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__ENTITY__ENTITY_MANAGER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 11 August 2021 at 00:45:04 UTC</p>
+<p>Updated on 11 August 2021 at 12:27:40 UTC</p>
                 
                   
                 

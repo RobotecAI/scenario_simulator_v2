@@ -828,7 +828,8 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">getRightOfWayEntities</span><span class="p">(</span><span class="n">route_lanelets</span><span class="p">).</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">auto</span> <span class="n">distance_to_front_entity</span> <span class="o">=</span> <span class="n">getDistanceToFrontEntity</span><span class="p">();</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">spline</span> <span class="o">=</span> <span class="n">traffic_simulator</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">CatmullRomSpline</span><span class="p">(</span><span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">);</span>
+    <span class="k">auto</span> <span class="n">distance_to_front_entity</span> <span class="o">=</span> <span class="n">getDistanceToFrontEntity</span><span class="p">(</span><span class="n">spline</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">distance_to_front_entity</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span>
         <span class="n">distance_to_front_entity</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="o">&lt;=</span>
@@ -845,7 +846,7 @@
     <span class="p">}</span>
     <span class="k">auto</span> <span class="n">distance_to_stopline</span> <span class="o">=</span>
       <span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getDistanceToStopLine</span><span class="p">(</span><span class="n">route_lanelets</span><span class="p">,</span> <span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">);</span>
-    <span class="k">auto</span> <span class="n">distance_to_conflicting_entity</span> <span class="o">=</span> <span class="n">getDistanceToConflictingEntity</span><span class="p">(</span><span class="n">route_lanelets</span><span class="p">);</span>
+    <span class="k">auto</span> <span class="n">distance_to_conflicting_entity</span> <span class="o">=</span> <span class="n">getDistanceToConflictingEntity</span><span class="p">(</span><span class="n">route_lanelets</span><span class="p">,</span> <span class="n">spline</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">distance_to_stopline</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span>
         <span class="n">distance_to_stopline</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="o">&lt;=</span>
@@ -876,7 +877,7 @@
 <span class="p">}</span>  <span class="c1">// namespace entity_behavior</span>
 </code></pre></div>
 <hr />
-<p>Updated on 11 August 2021 at 00:45:04 UTC</p>
+<p>Updated on 11 August 2021 at 12:27:40 UTC</p>
                 
                   
                 

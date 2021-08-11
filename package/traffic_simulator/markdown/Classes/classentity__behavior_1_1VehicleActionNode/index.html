@@ -948,8 +948,12 @@
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-gethorizon">getHorizon</a></strong>() const</td>
 </tr>
 <tr>
-<td>boost::optional&lt; openscenario_msgs::msg::EntityStatus &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getfrontentitystatus">getFrontEntityStatus</a></strong>()</td>
+<td>boost::optional&lt; std::string &gt;</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getfrontentityname">getFrontEntityName</a></strong>(const <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1CatmullRomSpline">traffic_simulator::math::CatmullRomSpline</a> &amp; spline)</td>
+</tr>
+<tr>
+<td>openscenario_msgs::msg::EntityStatus</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getentitystatus">getEntityStatus</a></strong>(const std::string target_name) const</td>
 </tr>
 <tr>
 <td>boost::optional&lt; double &gt;</td>
@@ -957,27 +961,19 @@
 </tr>
 <tr>
 <td>boost::optional&lt; double &gt;</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getdistancetotargetentitypolygon">getDistanceToTargetEntityPolygon</a></strong>(const <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1CatmullRomSpline">traffic_simulator::math::CatmullRomSpline</a> &amp; spline, const std::string target_name)</td>
+</tr>
+<tr>
+<td>boost::optional&lt; double &gt;</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getdistancetostopline">getDistanceToStopLine</a></strong>(const std::vector&lt; std::int64_t &gt; &amp; route_lanelets, const std::vector&lt; geometry_msgs::msg::Point &gt; &amp; waypoints)</td>
 </tr>
 <tr>
 <td>boost::optional&lt; double &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getdistancetofrontentity">getDistanceToFrontEntity</a></strong>()</td>
-</tr>
-<tr>
-<td>boost::optional&lt; double &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getdistancetoconflictingentity">getDistanceToConflictingEntity</a></strong>(const std::vector&lt; std::int64_t &gt; &amp; following_lanelets) const</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getdistancetofrontentity">getDistanceToFrontEntity</a></strong>(const <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1CatmullRomSpline">traffic_simulator::math::CatmullRomSpline</a> &amp; spline)</td>
 </tr>
 <tr>
 <td>boost::optional&lt; double &gt;</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getdistancetoconflictingentity">getDistanceToConflictingEntity</a></strong>(const std::vector&lt; std::int64_t &gt; &amp; route_lanelets, const <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1CatmullRomSpline">traffic_simulator::math::CatmullRomSpline</a> &amp; spline)</td>
-</tr>
-<tr>
-<td>std::vector&lt; openscenario_msgs::msg::EntityStatus &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getconflictingentitystatusonroute">getConflictingEntityStatusOnRoute</a></strong>(const std::vector&lt; std::int64_t &gt; &amp; route_lanelets) const</td>
-</tr>
-<tr>
-<td>boost::optional&lt; openscenario_msgs::msg::EntityStatus &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1ActionNode#function-getconflictingentitystatus">getConflictingEntityStatus</a></strong>(const std::vector&lt; std::int64_t &gt; &amp; following_lanelets) const</td>
 </tr>
 <tr>
 <td>bool</td>
@@ -1102,7 +1098,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">DriverModel</span> <span class="n">driver_model</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<p>Updated on 11 August 2021 at 00:45:03 UTC</p>
+<p>Updated on 11 August 2021 at 12:27:40 UTC</p>
                 
                   
                 
