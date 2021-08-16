@@ -790,45 +790,45 @@
 </table>
 <h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-fold_right">function fold_right<a class="headerlink" href="#function-fold_right" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">T</span> <span class="o">&gt;</span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="k">constexpr</span> <span class="n">fold_right</span><span class="p">(</span>
-    <span class="n">F</span> <span class="o">&amp;&amp;</span> <span class="p">,</span>
-    <span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">x</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">fold_right</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-fold_right_1">function fold_right<a class="headerlink" href="#function-fold_right_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="k">constexpr</span> <span class="n">fold_right</span><span class="p">(</span>
-    <span class="n">F</span> <span class="o">&amp;&amp;</span> <span class="n">f</span><span class="p">,</span>
-    <span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">x</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">fold_right</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-fold_left">function fold_left<a class="headerlink" href="#function-fold_left" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">T</span> <span class="o">&gt;</span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="k">constexpr</span> <span class="n">fold_left</span><span class="p">(</span>
-    <span class="n">F</span> <span class="o">&amp;&amp;</span> <span class="p">,</span>
-    <span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">x</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">fold_left</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-fold_left_1">function fold_left<a class="headerlink" href="#function-fold_left_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">U</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="k">constexpr</span> <span class="n">fold_left</span><span class="p">(</span>
-    <span class="n">F</span> <span class="o">&amp;&amp;</span> <span class="n">f</span><span class="p">,</span>
-    <span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">x</span><span class="p">,</span>
-    <span class="n">U</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">U</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">fold_left</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">U</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

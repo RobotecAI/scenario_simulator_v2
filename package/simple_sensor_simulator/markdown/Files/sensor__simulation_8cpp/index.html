@@ -755,53 +755,53 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;simple_sensor_simulator/sensor_simulation/sensor_simulation.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;simple_sensor_simulator/sensor_simulation/sensor_simulation.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">simple_sensor_simulator</span>
-<span class="p">{</span>
-<span class="kt">void</span> <span class="nf">SensorSimulation::attachLidarSensor</span><span class="p">(</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span> <span class="k">const</span> <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span> <span class="o">&amp;</span> <span class="n">configuration</span><span class="p">,</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">sensor_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PointCloud2</span><span class="o">&gt;&gt;</span> <span class="n">publisher_ptr</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">LidarSensor</span> <span class="n">lidar_sensor</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">publisher_ptr</span><span class="p">);</span>
-  <span class="n">lidar_sensors_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">lidar_sensor</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">simple_sensor_simulator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">SensorSimulation::attachLidarSensor</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">sensor_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PointCloud2</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">publisher_ptr</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">LidarSensor</span><span class="w"> </span><span class="n">lidar_sensor</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"> </span><span class="n">publisher_ptr</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">lidar_sensors_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">lidar_sensor</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="nf">SensorSimulation::attachDetectionSensor</span><span class="p">(</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span> <span class="o">&amp;</span> <span class="n">configuration</span><span class="p">,</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">DynamicObjectArray</span><span class="o">&gt;&gt;</span>
-    <span class="n">publisher_ptr</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">DetectionSensor</span> <span class="n">detection_sensor</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">configuration</span><span class="p">,</span> <span class="n">publisher_ptr</span><span class="p">);</span>
-  <span class="n">detection_sensors_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">detection_sensor</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">SensorSimulation::attachDetectionSensor</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">DynamicObjectArray</span><span class="o">&gt;&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="n">publisher_ptr</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">DetectionSensor</span><span class="w"> </span><span class="n">detection_sensor</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"> </span><span class="n">publisher_ptr</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">detection_sensors_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">detection_sensor</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="nf">SensorSimulation::updateSensorFrame</span><span class="p">(</span>
-  <span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span> <span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span> <span class="o">&amp;</span> <span class="n">current_ros_time</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">EntityStatus</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">status</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">detected_objects</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">sensor</span> <span class="p">:</span> <span class="n">lidar_sensors_</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">sensor</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">current_ros_time</span><span class="p">);</span>
-    <span class="k">const</span> <span class="k">auto</span> <span class="n">objects</span> <span class="o">=</span> <span class="n">sensor</span><span class="p">.</span><span class="n">getDetectedObjects</span><span class="p">();</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">obj</span> <span class="p">:</span> <span class="n">objects</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">count</span><span class="p">(</span><span class="n">detected_objects</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">detected_objects</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">detected_objects</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">sensor</span> <span class="p">:</span> <span class="n">detection_sensors_</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">sensor</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">current_ros_time</span><span class="p">,</span> <span class="n">detected_objects</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace simple_sensor_simulator</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">SensorSimulation::updateSensorFrame</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">current_ros_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">EntityStatus</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">detected_objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">sensor</span> <span class="p">:</span><span class="w"> </span><span class="n">lidar_sensors_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sensor</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">current_ros_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">getDetectedObjects</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">obj</span> <span class="p">:</span><span class="w"> </span><span class="n">objects</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">count</span><span class="p">(</span><span class="n">detected_objects</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">detected_objects</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">detected_objects</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">sensor</span> <span class="p">:</span><span class="w"> </span><span class="n">detection_sensors_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sensor</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">current_ros_time</span><span class="p">,</span><span class="w"> </span><span class="n">detected_objects</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace simple_sensor_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

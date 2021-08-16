@@ -784,73 +784,73 @@
 <span class="cp">#define TRAFFIC_SIMULATOR__ENTITY__PEDESTRIAN_PARAMETER_HPP_</span>
 
 <span class="c1">// headers in pugixml</span>
-<span class="cp">#include</span> <span class="cpf">&lt;boost/foreach.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;boost/property_tree/ptree.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;boost/property_tree/xml_parser.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;geometry_msgs/msg/vector3.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_msgs/msg/pedestrian_parameters.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;pugixml.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/entity/vehicle_parameter.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/foreach.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/property_tree/ptree.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/property_tree/xml_parser.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;geometry_msgs/msg/vector3.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_msgs/msg/pedestrian_parameters.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pugixml.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/entity/vehicle_parameter.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">traffic_simulator</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">entity</span>
-<span class="p">{</span>
-<span class="k">struct</span> <span class="nc">PedestrianParameters</span>
-<span class="p">{</span>
-  <span class="k">explicit</span> <span class="n">PedestrianParameters</span><span class="p">(</span><span class="k">const</span> <span class="n">pugi</span><span class="o">::</span><span class="n">xml_node</span> <span class="o">&amp;</span> <span class="n">xml</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">).</span><span class="n">attribute</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">).</span><span class="n">as_string</span><span class="p">()),</span>
-    <span class="n">pedestrian_category</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">).</span><span class="n">attribute</span><span class="p">(</span><span class="s">&quot;pedestrianCategory&quot;</span><span class="p">).</span><span class="n">as_string</span><span class="p">()),</span>
-    <span class="n">bounding_box</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">))</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
-  <span class="n">PedestrianParameters</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">pedestrian_category</span><span class="p">,</span> <span class="n">BoundingBox</span> <span class="n">bounding_box</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">pedestrian_category</span><span class="p">(</span><span class="n">pedestrian_category</span><span class="p">),</span> <span class="n">bounding_box</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">)</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">pedestrian_category</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">BoundingBox</span> <span class="n">bounding_box</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">traffic_simulator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">entity</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">PedestrianParameters</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">PedestrianParameters</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">pugi</span><span class="o">::</span><span class="n">xml_node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">xml</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">).</span><span class="n">attribute</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">).</span><span class="n">as_string</span><span class="p">()),</span><span class="w"></span>
+<span class="w">    </span><span class="n">pedestrian_category</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">).</span><span class="n">attribute</span><span class="p">(</span><span class="s">&quot;pedestrianCategory&quot;</span><span class="p">).</span><span class="n">as_string</span><span class="p">()),</span><span class="w"></span>
+<span class="w">    </span><span class="n">bounding_box</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">child</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">PedestrianParameters</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pedestrian_category</span><span class="p">,</span><span class="w"> </span><span class="n">BoundingBox</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">pedestrian_category</span><span class="p">(</span><span class="n">pedestrian_category</span><span class="p">),</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">(</span><span class="n">bounding_box</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pedestrian_category</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">BoundingBox</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="nf">toXml</span><span class="p">()</span> <span class="k">const</span>
-  <span class="p">{</span>
-    <span class="k">using</span> <span class="n">boost</span><span class="o">::</span><span class="n">property_tree</span><span class="o">::</span><span class="n">ptree</span><span class="p">;</span>
-    <span class="n">ptree</span> <span class="n">pt</span><span class="p">;</span>
-    <span class="n">ptree</span> <span class="o">&amp;</span> <span class="n">pedestrian_tree</span> <span class="o">=</span> <span class="n">pt</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
-    <span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.name&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
-    <span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.PedestrianCategory&quot;</span><span class="p">,</span> <span class="n">pedestrian_category</span><span class="p">);</span>
-    <span class="n">ptree</span> <span class="o">&amp;</span> <span class="n">center_tree</span> <span class="o">=</span> <span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;BoundingBox.Center&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
-    <span class="n">center_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.x&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
-    <span class="n">center_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.y&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
-    <span class="n">center_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.z&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
-    <span class="n">ptree</span> <span class="o">&amp;</span> <span class="n">dimensions_tree</span> <span class="o">=</span> <span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;BoundingBox.Dimensions&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
-    <span class="n">dimensions_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.width&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">.</span><span class="n">dimensions</span><span class="p">.</span><span class="n">width</span><span class="p">);</span>
-    <span class="n">dimensions_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.length&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">.</span><span class="n">dimensions</span><span class="p">.</span><span class="n">length</span><span class="p">);</span>
-    <span class="n">dimensions_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.height&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="p">.</span><span class="n">dimensions</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
-    <span class="n">boost</span><span class="o">::</span><span class="n">property_tree</span><span class="o">::</span><span class="n">write_xml</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">pt</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">toXml</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">property_tree</span><span class="o">::</span><span class="n">ptree</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">ptree</span><span class="w"> </span><span class="n">pt</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">ptree</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pedestrian_tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pt</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;Pedestrian&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.PedestrianCategory&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pedestrian_category</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">ptree</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">center_tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;BoundingBox.Center&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">center_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">center_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.y&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">center_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.z&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">.</span><span class="n">center</span><span class="p">.</span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">ptree</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dimensions_tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pedestrian_tree</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;BoundingBox.Dimensions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">dimensions_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.width&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">.</span><span class="n">dimensions</span><span class="p">.</span><span class="n">width</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">dimensions_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">.</span><span class="n">dimensions</span><span class="p">.</span><span class="n">length</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">dimensions_tree</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="s">&quot;&lt;xmlattr&gt;.height&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">.</span><span class="n">dimensions</span><span class="p">.</span><span class="n">height</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">ss</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">property_tree</span><span class="o">::</span><span class="n">write_xml</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span><span class="w"> </span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PedestrianParameters</span> <span class="nf">toRosMsg</span><span class="p">()</span> <span class="k">const</span>
-  <span class="p">{</span>
-    <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PedestrianParameters</span> <span class="n">msg</span><span class="p">;</span>
-    <span class="n">msg</span><span class="p">.</span><span class="n">bounding_box</span> <span class="o">=</span> <span class="n">bounding_box</span><span class="p">.</span><span class="n">toRosMsg</span><span class="p">();</span>
-    <span class="n">msg</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
-    <span class="n">msg</span><span class="p">.</span><span class="n">pedestrian_category</span> <span class="o">=</span> <span class="n">pedestrian_category</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">msg</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace entity</span>
-<span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PedestrianParameters</span><span class="w"> </span><span class="nf">toRosMsg</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PedestrianParameters</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">msg</span><span class="p">.</span><span class="n">bounding_box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bounding_box</span><span class="p">.</span><span class="n">toRosMsg</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">msg</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">msg</span><span class="p">.</span><span class="n">pedestrian_category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pedestrian_category</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__ENTITY__PEDESTRIAN_PARAMETER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

@@ -758,49 +758,49 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;quaternion_operation/quaternion_operation.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;quaternion_operation/quaternion_operation.h&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;boost/algorithm/clamp.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/behavior/pedestrian/follow_lane_action.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/algorithm/clamp.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/pedestrian/follow_lane_action.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">entity_behavior</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">pedestrian</span>
-<span class="p">{</span>
-<span class="n">FollowLaneAction</span><span class="o">::</span><span class="n">FollowLaneAction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">config</span><span class="p">)</span>
-<span class="o">:</span> <span class="n">entity_behavior</span><span class="o">::</span><span class="n">PedestrianActionNode</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">entity_behavior</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pedestrian</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">FollowLaneAction</span><span class="o">::</span><span class="n">FollowLaneAction</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">config</span><span class="p">)</span><span class="w"></span>
+<span class="o">:</span><span class="w"> </span><span class="n">entity_behavior</span><span class="o">::</span><span class="n">PedestrianActionNode</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">FollowLaneAction</span><span class="o">::</span><span class="n">getBlackBoardValues</span><span class="p">()</span> <span class="p">{</span> <span class="n">PedestrianActionNode</span><span class="o">::</span><span class="n">getBlackBoardValues</span><span class="p">();</span> <span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">FollowLaneAction</span><span class="o">::</span><span class="n">getBlackBoardValues</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">PedestrianActionNode</span><span class="o">::</span><span class="n">getBlackBoardValues</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-<span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="n">FollowLaneAction</span><span class="o">::</span><span class="n">tick</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">getBlackBoardValues</span><span class="p">();</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">request</span> <span class="o">!=</span> <span class="s">&quot;none&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">request</span> <span class="o">!=</span> <span class="s">&quot;follow_lane&quot;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose_valid</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span> <span class="n">stopAtEndOfRoad</span><span class="p">());</span>
-    <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">RUNNING</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">auto</span> <span class="n">following_lanelets</span> <span class="o">=</span>
-    <span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getFollowingLanelets</span><span class="p">(</span><span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">target_speed</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">target_speed</span> <span class="o">=</span> <span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getSpeedLimit</span><span class="p">(</span><span class="n">following_lanelets</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span> <span class="n">calculateEntityStatusUpdated</span><span class="p">(</span><span class="n">target_speed</span><span class="p">.</span><span class="n">get</span><span class="p">()));</span>
-  <span class="k">return</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">RUNNING</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace pedestrian</span>
-<span class="p">}</span>  <span class="c1">// namespace entity_behavior</span>
+<span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="n">FollowLaneAction</span><span class="o">::</span><span class="n">tick</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">getBlackBoardValues</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">request</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;follow_lane&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose_valid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stopAtEndOfRoad</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">RUNNING</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">following_lanelets</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getFollowingLanelets</span><span class="p">(</span><span class="n">entity_status</span><span class="p">.</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">target_speed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">target_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getSpeedLimit</span><span class="p">(</span><span class="n">following_lanelets</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calculateEntityStatusUpdated</span><span class="p">(</span><span class="n">target_speed</span><span class="p">.</span><span class="n">get</span><span class="p">()));</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">RUNNING</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace pedestrian</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity_behavior</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

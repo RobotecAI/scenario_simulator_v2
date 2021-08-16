@@ -799,20 +799,20 @@
 <h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
 <h3 id="define-boilerplate">define BOILERPLATE<a class="headerlink" href="#define-boilerplate" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define BOILERPLATE(</span>
-    <span class="n">NAME</span><span class="p">,</span>
-    <span class="n">IDENTIFIER</span>
-<span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">buffer</span> <span class="o">==</span> <span class="n">NAME</span><span class="p">)</span> <span class="p">{</span>                      \
-    <span class="n">datum</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">ParameterType</span><span class="o">::</span><span class="n">IDENTIFIER</span><span class="p">;</span> \
-    <span class="k">return</span> <span class="n">is</span><span class="p">;</span>                               \
-  <span class="p">}</span>                                          \
-  <span class="k">static_assert</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">NAME</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">IDENTIFIER</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NAME</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span>\
+<span class="w">    </span><span class="n">datum</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ParameterType</span><span class="o">::</span><span class="n">IDENTIFIER</span><span class="p">;</span><span class="w"> </span>\
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">is</span><span class="p">;</span><span class="w">                               </span>\
+<span class="w">  </span><span class="p">}</span><span class="w">                                          </span>\
+<span class="w">  </span><span class="k">static_assert</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="define-boilerplate_1">define BOILERPLATE<a class="headerlink" href="#define-boilerplate_1" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define BOILERPLATE(</span>
-    <span class="n">NAME</span><span class="p">,</span>
-    <span class="n">ID</span>
-<span class="p">)</span> <span class="k">case</span> <span class="n">ParameterType</span><span class="o">::</span><span class="nl">ID</span><span class="p">:</span>     \
-    <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="n">NAME</span><span class="p">;</span>
+<span class="w">    </span><span class="n">NAME</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">ID</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="n">ParameterType</span><span class="o">::</span><span class="nl">ID</span><span class="p">:</span><span class="w">     </span>\
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">NAME</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
@@ -829,18 +829,18 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/error.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/parameter_type.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/error.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/parameter_type.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">syntax</span>
-<span class="p">{</span>
-<span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span> <span class="n">ParameterType</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">buffer</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">syntax</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"> </span><span class="n">ParameterType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">buffer</span><span class="p">;</span>
+<span class="w">  </span><span class="n">is</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"></span>
 
 <span class="cp">#define BOILERPLATE(NAME, IDENTIFIER)        \</span>
 <span class="cp">  if (buffer == NAME) {                      \</span>
@@ -849,45 +849,45 @@
 <span class="cp">  }                                          \</span>
 <span class="cp">  static_assert(true, &quot;&quot;)</span>
 
-  <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="n">INTEGER</span><span class="p">);</span>
-  <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;double&quot;</span><span class="p">,</span> <span class="n">DOUBLE</span><span class="p">);</span>
-  <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">,</span> <span class="n">STRING</span><span class="p">);</span>
-  <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedInt&quot;</span><span class="p">,</span> <span class="n">UNSIGNED_INT</span><span class="p">);</span>
-  <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedShort&quot;</span><span class="p">,</span> <span class="n">UNSIGNED_SHORT</span><span class="p">);</span>
-  <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">BOOLEAN</span><span class="p">);</span>
-  <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;dateTime&quot;</span><span class="p">,</span> <span class="n">DATE_TIME</span><span class="p">);</span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">INTEGER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DOUBLE</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">STRING</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedInt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">UNSIGNED_INT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedShort&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">UNSIGNED_SHORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;boolean&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">BOOLEAN</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;dateTime&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_TIME</span><span class="p">);</span><span class="w"></span>
 
 <span class="cp">#undef BOILERPLATE</span>
 
-  <span class="k">throw</span> <span class="n">UNEXPECTED_ENUMERATION_VALUE_SPECIFIED</span><span class="p">(</span><span class="n">ParameterType</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="n">UNEXPECTED_ENUMERATION_VALUE_SPECIFIED</span><span class="p">(</span><span class="n">ParameterType</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">ParameterType</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ParameterType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="cp">#define BOILERPLATE(NAME, ID) \</span>
 <span class="cp">  case ParameterType::ID:     \</span>
 <span class="cp">    return os &lt;&lt; NAME;</span>
 
-  <span class="k">switch</span> <span class="p">(</span><span class="n">datum</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span> <span class="n">INTEGER</span><span class="p">);</span>
-    <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;double&quot;</span><span class="p">,</span> <span class="n">DOUBLE</span><span class="p">);</span>
-    <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">,</span> <span class="n">STRING</span><span class="p">);</span>
-    <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedInt&quot;</span><span class="p">,</span> <span class="n">UNSIGNED_INT</span><span class="p">);</span>
-    <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedShort&quot;</span><span class="p">,</span> <span class="n">UNSIGNED_SHORT</span><span class="p">);</span>
-    <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;boolean&quot;</span><span class="p">,</span> <span class="n">BOOLEAN</span><span class="p">);</span>
-    <span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;dateTime&quot;</span><span class="p">,</span> <span class="n">DATE_TIME</span><span class="p">);</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">datum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">INTEGER</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DOUBLE</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">STRING</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedInt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">UNSIGNED_INT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;unsignedShort&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">UNSIGNED_SHORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;boolean&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">BOOLEAN</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;dateTime&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_TIME</span><span class="p">);</span><span class="w"></span>
 
-    <span class="k">default</span><span class="o">:</span>
-      <span class="k">throw</span> <span class="n">UNEXPECTED_ENUMERATION_VALUE_ASSIGNED</span><span class="p">(</span><span class="n">ParameterType</span><span class="p">,</span> <span class="n">datum</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="n">UNEXPECTED_ENUMERATION_VALUE_ASSIGNED</span><span class="p">(</span><span class="n">ParameterType</span><span class="p">,</span><span class="w"> </span><span class="n">datum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="cp">#undef BOILERPLATE</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace syntax</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

@@ -755,85 +755,85 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/metrics/metric_base.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/metrics/metric_base.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">metrics</span>
-<span class="p">{</span>
-<span class="n">MetricBase</span><span class="o">::</span><span class="n">MetricBase</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">metrics_type</span><span class="p">)</span> <span class="o">:</span> <span class="n">metrics_type</span><span class="p">(</span><span class="n">metrics_type</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">lifecycle_</span> <span class="o">=</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">INACTIVE</span><span class="p">;</span>
-  <span class="n">error_</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">metrics</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">MetricBase</span><span class="o">::</span><span class="n">MetricBase</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">metrics_type</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">metrics_type</span><span class="p">(</span><span class="n">metrics_type</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">lifecycle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">INACTIVE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">error_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">MetricBase</span><span class="o">::~</span><span class="n">MetricBase</span><span class="p">()</span> <span class="p">{}</span>
+<span class="n">MetricBase</span><span class="o">::~</span><span class="n">MetricBase</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">MetricBase</span><span class="o">::</span><span class="n">setEntityManager</span><span class="p">(</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span> <span class="n">entity_manager_ptr</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">entity_manager_ptr_</span> <span class="o">=</span> <span class="n">entity_manager_ptr</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">setEntityManager</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entity_manager_ptr</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">entity_manager_ptr_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity_manager_ptr</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">MetricBase</span><span class="o">::</span><span class="n">success</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">lifecycle_</span> <span class="o">!=</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">ACTIVE</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;lifecycle of the metric should be active&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="n">lifecycle_</span> <span class="o">=</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">success</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lifecycle_</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">ACTIVE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;lifecycle of the metric should be active&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">lifecycle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">MetricBase</span><span class="o">::</span><span class="n">activate</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">lifecycle_</span> <span class="o">!=</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">INACTIVE</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;lifecycle of the metric should be inactive&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="n">lifecycle_</span> <span class="o">=</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">ACTIVE</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">activate</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lifecycle_</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">INACTIVE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;lifecycle of the metric should be inactive&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">lifecycle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">ACTIVE</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">MetricBase</span><span class="o">::</span><span class="n">failure</span><span class="p">(</span><span class="k">const</span> <span class="n">common</span><span class="o">::</span><span class="n">scenario_simulator_exception</span><span class="o">::</span><span class="n">SpecificationViolation</span> <span class="o">&amp;</span> <span class="n">error</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">lifecycle_</span> <span class="o">!=</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">ACTIVE</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;lifecycle of the metric should be active&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="n">error_</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
-  <span class="n">lifecycle_</span> <span class="o">=</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">failure</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">scenario_simulator_exception</span><span class="o">::</span><span class="n">SpecificationViolation</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lifecycle_</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">ACTIVE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;lifecycle of the metric should be active&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">error_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">lifecycle_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="n">MetricBase</span><span class="o">::</span><span class="n">to_base_json</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="n">json</span><span class="p">;</span>
-  <span class="n">json</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metrics_type</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">lifecycle</span><span class="p">;</span>
-  <span class="k">switch</span> <span class="p">(</span><span class="n">lifecycle_</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">INACTIVE</span><span class="p">:</span>
-      <span class="n">lifecycle</span> <span class="o">=</span> <span class="s">&quot;inactive&quot;</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">ACTIVE</span><span class="p">:</span>
-      <span class="n">lifecycle</span> <span class="o">=</span> <span class="s">&quot;active&quot;</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">FAILURE</span><span class="p">:</span>
-      <span class="n">lifecycle</span> <span class="o">=</span> <span class="s">&quot;failure&quot;</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">SUCCESS</span><span class="p">:</span>
-      <span class="n">lifecycle</span> <span class="o">=</span> <span class="s">&quot;success&quot;</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="n">json</span><span class="p">[</span><span class="s">&quot;lifecycle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lifecycle</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">json</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">to_base_json</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">json</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">json</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metrics_type</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">lifecycle</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">lifecycle_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">INACTIVE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">lifecycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;inactive&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">ACTIVE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">lifecycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">FAILURE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">lifecycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;failure&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="nl">SUCCESS</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">lifecycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;success&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">json</span><span class="p">[</span><span class="s">&quot;lifecycle&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lifecycle</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">json</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">MetricBase</span><span class="o">::</span><span class="n">throwException</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">error_</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="n">error_</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
-  <span class="p">}</span>
-  <span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;error is empty&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace metrics</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">throwException</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">error_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">error_</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;error is empty&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace metrics</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

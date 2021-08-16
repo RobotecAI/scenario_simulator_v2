@@ -764,49 +764,49 @@
 <span class="cp">#ifndef OPENSCENARIO_INTERPRETER__UTILITY__CIRCULAR_CHECK_HPP_</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER__UTILITY__CIRCULAR_CHECK_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">utility</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">detail</span>
-<span class="p">{</span>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Node</span><span class="p">,</span> <span class="k">class</span> <span class="nc">NodeToChildren</span><span class="p">,</span> <span class="k">class</span> <span class="nc">NodeToBool</span><span class="o">&gt;</span>
-<span class="kt">bool</span> <span class="n">circular_check</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="n">NodeToChildren</span> <span class="o">&amp;&amp;</span> <span class="n">node_to_children</span><span class="p">,</span> <span class="n">NodeToBool</span> <span class="o">&amp;</span> <span class="n">visit_flag</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">visit_flag</span><span class="p">[</span><span class="n">node</span><span class="p">])</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">utility</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">detail</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">class</span> <span class="nc">NodeToChildren</span><span class="p">,</span><span class="w"> </span><span class="k">class</span> <span class="nc">NodeToBool</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">circular_check</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">NodeToChildren</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node_to_children</span><span class="p">,</span><span class="w"> </span><span class="n">NodeToBool</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">visit_flag</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visit_flag</span><span class="p">[</span><span class="n">node</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">visit_flag</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="w">  </span><span class="n">visit_flag</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;&amp;</span> <span class="nl">child</span> <span class="p">:</span> <span class="n">node_to_children</span><span class="p">(</span><span class="n">node</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">child</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nl">child</span> <span class="p">:</span><span class="w"> </span><span class="n">node_to_children</span><span class="p">(</span><span class="n">node</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">child</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">circular_check</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">node_to_children</span><span class="p">,</span> <span class="n">visit_flag</span><span class="p">))</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">visit_flag</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">circular_check</span><span class="p">(</span><span class="n">child</span><span class="p">,</span><span class="w"> </span><span class="n">node_to_children</span><span class="p">,</span><span class="w"> </span><span class="n">visit_flag</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">visit_flag</span><span class="p">[</span><span class="n">child</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace detail</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace detail</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Node</span><span class="p">,</span> <span class="k">class</span> <span class="nc">NodeToChildren</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Hash</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;&gt;</span>
-<span class="kt">bool</span> <span class="n">circular_check</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">init</span><span class="p">,</span> <span class="n">NodeToChildren</span> <span class="o">&amp;&amp;</span> <span class="n">node_to_children</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span> <span class="kt">bool</span><span class="p">,</span> <span class="n">Hash</span><span class="o">&gt;</span> <span class="n">visit_flag</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">detail</span><span class="o">::</span><span class="n">circular_check</span><span class="p">(</span><span class="n">init</span><span class="p">,</span> <span class="n">node_to_children</span><span class="p">,</span> <span class="n">visit_flag</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace utility</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">class</span> <span class="nc">NodeToChildren</span><span class="p">,</span><span class="w"> </span><span class="k">class</span> <span class="nc">Hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;&gt;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">circular_check</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">init</span><span class="p">,</span><span class="w"> </span><span class="n">NodeToChildren</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node_to_children</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Node</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">Hash</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visit_flag</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">detail</span><span class="o">::</span><span class="n">circular_check</span><span class="p">(</span><span class="n">init</span><span class="p">,</span><span class="w"> </span><span class="n">node_to_children</span><span class="p">,</span><span class="w"> </span><span class="n">visit_flag</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace utility</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__UTILITY__CIRCULAR_CHECK_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

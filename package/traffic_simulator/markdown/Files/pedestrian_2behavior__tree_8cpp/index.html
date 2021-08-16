@@ -758,97 +758,97 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;ament_index_cpp/get_package_share_directory.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/behavior/pedestrian/behavior_tree.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ament_index_cpp/get_package_share_directory.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/pedestrian/behavior_tree.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">entity_behavior</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">pedestrian</span>
-<span class="p">{</span>
-<span class="n">BehaviorTree</span><span class="o">::</span><span class="n">BehaviorTree</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">path</span> <span class="o">=</span> <span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;traffic_simulator&quot;</span><span class="p">)</span> <span class="o">+</span>
-                     <span class="s">&quot;/resource/pedestrian_entity_behavior.xml&quot;</span><span class="p">;</span>
-  <span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">entity_behavior</span><span class="o">::</span><span class="n">pedestrian</span><span class="o">::</span><span class="n">FollowLaneAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;FollowLane&quot;</span><span class="p">);</span>
-  <span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">entity_behavior</span><span class="o">::</span><span class="n">pedestrian</span><span class="o">::</span><span class="n">WalkStraightAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;WalkStraightAction&quot;</span><span class="p">);</span>
-  <span class="n">tree_</span> <span class="o">=</span> <span class="n">factory_</span><span class="p">.</span><span class="n">createTreeFromFile</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-  <span class="n">current_action_</span> <span class="o">=</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
-  <span class="c1">// logger_cout_ptr_ = std::make_shared&lt;BT::StdCoutLogger&gt;(tree_);</span>
-  <span class="n">setupLogger</span><span class="p">();</span>
-  <span class="n">setRequest</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">entity_behavior</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pedestrian</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">BehaviorTree</span><span class="o">::</span><span class="n">BehaviorTree</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;traffic_simulator&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                     </span><span class="s">&quot;/resource/pedestrian_entity_behavior.xml&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">entity_behavior</span><span class="o">::</span><span class="n">pedestrian</span><span class="o">::</span><span class="n">FollowLaneAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;FollowLane&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">entity_behavior</span><span class="o">::</span><span class="n">pedestrian</span><span class="o">::</span><span class="n">WalkStraightAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;WalkStraightAction&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">tree_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factory_</span><span class="p">.</span><span class="n">createTreeFromFile</span><span class="p">(</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">current_action_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// logger_cout_ptr_ = std::make_shared&lt;BT::StdCoutLogger&gt;(tree_);</span>
+<span class="w">  </span><span class="n">setupLogger</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">setRequest</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">BehaviorTree</span><span class="o">::</span><span class="n">setRequest</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">request</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">request_</span> <span class="o">=</span> <span class="n">request</span><span class="p">;</span>
-  <span class="n">setValueToBlackBoard</span><span class="p">(</span><span class="s">&quot;request&quot;</span><span class="p">,</span> <span class="n">request</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">BehaviorTree</span><span class="o">::</span><span class="n">setRequest</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">request_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">setValueToBlackBoard</span><span class="p">(</span><span class="s">&quot;request&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">BehaviorTree</span><span class="o">::</span><span class="n">setupLogger</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">first_timestamp_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
-  <span class="k">auto</span> <span class="n">subscribeCallback</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">](</span>
-                             <span class="n">BT</span><span class="o">::</span><span class="n">TimePoint</span> <span class="n">timestamp</span><span class="p">,</span> <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">TreeNode</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-                             <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="n">prev</span><span class="p">,</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">IDLE</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">type_</span> <span class="o">==</span> <span class="n">BT</span><span class="o">::</span><span class="n">TimestampType</span><span class="o">::</span><span class="n">ABSOLUTE</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="o">-&gt;</span><span class="n">callback</span><span class="p">(</span><span class="n">timestamp</span><span class="p">.</span><span class="n">time_since_epoch</span><span class="p">(),</span> <span class="n">node</span><span class="p">,</span> <span class="n">prev</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">this</span><span class="o">-&gt;</span><span class="n">callback</span><span class="p">(</span><span class="n">timestamp</span> <span class="o">-</span> <span class="n">first_timestamp_</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">prev</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">};</span>
-  <span class="k">auto</span> <span class="n">visitor</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">,</span> <span class="n">subscribeCallback</span><span class="p">](</span><span class="n">BT</span><span class="o">::</span><span class="n">TreeNode</span> <span class="o">*</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">subscribers_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">subscribeToStatusChange</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">subscribeCallback</span><span class="p">)));</span>
-  <span class="p">};</span>
-  <span class="n">BT</span><span class="o">::</span><span class="n">applyRecursiveVisitor</span><span class="p">(</span><span class="n">tree_</span><span class="p">.</span><span class="n">rootNode</span><span class="p">(),</span> <span class="n">visitor</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">BehaviorTree</span><span class="o">::</span><span class="n">setupLogger</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">first_timestamp_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">subscribeCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="w"></span>
+<span class="w">                             </span><span class="n">BT</span><span class="o">::</span><span class="n">TimePoint</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">TreeNode</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">                             </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">IDLE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">TimestampType</span><span class="o">::</span><span class="n">ABSOLUTE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">callback</span><span class="p">(</span><span class="n">timestamp</span><span class="p">.</span><span class="n">time_since_epoch</span><span class="p">(),</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">callback</span><span class="p">(</span><span class="n">timestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">first_timestamp_</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">visitor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">subscribeCallback</span><span class="p">](</span><span class="n">BT</span><span class="o">::</span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">subscribers_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">subscribeToStatusChange</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">subscribeCallback</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">BT</span><span class="o">::</span><span class="n">applyRecursiveVisitor</span><span class="p">(</span><span class="n">tree_</span><span class="p">.</span><span class="n">rootNode</span><span class="p">(),</span><span class="w"> </span><span class="n">visitor</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="n">BehaviorTree</span><span class="o">::</span><span class="n">tickOnce</span><span class="p">(</span><span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">setValueToBlackBoard</span><span class="p">(</span><span class="s">&quot;current_time&quot;</span><span class="p">,</span> <span class="n">current_time</span><span class="p">);</span>
-  <span class="n">setValueToBlackBoard</span><span class="p">(</span><span class="s">&quot;step_time&quot;</span><span class="p">,</span> <span class="n">step_time</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">tree_</span><span class="p">.</span><span class="n">rootNode</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">executeTick</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="n">BehaviorTree</span><span class="o">::</span><span class="n">tickOnce</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">step_time</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">setValueToBlackBoard</span><span class="p">(</span><span class="s">&quot;current_time&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">setValueToBlackBoard</span><span class="p">(</span><span class="s">&quot;step_time&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">step_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">tree_</span><span class="p">.</span><span class="n">rootNode</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">executeTick</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">BehaviorTree</span><span class="o">::</span><span class="n">tick</span><span class="p">(</span><span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span> <span class="kt">double</span> <span class="n">step_time</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">tickOnce</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">step_time</span><span class="p">);</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">getCurrentAction</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;root&quot;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">tickOnce</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">step_time</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">BehaviorTree</span><span class="o">::</span><span class="n">tick</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">step_time</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">tickOnce</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="n">step_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">getCurrentAction</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">tickOnce</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="n">step_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">BehaviorTree</span><span class="o">::</span><span class="n">callback</span><span class="p">(</span>
-  <span class="n">BT</span><span class="o">::</span><span class="n">Duration</span> <span class="n">timestamp</span><span class="p">,</span> <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">TreeNode</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="n">prev_status</span><span class="p">,</span>
-  <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="n">status</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">constexpr</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">whitespaces</span> <span class="o">=</span> <span class="s">&quot;                         &quot;</span><span class="p">;</span>
-  <span class="k">constexpr</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">ws_count</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
-  <span class="kt">double</span> <span class="n">since_epoch</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">timestamp</span><span class="p">).</span><span class="n">count</span><span class="p">();</span>
-  <span class="n">printf</span><span class="p">(</span>
-    <span class="s">&quot;[%.3f]: %s%s %s -&gt; %s&quot;</span><span class="p">,</span> <span class="n">since_epoch</span><span class="p">,</span> <span class="n">node</span><span class="p">.</span><span class="n">name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span>
-    <span class="o">&amp;</span><span class="n">whitespaces</span><span class="p">[</span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">ws_count</span><span class="p">,</span> <span class="n">node</span><span class="p">.</span><span class="n">name</span><span class="p">().</span><span class="n">size</span><span class="p">())],</span> <span class="n">toStr</span><span class="p">(</span><span class="n">prev_status</span><span class="p">,</span> <span class="nb">true</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span>
-    <span class="n">toStr</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="nb">true</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">current_action_</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="n">name</span><span class="p">();</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">SUCCESS</span> <span class="o">||</span> <span class="n">status</span> <span class="o">==</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">request_</span> <span class="o">==</span> <span class="n">current_action_</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">setRequest</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace pedestrian</span>
-<span class="p">}</span>  <span class="c1">// namespace entity_behavior</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">BehaviorTree</span><span class="o">::</span><span class="n">callback</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">BT</span><span class="o">::</span><span class="n">Duration</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">TreeNode</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="n">prev_status</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">constexpr</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">whitespaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;                         &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">constexpr</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">ws_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">since_epoch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">timestamp</span><span class="p">).</span><span class="n">count</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;[%.3f]: %s%s %s -&gt; %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">since_epoch</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">name</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">whitespaces</span><span class="p">[</span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">ws_count</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">name</span><span class="p">().</span><span class="n">size</span><span class="p">())],</span><span class="w"> </span><span class="n">toStr</span><span class="p">(</span><span class="n">prev_status</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="n">toStr</span><span class="p">(</span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">current_action_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">name</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">request_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">current_action_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">setRequest</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace pedestrian</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity_behavior</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

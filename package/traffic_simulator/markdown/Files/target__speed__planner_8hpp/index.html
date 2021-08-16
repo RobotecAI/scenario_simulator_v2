@@ -783,30 +783,30 @@
 <span class="cp">#ifndef TRAFFIC_SIMULATOR__BEHAVIOR__TARGET_SPEED_PLANNER_HPP_</span>
 <span class="cp">#define TRAFFIC_SIMULATOR__BEHAVIOR__TARGET_SPEED_PLANNER_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;boost/optional.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/optional.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">traffic_simulator</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">behavior</span>
-<span class="p">{</span>
-<span class="k">class</span> <span class="nc">TargetSpeedPlanner</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="kt">void</span> <span class="n">setTargetSpeed</span><span class="p">(</span><span class="kt">double</span> <span class="n">target_speed</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">continuous</span><span class="p">);</span>
-  <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">double</span> <span class="n">current_speed</span><span class="p">);</span>
-  <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">getTargetSpeed</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">traffic_simulator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">behavior</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">TargetSpeedPlanner</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">setTargetSpeed</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">target_speed</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">continuous</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">current_speed</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getTargetSpeed</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-  <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">target_speed_</span><span class="p">;</span>
-  <span class="kt">bool</span> <span class="n">continuous_</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace behavior</span>
-<span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">target_speed_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">continuous_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace behavior</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__BEHAVIOR__TARGET_SPEED_PLANNER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

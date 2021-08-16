@@ -783,44 +783,44 @@
 <span class="cp">#ifndef TRAFFIC_SIMULATOR__BEHAVIOR__PEDESTRIAN__FOLLOW_LANE_ACTION_HPP_</span>
 <span class="cp">#define TRAFFIC_SIMULATOR__BEHAVIOR__PEDESTRIAN__FOLLOW_LANE_ACTION_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;behaviortree_cpp_v3/behavior_tree.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;behaviortree_cpp_v3/bt_factory.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;behaviortree_cpp_v3/behavior_tree.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;behaviortree_cpp_v3/bt_factory.h&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_msgs/msg/entity_status.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/behavior/pedestrian/pedestrian_action_node.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/entity/pedestrian_parameter.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/hdmap_utils/hdmap_utils.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_msgs/msg/entity_status.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/pedestrian/pedestrian_action_node.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/entity/pedestrian_parameter.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/hdmap_utils/hdmap_utils.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">entity_behavior</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">pedestrian</span>
-<span class="p">{</span>
-<span class="k">class</span> <span class="nc">FollowLaneAction</span> <span class="o">:</span> <span class="k">public</span> <span class="n">entity_behavior</span><span class="o">::</span><span class="n">PedestrianActionNode</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="n">FollowLaneAction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">config</span><span class="p">);</span>
-  <span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="nf">tick</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">void</span> <span class="nf">getBlackBoardValues</span><span class="p">();</span>
-  <span class="k">static</span> <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="nf">providedPorts</span><span class="p">()</span>
-  <span class="p">{</span>
-    <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="n">ports</span> <span class="o">=</span> <span class="p">{};</span>
-    <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="n">parent_ports</span> <span class="o">=</span> <span class="n">entity_behavior</span><span class="o">::</span><span class="n">PedestrianActionNode</span><span class="o">::</span><span class="n">providedPorts</span><span class="p">();</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">parent_port</span> <span class="p">:</span> <span class="n">parent_ports</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">ports</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">parent_port</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">parent_port</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">ports</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace pedestrian</span>
-<span class="p">}</span>  <span class="c1">// namespace entity_behavior</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">entity_behavior</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">pedestrian</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">FollowLaneAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">entity_behavior</span><span class="o">::</span><span class="n">PedestrianActionNode</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">FollowLaneAction</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">config</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="nf">tick</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">getBlackBoardValues</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span><span class="w"> </span><span class="nf">providedPorts</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span><span class="w"> </span><span class="n">ports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span><span class="w"> </span><span class="n">parent_ports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity_behavior</span><span class="o">::</span><span class="n">PedestrianActionNode</span><span class="o">::</span><span class="n">providedPorts</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">parent_port</span> <span class="p">:</span><span class="w"> </span><span class="n">parent_ports</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ports</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">parent_port</span><span class="p">.</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">parent_port</span><span class="p">.</span><span class="n">second</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ports</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace pedestrian</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity_behavior</span>
 
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__BEHAVIOR__PEDESTRIAN__FOLLOW_LANE_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

@@ -783,14 +783,14 @@
 <span class="cp">#ifndef OPENSCENARIO_INTERPRETER__SYNTAX__ROAD_NETWORK_HPP_</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__ROAD_NETWORK_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/file.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/traffic_signals.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/utility/assertion_auxiliary.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/file.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/traffic_signals.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/utility/assertion_auxiliary.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">syntax</span>
-<span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">syntax</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="cm">/* ---- RoadNetwork ------------------------------------------------------------</span>
 <span class="cm"> *</span>
 <span class="cm"> *  &lt;xsd:complexType name=&quot;RoadNetwork&quot;&gt;</span>
@@ -801,58 +801,58 @@
 <span class="cm"> *    &lt;/xsd:sequence&gt;</span>
 <span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
-<span class="cm"> * -------------------------------------------------------------------------- */</span>
-<span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">File</span><span class="p">);</span>
-<span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">TrafficSignals</span><span class="p">);</span>
+<span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
+<span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">File</span><span class="p">);</span><span class="w"></span>
+<span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="n">TrafficSignals</span><span class="p">);</span><span class="w"></span>
 
-<span class="k">struct</span> <span class="nc">RoadNetwork</span>
-<span class="p">{</span>
-  <span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
+<span class="k">struct</span> <span class="nc">RoadNetwork</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  File path of the road network file (e.g. an ASAM OpenDRIVE file).</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="k">const</span> <span class="n">File</span> <span class="n">logic_file</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">logic_file</span><span class="p">;</span><span class="w"></span>
 
-  <span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
+<span class="w">  </span><span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  File path of a 3D model representing the virtual environment. This may be</span>
 <span class="cm">   *  used for visual representation (rendering).</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="k">const</span> <span class="n">File</span> <span class="n">scene_graph_file</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">scene_graph_file</span><span class="p">;</span><span class="w"></span>
 
-  <span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
+<span class="w">  </span><span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  Name references and description of dynamic behavior for traffic signals</span>
 <span class="cm">   *  defined in the road network file.</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="n">TrafficSignals</span> <span class="n">traffic_signals</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="n">TrafficSignals</span><span class="w"> </span><span class="n">traffic_signals</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span>
-  <span class="k">explicit</span> <span class="n">RoadNetwork</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="n">Scope</span> <span class="o">&amp;</span> <span class="n">outer_scope</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">logic_file</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LogicFile&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">)),</span>
-    <span class="n">scene_graph_file</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;SceneGraphFile&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">)),</span>
-    <span class="n">traffic_signals</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">TrafficSignals</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;TrafficSignals&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">))</span>
-  <span class="p">{</span>
-    <span class="n">outer_scope</span><span class="p">.</span><span class="n">logic_file</span> <span class="o">=</span> <span class="n">logic_file</span><span class="p">;</span>
-    <span class="n">outer_scope</span><span class="p">.</span><span class="n">scene_graph_file</span> <span class="o">=</span> <span class="n">scene_graph_file</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">RoadNetwork</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">logic_file</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LogicFile&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">scene_graph_file</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;SceneGraphFile&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">traffic_signals</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">TrafficSignals</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;TrafficSignals&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">outer_scope</span><span class="p">.</span><span class="n">logic_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logic_file</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">outer_scope</span><span class="p">.</span><span class="n">scene_graph_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scene_graph_file</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-  <span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="k">return</span> <span class="n">traffic_signals</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace syntax</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">evaluate</span><span class="p">(</span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">traffic_signals</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__ROAD_NETWORK_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

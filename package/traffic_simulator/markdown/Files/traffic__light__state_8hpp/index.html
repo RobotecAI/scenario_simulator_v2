@@ -758,33 +758,33 @@
 <span class="cp">#ifndef TRAFFIC_SIMULATOR__TRAFFIC_LIGHTS__TRAFFIC_LIGHT_STATE_HPP_</span>
 <span class="cp">#define TRAFFIC_SIMULATOR__TRAFFIC_LIGHTS__TRAFFIC_LIGHT_STATE_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;autoware_perception_msgs/msg/lamp_state.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;autoware_perception_msgs/msg/lamp_state.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">traffic_simulator</span>
-<span class="p">{</span>
-<span class="k">enum</span> <span class="k">class</span> <span class="nc">TrafficLightColor</span> <span class="p">{</span> <span class="n">NONE</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREEN</span><span class="p">,</span> <span class="n">YELLOW</span> <span class="p">};</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">traffic_simulator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">enum</span> <span class="k">class</span><span class="w"> </span><span class="nc">TrafficLightColor</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">NONE</span><span class="p">,</span><span class="w"> </span><span class="n">RED</span><span class="p">,</span><span class="w"> </span><span class="n">GREEN</span><span class="p">,</span><span class="w"> </span><span class="n">YELLOW</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">TrafficLightColor</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">TrafficLightColor</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
 
-<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span> <span class="nf">makeLampState</span><span class="p">(</span><span class="k">const</span> <span class="n">TrafficLightColor</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="w"> </span><span class="nf">makeLampState</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
 
-<span class="k">enum</span> <span class="k">class</span> <span class="nc">TrafficLightArrow</span> <span class="p">{</span> <span class="n">NONE</span><span class="p">,</span> <span class="n">STRAIGHT</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="n">RIGHT</span> <span class="p">};</span>
+<span class="k">enum</span> <span class="k">class</span><span class="w"> </span><span class="nc">TrafficLightArrow</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">NONE</span><span class="p">,</span><span class="w"> </span><span class="n">STRAIGHT</span><span class="p">,</span><span class="w"> </span><span class="n">LEFT</span><span class="p">,</span><span class="w"> </span><span class="n">RIGHT</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">TrafficLightArrow</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">TrafficLightArrow</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
 
-<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span> <span class="nf">makeLampState</span><span class="p">(</span><span class="k">const</span> <span class="n">TrafficLightArrow</span> <span class="o">&amp;</span><span class="p">);</span>
-<span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
+<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="w"> </span><span class="nf">makeLampState</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__TRAFFIC_LIGHTS__TRAFFIC_LIGHT_STATE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

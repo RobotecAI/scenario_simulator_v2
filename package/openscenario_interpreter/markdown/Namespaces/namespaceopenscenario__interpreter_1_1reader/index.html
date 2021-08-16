@@ -951,111 +951,111 @@
 </table>
 <h2 id="types-documentation">Types Documentation<a class="headerlink" href="#types-documentation" title="Permanent link">#</a></h2>
 <h3 id="using-xml">using XML<a class="headerlink" href="#using-xml" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">reader</span><span class="o">::</span><span class="n">XML</span> <span class="o">=</span> <span class="k">typedef</span> <span class="n">pugi</span><span class="o">::</span><span class="n">xml_node</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">reader</span><span class="o">::</span><span class="n">XML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">pugi</span><span class="o">::</span><span class="n">xml_node</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="using-cardinality">using Cardinality<a class="headerlink" href="#using-cardinality" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">reader</span><span class="o">::</span><span class="n">Cardinality</span> <span class="o">=</span> <span class="k">typedef</span> <span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">pugi</span><span class="o">::</span><span class="n">xml_node</span><span class="o">::</span><span class="n">iterator</span><span class="o">&gt;::</span><span class="n">difference_type</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">reader</span><span class="o">::</span><span class="n">Cardinality</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">pugi</span><span class="o">::</span><span class="n">xml_node</span><span class="o">::</span><span class="n">iterator</span><span class="o">&gt;::</span><span class="n">difference_type</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-substitute">function substitute<a class="headerlink" href="#function-substitute" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Scope</span> <span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">substitute</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">attribute</span><span class="p">,</span>
-    <span class="n">Scope</span> <span class="o">&amp;</span> <span class="n">scope</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Scope</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">substitute</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">attribute</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scope</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-readsharedelements">function readSharedElements<a class="headerlink" href="#function-readsharedelements" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="n">Cardinality</span> <span class="n">MinOccurs</span><span class="p">,</span>
-<span class="n">Cardinality</span> <span class="n">MaxOccurs</span> <span class="o">=</span><span class="n">unbounded</span><span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">readSharedElements</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">XML</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="n">Cardinality</span><span class="w"> </span><span class="n">MinOccurs</span><span class="p">,</span><span class="w"></span>
+<span class="n">Cardinality</span><span class="w"> </span><span class="n">MaxOccurs</span><span class="w"> </span><span class="o">=</span><span class="n">unbounded</span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">readSharedElements</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-readelements">function readElements<a class="headerlink" href="#function-readelements" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="n">Cardinality</span> <span class="n">MinOccurs</span><span class="p">,</span>
-<span class="n">Cardinality</span> <span class="n">MaxOccurs</span> <span class="o">=</span><span class="n">unbounded</span><span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">readElements</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">XML</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="n">Cardinality</span><span class="w"> </span><span class="n">MinOccurs</span><span class="p">,</span><span class="w"></span>
+<span class="n">Cardinality</span><span class="w"> </span><span class="n">MaxOccurs</span><span class="w"> </span><span class="o">=</span><span class="n">unbounded</span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">readElements</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-readelement">function readElement<a class="headerlink" href="#function-readelement" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">readElement</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">XML</span> <span class="o">&amp;</span> <span class="n">parent</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">readElement</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-readcontent">function readContent<a class="headerlink" href="#function-readcontent" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Node</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Scope</span> <span class="o">&gt;</span>
-<span class="n">T</span> <span class="n">readContent</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Scope</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Node</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Scope</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">T</span><span class="w"> </span><span class="n">readContent</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-readattribute">function readAttribute<a class="headerlink" href="#function-readattribute" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Node</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Scope</span> <span class="o">&gt;</span>
-<span class="n">T</span> <span class="n">readAttribute</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Scope</span> <span class="o">&amp;</span> <span class="n">scope</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Node</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Scope</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">T</span><span class="w"> </span><span class="n">readAttribute</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scope</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-readattribute_1">function readAttribute<a class="headerlink" href="#function-readattribute_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Node</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Scope</span> <span class="o">&gt;</span>
-<span class="n">T</span> <span class="n">readAttribute</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Scope</span> <span class="o">&amp;</span> <span class="n">scope</span><span class="p">,</span>
-    <span class="n">T</span> <span class="o">&amp;&amp;</span> <span class="n">value</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Node</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Scope</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">T</span><span class="w"> </span><span class="n">readAttribute</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scope</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-choice">function choice<a class="headerlink" href="#function-choice" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="n">choice</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">XML</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">choice</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-callwithelements">function callWithElements<a class="headerlink" href="#function-callwithelements" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Callee</span> <span class="o">&gt;</span>
-<span class="kt">void</span> <span class="n">callWithElements</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">XML</span> <span class="o">&amp;</span> <span class="n">parent</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Cardinality</span> <span class="n">min_occurs</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Cardinality</span> <span class="n">max_occurs</span><span class="p">,</span>
-    <span class="n">Callee</span> <span class="o">&amp;&amp;</span> <span class="n">call_with</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Callee</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">callWithElements</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Cardinality</span><span class="w"> </span><span class="n">min_occurs</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Cardinality</span><span class="w"> </span><span class="n">max_occurs</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Callee</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">call_with</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-callwithelement">function callWithElement<a class="headerlink" href="#function-callwithelement" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Callee</span> <span class="o">&gt;</span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="n">callWithElement</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">XML</span> <span class="o">&amp;</span> <span class="n">parent</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="n">Callee</span> <span class="o">&amp;&amp;</span> <span class="n">call_with</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Callee</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">callWithElement</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Callee</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">call_with</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="attributes-documentation">Attributes Documentation<a class="headerlink" href="#attributes-documentation" title="Permanent link">#</a></h2>
 <h3 id="variable-unbounded">variable unbounded<a class="headerlink" href="#variable-unbounded" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">constexpr</span> <span class="k">auto</span> <span class="n">unbounded</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">Cardinality</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">unbounded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">Cardinality</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

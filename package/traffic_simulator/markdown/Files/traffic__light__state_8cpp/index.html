@@ -755,154 +755,154 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/traffic_lights/traffic_light_state.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/traffic_lights/traffic_light_state.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">traffic_simulator</span>
-<span class="p">{</span>
-<span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span> <span class="n">TrafficLightColor</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">value</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">traffic_simulator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">value</span><span class="p">;</span>
+<span class="w">  </span><span class="n">is</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">TrafficLightColor</span><span class="o">&gt;</span> <span class="n">conversions</span><span class="p">{</span>
-    <span class="c1">// clang-format off</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">,</span>   <span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">NONE</span><span class="p">),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;red&quot;</span><span class="p">,</span>    <span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">RED</span><span class="p">),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;green&quot;</span><span class="p">,</span>  <span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">GREEN</span><span class="p">),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;yellow&quot;</span><span class="p">,</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">YELLOW</span><span class="p">),</span>
-    <span class="c1">// clang-format on</span>
-  <span class="p">};</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">conversions</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// clang-format off</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">,</span><span class="w">   </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">NONE</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w">    </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">RED</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="w">  </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">GREEN</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;yellow&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="n">YELLOW</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// clang-format on</span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
 
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="n">datum</span> <span class="o">=</span> <span class="n">conversions</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span>
-      <span class="s">&quot;an invalid value : &quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span>
-      <span class="s">&quot;was specified for type &#39;traffic_simulator::TrafficLightColor&#39;&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">datum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conversions</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;an invalid value : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;was specified for type &#39;traffic_simulator::TrafficLightColor&#39;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="n">is</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">is</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">TrafficLightColor</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="c1">// clang-format off</span>
-  <span class="k">switch</span> <span class="p">(</span><span class="n">datum</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">NONE</span><span class="p">:</span>   <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;none&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">RED</span><span class="p">:</span>    <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;red&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">GREEN</span><span class="p">:</span>  <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;green&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">YELLOW</span><span class="p">:</span> <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;yellow&quot;</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="c1">// clang-format on</span>
-<span class="p">}</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format off</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">datum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">NONE</span><span class="p">:</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">RED</span><span class="p">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">GREEN</span><span class="p">:</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">YELLOW</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;yellow&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format on</span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span> <span class="n">makeLampState</span><span class="p">(</span><span class="k">const</span> <span class="n">TrafficLightColor</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span> <span class="n">lamp_state</span><span class="p">;</span>
-  <span class="p">{</span>
-    <span class="n">lamp_state</span><span class="p">.</span><span class="n">confidence</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="w"> </span><span class="n">makeLampState</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="w"> </span><span class="n">lamp_state</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">confidence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
 
-    <span class="k">switch</span> <span class="p">(</span><span class="n">datum</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">case</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">RED</span><span class="p">:</span>
-        <span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">RED</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">datum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">RED</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">RED</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
-      <span class="k">case</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">GREEN</span><span class="p">:</span>
-        <span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">GREEN</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">GREEN</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">GREEN</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
-      <span class="k">case</span> <span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">YELLOW</span><span class="p">:</span>
-        <span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">YELLOW</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">YELLOW</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">YELLOW</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
-      <span class="k">default</span><span class="o">:</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">what</span><span class="p">;</span>
-        <span class="n">what</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Casting TrafficLightColor::&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">datum</span>
-             <span class="o">&lt;&lt;</span> <span class="s">&quot; to autoware_perception_msgs::msg::LampState is not supported.&quot;</span><span class="p">;</span>
-        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="n">what</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">what</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">what</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Casting TrafficLightColor::&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; to autoware_perception_msgs::msg::LampState is not supported.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="n">what</span><span class="p">.</span><span class="n">str</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="n">lamp_state</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">lamp_state</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span> <span class="n">TrafficLightArrow</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">value</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">is</span> <span class="o">&gt;&gt;</span> <span class="n">value</span><span class="p">;</span>
+<span class="w">  </span><span class="n">is</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">TrafficLightArrow</span><span class="o">&gt;</span> <span class="n">conversions</span><span class="p">{</span>
-    <span class="c1">// clang-format off</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">,</span>     <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">NONE</span><span class="p">),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;straight&quot;</span><span class="p">,</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">STRAIGHT</span><span class="p">),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;left&quot;</span><span class="p">,</span>     <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">LEFT</span><span class="p">),</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;right&quot;</span><span class="p">,</span>    <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">RIGHT</span><span class="p">),</span>
-    <span class="c1">// clang-format on</span>
-  <span class="p">};</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">&gt;</span><span class="w"> </span><span class="n">conversions</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// clang-format off</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;none&quot;</span><span class="p">,</span><span class="w">     </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">NONE</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;straight&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">STRAIGHT</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;left&quot;</span><span class="p">,</span><span class="w">     </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">LEFT</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;right&quot;</span><span class="p">,</span><span class="w">    </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="n">RIGHT</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// clang-format on</span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
 
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="n">datum</span> <span class="o">=</span> <span class="n">conversions</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span> <span class="o">&amp;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span>
-      <span class="s">&quot;An invalid value : &quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span>
-      <span class="s">&quot; was specified for type &#39;traffic_simulator::TrafficLightArrow&#39;&quot;</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">datum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conversions</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;An invalid value : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot; was specified for type &#39;traffic_simulator::TrafficLightArrow&#39;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="n">is</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">is</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">TrafficLightArrow</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="c1">// clang-format off</span>
-  <span class="k">switch</span> <span class="p">(</span><span class="n">datum</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">NONE</span><span class="p">:</span>     <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;none&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">STRAIGHT</span><span class="p">:</span> <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;straight&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">LEFT</span><span class="p">:</span>     <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;left&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">RIGHT</span><span class="p">:</span>    <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;right&quot;</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="c1">// clang-format on</span>
-<span class="p">}</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format off</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">datum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">NONE</span><span class="p">:</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">STRAIGHT</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;straight&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">LEFT</span><span class="p">:</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;left&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">RIGHT</span><span class="p">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;right&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format on</span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span> <span class="n">makeLampState</span><span class="p">(</span><span class="k">const</span> <span class="n">TrafficLightArrow</span> <span class="o">&amp;</span> <span class="n">datum</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span> <span class="n">lamp_state</span><span class="p">;</span>
-  <span class="p">{</span>
-    <span class="n">lamp_state</span><span class="p">.</span><span class="n">confidence</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+<span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="w"> </span><span class="n">makeLampState</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="w"> </span><span class="n">lamp_state</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">confidence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
 
-    <span class="k">switch</span> <span class="p">(</span><span class="n">datum</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">case</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">STRAIGHT</span><span class="p">:</span>
-        <span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">UP</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">datum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">STRAIGHT</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">UP</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
-      <span class="k">case</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">LEFT</span><span class="p">:</span>
-        <span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">LEFT</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">LEFT</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">LEFT</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
-      <span class="k">case</span> <span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">RIGHT</span><span class="p">:</span>
-        <span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">RIGHT</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">RIGHT</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">lamp_state</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LampState</span><span class="o">::</span><span class="n">RIGHT</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
-      <span class="k">default</span><span class="o">:</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">what</span><span class="p">;</span>
-        <span class="n">what</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Casting TrafficLightArrow::&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">datum</span>
-             <span class="o">&lt;&lt;</span> <span class="s">&quot; to autoware_perception_msgs::msg::LampState is not supported.&quot;</span><span class="p">;</span>
-        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="n">what</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">what</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">what</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Casting TrafficLightArrow::&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="w">             </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; to autoware_perception_msgs::msg::LampState is not supported.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="n">what</span><span class="p">.</span><span class="n">str</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="n">lamp_state</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">lamp_state</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

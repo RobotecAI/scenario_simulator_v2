@@ -1505,150 +1505,150 @@
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-entitymanager">function ~EntityManager<a class="headerlink" href="#function-entitymanager" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">EntityManager</span><span class="p">()</span> <span class="o">=</span><span class="k">default</span>
+<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">EntityManager</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="k">default</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-updatenpclogic">function updateNpcLogic<a class="headerlink" href="#function-updatenpclogic" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="n">updateNpcLogic</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityType</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">type_list</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span><span class="w"> </span><span class="n">updateNpcLogic</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">type_list</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-updatehdmapmarker">function updateHdmapMarker<a class="headerlink" href="#function-updatehdmapmarker" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">updateHdmapMarker</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">updateHdmapMarker</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-update">function update<a class="headerlink" href="#function-update" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">update</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">step_time</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">step_time</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-tomappose">function toMapPose<a class="headerlink" href="#function-tomappose" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">toMapPose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span> <span class="o">&amp;</span> <span class="n">lanelet_pose</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">toMapPose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lanelet_pose</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-spawnentity">function spawnEntity<a class="headerlink" href="#function-spawnentity" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Entity</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">auto</span> <span class="n">spawnEntity</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Entity</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">spawnEntity</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-setverbose">function setVerbose<a class="headerlink" href="#function-setverbose" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">setVerbose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">verbose</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setVerbose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">verbose</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-settargetspeed">function setTargetSpeed<a class="headerlink" href="#function-settargetspeed" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">setTargetSpeed</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">target_speed</span><span class="p">,</span>
-    <span class="kt">bool</span> <span class="n">continuous</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setTargetSpeed</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">target_speed</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">continuous</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-setentitystatus">function setEntityStatus<a class="headerlink" href="#function-setentitystatus" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">setEntityStatus</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="n">status</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">setEntityStatus</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span><span class="w"> </span><span class="n">status</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-requestlanechange">function requestLaneChange<a class="headerlink" href="#function-requestlanechange" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">requestLaneChange</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Direction</span> <span class="o">&amp;</span> <span class="n">direction</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">requestLaneChange</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Direction</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">direction</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-reachposition">function reachPosition<a class="headerlink" href="#function-reachposition" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">reachPosition</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="o">&amp;</span> <span class="n">target_pose</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">tolerance</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">reachPosition</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">target_pose</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tolerance</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-reachposition_1">function reachPosition<a class="headerlink" href="#function-reachposition_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">reachPosition</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">lanelet_id</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">offset</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">tolerance</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">reachPosition</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tolerance</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-reachposition_2">function reachPosition<a class="headerlink" href="#function-reachposition_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">reachPosition</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">target_name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">tolerance</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">reachPosition</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">target_name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tolerance</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-isstopping">function isStopping<a class="headerlink" href="#function-isstopping" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">isStopping</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">isStopping</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-isinlanelet">function isInLanelet<a class="headerlink" href="#function-isinlanelet" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">isInLanelet</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">lanelet_id</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">tolerance</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">isInLanelet</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">tolerance</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-isego">function isEgo<a class="headerlink" href="#function-isego" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">isEgo</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">isEgo</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getwaypoints">function getWaypoints<a class="headerlink" href="#function-getwaypoints" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getWaypoints</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getWaypoints</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getsteptime">function getStepTime<a class="headerlink" href="#function-getsteptime" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getStepTime</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getStepTime</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getrelativepose">function getRelativePose<a class="headerlink" href="#function-getrelativepose" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getRelativePose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="o">&amp;</span> <span class="n">from</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="o">&amp;</span> <span class="n">to</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getRelativePose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getrelativepose_1">function getRelativePose<a class="headerlink" href="#function-getrelativepose_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getRelativePose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="o">&amp;</span> <span class="n">from</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">to</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getRelativePose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getrelativepose_2">function getRelativePose<a class="headerlink" href="#function-getrelativepose_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getRelativePose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">from</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="o">&amp;</span> <span class="n">to</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getRelativePose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getrelativepose_3">function getRelativePose<a class="headerlink" href="#function-getrelativepose_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getRelativePose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">from</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">to</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getRelativePose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getorigin">function getOrigin<a class="headerlink" href="#function-getorigin" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span> <span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">auto</span> <span class="n">getOrigin</span><span class="p">(</span>
-    <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">getOrigin</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getobstacle">function getObstacle<a class="headerlink" href="#function-getobstacle" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getObstacle</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getObstacle</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getnumberofego">function getNumberOfEgo<a class="headerlink" href="#function-getnumberofego" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getNumberOfEgo</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getNumberOfEgo</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getmappose">function getMapPose<a class="headerlink" href="#function-getmappose" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getMapPose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">entity_name</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getMapPose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">entity_name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Parameters</strong>: </p>
 <ul>
@@ -1661,228 +1661,228 @@
 <li><strong>0</strong> &lt;= distance between two bounding box </li>
 </ul>
 <h3 id="function-getmappose_1">function getMapPose<a class="headerlink" href="#function-getmappose_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getMapPose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">reference_entity_name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="o">&amp;</span> <span class="n">relative_pose</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getMapPose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">reference_entity_name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">relative_pose</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getlongitudinaldistance">function getLongitudinalDistance<a class="headerlink" href="#function-getlongitudinaldistance" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getLongitudinalDistance</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">from</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">to</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">max_distance</span> <span class="o">=</span><span class="mi">100</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getLongitudinalDistance</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">max_distance</span><span class="w"> </span><span class="o">=</span><span class="mi">100</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getlaneletpose">function getLaneletPose<a class="headerlink" href="#function-getlaneletpose" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getLaneletPose</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getLaneletPose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-gethdmaputils">function getHdmapUtils<a class="headerlink" href="#function-gethdmaputils" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getHdmapUtils</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getHdmapUtils</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getentitytypelist">function getEntityTypeList<a class="headerlink" href="#function-getentitytypelist" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getEntityTypeList</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getEntityTypeList</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getentitystatus">function getEntityStatus<a class="headerlink" href="#function-getentitystatus" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getEntityStatus</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getEntityStatus</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getentitynames">function getEntityNames<a class="headerlink" href="#function-getentitynames" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getEntityNames</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getEntityNames</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getegoname">function getEgoName<a class="headerlink" href="#function-getegoname" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getEgoName</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getEgoName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getdistancetostopline">function getDistanceToStopLine<a class="headerlink" href="#function-getdistancetostopline" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getDistanceToStopLine</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">target_stop_line_id</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getDistanceToStopLine</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">target_stop_line_id</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getdistancetocrosswalk">function getDistanceToCrosswalk<a class="headerlink" href="#function-getdistancetocrosswalk" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getDistanceToCrosswalk</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">target_crosswalk_id</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getDistanceToCrosswalk</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">target_crosswalk_id</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getcurrenttime">function getCurrentTime<a class="headerlink" href="#function-getcurrenttime" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getCurrentTime</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getCurrentTime</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getboundingboxdistance">function getBoundingBoxDistance<a class="headerlink" href="#function-getboundingboxdistance" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="n">getBoundingBoxDistance</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">from</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">to</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getBoundingBoxDistance</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-entitystatusset">function entityStatusSet<a class="headerlink" href="#function-entitystatusset" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">entityStatusSet</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">entityStatusSet</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-entityexists">function entityExists<a class="headerlink" href="#function-entityexists" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">entityExists</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">entityExists</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-despawnentity">function despawnEntity<a class="headerlink" href="#function-despawnentity" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">despawnEntity</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">despawnEntity</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-checkcollision">function checkCollision<a class="headerlink" href="#function-checkcollision" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">checkCollision</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name0</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name1</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">checkCollision</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name1</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-broadcasttransform">function broadcastTransform<a class="headerlink" href="#function-broadcasttransform" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">broadcastTransform</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span> <span class="o">&amp;</span> <span class="n">pose</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">bool</span> <span class="n">static_transform</span> <span class="o">=</span><span class="nb">true</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">broadcastTransform</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PoseStamped</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">static_transform</span><span class="w"> </span><span class="o">=</span><span class="nb">true</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-broadcastentitytransform">function broadcastEntityTransform<a class="headerlink" href="#function-broadcastentitytransform" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">broadcastEntityTransform</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">broadcastEntityTransform</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-broadcastbaselinktransform">function broadcastBaseLinkTransform<a class="headerlink" href="#function-broadcastbaselinktransform" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">broadcastBaseLinkTransform</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">broadcastBaseLinkTransform</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_hdmap_utils">function FORWARD_TO_HDMAP_UTILS<a class="headerlink" href="#function-forward_to_hdmap_utils" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_HDMAP_UTILS</span><span class="p">(</span>
-    <span class="n">toLaneletPose</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_HDMAP_UTILS</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">toLaneletPose</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">engage</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">engage</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_1">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getBoundingBox</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getBoundingBox</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_2">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getCurrentAction</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getCurrentAction</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_3">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getEntityType</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getEntityType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_4">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_4" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getEntityStatusBeforeUpdate</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getEntityStatusBeforeUpdate</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_5">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_5" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getLinearJerk</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getLinearJerk</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_6">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_6" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getRouteLanelets</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getRouteLanelets</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_7">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_7" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getStandStillDuration</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getStandStillDuration</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_8">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_8" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getVehicleParameters</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getVehicleParameters</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_9">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_9" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">getVehicleCommand</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getVehicleCommand</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_10">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_10" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">ready</span> <span class="p">,</span>
-    <span class="k">const</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">ready</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_11">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_11" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">requestAcquirePosition</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">requestAcquirePosition</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_12">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_12" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">requestAssignRoute</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">requestAssignRoute</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_13">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_13" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">requestLaneChange</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">requestLaneChange</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_14">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_14" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">requestWalkStraight</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">requestWalkStraight</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_15">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_15" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span>
-    <span class="n">setDriverModel</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">setDriverModel</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-entitymanager_1">function EntityManager<a class="headerlink" href="#function-entitymanager_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeT</span> <span class="p">,</span>
-<span class="k">class</span> <span class="nc">AllocatorT</span>  <span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;&gt;</span>
-<span class="kr">inline</span> <span class="k">explicit</span> <span class="n">EntityManager</span><span class="p">(</span>
-    <span class="n">NodeT</span> <span class="o">&amp;&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Configuration</span> <span class="o">&amp;</span> <span class="n">configuration</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeT</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">AllocatorT</span><span class="w">  </span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">EntityManager</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">NodeT</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Configuration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">configuration</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-define_set_traffic_light">function DEFINE_SET_TRAFFIC_LIGHT<a class="headerlink" href="#function-define_set_traffic_light" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">Arrow</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Arrow</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-define_set_traffic_light_1">function DEFINE_SET_TRAFFIC_LIGHT<a class="headerlink" href="#function-define_set_traffic_light_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">ArrowPhase</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">ArrowPhase</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-define_set_traffic_light_2">function DEFINE_SET_TRAFFIC_LIGHT<a class="headerlink" href="#function-define_set_traffic_light_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">Color</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Color</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-define_set_traffic_light_3">function DEFINE_SET_TRAFFIC_LIGHT<a class="headerlink" href="#function-define_set_traffic_light_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">ColorPhase</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">DEFINE_SET_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">ColorPhase</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-define_get_traffic_light">function DEFINE_GET_TRAFFIC_LIGHT<a class="headerlink" href="#function-define_get_traffic_light" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">DEFINE_GET_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">Color</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">DEFINE_GET_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Color</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-define_get_traffic_light_1">function DEFINE_GET_TRAFFIC_LIGHT<a class="headerlink" href="#function-define_get_traffic_light_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">DEFINE_GET_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">Arrow</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">DEFINE_GET_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Arrow</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:34 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:55 UTC</p>
                 
                   
                 

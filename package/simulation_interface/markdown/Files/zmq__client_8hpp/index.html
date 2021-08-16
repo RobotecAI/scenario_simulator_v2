@@ -780,84 +780,84 @@
 <span class="cp">#ifndef SIMULATION_INTERFACE__ZMQ_CLIENT_HPP_</span>
 <span class="cp">#define SIMULATION_INTERFACE__ZMQ_CLIENT_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;simulation_interface/constants.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;zmqpp/zmqpp.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;simulation_interface/constants.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zmqpp/zmqpp.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">zeromq</span>
-<span class="p">{</span>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ReqType</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">ResType</span><span class="o">&gt;</span>
-<span class="k">class</span> <span class="nc">Client</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="k">explicit</span> <span class="n">Client</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span> <span class="o">&amp;</span> <span class="n">protocol</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">simulation_interface</span><span class="o">::</span><span class="n">HostName</span> <span class="o">&amp;</span> <span class="n">hostname</span><span class="p">,</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">Client</span><span class="p">(</span>
-      <span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;://&quot;</span> <span class="o">+</span>
-      <span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
-  <span class="k">explicit</span> <span class="n">Client</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span> <span class="o">&amp;</span> <span class="n">protocol</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">ip_address</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">Client</span><span class="p">(</span>
-      <span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;://&quot;</span> <span class="o">+</span> <span class="n">ip_address</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
-  <span class="k">explicit</span> <span class="n">Client</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">ip_address</span><span class="p">,</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">Client</span><span class="p">(</span><span class="s">&quot;tcp://&quot;</span> <span class="o">+</span> <span class="n">ip_address</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
-  <span class="k">explicit</span> <span class="n">Client</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span> <span class="o">:</span> <span class="n">Client</span><span class="p">(</span><span class="s">&quot;tcp://localhost:&quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span> <span class="p">{}</span>
-  <span class="k">explicit</span> <span class="n">Client</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">endpoint</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">endpoint_</span><span class="p">(</span><span class="n">endpoint</span><span class="p">),</span>
-    <span class="n">context_</span><span class="p">(</span><span class="n">zmqpp</span><span class="o">::</span><span class="n">context</span><span class="p">()),</span>
-    <span class="n">type_</span><span class="p">(</span><span class="n">zmqpp</span><span class="o">::</span><span class="n">socket_type</span><span class="o">::</span><span class="n">request</span><span class="p">),</span>
-    <span class="n">socket_</span><span class="p">(</span><span class="n">context_</span><span class="p">,</span> <span class="n">type_</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="n">socket_</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">endpoint_</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="kt">void</span> <span class="n">call</span><span class="p">(</span><span class="k">const</span> <span class="n">ReqType</span> <span class="o">&amp;</span> <span class="n">req</span><span class="p">,</span> <span class="n">ResType</span> <span class="o">&amp;</span> <span class="n">res</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="cm">/*</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">zeromq</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ReqType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">ResType</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">Client</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">HostName</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;://&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">      </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ip_address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;://&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ip_address</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ip_address</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="s">&quot;tcp://&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ip_address</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="s">&quot;tcp://localhost:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Client</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endpoint</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">endpoint_</span><span class="p">(</span><span class="n">endpoint</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">context_</span><span class="p">(</span><span class="n">zmqpp</span><span class="o">::</span><span class="n">context</span><span class="p">()),</span><span class="w"></span>
+<span class="w">    </span><span class="n">type_</span><span class="p">(</span><span class="n">zmqpp</span><span class="o">::</span><span class="n">socket_type</span><span class="o">::</span><span class="n">request</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">socket_</span><span class="p">(</span><span class="n">context_</span><span class="p">,</span><span class="w"> </span><span class="n">type_</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">socket_</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">endpoint_</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">call</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ReqType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">ResType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">res</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*</span>
 <span class="cm">    std::chrono::system_clock::time_point start, end;</span>
 <span class="cm">    start = std::chrono::system_clock::now();</span>
-<span class="cm">    */</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">request_string</span><span class="p">;</span>
-    <span class="n">req</span><span class="p">.</span><span class="n">SerializeToString</span><span class="p">(</span><span class="o">&amp;</span><span class="n">request_string</span><span class="p">);</span>
-    <span class="n">zmqpp</span><span class="o">::</span><span class="n">message</span> <span class="n">message</span><span class="p">;</span>
-    <span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="n">request_string</span><span class="p">;</span>
-    <span class="n">socket_</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
-    <span class="n">zmqpp</span><span class="o">::</span><span class="n">message</span> <span class="n">buffer</span><span class="p">;</span>
-    <span class="n">socket_</span><span class="p">.</span><span class="n">receive</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">recieved_string</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="n">res</span><span class="p">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">recieved_string</span><span class="p">);</span>
-    <span class="cm">/*</span>
+<span class="cm">    */</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">request_string</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">req</span><span class="p">.</span><span class="n">SerializeToString</span><span class="p">(</span><span class="o">&amp;</span><span class="n">request_string</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">zmqpp</span><span class="o">::</span><span class="n">message</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">message</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">request_string</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">socket_</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">zmqpp</span><span class="o">::</span><span class="n">message</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">socket_</span><span class="p">.</span><span class="n">receive</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">recieved_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">res</span><span class="p">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">recieved_string</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/*</span>
 <span class="cm">    end = std::chrono::system_clock::now();</span>
 <span class="cm">    double elapsed = std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count();</span>
 <span class="cm">    std::cout &lt;&lt; &quot;endpoint : &quot; &lt;&lt; endpoint_ &lt;&lt; std::endl;</span>
 <span class="cm">    std::cout &lt;&lt; &quot;transport delay : &quot; &lt;&lt; elapsed &lt;&lt; &quot; micro seconds&quot; &lt;&lt; std::endl;</span>
-<span class="cm">    */</span>
-  <span class="p">}</span>
+<span class="cm">    */</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">endpoint_</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">zmqpp</span><span class="o">::</span><span class="n">context</span> <span class="n">context_</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">zmqpp</span><span class="o">::</span><span class="n">socket_type</span> <span class="n">type_</span><span class="p">;</span>
-  <span class="n">zmqpp</span><span class="o">::</span><span class="n">socket</span> <span class="n">socket_</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace zeromq</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endpoint_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">zmqpp</span><span class="o">::</span><span class="n">context</span><span class="w"> </span><span class="n">context_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">zmqpp</span><span class="o">::</span><span class="n">socket_type</span><span class="w"> </span><span class="n">type_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">zmqpp</span><span class="o">::</span><span class="n">socket</span><span class="w"> </span><span class="n">socket_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace zeromq</span>
 
 <span class="cp">#endif  </span><span class="c1">// SIMULATION_INTERFACE__ZMQ_CLIENT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:36 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:57 UTC</p>
                 
                   
                 

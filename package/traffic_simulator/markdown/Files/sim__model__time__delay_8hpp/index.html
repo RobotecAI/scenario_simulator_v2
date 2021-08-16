@@ -780,194 +780,194 @@
 <span class="cp">#ifndef TRAFFIC_SIMULATOR__VEHICLE_MODEL__SIM_MODEL_TIME_DELAY_HPP_</span>
 <span class="cp">#define TRAFFIC_SIMULATOR__VEHICLE_MODEL__SIM_MODEL_TIME_DELAY_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;deque&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;eigen3/Eigen/Core&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;eigen3/Eigen/LU&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;queue&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/vehicle_model/sim_model_interface.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/vehicle_model/sim_model_util.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;deque&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;eigen3/Eigen/Core&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;eigen3/Eigen/LU&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;queue&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/vehicle_model/sim_model_interface.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/vehicle_model/sim_model_util.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">class</span> <span class="nc">SimModelTimeDelayTwist</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SimModelInterface</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="n">SimModelTimeDelayTwist</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">vx_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">angvel_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">vx_rate_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">wz_rate_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">dt</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">vx_delay</span><span class="p">,</span> <span class="kt">double</span> <span class="n">vx_time_constant</span><span class="p">,</span> <span class="kt">double</span> <span class="n">wz_delay</span><span class="p">,</span> <span class="kt">double</span> <span class="n">wz_time_constant</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">deadzone_delta_steer</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">SimModelTimeDelayTwist</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">SimModelInterface</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">SimModelTimeDelayTwist</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">angvel_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_rate_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wz_rate_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_delay</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_time_constant</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wz_delay</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wz_time_constant</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">deadzone_delta_steer</span><span class="p">);</span><span class="w"></span>
 
-  <span class="o">~</span><span class="n">SimModelTimeDelayTwist</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+<span class="w">  </span><span class="o">~</span><span class="n">SimModelTimeDelayTwist</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">MIN_TIME_CONSTANT</span><span class="p">;</span>  
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">MIN_TIME_CONSTANT</span><span class="p">;</span><span class="w">  </span>
 
-  <span class="k">enum</span> <span class="nc">IDX</span> <span class="p">{</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">Y</span><span class="p">,</span>
-    <span class="n">YAW</span><span class="p">,</span>
-    <span class="n">VX</span><span class="p">,</span>
-    <span class="n">WZ</span><span class="p">,</span>
-  <span class="p">};</span>
-  <span class="k">enum</span> <span class="nc">IDX_U</span> <span class="p">{</span>
-    <span class="n">VX_DES</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">WZ_DES</span><span class="p">,</span>
-  <span class="p">};</span>
+<span class="w">  </span><span class="k">enum</span> <span class="nc">IDX</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">YAW</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">VX</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">WZ</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">enum</span> <span class="nc">IDX_U</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">VX_DES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">WZ_DES</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_lim_</span><span class="p">;</span>       
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_rate_lim_</span><span class="p">;</span>  
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">wz_lim_</span><span class="p">;</span>       
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">wz_rate_lim_</span><span class="p">;</span>  
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_lim_</span><span class="p">;</span><span class="w">       </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_rate_lim_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wz_lim_</span><span class="p">;</span><span class="w">       </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wz_rate_lim_</span><span class="p">;</span><span class="w">  </span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">vx_input_queue_</span><span class="p">;</span>  
-  <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">wz_input_queue_</span><span class="p">;</span>  
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_delay_</span><span class="p">;</span>              
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_time_constant_</span><span class="p">;</span>      
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">wz_delay_</span><span class="p">;</span>              
-  <span class="k">const</span> <span class="kt">double</span>
-    <span class="n">wz_time_constant_</span><span class="p">;</span>  
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">deadzone_delta_steer_</span><span class="p">;</span>  
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vx_input_queue_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wz_input_queue_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_delay_</span><span class="p">;</span><span class="w">              </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_time_constant_</span><span class="p">;</span><span class="w">      </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wz_delay_</span><span class="p">;</span><span class="w">              </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"></span>
+<span class="w">    </span><span class="n">wz_time_constant_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">deadzone_delta_steer_</span><span class="p">;</span><span class="w">  </span>
 
-  <span class="kt">void</span> <span class="nf">initializeInputQueue</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">initializeInputQueue</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getX</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getX</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getY</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getY</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getYaw</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getYaw</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getVx</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getVx</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getWz</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getWz</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getSteer</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getSteer</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="nf">calcModel</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">state</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="nf">calcModel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">SimModelTimeDelaySteer</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SimModelInterface</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="n">SimModelTimeDelaySteer</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">vx_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">steer_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">vx_rate_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">steer_rate_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">wheelbase</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">dt</span><span class="p">,</span> <span class="kt">double</span> <span class="n">vx_delay</span><span class="p">,</span> <span class="kt">double</span> <span class="n">vx_time_constant</span><span class="p">,</span> <span class="kt">double</span> <span class="n">steer_delay</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">steer_time_constant</span><span class="p">,</span> <span class="kt">double</span> <span class="n">deadzone_delta_steer</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">SimModelTimeDelaySteer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">SimModelInterface</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">SimModelTimeDelaySteer</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_rate_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_rate_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wheelbase</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_delay</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_time_constant</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_delay</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_time_constant</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">deadzone_delta_steer</span><span class="p">);</span><span class="w"></span>
 
-  <span class="o">~</span><span class="n">SimModelTimeDelaySteer</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+<span class="w">  </span><span class="o">~</span><span class="n">SimModelTimeDelaySteer</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">MIN_TIME_CONSTANT</span><span class="p">;</span>  
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">MIN_TIME_CONSTANT</span><span class="p">;</span><span class="w">  </span>
 
-  <span class="k">enum</span> <span class="nc">IDX</span> <span class="p">{</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">Y</span><span class="p">,</span>
-    <span class="n">YAW</span><span class="p">,</span>
-    <span class="n">VX</span><span class="p">,</span>
-    <span class="n">STEER</span><span class="p">,</span>
-  <span class="p">};</span>
-  <span class="k">enum</span> <span class="nc">IDX_U</span> <span class="p">{</span>
-    <span class="n">VX_DES</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">STEER_DES</span><span class="p">,</span>
-  <span class="p">};</span>
+<span class="w">  </span><span class="k">enum</span> <span class="nc">IDX</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">YAW</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">VX</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">STEER</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">enum</span> <span class="nc">IDX_U</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">VX_DES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">STEER_DES</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_lim_</span><span class="p">;</span>          
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_rate_lim_</span><span class="p">;</span>     
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_lim_</span><span class="p">;</span>       
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_rate_lim_</span><span class="p">;</span>  
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">wheelbase_</span><span class="p">;</span>       
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_lim_</span><span class="p">;</span><span class="w">          </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_rate_lim_</span><span class="p">;</span><span class="w">     </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_lim_</span><span class="p">;</span><span class="w">       </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_rate_lim_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wheelbase_</span><span class="p">;</span><span class="w">       </span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">vx_input_queue_</span><span class="p">;</span>     
-  <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">steer_input_queue_</span><span class="p">;</span>  
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_delay_</span><span class="p">;</span>                 
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_time_constant_</span><span class="p">;</span>      
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_delay_</span><span class="p">;</span>           
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_time_constant_</span><span class="p">;</span>   
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">deadzone_delta_steer_</span><span class="p">;</span>  
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vx_input_queue_</span><span class="p">;</span><span class="w">     </span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">steer_input_queue_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_delay_</span><span class="p">;</span><span class="w">                 </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_time_constant_</span><span class="p">;</span><span class="w">      </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_delay_</span><span class="p">;</span><span class="w">           </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_time_constant_</span><span class="p">;</span><span class="w">   </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">deadzone_delta_steer_</span><span class="p">;</span><span class="w">  </span>
 
-  <span class="kt">void</span> <span class="nf">initializeInputQueue</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">initializeInputQueue</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getX</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getX</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getY</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getY</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getYaw</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getYaw</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getVx</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getVx</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getWz</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getWz</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getSteer</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getSteer</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="nf">calcModel</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">state</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="nf">calcModel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">SimModelTimeDelaySteerAccel</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SimModelInterface</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="n">SimModelTimeDelaySteerAccel</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">vx_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">steer_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">vx_rate_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">steer_rate_lim</span><span class="p">,</span> <span class="kt">double</span> <span class="n">wheelbase</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">dt</span><span class="p">,</span> <span class="kt">double</span> <span class="n">acc_delay</span><span class="p">,</span> <span class="kt">double</span> <span class="n">acc_time_constant</span><span class="p">,</span> <span class="kt">double</span> <span class="n">steer_delay</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">steer_time_constant</span><span class="p">,</span> <span class="kt">double</span> <span class="n">deadzone_delta_steer</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">SimModelTimeDelaySteerAccel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">SimModelInterface</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">SimModelTimeDelaySteerAccel</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_rate_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_rate_lim</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wheelbase</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acc_delay</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acc_time_constant</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_delay</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_time_constant</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">deadzone_delta_steer</span><span class="p">);</span><span class="w"></span>
 
-  <span class="o">~</span><span class="n">SimModelTimeDelaySteerAccel</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+<span class="w">  </span><span class="o">~</span><span class="n">SimModelTimeDelaySteerAccel</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">MIN_TIME_CONSTANT</span><span class="p">;</span>  
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">MIN_TIME_CONSTANT</span><span class="p">;</span><span class="w">  </span>
 
-  <span class="k">enum</span> <span class="nc">IDX</span> <span class="p">{</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">Y</span><span class="p">,</span>
-    <span class="n">YAW</span><span class="p">,</span>
-    <span class="n">VX</span><span class="p">,</span>
-    <span class="n">STEER</span><span class="p">,</span>
-    <span class="n">ACCX</span><span class="p">,</span>
-  <span class="p">};</span>
-  <span class="k">enum</span> <span class="nc">IDX_U</span> <span class="p">{</span>
-    <span class="n">ACCX_DES</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">STEER_DES</span><span class="p">,</span>
-    <span class="n">DRIVE_SHIFT</span><span class="p">,</span>
-  <span class="p">};</span>
+<span class="w">  </span><span class="k">enum</span> <span class="nc">IDX</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">YAW</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">VX</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">STEER</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">ACCX</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">enum</span> <span class="nc">IDX_U</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ACCX_DES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">STEER_DES</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">DRIVE_SHIFT</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_lim_</span><span class="p">;</span>          
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">vx_rate_lim_</span><span class="p">;</span>     
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_lim_</span><span class="p">;</span>       
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_rate_lim_</span><span class="p">;</span>  
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">wheelbase_</span><span class="p">;</span>       
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_lim_</span><span class="p">;</span><span class="w">          </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vx_rate_lim_</span><span class="p">;</span><span class="w">     </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_lim_</span><span class="p">;</span><span class="w">       </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_rate_lim_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">wheelbase_</span><span class="p">;</span><span class="w">       </span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">acc_input_queue_</span><span class="p">;</span>    
-  <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">steer_input_queue_</span><span class="p">;</span>  
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">acc_delay_</span><span class="p">;</span>                
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">acc_time_constant_</span><span class="p">;</span>        
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_delay_</span><span class="p">;</span>              
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">steer_time_constant_</span><span class="p">;</span>   
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">deadzone_delta_steer_</span><span class="p">;</span>  
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">acc_input_queue_</span><span class="p">;</span><span class="w">    </span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">steer_input_queue_</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acc_delay_</span><span class="p">;</span><span class="w">                </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">acc_time_constant_</span><span class="p">;</span><span class="w">        </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_delay_</span><span class="p">;</span><span class="w">              </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">steer_time_constant_</span><span class="p">;</span><span class="w">   </span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">deadzone_delta_steer_</span><span class="p">;</span><span class="w">  </span>
 
-  <span class="kt">void</span> <span class="nf">initializeInputQueue</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">initializeInputQueue</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getX</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getX</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getY</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getY</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getYaw</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getYaw</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getVx</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getVx</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getWz</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getWz</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="nf">getSteer</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getSteer</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="nf">calcModel</span><span class="p">(</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">state</span><span class="p">,</span> <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="nf">calcModel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__VEHICLE_MODEL__SIM_MODEL_TIME_DELAY_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

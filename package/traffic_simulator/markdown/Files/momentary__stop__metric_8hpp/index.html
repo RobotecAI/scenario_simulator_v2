@@ -780,55 +780,55 @@
 <span class="cp">#ifndef TRAFFIC_SIMULATOR__METRICS__MOMENTARY_STOP_METRIC_HPP_</span>
 <span class="cp">#define TRAFFIC_SIMULATOR__METRICS__MOMENTARY_STOP_METRIC_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/metrics/metric_base.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/metrics/metric_base.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">metrics</span>
-<span class="p">{</span>
-<span class="k">class</span> <span class="nc">MomentaryStopMetric</span> <span class="o">:</span> <span class="k">public</span> <span class="n">MetricBase</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="k">enum</span> <span class="k">class</span> <span class="nc">StopTargetLaneletType</span> <span class="p">{</span> <span class="n">STOP_LINE</span><span class="p">,</span> <span class="n">CROSSWALK</span> <span class="p">};</span>
-  <span class="n">MomentaryStopMetric</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">target_entity</span><span class="p">,</span> <span class="kt">double</span> <span class="n">min_acceleration</span><span class="p">,</span> <span class="kt">double</span> <span class="n">max_acceleration</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">stop_target_lanelet_id</span><span class="p">,</span> <span class="n">StopTargetLaneletType</span> <span class="n">stop_target_lanelet_type</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">stop_sequence_start_distance</span><span class="p">,</span> <span class="kt">double</span> <span class="n">stop_sequence_end_distance</span><span class="p">,</span> <span class="kt">double</span> <span class="n">stop_duration</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">MetricBase</span><span class="p">(</span><span class="s">&quot;MomentaryStop&quot;</span><span class="p">),</span>
-    <span class="n">target_entity</span><span class="p">(</span><span class="n">target_entity</span><span class="p">),</span>
-    <span class="n">min_acceleration</span><span class="p">(</span><span class="n">min_acceleration</span><span class="p">),</span>
-    <span class="n">max_acceleration</span><span class="p">(</span><span class="n">max_acceleration</span><span class="p">),</span>
-    <span class="n">stop_target_lanelet_id</span><span class="p">(</span><span class="n">stop_target_lanelet_id</span><span class="p">),</span>
-    <span class="n">stop_target_lanelet_type</span><span class="p">(</span><span class="n">stop_target_lanelet_type</span><span class="p">),</span>
-    <span class="n">stop_sequence_start_distance</span><span class="p">(</span><span class="n">stop_sequence_start_distance</span><span class="p">),</span>
-    <span class="n">stop_sequence_end_distance</span><span class="p">(</span><span class="n">stop_sequence_end_distance</span><span class="p">),</span>
-    <span class="n">stop_duration</span><span class="p">(</span><span class="n">stop_duration</span><span class="p">)</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">metrics</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">MomentaryStopMetric</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">MetricBase</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">enum</span> <span class="k">class</span><span class="w"> </span><span class="nc">StopTargetLaneletType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">STOP_LINE</span><span class="p">,</span><span class="w"> </span><span class="n">CROSSWALK</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">MomentaryStopMetric</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">target_entity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">min_acceleration</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">max_acceleration</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">stop_target_lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="n">StopTargetLaneletType</span><span class="w"> </span><span class="n">stop_target_lanelet_type</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">stop_sequence_start_distance</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stop_sequence_end_distance</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stop_duration</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">MetricBase</span><span class="p">(</span><span class="s">&quot;MomentaryStop&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">target_entity</span><span class="p">(</span><span class="n">target_entity</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">min_acceleration</span><span class="p">(</span><span class="n">min_acceleration</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">max_acceleration</span><span class="p">(</span><span class="n">max_acceleration</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">stop_target_lanelet_id</span><span class="p">(</span><span class="n">stop_target_lanelet_id</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">stop_target_lanelet_type</span><span class="p">(</span><span class="n">stop_target_lanelet_type</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">stop_sequence_start_distance</span><span class="p">(</span><span class="n">stop_sequence_start_distance</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">stop_sequence_end_distance</span><span class="p">(</span><span class="n">stop_sequence_end_distance</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">stop_duration</span><span class="p">(</span><span class="n">stop_duration</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="o">~</span><span class="n">MomentaryStopMetric</span><span class="p">()</span> <span class="k">override</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
-  <span class="kt">void</span> <span class="nf">update</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
-  <span class="kt">bool</span> <span class="nf">activateTrigger</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">target_entity</span><span class="p">;</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">min_acceleration</span><span class="p">;</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">max_acceleration</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">stop_target_lanelet_id</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">StopTargetLaneletType</span> <span class="n">stop_target_lanelet_type</span><span class="p">;</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">stop_sequence_start_distance</span><span class="p">;</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">stop_sequence_end_distance</span><span class="p">;</span>
-  <span class="k">const</span> <span class="kt">double</span> <span class="n">stop_duration</span><span class="p">;</span>
-  <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="nf">to_json</span><span class="p">();</span>
+<span class="w">  </span><span class="o">~</span><span class="n">MomentaryStopMetric</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">activateTrigger</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">target_entity</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">min_acceleration</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">max_acceleration</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">stop_target_lanelet_id</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">StopTargetLaneletType</span><span class="w"> </span><span class="n">stop_target_lanelet_type</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stop_sequence_start_distance</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stop_sequence_end_distance</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">stop_duration</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="nf">to_json</span><span class="p">();</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-  <span class="kt">double</span> <span class="n">linear_acceleration_</span><span class="p">;</span>
-  <span class="kt">double</span> <span class="n">standstill_duration_</span><span class="p">;</span>
-  <span class="kt">double</span> <span class="n">distance_to_stopline_</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace metrics</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">linear_acceleration_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">standstill_duration_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">distance_to_stopline_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace metrics</span>
 
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__METRICS__MOMENTARY_STOP_METRIC_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

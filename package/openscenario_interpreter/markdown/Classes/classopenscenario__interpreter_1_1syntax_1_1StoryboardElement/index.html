@@ -1077,130 +1077,130 @@
 </tbody>
 </table>
 <h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">class</span> <span class="nc">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">StoryboardElement</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">StoryboardElement</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-override">function override<a class="headerlink" href="#function-override" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="n">Element</span> <span class="k">override</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="k">override</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-evaluate">function evaluate<a class="headerlink" href="#function-evaluate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">auto</span> <span class="n">evaluate</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">evaluate</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-currentstate">function currentState<a class="headerlink" href="#function-currentstate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="n">currentState</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">currentState</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-changestateif">function changeStateIf<a class="headerlink" href="#function-changestateif" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Boolean</span> <span class="p">,</span>
-<span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible</span><span class="o">&lt;</span> <span class="n">Boolean</span><span class="p">,</span> <span class="kt">bool</span> <span class="o">&gt;</span><span class="p">)</span> <span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">auto</span> <span class="n">changeStateIf</span><span class="p">(</span>
-    <span class="n">Boolean</span> <span class="o">&amp;&amp;</span> <span class="n">test</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Element</span> <span class="o">&amp;</span> <span class="n">consequent_state</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Element</span> <span class="o">&amp;</span> <span class="n">alternate_state</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Boolean</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Boolean</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Boolean</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">consequent_state</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">alternate_state</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-changestateif_1">function changeStateIf<a class="headerlink" href="#function-changestateif_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Boolean</span> <span class="p">,</span>
-<span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible</span><span class="o">&lt;</span> <span class="n">Boolean</span><span class="p">,</span> <span class="kt">bool</span> <span class="o">&gt;</span><span class="p">)</span> <span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="n">changeStateIf</span><span class="p">(</span>
-    <span class="n">Boolean</span> <span class="o">&amp;&amp;</span> <span class="n">test</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Element</span> <span class="o">&amp;</span> <span class="n">consequent_state</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Boolean</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Boolean</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Boolean</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">consequent_state</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-changestateif_2">function changeStateIf<a class="headerlink" href="#function-changestateif_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Predicate</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="p">,</span>
-<span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_function</span><span class="o">&lt;</span> <span class="n">Predicate</span> <span class="o">&gt;</span><span class="p">)</span> <span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="n">changeStateIf</span><span class="p">(</span>
-    <span class="n">Predicate</span> <span class="o">&amp;&amp;</span> <span class="n">predicate</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Predicate</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span><span class="w"></span>
+<span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_function</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Predicate</span><span class="w"> </span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Predicate</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">predicate</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-storyboardelement">function StoryboardElement<a class="headerlink" href="#function-storyboardelement" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">explicit</span> <span class="k">constexpr</span> <span class="n">StoryboardElement</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">maximum_execution_count</span> <span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">StoryboardElement</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">maximum_execution_count</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate">function BOILERPLATE<a class="headerlink" href="#function-boilerplate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">standby</span> <span class="p">,</span>
-    <span class="n">standbyState</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">standby</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">standbyState</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_1">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">starting</span> <span class="p">,</span>
-    <span class="n">startTransition</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">starting</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">startTransition</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_2">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">running</span> <span class="p">,</span>
-    <span class="n">runningState</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">running</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">runningState</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_3">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">ending</span> <span class="p">,</span>
-    <span class="n">endTransition</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">ending</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">endTransition</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_4">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_4" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">complete</span> <span class="p">,</span>
-    <span class="n">completeState</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">complete</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">completeState</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_5">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_5" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">stopping</span> <span class="p">,</span>
-    <span class="n">stopTransition</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">stopping</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">stopTransition</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_6">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_6" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">skipping</span> <span class="p">,</span>
-    <span class="n">skipTransition</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">skipping</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">skipTransition</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="protected-functions-documentation">Protected Functions Documentation<a class="headerlink" href="#protected-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-unique">function unique<a class="headerlink" href="#function-unique" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">auto</span> <span class="n">unique</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-rename">function rename<a class="headerlink" href="#function-rename" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">auto</span> <span class="n">rename</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span>
-<span class="p">)</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">rename</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-readstoryboardelement">function readStoryboardElement<a class="headerlink" href="#function-readstoryboardelement" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">U</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Node</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Scope</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="kr">inline</span> <span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="n">readStoryboardElement</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span>
-    <span class="n">Scope</span> <span class="o">&amp;</span> <span class="n">inner_scope</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">U</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Node</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Scope</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">readStoryboardElement</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">inner_scope</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">#</a></h2>
 <h3 id="variable-maximum_execution_count">variable maximum_execution_count<a class="headerlink" href="#variable-maximum_execution_count" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">maximum_execution_count</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">maximum_execution_count</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-current_state">variable current_state<a class="headerlink" href="#variable-current_state" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Element</span> <span class="n">current_state</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">Element</span><span class="w"> </span><span class="n">current_state</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-current_execution_count">variable current_execution_count<a class="headerlink" href="#variable-current_execution_count" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">current_execution_count</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">current_execution_count</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="protected-attributes-documentation">Protected Attributes Documentation<a class="headerlink" href="#protected-attributes-documentation" title="Permanent link">#</a></h2>
 <h3 id="variable-names">variable names<a class="headerlink" href="#variable-names" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&gt;</span> <span class="n">names</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:37 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:58 UTC</p>
                 
                   
                 

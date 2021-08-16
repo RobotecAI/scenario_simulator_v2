@@ -755,45 +755,45 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;simulation_interface/constants.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;simulation_interface/constants.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">simulation_interface</span>
-<span class="p">{</span>
-<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="nf">getEndPoint</span><span class="p">(</span>
-  <span class="k">const</span> <span class="n">TransportProtocol</span> <span class="o">&amp;</span> <span class="n">protocol</span><span class="p">,</span> <span class="k">const</span> <span class="n">HostName</span> <span class="o">&amp;</span> <span class="n">hostname</span><span class="p">,</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;://&quot;</span> <span class="o">+</span>
-         <span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">simulation_interface</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">getEndPoint</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">HostName</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hostname</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;://&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">         </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">enumToString</span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">port</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="nf">enumToString</span><span class="p">(</span><span class="k">const</span> <span class="n">TransportProtocol</span> <span class="o">&amp;</span> <span class="n">protocol</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">switch</span> <span class="p">(</span><span class="n">protocol</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">TransportProtocol</span><span class="o">::</span><span class="nl">TCP</span><span class="p">:</span>
-      <span class="k">return</span> <span class="s">&quot;tcp&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">TransportProtocol</span><span class="o">::</span><span class="nl">UDP</span><span class="p">:</span>
-      <span class="k">return</span> <span class="s">&quot;udp&quot;</span><span class="p">;</span>
-    <span class="k">default</span><span class="o">:</span>
-      <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">enumToString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">protocol</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="o">::</span><span class="nl">TCP</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;tcp&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="o">::</span><span class="nl">UDP</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;udp&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="nf">enumToString</span><span class="p">(</span><span class="k">const</span> <span class="n">HostName</span> <span class="o">&amp;</span> <span class="n">hostname</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">switch</span> <span class="p">(</span><span class="n">hostname</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">HostName</span><span class="o">::</span><span class="nl">LOCLHOST</span><span class="p">:</span>
-      <span class="k">return</span> <span class="s">&quot;localhost&quot;</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">HostName</span><span class="o">::</span><span class="nl">ANY</span><span class="p">:</span>
-      <span class="k">return</span> <span class="s">&quot;*&quot;</span><span class="p">;</span>
-    <span class="k">default</span><span class="o">:</span>
-      <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace simulation_interface</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">enumToString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HostName</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hostname</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">HostName</span><span class="o">::</span><span class="nl">LOCLHOST</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">HostName</span><span class="o">::</span><span class="nl">ANY</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace simulation_interface</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:36 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:57 UTC</p>
                 
                   
                 

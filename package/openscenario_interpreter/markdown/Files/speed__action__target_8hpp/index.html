@@ -810,9 +810,9 @@
 <h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
 <h3 id="define-element">define ELEMENT<a class="headerlink" href="#define-element" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define ELEMENT(</span>
-    <span class="n">TYPE</span>
-<span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span>     \
-    <span class="cp">#TYPE, [&amp;](auto &amp;&amp; node) { return make&lt;TYPE&gt;(node, std::forward&lt;decltype(xs)&gt;(xs)...); })</span>
+<span class="w">    </span><span class="n">TYPE</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="w">     </span>\
+<span class="w">    </span><span class="cp">#TYPE, [&amp;](auto &amp;&amp; node) { return make&lt;TYPE&gt;(node, std::forward&lt;decltype(xs)&gt;(xs)...); })</span>
 </code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
@@ -832,14 +832,14 @@
 <span class="cp">#ifndef OPENSCENARIO_INTERPRETER__SYNTAX__SPEED_ACTION_TARGET_HPP_</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__SPEED_ACTION_TARGET_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/absolute_target_speed.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/relative_target_speed.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/absolute_target_speed.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/relative_target_speed.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">syntax</span>
-<span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">syntax</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="cm">/* ---- SpeedActionTarget ------------------------------------------------------</span>
 <span class="cm"> *</span>
 <span class="cm"> *  &lt;xsd:complexType name=&quot;SpeedActionTarget&quot;&gt;</span>
@@ -849,50 +849,50 @@
 <span class="cm"> *    &lt;/xsd:choice&gt;</span>
 <span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
-<span class="cm"> * -------------------------------------------------------------------------- */</span>
+<span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
 <span class="cp">#define ELEMENT(TYPE) \</span>
 <span class="cp">  std::make_pair(     \</span>
 <span class="cp">    #TYPE, [&amp;](auto &amp;&amp; node) { return make&lt;TYPE&gt;(node, std::forward&lt;decltype(xs)&gt;(xs)...); })</span>
 
-<span class="k">struct</span> <span class="nc">SpeedActionTarget</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Element</span>
-<span class="p">{</span>
-  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-  <span class="k">explicit</span> <span class="n">SpeedActionTarget</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">Element</span><span class="p">(</span><span class="n">choice</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ELEMENT</span><span class="p">(</span><span class="n">RelativeTargetSpeed</span><span class="p">),</span> <span class="n">ELEMENT</span><span class="p">(</span><span class="n">AbsoluteTargetSpeed</span><span class="p">)))</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
+<span class="k">struct</span> <span class="nc">SpeedActionTarget</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Element</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">SpeedActionTarget</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Element</span><span class="p">(</span><span class="n">choice</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">ELEMENT</span><span class="p">(</span><span class="n">RelativeTargetSpeed</span><span class="p">),</span><span class="w"> </span><span class="n">ELEMENT</span><span class="p">(</span><span class="n">AbsoluteTargetSpeed</span><span class="p">)))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">()</span> <span class="k">const</span>
-  <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">();</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="n">as</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">();</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">throw</span> <span class="n">UNSUPPORTED_SETTING_DETECTED</span><span class="p">(</span><span class="n">SpeedActionTarget</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="n">UNSUPPORTED_SETTING_DETECTED</span><span class="p">(</span><span class="n">SpeedActionTarget</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">(</span><span class="k">const</span> <span class="n">Scope</span><span class="o">::</span><span class="n">Actor</span> <span class="o">&amp;</span> <span class="n">actor</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">getIsEnd</span><span class="p">()</span> <span class="k">const</span>
-  <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getIsEnd</span><span class="p">();</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="n">as</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getIsEnd</span><span class="p">();</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">throw</span> <span class="n">UNSUPPORTED_SETTING_DETECTED</span><span class="p">(</span><span class="n">SpeedActionTarget</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="o">::</span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getIsEnd</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getIsEnd</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">RelativeTargetSpeed</span><span class="o">&gt;</span><span class="p">().</span><span class="n">getIsEnd</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="n">UNSUPPORTED_SETTING_DETECTED</span><span class="p">(</span><span class="n">SpeedActionTarget</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
 <span class="cp">#undef ELEMENT</span>
-<span class="p">}</span>  <span class="c1">// namespace syntax</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__SPEED_ACTION_TARGET_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

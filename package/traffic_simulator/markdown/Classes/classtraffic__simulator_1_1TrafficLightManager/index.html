@@ -845,54 +845,54 @@
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-update">function update<a class="headerlink" href="#function-update" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">update</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">current_time</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getids">function getIds<a class="headerlink" href="#function-getids" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="o">&gt;</span> <span class="n">getIds</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">getIds</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-trafficlightmanager">function TrafficLightManager<a class="headerlink" href="#function-trafficlightmanager" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">explicit</span> <span class="n">TrafficLightManager</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">hdmap_utils</span><span class="o">::</span><span class="n">HdMapUtils</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">hdmap_utils_ptr</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span> <span class="n">visualization_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MarkerArray</span> <span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="o">&amp;</span> <span class="n">publisher</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TrafficLightStateArray</span> <span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="o">&amp;</span> <span class="n">traffic_light_state_array_publisher</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Clock</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">clock_ptr</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">map_frame</span> <span class="o">=</span><span class="s">&quot;map&quot;</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">explicit</span><span class="w"> </span><span class="n">TrafficLightManager</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">hdmap_utils</span><span class="o">::</span><span class="n">HdMapUtils</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hdmap_utils_ptr</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="w"> </span><span class="n">visualization_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MarkerArray</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">publisher</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TrafficLightStateArray</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">traffic_light_state_array_publisher</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Clock</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">clock_ptr</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map_frame</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_given_traffic_light">function FORWARD_TO_GIVEN_TRAFFIC_LIGHT<a class="headerlink" href="#function-forward_to_given_traffic_light" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">getArrow</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getArrow</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_given_traffic_light_1">function FORWARD_TO_GIVEN_TRAFFIC_LIGHT<a class="headerlink" href="#function-forward_to_given_traffic_light_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">getColor</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">getColor</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_given_traffic_light_2">function FORWARD_TO_GIVEN_TRAFFIC_LIGHT<a class="headerlink" href="#function-forward_to_given_traffic_light_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">setArrow</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">setArrow</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_given_traffic_light_3">function FORWARD_TO_GIVEN_TRAFFIC_LIGHT<a class="headerlink" href="#function-forward_to_given_traffic_light_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">setArrowPhase</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">setArrowPhase</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_given_traffic_light_4">function FORWARD_TO_GIVEN_TRAFFIC_LIGHT<a class="headerlink" href="#function-forward_to_given_traffic_light_4" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">setColor</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">setColor</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_given_traffic_light_5">function FORWARD_TO_GIVEN_TRAFFIC_LIGHT<a class="headerlink" href="#function-forward_to_given_traffic_light_5" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span>
-    <span class="n">setColorPhase</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_GIVEN_TRAFFIC_LIGHT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">setColorPhase</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

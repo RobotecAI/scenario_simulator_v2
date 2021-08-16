@@ -794,9 +794,9 @@
 <h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
 <h3 id="define-boilerplate">define BOILERPLATE<a class="headerlink" href="#define-boilerplate" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define BOILERPLATE(</span>
-    <span class="n">CODE</span><span class="p">,</span>
-    <span class="n">NAME</span>
-<span class="p">)</span> <span class="k">auto</span> <span class="n">NAME</span> <span class="o">=</span> <span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">escape_sequence</span><span class="p">(</span><span class="n">os</span><span class="p">,</span> <span class="n">CODE</span><span class="p">);</span> <span class="p">}</span>
+<span class="w">    </span><span class="n">CODE</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">NAME</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">escape_sequence</span><span class="p">(</span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="n">CODE</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
@@ -816,64 +816,64 @@
 <span class="cp">#ifndef OPENSCENARIO_INTERPRETER__CONSOLE__ESCAPE_SEQUENCE_HPP_</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER__CONSOLE__ESCAPE_SEQUENCE_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/console/is_console.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/console/is_console.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">console</span>
-<span class="p">{</span>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">auto</span> <span class="o">&amp;</span> <span class="n">escape_sequence</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">Ts</span><span class="p">...</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">code</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">is_console</span><span class="p">(</span><span class="n">os</span><span class="p">)</span> <span class="o">?</span> <span class="p">(</span><span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\x1b</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">code</span><span class="p">)</span> <span class="o">:</span> <span class="n">os</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">console</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">escape_sequence</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">basic_ostream</span><span class="o">&lt;</span><span class="n">Ts</span><span class="p">...</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">is_console</span><span class="p">(</span><span class="n">os</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">os</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="cp">#define BOILERPLATE(CODE, NAME) \</span>
 <span class="cp">  auto NAME = [](std::ostream &amp; os) -&gt; decltype(auto) { return escape_sequence(os, CODE); }</span>
 
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[0m&quot;</span><span class="p">,</span> <span class="n">reset</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[1m&quot;</span><span class="p">,</span> <span class="n">bold</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[2m&quot;</span><span class="p">,</span> <span class="n">faint</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[3m&quot;</span><span class="p">,</span> <span class="n">italic</span><span class="p">);</span>  <span class="c1">// Not widely supported. Sometimes treated as inverse.</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[4m&quot;</span><span class="p">,</span> <span class="n">underline</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[5m&quot;</span><span class="p">,</span> <span class="n">slow_blink</span><span class="p">);</span>   <span class="c1">// Less than 150 per minute.</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[6m&quot;</span><span class="p">,</span> <span class="n">rapid_blink</span><span class="p">);</span>  <span class="c1">// More than 150 per minute. Not widely supported.</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[7m&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[8m&quot;</span><span class="p">,</span> <span class="n">conceal</span><span class="p">);</span>  <span class="c1">// Not widely supported.</span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reset</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[1m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bold</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[2m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">faint</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[3m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">italic</span><span class="p">);</span><span class="w">  </span><span class="c1">// Not widely supported. Sometimes treated as inverse.</span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[4m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">underline</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[5m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">slow_blink</span><span class="p">);</span><span class="w">   </span><span class="c1">// Less than 150 per minute.</span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[6m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rapid_blink</span><span class="p">);</span><span class="w">  </span><span class="c1">// More than 150 per minute. Not widely supported.</span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[7m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reverse</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[8m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conceal</span><span class="p">);</span><span class="w">  </span><span class="c1">// Not widely supported.</span>
 
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">foreground</span>
-<span class="p">{</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[30m&quot;</span><span class="p">,</span> <span class="n">black</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[31m&quot;</span><span class="p">,</span> <span class="n">red</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[32m&quot;</span><span class="p">,</span> <span class="n">green</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[33m&quot;</span><span class="p">,</span> <span class="n">yellow</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[34m&quot;</span><span class="p">,</span> <span class="n">blue</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[35m&quot;</span><span class="p">,</span> <span class="n">magenta</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[36m&quot;</span><span class="p">,</span> <span class="n">cyan</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[37m&quot;</span><span class="p">,</span> <span class="n">white</span><span class="p">);</span>
-<span class="p">}</span>  <span class="c1">// namespace foreground</span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">foreground</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[30m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">black</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[31m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">red</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[32m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">green</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[33m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yellow</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[34m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">blue</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[35m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">magenta</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[36m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cyan</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[37m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">white</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace foreground</span>
 
-<span class="k">namespace</span> <span class="nn">background</span>
-<span class="p">{</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[40m&quot;</span><span class="p">,</span> <span class="n">black</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[41m&quot;</span><span class="p">,</span> <span class="n">red</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[42m&quot;</span><span class="p">,</span> <span class="n">green</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[43m&quot;</span><span class="p">,</span> <span class="n">yellow</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[44m&quot;</span><span class="p">,</span> <span class="n">blue</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[45m&quot;</span><span class="p">,</span> <span class="n">magenta</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[46m&quot;</span><span class="p">,</span> <span class="n">cyan</span><span class="p">);</span>
-<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[47m&quot;</span><span class="p">,</span> <span class="n">white</span><span class="p">);</span>
-<span class="p">}</span>  <span class="c1">// namespace background</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">background</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[40m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">black</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[41m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">red</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[42m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">green</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[43m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yellow</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[44m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">blue</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[45m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">magenta</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[46m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cyan</span><span class="p">);</span><span class="w"></span>
+<span class="n">BOILERPLATE</span><span class="p">(</span><span class="s">&quot;[47m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">white</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace background</span>
 
 <span class="cp">#undef BOILERPLATE</span>
-<span class="p">}</span>  <span class="c1">// namespace console</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace console</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__CONSOLE__ESCAPE_SEQUENCE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

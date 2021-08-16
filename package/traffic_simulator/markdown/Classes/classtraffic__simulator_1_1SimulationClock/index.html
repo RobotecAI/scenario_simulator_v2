@@ -866,38 +866,38 @@
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-update">function update<a class="headerlink" href="#function-update" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">update</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">update</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-initialize">function initialize<a class="headerlink" href="#function-initialize" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">initialize</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">initial_simulation_time</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">step_time</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">initialize</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">initial_simulation_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">step_time</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getsteptime">function getStepTime<a class="headerlink" href="#function-getsteptime" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="kt">double</span> <span class="n">getStepTime</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getStepTime</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getcurrentsimulationtime">function getCurrentSimulationTime<a class="headerlink" href="#function-getcurrentsimulationtime" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="kt">double</span> <span class="n">getCurrentSimulationTime</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getCurrentSimulationTime</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getcurrentrostimeasmsg">function getCurrentRosTimeAsMsg<a class="headerlink" href="#function-getcurrentrostimeasmsg" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">rosgraph_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Clock</span> <span class="n">getCurrentRosTimeAsMsg</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">rosgraph_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Clock</span><span class="w"> </span><span class="n">getCurrentRosTimeAsMsg</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getcurrentrostime">function getCurrentRosTime<a class="headerlink" href="#function-getcurrentrostime" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span> <span class="n">getCurrentRosTime</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">getCurrentRosTime</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-simulationclock">function SimulationClock<a class="headerlink" href="#function-simulationclock" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">SimulationClock</span><span class="p">(</span>
-    <span class="n">rcl_clock_type_t</span> <span class="n">clock_type</span> <span class="o">=</span><span class="n">RCL_ROS_TIME</span><span class="p">,</span>
-    <span class="kt">bool</span> <span class="n">use_raw_clock</span> <span class="o">=</span><span class="nb">true</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">SimulationClock</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">rcl_clock_type_t</span><span class="w"> </span><span class="n">clock_type</span><span class="w"> </span><span class="o">=</span><span class="n">RCL_ROS_TIME</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">use_raw_clock</span><span class="w"> </span><span class="o">=</span><span class="nb">true</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">#</a></h2>
 <h3 id="variable-use_raw_clock">variable use_raw_clock<a class="headerlink" href="#variable-use_raw_clock" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">bool</span> <span class="n">use_raw_clock</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">use_raw_clock</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

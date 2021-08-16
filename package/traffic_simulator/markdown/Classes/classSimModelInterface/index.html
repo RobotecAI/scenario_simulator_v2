@@ -998,14 +998,14 @@
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-simmodelinterface">function ~SimModelInterface<a class="headerlink" href="#function-simmodelinterface" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">SimModelInterface</span><span class="p">()</span> <span class="o">=</span><span class="k">default</span>
+<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">SimModelInterface</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="k">default</span><span class="w"></span>
 </code></pre></div>
 <p>destructor </p>
 <h3 id="function-updaterungekutta">function updateRungeKutta<a class="headerlink" href="#function-updaterungekutta" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">updateRungeKutta</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">updateRungeKutta</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>update vehicle states with Runge-Kutta methods </p>
 <p><strong>Parameters</strong>: </p>
@@ -1014,10 +1014,10 @@
 <li><strong>input</strong> vehicle input </li>
 </ul>
 <h3 id="function-updateeuler">function updateEuler<a class="headerlink" href="#function-updateeuler" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">updateEuler</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">updateEuler</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>update vehicle states with Euler methods </p>
 <p><strong>Parameters</strong>: </p>
@@ -1026,9 +1026,9 @@
 <li><strong>input</strong> vehicle input </li>
 </ul>
 <h3 id="function-update">function update<a class="headerlink" href="#function-update" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">update</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="o">&amp;</span> <span class="n">dt</span>
-<span class="p">)</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>update vehicle states </p>
 <p><strong>Parameters</strong>: </p>
@@ -1037,9 +1037,9 @@
 </ul>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-update">SimModelIdealTwist::update</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-update">SimModelTimeDelayTwist::update</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-update">SimModelIdealSteer::update</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-update">SimModelTimeDelaySteer::update</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-update">SimModelIdealAccel::update</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-update">SimModelTimeDelaySteerAccel::update</a></p>
 <h3 id="function-setstate">function setState<a class="headerlink" href="#function-setstate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">setState</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">state</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setState</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">state</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>set state vector of model </p>
 <p><strong>Parameters</strong>: </p>
@@ -1047,9 +1047,9 @@
 <li><strong>state</strong> state vector </li>
 </ul>
 <h3 id="function-setinput">function setInput<a class="headerlink" href="#function-setinput" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">setInput</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setInput</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>set input vector of model </p>
 <p><strong>Parameters</strong>: </p>
@@ -1057,39 +1057,39 @@
 <li><strong>input</strong> input vector </li>
 </ul>
 <h3 id="function-getyaw">function getYaw<a class="headerlink" href="#function-getyaw" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">double</span> <span class="n">getYaw</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getYaw</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>get vehicle angle yaw </p>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-getyaw">SimModelIdealTwist::getYaw</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-getyaw">SimModelTimeDelayTwist::getYaw</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-getyaw">SimModelIdealSteer::getYaw</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-getyaw">SimModelTimeDelaySteer::getYaw</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-getyaw">SimModelIdealAccel::getYaw</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-getyaw">SimModelTimeDelaySteerAccel::getYaw</a></p>
 <h3 id="function-gety">function getY<a class="headerlink" href="#function-gety" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">double</span> <span class="n">getY</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getY</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>get vehicle position y </p>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-gety">SimModelIdealTwist::getY</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-gety">SimModelTimeDelayTwist::getY</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-gety">SimModelIdealSteer::getY</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-gety">SimModelTimeDelaySteer::getY</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-gety">SimModelIdealAccel::getY</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-gety">SimModelTimeDelaySteerAccel::getY</a></p>
 <h3 id="function-getx">function getX<a class="headerlink" href="#function-getx" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">double</span> <span class="n">getX</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getX</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>get vehicle position x </p>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-getx">SimModelIdealTwist::getX</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-getx">SimModelTimeDelayTwist::getX</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-getx">SimModelIdealSteer::getX</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-getx">SimModelTimeDelaySteer::getX</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-getx">SimModelIdealAccel::getX</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-getx">SimModelTimeDelaySteerAccel::getX</a></p>
 <h3 id="function-getwz">function getWz<a class="headerlink" href="#function-getwz" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">double</span> <span class="n">getWz</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getWz</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>get vehicle angular-velocity wz </p>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-getwz">SimModelIdealTwist::getWz</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-getwz">SimModelTimeDelayTwist::getWz</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-getwz">SimModelIdealSteer::getWz</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-getwz">SimModelTimeDelaySteer::getWz</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-getwz">SimModelIdealAccel::getWz</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-getwz">SimModelTimeDelaySteerAccel::getWz</a></p>
 <h3 id="function-getvx">function getVx<a class="headerlink" href="#function-getvx" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">double</span> <span class="n">getVx</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getVx</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>get vehicle velocity vx </p>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-getvx">SimModelIdealTwist::getVx</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-getvx">SimModelTimeDelayTwist::getVx</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-getvx">SimModelIdealSteer::getVx</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-getvx">SimModelTimeDelaySteer::getVx</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-getvx">SimModelIdealAccel::getVx</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-getvx">SimModelTimeDelaySteerAccel::getVx</a></p>
 <h3 id="function-getsteer">function getSteer<a class="headerlink" href="#function-getsteer" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">double</span> <span class="n">getSteer</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">getSteer</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>get vehicle steering angle </p>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-getsteer">SimModelIdealTwist::getSteer</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-getsteer">SimModelTimeDelayTwist::getSteer</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-getsteer">SimModelIdealSteer::getSteer</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-getsteer">SimModelTimeDelaySteer::getSteer</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-getsteer">SimModelIdealAccel::getSteer</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-getsteer">SimModelTimeDelaySteerAccel::getSteer</a></p>
 <h3 id="function-getstate">function getState<a class="headerlink" href="#function-getstate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">getState</span><span class="p">(</span>
-    <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">state</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">getState</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">state</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>get state vector of model </p>
 <p><strong>Parameters</strong>: </p>
@@ -1097,9 +1097,9 @@
 <li><strong>state</strong> state vector </li>
 </ul>
 <h3 id="function-getinput">function getInput<a class="headerlink" href="#function-getinput" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">getInput</span><span class="p">(</span>
-    <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">getInput</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>get input vector of model </p>
 <p><strong>Parameters</strong>: </p>
@@ -1107,10 +1107,10 @@
 <li><strong>input</strong> input vector </li>
 </ul>
 <h3 id="function-calcmodel">function calcModel<a class="headerlink" href="#function-calcmodel" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="n">calcModel</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">state</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="o">&amp;</span> <span class="n">input</span>
-<span class="p">)</span> <span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">calcModel</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">input</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
 </code></pre></div>
 <p>calculate derivative of states with vehicle model </p>
 <p><strong>Parameters</strong>: </p>
@@ -1120,10 +1120,10 @@
 </ul>
 <p><strong>Reimplemented by</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealTwist#function-calcmodel">SimModelIdealTwist::calcModel</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelayTwist#function-calcmodel">SimModelTimeDelayTwist::calcModel</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealSteer#function-calcmodel">SimModelIdealSteer::calcModel</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteer#function-calcmodel">SimModelTimeDelaySteer::calcModel</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelIdealAccel#function-calcmodel">SimModelIdealAccel::calcModel</a>, <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classSimModelTimeDelaySteerAccel#function-calcmodel">SimModelTimeDelaySteerAccel::calcModel</a></p>
 <h3 id="function-simmodelinterface_1">function SimModelInterface<a class="headerlink" href="#function-simmodelinterface_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">SimModelInterface</span><span class="p">(</span>
-    <span class="kt">int</span> <span class="n">dim_x</span><span class="p">,</span>
-    <span class="kt">int</span> <span class="n">dim_u</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">SimModelInterface</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dim_x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dim_u</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>constructor </p>
 <p><strong>Parameters</strong>: </p>
@@ -1133,23 +1133,23 @@
 </ul>
 <h2 id="protected-attributes-documentation">Protected Attributes Documentation<a class="headerlink" href="#protected-attributes-documentation" title="Permanent link">#</a></h2>
 <h3 id="variable-state_">variable state_<a class="headerlink" href="#variable-state_" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="n">state_</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">state_</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>vehicle state vector </p>
 <h3 id="variable-input_">variable input_<a class="headerlink" href="#variable-input_" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span> <span class="n">input_</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">VectorXd</span><span class="w"> </span><span class="n">input_</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>vehicle input vector </p>
 <h3 id="variable-dim_x_">variable dim_x_<a class="headerlink" href="#variable-dim_x_" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">dim_x_</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dim_x_</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>dimension of state x </p>
 <h3 id="variable-dim_u_">variable dim_u_<a class="headerlink" href="#variable-dim_u_" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="kt">int</span> <span class="n">dim_u_</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dim_u_</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>dimension of input u </p>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

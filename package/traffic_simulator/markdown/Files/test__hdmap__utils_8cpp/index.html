@@ -775,16 +775,16 @@
 </table>
 <h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-main">function main<a class="headerlink" href="#function-main" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">main</span><span class="p">(</span>
-    <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span>
-    <span class="kt">char</span> <span class="o">**</span> <span class="n">argv</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test">function TEST<a class="headerlink" href="#function-test" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span>
-    <span class="n">HdMapUtils</span> <span class="p">,</span>
-    <span class="n">HdMapUtils1</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">HdMapUtils</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">HdMapUtils1</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
@@ -801,31 +801,31 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;ament_index_cpp/get_package_share_directory.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/hdmap_utils/hdmap_utils.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ament_index_cpp/get_package_share_directory.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/hdmap_utils/hdmap_utils.hpp&gt;</span><span class="cp"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">HdMapUtils</span><span class="p">,</span> <span class="n">HdMapUtils1</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">path</span> <span class="o">=</span>
-    <span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;traffic_simulator&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/map/lanelet2_map.osm&quot;</span><span class="p">;</span>
-  <span class="n">geographic_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">GeoPoint</span> <span class="n">origin</span><span class="p">;</span>
-  <span class="n">origin</span><span class="p">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="mf">35.61836750154</span><span class="p">;</span>
-  <span class="n">origin</span><span class="p">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="mf">139.78066608243</span><span class="p">;</span>
-  <span class="n">hdmap_utils</span><span class="o">::</span><span class="n">HdMapUtils</span> <span class="nf">hdmap_utils</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">origin</span><span class="p">);</span>
-  <span class="n">ASSERT_NO_THROW</span><span class="p">(</span><span class="n">hdmap_utils</span><span class="p">.</span><span class="n">toMapBin</span><span class="p">());</span>
-<span class="p">}</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">HdMapUtils</span><span class="p">,</span><span class="w"> </span><span class="n">HdMapUtils1</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">ament_index_cpp</span><span class="o">::</span><span class="n">get_package_share_directory</span><span class="p">(</span><span class="s">&quot;traffic_simulator&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/map/lanelet2_map.osm&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">geographic_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">GeoPoint</span><span class="w"> </span><span class="n">origin</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">origin</span><span class="p">.</span><span class="n">latitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">35.61836750154</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">origin</span><span class="p">.</span><span class="n">longitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">139.78066608243</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">hdmap_utils</span><span class="o">::</span><span class="n">HdMapUtils</span><span class="w"> </span><span class="nf">hdmap_utils</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ASSERT_NO_THROW</span><span class="p">(</span><span class="n">hdmap_utils</span><span class="p">.</span><span class="n">toMapBin</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">testing</span><span class="o">::</span><span class="n">InitGoogleTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">RUN_ALL_TESTS</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">testing</span><span class="o">::</span><span class="n">InitGoogleTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">RUN_ALL_TESTS</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

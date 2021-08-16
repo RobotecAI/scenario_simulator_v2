@@ -758,56 +758,56 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/entity/misc_object_entity.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/entity/misc_object_entity.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">traffic_simulator</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">entity</span>
-<span class="p">{</span>
-<span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">MiscObjectEntity</span><span class="p">(</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="o">&amp;</span> <span class="n">initial_state</span><span class="p">,</span>
-  <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MiscObjectParameters</span> <span class="o">&amp;</span> <span class="n">params</span><span class="p">)</span>
-<span class="o">:</span> <span class="n">EntityBase</span><span class="p">(</span><span class="n">params</span><span class="p">.</span><span class="n">misc_object_category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">),</span> <span class="n">params_</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">entity_type_</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityType</span><span class="o">::</span><span class="n">MISC_OBJECT</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">traffic_simulator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">entity</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">MiscObjectEntity</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">initial_state</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MiscObjectParameters</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+<span class="o">:</span><span class="w"> </span><span class="n">EntityBase</span><span class="p">(</span><span class="n">params</span><span class="p">.</span><span class="n">misc_object_category</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">initial_state</span><span class="p">),</span><span class="w"> </span><span class="n">params_</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">entity_type_</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityType</span><span class="o">::</span><span class="n">MISC_OBJECT</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">MiscObjectEntity</span><span class="p">(</span>
-  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MiscObjectParameters</span> <span class="o">&amp;</span> <span class="n">params</span><span class="p">)</span>
-<span class="o">:</span> <span class="n">EntityBase</span><span class="p">(</span><span class="n">params</span><span class="p">.</span><span class="n">misc_object_category</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">params_</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">entity_type_</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityType</span><span class="o">::</span><span class="n">MISC_OBJECT</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">MiscObjectEntity</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MiscObjectParameters</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+<span class="o">:</span><span class="w"> </span><span class="n">EntityBase</span><span class="p">(</span><span class="n">params</span><span class="p">.</span><span class="n">misc_object_category</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">params_</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">entity_type_</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityType</span><span class="o">::</span><span class="n">MISC_OBJECT</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">onUpdate</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">status_</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">accel</span> <span class="o">=</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Accel</span><span class="p">();</span>
-    <span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">twist</span> <span class="o">=</span> <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="p">();</span>
-    <span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">current_action</span> <span class="o">=</span> <span class="s">&quot;static&quot;</span><span class="p">;</span>
-    <span class="n">status_before_update_</span> <span class="o">=</span> <span class="n">status_</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="n">status_before_update_</span> <span class="o">=</span> <span class="n">status_</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">onUpdate</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">accel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Accel</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">twist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Twist</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">current_action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;static&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">status_before_update_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">status_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">status_before_update_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">status_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">auto</span> <span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">getBoundingBox</span><span class="p">()</span> <span class="k">const</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">BoundingBox</span>
-<span class="p">{</span>
-  <span class="k">return</span> <span class="n">params_</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">getBoundingBox</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">BoundingBox</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">params_</span><span class="p">.</span><span class="n">bounding_box</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">auto</span> <span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">getCurrentAction</span><span class="p">()</span> <span class="k">const</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">status_</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">current_action</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace entity</span>
-<span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">MiscObjectEntity</span><span class="o">::</span><span class="n">getCurrentAction</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">status_</span><span class="o">-&gt;</span><span class="n">action_status</span><span class="p">.</span><span class="n">current_action</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

@@ -808,48 +808,48 @@
 </tbody>
 </table>
 <h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ReqType</span> <span class="p">,</span>
-<span class="k">typename</span> <span class="nc">ResType</span> <span class="o">&gt;</span>
-<span class="k">class</span> <span class="nc">zeromq</span><span class="o">::</span><span class="n">Server</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ReqType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">ResType</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">zeromq</span><span class="o">::</span><span class="n">Server</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-server">function Server<a class="headerlink" href="#function-server" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">explicit</span> <span class="n">Server</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span> <span class="o">&amp;</span> <span class="n">protocol</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">simulation_interface</span><span class="o">::</span><span class="n">HostName</span> <span class="o">&amp;</span> <span class="n">hostname</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span> <span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">ReqType</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">ResType</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">func</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">Server</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">HostName</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hostname</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ReqType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ResType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-server_1">function Server<a class="headerlink" href="#function-server_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">explicit</span> <span class="n">Server</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span> <span class="o">&amp;</span> <span class="n">protocol</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">ip_address</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span> <span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">ReqType</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">ResType</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">func</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">Server</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_interface</span><span class="o">::</span><span class="n">TransportProtocol</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ip_address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ReqType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ResType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-server_2">function Server<a class="headerlink" href="#function-server_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">explicit</span> <span class="n">Server</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">ip_address</span><span class="p">,</span>
-    <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span> <span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">ReqType</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">ResType</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">func</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">Server</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ip_address</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ReqType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ResType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-server_3">function Server<a class="headerlink" href="#function-server_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">explicit</span> <span class="n">Server</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">port</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span> <span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">ReqType</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">ResType</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">func</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">Server</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ReqType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ResType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-server_4">function Server<a class="headerlink" href="#function-server_4" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span> <span class="k">explicit</span> <span class="n">Server</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">endpoint</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span> <span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">ReqType</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">ResType</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">func</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">Server</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endpoint</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ReqType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ResType</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:36 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:57 UTC</p>
                 
                   
                 

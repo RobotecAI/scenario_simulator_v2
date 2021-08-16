@@ -779,28 +779,28 @@
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-updatesensorframe">function updateSensorFrame<a class="headerlink" href="#function-updatesensorframe" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">updateSensorFrame</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span> <span class="o">&amp;</span> <span class="n">current_ros_time</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">EntityStatus</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">status</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">updateSensorFrame</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">current_ros_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">EntityStatus</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">status</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-attachlidarsensor">function attachLidarSensor<a class="headerlink" href="#function-attachlidarsensor" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">attachLidarSensor</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span> <span class="o">&amp;</span> <span class="n">configuration</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span> <span class="n">sensor_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PointCloud2</span> <span class="o">&gt;&gt;</span> <span class="n">publisher_ptr</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">attachLidarSensor</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="w"> </span><span class="n">sensor_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PointCloud2</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">publisher_ptr</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-attachdetectionsensor">function attachDetectionSensor<a class="headerlink" href="#function-attachdetectionsensor" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">attachDetectionSensor</span><span class="p">(</span>
-    <span class="k">const</span> <span class="kt">double</span> <span class="n">current_time</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span> <span class="o">&amp;</span> <span class="n">configuration</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span> <span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">DynamicObjectArray</span> <span class="o">&gt;&gt;</span> <span class="n">publisher_ptr</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">attachDetectionSensor</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="w"> </span><span class="n">autoware_perception_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">DynamicObjectArray</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">publisher_ptr</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

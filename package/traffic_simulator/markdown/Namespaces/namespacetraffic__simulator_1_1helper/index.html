@@ -921,15 +921,15 @@
 </table>
 <h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-operator">function operator&lt;&lt;<a class="headerlink" href="#function-operator" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span> <span class="o">&amp;</span> <span class="n">ll_pose</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ll_pose</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-constructrpyfromquaternion">function constructRPYfromQuaternion<a class="headerlink" href="#function-constructrpyfromquaternion" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span> <span class="n">constructRPYfromQuaternion</span><span class="p">(</span>
-    <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Quaternion</span> <span class="n">quaternion</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="w"> </span><span class="n">constructRPYfromQuaternion</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Quaternion</span><span class="w"> </span><span class="n">quaternion</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>helper function for constructing rpy </p>
 <p><strong>Parameters</strong>: </p>
@@ -938,11 +938,11 @@
 </ul>
 <p><strong>Return</strong>: geometry_msgs::msg::Vector3 RPY value </p>
 <h3 id="function-constructrpy">function constructRPY<a class="headerlink" href="#function-constructrpy" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span> <span class="n">constructRPY</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">roll</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">pitch</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">yaw</span> <span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="w"> </span><span class="n">constructRPY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">roll</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">yaw</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>helper function for constructing rpy </p>
 <p><strong>Parameters</strong>: </p>
@@ -953,14 +953,14 @@
 </ul>
 <p><strong>Return</strong>: geometry_msgs::msg::Vector3 RPY values </p>
 <h3 id="function-constructpose">function constructPose<a class="headerlink" href="#function-constructpose" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span> <span class="n">constructPose</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">x</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">y</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">z</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">roll</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">pitch</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">yaw</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="n">constructPose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">roll</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">yaw</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>helper function for constructing pose </p>
 <p><strong>Parameters</strong>: </p>
@@ -974,22 +974,22 @@
 </ul>
 <p><strong>Return</strong>: geometry_msgs::msg::Pose </p>
 <h3 id="function-constructlidarconfiguration">function constructLidarConfiguration<a class="headerlink" href="#function-constructlidarconfiguration" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span> <span class="n">constructLidarConfiguration</span><span class="p">(</span>
-    <span class="n">LidarType</span> <span class="n">type</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">entity</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">topic_name</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">horizontal_resolution</span> <span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">180.0</span> <span class="o">*</span><span class="n">M_PI</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span><span class="w"> </span><span class="n">constructLidarConfiguration</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">LidarType</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">entity</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">topic_name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">horizontal_resolution</span><span class="w"> </span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">180.0</span><span class="w"> </span><span class="o">*</span><span class="n">M_PI</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-constructlaneletpose">function constructLaneletPose<a class="headerlink" href="#function-constructlaneletpose" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span> <span class="n">constructLaneletPose</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span> <span class="n">lanelet_id</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">s</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">offset</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">roll</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">pitch</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">yaw</span> <span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="n">constructLaneletPose</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">roll</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">pitch</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">yaw</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>helper function for constructing lanelet pose </p>
 <p><strong>Parameters</strong>: </p>
@@ -1003,19 +1003,19 @@
 </ul>
 <p><strong>Return</strong>: openscenario_msgs::msg::LaneletPose </p>
 <h3 id="function-constructdetectionsensorconfiguration">function constructDetectionSensorConfiguration<a class="headerlink" href="#function-constructdetectionsensorconfiguration" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span> <span class="n">constructDetectionSensorConfiguration</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">entity</span><span class="p">,</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">topic_name</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">update_duration</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">DetectionSensorConfiguration</span><span class="w"> </span><span class="n">constructDetectionSensorConfiguration</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">entity</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">topic_name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">update_duration</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-constructactionstatus">function constructActionStatus<a class="headerlink" href="#function-constructactionstatus" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">ActionStatus</span> <span class="n">constructActionStatus</span><span class="p">(</span>
-    <span class="kt">double</span> <span class="n">linear_vel</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">angular_vel</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">linear_accel</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="kt">double</span> <span class="n">angular_accel</span> <span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">ActionStatus</span><span class="w"> </span><span class="n">constructActionStatus</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">linear_vel</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">angular_vel</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">linear_accel</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">angular_accel</span><span class="w"> </span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>helper function for constructing action status </p>
 <p><strong>Parameters</strong>: </p>
@@ -1027,7 +1027,7 @@
 </ul>
 <p><strong>Return</strong>: openscenario_msgs::msg::ActionStatus </p>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:34 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:55 UTC</p>
                 
                   
                 

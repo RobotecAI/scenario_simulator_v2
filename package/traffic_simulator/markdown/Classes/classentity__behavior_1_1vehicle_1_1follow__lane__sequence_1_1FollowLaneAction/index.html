@@ -1013,32 +1013,32 @@
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-tick">function tick<a class="headerlink" href="#function-tick" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span> <span class="n">tick</span><span class="p">()</span> <span class="k">override</span>
+<div class="highlight"><pre><span></span><code><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="w"> </span><span class="n">tick</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-providedports">function providedPorts<a class="headerlink" href="#function-providedports" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kr">inline</span> <span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span> <span class="n">providedPorts</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">PortsList</span><span class="w"> </span><span class="n">providedPorts</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getblackboardvalues">function getBlackBoardValues<a class="headerlink" href="#function-getblackboardvalues" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">getBlackBoardValues</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">getBlackBoardValues</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-calculatewaypoints">function calculateWaypoints<a class="headerlink" href="#function-calculatewaypoints" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span> <span class="n">calculateWaypoints</span><span class="p">()</span> <span class="k">override</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span><span class="w"> </span><span class="n">calculateWaypoints</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1VehicleActionNode#function-calculatewaypoints">entity_behavior::VehicleActionNode::calculateWaypoints</a></p>
 <h3 id="function-calculateobstacle">function calculateObstacle<a class="headerlink" href="#function-calculateobstacle" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Obstacle</span> <span class="o">&gt;</span> <span class="n">calculateObstacle</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span> <span class="o">&amp;</span> <span class="n">waypoints</span>
-<span class="p">)</span> <span class="k">override</span>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Obstacle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">calculateObstacle</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">waypoints</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classentity__behavior_1_1VehicleActionNode#function-calculateobstacle">entity_behavior::VehicleActionNode::calculateObstacle</a></p>
 <h3 id="function-followlaneaction">function FollowLaneAction<a class="headerlink" href="#function-followlaneaction" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">FollowLaneAction</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span> <span class="o">&amp;</span> <span class="n">config</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">FollowLaneAction</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeConfiguration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">config</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

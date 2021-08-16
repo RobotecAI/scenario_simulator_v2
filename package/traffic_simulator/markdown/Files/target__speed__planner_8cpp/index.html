@@ -758,34 +758,34 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;traffic_simulator/behavior/target_speed_planner.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/target_speed_planner.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">traffic_simulator</span>
-<span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">behavior</span>
-<span class="p">{</span>
-<span class="kt">void</span> <span class="nf">TargetSpeedPlanner::setTargetSpeed</span><span class="p">(</span><span class="kt">double</span> <span class="n">target_speed</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">continuous</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">continuous_</span> <span class="o">=</span> <span class="n">continuous</span><span class="p">;</span>
-  <span class="n">target_speed_</span> <span class="o">=</span> <span class="n">target_speed</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">traffic_simulator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">behavior</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TargetSpeedPlanner::setTargetSpeed</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">target_speed</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">continuous</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">continuous_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">continuous</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">target_speed_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target_speed</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="nf">TargetSpeedPlanner::update</span><span class="p">(</span><span class="kt">double</span> <span class="n">current_speed</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">continuous_</span> <span class="o">&amp;&amp;</span> <span class="n">target_speed_</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">current_speed</span> <span class="o">&gt;=</span> <span class="n">target_speed_</span><span class="p">.</span><span class="n">get</span><span class="p">())</span> <span class="p">{</span>
-      <span class="n">target_speed_</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TargetSpeedPlanner::update</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">current_speed</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">continuous_</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">target_speed_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current_speed</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">target_speed_</span><span class="p">.</span><span class="n">get</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">target_speed_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">TargetSpeedPlanner</span><span class="o">::</span><span class="n">getTargetSpeed</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">target_speed_</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// namespace behavior</span>
-<span class="p">}</span>  <span class="c1">// namespace traffic_simulator</span>
+<span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TargetSpeedPlanner</span><span class="o">::</span><span class="n">getTargetSpeed</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target_speed_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace behavior</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:35 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:56 UTC</p>
                 
                   
                 

@@ -783,17 +783,17 @@
 <span class="cp">#ifndef OPENSCENARIO_INTERPRETER__SYNTAX__LANE_CHANGE_ACTION_HPP_</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__LANE_CHANGE_ACTION_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/procedure.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/lane_change_target.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/transition_dynamics.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/procedure.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/lane_change_target.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/transition_dynamics.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">syntax</span>
-<span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">syntax</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="cm">/* ---- LaneChangeAction -------------------------------------------------------</span>
 <span class="cm"> *</span>
 <span class="cm"> *  &lt;xsd:complexType name=&quot;LaneChangeAction&quot;&gt;</span>
@@ -804,67 +804,67 @@
 <span class="cm"> *    &lt;xsd:attribute name=&quot;targetLaneOffset&quot; type=&quot;Double&quot; use=&quot;optional&quot;/&gt;</span>
 <span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
-<span class="cm"> * -------------------------------------------------------------------------- */</span>
-<span class="k">struct</span> <span class="nc">LaneChangeAction</span> <span class="o">:</span> <span class="k">private</span> <span class="n">Scope</span>
-<span class="p">{</span>
-  <span class="k">const</span> <span class="n">Double</span> <span class="n">target_lane_offset</span><span class="p">;</span>
+<span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">LaneChangeAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Scope</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">target_lane_offset</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="n">TransitionDynamics</span> <span class="n">lane_change_action_dynamics</span><span class="p">;</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">TransitionDynamics</span><span class="w"> </span><span class="n">lane_change_action_dynamics</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="n">LaneChangeTarget</span> <span class="n">lane_change_target</span><span class="p">;</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">LaneChangeTarget</span><span class="w"> </span><span class="n">lane_change_target</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="o">&gt;</span>
-  <span class="k">explicit</span> <span class="n">LaneChangeAction</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="n">Scope</span> <span class="o">&amp;</span> <span class="n">outer_scope</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">Scope</span><span class="p">(</span><span class="n">outer_scope</span><span class="p">),</span>
-    <span class="n">target_lane_offset</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;targetLaneOffset&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">localScope</span><span class="p">(),</span> <span class="n">Double</span><span class="p">())),</span>
-    <span class="n">lane_change_action_dynamics</span><span class="p">(</span>
-      <span class="n">readElement</span><span class="o">&lt;</span><span class="n">TransitionDynamics</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LaneChangeActionDynamics&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">localScope</span><span class="p">())),</span>
-    <span class="n">lane_change_target</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">LaneChangeTarget</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LaneChangeTarget&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">localScope</span><span class="p">()))</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">LaneChangeAction</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="n">outer_scope</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">target_lane_offset</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;targetLaneOffset&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">(),</span><span class="w"> </span><span class="n">Double</span><span class="p">())),</span><span class="w"></span>
+<span class="w">    </span><span class="n">lane_change_action_dynamics</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">TransitionDynamics</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LaneChangeActionDynamics&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">())),</span><span class="w"></span>
+<span class="w">    </span><span class="n">lane_change_target</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">LaneChangeTarget</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LaneChangeTarget&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">()))</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Boolean</span><span class="o">&gt;</span> <span class="n">accomplishments</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="n">accomplishments</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span>
-  <span class="p">{</span>
-    <span class="n">accomplishments</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">accomplishments</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">())</span> <span class="p">{</span>
-      <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span> <span class="nl">actor</span> <span class="p">:</span> <span class="n">actors</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">accomplishments</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
-        <span class="n">applyLaneChangeAction</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span> <span class="n">Integer</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">().</span><span class="n">value</span><span class="p">));</span>
-      <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="c1">// NOTE: Specifying an unsupported element is an error in the constructor, so this line cannot be reached.</span>
-      <span class="k">throw</span> <span class="n">UNSUPPORTED_ELEMENT_SPECIFIED</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">actor</span> <span class="p">:</span><span class="w"> </span><span class="n">actors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">accomplishments</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">applyLaneChangeAction</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">().</span><span class="n">value</span><span class="p">));</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// NOTE: Specifying an unsupported element is an error in the constructor, so this line cannot be reached.</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="n">UNSUPPORTED_ELEMENT_SPECIFIED</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">auto</span> <span class="n">accomplished</span><span class="p">()</span>
-  <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">())</span> <span class="p">{</span>
-      <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;&amp;</span> <span class="nl">each</span> <span class="p">:</span> <span class="n">accomplishments</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cdr</span><span class="p">(</span><span class="n">each</span><span class="p">))</span> <span class="p">{</span>
-          <span class="n">cdr</span><span class="p">(</span><span class="n">each</span><span class="p">)</span> <span class="o">=</span>
-            <span class="n">isInLanelet</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">each</span><span class="p">),</span> <span class="n">Integer</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">().</span><span class="n">value</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">);</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-      <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">all_of</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">accomplishments</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">accomplishments</span><span class="p">),</span> <span class="n">cdr</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="c1">// NOTE: Specifying an unsupported element is an error in the constructor, so this line cannot be reached.</span>
-      <span class="k">throw</span> <span class="n">UNSUPPORTED_ELEMENT_SPECIFIED</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">accomplished</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">is</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nl">each</span> <span class="p">:</span><span class="w"> </span><span class="n">accomplishments</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cdr</span><span class="p">(</span><span class="n">each</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">cdr</span><span class="p">(</span><span class="n">each</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">            </span><span class="n">isInLanelet</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">each</span><span class="p">),</span><span class="w"> </span><span class="n">Integer</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">AbsoluteTargetLane</span><span class="o">&gt;</span><span class="p">().</span><span class="n">value</span><span class="p">),</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">all_of</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">accomplishments</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">accomplishments</span><span class="p">),</span><span class="w"> </span><span class="n">cdr</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// NOTE: Specifying an unsupported element is an error in the constructor, so this line cannot be reached.</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="n">UNSUPPORTED_ELEMENT_SPECIFIED</span><span class="p">(</span><span class="n">lane_change_target</span><span class="p">.</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">static</span> <span class="kt">bool</span> <span class="n">endsImmediately</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">};</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace syntax</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__LANE_CHANGE_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

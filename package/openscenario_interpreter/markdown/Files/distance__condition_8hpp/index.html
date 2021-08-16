@@ -783,18 +783,18 @@
 <span class="cp">#ifndef OPENSCENARIO_INTERPRETER__SYNTAX__DISTANCE_CONDITION_HPP_</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__DISTANCE_CONDITION_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/procedure.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/boolean.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/double.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/position.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/rule.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;openscenario_interpreter/syntax/triggering_entities.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cmath&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/procedure.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/boolean.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/double.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/position.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/rule.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/triggering_entities.hpp&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">syntax</span>
-<span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">syntax</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="cm">/* ---- DistanceCondition ------------------------------------------------------</span>
 <span class="cm"> *</span>
 <span class="cm"> *  The current distance between an entity and a reference entity is compared to</span>
@@ -811,102 +811,102 @@
 <span class="cm"> *    &lt;xsd:attribute name=&quot;rule&quot; type=&quot;Rule&quot; use=&quot;required&quot;/&gt;</span>
 <span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
-<span class="cm"> * -------------------------------------------------------------------------- */</span>
-<span class="k">struct</span> <span class="nc">DistanceCondition</span>
-<span class="p">{</span>
-  <span class="cm">/* ---- value ----------------------------------------------------------------</span>
+<span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">DistanceCondition</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* ---- value ----------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  The distance value. Unit: s; Range: [0..inf[.</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="k">const</span> <span class="n">Double</span> <span class="n">value</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 
-  <span class="cm">/* ---- freespace ------------------------------------------------------------</span>
+<span class="w">  </span><span class="cm">/* ---- freespace ------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  True: distance is measured between the closest bounding box points.</span>
 <span class="cm">   *</span>
 <span class="cm">   *  False: reference point distance is used.</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="k">const</span> <span class="n">Boolean</span> <span class="n">freespace</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="n">freespace</span><span class="p">;</span><span class="w"></span>
 
-  <span class="cm">/* ---- alongRoute -----------------------------------------------------------</span>
+<span class="w">  </span><span class="cm">/* ---- alongRoute -----------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  True: routing is taken into account, e.g. turns will increase distance.</span>
 <span class="cm">   *</span>
 <span class="cm">   *  False: straight line distance is used.</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="k">const</span> <span class="n">Boolean</span> <span class="n">along_route</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="n">along_route</span><span class="p">;</span><span class="w"></span>
 
-  <span class="cm">/* ---- rule -----------------------------------------------------------------</span>
+<span class="w">  </span><span class="cm">/* ---- rule -----------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  The operator (less, greater, equal).</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="k">const</span> <span class="n">Rule</span> <span class="n">compare</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Rule</span><span class="w"> </span><span class="n">compare</span><span class="p">;</span><span class="w"></span>
 
-  <span class="cm">/* ---- Position -------------------------------------------------------------</span>
+<span class="w">  </span><span class="cm">/* ---- Position -------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  The given position the distance is related to.</span>
 <span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span>
-  <span class="k">const</span> <span class="n">Position</span> <span class="n">position</span><span class="p">;</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Position</span><span class="w"> </span><span class="n">position</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">const</span> <span class="n">TriggeringEntities</span> <span class="n">triggering_entities</span><span class="p">;</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">TriggeringEntities</span><span class="w"> </span><span class="n">triggering_entities</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">last_checked_values</span><span class="p">;</span>  <span class="c1">// for description</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">last_checked_values</span><span class="p">;</span><span class="w">  </span><span class="c1">// for description</span>
 
-  <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span> <span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span>
-  <span class="k">explicit</span> <span class="n">DistanceCondition</span><span class="p">(</span>
-    <span class="k">const</span> <span class="n">Node</span> <span class="o">&amp;</span> <span class="n">node</span><span class="p">,</span> <span class="n">Scope</span> <span class="o">&amp;</span> <span class="n">outer_scope</span><span class="p">,</span> <span class="k">const</span> <span class="n">TriggeringEntities</span> <span class="o">&amp;</span> <span class="n">triggering_entities</span><span class="p">)</span>
-  <span class="c1">// clang-format off</span>
-  <span class="o">:</span> <span class="n">value</span>      <span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Double</span>  <span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">,</span>      <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">)),</span>
-    <span class="n">freespace</span>  <span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span> <span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;freespace&quot;</span><span class="p">,</span>  <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">)),</span>
-    <span class="n">along_route</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span> <span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;alongRoute&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">)),</span>
-    <span class="n">compare</span>    <span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Rule</span>    <span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;rule&quot;</span><span class="p">,</span>       <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">)),</span>
-    <span class="n">position</span>   <span class="p">(</span><span class="n">readElement</span>  <span class="o">&lt;</span><span class="n">Position</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Position&quot;</span><span class="p">,</span>   <span class="n">node</span><span class="p">,</span> <span class="n">outer_scope</span><span class="p">)),</span>
-    <span class="n">triggering_entities</span><span class="p">(</span><span class="n">triggering_entities</span><span class="p">),</span>
-    <span class="n">last_checked_values</span><span class="p">(</span><span class="n">triggering_entities</span><span class="p">.</span><span class="n">entity_refs</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">Double</span><span class="o">::</span><span class="n">nan</span><span class="p">())</span>
-  <span class="c1">// clang-format on</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">DistanceCondition</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TriggeringEntities</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">triggering_entities</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format off</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="w">      </span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Double</span><span class="w">  </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w">      </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">freespace</span><span class="w">  </span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;freespace&quot;</span><span class="p">,</span><span class="w">  </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">along_route</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;alongRoute&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">compare</span><span class="w">    </span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Rule</span><span class="w">    </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;rule&quot;</span><span class="p">,</span><span class="w">       </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">position</span><span class="w">   </span><span class="p">(</span><span class="n">readElement</span><span class="w">  </span><span class="o">&lt;</span><span class="n">Position</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Position&quot;</span><span class="p">,</span><span class="w">   </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">triggering_entities</span><span class="p">(</span><span class="n">triggering_entities</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">last_checked_values</span><span class="p">(</span><span class="n">triggering_entities</span><span class="p">.</span><span class="n">entity_refs</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">Double</span><span class="o">::</span><span class="n">nan</span><span class="p">())</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format on</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">auto</span> <span class="n">description</span><span class="p">()</span> <span class="k">const</span>
-  <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">description</span><span class="p">;</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">description</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">description</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">description</span> <span class="o">&lt;&lt;</span> <span class="n">triggering_entities</span><span class="p">.</span><span class="n">description</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;&#39;s distance to given position = &quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">triggering_entities</span><span class="p">.</span><span class="n">description</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&#39;s distance to given position = &quot;</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">print_to</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">last_checked_values</span><span class="p">);</span>
+<span class="w">    </span><span class="n">print_to</span><span class="p">(</span><span class="n">description</span><span class="p">,</span><span class="w"> </span><span class="n">last_checked_values</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">description</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">compare</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;?&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">compare</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="p">;</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">description</span><span class="p">.</span><span class="n">str</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">auto</span> <span class="n">evaluate</span><span class="p">()</span>
-  <span class="p">{</span>
-    <span class="k">auto</span> <span class="n">distance</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span> <span class="o">&amp;&amp;</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">const</span> <span class="k">auto</span> <span class="n">pose</span> <span class="o">=</span> <span class="n">getRelativePose</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="p">(</span><span class="n">position</span><span class="p">));</span>
-      <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">hypot</span><span class="p">(</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
-    <span class="p">};</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">evaluate</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getRelativePose</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="p">(</span><span class="n">position</span><span class="p">));</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hypot</span><span class="p">(</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-    <span class="n">last_checked_values</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="w">    </span><span class="n">last_checked_values</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="n">asBoolean</span><span class="p">(</span><span class="n">triggering_entities</span><span class="p">.</span><span class="n">apply</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span> <span class="o">&amp;&amp;</span> <span class="n">triggering_entity</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">last_checked_values</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">distance</span><span class="p">(</span><span class="n">triggering_entity</span><span class="p">));</span>
-      <span class="k">return</span> <span class="n">compare</span><span class="p">(</span><span class="n">last_checked_values</span><span class="p">.</span><span class="n">back</span><span class="p">(),</span> <span class="n">value</span><span class="p">);</span>
-    <span class="p">}));</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace syntax</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">asBoolean</span><span class="p">(</span><span class="n">triggering_entities</span><span class="p">.</span><span class="n">apply</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">triggering_entity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">last_checked_values</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">distance</span><span class="p">(</span><span class="n">triggering_entity</span><span class="p">));</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">compare</span><span class="p">(</span><span class="n">last_checked_values</span><span class="p">.</span><span class="n">back</span><span class="p">(),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__DISTANCE_CONDITION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 

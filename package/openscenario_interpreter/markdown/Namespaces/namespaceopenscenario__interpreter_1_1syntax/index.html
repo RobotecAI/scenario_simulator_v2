@@ -2534,598 +2534,598 @@
 </table>
 <h2 id="types-documentation">Types Documentation<a class="headerlink" href="#types-documentation" title="Permanent link">#</a></h2>
 <h3 id="using-unsignedint">using UnsignedInt<a class="headerlink" href="#using-unsignedint" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">UnsignedInt</span> <span class="o">=</span> <span class="k">typedef</span> <span class="n">UnsignedInteger</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">UnsignedInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">UnsignedInteger</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="using-string">using String<a class="headerlink" href="#using-string" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">String</span> <span class="o">=</span> <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="using-defaultcontroller">using DefaultController<a class="headerlink" href="#using-defaultcontroller" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">DefaultController</span> <span class="o">=</span> <span class="k">typedef</span> <span class="n">Properties</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">syntax</span><span class="o">::</span><span class="n">DefaultController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">Properties</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
 <h3 id="function-operator">function operator&gt;&gt;<a class="headerlink" href="#function-operator" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Arrow</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Arrow</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_1">function operator&gt;&gt;<a class="headerlink" href="#function-operator_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span> <span class="n">Arrow</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Arrow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_2">function operator&gt;&gt;<a class="headerlink" href="#function-operator_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Boolean</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Boolean</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_3">function operator&gt;&gt;<a class="headerlink" href="#function-operator_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Color</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_4">function operator&gt;&gt;<a class="headerlink" href="#function-operator_4" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span> <span class="n">Color</span> <span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_5">function operator&gt;&gt;<a class="headerlink" href="#function-operator_5" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Command</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Command</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_6">function operator&gt;&gt;<a class="headerlink" href="#function-operator_6" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">ConditionEdge</span> <span class="o">&amp;</span> <span class="n">edge</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">ConditionEdge</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">edge</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_7">function operator&gt;&gt;<a class="headerlink" href="#function-operator_7" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Double</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_8">function operator&gt;&gt;<a class="headerlink" href="#function-operator_8" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">DynamicsDimension</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">DynamicsDimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_9">function operator&gt;&gt;<a class="headerlink" href="#function-operator_9" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">DynamicsShape</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">DynamicsShape</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_10">function operator&gt;&gt;<a class="headerlink" href="#function-operator_10" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Integer</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Integer</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_11">function operator&gt;&gt;<a class="headerlink" href="#function-operator_11" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">MiscObjectCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">MiscObjectCategory</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_12">function operator&gt;&gt;<a class="headerlink" href="#function-operator_12" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">ParameterType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">ParameterType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_13">function operator&gt;&gt;<a class="headerlink" href="#function-operator_13" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">PedestrianCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">PedestrianCategory</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_14">function operator&gt;&gt;<a class="headerlink" href="#function-operator_14" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Priority</span> <span class="o">&amp;</span> <span class="n">priority</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Priority</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">priority</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_15">function operator&gt;&gt;<a class="headerlink" href="#function-operator_15" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">ReferenceContext</span> <span class="o">&amp;</span> <span class="n">context</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">ReferenceContext</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">context</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_16">function operator&gt;&gt;<a class="headerlink" href="#function-operator_16" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">RelativeDistanceType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">RelativeDistanceType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_17">function operator&gt;&gt;<a class="headerlink" href="#function-operator_17" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">RouteStrategy</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">RouteStrategy</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_18">function operator&gt;&gt;<a class="headerlink" href="#function-operator_18" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">Rule</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Rule</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_19">function operator&gt;&gt;<a class="headerlink" href="#function-operator_19" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">SpeedTargetValueType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">SpeedTargetValueType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_20">function operator&gt;&gt;<a class="headerlink" href="#function-operator_20" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">StoryboardElementState</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">StoryboardElementState</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_21">function operator&gt;&gt;<a class="headerlink" href="#function-operator_21" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">StoryboardElementType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">StoryboardElementType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_22">function operator&gt;&gt;<a class="headerlink" href="#function-operator_22" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">TriggeringEntitiesRule</span> <span class="o">&amp;</span> <span class="n">rule</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TriggeringEntitiesRule</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rule</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_23">function operator&gt;&gt;<a class="headerlink" href="#function-operator_23" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">UnsignedInteger</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">UnsignedInteger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_24">function operator&gt;&gt;<a class="headerlink" href="#function-operator_24" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">UnsignedShort</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">UnsignedShort</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_25">function operator&gt;&gt;<a class="headerlink" href="#function-operator_25" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">is</span><span class="p">,</span>
-    <span class="n">VehicleCategory</span> <span class="o">&amp;</span> <span class="n">category</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">is</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">VehicleCategory</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">category</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_26">function operator&lt;&lt;<a class="headerlink" href="#function-operator_26" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Act</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Act</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_27">function operator&lt;&lt;<a class="headerlink" href="#function-operator_27" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Action</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_28">function operator&lt;&lt;<a class="headerlink" href="#function-operator_28" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Arrow</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Arrow</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_29">function operator&lt;&lt;<a class="headerlink" href="#function-operator_29" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
-    <span class="k">const</span> <span class="n">Axle</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Axle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_30">function operator&lt;&lt;<a class="headerlink" href="#function-operator_30" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
-    <span class="k">const</span> <span class="n">FrontAxle</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FrontAxle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_31">function operator&lt;&lt;<a class="headerlink" href="#function-operator_31" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
-    <span class="k">const</span> <span class="n">RearAxle</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">RearAxle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_32">function operator&lt;&lt;<a class="headerlink" href="#function-operator_32" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="p">,</span>
-    <span class="k">const</span> <span class="n">AdditionalAxle</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">AdditionalAxle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_33">function operator&lt;&lt;<a class="headerlink" href="#function-operator_33" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Axles</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Axles</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_34">function operator&lt;&lt;<a class="headerlink" href="#function-operator_34" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Boolean</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_35">function operator&lt;&lt;<a class="headerlink" href="#function-operator_35" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">BoundingBox</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BoundingBox</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_36">function operator&lt;&lt;<a class="headerlink" href="#function-operator_36" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Center</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Center</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_37">function operator&lt;&lt;<a class="headerlink" href="#function-operator_37" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">CollisionCondition</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">CollisionCondition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_38">function operator&lt;&lt;<a class="headerlink" href="#function-operator_38" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Color</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_39">function operator&lt;&lt;<a class="headerlink" href="#function-operator_39" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Command</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_40">function operator&lt;&lt;<a class="headerlink" href="#function-operator_40" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Condition</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Condition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_41">function operator&lt;&lt;<a class="headerlink" href="#function-operator_41" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ConditionEdge</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ConditionEdge</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_42">function operator&lt;&lt;<a class="headerlink" href="#function-operator_42" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ConditionGroup</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ConditionGroup</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_43">function operator&lt;&lt;<a class="headerlink" href="#function-operator_43" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Dimensions</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Dimensions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_44">function operator&lt;&lt;<a class="headerlink" href="#function-operator_44" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Double</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_45">function operator&lt;&lt;<a class="headerlink" href="#function-operator_45" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">DynamicsDimension</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DynamicsDimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_46">function operator&lt;&lt;<a class="headerlink" href="#function-operator_46" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">DynamicsShape</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DynamicsShape</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_47">function operator&lt;&lt;<a class="headerlink" href="#function-operator_47" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Event</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_48">function operator&lt;&lt;<a class="headerlink" href="#function-operator_48" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Init</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Init</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_49">function operator&lt;&lt;<a class="headerlink" href="#function-operator_49" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">InitActions</span> <span class="o">&amp;</span> <span class="n">init_actions</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">InitActions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">init_actions</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_50">function operator&lt;&lt;<a class="headerlink" href="#function-operator_50" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Integer</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_51">function operator&lt;&lt;<a class="headerlink" href="#function-operator_51" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Maneuver</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Maneuver</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_52">function operator&lt;&lt;<a class="headerlink" href="#function-operator_52" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ManeuverGroup</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ManeuverGroup</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_53">function operator&lt;&lt;<a class="headerlink" href="#function-operator_53" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">MiscObjectCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">MiscObjectCategory</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_54">function operator&lt;&lt;<a class="headerlink" href="#function-operator_54" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">OpenScenario</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">OpenScenario</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_55">function operator&lt;&lt;<a class="headerlink" href="#function-operator_55" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">OpenScenario</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">OpenScenario</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_56">function operator&lt;&lt;<a class="headerlink" href="#function-operator_56" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ParameterDeclaration</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ParameterDeclaration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_57">function operator&lt;&lt;<a class="headerlink" href="#function-operator_57" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ParameterDeclarations</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ParameterDeclarations</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_58">function operator&lt;&lt;<a class="headerlink" href="#function-operator_58" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ParameterType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ParameterType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_59">function operator&lt;&lt;<a class="headerlink" href="#function-operator_59" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Pedestrian</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Pedestrian</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_60">function operator&lt;&lt;<a class="headerlink" href="#function-operator_60" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">PedestrianCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">PedestrianCategory</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_61">function operator&lt;&lt;<a class="headerlink" href="#function-operator_61" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Performance</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Performance</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_62">function operator&lt;&lt;<a class="headerlink" href="#function-operator_62" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Priority</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Priority</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_63">function operator&lt;&lt;<a class="headerlink" href="#function-operator_63" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Private</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Private</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_64">function operator&lt;&lt;<a class="headerlink" href="#function-operator_64" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ReferenceContext</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ReferenceContext</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_65">function operator&lt;&lt;<a class="headerlink" href="#function-operator_65" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">RelativeDistanceType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">RelativeDistanceType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_66">function operator&lt;&lt;<a class="headerlink" href="#function-operator_66" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">RouteStrategy</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">RouteStrategy</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_67">function operator&lt;&lt;<a class="headerlink" href="#function-operator_67" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Rule</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Rule</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_68">function operator&lt;&lt;<a class="headerlink" href="#function-operator_68" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ScenarioDefinition</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ScenarioDefinition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_69">function operator&lt;&lt;<a class="headerlink" href="#function-operator_69" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ScenarioDefinition</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ScenarioDefinition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_70">function operator&lt;&lt;<a class="headerlink" href="#function-operator_70" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">ScenarioObject</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ScenarioObject</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_71">function operator&lt;&lt;<a class="headerlink" href="#function-operator_71" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">SpeedTargetValueType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SpeedTargetValueType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_72">function operator&lt;&lt;<a class="headerlink" href="#function-operator_72" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Story</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Story</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_73">function operator&lt;&lt;<a class="headerlink" href="#function-operator_73" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Storyboard</span> <span class="o">&amp;</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Storyboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_74">function operator&lt;&lt;<a class="headerlink" href="#function-operator_74" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Storyboard</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Storyboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_75">function operator&lt;&lt;<a class="headerlink" href="#function-operator_75" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">StoryboardElementState</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">StoryboardElementState</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_76">function operator&lt;&lt;<a class="headerlink" href="#function-operator_76" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">StoryboardElementType</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">StoryboardElementType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_77">function operator&lt;&lt;<a class="headerlink" href="#function-operator_77" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="o">&amp;</span> <span class="n">json</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Trigger</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_78">function operator&lt;&lt;<a class="headerlink" href="#function-operator_78" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">TriggeringEntitiesRule</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TriggeringEntitiesRule</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_79">function operator&lt;&lt;<a class="headerlink" href="#function-operator_79" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">UnsignedInteger</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UnsignedInteger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_80">function operator&lt;&lt;<a class="headerlink" href="#function-operator_80" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">UnsignedShort</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UnsignedShort</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_81">function operator&lt;&lt;<a class="headerlink" href="#function-operator_81" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Vehicle</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vehicle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-operator_82">function operator&lt;&lt;<a class="headerlink" href="#function-operator_82" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">VehicleCategory</span> <span class="o">&amp;</span> <span class="n">datum</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">VehicleCategory</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">datum</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-asboolean">function asBoolean<a class="headerlink" href="#function-asboolean" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="o">&amp;</span> <span class="n">asBoolean</span><span class="p">(</span>
-    <span class="kt">bool</span> <span class="n">value</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">asBoolean</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-apply">function apply<a class="headerlink" href="#function-apply" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Result</span>  <span class="o">=</span><span class="kt">void</span><span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Function</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">apply</span><span class="p">(</span>
-    <span class="n">Function</span> <span class="o">&amp;&amp;</span> <span class="n">function</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">EntityObject</span> <span class="o">&amp;</span> <span class="n">entity_object</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Result</span><span class="w">  </span><span class="o">=</span><span class="kt">void</span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Function</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Function</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">EntityObject</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">entity_object</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-apply_1">function apply<a class="headerlink" href="#function-apply_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Result</span>  <span class="o">=</span><span class="kt">void</span><span class="p">,</span>
-<span class="k">typename</span> <span class="nc">Function</span> <span class="p">,</span>
-<span class="k">typename</span><span class="p">...</span> <span class="n">Ts</span><span class="o">&gt;</span>
-<span class="k">auto</span> <span class="n">apply</span><span class="p">(</span>
-    <span class="n">Function</span> <span class="o">&amp;&amp;</span> <span class="n">function</span><span class="p">,</span>
-    <span class="k">const</span> <span class="n">Position</span> <span class="o">&amp;</span> <span class="n">position</span><span class="p">,</span>
-    <span class="n">Ts</span> <span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">xs</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Result</span><span class="w">  </span><span class="o">=</span><span class="kt">void</span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Function</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Function</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Position</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate">function BOILERPLATE<a class="headerlink" href="#function-boilerplate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">Axle</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Axle</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_1">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">FrontAxle</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">FrontAxle</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_2">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_2" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">RearAxle</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">RearAxle</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-boilerplate_3">function BOILERPLATE<a class="headerlink" href="#function-boilerplate_3" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span>
-    <span class="n">AdditionalAxle</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">BOILERPLATE</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">AdditionalAxle</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-assert_is_optional_element">function ASSERT_IS_OPTIONAL_ELEMENT<a class="headerlink" href="#function-assert_is_optional_element" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span>
-    <span class="n">File</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">File</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-assert_is_optional_element_1">function ASSERT_IS_OPTIONAL_ELEMENT<a class="headerlink" href="#function-assert_is_optional_element_1" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span>
-    <span class="n">TrafficSignals</span> 
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ASSERT_IS_OPTIONAL_ELEMENT</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">TrafficSignals</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="attributes-documentation">Attributes Documentation<a class="headerlink" href="#attributes-documentation" title="Permanent link">#</a></h2>
 <h3 id="variable-true_v">variable true_v<a class="headerlink" href="#variable-true_v" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">true_v</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">Boolean</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1Boolean</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">true_v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">Boolean</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1Boolean</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-stop_transition">variable stop_transition<a class="headerlink" href="#variable-stop_transition" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">stop_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span> <span class="n">stopTransition</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">stop_transition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="w"> </span><span class="n">stopTransition</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-start_transition">variable start_transition<a class="headerlink" href="#variable-start_transition" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">start_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="n">startTransition</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">start_transition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="n">startTransition</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-standby_state">variable standby_state<a class="headerlink" href="#variable-standby_state" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">standby_state</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>   <span class="n">standbyState</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">standby_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="w">   </span><span class="n">standbyState</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-skip_transition">variable skip_transition<a class="headerlink" href="#variable-skip_transition" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">skip_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span> <span class="n">skipTransition</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">skip_transition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="w"> </span><span class="n">skipTransition</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-running_state">variable running_state<a class="headerlink" href="#variable-running_state" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">running_state</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>   <span class="n">runningState</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">running_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="w">   </span><span class="n">runningState</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-false_v">variable false_v<a class="headerlink" href="#variable-false_v" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">false_v</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">Boolean</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1Boolean</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">false_v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">Boolean</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1Boolean</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-end_transition">variable end_transition<a class="headerlink" href="#variable-end_transition" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">end_transition</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>  <span class="n">endTransition</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">end_transition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="w">  </span><span class="n">endTransition</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-complete_state">variable complete_state<a class="headerlink" href="#variable-complete_state" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span> <span class="n">Element</span> <span class="n">complete_state</span> <span class="o">=</span> <span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span>  <span class="n">completeState</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">complete_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="p">[</span><span class="n">StoryboardElementState</span><span class="p">](</span><span class="o">/</span><span class="n">scenario_simulator_v2</span><span class="o">/</span><span class="n">package</span><span class="o">/</span><span class="n">openscenario_interpreter</span><span class="o">/</span><span class="n">markdown</span><span class="o">/</span><span class="n">Classes</span><span class="o">/</span><span class="n">structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="w">  </span><span class="n">completeState</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:37 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:58 UTC</p>
                 
                   
                 

@@ -783,75 +783,75 @@
 <span class="cp">#ifndef OPENSCENARIO_INTERPRETER__ITERATOR__CIRCULAR_ITERATOR_HPP_</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER__ITERATOR__CIRCULAR_ITERATOR_HPP_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;iterator&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;type_traits&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iterator&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;type_traits&gt;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">openscenario_interpreter</span>
-<span class="p">{</span>
-<span class="kr">inline</span> <span class="k">namespace</span> <span class="nn">iterator</span>
-<span class="p">{</span>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Container</span><span class="o">&gt;</span>
-<span class="k">class</span> <span class="nc">CircularIterator</span>
-<span class="p">{</span>
-  <span class="k">using</span> <span class="n">ForwardIterator</span> <span class="o">=</span> <span class="k">typename</span> <span class="nc">Container</span><span class="o">::</span><span class="n">iterator</span><span class="p">;</span>
-  <span class="k">using</span> <span class="n">ForwardConstIterator</span> <span class="o">=</span> <span class="k">typename</span> <span class="nc">Container</span><span class="o">::</span><span class="n">const_iterator</span><span class="p">;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">iterator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Container</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">CircularIterator</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Container</span><span class="o">::</span><span class="n">iterator</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ForwardConstIterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Container</span><span class="o">::</span><span class="n">const_iterator</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">ForwardIterator</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">current</span><span class="p">;</span>
+<span class="w">  </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">public</span><span class="o">:</span>
-  <span class="k">using</span> <span class="n">iterator_category</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">forward_iterator_tag</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">iterator_category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward_iterator_tag</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">using</span> <span class="n">value_type</span> <span class="o">=</span> <span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">ForwardIterator</span><span class="o">&gt;::</span><span class="n">value_type</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">value_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">ForwardIterator</span><span class="o">&gt;::</span><span class="n">value_type</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">using</span> <span class="n">reference</span> <span class="o">=</span> <span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">add_lvalue_reference</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">add_lvalue_reference</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">using</span> <span class="n">const_reference</span> <span class="o">=</span> <span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">add_const</span><span class="o">&lt;</span><span class="n">reference</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">const_reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">add_const</span><span class="o">&lt;</span><span class="n">reference</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">using</span> <span class="n">pointer</span> <span class="o">=</span> <span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">ForwardIterator</span><span class="o">&gt;::</span><span class="n">pointer</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">ForwardIterator</span><span class="o">&gt;::</span><span class="n">pointer</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">using</span> <span class="n">difference_type</span> <span class="o">=</span> <span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">ForwardIterator</span><span class="o">&gt;::</span><span class="n">difference_type</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">difference_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span> <span class="nc">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">ForwardIterator</span><span class="o">&gt;::</span><span class="n">difference_type</span><span class="p">;</span><span class="w"></span>
 
-  <span class="k">explicit</span> <span class="n">CircularIterator</span><span class="p">(</span><span class="n">ForwardIterator</span> <span class="n">begin</span><span class="p">,</span> <span class="n">ForwardIterator</span> <span class="n">end</span><span class="p">,</span> <span class="n">ForwardIterator</span> <span class="n">current</span><span class="p">)</span>
-  <span class="o">:</span> <span class="n">begin</span><span class="p">(</span><span class="n">begin</span><span class="p">),</span> <span class="n">end</span><span class="p">(</span><span class="n">end</span><span class="p">),</span> <span class="n">current</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
-  <span class="p">{</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">CircularIterator</span><span class="p">(</span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="n">current</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">begin</span><span class="p">(</span><span class="n">begin</span><span class="p">),</span><span class="w"> </span><span class="n">end</span><span class="p">(</span><span class="n">end</span><span class="p">),</span><span class="w"> </span><span class="n">current</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">CircularIterator</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">ForwardIterator</span> <span class="o">&amp;</span> <span class="n">iterator</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="n">current</span> <span class="o">=</span> <span class="n">iterator</span><span class="p">;</span>
-    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="n">CircularIterator</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">iterator</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iterator</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">operator</span> <span class="n">ForwardConstIterator</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">current</span><span class="p">;</span> <span class="p">}</span>
-  <span class="k">operator</span> <span class="n">ForwardIterator</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">current</span><span class="p">;</span> <span class="p">}</span>
+<span class="w">  </span><span class="k">operator</span><span class="w"> </span><span class="n">ForwardConstIterator</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">operator</span><span class="w"> </span><span class="n">ForwardIterator</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-  <span class="n">reference</span> <span class="k">operator</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="n">current</span><span class="p">;</span> <span class="p">}</span>
+<span class="w">  </span><span class="n">reference</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">auto</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">++</span><span class="p">()</span>
-  <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">current</span> <span class="o">==</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">current</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">++</span><span class="n">current</span> <span class="o">==</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">current</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">++</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">++</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">auto</span> <span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="k">auto</span> <span class="n">copy</span> <span class="o">=</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-    <span class="k">operator</span><span class="o">++</span><span class="p">();</span>
-    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace iterator</span>
-<span class="p">}</span>  <span class="c1">// namespace openscenario_interpreter</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">operator</span><span class="o">++</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">copy</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace iterator</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__ITERATOR__CIRCULAR_ITERATOR_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 15 August 2021 at 00:51:38 UTC</p>
+<p>Updated on 16 August 2021 at 00:41:59 UTC</p>
                 
                   
                 
