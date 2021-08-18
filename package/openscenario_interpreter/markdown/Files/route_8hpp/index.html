@@ -805,10 +805,8 @@
 <span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
 <span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
-<span class="k">struct</span> <span class="nc">Route</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Scope</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">Route</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Scope</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
-
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="n">closed</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">ParameterDeclarations</span><span class="w"> </span><span class="n">parameter_declarations</span><span class="p">;</span><span class="w"></span>
@@ -817,9 +815,8 @@
 
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Route</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="n">outer_scope</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
-<span class="w">    </span><span class="n">closed</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;closed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">,</span><span class="w"> </span><span class="n">Boolean</span><span class="p">())),</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="n">outer_scope</span><span class="p">.</span><span class="n">makeChildScope</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">))),</span><span class="w"></span>
+<span class="w">    </span><span class="n">closed</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;closed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">(),</span><span class="w"> </span><span class="n">Boolean</span><span class="p">())),</span><span class="w"></span>
 <span class="w">    </span><span class="n">parameter_declarations</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">ParameterDeclarations</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ParameterDeclarations&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">()))</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
@@ -845,7 +842,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__ROUTE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

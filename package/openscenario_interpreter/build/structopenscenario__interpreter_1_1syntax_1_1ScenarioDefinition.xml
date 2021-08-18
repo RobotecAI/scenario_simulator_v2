@@ -86,13 +86,10 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/scenario_definition.hpp" line="43" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a8c84e643a4ddb18d91e744cc414f5c6e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a5a49dca9679a9b252b80c7cc5ce2d44e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Node</type>
-          </param>
-          <param>
-            <type>typename <ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
           </param>
         </templateparamlist>
         <type></type>
@@ -104,7 +101,7 @@
           <declname>node</declname>
         </param>
         <param>
-          <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
+          <type><ref refid="classopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
           <declname>outer_scope</declname>
         </param>
         <briefdescription>
@@ -147,126 +144,134 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="657">
+      <node id="664">
         <label>openscenario_interpreter::syntax::TrafficSignals</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignals"/>
       </node>
-      <node id="656">
+      <node id="663">
         <label>openscenario_interpreter::syntax::File</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1File"/>
       </node>
-      <node id="660">
+      <node id="668">
         <label>std::unordered_map&lt; String, CatalogLocation &gt;</label>
       </node>
-      <node id="665">
+      <node id="673">
         <label>std::shared_ptr&lt; Expression  &gt;</label>
       </node>
-      <node id="670">
+      <node id="678">
         <label>openscenario_interpreter::syntax::InitActions</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1InitActions"/>
-        <childnode refid="666" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="655">
-        <label>openscenario_interpreter::syntax::RoadNetwork</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork"/>
-        <childnode refid="656" relation="usage">
-          <edgelabel>scene_graph_file</edgelabel>
-          <edgelabel>logic_file</edgelabel>
-        </childnode>
-        <childnode refid="657" relation="usage">
-          <edgelabel>traffic_signals</edgelabel>
-        </childnode>
-      </node>
-      <node id="659">
-        <label>openscenario_interpreter::syntax::CatalogLocations</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1CatalogLocations"/>
-        <childnode refid="660" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="671">
-        <label>openscenario_interpreter::syntax::ParameterDeclarations</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations"/>
-        <childnode refid="672" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="654">
-        <label>openscenario_interpreter::syntax::ScenarioDefinition</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition"/>
-        <childnode refid="655" relation="usage">
-          <edgelabel>road_network</edgelabel>
-        </childnode>
-        <childnode refid="658" relation="usage">
-          <edgelabel>entities</edgelabel>
-        </childnode>
-        <childnode refid="659" relation="usage">
-          <edgelabel>catalog_locations</edgelabel>
-        </childnode>
-        <childnode refid="661" relation="usage">
-          <edgelabel>storyboard</edgelabel>
-        </childnode>
-        <childnode refid="671" relation="usage">
-          <edgelabel>parameter_declarations</edgelabel>
-        </childnode>
-      </node>
-      <node id="661">
-        <label>openscenario_interpreter::syntax::Storyboard</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard"/>
-        <childnode refid="662" relation="private-inheritance">
-        </childnode>
-        <childnode refid="663" relation="public-inheritance">
-        </childnode>
-        <childnode refid="666" relation="public-inheritance">
-        </childnode>
-        <childnode refid="667" relation="usage">
-          <edgelabel>stop_trigger</edgelabel>
-        </childnode>
-        <childnode refid="669" relation="usage">
-          <edgelabel>init</edgelabel>
-        </childnode>
-      </node>
-      <node id="668">
-        <label>std::list&lt; ConditionGroup &gt;</label>
-      </node>
-      <node id="672">
-        <label>std::vector&lt; ParameterDeclaration &gt;</label>
-      </node>
-      <node id="666">
-        <label>Elements</label>
-      </node>
-      <node id="663">
-        <label>openscenario_interpreter::syntax::StoryboardElement&lt; Storyboard &gt;</label>
-        <link refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement"/>
-        <childnode refid="664" relation="usage">
-          <edgelabel>current_state</edgelabel>
-        </childnode>
-      </node>
-      <node id="658">
-        <label>openscenario_interpreter::syntax::Entities</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1Entities"/>
-      </node>
-      <node id="667">
-        <label>openscenario_interpreter::syntax::Trigger</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1Trigger"/>
-        <childnode refid="668" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="664">
-        <label>openscenario_interpreter::Pointer&lt; Expression &gt;</label>
-        <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="665" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="669">
-        <label>openscenario_interpreter::syntax::Init</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1Init"/>
-        <childnode refid="670" relation="usage">
-          <edgelabel>actions</edgelabel>
+        <childnode refid="674" relation="public-inheritance">
         </childnode>
       </node>
       <node id="662">
+        <label>openscenario_interpreter::syntax::RoadNetwork</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork"/>
+        <childnode refid="663" relation="usage">
+          <edgelabel>scene_graph_file</edgelabel>
+          <edgelabel>logic_file</edgelabel>
+        </childnode>
+        <childnode refid="664" relation="usage">
+          <edgelabel>traffic_signals</edgelabel>
+        </childnode>
+      </node>
+      <node id="667">
+        <label>openscenario_interpreter::syntax::CatalogLocations</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1CatalogLocations"/>
+        <childnode refid="668" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="679">
+        <label>openscenario_interpreter::syntax::ParameterDeclarations</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1ParameterDeclarations"/>
+        <childnode refid="680" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="661">
+        <label>openscenario_interpreter::syntax::ScenarioDefinition</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition"/>
+        <childnode refid="662" relation="usage">
+          <edgelabel>road_network</edgelabel>
+        </childnode>
+        <childnode refid="665" relation="usage">
+          <edgelabel>entities</edgelabel>
+        </childnode>
+        <childnode refid="667" relation="usage">
+          <edgelabel>catalog_locations</edgelabel>
+        </childnode>
+        <childnode refid="669" relation="usage">
+          <edgelabel>storyboard</edgelabel>
+        </childnode>
+        <childnode refid="679" relation="usage">
+          <edgelabel>parameter_declarations</edgelabel>
+        </childnode>
+      </node>
+      <node id="669">
+        <label>openscenario_interpreter::syntax::Storyboard</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard"/>
+        <childnode refid="670" relation="public-inheritance">
+        </childnode>
+        <childnode refid="671" relation="public-inheritance">
+        </childnode>
+        <childnode refid="674" relation="public-inheritance">
+        </childnode>
+        <childnode refid="675" relation="usage">
+          <edgelabel>stop_trigger</edgelabel>
+        </childnode>
+        <childnode refid="665" relation="usage">
+          <edgelabel>entities</edgelabel>
+        </childnode>
+        <childnode refid="677" relation="usage">
+          <edgelabel>init</edgelabel>
+        </childnode>
+      </node>
+      <node id="676">
+        <label>std::list&lt; ConditionGroup &gt;</label>
+      </node>
+      <node id="680">
+        <label>std::vector&lt; ParameterDeclaration &gt;</label>
+      </node>
+      <node id="674">
+        <label>Elements</label>
+      </node>
+      <node id="671">
+        <label>openscenario_interpreter::syntax::StoryboardElement&lt; Storyboard &gt;</label>
+        <link refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement"/>
+        <childnode refid="672" relation="usage">
+          <edgelabel>current_state</edgelabel>
+        </childnode>
+      </node>
+      <node id="665">
+        <label>openscenario_interpreter::syntax::Entities</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1Entities"/>
+        <childnode refid="666" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="675">
+        <label>openscenario_interpreter::syntax::Trigger</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1Trigger"/>
+        <childnode refid="676" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="672">
+        <label>openscenario_interpreter::Pointer&lt; Expression &gt;</label>
+        <link refid="classopenscenario__interpreter_1_1Pointer"/>
+        <childnode refid="673" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="677">
+        <label>openscenario_interpreter::syntax::Init</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1Init"/>
+        <childnode refid="678" relation="usage">
+          <edgelabel>actions</edgelabel>
+        </childnode>
+      </node>
+      <node id="670">
         <label>openscenario_interpreter::Scope</label>
-        <link refid="structopenscenario__interpreter_1_1Scope"/>
+        <link refid="classopenscenario__interpreter_1_1Scope"/>
+      </node>
+      <node id="666">
+        <label>std::unordered_map&lt; std::string, Element &gt;</label>
       </node>
     </collaborationgraph>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/scenario_definition.hpp" line="42" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/scenario_definition.hpp" bodystart="41" bodyend="74"/>
@@ -278,7 +283,7 @@
       <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a7ce979b67734503e4baffcd43945f5e8" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ScenarioDefinition</scope><name>evaluate</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1ae87de45735e470447e25ed1b8913cf94" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ScenarioDefinition</scope><name>parameter_declarations</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a7284f5f7b0a97b5bb762db93d63d4500" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ScenarioDefinition</scope><name>road_network</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a8c84e643a4ddb18d91e744cc414f5c6e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ScenarioDefinition</scope><name>ScenarioDefinition</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a5a49dca9679a9b252b80c7cc5ce2d44e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ScenarioDefinition</scope><name>ScenarioDefinition</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a4cc840fac5278c5696b68a603c6cf7bb" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ScenarioDefinition</scope><name>storyboard</name></member>
     </listofallmembers>
   </compounddef>

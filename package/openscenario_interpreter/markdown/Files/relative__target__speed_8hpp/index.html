@@ -784,22 +784,25 @@
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__RELATIVE_TARGET_SPEED_HPP_</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/reader/attribute.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/scope.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/entity_ref.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/rule.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/speed_target_value_type.hpp&gt;</span><span class="cp"></span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">syntax</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="cm">/* ==== RelativeTargetSpeed ==================================================</span>
+<span class="cm">/* ---- RelativeTargetSpeed ----------------------------------------------------</span>
 <span class="cm"> *</span>
-<span class="cm"> * &lt;xsd:complexType name=&quot;RelativeTargetSpeed&quot;&gt;</span>
-<span class="cm"> *   &lt;xsd:attribute name=&quot;entityRef&quot; type=&quot;String&quot; use=&quot;required&quot;/&gt;</span>
-<span class="cm"> *   &lt;xsd:attribute name=&quot;value&quot; type=&quot;Double&quot; use=&quot;required&quot;/&gt;</span>
-<span class="cm"> *   &lt;xsd:attribute name=&quot;speedTargetValueType&quot; type=&quot;SpeedTargetValueType&quot; use=&quot;required&quot;/&gt;</span>
-<span class="cm"> *   &lt;xsd:attribute name=&quot;continuous&quot; type=&quot;Boolean&quot; use=&quot;required&quot;/&gt;</span>
-<span class="cm"> * &lt;/xsd:complexType&gt;</span>
+<span class="cm"> *  &lt;xsd:complexType name=&quot;RelativeTargetSpeed&quot;&gt;</span>
+<span class="cm"> *    &lt;xsd:attribute name=&quot;entityRef&quot; type=&quot;String&quot; use=&quot;required&quot;/&gt;</span>
+<span class="cm"> *    &lt;xsd:attribute name=&quot;value&quot; type=&quot;Double&quot; use=&quot;required&quot;/&gt;</span>
+<span class="cm"> *    &lt;xsd:attribute name=&quot;speedTargetValueType&quot; type=&quot;SpeedTargetValueType&quot; use=&quot;required&quot;/&gt;</span>
+<span class="cm"> *    &lt;xsd:attribute name=&quot;continuous&quot; type=&quot;Boolean&quot; use=&quot;required&quot;/&gt;</span>
+<span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
-<span class="cm"> * ======================================================================== */</span><span class="w"></span>
+<span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
 <span class="k">struct</span> <span class="nc">RelativeTargetSpeed</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">entity_ref</span><span class="p">;</span><span class="w"></span>
@@ -812,11 +815,11 @@
 
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">RelativeTargetSpeed</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scope</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">entity_ref</span><span class="p">{</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;entityRef&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">)},</span><span class="w"></span>
-<span class="w">    </span><span class="n">value</span><span class="p">{</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">)},</span><span class="w"></span>
-<span class="w">    </span><span class="n">speed_target_value_type</span><span class="p">{</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">SpeedTargetValueType</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;speedTargetValueType&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedTargetValueType</span><span class="p">())},</span><span class="w"></span>
-<span class="w">    </span><span class="n">continuous</span><span class="p">{</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;continuous&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">,</span><span class="w"> </span><span class="n">Boolean</span><span class="p">())}</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">entity_ref</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;entityRef&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">value</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">speed_target_value_type</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">SpeedTargetValueType</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;speedTargetValueType&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedTargetValueType</span><span class="p">())),</span><span class="w"></span>
+<span class="w">    </span><span class="n">continuous</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;continuous&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">,</span><span class="w"> </span><span class="n">Boolean</span><span class="p">()))</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
@@ -835,13 +838,12 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="o">::</span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getIsEnd</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EntityRef</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getIsEnd</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">continuous</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w">  </span><span class="c1">// ends never</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="n">calc_absolute_target_speed</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">                </span><span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">()](</span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="o">::</span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="n">calc_absolute_target_speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getCalculateAbsoluteTargetSpeed</span><span class="p">()](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">compare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rule</span><span class="p">(</span><span class="n">Rule</span><span class="o">::</span><span class="n">equalTo</span><span class="p">);</span><span class="w"></span>
 <span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">compare</span><span class="p">(</span><span class="w"></span>
@@ -859,7 +861,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__RELATIVE_TARGET_SPEED_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

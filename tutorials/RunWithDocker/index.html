@@ -940,6 +940,7 @@ For more examples and ideas, visit:
 curl -s -L https://nvidia.github.io/nvidia-container-runtime/<span class="nv">$distribution</span>/nvidia-container-runtime.list <span class="p">|</span> <span class="se">\</span>
   sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list
 sudo apt-get update
+sudo apt install -y nvidia-docker2
 </code></pre></div>
 <p>If you finished installing docker and nvidia-docker2, please type the commands below.</p>
 <div class="highlight"><pre><span></span><code>docker run --gpus all --rm nvidia/cuda:9.0-base nvidia-smi
@@ -976,7 +977,7 @@ sudo apt-get update
 <p>rocker is a docker support tool for ROS.<br />
 It enables us to run rviz inside docker very easily.<br />
 You can install rocker via pip3.
-<div class="highlight"><pre><span></span><code>sudo pip3 install rocker
+<div class="highlight"><pre><span></span><code>sudo pip3 install git+https://github.com/osrf/rocker.git
 </code></pre></div></p>
 <p>After install rocker, please check rocker works correctly.<br />
 If your machine has GPU(s), please type the commands below.<br />

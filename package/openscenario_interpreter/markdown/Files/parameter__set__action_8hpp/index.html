@@ -784,6 +784,7 @@
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_SET_ACTION_HPP_</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/reader/attribute.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/scope.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;typeindex&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
@@ -830,7 +831,7 @@
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// clang-format on</span>
 
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">parameter_ref</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findElement</span><span class="p">(</span><span class="n">parameter_ref</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">overloads</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">parameter</span><span class="p">.</span><span class="n">type</span><span class="p">())(</span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
 
@@ -843,7 +844,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_SET_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

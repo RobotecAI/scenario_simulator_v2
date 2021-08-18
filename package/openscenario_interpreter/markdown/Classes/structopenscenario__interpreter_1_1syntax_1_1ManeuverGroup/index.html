@@ -787,20 +787,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#variable-name" class="md-nav__link">
-    variable name
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variable-inner_scope" class="md-nav__link">
-    variable inner_scope
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#variable-actors" class="md-nav__link">
     variable actors
   </a>
@@ -830,7 +816,7 @@
                 
                 
                 <h1 id="openscenario_interpretersyntaxmaneuvergroup">openscenario_interpreter::syntax::ManeuverGroup<a class="headerlink" href="#openscenario_interpretersyntaxmaneuvergroup" title="Permanent link">#</a></h1>
-<p>Inherits from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1syntax_1_1StoryboardElement">openscenario_interpreter::syntax::StoryboardElement&lt; ManeuverGroup &gt;</a>, Elements</p>
+<p>Inherits from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a>, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1syntax_1_1StoryboardElement">openscenario_interpreter::syntax::StoryboardElement&lt; ManeuverGroup &gt;</a>, Elements</p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -866,7 +852,7 @@
 </tr>
 <tr>
 <td>template \&lt;typename Node ></br></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup#function-maneuvergroup">ManeuverGroup</a></strong>(const Node &amp; node, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">Scope</a> &amp; outer_scope)</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup#function-maneuvergroup">ManeuverGroup</a></strong>(const Node &amp; node, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp; outer_scope)</td>
 </tr>
 </tbody>
 </table>
@@ -880,20 +866,86 @@
 </thead>
 <tbody>
 <tr>
-<td>const String</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup#variable-name">name</a></strong></td>
-</tr>
-<tr>
-<td><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">Scope</a></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup#variable-inner_scope">inner_scope</a></strong></td>
-</tr>
-<tr>
 <td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Actors">Actors</a></td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup#variable-actors">actors</a></strong></td>
 </tr>
 </tbody>
 </table>
 <h2 id="additional-inherited-members">Additional inherited members<a class="headerlink" href="#additional-inherited-members" title="Permanent link">#</a></h2>
+<p><strong>Public Functions inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-makechildscope">makeChildScope</a></strong>(const std::string &amp; name) const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-localscope">localScope</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-localscope">localScope</a></strong>()</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-findelement">findElement</a></strong>(const std::string &amp; name_) const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-addelement">addElement</a></strong>(const std::string &amp; name_, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &amp; element)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>()</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(const boost::filesystem::path &amp; pathname)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp; ) =default</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(<a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp;&amp; ) =default</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Public Attributes inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a></strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boost::filesystem::path</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-scene_graph_file">scene_graph_file</a></strong></td>
+</tr>
+<tr>
+<td>const boost::filesystem::path</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-pathname">pathname</a></strong></td>
+</tr>
+<tr>
+<td>const std::string</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-name">name</a></strong></td>
+</tr>
+<tr>
+<td>boost::filesystem::path</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-logic_file">logic_file</a></strong></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Public Functions inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1syntax_1_1StoryboardElement">openscenario_interpreter::syntax::StoryboardElement&lt; ManeuverGroup &gt;</a></strong></p>
 <table>
 <thead>
@@ -980,7 +1032,7 @@
 </tr>
 <tr>
 <td>decltype(auto)</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1syntax_1_1StoryboardElement#function-readstoryboardelement">readStoryboardElement</a></strong>(const Node &amp; node, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">Scope</a> &amp; inner_scope, Ts &amp;&amp;... xs)</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1syntax_1_1StoryboardElement#function-readstoryboardelement">readStoryboardElement</a></strong>(const Node &amp; node, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp; inner_scope, Ts &amp;&amp;... xs)</td>
 </tr>
 </tbody>
 </table>
@@ -1049,17 +1101,11 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">#</a></h2>
-<h3 id="variable-name">variable name<a class="headerlink" href="#variable-name" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
-<h3 id="variable-inner_scope">variable inner_scope<a class="headerlink" href="#variable-inner_scope" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Scope</span><span class="w"> </span><span class="n">inner_scope</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
 <h3 id="variable-actors">variable actors<a class="headerlink" href="#variable-actors" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">Actors</span><span class="w"> </span><span class="n">actors</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

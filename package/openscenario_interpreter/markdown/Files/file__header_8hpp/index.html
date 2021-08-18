@@ -784,6 +784,7 @@
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__FILE_HEADER_HPP_</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/reader/attribute.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/scope.hpp&gt;</span><span class="cp"></span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -812,7 +813,7 @@
 
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">author</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Tree</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Tree</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">FileHeader</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">revMajor</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">UnsignedShort</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;revMajor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
 <span class="w">    </span><span class="n">revMinor</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">UnsignedShort</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;revMinor&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
@@ -828,7 +829,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__FILE_HEADER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:43:00 UTC</p>
                 
                   
                 

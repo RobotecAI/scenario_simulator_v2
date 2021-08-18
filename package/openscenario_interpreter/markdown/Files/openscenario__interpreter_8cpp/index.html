@@ -732,20 +732,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#define-interpreter_info_stream" class="md-nav__link">
-    define INTERPRETER_INFO_STREAM
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#define-interpreter_error_stream" class="md-nav__link">
-    define INTERPRETER_ERROR_STREAM
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#define-get_parameter" class="md-nav__link">
     define GET_PARAMETER
   </a>
@@ -821,14 +807,6 @@
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/openscenario__interpreter_8cpp#define-interpreter_info_stream">INTERPRETER_INFO_STREAM</a></strong>(...)</td>
-</tr>
-<tr>
-<td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/openscenario__interpreter_8cpp#define-interpreter_error_stream">INTERPRETER_ERROR_STREAM</a></strong>(...)</td>
-</tr>
-<tr>
-<td></td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/openscenario__interpreter_8cpp#define-get_parameter">GET_PARAMETER</a></strong>(IDENTIFIER)</td>
 </tr>
 <tr>
@@ -843,16 +821,6 @@
 </code></pre></div>
 <h3 id="define-openscenario_interpreter_allow_attributes_to_be_blank">define OPENSCENARIO_INTERPRETER_ALLOW_ATTRIBUTES_TO_BE_BLANK<a class="headerlink" href="#define-openscenario_interpreter_allow_attributes_to_be_blank" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define OPENSCENARIO_INTERPRETER_ALLOW_ATTRIBUTES_TO_BE_BLANK</span>
-</code></pre></div>
-<h3 id="define-interpreter_info_stream">define INTERPRETER_INFO_STREAM<a class="headerlink" href="#define-interpreter_info_stream" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#define INTERPRETER_INFO_STREAM(</span>
-<span class="w">    </span><span class="p">...</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="n">RCLCPP_INFO_STREAM</span><span class="p">(</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[32m&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">__VA_ARGS__</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span><span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="define-interpreter_error_stream">define INTERPRETER_ERROR_STREAM<a class="headerlink" href="#define-interpreter_error_stream" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#define INTERPRETER_ERROR_STREAM(</span>
-<span class="w">    </span><span class="p">...</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="n">RCLCPP_INFO_STREAM</span><span class="p">(</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[1;31m&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">__VA_ARGS__</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="define-get_parameter">define GET_PARAMETER<a class="headerlink" href="#define-get_parameter" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define GET_PARAMETER(</span>
@@ -879,6 +847,7 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/variant/detail/apply_visitor_unary.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER_ALLOW_ATTRIBUTES_TO_BE_BLANK</span>
 <span class="cp">#define OPENSCENARIO_INTERPRETER_NO_EXTENSION</span>
 
@@ -899,12 +868,8 @@
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="cp">#define INTERPRETER_INFO_STREAM(...) \</span>
-<span class="cp">  RCLCPP_INFO_STREAM(get_logger(), &quot;\x1b[32m&quot; &lt;&lt; __VA_ARGS__ &lt;&lt; &quot;\x1b[0m&quot;)</span>
-
-<span class="c1">// NOTE: Error on simulation is not error of the interpreter; so we print error messages into INFO_STREAM.</span>
-<span class="cp">#define INTERPRETER_ERROR_STREAM(...) \</span>
-<span class="cp">  RCLCPP_INFO_STREAM(get_logger(), &quot;\x1b[1;31m&quot; &lt;&lt; __VA_ARGS__ &lt;&lt; &quot;\x1b[0m&quot;)</span>
+<span class="cp">#define DECLARE_PARAMETER(IDENTIFIER) \</span>
+<span class="cp">  declare_parameter&lt;decltype(IDENTIFIER)&gt;(#IDENTIFIER, IDENTIFIER)</span>
 
 <span class="n">Interpreter</span><span class="o">::</span><span class="n">Interpreter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">NodeOptions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"></span>
 <span class="o">:</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="p">(</span><span class="s">&quot;openscenario_interpreter&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">),</span><span class="w"></span>
@@ -915,33 +880,14 @@
 <span class="w">  </span><span class="n">osc_path</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">),</span><span class="w"></span>
 <span class="w">  </span><span class="n">output_directory</span><span class="p">(</span><span class="s">&quot;/tmp&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="cp">#define DECLARE_PARAMETER(IDENTIFIER) \</span>
-<span class="cp">  declare_parameter&lt;decltype(IDENTIFIER)&gt;(#IDENTIFIER, IDENTIFIER)</span>
-
 <span class="w">  </span><span class="n">DECLARE_PARAMETER</span><span class="p">(</span><span class="n">intended_result</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DECLARE_PARAMETER</span><span class="p">(</span><span class="n">local_frame_rate</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DECLARE_PARAMETER</span><span class="p">(</span><span class="n">local_real_time_factor</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DECLARE_PARAMETER</span><span class="p">(</span><span class="n">osc_path</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DECLARE_PARAMETER</span><span class="p">(</span><span class="n">output_directory</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="cp">#undef DECLARE_PARAMETER</span>
-
-<span class="w">  </span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="kt">void</span><span class="w"> </span><span class="n">Interpreter</span><span class="o">::</span><span class="n">report</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">junit</span><span class="o">::</span><span class="n">TestResult</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w">  </span><span class="c1">//</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w">          </span><span class="c1">//</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">what</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">current_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">current_error_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">current_error_what</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">what</span><span class="p">;</span><span class="w"></span>
-
-<span class="w">  </span><span class="n">INTERPRETER_INFO_STREAM</span><span class="p">(</span><span class="s">&quot;Deactivate myself.&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">deactivate</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">INTERPRETER_INFO_STREAM</span><span class="p">(</span><span class="s">&quot;Deactivated myself.&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
 
 <span class="kt">pid_t</span><span class="w"> </span><span class="n">record_process_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
@@ -973,22 +919,30 @@
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
+<span class="cp">#define GET_PARAMETER(IDENTIFIER) get_parameter(#IDENTIFIER, IDENTIFIER)</span>
+
 <span class="n">Interpreter</span><span class="o">::</span><span class="n">Result</span><span class="w"> </span><span class="n">Interpreter</span><span class="o">::</span><span class="n">on_configure</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"></span>
 <span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">INTERPRETER_INFO_STREAM</span><span class="p">(</span><span class="s">&quot;Configuring.&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">// NOTE: Wait for parameters to be set.</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* ---- NOTE -----------------------------------------------------------------</span>
+<span class="cm">   *</span>
+<span class="cm">   *  The scenario_test_runner that launched this node considers that &quot;the</span>
+<span class="cm">   *  scenario is not expected to finish&quot; or &quot;an abnormality has occurred that</span>
+<span class="cm">   *  prevents the interpreter from terminating itself&quot; after the specified</span>
+<span class="cm">   *  time (specified by --global-timeout), and deactivates this node.</span>
+<span class="cm">   *</span>
+<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
+<span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Failure</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;Timeout&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;The simulation time has exceeded the time specified by the scenario_test_runner&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="cp">#define GET_PARAMETER(IDENTIFIER) get_parameter(#IDENTIFIER, IDENTIFIER)</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w">  </span><span class="c1">// NOTE: Wait for parameters to be set.</span>
 
 <span class="w">  </span><span class="n">GET_PARAMETER</span><span class="p">(</span><span class="n">intended_result</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">GET_PARAMETER</span><span class="p">(</span><span class="n">local_frame_rate</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">GET_PARAMETER</span><span class="p">(</span><span class="n">local_real_time_factor</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">GET_PARAMETER</span><span class="p">(</span><span class="n">osc_path</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">GET_PARAMETER</span><span class="p">(</span><span class="n">output_directory</span><span class="p">);</span><span class="w"></span>
-
-<span class="cp">#undef GET_PARAMETER</span>
 
 <span class="w">  </span><span class="n">record_start</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;-a&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">//</span>
@@ -1003,15 +957,7 @@
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">configuration</span><span class="p">.</span><span class="n">auto_sink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">configuration</span><span class="p">.</span><span class="n">initialize_duration</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">any_of</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cbegin</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">entities</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cend</span><span class="p">(</span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">entities</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">each</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">each</span><span class="p">).</span><span class="k">template</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">ScenarioObject</span><span class="o">&gt;</span><span class="p">().</span><span class="n">object_controller</span><span class="p">.</span><span class="n">isEgo</span><span class="p">();</span><span class="w"></span>
-<span class="w">        </span><span class="p">})</span><span class="w"></span>
-<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="mi">30</span><span class="w"></span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">configuration</span><span class="p">.</span><span class="n">initialize_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ObjectController</span><span class="o">::</span><span class="n">ego_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">configuration</span><span class="p">.</span><span class="n">scenario_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">osc_path</span><span class="p">;</span><span class="w"></span>
 
@@ -1035,6 +981,8 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Interpreter</span><span class="o">::</span><span class="n">Result</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
+<span class="cp">#undef GET_PARAMETER</span>
+
 <span class="n">Interpreter</span><span class="o">::</span><span class="n">Result</span><span class="w"> </span><span class="n">Interpreter</span><span class="o">::</span><span class="n">on_activate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">INTERPRETER_INFO_STREAM</span><span class="p">(</span><span class="s">&quot;Activating.&quot;</span><span class="p">);</span><span class="w"></span>
@@ -1047,7 +995,7 @@
 <span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">publisher_of_context</span><span class="p">).</span><span class="n">on_activate</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_wall_timer</span><span class="p">(</span><span class="n">period</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">period</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">withExceptionHandler</span><span class="p">([</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">period</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">guard</span><span class="p">([</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">period</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">script</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">complete</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">evaluate_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">execution_timer</span><span class="p">.</span><span class="n">invoke</span><span class="p">(</span><span class="s">&quot;evaluate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1112,20 +1060,13 @@
 
 <span class="w">  </span><span class="n">connection</span><span class="p">.</span><span class="o">~</span><span class="n">API</span><span class="p">();</span><span class="w">  </span><span class="c1">// Deactivate simulator</span>
 
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">message</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">current_result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SUCCESS</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[32m&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[1;31m&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">current_error_type</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">current_error_what</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">message</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">current_error_what</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">message</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-
 <span class="w">  </span><span class="c1">// NOTE: Error on simulation is not error of the interpreter; so we print error messages into INFO_STREAM.</span>
-<span class="w">  </span><span class="n">RCLCPP_INFO_STREAM</span><span class="p">(</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">str</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">apply_visitor</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">overload</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RCLCPP_INFO_STREAM</span><span class="p">(</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Failure</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RCLCPP_INFO_STREAM</span><span class="p">(</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">RCLCPP_INFO_STREAM</span><span class="p">(</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"> </span><span class="p">}),</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">record_end</span><span class="p">();</span><span class="w"></span>
 
@@ -1136,19 +1077,28 @@
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">INTERPRETER_INFO_STREAM</span><span class="p">(</span><span class="s">&quot;CleaningUp.&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">test_suites</span><span class="p">.</span><span class="n">addTestCase</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">pathname</span><span class="p">.</span><span class="n">parent_path</span><span class="p">().</span><span class="n">stem</span><span class="p">().</span><span class="n">string</span><span class="p">(),</span><span class="w"></span>
-<span class="w">    </span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">pathname</span><span class="p">.</span><span class="n">string</span><span class="p">(),</span><span class="w">  </span><span class="c1">// case-name (XXX: DIRTY HACK!!!)</span>
-<span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w">                                            </span><span class="c1">// time</span>
-<span class="w">    </span><span class="n">current_result</span><span class="p">,</span><span class="w">                               </span><span class="c1">//</span>
-<span class="w">    </span><span class="n">current_error_type</span><span class="p">,</span><span class="w">                           </span><span class="c1">//</span>
-<span class="w">    </span><span class="n">current_error_what</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">results</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">pathname</span><span class="p">.</span><span class="n">parent_path</span><span class="p">().</span><span class="n">parent_path</span><span class="p">().</span><span class="n">string</span><span class="p">();</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">test_suites</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_directory</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/result.junit.xml&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">suite_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">pathname</span><span class="p">.</span><span class="n">parent_path</span><span class="p">().</span><span class="n">filename</span><span class="p">().</span><span class="n">string</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">case_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">script</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">OpenScenario</span><span class="o">&gt;</span><span class="p">().</span><span class="n">pathname</span><span class="p">.</span><span class="n">stem</span><span class="p">().</span><span class="n">string</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">apply_visitor</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">overload</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">results</span><span class="p">.</span><span class="n">testsuite</span><span class="p">(</span><span class="n">suite_name</span><span class="p">).</span><span class="n">testcase</span><span class="p">(</span><span class="n">case_name</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Failure</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">results</span><span class="p">.</span><span class="n">testsuite</span><span class="p">(</span><span class="n">suite_name</span><span class="p">).</span><span class="n">testcase</span><span class="p">(</span><span class="n">case_name</span><span class="p">).</span><span class="n">failure</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">it</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">results</span><span class="p">.</span><span class="n">testsuite</span><span class="p">(</span><span class="n">suite_name</span><span class="p">).</span><span class="n">testcase</span><span class="p">(</span><span class="n">case_name</span><span class="p">).</span><span class="n">error</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">it</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}),</span><span class="w"></span>
+<span class="w">      </span><span class="n">result</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">results</span><span class="p">.</span><span class="n">write_to</span><span class="p">(</span><span class="s">&quot;/tmp/scenario_test_runner/result.junit.xml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;  &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">script</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">  </span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Interpreter</span><span class="o">::</span><span class="n">Result</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -1175,7 +1125,7 @@
 <span class="n">RCLCPP_COMPONENTS_REGISTER_NODE</span><span class="p">(</span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">Interpreter</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

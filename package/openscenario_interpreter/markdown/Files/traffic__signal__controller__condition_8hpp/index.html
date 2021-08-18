@@ -786,6 +786,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/reader/attribute.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/scope.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/string.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/traffic_signal_controller.hpp&gt;</span><span class="cp"></span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -825,14 +826,13 @@
 
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">evaluate</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">        </span><span class="n">localScope</span><span class="p">().</span><span class="n">traffic_signal_controllers</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">traffic_signal_controller_ref</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">assert</span><span class="p">(</span><span class="n">controller</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">current_phase_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">controller</span><span class="p">).</span><span class="n">currentPhaseName</span><span class="p">();</span><span class="w"></span>
-<span class="w">      </span><span class="n">current_phase_since</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">controller</span><span class="p">).</span><span class="n">currentPhaseSince</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">localScope</span><span class="p">().</span><span class="n">findElement</span><span class="p">(</span><span class="n">traffic_signal_controller_ref</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">found</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">found</span><span class="p">.</span><span class="n">is</span><span class="o">&lt;</span><span class="n">TrafficSignalController</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">found</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">TrafficSignalController</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">current_phase_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">controller</span><span class="p">.</span><span class="n">currentPhaseName</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">current_phase_since</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">controller</span><span class="p">.</span><span class="n">currentPhaseSince</span><span class="p">();</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">asBoolean</span><span class="p">(</span><span class="n">current_phase_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">phase</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">THROW_SYNTAX_ERROR</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="s">&quot;TrafficSignalController &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">quoted</span><span class="p">(</span><span class="n">traffic_signal_controller_ref</span><span class="p">),</span><span class="w"></span>
 <span class="w">        </span><span class="s">&quot; is not declared in this scope&quot;</span><span class="p">);</span><span class="w"></span>
@@ -858,7 +858,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__TRAFFIC_SIGNAL_CONTROLLER_CONDITION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

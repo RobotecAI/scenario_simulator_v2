@@ -810,13 +810,11 @@
 <span class="cm"> *  &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
 <span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
-<span class="k">struct</span> <span class="nc">MiscObject</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">Scope</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">MiscObject</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Scope</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">mass</span><span class="p">;</span><span class="w">  </span><span class="c1">// Mass of the miscellaneous object. Unit: Kg; Range: [0..inf[.</span>
 
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">MiscObjectCategory</span><span class="w"> </span><span class="n">misc_object_category</span><span class="p">;</span><span class="w">  </span><span class="c1">// Categorization of the miscellaneous object.</span>
-
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span><span class="c1">// Name of the miscellaneous object type.</span>
 
 <span class="w">  </span><span class="c1">// const String</span>
 <span class="w">  </span><span class="c1">//   model3d;  // Definition of the model of the miscellaneous object as a model type or a relative or absolute file path.</span>
@@ -827,13 +825,12 @@
 
 <span class="w">  </span><span class="n">Properties</span><span class="w"> </span><span class="n">properties</span><span class="p">;</span><span class="w">  </span><span class="c1">// Property definitions for the miscellaneous object.</span>
 
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Tree</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Tree</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">MiscObject</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scope</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// clang-format off</span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="n">scope</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="n">scope</span><span class="p">.</span><span class="n">makeChildScope</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">))),</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// clang-format off</span>
 <span class="w">    </span><span class="n">mass</span><span class="w">                  </span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">Double</span><span class="w">               </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;mass&quot;</span><span class="p">,</span><span class="w">                  </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">())),</span><span class="w"></span>
 <span class="w">    </span><span class="n">misc_object_category</span><span class="w">  </span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">MiscObjectCategory</span><span class="w">   </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;miscObjectCategory&quot;</span><span class="p">,</span><span class="w">    </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">())),</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w">                  </span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="w">               </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w">                  </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">())),</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// model3d               (readAttribute&lt;String               &gt;(&quot;model3d&quot;,               tree, localScope())),</span>
 <span class="w">    </span><span class="n">parameter_declarations</span><span class="p">(</span><span class="n">readElement</span><span class="w">  </span><span class="o">&lt;</span><span class="n">ParameterDeclarations</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ParameterDeclarations&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">())),</span><span class="w"></span>
 <span class="w">    </span><span class="n">bounding_box</span><span class="w">          </span><span class="p">(</span><span class="n">readElement</span><span class="w">  </span><span class="o">&lt;</span><span class="n">BoundingBox</span><span class="w">          </span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;BoundingBox&quot;</span><span class="p">,</span><span class="w">           </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">())),</span><span class="w"></span>
@@ -864,7 +861,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__MISC_OBJECT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:43:00 UTC</p>
                 
                   
                 

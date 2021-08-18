@@ -208,7 +208,7 @@
 <codeline lineno="146"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/>bbox.type<sp/>=<sp/>bbox.LINE_LIST;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/>bbox.lifetime<sp/>=<sp/>rclcpp::Duration(0.1);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>bbox.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p0,<sp/>p1,<sp/>p2,<sp/>p3,<sp/>p4,<sp/>p5,<sp/>p6,<sp/>p7;</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/>p0.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
@@ -315,7 +315,7 @@
 <codeline lineno="253"><highlight class="normal"><sp/><sp/>text.scale.x<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/>text.scale.y<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/>text.scale.z<sp/>=<sp/>0.6;</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/>text.lifetime<sp/>=<sp/>rclcpp::Duration(0.1);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>text.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
 <codeline lineno="257"><highlight class="normal"><sp/><sp/>text.text<sp/>=<sp/>status.name;</highlight></codeline>
 <codeline lineno="258"><highlight class="normal"><sp/><sp/>text.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;white&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(text);</highlight></codeline>
@@ -354,7 +354,7 @@
 <codeline lineno="292"><highlight class="normal"><sp/><sp/>arrow.scale.x<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/>arrow.scale.y<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/>arrow.scale.z<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/>arrow.lifetime<sp/>=<sp/>rclcpp::Duration(0.1);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/>arrow.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/>arrow.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(arrow);</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
@@ -377,7 +377,7 @@
 <codeline lineno="315"><highlight class="normal"><sp/><sp/>text_action.scale.x<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/>text_action.scale.y<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/>text_action.scale.z<sp/>=<sp/>0.4;</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/>text_action.lifetime<sp/>=<sp/>rclcpp::Duration(0.1);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/>text_action.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/>text_action.text<sp/>=<sp/>status.action_status.current_action;</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/>text_action.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;white&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(text_action);</highlight></codeline>

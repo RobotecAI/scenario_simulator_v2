@@ -3,6 +3,7 @@
   <compounddef id="classmetrics_1_1MetricBase" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>metrics::MetricBase</compoundname>
     <derivedcompoundref refid="classmetrics_1_1MomentaryStopMetric" prot="public" virt="non-virtual">metrics::MomentaryStopMetric</derivedcompoundref>
+    <derivedcompoundref refid="classmetrics_1_1OutOfRangeMetric" prot="public" virt="non-virtual">metrics::OutOfRangeMetric</derivedcompoundref>
     <derivedcompoundref refid="classmetrics_1_1ReactionTimeMetric" prot="public" virt="non-virtual">metrics::ReactionTimeMetric</derivedcompoundref>
     <derivedcompoundref refid="classmetrics_1_1TraveledDistanceMetric" prot="public" virt="non-virtual">metrics::TraveledDistanceMetric</derivedcompoundref>
       <sectiondef kind="public-attrib">
@@ -101,6 +102,7 @@
         <name>activateTrigger</name>
         <reimplementedby refid="classmetrics_1_1TraveledDistanceMetric_1aeca318ff6c5c6c50656a620c2a674e32">activateTrigger</reimplementedby>
         <reimplementedby refid="classmetrics_1_1ReactionTimeMetric_1a561f0ba26d89a0e00fc871f00018369e">activateTrigger</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a4e3cb71963e8f46de7c6d540143260e2">activateTrigger</reimplementedby>
         <reimplementedby refid="classmetrics_1_1MomentaryStopMetric_1ab7596342b80ba36b862918b51bf203a8">activateTrigger</reimplementedby>
         <briefdescription>
         </briefdescription>
@@ -117,6 +119,7 @@
         <name>update</name>
         <reimplementedby refid="classmetrics_1_1TraveledDistanceMetric_1a1c0e779b865fb5fe31685ee8d495a235">update</reimplementedby>
         <reimplementedby refid="classmetrics_1_1ReactionTimeMetric_1aa52600a32cd3b2788f8684bf7312378b">update</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a32309dca73d75cb611b843acd8ed9001">update</reimplementedby>
         <reimplementedby refid="classmetrics_1_1MomentaryStopMetric_1ad168c0484e0c839c64b277b4c11e770f">update</reimplementedby>
         <briefdescription>
         </briefdescription>
@@ -176,6 +179,7 @@
         <name>to_json</name>
         <reimplementedby refid="classmetrics_1_1TraveledDistanceMetric_1a83a60b1a279388f2e324be39d3509b4c">to_json</reimplementedby>
         <reimplementedby refid="classmetrics_1_1ReactionTimeMetric_1a00271e19e8ac3c8da5acbc2c107fb538">to_json</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a9e7bed54f36df253d513668540a22cf3">to_json</reimplementedby>
         <reimplementedby refid="classmetrics_1_1MomentaryStopMetric_1a02d79bf9d97f6c63ebba3ef8c43af90f">to_json</reimplementedby>
         <briefdescription>
         </briefdescription>
@@ -247,15 +251,21 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="102">
+      <node id="103">
         <label>metrics::ReactionTimeMetric</label>
         <link refid="classmetrics_1_1ReactionTimeMetric"/>
         <childnode refid="100" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="103">
+      <node id="104">
         <label>metrics::TraveledDistanceMetric</label>
         <link refid="classmetrics_1_1TraveledDistanceMetric"/>
+        <childnode refid="100" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>metrics::OutOfRangeMetric</label>
+        <link refid="classmetrics_1_1OutOfRangeMetric"/>
         <childnode refid="100" relation="public-inheritance">
         </childnode>
       </node>

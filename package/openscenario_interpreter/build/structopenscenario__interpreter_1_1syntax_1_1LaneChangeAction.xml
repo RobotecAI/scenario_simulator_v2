@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::LaneChangeAction</compoundname>
-    <basecompoundref refid="structopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
+    <basecompoundref refid="classopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a4b8894804dcd7be95cead66389f27f71" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1Double" kindref="compound">Double</ref></type>
@@ -73,7 +73,7 @@
           <declname>node</declname>
         </param>
         <param>
-          <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
+          <type><ref refid="classopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
           <declname>outer_scope</declname>
         </param>
         <briefdescription>
@@ -131,109 +131,107 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="371">
+      <node id="377">
         <label>openscenario_interpreter::syntax::LaneChangeAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction"/>
-        <childnode refid="372" relation="private-inheritance">
+        <childnode refid="378" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="372">
+      <node id="378">
         <label>openscenario_interpreter::Scope</label>
-        <link refid="structopenscenario__interpreter_1_1Scope"/>
+        <link refid="classopenscenario__interpreter_1_1Scope"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="377">
+      <node id="383">
         <label>std::shared_ptr&lt; Expression  &gt;</label>
       </node>
-      <node id="378">
+      <node id="384">
         <label>openscenario_interpreter::syntax::TransitionDynamics</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TransitionDynamics"/>
-        <childnode refid="379" relation="usage">
+        <childnode refid="385" relation="usage">
           <edgelabel>dynamics_dimension</edgelabel>
         </childnode>
-        <childnode refid="380" relation="usage">
+        <childnode refid="386" relation="usage">
           <edgelabel>value</edgelabel>
         </childnode>
-        <childnode refid="382" relation="usage">
+        <childnode refid="388" relation="usage">
           <edgelabel>dynamics_shape</edgelabel>
         </childnode>
       </node>
-      <node id="382">
+      <node id="388">
         <label>openscenario_interpreter::syntax::DynamicsShape</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1DynamicsShape"/>
       </node>
-      <node id="380">
+      <node id="386">
         <label>openscenario_interpreter::syntax::Double</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Double"/>
-        <childnode refid="381" relation="public-inheritance">
+        <childnode refid="387" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="376">
+      <node id="382">
         <label>ComplexType</label>
         <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="377" relation="public-inheritance">
+        <childnode refid="383" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="379">
+      <node id="385">
         <label>openscenario_interpreter::syntax::DynamicsDimension</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1DynamicsDimension"/>
       </node>
-      <node id="381">
+      <node id="387">
         <label>std_msgs::msg::Float64</label>
       </node>
-      <node id="373">
+      <node id="379">
         <label>openscenario_interpreter::syntax::LaneChangeAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction"/>
-        <childnode refid="374" relation="private-inheritance">
+        <childnode refid="380" relation="private-inheritance">
         </childnode>
-        <childnode refid="375" relation="usage">
+        <childnode refid="381" relation="usage">
           <edgelabel>lane_change_target</edgelabel>
         </childnode>
-        <childnode refid="378" relation="usage">
+        <childnode refid="384" relation="usage">
           <edgelabel>lane_change_action_dynamics</edgelabel>
         </childnode>
-        <childnode refid="380" relation="usage">
+        <childnode refid="386" relation="usage">
           <edgelabel>target_lane_offset</edgelabel>
         </childnode>
       </node>
-      <node id="375">
+      <node id="381">
         <label>openscenario_interpreter::syntax::LaneChangeTarget</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeTarget"/>
-        <childnode refid="376" relation="public-inheritance">
+        <childnode refid="382" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="374">
+      <node id="380">
         <label>openscenario_interpreter::Scope</label>
-        <link refid="structopenscenario__interpreter_1_1Scope"/>
+        <link refid="classopenscenario__interpreter_1_1Scope"/>
       </node>
     </collaborationgraph>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/lane_change_action.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/lane_change_action.hpp" bodystart="40" bodyend="92"/>
     <listofallmembers>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a932d75ba8902e0efb79cc714ace244f9" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>accomplished</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a935cc606b0bf612f402e931bdad4d18a" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>accomplishments</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a71adbadb72f848f4dd4d08ea00bb351e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Actor</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a7e23ddea0b69991cc161f7a2c4b05304" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>actors</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a8f47946a2ec4238dffdb1fa25137ac43" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Actors</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a10b3826ffbeda24506a4b1f6098adf0a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>actors</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6c1520691ffecd19680afe4a8ae9e1f2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>addElement</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a369da81f3f2203b0274e2ce390bacc70" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>endsImmediately</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a0682dea0459bee5fbc795e2fc9baebb2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>entities</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6e06d610d0a8848a30d6f3f918d77911" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>findElement</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1ae917a5fcfe946b9bc39e7808c11d212b" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>lane_change_action_dynamics</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1ace9908f4b301b30008b9ce4d6fe1618c" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>lane_change_target</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a22f09aee14765707d3dc2a8c693e5174" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>LaneChangeAction</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>localScope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>localScope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>logic_file</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a9e9eb5015e45940c1215cbb5f7d87fc5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>parameters</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>pathname</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>scene_graph_file</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a4dc48c7507093c3c205a179c1ab80f16" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>localScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>localScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>logic_file</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aaca945840340f070418d229c6d8fa42a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>makeChildScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aade3655a2b6949034ff567a90639fdb9" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>name</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>pathname</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>scene_graph_file</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a2c9dcc3e1fdae785c5c2e6d0cd4e7e6b" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>Scope</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a384cf086b5930e66cd6d86bdeb587572" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>start</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a8a6de30a3b47eb5c3d9117456fdf15e0" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>storyboard_elements</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a4b8894804dcd7be95cead66389f27f71" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>target_lane_offset</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1abd3ff1e82f05e59c7f453316ceb6a1a7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::LaneChangeAction</scope><name>traffic_signal_controllers</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

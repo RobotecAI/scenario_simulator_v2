@@ -784,6 +784,7 @@
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_DECLARATION_HPP_</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/reader/attribute.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/scope.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 
@@ -817,7 +818,7 @@
 
 <span class="w">  </span><span class="n">ParameterDeclaration</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">ParameterDeclaration</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scope</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">{</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">)},</span><span class="w"></span>
 <span class="w">    </span><span class="n">parameter_type</span><span class="p">{</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">ParameterType</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;parameterType&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">scope</span><span class="p">)},</span><span class="w"></span>
@@ -835,7 +836,7 @@
 <span class="w">        </span><span class="s">&quot;  - </span><span class="se">\&#39;\n</span><span class="s">&quot;</span><span class="w"></span>
 <span class="w">        </span><span class="s">&quot;  - </span><span class="se">\&quot;\n</span><span class="s">&quot;</span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">scope</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">evaluate</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">scope</span><span class="p">.</span><span class="n">addElement</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">evaluate</span><span class="p">());</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
@@ -876,7 +877,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_DECLARATION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

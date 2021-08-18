@@ -784,6 +784,7 @@
 <span class="cp">#define OPENSCENARIO_INTERPRETER__SYNTAX__TELEPORT_ACTION_HPP_</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/procedure.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/scope.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/position.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 
@@ -812,18 +813,18 @@
 
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">true_type</span><span class="w"> </span><span class="n">accomplished</span><span class="p">{};</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">WorldPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">world_position</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="o">::</span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">WorldPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">world_position</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EntityRef</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">setEntityStatus</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="p">(</span><span class="n">world_position</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">LanePosition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lane_position</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="o">::</span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">LanePosition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lane_position</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EntityRef</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">setEntityStatus</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lane_position</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">RelativeWorldPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">relative_world_position</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="o">::</span><span class="n">Actor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">RelativeWorldPosition</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">relative_world_position</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EntityRef</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">actor</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">setEntityStatus</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="n">actor</span><span class="p">,</span><span class="w"></span>
@@ -847,7 +848,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__TELEPORT_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::TeleportAction</compoundname>
-    <basecompoundref refid="structopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
+    <basecompoundref refid="classopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ac3194f760945b33a8eecaa9bac21f16a" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1Position" kindref="compound">Position</ref></type>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="37" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1af36be9c3de1969e7893a8b59846c92df" prot="public" static="no" mutable="no">
         <type>const std::true_type</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="45" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -48,7 +48,7 @@
           <declname>node</declname>
         </param>
         <param>
-          <type><ref refid="structopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
+          <type><ref refid="classopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
           <declname>outer_scope</declname>
         </param>
         <briefdescription>
@@ -57,19 +57,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="40" bodyend="43"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="41" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1aff9f9c5f5478261fc639f02b53c4ef39" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ad2a0b45a543ec7daffe159ec77386e80" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>decltype(auto)</type>
         <definition>decltype(auto) openscenario_interpreter::syntax::TeleportAction::operator()</definition>
-        <argsstring>(const WorldPosition &amp;world_position, const Scope::Actor &amp;actor) const</argsstring>
+        <argsstring>(const WorldPosition &amp;world_position, const EntityRef &amp;actor) const</argsstring>
         <name>operator()</name>
         <param>
           <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1WorldPosition" kindref="compound">WorldPosition</ref> &amp;</type>
           <declname>world_position</declname>
         </param>
         <param>
-          <type>const Scope::Actor &amp;</type>
+          <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1EntityRef" kindref="compound">EntityRef</ref> &amp;</type>
           <declname>actor</declname>
         </param>
         <briefdescription>
@@ -78,19 +78,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="47" bodyend="50"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="48" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="48" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ae10fd5405eff3a4b9e13f02c46c96575" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a0bd6e24d6c102ce39dd7e6ea1d85eea6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>decltype(auto)</type>
         <definition>decltype(auto) openscenario_interpreter::syntax::TeleportAction::operator()</definition>
-        <argsstring>(const LanePosition &amp;lane_position, const Scope::Actor &amp;actor) const</argsstring>
+        <argsstring>(const LanePosition &amp;lane_position, const EntityRef &amp;actor) const</argsstring>
         <name>operator()</name>
         <param>
           <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1LanePosition" kindref="compound">LanePosition</ref> &amp;</type>
           <declname>lane_position</declname>
         </param>
         <param>
-          <type>const Scope::Actor &amp;</type>
+          <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1EntityRef" kindref="compound">EntityRef</ref> &amp;</type>
           <declname>actor</declname>
         </param>
         <briefdescription>
@@ -99,19 +99,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="52" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="52" bodyend="55"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="53" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="53" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a56382c40b738e1dd5e9e3eb23dc3d7b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a55c405fe00ce3d4ff4003e30d9b69b3e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>decltype(auto)</type>
         <definition>decltype(auto) openscenario_interpreter::syntax::TeleportAction::operator()</definition>
-        <argsstring>(const RelativeWorldPosition &amp;relative_world_position, const Scope::Actor &amp;actor) const</argsstring>
+        <argsstring>(const RelativeWorldPosition &amp;relative_world_position, const EntityRef &amp;actor) const</argsstring>
         <name>operator()</name>
         <param>
           <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1RelativeWorldPosition" kindref="compound">RelativeWorldPosition</ref> &amp;</type>
           <declname>relative_world_position</declname>
         </param>
         <param>
-          <type>const Scope::Actor &amp;</type>
+          <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1EntityRef" kindref="compound">EntityRef</ref> &amp;</type>
           <declname>actor</declname>
         </param>
         <briefdescription>
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="57" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="57" bodyend="65"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="58" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1afb941c0cebd3d3f4a67080cc961b1451" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="67" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="67" bodyend="72"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="68" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="68" bodyend="73"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="74" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="74" bodyend="74"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="75" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -156,73 +156,71 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="799">
+      <node id="808">
         <label>openscenario_interpreter::syntax::TeleportAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction"/>
-        <childnode refid="800" relation="private-inheritance">
+        <childnode refid="809" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="800">
+      <node id="809">
         <label>openscenario_interpreter::Scope</label>
-        <link refid="structopenscenario__interpreter_1_1Scope"/>
+        <link refid="classopenscenario__interpreter_1_1Scope"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="805">
+      <node id="814">
         <label>std::shared_ptr&lt; Expression  &gt;</label>
       </node>
-      <node id="801">
+      <node id="810">
         <label>openscenario_interpreter::syntax::TeleportAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction"/>
-        <childnode refid="802" relation="private-inheritance">
+        <childnode refid="811" relation="private-inheritance">
         </childnode>
-        <childnode refid="803" relation="usage">
+        <childnode refid="812" relation="usage">
           <edgelabel>position</edgelabel>
         </childnode>
       </node>
-      <node id="803">
+      <node id="812">
         <label>openscenario_interpreter::syntax::Position</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1Position"/>
-        <childnode refid="804" relation="public-inheritance">
+        <childnode refid="813" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="804">
+      <node id="813">
         <label>Element</label>
         <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="805" relation="public-inheritance">
+        <childnode refid="814" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="802">
+      <node id="811">
         <label>openscenario_interpreter::Scope</label>
-        <link refid="structopenscenario__interpreter_1_1Scope"/>
+        <link refid="classopenscenario__interpreter_1_1Scope"/>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="35" bodyend="75"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/teleport_action.hpp" bodystart="36" bodyend="76"/>
     <listofallmembers>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1af36be9c3de1969e7893a8b59846c92df" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>accomplished</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a71adbadb72f848f4dd4d08ea00bb351e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Actor</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a8f47946a2ec4238dffdb1fa25137ac43" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Actors</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a7e23ddea0b69991cc161f7a2c4b05304" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>actors</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a10b3826ffbeda24506a4b1f6098adf0a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>actors</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6c1520691ffecd19680afe4a8ae9e1f2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>addElement</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a37cb949e5ad9e09f624f4aa48e41bd2d" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>endsImmediately</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a0682dea0459bee5fbc795e2fc9baebb2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>entities</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>localScope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>localScope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>logic_file</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1aff9f9c5f5478261fc639f02b53c4ef39" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>operator()</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ae10fd5405eff3a4b9e13f02c46c96575" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>operator()</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a56382c40b738e1dd5e9e3eb23dc3d7b8" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>operator()</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a9e9eb5015e45940c1215cbb5f7d87fc5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>parameters</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>pathname</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6e06d610d0a8848a30d6f3f918d77911" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>findElement</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>localScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>localScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>logic_file</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aaca945840340f070418d229c6d8fa42a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>makeChildScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aade3655a2b6949034ff567a90639fdb9" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>name</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ad2a0b45a543ec7daffe159ec77386e80" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>operator()</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a0bd6e24d6c102ce39dd7e6ea1d85eea6" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>operator()</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a55c405fe00ce3d4ff4003e30d9b69b3e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>operator()</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>pathname</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ac3194f760945b33a8eecaa9bac21f16a" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>position</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>scene_graph_file</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a4dc48c7507093c3c205a179c1ab80f16" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>scene_graph_file</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a2c9dcc3e1fdae785c5c2e6d0cd4e7e6b" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>Scope</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1afb941c0cebd3d3f4a67080cc961b1451" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>start</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1a8a6de30a3b47eb5c3d9117456fdf15e0" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>storyboard_elements</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a3c960ba0e5c4bcae47953d82114b7dad" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>TeleportAction</name></member>
-      <member refid="structopenscenario__interpreter_1_1Scope_1abd3ff1e82f05e59c7f453316ceb6a1a7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::TeleportAction</scope><name>traffic_signal_controllers</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

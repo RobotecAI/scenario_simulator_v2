@@ -918,11 +918,11 @@
 </tr>
 <tr>
 <td>boost::optional&lt; double &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1HermiteCurve#function-getcollisionpointin2d">getCollisionPointIn2D</a></strong>(geometry_msgs::msg::Point point0, geometry_msgs::msg::Point point1, bool search_backward =false) const</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1HermiteCurve#function-getcollisionpointin2d">getCollisionPointIn2D</a></strong>(const geometry_msgs::msg::Point &amp; point0, const geometry_msgs::msg::Point &amp; point1, bool search_backward =false) const</td>
 </tr>
 <tr>
 <td>boost::optional&lt; double &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1HermiteCurve#function-getcollisionpointin2d">getCollisionPointIn2D</a></strong>(std::vector&lt; geometry_msgs::msg::Point &gt; polygon, bool search_backward =false) const</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1math_1_1HermiteCurve#function-getcollisionpointin2d">getCollisionPointIn2D</a></strong>(const std::vector&lt; geometry_msgs::msg::Point &gt; &amp; polygon, bool search_backward =false, bool close_start_end =true) const</td>
 </tr>
 <tr>
 <td>double</td>
@@ -1014,15 +1014,17 @@
 </code></pre></div>
 <h3 id="function-getcollisionpointin2d">function getCollisionPointIn2D<a class="headerlink" href="#function-getcollisionpointin2d" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">getCollisionPointIn2D</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="n">point0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="n">point1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">point0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">point1</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">search_backward</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
+<p>Hard coded parameter, torelance of the collision point. </p>
 <h3 id="function-getcollisionpointin2d_1">function getCollisionPointIn2D<a class="headerlink" href="#function-getcollisionpointin2d_1" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">getCollisionPointIn2D</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">polygon</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">search_backward</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">polygon</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">search_backward</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">close_start_end</span><span class="w"> </span><span class="o">=</span><span class="nb">true</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-get2dcurvature">function get2DCurvature<a class="headerlink" href="#function-get2dcurvature" title="Permanent link">#</a></h3>
@@ -1061,7 +1063,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:18 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:56 UTC</p>
                 
                   
                 

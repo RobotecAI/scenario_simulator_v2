@@ -747,7 +747,7 @@
                 
                 
                 <h1 id="openscenario_interpretersyntaxbyentitycondition">openscenario_interpreter::syntax::ByEntityCondition<a class="headerlink" href="#openscenario_interpretersyntaxbyentitycondition" title="Permanent link">#</a></h1>
-<p>Inherits from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a>, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityCondition">openscenario_interpreter::syntax::EntityCondition</a>, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">openscenario_interpreter::Pointer&lt; Expression &gt;</a>, std::shared_ptr&lt; T &gt;</p>
+<p>Inherits from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a>, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityCondition">openscenario_interpreter::syntax::EntityCondition</a>, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">openscenario_interpreter::Pointer&lt; Expression &gt;</a>, std::shared_ptr&lt; T &gt;</p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -759,31 +759,12 @@
 <tbody>
 <tr>
 <td>template \&lt;typename Node ,typename Scope ></br></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ByEntityCondition#function-byentitycondition">ByEntityCondition</a></strong>(const Node &amp; node, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">Scope</a> &amp; outer_scope)</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ByEntityCondition#function-byentitycondition">ByEntityCondition</a></strong>(const Node &amp; node, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp; outer_scope)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="additional-inherited-members">Additional inherited members<a class="headerlink" href="#additional-inherited-members" title="Permanent link">#</a></h2>
-<p><strong>Public Types inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a></strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>using std::list&lt; Actor &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#using-actors">Actors</a></strong></td>
-</tr>
-<tr>
-<td>using EntityRef</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#using-actor">Actor</a></strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Public Functions inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a></strong></p>
+<p><strong>Public Functions inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a></strong></p>
 <table>
 <thead>
 <tr>
@@ -794,31 +775,43 @@
 <tbody>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#function-localscope">localScope</a></strong>()</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-makechildscope">makeChildScope</a></strong>(const std::string &amp; name) const</td>
 </tr>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#function-localscope">localScope</a></strong>() const</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-localscope">localScope</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-localscope">localScope</a></strong>()</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-findelement">findElement</a></strong>(const std::string &amp; name_) const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-addelement">addElement</a></strong>(const std::string &amp; name_, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &amp; element)</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>()</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>()</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(<a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">Scope</a> &amp; ) =default</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(const boost::filesystem::path &amp; pathname)</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">Scope</a> &amp; ) =default</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp; ) =default</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(const boost::filesystem::path &amp; pathname)</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-scope">Scope</a></strong>(<a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp;&amp; ) =default</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Public Attributes inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a></strong></p>
+<p><strong>Public Attributes inherited from <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">openscenario_interpreter::Scope</a></strong></p>
 <table>
 <thead>
 <tr>
@@ -827,37 +820,25 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>std::unordered_map&lt; String, std::shared_ptr&lt; TrafficSignalController &gt; &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-traffic_signal_controllers">traffic_signal_controllers</a></strong></td>
-</tr>
-<tr>
-<td>std::unordered_map&lt; String, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-storyboard_elements">storyboard_elements</a></strong></td>
-</tr>
 <tr>
 <td>boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-scene_graph_file">scene_graph_file</a></strong></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-scene_graph_file">scene_graph_file</a></strong></td>
 </tr>
 <tr>
 <td>const boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-pathname">pathname</a></strong></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-pathname">pathname</a></strong></td>
 </tr>
 <tr>
-<td>std::unordered_map&lt; String, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-parameters">parameters</a></strong></td>
+<td>const std::string</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-name">name</a></strong></td>
 </tr>
 <tr>
 <td>boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-logic_file">logic_file</a></strong></td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-logic_file">logic_file</a></strong></td>
 </tr>
 <tr>
-<td>std::unordered_map&lt; String, <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &gt;</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-entities">entities</a></strong></td>
-</tr>
-<tr>
-<td>Actors</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1Scope#variable-actors">actors</a></strong></td>
+<td>std::list&lt; EntityRef &gt;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-actors">actors</a></strong></td>
 </tr>
 </tbody>
 </table>
@@ -901,7 +882,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 

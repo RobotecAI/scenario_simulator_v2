@@ -1,0 +1,335 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structopenscenario__interpreter_1_1EnvironmentFrame" kind="struct" language="C++" prot="public">
+    <compoundname>openscenario_interpreter::EnvironmentFrame</compoundname>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="structopenscenario__interpreter_1_1EnvironmentFrame_1add2876c12b28a6411e6f0f1145d09573" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend struct</type>
+        <definition>friend struct Scope</definition>
+        <argsstring></argsstring>
+        <name>Scope</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="33" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1EnvironmentFrame_1af309be5aa5e1424a84818e1110db49ba" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string openscenario_interpreter::EnvironmentFrame::scope_name</definition>
+        <argsstring></argsstring>
+        <name>scope_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="35" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1EnvironmentFrame_1abfb867dededddadc715af07daad27668" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Element</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, Element&gt; openscenario_interpreter::EnvironmentFrame::environments</definition>
+        <argsstring></argsstring>
+        <name>environments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a9f6c7b6c22b8c632a5a1440ff010aceb" prot="private" static="no" mutable="no">
+        <type><ref refid="structopenscenario__interpreter_1_1EnvironmentFrame" kindref="compound">EnvironmentFrame</ref> *const</type>
+        <definition>EnvironmentFrame* const openscenario_interpreter::EnvironmentFrame::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a64937ad946203595b18f98fc0202edd3" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="structopenscenario__interpreter_1_1EnvironmentFrame" kindref="compound">EnvironmentFrame</ref> * &gt;</type>
+        <definition>std::unordered_map&lt;std::string, EnvironmentFrame *&gt; openscenario_interpreter::EnvironmentFrame::named_children</definition>
+        <argsstring></argsstring>
+        <name>named_children</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a5ad24557bc33cbbc35d71bebe8db950e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structopenscenario__interpreter_1_1EnvironmentFrame" kindref="compound">EnvironmentFrame</ref> * &gt;</type>
+        <definition>std::vector&lt;EnvironmentFrame *&gt; openscenario_interpreter::EnvironmentFrame::anonymous_children</definition>
+        <argsstring></argsstring>
+        <name>anonymous_children</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a2babad7b489ad8dcbd7d65252d8802e2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::EnvironmentFrame::EnvironmentFrame</definition>
+        <argsstring>()=default</argsstring>
+        <name>EnvironmentFrame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a53c0e10d2e0cfc99a03a52c1f90b38f0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::EnvironmentFrame::EnvironmentFrame</definition>
+        <argsstring>(EnvironmentFrame &amp;parent, const std::string &amp;name)</argsstring>
+        <name>EnvironmentFrame</name>
+        <param>
+          <type><ref refid="structopenscenario__interpreter_1_1EnvironmentFrame" kindref="compound">EnvironmentFrame</ref> &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="47" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="47" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a0e47a6a1b17be6a4007040a92f67499e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::EnvironmentFrame::EnvironmentFrame</definition>
+        <argsstring>(const EnvironmentFrame &amp;)=delete</argsstring>
+        <name>EnvironmentFrame</name>
+        <param>
+          <type>const <ref refid="structopenscenario__interpreter_1_1EnvironmentFrame" kindref="compound">EnvironmentFrame</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a906f7fe0c446c031894a865ed68390f5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::EnvironmentFrame::EnvironmentFrame</definition>
+        <argsstring>(EnvironmentFrame &amp;&amp;)=delete</argsstring>
+        <name>EnvironmentFrame</name>
+        <param>
+          <type><ref refid="structopenscenario__interpreter_1_1EnvironmentFrame" kindref="compound">EnvironmentFrame</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="62" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a120921580edb6950418575318ca948f7" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::EnvironmentFrame::lookupChildElement</definition>
+        <argsstring>(const std::string &amp;name) const -&gt; Element</argsstring>
+        <name>lookupChildElement</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="117" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="117" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1ab54fa3b463b02230f143239620c3a727" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::EnvironmentFrame::lookupUnqualifiedElement</definition>
+        <argsstring>(const std::string &amp;name) const -&gt; Element</argsstring>
+        <name>lookupUnqualifiedElement</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="149" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="149" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a197e158da5f6b57525655c48b341373c" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::EnvironmentFrame::lookupChildScope</definition>
+        <argsstring>(const std::string &amp;name) const -&gt; std::list&lt; const EnvironmentFrame *&gt;</argsstring>
+        <name>lookupChildScope</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="178" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="178" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a21ca036fa7ab2491327aba58b5a8b684" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::EnvironmentFrame::lookupUnqualifiedScope</definition>
+        <argsstring>(const std::string &amp;name) const -&gt; const EnvironmentFrame *</argsstring>
+        <name>lookupUnqualifiedScope</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="192" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="192" bodyend="207"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a230fb2c09c3b55d50dfe872a86ad5aa1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::EnvironmentFrame::addElement</definition>
+        <argsstring>(const std::string &amp;name, Element element) -&gt; void</argsstring>
+        <name>addElement</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenscenario__interpreter_1_1Pointer" kindref="compound">Element</ref></type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="65" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="65" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1acee6e52085f92b8a2dfb9d236d46eaf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::EnvironmentFrame::findElement</definition>
+        <argsstring>(const std::string &amp;name) const -&gt; Element</argsstring>
+        <name>findElement</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="74" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="74" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a9bf5b626da8ad29889b78e5f6ee3021f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::EnvironmentFrame::getQualifiedName</definition>
+        <argsstring>() const -&gt; std::string</argsstring>
+        <name>getQualifiedName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="102" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="102" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1EnvironmentFrame_1a9b1191381e98156753659a6c063ff026" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Iterator</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>static auto openscenario_interpreter::EnvironmentFrame::lookupQualifiedElement</definition>
+        <argsstring>(const EnvironmentFrame *scope, Iterator name_begin, Iterator name_end) -&gt; Element</argsstring>
+        <name>lookupQualifiedElement</name>
+        <param>
+          <type>const <ref refid="structopenscenario__interpreter_1_1EnvironmentFrame" kindref="compound">EnvironmentFrame</ref> *</type>
+          <declname>scope</declname>
+        </param>
+        <param>
+          <type>Iterator</type>
+          <declname>name_begin</declname>
+        </param>
+        <param>
+          <type>Iterator</type>
+          <declname>name_end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="161" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="161" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" line="31" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/scope.hpp" bodystart="30" bodyend="208"/>
+    <listofallmembers>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a230fb2c09c3b55d50dfe872a86ad5aa1" prot="public" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>addElement</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a5ad24557bc33cbbc35d71bebe8db950e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>anonymous_children</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a2babad7b489ad8dcbd7d65252d8802e2" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>EnvironmentFrame</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a53c0e10d2e0cfc99a03a52c1f90b38f0" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>EnvironmentFrame</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a0e47a6a1b17be6a4007040a92f67499e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>EnvironmentFrame</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a906f7fe0c446c031894a865ed68390f5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>EnvironmentFrame</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1abfb867dededddadc715af07daad27668" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>environments</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1acee6e52085f92b8a2dfb9d236d46eaf6" prot="public" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>findElement</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a9bf5b626da8ad29889b78e5f6ee3021f" prot="public" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>getQualifiedName</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a120921580edb6950418575318ca948f7" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>lookupChildElement</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a197e158da5f6b57525655c48b341373c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>lookupChildScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a9b1191381e98156753659a6c063ff026" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>lookupQualifiedElement</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1ab54fa3b463b02230f143239620c3a727" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>lookupUnqualifiedElement</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a21ca036fa7ab2491327aba58b5a8b684" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>lookupUnqualifiedScope</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a64937ad946203595b18f98fc0202edd3" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>named_children</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a9f6c7b6c22b8c632a5a1440ff010aceb" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>parent</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1add2876c12b28a6411e6f0f1145d09573" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>Scope</name></member>
+      <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1af309be5aa5e1424a84818e1110db49ba" prot="private" virt="non-virtual"><scope>openscenario_interpreter::EnvironmentFrame</scope><name>scope_name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -805,6 +805,9 @@
 <span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
 <span class="k">struct</span> <span class="nc">ObjectController</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ComplexType</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// inline static int ego_count= 0;</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ego_count</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">ObjectController</span><span class="p">()</span><span class="w">  </span><span class="c1">// ObjectController is optional element.</span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">ComplexType</span><span class="p">(</span><span class="n">unspecified</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
@@ -819,6 +822,16 @@
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;Controller&quot;</span><span class="p">,</span><span class="w">       </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="n">Controller</span><span class="o">&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"> </span><span class="p">})))</span><span class="w"></span>
 <span class="w">  </span><span class="c1">// clang-format on</span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEgo</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ego_count</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">~</span><span class="n">ObjectController</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEgo</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ego_count</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">isEgo</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
@@ -850,7 +863,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__OBJECT_CONTROLLER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 18 August 2021 at 00:42:22 UTC</p>
+<p>Updated on 18 August 2021 at 14:42:59 UTC</p>
                 
                   
                 
