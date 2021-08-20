@@ -530,17 +530,23 @@
     <member refid="classopenscenario__interpreter_1_1Interpreter_1a88fd6cce483a7cbf237a293824978d85" kind="variable"><name>script</name></member>
     <member refid="classopenscenario__interpreter_1_1Interpreter_1a24c9612906dfe06c5b0792595af7a728" kind="variable"><name>timer</name></member>
     <member refid="classopenscenario__interpreter_1_1Interpreter_1af14994a11b21bd9d5c48b5f529674dbd" kind="variable"><name>results</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1ae2b20a321804b9c9db13458c555f73fe" kind="variable"><name>result</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1aee45350b24ac01dce98fd3f4f6472eb2" kind="variable"><name>result</name></member>
     <member refid="classopenscenario__interpreter_1_1Interpreter_1a24aac5d1c4a6c1d8c44268049398f45c" kind="variable"><name>execution_timer</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1a53b2005ee577ce1b939cf15204cd9d6e" kind="function"><name>deactivate</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1a1c6fcf303d57b14b4c8eb9bd9083a01f" kind="function"><name>guard</name></member>
     <member refid="classopenscenario__interpreter_1_1Interpreter_1abb0597d603293930459b622566f78685" kind="function"><name>Interpreter</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1a83710b508243b66ede8e4a8f0772eaef" kind="function"><name>on_configure</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1af99f7d5e12b98ae93a740b39cd39cf73" kind="function"><name>on_activate</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1a4718fd0b66f5e8763b419c0da82a0427" kind="function"><name>on_deactivate</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1a84cddfeb7588a8ab1c29f13fd8f5bfbf" kind="function"><name>on_cleanup</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1a7a23f482feec6a33b4493a7b544ac5b1" kind="function"><name>on_shutdown</name></member>
-    <member refid="classopenscenario__interpreter_1_1Interpreter_1a4bef938ba18323b84eca2d91e77e8d0f" kind="function"><name>on_error</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a1c1828e6099a221d2a4eb9f7e3b0cf94" kind="function"><name>currentLocalFrameRate</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a62474be342a222d88edacc17a1a0871a" kind="function"><name>isAnErrorIntended</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a3b5fee4f81dfa83b214eab96d493021b" kind="function"><name>isFailureIntended</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a2f978d201535e8ac9524b7169ec348ed" kind="function"><name>isSuccessIntended</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a654e67ae5f5d10254ec5367096a98913" kind="function"><name>makeCurrentConfiguration</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1ab7dc26050dc284c434c5ded75eb20526" kind="function"><name>on_activate</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a2ec579bb0e820335b9caf3f286c6d1bd" kind="function"><name>on_cleanup</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1af095c4ee5b863d9d3586248b2c41364b" kind="function"><name>on_configure</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1ac12ec026f815d5b9785f8bc215964841" kind="function"><name>on_deactivate</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a1a91bdaf17a16b34b8b13f37ace1ce56" kind="function"><name>on_error</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a3cdf897d7f6ac4fe4e9cdb659fb09d6e" kind="function"><name>on_shutdown</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1a8eefd63dc5648660c2dc8ef840788fff" kind="function"><name>publishCurrentContext</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1ad8705bb45fc9fee60364060a53c16450" kind="function"><name>set</name></member>
+    <member refid="classopenscenario__interpreter_1_1Interpreter_1aadca9b41516e41ff719bda70a81c2dac" kind="function"><name>withExceptionHandler</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction" kind="struct"><name>openscenario_interpreter::syntax::LaneChangeAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a4b8894804dcd7be95cead66389f27f71" kind="variable"><name>target_lane_offset</name></member>
@@ -1318,7 +1324,6 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1WorldPosition_1aab4fc11191179bb8566f73bb2b0a389e" kind="function"><name>operator openscenario_msgs::msg::LaneletPose</name></member>
   </compound>
   <compound refid="namespaceopenscenario__interpreter" kind="namespace"><name>openscenario_interpreter</name>
-    <member refid="error_8hpp_1a52cd5614476fd024c0966e95f03c91e0" kind="typedef"><name>InternalError</name></member>
     <member refid="object_8hpp_1a38820d6376e3c1e298f59c9684d04991" kind="typedef"><name>Element</name></member>
     <member refid="object_8hpp_1ae4c5acdd3f950fcf48004cc661e235ea" kind="typedef"><name>ComplexType</name></member>
     <member refid="object_8hpp_1a6ea768cb7f02a2f66d66d721a95b7dba" kind="typedef"><name>Group</name></member>
@@ -1326,7 +1331,6 @@
     <member refid="object_8hpp_1a894b7359a548579f026d5f7be761abe2" kind="typedef"><name>IsOptionalElement</name></member>
     <member refid="object_8hpp_1ac6eac9a0266843250a4f305ec53cd3f1" kind="variable"><name>unspecified</name></member>
     <member refid="procedure_8hpp_1a4224644005ba620e2c5e39907346faff" kind="variable"><name>connection</name></member>
-    <member refid="openscenario__interpreter_8cpp_1a766228ab279f7cdb0f1be2fa8d6acf8f" kind="variable"><name>record_process_id</name></member>
     <member refid="procedure_8cpp_1a64086f89ecfc728324ad82fdaf65ee85" kind="variable"><name>memory</name></member>
     <member refid="object_8hpp_1a94e135af63a26ed10cdd52b13fb9b1bd" kind="function"><name>make</name></member>
     <member refid="object_8hpp_1aa57cd5beb774d0dce02853b3a746c640" kind="function"><name>make</name></member>
@@ -1363,8 +1367,6 @@
     <member refid="procedure_8hpp_1ac7f7e66e269308d39dd7e20a86d6fba6" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1af2425cb8efef61d1ddccd851a03b06cb" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1ae0c5436293284cccacad7418ca3dc31c" kind="function"><name>RENAME</name></member>
-    <member refid="openscenario__interpreter_8cpp_1a9d2ab5fd7105832ed6285b187f8bc0d7" kind="function"><name>record_start</name></member>
-    <member refid="openscenario__interpreter_8cpp_1ab39e4e2fe4bc269fe829ef87810fa32a" kind="function"><name>record_end</name></member>
     <member refid="pugi__extension_8cpp_1a5ba7dc74bc81e1ea576607fd14d0d4c5" kind="function"><name>operator&lt;&lt;</name></member>
   </compound>
   <compound refid="namespaceopenscenario__interpreter_1_1concepts" kind="namespace"><name>openscenario_interpreter::concepts</name>
@@ -1431,6 +1433,11 @@
     <member refid="element_8hpp_1a550b9a398ff252e2347656b84795ba68" kind="function"><name>readElements</name></member>
     <member refid="element_8hpp_1aeb6b780744670941bb296c5a700a0ebe" kind="function"><name>readElementsAsElement</name></member>
     <member refid="element_8hpp_1a96ca2eceebd904187d8e65958fa7c011" kind="function"><name>choice</name></member>
+  </compound>
+  <compound refid="namespaceopenscenario__interpreter_1_1record" kind="namespace"><name>openscenario_interpreter::record</name>
+    <member refid="record_8hpp_1a395e8df1a7e3ded279ce8e65e8b74259" kind="variable"><name>process_id</name></member>
+    <member refid="record_8hpp_1ae432d6a99e128ac3f362fb1e2ace22dc" kind="function"><name>start</name></member>
+    <member refid="record_8hpp_1a38fad8d2e940c6407bfee264455b584d" kind="function"><name>stop</name></member>
   </compound>
   <compound refid="namespaceopenscenario__interpreter_1_1string" kind="namespace"><name>openscenario_interpreter::string</name>
     <member refid="split_8hpp_1ab057b2db1da5814aba13c8f0a3dbb041" kind="function"><name>split</name></member>
@@ -1596,7 +1603,6 @@
   <compound refid="openscenario__interpreter_8hpp" kind="file"><name>openscenario_interpreter.hpp</name>
     <member refid="openscenario__interpreter_8hpp_1a944aaef80590057b61fb622a65359058" kind="define"><name>INTERPRETER_INFO_STREAM</name></member>
     <member refid="openscenario__interpreter_8hpp_1ae88f273ba365a5a32444aa015b412bfa" kind="define"><name>INTERPRETER_ERROR_STREAM</name></member>
-    <member refid="openscenario__interpreter_8hpp_1a22b30a96106adaf46c97c4abb08cb6c5" kind="define"><name>CATCH</name></member>
   </compound>
   <compound refid="pointer_8hpp" kind="file"><name>pointer.hpp</name>
   </compound>
@@ -1612,6 +1618,8 @@
   <compound refid="content_8hpp" kind="file"><name>content.hpp</name>
   </compound>
   <compound refid="element_8hpp" kind="file"><name>element.hpp</name>
+  </compound>
+  <compound refid="record_8hpp" kind="file"><name>record.hpp</name>
   </compound>
   <compound refid="scope_8hpp" kind="file"><name>scope.hpp</name>
   </compound>
@@ -1975,6 +1983,8 @@
   <compound refid="fork__exec_8cpp" kind="file"><name>fork_exec.cpp</name>
   </compound>
   <compound refid="procedure_8cpp" kind="file"><name>procedure.cpp</name>
+  </compound>
+  <compound refid="record_8cpp" kind="file"><name>record.cpp</name>
   </compound>
   <compound refid="act_8cpp" kind="file"><name>act.cpp</name>
   </compound>

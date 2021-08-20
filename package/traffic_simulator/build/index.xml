@@ -59,6 +59,7 @@
     <member refid="classtraffic__simulator_1_1API_1a2ddca493cc78ad0ad80170eb779582b8" kind="variable"><name>attach_detection_sensor_client_</name></member>
     <member refid="classtraffic__simulator_1_1API_1a236ac6d8d87b2b174ac77c4226962c68" kind="function"><name>API</name></member>
     <member refid="classtraffic__simulator_1_1API_1a2e1ea4dc91018ccc82c9897267668f79" kind="function"><name>addMetric</name></member>
+    <member refid="classtraffic__simulator_1_1API_1ab22b06383fec60a1071be11b0d8c2933" kind="function"><name>getMetricLifecycle</name></member>
     <member refid="classtraffic__simulator_1_1API_1a7c971afaf5e2273489eb3cd09914da27" kind="function"><name>setVerbose</name></member>
     <member refid="classtraffic__simulator_1_1API_1a99fe59bcd7050c22ca5b0360ecbb641e" kind="function"><name>spawn</name></member>
     <member refid="classtraffic__simulator_1_1API_1a4754fecd5ca125ba276b7c583ba73035" kind="function"><name>spawn</name></member>
@@ -184,8 +185,6 @@
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a3a8463d122ca2995d1c1f157e15d3c93" kind="variable"><name>total_length_</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a1e97d2eecb3034fc2cac4796e24ac174" kind="variable"><name>control_points</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1acf0755fc00a2d5b6f68a5db85bd3ded0" kind="function"><name>CatmullRomSpline</name></member>
-    <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a128c3b4a0292c3511240b6fe71b9cf12" kind="function"><name>CatmullRomSpline</name></member>
-    <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a6a8f61124515167a71ac2d41df910302" kind="function"><name>CatmullRomSpline</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a104a9a379bf7ea43b52bf677db566d34" kind="function"><name>CatmullRomSpline</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a4882552609c5d464a6202683ddc2ae30" kind="function"><name>getLength</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a43d63eab9cfd14609df8863f8b6c52db" kind="function"><name>getMaximum2DCurvature</name></member>
@@ -199,7 +198,6 @@
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1ab013ab32161293bed6ba0304f51f2ecd" kind="function"><name>getSquaredDistanceIn2D</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a2da35f615c4d6ad9234c694e691a3be3" kind="function"><name>getCollisionPointIn2D</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a6f9414618485f1b3022040bcaf1509ad" kind="function"><name>getCollisionPointIn2D</name></member>
-    <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1ae5ef284e45c3fbbf1d6d2db4831d3e6a" kind="function"><name>toRosMsg</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a6498cdee4a53d1dfce9b2b661476f481" kind="function"><name>getRightBoundsPoint</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1a83d9ff77867ca6db62317461ac88871b" kind="function"><name>getLeftBoundsPoint</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1CatmullRomSpline_1ae998453f5c12a5ede3f6fe5e3cd4bffa" kind="function"><name>getPolygon</name></member>
@@ -225,6 +223,15 @@
     <member refid="classhdmap__utils_1_1CenterPointsCache_1a556065144c7a5e2b8b6ebdb0ba6b3d8d" kind="function"><name>getCenterPoints</name></member>
     <member refid="classhdmap__utils_1_1CenterPointsCache_1abc799c8c944366e91aa9c59f21972cdc" kind="function"><name>getCenterPointsSpline</name></member>
     <member refid="classhdmap__utils_1_1CenterPointsCache_1a13e066ee4de7a0682c5ff42b2f780592" kind="function"><name>appendData</name></member>
+  </compound>
+  <compound refid="structmetrics_1_1OutOfRangeMetric_1_1Config" kind="struct"><name>metrics::OutOfRangeMetric::Config</name>
+    <member refid="structmetrics_1_1OutOfRangeMetric_1_1Config_1a80cea1d5091b65e26fe782eee69d4491" kind="variable"><name>target_entity</name></member>
+    <member refid="structmetrics_1_1OutOfRangeMetric_1_1Config_1a878aaa689dd4f4cf91270f8369f14565" kind="variable"><name>min_velocity</name></member>
+    <member refid="structmetrics_1_1OutOfRangeMetric_1_1Config_1aaa6b81448e8393fbaa29dfdbf02b5146" kind="variable"><name>max_velocity</name></member>
+    <member refid="structmetrics_1_1OutOfRangeMetric_1_1Config_1a777cd6614352c38ec43785db7c610f51" kind="variable"><name>min_acceleration</name></member>
+    <member refid="structmetrics_1_1OutOfRangeMetric_1_1Config_1aebf0c45a936435e4cef40c681fd6572b" kind="variable"><name>max_acceleration</name></member>
+    <member refid="structmetrics_1_1OutOfRangeMetric_1_1Config_1af560235fb2e9be380b2bce2ab4e3871c" kind="variable"><name>min_jerk</name></member>
+    <member refid="structmetrics_1_1OutOfRangeMetric_1_1Config_1a71765e0ba8ae7f10e88817d684b941af" kind="variable"><name>max_jerk</name></member>
   </compound>
   <compound refid="structtraffic__simulator_1_1Configuration" kind="struct"><name>traffic_simulator::Configuration</name>
     <member refid="structtraffic__simulator_1_1Configuration_1a3e8ea0b72e3fcff1673adb4bcf65587e" kind="typedef"><name>Filename</name></member>
@@ -539,7 +546,6 @@
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a06d92127367375d4f20e391a9f42e3e0" kind="variable"><name>dz_</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a1d9d60bd8ab20f5ae0a9cbd59a7f8ef3" kind="variable"><name>solver_</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a341ab6760d58ee5320fdcc26196e1d08" kind="variable"><name>length_</name></member>
-    <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1afc4878ce44a5598c869f5a128668ca39" kind="function"><name>HermiteCurve</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1aa46dbb74579ca617d3748cda5b77807a" kind="function"><name>HermiteCurve</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a12e908b0bcd889ca7125f7543ea4d0dd" kind="function"><name>HermiteCurve</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a7eca891d80aae9de6f87b21272457774" kind="function"><name>getTrajectory</name></member>
@@ -556,7 +562,7 @@
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a5a535726c5e70ea9fa52f637ae8f1ba6" kind="function"><name>getSquaredDistanceIn2D</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a7beca5f82ebc83f79f27e3e53475b8fe" kind="function"><name>getCollisionPointIn2D</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a267cd1764fc6cc1a2037d89db0f824a1" kind="function"><name>getCollisionPointIn2D</name></member>
-    <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1ace48c292b8b579388be893f49d2e92bf" kind="function"><name>toRosMsg</name></member>
+    <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a40eb349ddb4f6f84932aa8459e956350" kind="function"><name>get2DMinMaxCurvatureValue</name></member>
     <member refid="classtraffic__simulator_1_1math_1_1HermiteCurve_1a1f5936306891bbd9ef975b1e92d0f867" kind="function"><name>getNewtonMethodStepSize</name></member>
   </compound>
   <compound refid="classentity__behavior_1_1vehicle_1_1LaneChangeAction" kind="class"><name>entity_behavior::vehicle::LaneChangeAction</name>
@@ -613,6 +619,7 @@
     <member refid="classmetrics_1_1MetricsManager_1a1c5725ab25c5b4ce8889c23f29d2c965" kind="function"><name>setEntityManager</name></member>
     <member refid="classmetrics_1_1MetricsManager_1a8ac51913c6c983bba925465b5b60f238" kind="function"><name>addMetric</name></member>
     <member refid="classmetrics_1_1MetricsManager_1a1d387eeee19bec3b6e43f19273464110" kind="function"><name>calculate</name></member>
+    <member refid="classmetrics_1_1MetricsManager_1a414cfc0e50436ff8517f86e6fbe9fcea" kind="function"><name>getLifecycle</name></member>
   </compound>
   <compound refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity" kind="class"><name>traffic_simulator::entity::MiscObjectEntity</name>
     <member refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity_1a30ed29713a7f0b7dc92d0820134acad3" kind="variable"><name>params_</name></member>
@@ -661,6 +668,7 @@
     <member refid="classmetrics_1_1OutOfRangeMetric_1afc898f27b269a312e1f5167f15373a05" kind="variable"><name>linear_velocity_</name></member>
     <member refid="classmetrics_1_1OutOfRangeMetric_1a102ad49790c8e431c518a617360e907a" kind="variable"><name>linear_acceleration_</name></member>
     <member refid="classmetrics_1_1OutOfRangeMetric_1aec5ecb49a620093d35a6d727b07cee38" kind="variable"><name>linear_jerk_</name></member>
+    <member refid="classmetrics_1_1OutOfRangeMetric_1a162bfd4a6340b5e0d4946c689f3af354" kind="function"><name>OutOfRangeMetric</name></member>
     <member refid="classmetrics_1_1OutOfRangeMetric_1a7f5de64eb25d2a6d0c1224fd094cf3c9" kind="function"><name>OutOfRangeMetric</name></member>
     <member refid="classmetrics_1_1OutOfRangeMetric_1a32309dca73d75cb611b843acd8ed9001" kind="function"><name>update</name></member>
     <member refid="classmetrics_1_1OutOfRangeMetric_1a4e3cb71963e8f46de7c6d540143260e2" kind="function"><name>activateTrigger</name></member>
@@ -1053,7 +1061,7 @@
     <member refid="classtraffic__simulator_1_1TrafficLightManager_1a5cc0edc63897bc42afabfd00638a4a7a" kind="variable"><name>clock_ptr_</name></member>
     <member refid="classtraffic__simulator_1_1TrafficLightManager_1ab87407e26ce6922ee6680a5291f14d5f" kind="variable"><name>map_frame_</name></member>
     <member refid="classtraffic__simulator_1_1TrafficLightManager_1a50826927f5f809702a0e4af72f6187d6" kind="function"><name>TrafficLightManager</name></member>
-    <member refid="classtraffic__simulator_1_1TrafficLightManager_1a61ee4a8e7331012e350f83de8049ff62" kind="function"><name>update</name></member>
+    <member refid="classtraffic__simulator_1_1TrafficLightManager_1a329e64017c8e3ec194602bd5c9db2239" kind="function"><name>update</name></member>
     <member refid="classtraffic__simulator_1_1TrafficLightManager_1aca3fcc350e6e09fe19ed08055dbf48e5" kind="function"><name>FORWARD_TO_GIVEN_TRAFFIC_LIGHT</name></member>
     <member refid="classtraffic__simulator_1_1TrafficLightManager_1a69bbf63b3db409636f375ae853139a26" kind="function"><name>FORWARD_TO_GIVEN_TRAFFIC_LIGHT</name></member>
     <member refid="classtraffic__simulator_1_1TrafficLightManager_1a3f2ed46dae12a2659d9ee95ca317554e" kind="function"><name>FORWARD_TO_GIVEN_TRAFFIC_LIGHT</name></member>
@@ -1507,6 +1515,7 @@
     <member refid="test__math_8cpp_1a863bf65780118707b578e9628249e0cb" kind="function"><name>TEST</name></member>
     <member refid="test__math_8cpp_1ab3001b9f1fd36e6301f56aede4c6cb1a" kind="function"><name>TEST</name></member>
     <member refid="test__math_8cpp_1a6bfb71cfa8fe155e8fc88220d78774f6" kind="function"><name>TEST</name></member>
+    <member refid="test__math_8cpp_1a454ab77baec02faa543d0c82f355f891" kind="function"><name>TEST</name></member>
     <member refid="test__math_8cpp_1a29af2a6f72f64c256358e55f5c4aba93" kind="function"><name>TEST</name></member>
     <member refid="test__math_8cpp_1ab7109ed460d6aae4c09acca436061931" kind="function"><name>TEST</name></member>
     <member refid="test__math_8cpp_1a5d2dc95c0f3ada42a253a283ca80d053" kind="function"><name>TEST</name></member>

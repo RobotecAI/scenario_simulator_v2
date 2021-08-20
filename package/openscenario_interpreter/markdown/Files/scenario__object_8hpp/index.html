@@ -790,6 +790,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/object_controller.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/syntax/string.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_interpreter/utility/overload.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/metrics/out_of_range_metric.hpp&gt;</span><span class="cp"></span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">openscenario_interpreter</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -847,9 +848,17 @@
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">spawn_entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">overload</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">Vehicle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vehicle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">spawn</span><span class="p">(</span><span class="w"></span>
-<span class="w">          </span><span class="n">object_controller</span><span class="p">.</span><span class="n">isEgo</span><span class="p">(),</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleParameters</span><span class="o">&gt;</span><span class="p">(</span><span class="n">vehicle</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleParameters</span><span class="o">&gt;</span><span class="p">(</span><span class="n">vehicle</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">performance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameters</span><span class="p">.</span><span class="n">performance</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">metrics</span><span class="o">::</span><span class="n">OutOfRangeMetric</span><span class="o">::</span><span class="n">Config</span><span class="w"> </span><span class="n">config</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">config</span><span class="p">.</span><span class="n">target_entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">config</span><span class="p">.</span><span class="n">min_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">performance</span><span class="p">.</span><span class="n">max_speed</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">config</span><span class="p">.</span><span class="n">max_velocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">performance</span><span class="p">.</span><span class="n">max_speed</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">config</span><span class="p">.</span><span class="n">min_acceleration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">performance</span><span class="p">.</span><span class="n">max_deceleration</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">config</span><span class="p">.</span><span class="n">max_acceleration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">performance</span><span class="p">.</span><span class="n">max_acceleration</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">connection</span><span class="p">.</span><span class="n">addMetric</span><span class="o">&lt;</span><span class="n">metrics</span><span class="o">::</span><span class="n">OutOfRangeMetric</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;-out-of-range&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">spawn</span><span class="p">(</span><span class="n">object_controller</span><span class="p">.</span><span class="n">isEgo</span><span class="p">(),</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="p">},</span><span class="w"></span>
 <span class="w">      </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">Pedestrian</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pedestrian</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">spawn</span><span class="p">(</span><span class="w"></span>
@@ -899,7 +908,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__SCENARIO_OBJECT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 20 August 2021 at 00:43:41 UTC</p>
+<p>Updated on 20 August 2021 at 12:19:42 UTC</p>
                 
                   
                 

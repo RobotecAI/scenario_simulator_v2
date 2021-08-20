@@ -877,6 +877,8 @@
 <span class="w">  </span><span class="n">thread_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MultiServer</span><span class="o">::</span><span class="n">start_poll</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
+<span class="n">MultiServer</span><span class="o">::~</span><span class="n">MultiServer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">thread_</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
 <span class="kt">void</span><span class="w"> </span><span class="n">MultiServer</span><span class="o">::</span><span class="n">poll</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">poller_</span><span class="p">.</span><span class="n">poll</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">);</span><span class="w"></span>
@@ -977,7 +979,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace zeromq</span>
 </code></pre></div>
 <hr />
-<p>Updated on 20 August 2021 at 00:43:39 UTC</p>
+<p>Updated on 20 August 2021 at 12:19:40 UTC</p>
                 
                   
                 

@@ -776,6 +776,14 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="n">MetricsManager</span><span class="o">::</span><span class="n">setVerbose</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">verbose_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verbose</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
+<span class="n">MetricLifecycle</span><span class="w"> </span><span class="n">MetricsManager</span><span class="o">::</span><span class="n">getLifecycle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">metrics_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">metrics_</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">THROW_SEMANTIC_ERROR</span><span class="p">(</span><span class="s">&quot;metrics name : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exist.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">metrics_</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getLifecycle</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
 <span class="kt">void</span><span class="w"> </span><span class="n">MetricsManager</span><span class="o">::</span><span class="n">calculate</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">log</span><span class="p">;</span><span class="w"></span>
@@ -817,7 +825,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace metrics</span>
 </code></pre></div>
 <hr />
-<p>Updated on 20 August 2021 at 00:43:38 UTC</p>
+<p>Updated on 20 August 2021 at 12:19:40 UTC</p>
                 
                   
                 

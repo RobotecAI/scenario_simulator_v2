@@ -856,9 +856,13 @@
 <span class="w">  </span><span class="n">marker_pub_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="n">TrafficLightManager</span><span class="o">::</span><span class="n">update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="p">)</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">TrafficLightManager</span><span class="o">::</span><span class="n">update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">step_time</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">publishTrafficLightStateArray</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">light</span> <span class="p">:</span><span class="w"> </span><span class="n">traffic_lights_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">light</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">step_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">any_of</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">traffic_lights_</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">traffic_lights_</span><span class="p">),</span><span class="w"></span>
@@ -873,7 +877,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on 20 August 2021 at 00:43:38 UTC</p>
+<p>Updated on 20 August 2021 at 12:19:40 UTC</p>
                 
                   
                 

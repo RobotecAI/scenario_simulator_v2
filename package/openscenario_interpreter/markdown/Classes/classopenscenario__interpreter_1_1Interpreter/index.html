@@ -696,36 +696,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#public-types" class="md-nav__link">
-    Public Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#public-functions" class="md-nav__link">
     Public Functions
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#public-types-documentation" class="md-nav__link">
-    Public Types Documentation
-  </a>
-  
-    <nav class="md-nav" aria-label="Public Types Documentation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-result" class="md-nav__link">
-    using Result
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -736,6 +709,27 @@
   
     <nav class="md-nav" aria-label="Public Functions Documentation">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-withexceptionhandler" class="md-nav__link">
+    function withExceptionHandler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-set" class="md-nav__link">
+    function set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-publishcurrentcontext" class="md-nav__link">
+    function publishCurrentContext
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#function-on_shutdown" class="md-nav__link">
@@ -780,6 +774,41 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-makecurrentconfiguration" class="md-nav__link">
+    function makeCurrentConfiguration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-issuccessintended" class="md-nav__link">
+    function isSuccessIntended
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-isfailureintended" class="md-nav__link">
+    function isFailureIntended
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-isanerrorintended" class="md-nav__link">
+    function isAnErrorIntended
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-currentlocalframerate" class="md-nav__link">
+    function currentLocalFrameRate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-interpreter" class="md-nav__link">
     function Interpreter
   </a>
@@ -810,21 +839,6 @@
                 
                 <h1 id="openscenario_interpreterinterpreter">openscenario_interpreter::Interpreter<a class="headerlink" href="#openscenario_interpreterinterpreter" title="Permanent link">#</a></h1>
 <p>Inherits from LifecycleNode</p>
-<h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>using rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#using-result">Result</a></strong></td>
-</tr>
-</tbody>
-</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -835,28 +849,60 @@
 </thead>
 <tbody>
 <tr>
-<td>Result</td>
+<td>template \&lt;typename ExceptionHandler ,typename Thunk ></br>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-withexceptionhandler">withExceptionHandler</a></strong>(ExceptionHandler &amp;&amp; handle, Thunk &amp;&amp; thunk)</td>
+</tr>
+<tr>
+<td>template \&lt;typename T ,typename... Ts></br>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-set">set</a></strong>(Ts &amp;&amp;... xs)</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-publishcurrentcontext">publishCurrentContext</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-on_shutdown">on_shutdown</a></strong>(const rclcpp_lifecycle::State &amp; ) override</td>
 </tr>
 <tr>
-<td>Result</td>
+<td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-on_error">on_error</a></strong>(const rclcpp_lifecycle::State &amp; ) override</td>
 </tr>
 <tr>
-<td>Result</td>
+<td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-on_deactivate">on_deactivate</a></strong>(const rclcpp_lifecycle::State &amp; ) override</td>
 </tr>
 <tr>
-<td>Result</td>
+<td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-on_configure">on_configure</a></strong>(const rclcpp_lifecycle::State &amp; ) override</td>
 </tr>
 <tr>
-<td>Result</td>
+<td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-on_cleanup">on_cleanup</a></strong>(const rclcpp_lifecycle::State &amp; ) override</td>
 </tr>
 <tr>
-<td>Result</td>
+<td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-on_activate">on_activate</a></strong>(const rclcpp_lifecycle::State &amp; ) override</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-makecurrentconfiguration">makeCurrentConfiguration</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-issuccessintended">isSuccessIntended</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-isfailureintended">isFailureIntended</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-isanerrorintended">isAnErrorIntended</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Interpreter#function-currentlocalframerate">currentLocalFrameRate</a></strong>() const</td>
 </tr>
 <tr>
 <td>OPENSCENARIO_INTERPRETER_PUBLIC</td>
@@ -864,40 +910,69 @@
 </tr>
 </tbody>
 </table>
-<h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">#</a></h2>
-<h3 id="using-result">using Result<a class="headerlink" href="#using-result" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">openscenario_interpreter</span><span class="o">::</span><span class="n">Interpreter</span><span class="o">::</span><span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">node_interfaces</span><span class="o">::</span><span class="n">LifecycleNodeInterface</span><span class="o">::</span><span class="n">CallbackReturn</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
+<h3 id="function-withexceptionhandler">function withExceptionHandler<a class="headerlink" href="#function-withexceptionhandler" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ExceptionHandler</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span> <span class="nc">Thunk</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">withExceptionHandler</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">ExceptionHandler</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Thunk</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">thunk</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-set">function set<a class="headerlink" href="#function-set" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-publishcurrentcontext">function publishCurrentContext<a class="headerlink" href="#function-publishcurrentcontext" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">publishCurrentContext</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-on_shutdown">function on_shutdown<a class="headerlink" href="#function-on_shutdown" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="n">on_shutdown</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">on_shutdown</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-on_error">function on_error<a class="headerlink" href="#function-on_error" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="n">on_error</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">on_error</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-on_deactivate">function on_deactivate<a class="headerlink" href="#function-on_deactivate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="n">on_deactivate</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">on_deactivate</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-on_configure">function on_configure<a class="headerlink" href="#function-on_configure" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="n">on_configure</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">on_configure</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-on_cleanup">function on_cleanup<a class="headerlink" href="#function-on_cleanup" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="n">on_cleanup</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">on_cleanup</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-on_activate">function on_activate<a class="headerlink" href="#function-on_activate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">Result</span><span class="w"> </span><span class="n">on_activate</span><span class="p">(</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">on_activate</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-makecurrentconfiguration">function makeCurrentConfiguration<a class="headerlink" href="#function-makecurrentconfiguration" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">makeCurrentConfiguration</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-issuccessintended">function isSuccessIntended<a class="headerlink" href="#function-issuccessintended" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">isSuccessIntended</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-isfailureintended">function isFailureIntended<a class="headerlink" href="#function-isfailureintended" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">isFailureIntended</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-isanerrorintended">function isAnErrorIntended<a class="headerlink" href="#function-isanerrorintended" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-currentlocalframerate">function currentLocalFrameRate<a class="headerlink" href="#function-currentlocalframerate" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">currentLocalFrameRate</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-interpreter">function Interpreter<a class="headerlink" href="#function-interpreter" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">explicit</span><span class="w"> </span><span class="n">OPENSCENARIO_INTERPRETER_PUBLIC</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">(</span><span class="w"></span>
@@ -905,7 +980,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 20 August 2021 at 00:43:41 UTC</p>
+<p>Updated on 20 August 2021 at 12:19:42 UTC</p>
                 
                   
                 

@@ -850,6 +850,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#function-test_19" class="md-nav__link">
+    function TEST
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -940,6 +947,10 @@
 <tr>
 <td></td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/test__math_8cpp#function-test">TEST</a></strong>(Math , CatmullRomSpline7 )</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/test__math_8cpp#function-test">TEST</a></strong>(Math , CatmullRomSpline8 )</td>
 </tr>
 <tr>
 <td></td>
@@ -1053,40 +1064,46 @@
 <h3 id="function-test_12">function TEST<a class="headerlink" href="#function-test_12" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BoundingBox0</span><span class="w"> </span>
+<span class="w">    </span><span class="n">CatmullRomSpline8</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test_13">function TEST<a class="headerlink" href="#function-test_13" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BoundingBox1</span><span class="w"> </span>
+<span class="w">    </span><span class="n">BoundingBox0</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test_14">function TEST<a class="headerlink" href="#function-test_14" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">UUID</span><span class="w"> </span>
+<span class="w">    </span><span class="n">BoundingBox1</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test_15">function TEST<a class="headerlink" href="#function-test_15" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Distance0</span><span class="w"> </span>
+<span class="w">    </span><span class="n">UUID</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test_16">function TEST<a class="headerlink" href="#function-test_16" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Distance1</span><span class="w"> </span>
+<span class="w">    </span><span class="n">Distance0</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test_17">function TEST<a class="headerlink" href="#function-test_17" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Distance2</span><span class="w"> </span>
+<span class="w">    </span><span class="n">Distance1</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test_18">function TEST<a class="headerlink" href="#function-test_18" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Distance2</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-test_19">function TEST<a class="headerlink" href="#function-test_19" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Math</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">Distance3</span><span class="w"> </span>
@@ -1109,6 +1126,7 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/math/bounding_box.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/math/catmull_rom_spline.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/math/distance.hpp&gt;</span><span class="cp"></span>
@@ -1238,9 +1256,11 @@
 <span class="w">  </span><span class="n">p1</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="n">p2</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">p2</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">p2</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p2</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">};</span><span class="w"></span>
 <span class="w">  </span><span class="n">EXPECT_NO_THROW</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">spline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">CatmullRomSpline</span><span class="p">(</span><span class="n">points</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">spline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">CatmullRomSpline</span><span class="p">(</span><span class="n">points</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">EXPECT_DOUBLE_EQ</span><span class="p">(</span><span class="n">spline</span><span class="p">.</span><span class="n">getMaximum2DCurvature</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="n">TEST</span><span class="p">(</span><span class="n">Math</span><span class="p">,</span><span class="w"> </span><span class="n">CatmullRomSpline3</span><span class="p">)</span><span class="w"></span>
@@ -1341,6 +1361,16 @@
 <span class="w">  </span><span class="n">EXPECT_TRUE</span><span class="p">(</span><span class="n">spline</span><span class="p">.</span><span class="n">getSValue</span><span class="p">(</span><span class="n">p</span><span class="p">).</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.101</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
+<span class="n">TEST</span><span class="p">(</span><span class="n">Math</span><span class="p">,</span><span class="w"> </span><span class="n">CatmullRomSpline8</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">EXPECT_THROW</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">CatmullRomSpline</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">common</span><span class="o">::</span><span class="n">SemanticError</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">EXPECT_THROW</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">CatmullRomSpline</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span><span class="w"></span>
+<span class="w">    </span><span class="n">common</span><span class="o">::</span><span class="n">SemanticError</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
 <span class="n">TEST</span><span class="p">(</span><span class="n">Math</span><span class="p">,</span><span class="w"> </span><span class="n">BoundingBox0</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="n">pose0</span><span class="p">;</span><span class="w"></span>
@@ -1430,7 +1460,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 20 August 2021 at 00:43:38 UTC</p>
+<p>Updated on 20 August 2021 at 12:19:40 UTC</p>
                 
                   
                 

@@ -738,13 +738,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#define-catch" class="md-nav__link">
-    define CATCH
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -820,10 +813,6 @@
 <td></td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/openscenario__interpreter_8hpp#define-interpreter_error_stream">INTERPRETER_ERROR_STREAM</a></strong>(...)</td>
 </tr>
-<tr>
-<td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/openscenario__interpreter_8hpp#define-catch">CATCH</a></strong>(TYPE)</td>
-</tr>
 </tbody>
 </table>
 <h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
@@ -836,18 +825,6 @@
 <div class="highlight"><pre><span></span><code><span class="cp">#define INTERPRETER_ERROR_STREAM(</span>
 <span class="w">    </span><span class="p">...</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="n">RCLCPP_INFO_STREAM</span><span class="p">(</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[1;31m&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">__VA_ARGS__</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span><span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="define-catch">define CATCH<a class="headerlink" href="#define-catch" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#define CATCH(</span>
-<span class="w">    </span><span class="n">TYPE</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TYPE</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w">                                 </span>\
-<span class="w">  </span><span class="p">{</span><span class="w">                                                          </span>\
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">intended_result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                        </span>\
-<span class="w">      </span><span class="n">deactivate</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">();</span><span class="w">                            </span>\
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">                                                 </span>\
-<span class="w">      </span><span class="n">deactivate</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="err">#</span><span class="n">TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"> </span>\
-<span class="w">    </span><span class="p">}</span><span class="w">                                                        </span>\
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
@@ -868,7 +845,7 @@
 <span class="cp">#define OPENSCENARIO_INTERPRETER__OPENSCENARIO_INTERPRETER_HPP_</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/variant.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;exception&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;lifecycle_msgs/msg/state.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;lifecycle_msgs/msg/transition.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
@@ -881,7 +858,6 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp_lifecycle/lifecycle_node.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;simple_junit/junit5.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="cp"></span>
 
 <span class="cp">#define INTERPRETER_INFO_STREAM(...) \</span>
@@ -900,9 +876,13 @@
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecyclePublisher</span><span class="o">&lt;</span><span class="n">Context</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_of_context</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">intended_result</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">local_frame_rate</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">local_real_time_factor</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">osc_path</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">output_directory</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">Element</span><span class="w"> </span><span class="n">script</span><span class="p">;</span><span class="w"></span>
@@ -911,95 +891,133 @@
 
 <span class="w">  </span><span class="n">common</span><span class="o">::</span><span class="n">JUnit5</span><span class="w"> </span><span class="n">results</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">Pass</span><span class="p">,</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">Failure</span><span class="p">,</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="p">,</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Failure</span><span class="p">,</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">ExecutionTimer</span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">execution_timer</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">deactivate</span><span class="p">(</span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">INTERPRETER_INFO_STREAM</span><span class="p">(</span><span class="s">&quot;Deactivate myself.&quot;</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">LifecycleNode</span><span class="o">::</span><span class="n">deactivate</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">INTERPRETER_INFO_STREAM</span><span class="p">(</span><span class="s">&quot;Deactivated myself.&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-
-<span class="cp">#define CATCH(TYPE)                                          \</span>
-<span class="cp">  catch (const TYPE &amp; error)                                 \</span>
-<span class="cp">  {                                                          \</span>
-<span class="cp">    if (intended_result == &quot;error&quot;) {                        \</span>
-<span class="cp">      deactivate&lt;common::Pass&gt;();                            \</span>
-<span class="cp">    } else {                                                 \</span>
-<span class="cp">      deactivate&lt;common::junit::Error&gt;(#TYPE, error.what()); \</span>
-<span class="cp">    }                                                        \</span>
-<span class="cp">  }</span>
-
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Thunk</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">guard</span><span class="p">(</span><span class="n">Thunk</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">thunk</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">thunk</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SpecialAction</span><span class="o">&lt;</span><span class="n">EXIT_SUCCESS</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w">  </span><span class="c1">// from CustomCommandAction::exitSuccess</span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">intended_result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;success&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">deactivate</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">deactivate</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">Failure</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UnintendedSuccess&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Expected &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">intended_result</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SpecialAction</span><span class="o">&lt;</span><span class="n">EXIT_FAILURE</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w">  </span><span class="c1">// from CustomCommandAction::exitFailure</span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">intended_result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;failure&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">deactivate</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">deactivate</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">Failure</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Failure&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Expected &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">intended_result</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">CATCH</span><span class="p">(</span><span class="n">AutowareError</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">CATCH</span><span class="p">(</span><span class="n">SemanticError</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">CATCH</span><span class="p">(</span><span class="n">SimulationError</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">CATCH</span><span class="p">(</span><span class="n">SyntaxError</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">CATCH</span><span class="p">(</span><span class="n">InternalError</span><span class="p">)</span><span class="w">  </span><span class="c1">// NOTE: InternalError MUST BE LAST OF CATCH STATEMENTS.</span>
-
-<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w">  </span><span class="c1">// FINAL BARRIER</span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">deactivate</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UnknownError&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;An unknown exception has occurred&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-
-<span class="cp">#undef CATCH</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">node_interfaces</span><span class="o">::</span><span class="n">LifecycleNodeInterface</span><span class="o">::</span><span class="n">CallbackReturn</span><span class="p">;</span><span class="w"></span>
 
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">OPENSCENARIO_INTERPRETER_PUBLIC</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Interpreter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">NodeOptions</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">node_interfaces</span><span class="o">::</span><span class="n">LifecycleNodeInterface</span><span class="o">::</span><span class="n">CallbackReturn</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">currentLocalFrameRate</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">Result</span><span class="w"> </span><span class="nf">on_configure</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">Result</span><span class="w"> </span><span class="nf">on_activate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">isFailureIntended</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">Result</span><span class="w"> </span><span class="nf">on_deactivate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">isSuccessIntended</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">Result</span><span class="w"> </span><span class="nf">on_cleanup</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">makeCurrentConfiguration</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">Configuration</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">Result</span><span class="w"> </span><span class="nf">on_shutdown</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">on_activate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">Result</span><span class="w"> </span><span class="nf">on_error</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">on_cleanup</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">on_configure</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">on_deactivate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">on_error</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">on_shutdown</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">publishCurrentContext</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">results</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">osc_path</span><span class="p">).</span><span class="n">parent_path</span><span class="p">().</span><span class="n">parent_path</span><span class="p">().</span><span class="n">string</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">suite_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">osc_path</span><span class="p">).</span><span class="n">parent_path</span><span class="p">().</span><span class="n">filename</span><span class="p">().</span><span class="n">string</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">case_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">osc_path</span><span class="p">).</span><span class="n">stem</span><span class="p">().</span><span class="n">string</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">apply_visitor</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">overload</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">results</span><span class="p">.</span><span class="n">testsuite</span><span class="p">(</span><span class="n">suite_name</span><span class="p">).</span><span class="n">testcase</span><span class="p">(</span><span class="n">case_name</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Failure</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">results</span><span class="p">.</span><span class="n">testsuite</span><span class="p">(</span><span class="n">suite_name</span><span class="p">).</span><span class="n">testcase</span><span class="p">(</span><span class="n">case_name</span><span class="p">).</span><span class="n">failure</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">it</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">results</span><span class="p">.</span><span class="n">testsuite</span><span class="p">(</span><span class="n">suite_name</span><span class="p">).</span><span class="n">testcase</span><span class="p">(</span><span class="n">case_name</span><span class="p">).</span><span class="n">error</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">it</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}),</span><span class="w"></span>
+<span class="w">      </span><span class="n">result</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">results</span><span class="p">.</span><span class="n">write_to</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">output_directory</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;result.junit.xml&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;  &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">ExceptionHandler</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Thunk</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">withExceptionHandler</span><span class="p">(</span><span class="n">ExceptionHandler</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">Thunk</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">thunk</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">thunk</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SpecialAction</span><span class="o">&lt;</span><span class="n">EXIT_SUCCESS</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">action</span><span class="p">)</span><span class="w">  </span><span class="c1">// from CustomCommandAction::exitSuccess</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Expected &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">intended_result</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">isSuccessIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Failure</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UnintendedSuccess&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">what</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">action</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SpecialAction</span><span class="o">&lt;</span><span class="n">EXIT_FAILURE</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">action</span><span class="p">)</span><span class="w">  </span><span class="c1">// from CustomCommandAction::exitFailure</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Expected &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">intended_result</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">isFailureIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Failure</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Failure&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">what</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">action</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">AutowareError</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;AutowareError&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SemanticError</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;SemanticError&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SimulationError</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;SimulationError&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SyntaxError</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;SyntaxError&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w">  </span><span class="c1">// NOTE: MUST BE LAST OF CATCH STATEMENTS.</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;InternalError&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w">  </span><span class="c1">// FINAL BARRIER</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;UnknownError&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;An unknown exception has occurred&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__OPENSCENARIO_INTERPRETER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 20 August 2021 at 00:43:41 UTC</p>
+<p>Updated on 20 August 2021 at 12:19:42 UTC</p>
                 
                   
                 
