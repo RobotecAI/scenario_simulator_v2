@@ -877,12 +877,18 @@
 <span class="w">      </span><span class="n">entity_status_updated</span><span class="p">.</span><span class="n">action_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity_status</span><span class="p">.</span><span class="n">action_status</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;updated_status&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">entity_status_updated</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">waypoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateWaypoints</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
 <span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">obstacle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateObstacle</span><span class="p">(</span><span class="n">waypoints</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;waypoints&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">waypoints</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;obstacle&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">obstacle</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">RUNNING</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">waypoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateWaypoints</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
 <span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">obstacle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateObstacle</span><span class="p">(</span><span class="n">waypoints</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;waypoints&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">waypoints</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="n">setOutput</span><span class="p">(</span><span class="s">&quot;obstacle&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">obstacle</span><span class="p">);</span><span class="w"></span>
@@ -907,7 +913,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity_behavior</span>
 </code></pre></div>
 <hr />
-<p>Updated on 23 August 2021 at 00:38:53 UTC</p>
+<p>Updated on 23 August 2021 at 10:26:34 UTC</p>
                 
                   
                 

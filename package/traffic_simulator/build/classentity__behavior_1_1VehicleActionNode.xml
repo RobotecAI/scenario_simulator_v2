@@ -5,6 +5,7 @@
     <basecompoundref refid="classentity__behavior_1_1ActionNode" prot="public" virt="non-virtual">entity_behavior::ActionNode</basecompoundref>
     <derivedcompoundref refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowFrontEntityAction" prot="public" virt="non-virtual">entity_behavior::vehicle::follow_lane_sequence::FollowFrontEntityAction</derivedcompoundref>
     <derivedcompoundref refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowLaneAction" prot="public" virt="non-virtual">entity_behavior::vehicle::follow_lane_sequence::FollowLaneAction</derivedcompoundref>
+    <derivedcompoundref refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1MoveBackwardAction" prot="public" virt="non-virtual">entity_behavior::vehicle::follow_lane_sequence::MoveBackwardAction</derivedcompoundref>
     <derivedcompoundref refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtCrossingEntityAction" prot="public" virt="non-virtual">entity_behavior::vehicle::follow_lane_sequence::StopAtCrossingEntityAction</derivedcompoundref>
     <derivedcompoundref refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtStopLineAction" prot="public" virt="non-virtual">entity_behavior::vehicle::follow_lane_sequence::StopAtStopLineAction</derivedcompoundref>
     <derivedcompoundref refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtTrafficLightAction" prot="public" virt="non-virtual">entity_behavior::vehicle::follow_lane_sequence::StopAtTrafficLightAction</derivedcompoundref>
@@ -151,6 +152,7 @@
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtTrafficLightAction_1a9c7112c9dc2c1cd853195038faf46ee4">calculateWaypoints</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtStopLineAction_1a1e5e7b144423cc6c0d1a1b74143bd1a7">calculateWaypoints</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtCrossingEntityAction_1a17a4cc30acff56fcd9695044e9170796">calculateWaypoints</reimplementedby>
+        <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1MoveBackwardAction_1aff237bf4b4413317e46e5f3378a140d1">calculateWaypoints</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowLaneAction_1ac9443b2e257afcd796b4436f2818a682">calculateWaypoints</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1LaneChangeAction_1af8fc77360134f964592ac35550360623">calculateWaypoints</reimplementedby>
         <briefdescription>
@@ -171,6 +173,7 @@
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtTrafficLightAction_1a5416e8b19face3f8ee09b52d2defd751">calculateObstacle</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtStopLineAction_1a504c5ab877a75896712b21057cf0589a">calculateObstacle</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtCrossingEntityAction_1a6d9c8f9897392983797496433c330716">calculateObstacle</reimplementedby>
+        <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1MoveBackwardAction_1acce86ea39da36f268b062ac2be3e3879">calculateObstacle</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowLaneAction_1a91897ca0b925350e12f3b63ea6246bb3">calculateObstacle</reimplementedby>
         <reimplementedby refid="classentity__behavior_1_1vehicle_1_1LaneChangeAction_1ae328f27270d4bc8b789330e3807ccbd8">calculateObstacle</reimplementedby>
         <param>
@@ -206,78 +209,84 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="236">
+      <node id="245">
         <label>entity_behavior::VehicleActionNode</label>
         <link refid="classentity__behavior_1_1VehicleActionNode"/>
-        <childnode refid="237" relation="public-inheritance">
+        <childnode refid="246" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="243">
+      <node id="253">
         <label>entity_behavior::vehicle::follow_lane_sequence::StopAtTrafficLightAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtTrafficLightAction"/>
-        <childnode refid="236" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="238">
+      <node id="247">
         <label>BT::ActionNodeBase</label>
       </node>
-      <node id="237">
+      <node id="250">
+        <label>entity_behavior::vehicle::follow_lane_sequence::MoveBackwardAction</label>
+        <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1MoveBackwardAction"/>
+        <childnode refid="245" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="246">
         <label>entity_behavior::ActionNode</label>
         <link refid="classentity__behavior_1_1ActionNode"/>
-        <childnode refid="238" relation="public-inheritance">
+        <childnode refid="247" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="240">
+      <node id="249">
         <label>entity_behavior::vehicle::follow_lane_sequence::FollowLaneAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowLaneAction"/>
-        <childnode refid="236" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="245">
+      <node id="255">
         <label>entity_behavior::vehicle::LaneChangeAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1LaneChangeAction"/>
-        <childnode refid="236" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="239">
+      <node id="248">
         <label>entity_behavior::vehicle::follow_lane_sequence::FollowFrontEntityAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1FollowFrontEntityAction"/>
-        <childnode refid="236" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="241">
+      <node id="251">
         <label>entity_behavior::vehicle::follow_lane_sequence::StopAtCrossingEntityAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtCrossingEntityAction"/>
-        <childnode refid="236" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="242">
+      <node id="252">
         <label>entity_behavior::vehicle::follow_lane_sequence::StopAtStopLineAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1StopAtStopLineAction"/>
-        <childnode refid="236" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="244">
+      <node id="254">
         <label>entity_behavior::vehicle::follow_lane_sequence::YieldAction</label>
         <link refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1YieldAction"/>
-        <childnode refid="236" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="246">
+      <node id="256">
         <label>entity_behavior::VehicleActionNode</label>
         <link refid="classentity__behavior_1_1VehicleActionNode"/>
-        <childnode refid="247" relation="public-inheritance">
+        <childnode refid="257" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="248">
+      <node id="258">
         <label>BT::ActionNodeBase</label>
       </node>
-      <node id="247">
+      <node id="257">
         <label>entity_behavior::ActionNode</label>
         <link refid="classentity__behavior_1_1ActionNode"/>
-        <childnode refid="248" relation="public-inheritance">
+        <childnode refid="258" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

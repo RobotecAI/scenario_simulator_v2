@@ -849,6 +849,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">waypoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculateWaypoints</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">BT</span><span class="o">::</span><span class="n">NodeStatus</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">spline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">CatmullRomSpline</span><span class="p">(</span><span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">distance_to_traffic_stop_line</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">    </span><span class="n">hdmap_utils</span><span class="o">-&gt;</span><span class="n">getDistanceToTrafficLightStopLine</span><span class="p">(</span><span class="n">route_lanelets</span><span class="p">,</span><span class="w"> </span><span class="n">waypoints</span><span class="p">.</span><span class="n">waypoints</span><span class="p">);</span><span class="w"></span>
@@ -890,7 +893,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity_behavior</span>
 </code></pre></div>
 <hr />
-<p>Updated on 23 August 2021 at 00:38:53 UTC</p>
+<p>Updated on 23 August 2021 at 10:26:34 UTC</p>
                 
                   
                 

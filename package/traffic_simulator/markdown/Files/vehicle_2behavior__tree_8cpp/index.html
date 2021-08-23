@@ -766,6 +766,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/vehicle/behavior_tree.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_front_entity_action.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/vehicle/follow_lane_sequence/follow_lane_action.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/vehicle/follow_lane_sequence/move_backward_action.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_crossing_entity_action.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_stop_line_action.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/behavior/vehicle/follow_lane_sequence/stop_at_traffic_light_action.hpp&gt;</span><span class="cp"></span>
@@ -788,6 +789,7 @@
 <span class="w">  </span><span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">follow_lane_sequence</span><span class="o">::</span><span class="n">StopAtStopLineAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;StopAtStopLine&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">follow_lane_sequence</span><span class="o">::</span><span class="n">StopAtTrafficLightAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;StopAtTrafficLight&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">follow_lane_sequence</span><span class="o">::</span><span class="n">YieldAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Yield&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">follow_lane_sequence</span><span class="o">::</span><span class="n">MoveBackwardAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;MoveBackward&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">factory_</span><span class="p">.</span><span class="n">registerNodeType</span><span class="o">&lt;</span><span class="n">LaneChangeAction</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LaneChange&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">tree_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factory_</span><span class="p">.</span><span class="n">createTreeFromFile</span><span class="p">(</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">current_action_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span><span class="w"></span>
@@ -861,7 +863,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace entity_behavior</span>
 </code></pre></div>
 <hr />
-<p>Updated on 23 August 2021 at 00:38:53 UTC</p>
+<p>Updated on 23 August 2021 at 10:26:34 UTC</p>
                 
                   
                 
