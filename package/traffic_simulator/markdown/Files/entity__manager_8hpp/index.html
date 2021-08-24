@@ -1008,6 +1008,7 @@
 <span class="w">    </span><span class="n">broadcaster_</span><span class="p">(</span><span class="n">node</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="n">base_link_broadcaster_</span><span class="p">(</span><span class="n">node</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="n">clock_ptr_</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()),</span><span class="w"></span>
+<span class="w">    </span><span class="n">current_time_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="n">entity_status_array_pub_ptr_</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">EntityStatusWithTrajectoryArray</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
 <span class="w">      </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;entity/status&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">EntityMarkerQoS</span><span class="p">(),</span><span class="w"></span>
 <span class="w">      </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">PublisherOptionsWithAllocator</span><span class="o">&lt;</span><span class="n">AllocatorT</span><span class="o">&gt;</span><span class="p">())),</span><span class="w"></span>
@@ -1220,7 +1221,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__ENTITY__ENTITY_MANAGER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 24 August 2021 at 00:41:09 UTC</p>
+<p>Updated on 24 August 2021 at 14:17:17 UTC</p>
                 
                   
                 
