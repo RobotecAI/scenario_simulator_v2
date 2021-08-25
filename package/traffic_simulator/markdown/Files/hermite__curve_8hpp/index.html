@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../../../../image/icon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.be71726b.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -783,6 +783,7 @@
 <span class="cp">#ifndef TRAFFIC_SIMULATOR__MATH__HERMITE_CURVE_HPP_</span>
 <span class="cp">#define TRAFFIC_SIMULATOR__MATH__HERMITE_CURVE_HPP_</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;quaternion_operation/quaternion_operation.h&gt;</span><span class="cp"></span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/optional.hpp&gt;</span><span class="cp"></span>
@@ -799,6 +800,7 @@
 <span class="k">class</span> <span class="nc">HermiteCurve</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span> <span class="nc">HermiteCurveTest</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">ax_</span><span class="p">,</span><span class="w"> </span><span class="n">bx_</span><span class="p">,</span><span class="w"> </span><span class="n">cx_</span><span class="p">,</span><span class="w"> </span><span class="n">dx_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">ay_</span><span class="p">,</span><span class="w"> </span><span class="n">by_</span><span class="p">,</span><span class="w"> </span><span class="n">cy_</span><span class="p">,</span><span class="w"> </span><span class="n">dy_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">az_</span><span class="p">,</span><span class="w"> </span><span class="n">bz_</span><span class="p">,</span><span class="w"> </span><span class="n">cz_</span><span class="p">,</span><span class="w"> </span><span class="n">dz_</span><span class="p">;</span><span class="w"></span>
@@ -839,7 +841,7 @@
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">get2DMinMaxCurvatureValue</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">length_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="nf">getNewtonMethodStepSize</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="n">point</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">autoscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="n">point</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="cm">/*, bool autoscale = false*/</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace math</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
@@ -847,7 +849,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__MATH__HERMITE_CURVE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 25 August 2021 at 00:42:11 UTC</p>
+<p>Updated on 25 August 2021 at 13:27:22 UTC</p>
                 
                   
                 
@@ -889,10 +891,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.56a63758.min.js"></script>
       
         <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       

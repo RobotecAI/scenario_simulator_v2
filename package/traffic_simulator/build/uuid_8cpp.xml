@@ -8,33 +8,33 @@
     <includes local="no">boost/uuid/uuid_io.hpp</includes>
     <includes local="no">string</includes>
     <incdepgraph>
-      <node id="6157">
+      <node id="6221">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/uuid.cpp</label>
         <link refid="uuid_8cpp"/>
-        <childnode refid="6158" relation="include">
+        <childnode refid="6222" relation="include">
         </childnode>
-        <childnode refid="6159" relation="include">
+        <childnode refid="6223" relation="include">
         </childnode>
-        <childnode refid="6160" relation="include">
+        <childnode refid="6224" relation="include">
         </childnode>
-        <childnode refid="6161" relation="include">
+        <childnode refid="6225" relation="include">
         </childnode>
-        <childnode refid="6162" relation="include">
+        <childnode refid="6226" relation="include">
         </childnode>
       </node>
-      <node id="6158">
+      <node id="6222">
         <label>boost/lexical_cast.hpp</label>
       </node>
-      <node id="6161">
+      <node id="6225">
         <label>boost/uuid/uuid_io.hpp</label>
       </node>
-      <node id="6162">
+      <node id="6226">
         <label>string</label>
       </node>
-      <node id="6160">
+      <node id="6224">
         <label>boost/uuid/uuid_generators.hpp</label>
       </node>
-      <node id="6159">
+      <node id="6223">
         <label>boost/uuid/uuid.hpp</label>
       </node>
     </incdepgraph>
@@ -76,13 +76,12 @@
 <codeline lineno="35"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">std::string<sp/>generateUUID(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>seed)</highlight></codeline>
 <codeline lineno="37"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/>boost::uuids::uuid<sp/>base<sp/>=<sp/>boost::uuids::string_generator()(</highlight><highlight class="stringliteral">&quot;0123456789abcdef0123456789abcdef&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/>boost::uuids::name_generator<sp/>gen(base);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/>boost::uuids::uuid<sp/>uuid<sp/>=<sp/>gen(seed);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::lexical_cast&lt;std::string&gt;(uuid);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="43"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>boost::uuids::name_generator<sp/>gen(</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>boost::uuids::string_generator()(</highlight><highlight class="stringliteral">&quot;0123456789abcdef0123456789abcdef&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::lexical_cast&lt;std::string&gt;(gen(seed));</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/uuid.cpp"/>
   </compounddef>

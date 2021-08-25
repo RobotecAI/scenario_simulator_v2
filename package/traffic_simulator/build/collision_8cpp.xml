@@ -13,100 +13,100 @@
     <includes refid="collision_8hpp" local="no">traffic_simulator/math/collision.hpp</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
-      <node id="6119">
+      <node id="6182">
         <label>traffic_simulator/math/bounding_box.hpp</label>
         <link refid="bounding__box_8hpp_source"/>
-        <childnode refid="6109" relation="include">
+        <childnode refid="6172" relation="include">
         </childnode>
-        <childnode refid="6110" relation="include">
+        <childnode refid="6173" relation="include">
         </childnode>
-        <childnode refid="6111" relation="include">
+        <childnode refid="6174" relation="include">
         </childnode>
-        <childnode refid="6112" relation="include">
+        <childnode refid="6175" relation="include">
         </childnode>
-        <childnode refid="6113" relation="include">
+        <childnode refid="6176" relation="include">
         </childnode>
-        <childnode refid="6114" relation="include">
+        <childnode refid="6177" relation="include">
         </childnode>
-        <childnode refid="6120" relation="include">
+        <childnode refid="6183" relation="include">
         </childnode>
-        <childnode refid="6117" relation="include">
+        <childnode refid="6180" relation="include">
         </childnode>
-        <childnode refid="6118" relation="include">
+        <childnode refid="6181" relation="include">
         </childnode>
-        <childnode refid="6121" relation="include">
+        <childnode refid="6184" relation="include">
         </childnode>
       </node>
-      <node id="6117">
+      <node id="6180">
         <label>geometry_msgs/msg/pose.hpp</label>
       </node>
-      <node id="6118">
+      <node id="6181">
         <label>openscenario_msgs/msg/bounding_box.hpp</label>
       </node>
-      <node id="6114">
+      <node id="6177">
         <label>boost/geometry/geometries/point_xy.hpp</label>
       </node>
-      <node id="6116">
+      <node id="6179">
         <label>traffic_simulator/math/collision.hpp</label>
         <link refid="collision_8hpp_source"/>
-        <childnode refid="6117" relation="include">
+        <childnode refid="6180" relation="include">
         </childnode>
-        <childnode refid="6118" relation="include">
+        <childnode refid="6181" relation="include">
         </childnode>
-        <childnode refid="6119" relation="include">
+        <childnode refid="6182" relation="include">
         </childnode>
-        <childnode refid="6121" relation="include">
+        <childnode refid="6184" relation="include">
         </childnode>
       </node>
-      <node id="6109">
+      <node id="6172">
         <label>boost/assert.hpp</label>
       </node>
-      <node id="6110">
+      <node id="6173">
         <label>boost/assign/list_of.hpp</label>
       </node>
-      <node id="6108">
+      <node id="6171">
         <label>quaternion_operation/quaternion_operation.h</label>
       </node>
-      <node id="6121">
+      <node id="6184">
         <label>vector</label>
       </node>
-      <node id="6107">
+      <node id="6170">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/collision.cpp</label>
         <link refid="collision_8cpp"/>
-        <childnode refid="6108" relation="include">
+        <childnode refid="6171" relation="include">
         </childnode>
-        <childnode refid="6109" relation="include">
+        <childnode refid="6172" relation="include">
         </childnode>
-        <childnode refid="6110" relation="include">
+        <childnode refid="6173" relation="include">
         </childnode>
-        <childnode refid="6111" relation="include">
+        <childnode refid="6174" relation="include">
         </childnode>
-        <childnode refid="6112" relation="include">
+        <childnode refid="6175" relation="include">
         </childnode>
-        <childnode refid="6113" relation="include">
+        <childnode refid="6176" relation="include">
         </childnode>
-        <childnode refid="6114" relation="include">
+        <childnode refid="6177" relation="include">
         </childnode>
-        <childnode refid="6115" relation="include">
+        <childnode refid="6178" relation="include">
         </childnode>
-        <childnode refid="6116" relation="include">
+        <childnode refid="6179" relation="include">
         </childnode>
-        <childnode refid="6121" relation="include">
+        <childnode refid="6184" relation="include">
         </childnode>
       </node>
-      <node id="6115">
+      <node id="6178">
         <label>iostream</label>
       </node>
-      <node id="6112">
+      <node id="6175">
         <label>boost/geometry/algorithms/disjoint.hpp</label>
       </node>
-      <node id="6120">
+      <node id="6183">
         <label>boost/optional.hpp</label>
       </node>
-      <node id="6113">
+      <node id="6176">
         <label>boost/geometry/geometries/linestring.hpp</label>
       </node>
-      <node id="6111">
+      <node id="6174">
         <label>boost/geometry.hpp</label>
       </node>
     </incdepgraph>
@@ -166,7 +166,7 @@
 <codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bg::disjoint(poly0,<sp/>poly1))<sp/>{</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>LCOV_EXCL_LINE</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="52"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
