@@ -4,9 +4,9 @@
     <compoundname>traffic_simulator::entity::EgoEntity</compoundname>
     <basecompoundref refid="classtraffic__simulator_1_1entity_1_1VehicleEntity" prot="public" virt="non-virtual">traffic_simulator::entity::VehicleEntity</basecompoundref>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a73f8828b882461ebbeec9e5ea0aabc70" prot="private" static="no" mutable="no">
-        <type>concealer::Autoware</type>
-        <definition>concealer::Autoware traffic_simulator::entity::EgoEntity::autoware</definition>
+      <memberdef kind="variable" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a8bd72a6263e8b95bce8150704230d7ad" prot="private" static="no" mutable="no">
+        <type>const std::unique_ptr&lt; concealer::Autoware &gt;</type>
+        <definition>const std::unique_ptr&lt;concealer::Autoware&gt; traffic_simulator::entity::EgoEntity::autoware</definition>
         <argsstring></argsstring>
         <name>autoware</name>
         <briefdescription>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="50" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="50" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="62" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1adf91aef19c1028ff88572bbae627266a" prot="private" static="no" mutable="no">
         <type>const VehicleModelType</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="52" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="52" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="64" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a8edfe25f1f9b9e0ffb16f75d15a57473" prot="private" static="no" mutable="no">
         <type>const std::shared_ptr&lt; <ref refid="classSimModelInterface" kindref="compound">SimModelInterface</ref> &gt;</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="54" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="54" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="66" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a4a391d045af95f50e8e531abb201d6c9" prot="private" static="no" mutable="no">
         <type>boost::optional&lt; geometry_msgs::msg::Pose &gt;</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="56" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="56" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="68" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1ad2b60388f3bd8a7e7190db957fe94d3c" prot="private" static="no" mutable="no">
         <type>boost::optional&lt; double &gt;</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="58" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="70" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1aaf8e648d4d0f6bcbfbad84f8324dd0d3" prot="private" static="no" mutable="no">
         <type>boost::optional&lt; double &gt;</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="58" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="70" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="61" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="73" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a7b99cd54a4d5d5e467e5fc649653dcbd" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="63" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="141" bodyend="161"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="75" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="161" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1ae0a5865261e32c35501a299c0cccf75c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="69" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="81" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1aaa32721a2eadbc9e3985f66b6e5c6c88" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="71" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="83" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a403443e6947bda6d3cfa176eb7617892" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="73" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="85" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a8995646accd45f4fe4d5241be2e6923c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>auto</type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="75" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="87" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a9c86ae3f3588c1227c9ed3f731c03fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>auto</type>
@@ -201,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="77" column="1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="89" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a3532db2dc3f0db9d00b5a5a719b350d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="79" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="163" bodyend="163"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="91" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="174" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a9e9efde07636007f1f6a66f96ce393b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>auto</type>
@@ -229,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="81" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="212" bodyend="233"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="93" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="181" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a85f3a6f11516cc15aca453b0a228350f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>auto</type>
@@ -250,7 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="83" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="235" bodyend="309"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="95" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="197" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a7536f7a8935537111b70bd5c48367e45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>auto</type>
@@ -264,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="86" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="311" bodyend="315"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="98" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="273" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a3b8d356d13f44ac325c35e15ba4656a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>auto</type>
@@ -278,7 +278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="88" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="317" bodyend="320"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="100" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="279" bodyend="282"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a7d647b9001fa6661cce8014f30107671" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>auto</type>
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="90" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="165" bodyend="210"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="102" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="176" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1ad3fed5c3a323b1c7d9713a60f24c8302" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>auto</type>
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="92" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="322" bodyend="343"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="104" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="284" bodyend="287"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a5d229203b6a37b9baa17a558231a6565" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -328,7 +328,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="94" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="345" bodyend="439"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="106" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="289" bodyend="358"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a6eb76f8010cea2ca9ea9066adf561789" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>auto</type>
@@ -342,7 +342,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="96" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="441" bodyend="445"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="108" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="360" bodyend="364"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a0279d0aa4935a9908258a703b75b558b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -360,7 +360,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="98" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="447" bodyend="450"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="110" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="366" bodyend="369"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1aadefa6e29e32a57eb4fb0f2847262ee3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -378,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="100" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="452" bodyend="471"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="112" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="371" bodyend="390"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a98ba77621d0f0ee652707364dcd66668" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -395,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="102" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="473" bodyend="479"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="114" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="392" bodyend="398"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1a201003ea5e515bd81ede4bab9ccc3020" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>auto</type>
@@ -413,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="104" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="481" bodyend="503"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="116" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="400" bodyend="422"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1EgoEntity_1adbb86441cd161fccf0c4090da4e5bd2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -434,7 +434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="106" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="505" bodyend="552"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="118" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/ego_entity.cpp" bodystart="424" bodyend="453"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -477,9 +477,9 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="49" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="48" bodyend="107"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" line="61" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/ego_entity.hpp" bodystart="60" bodyend="119"/>
     <listofallmembers>
-      <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a73f8828b882461ebbeec9e5ea0aabc70" prot="private" virt="non-virtual"><scope>traffic_simulator::entity::EgoEntity</scope><name>autoware</name></member>
+      <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a8bd72a6263e8b95bce8150704230d7ad" prot="private" virt="non-virtual"><scope>traffic_simulator::entity::EgoEntity</scope><name>autoware</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a4f96805e870fc82a5a512383e0a5d84f" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::EgoEntity</scope><name>cancelRequest</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a663d357ca5bbde5ff198254cf910769c" prot="protected" virt="non-virtual"><scope>traffic_simulator::entity::EgoEntity</scope><name>current_marker_</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1ade17fc297e5a3ae696628c0316257b8c" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::EgoEntity</scope><name>EgoEntity</name></member>

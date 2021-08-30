@@ -604,6 +604,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/Metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -798,9 +810,9 @@
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="nf">OutOfRangeMetric::to_json</span><span class="p">()</span><span class="w"></span>
+<span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="nf">OutOfRangeMetric::toJson</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">to_base_json</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MetricBase</span><span class="o">::</span><span class="n">toBaseJson</span><span class="p">();</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getLifecycle</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">INACTIVE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">json</span><span class="p">[</span><span class="s">&quot;linear_velocity&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">linear_velocity_</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">json</span><span class="p">[</span><span class="s">&quot;linear_acceleration&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">linear_acceleration_</span><span class="p">;</span><span class="w"></span>
@@ -811,7 +823,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace metrics</span>
 </code></pre></div>
 <hr />
-<p>Updated on 30 August 2021 at 00:43:15 UTC</p>
+<p>Updated on 30 August 2021 at 16:00:36 UTC</p>
                 
                   
                 

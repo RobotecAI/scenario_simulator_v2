@@ -604,6 +604,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/Metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -819,10 +831,11 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">parent</span><span class="p">.</span><span class="n">anonymous_children</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">.</span><span class="n">named_children</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ret</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">THROW_SYNTAX_ERROR</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">quoted</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="s">&quot; is duplicated in this scope&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">parent</span><span class="p">.</span><span class="n">named_children</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// auto ret = parent.named_children.emplace(name, this);</span>
+<span class="w">      </span><span class="c1">// if (!ret.second) {</span>
+<span class="w">      </span><span class="c1">//   THROW_SYNTAX_ERROR(std::quoted(name), &quot; is duplicated in this scope&quot;);</span>
+<span class="w">      </span><span class="c1">// }</span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
@@ -1037,7 +1050,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SCOPE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 30 August 2021 at 00:43:18 UTC</p>
+<p>Updated on 30 August 2021 at 16:00:38 UTC</p>
                 
                   
                 

@@ -60,6 +60,7 @@
     <member refid="classtraffic__simulator_1_1API_1a236ac6d8d87b2b174ac77c4226962c68" kind="function"><name>API</name></member>
     <member refid="classtraffic__simulator_1_1API_1a2e1ea4dc91018ccc82c9897267668f79" kind="function"><name>addMetric</name></member>
     <member refid="classtraffic__simulator_1_1API_1ab22b06383fec60a1071be11b0d8c2933" kind="function"><name>getMetricLifecycle</name></member>
+    <member refid="classtraffic__simulator_1_1API_1a8c1654abe2e1c15b7fad18059f921e4e" kind="function"><name>metricExists</name></member>
     <member refid="classtraffic__simulator_1_1API_1a7c971afaf5e2273489eb3cd09914da27" kind="function"><name>setVerbose</name></member>
     <member refid="classtraffic__simulator_1_1API_1a99fe59bcd7050c22ca5b0360ecbb641e" kind="function"><name>spawn</name></member>
     <member refid="classtraffic__simulator_1_1API_1a4754fecd5ca125ba276b7c583ba73035" kind="function"><name>spawn</name></member>
@@ -262,7 +263,7 @@
     <member refid="structtraffic__simulator_1_1entity_1_1Dimensions_1a49f7bf7c24d4f5a5630a4043f84c46ab" kind="function"><name>Dimensions</name></member>
   </compound>
   <compound refid="classtraffic__simulator_1_1entity_1_1EgoEntity" kind="class"><name>traffic_simulator::entity::EgoEntity</name>
-    <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a73f8828b882461ebbeec9e5ea0aabc70" kind="variable"><name>autoware</name></member>
+    <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a8bd72a6263e8b95bce8150704230d7ad" kind="variable"><name>autoware</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1adf91aef19c1028ff88572bbae627266a" kind="variable"><name>vehicle_model_type_</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a8edfe25f1f9b9e0ffb16f75d15a57473" kind="variable"><name>vehicle_model_ptr_</name></member>
     <member refid="classtraffic__simulator_1_1entity_1_1EgoEntity_1a4a391d045af95f50e8e531abb201d6c9" kind="variable"><name>initial_pose_</name></member>
@@ -494,7 +495,7 @@
     <member refid="classhdmap__utils_1_1HdMapUtils_1a4dbcc69645f97b4964942bcfbdfc8c1d" kind="function"><name>getCenterPointsSpline</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1a40fa24534a3a21637640c40571509441" kind="function"><name>clipTrajectoryFromLaneletIds</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1a74e7d1c4fbf11b9f8949f40a982aae10" kind="function"><name>canChangeLane</name></member>
-    <member refid="classhdmap__utils_1_1HdMapUtils_1a64f95a8e12bd8e471ffbcaf380501ad5" kind="function"><name>getLaneChangeTrajectory</name></member>
+    <member refid="classhdmap__utils_1_1HdMapUtils_1a7601293c401c2bf8c8ab725dfa55c271" kind="function"><name>getLaneChangeTrajectory</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1acc87ede109f43af450d07e3876cc21b2" kind="function"><name>getLaneChangeTrajectory</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1af90ae8bff96aeaf305348487ad3a9d79" kind="function"><name>getTangentVector</name></member>
     <member refid="classhdmap__utils_1_1HdMapUtils_1aaec29af041148541c5de5ae0cfcba494" kind="function"><name>getRoute</name></member>
@@ -598,8 +599,8 @@
     <member refid="classmetrics_1_1MetricBase_1a9121f7a9d69506281a9eb0533f09896c" kind="function"><name>success</name></member>
     <member refid="classmetrics_1_1MetricBase_1aab9f2b64fa570816fe577fca1b685af2" kind="function"><name>failure</name></member>
     <member refid="classmetrics_1_1MetricBase_1ae2715921303db9ccba0092c532a386d2" kind="function"><name>activate</name></member>
-    <member refid="classmetrics_1_1MetricBase_1a3ce5f237d1200357687261e5f7418022" kind="function"><name>to_json</name></member>
-    <member refid="classmetrics_1_1MetricBase_1a38aefd236ee82f96ca6cf138507003a7" kind="function"><name>to_base_json</name></member>
+    <member refid="classmetrics_1_1MetricBase_1ac5aa1847a52eebcac7700d2b74142a06" kind="function"><name>toJson</name></member>
+    <member refid="classmetrics_1_1MetricBase_1a91e59b872a12c5f19533165d30292463" kind="function"><name>toBaseJson</name></member>
     <member refid="classmetrics_1_1MetricBase_1a406041977f3badc4bf8a29568d0a3040" kind="function"><name>setEntityManager</name></member>
     <member refid="classmetrics_1_1MetricBase_1a0fcf4330afb3c26942ab0adc45026e65" kind="function"><name>getLifecycle</name></member>
     <member refid="classmetrics_1_1MetricBase_1a3bfb57e35e135f57d65d3a9a18ae8c29" kind="function"><name>throwException</name></member>
@@ -619,6 +620,7 @@
     <member refid="classmetrics_1_1MetricsManager_1a8ac51913c6c983bba925465b5b60f238" kind="function"><name>addMetric</name></member>
     <member refid="classmetrics_1_1MetricsManager_1a1d387eeee19bec3b6e43f19273464110" kind="function"><name>calculate</name></member>
     <member refid="classmetrics_1_1MetricsManager_1a414cfc0e50436ff8517f86e6fbe9fcea" kind="function"><name>getLifecycle</name></member>
+    <member refid="classmetrics_1_1MetricsManager_1a292ce6f24201a05b9d99507907b4bff4" kind="function"><name>exists</name></member>
   </compound>
   <compound refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity" kind="class"><name>traffic_simulator::entity::MiscObjectEntity</name>
     <member refid="classtraffic__simulator_1_1entity_1_1MiscObjectEntity_1a30ed29713a7f0b7dc92d0820134acad3" kind="variable"><name>params_</name></member>
@@ -653,7 +655,7 @@
     <member refid="classmetrics_1_1MomentaryStopMetric_1abd29ac87e318821359f30eb7f1f7bcdb" kind="function"><name>~MomentaryStopMetric</name></member>
     <member refid="classmetrics_1_1MomentaryStopMetric_1ad168c0484e0c839c64b277b4c11e770f" kind="function"><name>update</name></member>
     <member refid="classmetrics_1_1MomentaryStopMetric_1ab7596342b80ba36b862918b51bf203a8" kind="function"><name>activateTrigger</name></member>
-    <member refid="classmetrics_1_1MomentaryStopMetric_1a02d79bf9d97f6c63ebba3ef8c43af90f" kind="function"><name>to_json</name></member>
+    <member refid="classmetrics_1_1MomentaryStopMetric_1a82b8acb7d4f8f6ce9ff3ca1c43d93b7d" kind="function"><name>toJson</name></member>
   </compound>
   <compound refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1MoveBackwardAction" kind="class"><name>entity_behavior::vehicle::follow_lane_sequence::MoveBackwardAction</name>
     <member refid="classentity__behavior_1_1vehicle_1_1follow__lane__sequence_1_1MoveBackwardAction_1a108b8e9471e07298d5d7c33354a81bf1" kind="variable"><name>target_lanelet_pose_</name></member>
@@ -679,7 +681,7 @@
     <member refid="classmetrics_1_1OutOfRangeMetric_1a7f5de64eb25d2a6d0c1224fd094cf3c9" kind="function"><name>OutOfRangeMetric</name></member>
     <member refid="classmetrics_1_1OutOfRangeMetric_1a32309dca73d75cb611b843acd8ed9001" kind="function"><name>update</name></member>
     <member refid="classmetrics_1_1OutOfRangeMetric_1a4e3cb71963e8f46de7c6d540143260e2" kind="function"><name>activateTrigger</name></member>
-    <member refid="classmetrics_1_1OutOfRangeMetric_1a9e7bed54f36df253d513668540a22cf3" kind="function"><name>to_json</name></member>
+    <member refid="classmetrics_1_1OutOfRangeMetric_1a1674a8edd3acb3d16bb1e7eabc868582" kind="function"><name>toJson</name></member>
   </compound>
   <compound refid="classentity__behavior_1_1PedestrianActionNode" kind="class"><name>entity_behavior::PedestrianActionNode</name>
     <member refid="classentity__behavior_1_1PedestrianActionNode_1a23d8075bbbee4793508e61c2f2d2729f" kind="variable"><name>pedestrian_parameters</name></member>
@@ -750,7 +752,7 @@
     <member refid="classmetrics_1_1ReactionTimeMetric_1ac2d3918e0b1aa80bca9905576064bdd7" kind="function"><name>ReactionTimeMetric</name></member>
     <member refid="classmetrics_1_1ReactionTimeMetric_1a2825c8d83beeb024de321a827dd9de92" kind="function"><name>~ReactionTimeMetric</name></member>
     <member refid="classmetrics_1_1ReactionTimeMetric_1aa52600a32cd3b2788f8684bf7312378b" kind="function"><name>update</name></member>
-    <member refid="classmetrics_1_1ReactionTimeMetric_1a00271e19e8ac3c8da5acbc2c107fb538" kind="function"><name>to_json</name></member>
+    <member refid="classmetrics_1_1ReactionTimeMetric_1a8ac6167f8d9e550f6b9d93eee4f0db50" kind="function"><name>toJson</name></member>
     <member refid="classmetrics_1_1ReactionTimeMetric_1a561f0ba26d89a0e00fc871f00018369e" kind="function"><name>activateTrigger</name></member>
   </compound>
   <compound refid="classhdmap__utils_1_1RouteCache" kind="class"><name>hdmap_utils::RouteCache</name>
@@ -1111,7 +1113,7 @@
     <member refid="classmetrics_1_1TraveledDistanceMetric_1a7814594489592bf56f37e733357763d1" kind="function"><name>TraveledDistanceMetric</name></member>
     <member refid="classmetrics_1_1TraveledDistanceMetric_1adc5e79ad4bf81671b8351c391d8ca942" kind="function"><name>~TraveledDistanceMetric</name></member>
     <member refid="classmetrics_1_1TraveledDistanceMetric_1a1c0e779b865fb5fe31685ee8d495a235" kind="function"><name>update</name></member>
-    <member refid="classmetrics_1_1TraveledDistanceMetric_1a83a60b1a279388f2e324be39d3509b4c" kind="function"><name>to_json</name></member>
+    <member refid="classmetrics_1_1TraveledDistanceMetric_1a20d7a41700f7da1f52f62b115b3dfc26" kind="function"><name>toJson</name></member>
     <member refid="classmetrics_1_1TraveledDistanceMetric_1aeca318ff6c5c6c50656a620c2a674e32" kind="function"><name>activateTrigger</name></member>
   </compound>
   <compound refid="classentity__behavior_1_1VehicleActionNode" kind="class"><name>entity_behavior::VehicleActionNode</name>
@@ -1250,6 +1252,7 @@
     <member refid="ego__entity_8cpp_1ac44caef21eab1d12faeeefb2c6631e79" kind="function"><name>toString</name></member>
     <member refid="ego__entity_8cpp_1a59147159c5c3a714e96d468b2e95850a" kind="function"><name>getVehicleModelType</name></member>
     <member refid="ego__entity_8cpp_1aaae9ced491cf5db4dbcff9a27fa2496e" kind="function"><name>makeSimulationModel</name></member>
+    <member refid="ego__entity_8cpp_1a58d31f914d5925c59a9adfaa23b27820" kind="function"><name>makeAutoware</name></member>
   </compound>
   <compound refid="namespacetraffic__simulator_1_1helper" kind="namespace"><name>traffic_simulator::helper</name>
     <member refid="helper_8hpp_1aeaf5597d701d03be7983065e85866cfe" kind="enum"><name>LidarType</name></member>
@@ -1321,6 +1324,7 @@
   <compound refid="color__utils_8hpp" kind="file"><name>color_utils.hpp</name>
   </compound>
   <compound refid="ego__entity_8hpp" kind="file"><name>ego_entity.hpp</name>
+    <member refid="ego__entity_8hpp_1afd9afe559233a3ac7d356c039b89c167" kind="function"><name>getParameter</name></member>
   </compound>
   <compound refid="entity__base_8hpp" kind="file"><name>entity_base.hpp</name>
   </compound>
@@ -1443,7 +1447,6 @@
   </compound>
   <compound refid="ego__entity_8cpp" kind="file"><name>ego_entity.cpp</name>
     <member refid="ego__entity_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
-    <member refid="ego__entity_8cpp_1afd9afe559233a3ac7d356c039b89c167" kind="function"><name>getParameter</name></member>
   </compound>
   <compound refid="entity__base_8cpp" kind="file"><name>entity_base.cpp</name>
   </compound>
@@ -1520,6 +1523,7 @@
     <member refid="test__catmull__rom__spline_8cpp_1abbdff0559a229304a5d0f4af8caff7a1" kind="function"><name>TEST</name></member>
     <member refid="test__catmull__rom__spline_8cpp_1af2c56c0c16af7f7c680ea1701f1997cd" kind="function"><name>TEST</name></member>
     <member refid="test__catmull__rom__spline_8cpp_1a72f149a5b53ac58420ec4d52dd47958e" kind="function"><name>TEST</name></member>
+    <member refid="test__catmull__rom__spline_8cpp_1ae84f082d20dcd31e793094f379d22701" kind="function"><name>TEST</name></member>
     <member refid="test__catmull__rom__spline_8cpp_1ad8374707e090df3119cb8da3d2886045" kind="function"><name>TEST</name></member>
     <member refid="test__catmull__rom__spline_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
   </compound>

@@ -7,76 +7,76 @@
     <includes local="no">Eigen/Core</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
-      <node id="6138">
+      <node id="6155">
         <label>traffic_simulator/math/bounding_box.hpp</label>
         <link refid="bounding__box_8hpp_source"/>
-        <childnode refid="6139" relation="include">
+        <childnode refid="6156" relation="include">
         </childnode>
-        <childnode refid="6140" relation="include">
+        <childnode refid="6157" relation="include">
         </childnode>
-        <childnode refid="6141" relation="include">
+        <childnode refid="6158" relation="include">
         </childnode>
-        <childnode refid="6142" relation="include">
+        <childnode refid="6159" relation="include">
         </childnode>
-        <childnode refid="6143" relation="include">
+        <childnode refid="6160" relation="include">
         </childnode>
-        <childnode refid="6144" relation="include">
+        <childnode refid="6161" relation="include">
         </childnode>
-        <childnode refid="6145" relation="include">
+        <childnode refid="6162" relation="include">
         </childnode>
-        <childnode refid="6146" relation="include">
+        <childnode refid="6163" relation="include">
         </childnode>
-        <childnode refid="6147" relation="include">
+        <childnode refid="6164" relation="include">
         </childnode>
-        <childnode refid="6148" relation="include">
+        <childnode refid="6165" relation="include">
         </childnode>
       </node>
-      <node id="6146">
+      <node id="6163">
         <label>geometry_msgs/msg/pose.hpp</label>
       </node>
-      <node id="6149">
+      <node id="6166">
         <label>Eigen/Core</label>
       </node>
-      <node id="6147">
+      <node id="6164">
         <label>openscenario_msgs/msg/bounding_box.hpp</label>
       </node>
-      <node id="6144">
+      <node id="6161">
         <label>boost/geometry/geometries/point_xy.hpp</label>
       </node>
-      <node id="6139">
+      <node id="6156">
         <label>boost/assert.hpp</label>
       </node>
-      <node id="6140">
+      <node id="6157">
         <label>boost/assign/list_of.hpp</label>
       </node>
-      <node id="6137">
+      <node id="6154">
         <label>quaternion_operation/quaternion_operation.h</label>
       </node>
-      <node id="6148">
+      <node id="6165">
         <label>vector</label>
       </node>
-      <node id="6142">
+      <node id="6159">
         <label>boost/geometry/algorithms/disjoint.hpp</label>
       </node>
-      <node id="6145">
+      <node id="6162">
         <label>boost/optional.hpp</label>
       </node>
-      <node id="6143">
+      <node id="6160">
         <label>boost/geometry/geometries/linestring.hpp</label>
       </node>
-      <node id="6136">
+      <node id="6153">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/bounding_box.cpp</label>
         <link refid="bounding__box_8cpp"/>
-        <childnode refid="6137" relation="include">
+        <childnode refid="6154" relation="include">
         </childnode>
-        <childnode refid="6138" relation="include">
+        <childnode refid="6155" relation="include">
         </childnode>
-        <childnode refid="6149" relation="include">
+        <childnode refid="6166" relation="include">
         </childnode>
-        <childnode refid="6148" relation="include">
+        <childnode refid="6165" relation="include">
         </childnode>
       </node>
-      <node id="6141">
+      <node id="6158">
         <label>boost/geometry.hpp</label>
       </node>
     </incdepgraph>
@@ -132,84 +132,82 @@
 <codeline lineno="41"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>poly0<sp/>=<sp/>get2DPolygon(pose0,<sp/>bbox0);</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>poly1<sp/>=<sp/>get2DPolygon(pose1,<sp/>bbox1);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">bg<sp/>=<sp/>boost::geometry;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bg::intersects(poly0,<sp/>poly1))<sp/>{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bg::intersects(poly1,<sp/>poly0))<sp/>{</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bg::disjoint(poly0,<sp/>poly1))<sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bg::distance(poly0,<sp/>poly1);</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>boost::geometry::model::polygon&lt;boost::geometry::model::d2::point_xy&lt;double&gt;&gt;<sp/>get2DPolygon(</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Pose<sp/>&amp;<sp/>pose,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::BoundingBox<sp/>&amp;<sp/>bbox)</highlight></codeline>
-<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>points<sp/>=<sp/>transformPoints(pose,<sp/>getPointsFromBbox(bbox));</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">bg<sp/>=<sp/>boost::geometry;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>bg::model::d2::point_xy&lt;double&gt;<sp/>bg_point;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/>bg::model::polygon&lt;bg_point&gt;<sp/>poly;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[0].x,<sp/>points[0].y));</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[1].x,<sp/>points[1].y));</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[2].x,<sp/>points[2].y));</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[3].x,<sp/>points[3].y));</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[0].x,<sp/>points[0].y));</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>poly;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal">std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>getPointsFromBbox(openscenario_msgs::msg::BoundingBox<sp/>bbox)</highlight></codeline>
-<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>points;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p0;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/>p0.x<sp/>=<sp/>bbox.center.x<sp/>+<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/>p0.y<sp/>=<sp/>bbox.center.y<sp/>+<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/>p0.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/>points.emplace_back(p0);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p1;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/>p1.x<sp/>=<sp/>bbox.center.x<sp/>-<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/>p1.y<sp/>=<sp/>bbox.center.y<sp/>+<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/>p1.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/>points.emplace_back(p1);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p2;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/>p2.x<sp/>=<sp/>bbox.center.x<sp/>-<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/>p2.y<sp/>=<sp/>bbox.center.y<sp/>-<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/>p2.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/>points.emplace_back(p2);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p3;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/>p3.x<sp/>=<sp/>bbox.center.x<sp/>+<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/>p3.y<sp/>=<sp/>bbox.center.y<sp/>-<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/>p3.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/>points.emplace_back(p3);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>points;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal">std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>transformPoints(</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>pose,<sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>points)</highlight></codeline>
-<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mat<sp/>=<sp/>quaternion_operation::getRotationMatrix(pose.orientation);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<sp/>point<sp/>:<sp/>points)<sp/>{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>Eigen::VectorXd<sp/>v(3);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>v(0)<sp/>=<sp/>point.x;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>v(1)<sp/>=<sp/>point.y;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>v(2)<sp/>=<sp/>point.z;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>mat<sp/>*<sp/>v;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>v(0)<sp/>=<sp/>v(0)<sp/>+<sp/>pose.position.x;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>v(1)<sp/>=<sp/>v(1)<sp/>+<sp/>pose.position.y;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>v(2)<sp/>=<sp/>v(2)<sp/>+<sp/>pose.position.z;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>geometry_msgs::msg::Point<sp/>transformed;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>transformed.x<sp/>=<sp/>v(0);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>transformed.y<sp/>=<sp/>v(1);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>transformed.z<sp/>=<sp/>v(2);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.emplace_back(transformed);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="120"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(boost::geometry::intersects(poly0,<sp/>poly1))<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(boost::geometry::intersects(poly1,<sp/>poly0))<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(boost::geometry::disjoint(poly0,<sp/>poly1))<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::geometry::distance(poly0,<sp/>poly1);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::none;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>boost::geometry::model::polygon&lt;boost::geometry::model::d2::point_xy&lt;double&gt;&gt;<sp/>get2DPolygon(</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>geometry_msgs::msg::Pose<sp/>&amp;<sp/>pose,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::BoundingBox<sp/>&amp;<sp/>bbox)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>points<sp/>=<sp/>transformPoints(pose,<sp/>getPointsFromBbox(bbox));</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>boost::geometry::model::d2::point_xy&lt;double&gt;<sp/>bg_point;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>boost::geometry::model::polygon&lt;bg_point&gt;<sp/>poly;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[0].x,<sp/>points[0].y));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[1].x,<sp/>points[1].y));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[2].x,<sp/>points[2].y));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[3].x,<sp/>points[3].y));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>poly.outer().push_back(bg_point(points[0].x,<sp/>points[0].y));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>poly;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>getPointsFromBbox(openscenario_msgs::msg::BoundingBox<sp/>bbox)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>points;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p0;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>p0.x<sp/>=<sp/>bbox.center.x<sp/>+<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>p0.y<sp/>=<sp/>bbox.center.y<sp/>+<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>p0.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>points.emplace_back(p0);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p1;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>p1.x<sp/>=<sp/>bbox.center.x<sp/>-<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>p1.y<sp/>=<sp/>bbox.center.y<sp/>+<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>p1.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>points.emplace_back(p1);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p2;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>p2.x<sp/>=<sp/>bbox.center.x<sp/>-<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>p2.y<sp/>=<sp/>bbox.center.y<sp/>-<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>p2.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>points.emplace_back(p2);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p3;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>p3.x<sp/>=<sp/>bbox.center.x<sp/>+<sp/>bbox.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>p3.y<sp/>=<sp/>bbox.center.y<sp/>-<sp/>bbox.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>p3.z<sp/>=<sp/>bbox.center.z<sp/>+<sp/>bbox.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>points.emplace_back(p3);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>points;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>transformPoints(</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>pose,<sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>points)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mat<sp/>=<sp/>quaternion_operation::getRotationMatrix(pose.orientation);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>std::vector&lt;geometry_msgs::msg::Point&gt;<sp/>ret;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<sp/>point<sp/>:<sp/>points)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>Eigen::VectorXd<sp/>v(3);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>v(0)<sp/>=<sp/>point.x;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>v(1)<sp/>=<sp/>point.y;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>v(2)<sp/>=<sp/>point.z;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>v<sp/>=<sp/>mat<sp/>*<sp/>v;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>v(0)<sp/>=<sp/>v(0)<sp/>+<sp/>pose.position.x;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>v(1)<sp/>=<sp/>v(1)<sp/>+<sp/>pose.position.y;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>v(2)<sp/>=<sp/>v(2)<sp/>+<sp/>pose.position.z;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>geometry_msgs::msg::Point<sp/>transformed;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>transformed.x<sp/>=<sp/>v(0);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>transformed.y<sp/>=<sp/>v(1);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>transformed.z<sp/>=<sp/>v(2);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.emplace_back(transformed);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>math</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/math/bounding_box.cpp"/>
   </compounddef>

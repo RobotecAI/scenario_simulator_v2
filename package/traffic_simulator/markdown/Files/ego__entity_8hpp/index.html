@@ -604,6 +604,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/Metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -710,6 +722,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-documentation" class="md-nav__link">
+    Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-getparameter" class="md-nav__link">
+    function getParameter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#source-code" class="md-nav__link">
     Source code
   </a>
@@ -765,6 +804,29 @@
 </tr>
 </tbody>
 </table>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>template \&lt;typename T ></br>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/ego__entity_8hpp#function-getparameter">getParameter</a></strong>(const std::string &amp; name, T value ={})</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
+<h3 id="function-getparameter">function getParameter<a class="headerlink" href="#function-getparameter" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">getParameter</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="p">{}</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
 <span class="c1">//</span>
@@ -786,7 +848,8 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/filesystem.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/optional.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;concealer/autoware.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;concealer/autoware_architecture_proposal.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;concealer/autoware_auto.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_msgs/msg/entity_type.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
@@ -796,6 +859,17 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/vehicle_model/sim_model_time_delay.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">getParameter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"> </span><span class="n">node</span><span class="p">{</span><span class="s">&quot;get_parameter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;simulation&quot;</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">node</span><span class="p">.</span><span class="n">declare_parameter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="p">.</span><span class="n">get_parameter</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">traffic_simulator</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -815,7 +889,7 @@
 
 <span class="k">class</span> <span class="nc">EgoEntity</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">VehicleEntity</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">concealer</span><span class="o">::</span><span class="n">Autoware</span><span class="w"> </span><span class="n">autoware</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">concealer</span><span class="o">::</span><span class="n">Autoware</span><span class="o">&gt;</span><span class="w"> </span><span class="n">autoware</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">VehicleModelType</span><span class="w"> </span><span class="n">vehicle_model_type_</span><span class="p">;</span><span class="w"></span>
 
@@ -879,7 +953,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__ENTITY__EGO_ENTITY_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 30 August 2021 at 00:43:15 UTC</p>
+<p>Updated on 30 August 2021 at 16:00:36 UTC</p>
                 
                   
                 

@@ -707,6 +707,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/Metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -998,10 +1010,10 @@ docker build -t scenario_simulator_v2 .
 <h3 id="running-with-docker-image-in-your-machine">Running with docker image in your machine.<a class="headerlink" href="#running-with-docker-image-in-your-machine" title="Permanent link">#</a></h3>
 <p>Please type this commands and run <a href="../SimpleDemo/">simple demo</a> in your local terminal.</p>
 <p>If your local machine has NVIDIA GPUs,</p>
-<div class="highlight"><pre><span></span><code>rocker --nvidia --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>idiot_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+<div class="highlight"><pre><span></span><code>rocker --nvidia --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <p>If your local machine does not have NVIDIA GPUs,</p>
-<div class="highlight"><pre><span></span><code>rocker --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>idiot_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+<div class="highlight"><pre><span></span><code>rocker --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <h3 id="running-with-docker-image-from-docker-hub">Running with docker image from Docker Hub.<a class="headerlink" href="#running-with-docker-image-from-docker-hub" title="Permanent link">#</a></h3>
 <p>We automatically build docker images of scenario_simulator_v2 by using GitHub Actions and put them into our Docker Hub repository.</p>
@@ -1010,11 +1022,11 @@ docker build -t scenario_simulator_v2 .
 <p>We can pull the docker image from Docker Hub and run simulation with scenario_simulator_v2 just typing the commands below.</p>
 <p>If your local machine has NVIDIA GPUs,</p>
 <div class="highlight"><pre><span></span><code>docker pull tier4/scenario_simulator_v2:latest
-rocker --nvidia --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>idiot_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+rocker --nvidia --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <p>If your local machine does not have NVIDIA GPUs,</p>
 <div class="highlight"><pre><span></span><code>docker pull tier4/scenario_simulator_v2:latest
-rocker --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>idiot_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+rocker --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <p><video
   class="c-video__embed"

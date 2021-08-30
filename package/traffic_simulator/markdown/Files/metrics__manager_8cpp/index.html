@@ -604,6 +604,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/Metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -774,11 +786,19 @@
 <span class="p">{</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
+<span class="kt">bool</span><span class="w"> </span><span class="n">MetricsManager</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">metrics_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">metrics_</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
 <span class="kt">void</span><span class="w"> </span><span class="n">MetricsManager</span><span class="o">::</span><span class="n">setVerbose</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">verbose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">verbose_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verbose</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="n">MetricLifecycle</span><span class="w"> </span><span class="n">MetricsManager</span><span class="o">::</span><span class="n">getLifecycle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">metrics_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">metrics_</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">exists</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">THROW_SEMANTIC_ERROR</span><span class="p">(</span><span class="s">&quot;metrics name : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exist.&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">metrics_</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getLifecycle</span><span class="p">();</span><span class="w"></span>
@@ -797,7 +817,7 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">metric</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">getLifecycle</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">ACTIVE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">metric</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">log</span><span class="p">[</span><span class="n">metric</span><span class="p">.</span><span class="n">first</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metric</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">to_json</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">log</span><span class="p">[</span><span class="n">metric</span><span class="p">.</span><span class="n">first</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metric</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">toJson</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">verbose_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;metric : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">metric</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; =&gt; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">log</span><span class="p">[</span><span class="n">metric</span><span class="p">.</span><span class="n">first</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -811,7 +831,7 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">metrics_</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">getLifecycle</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MetricLifecycle</span><span class="o">::</span><span class="n">FAILURE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">metrics_</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">throwException</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">metrics_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// metrics_.erase(name);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="n">log_</span><span class="p">[</span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">getCurrentTime</span><span class="p">())]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">file_</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">log_</span><span class="p">;</span><span class="w"></span>
@@ -825,7 +845,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace metrics</span>
 </code></pre></div>
 <hr />
-<p>Updated on 30 August 2021 at 00:43:15 UTC</p>
+<p>Updated on 30 August 2021 at 16:00:36 UTC</p>
                 
                   
                 
