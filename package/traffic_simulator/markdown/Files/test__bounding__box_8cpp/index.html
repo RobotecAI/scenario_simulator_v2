@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -788,11 +803,11 @@
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/test__bounding__box_8cpp#function-test">TEST</a></strong>(BoundigBox , GetPolygonDistanceWithCollision )</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/test__bounding__box_8cpp#function-test">TEST</a></strong>(BoundingBox , GetPolygonDistanceWithCollision )</td>
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/test__bounding__box_8cpp#function-test">TEST</a></strong>(BoundigBox , GetPolygonDistanceWithoutCollision )</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/test__bounding__box_8cpp#function-test">TEST</a></strong>(BoundingBox , GetPolygonDistanceWithoutCollision )</td>
 </tr>
 </tbody>
 </table>
@@ -805,13 +820,13 @@
 </code></pre></div>
 <h3 id="function-test">function TEST<a class="headerlink" href="#function-test" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">BoundigBox</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">BoundingBox</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">GetPolygonDistanceWithCollision</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-test_1">function TEST<a class="headerlink" href="#function-test_1" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TEST</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">BoundigBox</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">BoundingBox</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">GetPolygonDistanceWithoutCollision</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
@@ -835,7 +850,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;traffic_simulator/math/bounding_box.hpp&gt;</span><span class="cp"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">BoundigBox</span><span class="p">,</span><span class="w"> </span><span class="n">GetPolygonDistanceWithCollision</span><span class="p">)</span><span class="w"></span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">BoundingBox</span><span class="p">,</span><span class="w"> </span><span class="n">GetPolygonDistanceWithCollision</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="n">pose0</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">BoundingBox</span><span class="w"> </span><span class="n">bbox0</span><span class="p">;</span><span class="w"></span>
@@ -850,7 +865,7 @@
 <span class="w">  </span><span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">getPolygonDistance</span><span class="p">(</span><span class="n">pose0</span><span class="p">,</span><span class="w"> </span><span class="n">bbox0</span><span class="p">,</span><span class="w"> </span><span class="n">pose1</span><span class="p">,</span><span class="w"> </span><span class="n">bbox1</span><span class="p">),</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="n">TEST</span><span class="p">(</span><span class="n">BoundigBox</span><span class="p">,</span><span class="w"> </span><span class="n">GetPolygonDistanceWithoutCollision</span><span class="p">)</span><span class="w"></span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">BoundingBox</span><span class="p">,</span><span class="w"> </span><span class="n">GetPolygonDistanceWithoutCollision</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="n">pose0</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">BoundingBox</span><span class="w"> </span><span class="n">bbox0</span><span class="p">;</span><span class="w"></span>
@@ -875,7 +890,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

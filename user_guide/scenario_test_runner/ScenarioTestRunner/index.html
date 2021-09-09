@@ -760,6 +760,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -887,7 +902,7 @@ and change to;</p>
 </code></pre></div>
 This is the setting to let Ego vehicle run without connecting to Autoware for testing the scenario. <font color="Red"> Please note that this "isEgo" setting is only for scenario testing and you will need to revert it to "true" when you conduct the actual scenario simulation with Autoware. </font></p>
 <h2 id="how-to-test-single-scenario">How to Test Single Scenario<a class="headerlink" href="#how-to-test-single-scenario" title="Permanent link">#</a></h2>
-<p><div class="highlight"><pre><span></span><code>ros2 launch scenario_test_runner scenario_test_runner.launch.py scenario:<span class="o">=</span><span class="s1">&#39;/home/user-name/scenario-folder/t4v2.yaml&#39;</span> with_rviz:<span class="o">=</span><span class="nb">true</span>
+<p><div class="highlight"><pre><span></span><code>ros2 launch scenario_test_runner scenario_test_runner.launch.py scenario:<span class="o">=</span><span class="s1">&#39;/home/user-name/scenario-folder/t4v2.yaml&#39;</span> launch_rviz:<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 The workflow file defines how to execute scenarios.
 If you want to know how to write the workflow file, read <a href="../HowToWriteWorkflowFile/">here.</a></p>

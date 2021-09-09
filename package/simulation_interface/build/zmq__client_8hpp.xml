@@ -9,37 +9,34 @@
     <includes local="no">string</includes>
     <includes local="no">thread</includes>
     <includes local="no">zmqpp/zmqpp.hpp</includes>
-    <includedby refid="example_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/src/example.cpp</includedby>
     <incdepgraph>
-      <node id="47">
+      <node id="48">
         <label>functional</label>
       </node>
-      <node id="51">
+      <node id="52">
         <label>string</label>
       </node>
-      <node id="49">
+      <node id="50">
         <label>rclcpp/rclcpp.hpp</label>
       </node>
-      <node id="48">
+      <node id="49">
         <label>iostream</label>
       </node>
-      <node id="50">
+      <node id="51">
         <label>simulation_interface/constants.hpp</label>
         <link refid="constants_8hpp_source"/>
-        <childnode refid="51" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-      </node>
-      <node id="52">
-        <label>thread</label>
       </node>
       <node id="53">
+        <label>thread</label>
+      </node>
+      <node id="54">
         <label>zmqpp/zmqpp.hpp</label>
       </node>
-      <node id="46">
+      <node id="47">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/include/simulation_interface/zmq_client.hpp</label>
         <link refid="zmq__client_8hpp"/>
-        <childnode refid="47" relation="include">
-        </childnode>
         <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
@@ -51,6 +48,8 @@
         <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -134,8 +133,8 @@
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>socket_.send(message);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>zmqpp::message<sp/>buffer;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>socket_.receive(buffer);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>recieved_string<sp/>=<sp/>buffer.get(0);</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>res.ParseFromString(recieved_string);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>received_string<sp/>=<sp/>buffer.get(0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>res.ParseFromString(received_string);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
 <codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/>end<sp/>=<sp/>std::chrono::system_clock::now();</highlight></codeline>
 <codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/>double<sp/>elapsed<sp/>=<sp/>std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end<sp/>-<sp/>start).count();</highlight></codeline>

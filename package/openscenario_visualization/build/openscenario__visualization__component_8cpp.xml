@@ -152,7 +152,7 @@
 <codeline lineno="90"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;<sp/>data<sp/>:<sp/>msg-&gt;data)<sp/>{</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>marker_array<sp/>=</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>generateMarker(data.status,<sp/>data.waypoint,<sp/>data.obstacle,<sp/>data.obstacle_find);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>generateMarker(data.status,<sp/>data.goal_pose,<sp/>data.waypoint,<sp/>data.obstacle,<sp/>data.obstacle_find);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>std::copy(</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>marker_array.markers.begin(),<sp/>marker_array.markers.end(),</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::back_inserter(current_marker.markers));</highlight></codeline>
@@ -180,278 +180,351 @@
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::msg::MarkerArray<sp/>OpenscenarioVisualizationComponent::generateMarker(</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::EntityStatus<sp/>&amp;<sp/>status,</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::WaypointsArray<sp/>&amp;<sp/>waypoints,</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::Obstacle<sp/>&amp;<sp/>obstacle,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>obstacle_find)</highlight></codeline>
-<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>visualization_msgs::msg::MarkerArray();</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>stamp<sp/>=<sp/>get_clock()-&gt;now();</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/>std_msgs::msg::ColorRGBA<sp/>color;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(status.type.type)<sp/>{</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>status.type.EGO:</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;limegreen&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>status.type.PEDESTRIAN:</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;orange&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>status.type.VEHICLE:</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;lightskyblue&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>bbox;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/>bbox.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/>bbox.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/>bbox.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/>bbox.id<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/>bbox.action<sp/>=<sp/>bbox.ADD;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/>bbox.type<sp/>=<sp/>bbox.LINE_LIST;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/>bbox.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p0,<sp/>p1,<sp/>p2,<sp/>p3,<sp/>p4,<sp/>p5,<sp/>p6,<sp/>p7;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/>p0.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/>p0.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/>p0.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/>p1.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/>p1.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/>p1.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;geometry_msgs::msg::Pose&gt;<sp/>&amp;<sp/>goal_pose,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::WaypointsArray<sp/>&amp;<sp/>waypoints,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::Obstacle<sp/>&amp;<sp/>obstacle,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>obstacle_find)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>visualization_msgs::msg::MarkerArray();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>stamp<sp/>=<sp/>get_clock()-&gt;now();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>std_msgs::msg::ColorRGBA<sp/>color;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(status.type.type)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>status.type.EGO:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;limegreen&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>status.type.PEDESTRIAN:</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;orange&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>status.type.VEHICLE:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;lightskyblue&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(goal_pose.size()<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>goal_pose_max_size<sp/>=<sp/>std::max(goal_pose_max_size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">(goal_pose.size()));</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::vector&lt;geometry_msgs::msg::Pose&gt;::size_type<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>unsigned(goal_pose_max_size);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&lt;<sp/>goal_pose.size())<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>goal_pose_marker;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.header.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.id<sp/>=<sp/>10<sp/>+<sp/>int(goal_pose_max_size<sp/>-<sp/>goal_pose.size()<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.action<sp/>=<sp/>goal_pose_marker.ADD;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.type<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//arrow</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.pose<sp/>=<sp/>goal_pose[i];</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.color<sp/>=<sp/>color;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.scale.x<sp/>=<sp/>1.6;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.scale.y<sp/>=<sp/>0.2;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.scale.z<sp/>=<sp/>0.2;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(goal_pose_marker);</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/>p2.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/>p2.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/>p2.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/>p3.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/>p3.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/>p3.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/>p4.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/>p4.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/>p4.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/>p5.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/>p5.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/>p5.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/>p6.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/>p6.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/>p6.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/>p7.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/>p7.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/>p7.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p0);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p3);</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p3);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p6);</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p6);</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p2);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p2);</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p0);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p0);</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p1);</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p3);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p5);</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p6);</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p7);</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p2);</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p4);</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p1);</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p5);</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p5);</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p7);</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p7);</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p4);</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p4);</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p1);</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/>bbox.color<sp/>=<sp/>color;</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/>bbox.scale.x<sp/>=<sp/>0.1;</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/>bbox.scale.y<sp/>=<sp/>0.1;</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/>bbox.scale.z<sp/>=<sp/>0.1;</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(bbox);</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>text;</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/>text.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/>text.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/>text.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/>text.id<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/>text.action<sp/>=<sp/>text.ADD;</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/>text.pose.position.x<sp/>=<sp/>status.bounding_box.center.x;</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/>text.pose.position.y<sp/>=<sp/>status.bounding_box.center.y;</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/>text.pose.position.z<sp/>=</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5<sp/>+<sp/>1.0;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/>text.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/>text.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/>text.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/>text.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/>text.type<sp/>=<sp/>text.TEXT_VIEW_FACING;</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/>text.scale.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/>text.scale.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/>text.scale.z<sp/>=<sp/>0.6;</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/>text.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/>text.text<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/>text.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;white&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(text);</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>arrow;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/>arrow.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/>arrow.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/>arrow.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/>arrow.id<sp/>=<sp/>2;</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/>arrow.action<sp/>=<sp/>arrow.ADD;</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"></highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>constexpr<sp/>double<sp/>arrow_size<sp/>=<sp/>0.3;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>arrow_size<sp/>=<sp/>0.4<sp/>*<sp/>status.bounding_box.dimensions.y;</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>arrow_ratio<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>pf,<sp/>pl,<sp/>pr;</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/>pf.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5<sp/>+<sp/>1.0;</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/>pf.y<sp/>=<sp/>status.bounding_box.center.y;</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/>pf.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"></highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/>pl.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5<sp/>+<sp/>1.0<sp/>-</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrow_size<sp/>*<sp/>arrow_ratio;</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/>pl.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>arrow_size;</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/>pl.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"></highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/>pr.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5<sp/>+<sp/>1.0<sp/>-</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrow_size<sp/>*<sp/>arrow_ratio;</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/>pr.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>arrow_size;</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/>pr.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/>arrow.points<sp/>=<sp/>{pf,<sp/>pl,<sp/>pr};</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/>arrow.colors<sp/>=<sp/>{color};</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/>arrow.type<sp/>=<sp/>arrow.TRIANGLE_LIST;</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/>arrow.scale.x<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/>arrow.scale.y<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/>arrow.scale.z<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/>arrow.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/>arrow.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(arrow);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>goal_pose_text_marker;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.type<sp/>=<sp/>goal_pose_text_marker.TEXT_VIEW_FACING;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.header.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.id<sp/>=<sp/>100<sp/>+<sp/>int(goal_pose_max_size<sp/>-<sp/>goal_pose.size()<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.action<sp/>=<sp/>goal_pose_text_marker.ADD;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.pose.position.x<sp/>=<sp/>goal_pose[i].position.x;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.pose.position.y<sp/>=<sp/>goal_pose[i].position.y;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.pose.position.z<sp/>=<sp/>goal_pose[i].position.z<sp/>+<sp/>1.0;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.type<sp/>=<sp/>goal_pose_text_marker.TEXT_VIEW_FACING;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.scale.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.scale.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.scale.z<sp/>=<sp/>0.6;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.text<sp/>=</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status.name<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;_goal_&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">(goal_pose_max_size<sp/>-<sp/>goal_pose.size()<sp/>+<sp/>i));</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;white&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(goal_pose_text_marker);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>goal_pose_marker;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.action<sp/>=<sp/>goal_pose_marker.DELETE;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.id<sp/>=<sp/>10<sp/>+<sp/>int(i<sp/>-<sp/>(goal_pose_max_size<sp/>-<sp/>goal_pose.size()));</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(goal_pose_marker);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>goal_pose_text_marker;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.action<sp/>=<sp/>goal_pose_text_marker.DELETE;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.id<sp/>=<sp/>100<sp/>+<sp/>int(i<sp/>-<sp/>(goal_pose_max_size<sp/>-<sp/>goal_pose.size()));</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goal_pose_text_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(goal_pose_text_marker);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>goal_pose_marker;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>goal_pose_marker.action<sp/>=<sp/>goal_pose_marker.DELETE;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>goal_pose_marker.id<sp/>=<sp/>10<sp/>+<sp/>int(goal_pose_max_size<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>goal_pose_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(goal_pose_marker);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>goal_pose_text_marker;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>goal_pose_text_marker.action<sp/>=<sp/>goal_pose_text_marker.DELETE;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>goal_pose_text_marker.id<sp/>=<sp/>100<sp/>+<sp/>int(goal_pose_max_size<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>goal_pose_text_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(goal_pose_text_marker);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>bbox;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>bbox.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>bbox.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>bbox.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/>bbox.id<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>bbox.action<sp/>=<sp/>bbox.ADD;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>bbox.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>bbox.type<sp/>=<sp/>bbox.LINE_LIST;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>bbox.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>p0,<sp/>p1,<sp/>p2,<sp/>p3,<sp/>p4,<sp/>p5,<sp/>p6,<sp/>p7;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>p0.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>p0.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>p0.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>p1.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>p1.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>p1.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>p2.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>p2.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>p2.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>p3.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>p3.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/>p3.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>p4.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/>p4.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>p4.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>p5.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/>p5.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/>p5.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/>p6.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/>p6.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>p6.z<sp/>=<sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>p7.x<sp/>=<sp/>status.bounding_box.center.x<sp/>-<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>p7.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>status.bounding_box.dimensions.y<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>p7.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p0);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p3);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p3);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p6);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p6);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p2);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p2);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p0);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p0);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p1);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p3);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p5);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p6);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p7);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p2);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p4);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p1);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p5);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p5);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p7);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p7);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p4);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>text_action;</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/>text_action.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/>text_action.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/>text_action.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/>text_action.id<sp/>=<sp/>3;</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/>text_action.action<sp/>=<sp/>text_action.ADD;</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/>text_action.pose.position.x<sp/>=</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/>text_action.pose.position.y<sp/>=<sp/>status.bounding_box.center.y;</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/>text_action.pose.position.z<sp/>=</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5<sp/>+<sp/>0.5;</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/>text_action.type<sp/>=<sp/>text_action.TEXT_VIEW_FACING;</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/>text_action.scale.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/>text_action.scale.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/>text_action.scale.z<sp/>=<sp/>0.4;</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/>text_action.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/>text_action.text<sp/>=<sp/>status.action_status.current_action;</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/>text_action.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;white&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(text_action);</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"></highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(waypoints.waypoints.size()<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>traffic_simulator::math::CatmullRomSpline<sp/>spline(waypoints.waypoints);</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"></highlight></codeline>
-<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>waypoints_marker;</highlight></codeline>
-<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.header.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.id<sp/>=<sp/>4;</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.action<sp/>=<sp/>waypoints_marker.ADD;</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.type<sp/>=<sp/>waypoints_marker.TRIANGLE_LIST;</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_points<sp/>=<sp/>20;</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.points<sp/>=<sp/>spline.getPolygon(status.bounding_box.dimensions.y,<sp/>num_points);</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.color<sp/>=<sp/>color;</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.color.a<sp/>=<sp/>0.8;</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.colors<sp/>=</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std_msgs::msg::ColorRGBA&gt;(num_points<sp/>*<sp/>2,<sp/>waypoints_marker.color);</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.scale.x<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.scale.y<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.scale.z<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(waypoints_marker);</highlight></codeline>
-<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(obstacle_find)<sp/>{</highlight></codeline>
-<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>obstacle_marker;</highlight></codeline>
-<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.header.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.id<sp/>=<sp/>5;</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.action<sp/>=<sp/>obstacle_marker.ADD;</highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.type<sp/>=<sp/>obstacle_marker.CUBE;</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.pose<sp/>=<sp/>spline.getPose(obstacle.s);</highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.pose.position.z<sp/>=</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.pose.position.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">,<sp/>0.5);</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.scale.x<sp/>=<sp/>0.3;</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.scale.y<sp/>=<sp/>status.bounding_box.dimensions.y<sp/>+<sp/>0.3;</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.scale.z<sp/>=<sp/>status.bounding_box.dimensions.z;</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(obstacle_marker);</highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>obstacle_marker;</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.action<sp/>=<sp/>obstacle_marker.DELETE;</highlight></codeline>
-<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.id<sp/>=<sp/>5;</highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(obstacle_marker);</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>waypoints_marker;</highlight></codeline>
-<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.action<sp/>=<sp/>waypoints_marker.DELETE;</highlight></codeline>
-<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.id<sp/>=<sp/>4;</highlight></codeline>
-<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(waypoints_marker);</highlight></codeline>
-<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>obstacle_marker;</highlight></codeline>
-<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>obstacle_marker.action<sp/>=<sp/>obstacle_marker.DELETE;</highlight></codeline>
-<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>obstacle_marker.id<sp/>=<sp/>5;</highlight></codeline>
-<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>obstacle_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
-<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(obstacle_marker);</highlight></codeline>
-<codeline lineno="383"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="384"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="385"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="386"><highlight class="normal"></highlight></codeline>
-<codeline lineno="387"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::msg::MarkerArray</highlight></codeline>
-<codeline lineno="388"><highlight class="normal">OpenscenarioVisualizationComponent::generateDeleteMarker()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="389"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="390"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::MarkerArray<sp/>ret;</highlight></codeline>
-<codeline lineno="391"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>marker;</highlight></codeline>
-<codeline lineno="392"><highlight class="normal"><sp/><sp/>marker.action<sp/>=<sp/>marker.DELETEALL;</highlight></codeline>
-<codeline lineno="393"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(marker);</highlight></codeline>
-<codeline lineno="394"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
-<codeline lineno="395"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="396"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_visualization</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="397"><highlight class="normal"></highlight></codeline>
-<codeline lineno="398"><highlight class="normal">RCLCPP_COMPONENTS_REGISTER_NODE(<ref refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent" kindref="compound">openscenario_visualization::OpenscenarioVisualizationComponent</ref>)</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p4);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/>bbox.points.emplace_back(p1);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/>bbox.colors.emplace_back(color);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/>bbox.color<sp/>=<sp/>color;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>bbox.scale.x<sp/>=<sp/>0.1;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>bbox.scale.y<sp/>=<sp/>0.1;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/>bbox.scale.z<sp/>=<sp/>0.1;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(bbox);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>text;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/>text.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/>text.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/>text.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/>text.id<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/>text.action<sp/>=<sp/>text.ADD;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/>text.pose.position.x<sp/>=<sp/>status.bounding_box.center.x;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/>text.pose.position.y<sp/>=<sp/>status.bounding_box.center.y;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/>text.pose.position.z<sp/>=</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>status.bounding_box.center.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5<sp/>+<sp/>1.0;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/>text.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/>text.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>text.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/>text.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/>text.type<sp/>=<sp/>text.TEXT_VIEW_FACING;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/>text.scale.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/>text.scale.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/>text.scale.z<sp/>=<sp/>0.6;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/>text.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/>text.text<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/>text.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;white&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(text);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>arrow;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/>arrow.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/>arrow.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/>arrow.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/>arrow.id<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/>arrow.action<sp/>=<sp/>arrow.ADD;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>constexpr<sp/>double<sp/>arrow_size<sp/>=<sp/>0.3;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>arrow_size<sp/>=<sp/>0.4<sp/>*<sp/>status.bounding_box.dimensions.y;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>arrow_ratio<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Point<sp/>pf,<sp/>pl,<sp/>pr;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/>pf.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5<sp/>+<sp/>1.0;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>pf.y<sp/>=<sp/>status.bounding_box.center.y;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/>pf.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/>pl.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5<sp/>+<sp/>1.0<sp/>-</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrow_size<sp/>*<sp/>arrow_ratio;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/>pl.y<sp/>=<sp/>status.bounding_box.center.y<sp/>+<sp/>arrow_size;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/>pl.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/>pr.x<sp/>=<sp/>status.bounding_box.center.x<sp/>+<sp/>status.bounding_box.dimensions.x<sp/>*<sp/>0.5<sp/>+<sp/>1.0<sp/>-</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arrow_size<sp/>*<sp/>arrow_ratio;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/>pr.y<sp/>=<sp/>status.bounding_box.center.y<sp/>-<sp/>arrow_size;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/>pr.z<sp/>=<sp/>status.bounding_box.center.z<sp/>-<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/>arrow.points<sp/>=<sp/>{pf,<sp/>pl,<sp/>pr};</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/>arrow.colors<sp/>=<sp/>{color};</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/>arrow.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/>arrow.type<sp/>=<sp/>arrow.TRIANGLE_LIST;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/>arrow.scale.x<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/>arrow.scale.y<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/>arrow.scale.z<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/>arrow.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/>arrow.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(arrow);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>text_action;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/>text_action.header.frame_id<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/>text_action.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/>text_action.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/>text_action.id<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/>text_action.action<sp/>=<sp/>text_action.ADD;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/>text_action.pose.position.x<sp/>=<sp/>status.bounding_box.center.x;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/>text_action.pose.position.y<sp/>=<sp/>status.bounding_box.center.y;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/>text_action.pose.position.z<sp/>=<sp/>status.bounding_box.center.z;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.z<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/>text_action.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/>text_action.type<sp/>=<sp/>text_action.TEXT_VIEW_FACING;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/>text_action.scale.x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/>text_action.scale.y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/>text_action.scale.z<sp/>=<sp/>0.4;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/>text_action.lifetime<sp/>=<sp/>rclcpp::Duration::from_seconds(0.1);</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/>text_action.text<sp/>=<sp/>status.action_status.current_action;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status.lanelet_pose_valid)<sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/>text_action.text<sp/>=<sp/>text_action.text<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\nid:&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(status.lanelet_pose.lanelet_id)<sp/>+</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\ns:&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(status.lanelet_pose.s);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/>text_action.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;white&quot;</highlight><highlight class="normal">,<sp/>0.99);</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(text_action);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(waypoints.waypoints.size()<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/>traffic_simulator::math::CatmullRomSpline<sp/>spline(waypoints.waypoints);</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>waypoints_marker;</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.header.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.id<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.action<sp/>=<sp/>waypoints_marker.ADD;</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.type<sp/>=<sp/>waypoints_marker.TRIANGLE_LIST;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_points<sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.points<sp/>=<sp/>spline.getPolygon(status.bounding_box.dimensions.y,<sp/>num_points);</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.color<sp/>=<sp/>color;</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.color.a<sp/>=<sp/>0.8;</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.colors<sp/>=</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std_msgs::msg::ColorRGBA&gt;(num_points<sp/>*<sp/>2,<sp/>waypoints_marker.color);</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.scale.x<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.scale.y<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.scale.z<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(waypoints_marker);</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(obstacle_find)<sp/>{</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>obstacle_marker;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.header.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.header.stamp<sp/>=<sp/>stamp;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.id<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.action<sp/>=<sp/>obstacle_marker.ADD;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.type<sp/>=<sp/>obstacle_marker.CUBE;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.pose<sp/>=<sp/>spline.getPose(obstacle.s);</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.pose.position.z<sp/>=</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.pose.position.z<sp/>+<sp/>status.bounding_box.dimensions.z<sp/>*<sp/>0.5;</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.color<sp/>=<sp/>color_utils::makeColorMsg(</highlight><highlight class="stringliteral">&quot;red&quot;</highlight><highlight class="normal">,<sp/>0.5);</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.scale.x<sp/>=<sp/>0.3;</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.scale.y<sp/>=<sp/>status.bounding_box.dimensions.y<sp/>+<sp/>0.3;</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.scale.z<sp/>=<sp/>status.bounding_box.dimensions.z;</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(obstacle_marker);</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>obstacle_marker;</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.action<sp/>=<sp/>obstacle_marker.DELETE;</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.id<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>obstacle_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ret.markers.emplace_back(obstacle_marker);</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>waypoints_marker;</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.action<sp/>=<sp/>waypoints_marker.DELETE;</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.id<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/>waypoints_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(waypoints_marker);</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/>visualization_msgs::msg::Marker<sp/>obstacle_marker;</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/>obstacle_marker.action<sp/>=<sp/>obstacle_marker.DELETE;</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/>obstacle_marker.id<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/>obstacle_marker.ns<sp/>=<sp/>status.name;</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.markers.emplace_back(obstacle_marker);</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="458"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::msg::MarkerArray</highlight></codeline>
+<codeline lineno="461"><highlight class="normal">OpenscenarioVisualizationComponent::generateDeleteMarker()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="462"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::MarkerArray<sp/>ret;</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/>visualization_msgs::msg::Marker<sp/>marker;</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/>marker.action<sp/>=<sp/>marker.DELETEALL;</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/>ret.markers.emplace_back(marker);</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="468"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="469"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_visualization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal">RCLCPP_COMPONENTS_REGISTER_NODE(<ref refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent" kindref="compound">openscenario_visualization::OpenscenarioVisualizationComponent</ref>)</highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/src/openscenario_visualization_component.cpp"/>
   </compounddef>

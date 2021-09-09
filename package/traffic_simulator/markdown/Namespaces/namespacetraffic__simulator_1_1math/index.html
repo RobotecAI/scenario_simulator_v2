@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -730,8 +745,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#function-vector3" class="md-nav__link">
+    function vector3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-transformpoints" class="md-nav__link">
     function transformPoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-normalize" class="md-nav__link">
+    function normalize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getsize" class="md-nav__link">
+    function getSize
   </a>
   
 </li>
@@ -862,8 +898,20 @@
 </thead>
 <tbody>
 <tr>
+<td>geometry_msgs::msg::Vector3</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Namespaces/namespacetraffic__simulator_1_1math#function-vector3">vector3</a></strong>(double x, double y, double z)</td>
+</tr>
+<tr>
 <td>std::vector&lt; geometry_msgs::msg::Point &gt;</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Namespaces/namespacetraffic__simulator_1_1math#function-transformpoints">transformPoints</a></strong>(geometry_msgs::msg::Pose pose, std::vector&lt; geometry_msgs::msg::Point &gt; points)</td>
+</tr>
+<tr>
+<td>geometry_msgs::msg::Vector3</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Namespaces/namespacetraffic__simulator_1_1math#function-normalize">normalize</a></strong>(geometry_msgs::msg::Vector3 vec)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Namespaces/namespacetraffic__simulator_1_1math#function-getsize">getSize</a></strong>(geometry_msgs::msg::Vector3 vec)</td>
 </tr>
 <tr>
 <td>const geometry_msgs::msg::Pose</td>
@@ -908,10 +956,27 @@
 </tbody>
 </table>
 <h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
+<h3 id="function-vector3">function vector3<a class="headerlink" href="#function-vector3" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="w"> </span><span class="n">vector3</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-transformpoints">function transformPoints<a class="headerlink" href="#function-transformpoints" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">transformPoints</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="n">pose</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">points</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-normalize">function normalize<a class="headerlink" href="#function-normalize" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="w"> </span><span class="n">normalize</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="w"> </span><span class="n">vec</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-getsize">function getSize<a class="headerlink" href="#function-getsize" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">getSize</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="w"> </span><span class="n">vec</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-getrelativepose">function getRelativePose<a class="headerlink" href="#function-getrelativepose" title="Permanent link">#</a></h3>
@@ -990,7 +1055,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:39 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:04 UTC</p>
                 
                   
                 

@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -933,6 +948,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-getgoalposes" class="md-nav__link">
+    function getGoalPoses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getgoalposes_1" class="md-nav__link">
+    function getGoalPoses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-getentitytypelist" class="md-nav__link">
     function getEntityTypeList
   </a>
@@ -1026,13 +1055,6 @@
           <li class="md-nav__item">
   <a href="#function-broadcastentitytransform" class="md-nav__link">
     function broadcastEntityTransform
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-broadcastbaselinktransform" class="md-nav__link">
-    function broadcastBaseLinkTransform
   </a>
   
 </li>
@@ -1358,6 +1380,14 @@
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-gethdmaputils">getHdmapUtils</a></strong>()</td>
 </tr>
 <tr>
+<td>void</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-getgoalposes">getGoalPoses</a></strong>(const std::string &amp; name, std::vector&lt; openscenario_msgs::msg::LaneletPose &gt; &amp; goals)</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-getgoalposes">getGoalPoses</a></strong>(const std::string &amp; name, std::vector&lt; geometry_msgs::msg::Pose &gt; &amp; goals)</td>
+</tr>
+<tr>
 <td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-getentitytypelist">getEntityTypeList</a></strong>() const</td>
 </tr>
@@ -1412,10 +1442,6 @@
 <tr>
 <td>void</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-broadcastentitytransform">broadcastEntityTransform</a></strong>()</td>
-</tr>
-<tr>
-<td>void</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-broadcastbaselinktransform">broadcastBaseLinkTransform</a></strong>()</td>
 </tr>
 <tr>
 <td></td>
@@ -1693,6 +1719,18 @@
 <h3 id="function-gethdmaputils">function getHdmapUtils<a class="headerlink" href="#function-gethdmaputils" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getHdmapUtils</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
+<h3 id="function-getgoalposes">function getGoalPoses<a class="headerlink" href="#function-getgoalposes" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">getGoalPoses</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goals</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-getgoalposes_1">function getGoalPoses<a class="headerlink" href="#function-getgoalposes_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">getGoalPoses</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goals</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-getentitytypelist">function getEntityTypeList<a class="headerlink" href="#function-getentitytypelist" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">getEntityTypeList</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
@@ -1757,9 +1795,6 @@
 </code></pre></div>
 <h3 id="function-broadcastentitytransform">function broadcastEntityTransform<a class="headerlink" href="#function-broadcastentitytransform" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">broadcastEntityTransform</span><span class="p">()</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-broadcastbaselinktransform">function broadcastBaseLinkTransform<a class="headerlink" href="#function-broadcastbaselinktransform" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">broadcastBaseLinkTransform</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_hdmap_utils">function FORWARD_TO_HDMAP_UTILS<a class="headerlink" href="#function-forward_to_hdmap_utils" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_HDMAP_UTILS</span><span class="p">(</span><span class="w"></span>
@@ -1894,7 +1929,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:39 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:04 UTC</p>
                 
                   
                 

@@ -189,18 +189,20 @@
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::EntityStatusWithTrajectoryArray::SharedPtr<sp/>msg);</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::msg::MarkerArray<sp/>generateDeleteMarker(std::string<sp/>ns);</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::msg::MarkerArray<sp/>generateDeleteMarker()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::msg::MarkerArray<sp/>generateMarker(</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::EntityStatus<sp/>&amp;<sp/>status,</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::WaypointsArray<sp/>&amp;<sp/>waypoints,</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::Obstacle<sp/>&amp;<sp/>obstacle,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>obstacle_find);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/>rclcpp::Publisher&lt;visualization_msgs::msg::MarkerArray&gt;::SharedPtr<sp/>marker_pub_;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/>rclcpp::Subscription&lt;openscenario_msgs::msg::EntityStatusWithTrajectoryArray&gt;::SharedPtr</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>entity_status_sub_;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::string,<sp/>visualization_msgs::msg::MarkerArray&gt;<sp/>markers_;</highlight></codeline>
-<codeline lineno="128"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="129"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_visualization</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>OPENSCENARIO_VISUALIZATION__OPENSCENARIO_VISUALIZATION_COMPONENT_HPP_</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>goal_pose_max_size<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::msg::MarkerArray<sp/>generateMarker(</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::EntityStatus<sp/>&amp;<sp/>status,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;geometry_msgs::msg::Pose&gt;<sp/>&amp;<sp/>goal_pose,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::WaypointsArray<sp/>&amp;<sp/>waypoints,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::Obstacle<sp/>&amp;<sp/>obstacle,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>obstacle_find);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>rclcpp::Publisher&lt;visualization_msgs::msg::MarkerArray&gt;::SharedPtr<sp/>marker_pub_;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>rclcpp::Subscription&lt;openscenario_msgs::msg::EntityStatusWithTrajectoryArray&gt;::SharedPtr</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>entity_status_sub_;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::string,<sp/>visualization_msgs::msg::MarkerArray&gt;<sp/>markers_;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>openscenario_visualization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>OPENSCENARIO_VISUALIZATION__OPENSCENARIO_VISUALIZATION_COMPONENT_HPP_</highlight></codeline>
     </programlisting>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp"/>
   </compounddef>

@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -801,10 +816,34 @@
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
+<span class="kt">void</span><span class="w"> </span><span class="n">VehicleEntity</span><span class="o">::</span><span class="n">requestAssignRoute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">waypoints</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">route</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">waypoint</span> <span class="p">:</span><span class="w"> </span><span class="n">waypoints</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">lanelet_waypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hdmap_utils_ptr_</span><span class="o">-&gt;</span><span class="n">toLaneletPose</span><span class="p">(</span><span class="n">waypoint</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lanelet_waypoint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">route</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">lanelet_waypoint</span><span class="p">.</span><span class="n">get</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">THROW_SEMANTIC_ERROR</span><span class="p">(</span><span class="s">&quot;Waypoint of pedestrian entity should be on lane.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">requestAssignRoute</span><span class="p">(</span><span class="n">route</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
 <span class="kt">void</span><span class="w"> </span><span class="n">VehicleEntity</span><span class="o">::</span><span class="n">requestAcquirePosition</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lanelet_pose</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">status_</span><span class="o">-&gt;</span><span class="n">lanelet_pose_valid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">route_planner_ptr_</span><span class="o">-&gt;</span><span class="n">getRouteLanelets</span><span class="p">(</span><span class="n">status_</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_pose</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">VehicleEntity</span><span class="o">::</span><span class="n">requestAcquirePosition</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map_pose</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">lanelet_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hdmap_utils_ptr_</span><span class="o">-&gt;</span><span class="n">toLaneletPose</span><span class="p">(</span><span class="n">map_pose</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lanelet_pose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">requestAcquirePosition</span><span class="p">(</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">get</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">THROW_SEMANTIC_ERROR</span><span class="p">(</span><span class="s">&quot;Goal of the vehicle entity should be on lane.&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -868,7 +907,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

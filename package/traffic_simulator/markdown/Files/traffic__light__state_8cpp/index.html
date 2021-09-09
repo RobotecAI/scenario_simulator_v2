@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -793,11 +808,11 @@
 
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">datum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conversions</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;an invalid value : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;was specified for type &#39;traffic_simulator::TrafficLightColor&#39;&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                  </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="w">                                              </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">      </span><span class="s">&quot;an invalid value : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w">                                      </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">      </span><span class="s">&quot;was specified for type &#39;traffic_simulator::TrafficLightColor&#39;&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">  </span><span class="p">}</span><span class="w">                                                                      </span><span class="c1">// LCOV_EXCL_LINE</span>
 
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">is</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -810,7 +825,7 @@
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">RED</span><span class="p">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">GREEN</span><span class="p">:</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightColor</span><span class="o">::</span><span class="nl">YELLOW</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;yellow&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// LCOV_EXCL_LINE</span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="c1">// clang-format on</span>
 <span class="p">}</span><span class="w"></span>
@@ -862,11 +877,11 @@
 
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">datum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conversions</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;An invalid value : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot; was specified for type &#39;traffic_simulator::TrafficLightArrow&#39;&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                   </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">    </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="w">                                               </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">      </span><span class="s">&quot;An invalid value : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w">                                       </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">      </span><span class="s">&quot; was specified for type &#39;traffic_simulator::TrafficLightArrow&#39;&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// LCOV_EXCL_LINE</span>
+<span class="w">  </span><span class="p">}</span><span class="w">                                                                       </span><span class="c1">// LCOV_EXCL_LINE</span>
 
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">is</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -879,7 +894,7 @@
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">STRAIGHT</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;straight&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">LEFT</span><span class="p">:</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;left&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TrafficLightArrow</span><span class="o">::</span><span class="nl">RIGHT</span><span class="p">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;right&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                          </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">                          </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// LCOV_EXCL_LINE</span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="c1">// clang-format on</span>
 <span class="p">}</span><span class="w"></span>
@@ -916,7 +931,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

@@ -717,6 +717,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -776,11 +791,11 @@
                 <h1 id="simple-demo">Simple demo<a class="headerlink" href="#simple-demo" title="Permanent link">#</a></h1>
 <p><strong>Note! This demo does not use Autoware. Ego Vehicle is interpreted as an NPC</strong></p>
 <p>Before you try to run this demo, you have to build and install scenario_simulator_v2 in your local computer.
-Do you want to know how to do that, please refer <a href="../BuildInstructions/">this documentation</a>. </p>
+Do you want to know how to do that, please refer <a href="../BuildInstructions/">this documentation</a>.</p>
 <h2 id="how-to-run-simple-demo">How to run simple demo<a class="headerlink" href="#how-to-run-simple-demo" title="Permanent link">#</a></h2>
 <p>Only you have to do is type this command in your terminal.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span> ~/scenario_simulator_ws/install/local_setup.bash
-ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo launch_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <p>You can see ego vehicle running in kashiwanoha.</p>
 <p><img alt="Simple Demo" src="../../image/simple_demo.png" title="simple demo" /></p>

@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -711,6 +726,33 @@
   <a href="#namespaces" class="md-nav__link">
     Namespaces
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-documentation" class="md-nav__link">
+    Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-operator" class="md-nav__link">
+    function operator&lt;&lt;
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -755,6 +797,28 @@
 </tr>
 </tbody>
 </table>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std::ostream &amp;</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Files/helper_8hpp#function-operator&lt;&lt;">operator&lt;&lt;</a></strong>(std::ostream &amp; os, const openscenario_msgs::msg::LaneletPose &amp; ll_pose)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functions-documentation">Functions Documentation<a class="headerlink" href="#functions-documentation" title="Permanent link">#</a></h2>
+<h3 id="function-operator">function operator&lt;&lt;<a class="headerlink" href="#function-operator" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ll_pose</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
 <span class="c1">//</span>
@@ -801,8 +865,6 @@
 <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="nf">constructPose</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">yaw</span><span class="p">);</span><span class="w"></span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ll_pose</span><span class="p">);</span><span class="w"></span>
-
 <span class="k">enum</span> <span class="k">class</span><span class="w"> </span><span class="nc">LidarType</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">VLP16</span><span class="p">,</span><span class="w"> </span><span class="n">VLP32</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
 <span class="k">const</span><span class="w"> </span><span class="n">simulation_api_schema</span><span class="o">::</span><span class="n">LidarConfiguration</span><span class="w"> </span><span class="nf">constructLidarConfiguration</span><span class="p">(</span><span class="w"></span>
@@ -815,10 +877,12 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace helper</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ll_pose</span><span class="p">);</span><span class="w"></span>
+
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__HELPER__HELPER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

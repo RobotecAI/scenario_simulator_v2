@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -827,17 +842,9 @@
 <span class="cm"> *  NOTE: This framework expresses xsd:group as mixin.</span>
 <span class="cm"> *</span>
 <span class="cm"> * ------------------------------------------------------------------------- */</span><span class="w"></span>
-<span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">EntityObject</span><span class="w"></span>
+<span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Scope</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="n">EntityObject</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="cm">/* ---- name -----------------------------------------------------------------</span>
-<span class="cm">   *</span>
-<span class="cm">   *  Identifier of the scenario object.</span>
-<span class="cm">   *</span>
-<span class="cm">   * ------------------------------------------------------------------------ */</span><span class="w"></span>
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">;</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
-
 <span class="w">  </span><span class="cm">/* ---- ObjectController -----------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  Controller of the EntityObject instance.</span>
@@ -847,11 +854,11 @@
 
 <span class="w">  </span><span class="k">static_assert</span><span class="p">(</span><span class="n">IsOptionalElement</span><span class="o">&lt;</span><span class="n">ObjectController</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;minOccurs=</span><span class="se">\&quot;</span><span class="s">0</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">ScenarioObject</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">EntityObject</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)),</span><span class="w"></span>
-<span class="w">    </span><span class="n">object_controller</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">ObjectController</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ObjectController&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="n">outer_scope</span><span class="p">.</span><span class="n">makeChildScope</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">))),</span><span class="w"></span>
+<span class="w">    </span><span class="n">EntityObject</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">()),</span><span class="w"></span>
+<span class="w">    </span><span class="n">object_controller</span><span class="p">(</span><span class="n">readElement</span><span class="o">&lt;</span><span class="n">ObjectController</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ObjectController&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">localScope</span><span class="p">()))</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
@@ -884,7 +891,7 @@
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">Vehicle</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">applyAssignControllerAction</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">object_controller</span><span class="p">);</span><span class="w"></span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">object_controller</span><span class="p">.</span><span class="n">isEgo</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="k">auto</span><span class="w"> </span><span class="n">architecture_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getParameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;architecture-type&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">          </span><span class="k">auto</span><span class="w"> </span><span class="n">architecture_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getParameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;architecture_type&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">));</span><span class="w"></span>
 
 <span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">architecture_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;tier4/proposal&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="n">attachLidarSensor</span><span class="p">(</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">helper</span><span class="o">::</span><span class="n">constructLidarConfiguration</span><span class="p">(</span><span class="w"></span>
@@ -902,7 +909,7 @@
 <span class="w">            </span><span class="c1">// msgs are already implemented and autoware_auto_msgs::msg::PredictedObjects will probably be used here</span>
 <span class="w">            </span><span class="c1">// topic name is yet unknown</span>
 <span class="w">          </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;Invalid architecture-type = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">architecture_type</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&quot;Invalid architecture_type = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">architecture_type</span><span class="p">);</span><span class="w"></span>
 <span class="w">          </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
@@ -920,7 +927,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__SCENARIO_OBJECT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:43 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:08 UTC</p>
                 
                   
                 

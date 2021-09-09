@@ -5,6 +5,43 @@
     <basecompoundref prot="public" virt="non-virtual">Node</basecompoundref>
     <includes refid="openscenario__visualization__component_8hpp" local="no">openscenario_visualization_component.hpp</includes>
       <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a17a61a6a7422e095a84457eb5e9aa0d9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int openscenario_visualization::OpenscenarioVisualizationComponent::goal_pose_max_size</definition>
+        <argsstring></argsstring>
+        <name>goal_pose_max_size</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>generate marker from entity status </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>entity status message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>waypoints</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>waypoints message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>obstacle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>obstacles in waypoint </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>const visualization_msgs::msg::MarkerArray markers which describes entity bounding box and it&apos;s status. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="111" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a3b139f811d847021a8e9a4f3db1f7f38" prot="private" static="no" mutable="no">
         <type>rclcpp::Publisher&lt; visualization_msgs::msg::MarkerArray &gt;::SharedPtr</type>
         <definition>rclcpp::Publisher&lt;visualization_msgs::msg::MarkerArray&gt;::SharedPtr openscenario_visualization::OpenscenarioVisualizationComponent::marker_pub_</definition>
@@ -16,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="118" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="118" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="120" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1aaef62f62d3b2a994923f4593cb125798" prot="private" static="no" mutable="no">
         <type>rclcpp::Subscription&lt; openscenario_msgs::msg::EntityStatusWithTrajectoryArray &gt;::SharedPtr</type>
@@ -29,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="123" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="123" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="125" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a6d540d8f6f2975e407818aeb14391315" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, visualization_msgs::msg::MarkerArray &gt;</type>
@@ -42,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="127" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="127" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="129" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -128,16 +165,20 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="103" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/src/openscenario_visualization_component.cpp" bodystart="388" bodyend="395"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="103" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/src/openscenario_visualization_component.cpp" bodystart="461" bodyend="468"/>
       </memberdef>
-      <memberdef kind="function" id="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1aceae5eb7750d15e8333ac8523ba3cfa4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a75aa246e6e139d30eea2decbd6bdc3b8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const visualization_msgs::msg::MarkerArray</type>
         <definition>const visualization_msgs::msg::MarkerArray openscenario_visualization::OpenscenarioVisualizationComponent::generateMarker</definition>
-        <argsstring>(const openscenario_msgs::msg::EntityStatus &amp;status, const openscenario_msgs::msg::WaypointsArray &amp;waypoints, const openscenario_msgs::msg::Obstacle &amp;obstacle, bool obstacle_find)</argsstring>
+        <argsstring>(const openscenario_msgs::msg::EntityStatus &amp;status, const std::vector&lt; geometry_msgs::msg::Pose &gt; &amp;goal_pose, const openscenario_msgs::msg::WaypointsArray &amp;waypoints, const openscenario_msgs::msg::Obstacle &amp;obstacle, bool obstacle_find)</argsstring>
         <name>generateMarker</name>
         <param>
           <type>const openscenario_msgs::msg::EntityStatus &amp;</type>
           <declname>status</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; geometry_msgs::msg::Pose &gt; &amp;</type>
+          <declname>goal_pose</declname>
         </param>
         <param>
           <type>const openscenario_msgs::msg::WaypointsArray &amp;</type>
@@ -152,35 +193,12 @@
           <declname>obstacle_find</declname>
         </param>
         <briefdescription>
-<para>generate marker from entity status </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>status</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>entity status message </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>waypoints</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>waypoints message </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>obstacle</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>obstacles in waypoint </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>const visualization_msgs::msg::MarkerArray markers which describes entity bounding box and it&apos;s status. </para></simplesect>
-</para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
 <para>generate marker for waypoints</para><para>generate marker for obstacle</para>        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="111" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/src/openscenario_visualization_component.cpp" bodystart="119" bodyend="385"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="112" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/src/openscenario_visualization_component.cpp" bodystart="119" bodyend="458"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -209,13 +227,14 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="81" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="80" bodyend="128"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" line="81" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_visualization/include/openscenario_visualization/openscenario_visualization_component.hpp" bodystart="80" bodyend="130"/>
     <listofallmembers>
       <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1aaef62f62d3b2a994923f4593cb125798" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>entity_status_sub_</name></member>
       <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a30d4078c2519c3df68361b0156083b9a" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>entityStatusCallback</name></member>
       <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a13781c2c261b0167d894905cb8fa5936" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>generateDeleteMarker</name></member>
       <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1ad35122d7394ec90e22b8edfbe7fb8f3a" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>generateDeleteMarker</name></member>
-      <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1aceae5eb7750d15e8333ac8523ba3cfa4" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>generateMarker</name></member>
+      <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a75aa246e6e139d30eea2decbd6bdc3b8" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>generateMarker</name></member>
+      <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a17a61a6a7422e095a84457eb5e9aa0d9" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>goal_pose_max_size</name></member>
       <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a3b139f811d847021a8e9a4f3db1f7f38" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>marker_pub_</name></member>
       <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1a6d540d8f6f2975e407818aeb14391315" prot="private" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>markers_</name></member>
       <member refid="classopenscenario__visualization_1_1OpenscenarioVisualizationComponent_1aa0e692c5b005681010849b0675338ada" prot="public" virt="non-virtual"><scope>openscenario_visualization::OpenscenarioVisualizationComponent</scope><name>OpenscenarioVisualizationComponent</name></member>

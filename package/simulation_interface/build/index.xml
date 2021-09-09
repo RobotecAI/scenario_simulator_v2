@@ -12,14 +12,6 @@
     <member refid="classzeromq_1_1Client_1a4f905cb8a4cb553d95112e92f2d24f2b" kind="function"><name>Client</name></member>
     <member refid="classzeromq_1_1Client_1a0156fbaa4a9965fce8c1b8ec29ba13fa" kind="function"><name>call</name></member>
   </compound>
-  <compound refid="classExampleNode" kind="class"><name>ExampleNode</name>
-    <member refid="classExampleNode_1a5657c4f746d46c572bebce0792e12668" kind="variable"><name>update_timer_</name></member>
-    <member refid="classExampleNode_1a48f6543e4f663b0d69a3183440bb4fc5" kind="variable"><name>server_</name></member>
-    <member refid="classExampleNode_1aeb110f8247f6091f0e5195b61aa84e42" kind="variable"><name>client_</name></member>
-    <member refid="classExampleNode_1a091c80215ebf7a91f96dcf38aed3c092" kind="variable"><name>init_client_</name></member>
-    <member refid="classExampleNode_1a2653f1f20c3f8497fe4f2aa8ae0835c0" kind="function"><name>ExampleNode</name></member>
-    <member refid="classExampleNode_1a2b4e4d594521cfdd505c16fc9f0735e4" kind="function"><name>sendRequest</name></member>
-  </compound>
   <compound refid="classzeromq_1_1MultiServer" kind="class"><name>zeromq::MultiServer</name>
     <member refid="classzeromq_1_1MultiServer_1a06429726c4d55b865539f219fe898fad" kind="variable"><name>thread_</name></member>
     <member refid="classzeromq_1_1MultiServer_1a5b84bba2e9e8f2452709ecf424f9fb75" kind="variable"><name>context_</name></member>
@@ -69,9 +61,8 @@
   <compound refid="namespacesimulation__interface" kind="namespace"><name>simulation_interface</name>
     <member refid="constants_8hpp_1a6d935a4e115a42b775e3aac5aa8795a3" kind="enum"><name>TransportProtocol</name></member>
     <member refid="dummy_1a6d935a4e115a42b775e3aac5aa8795a3ab136ef5f6a01d816991fe3cf7a6ac763" kind="enumvalue"><name>TCP</name></member>
-    <member refid="dummy_1a6d935a4e115a42b775e3aac5aa8795a3af5ef036b4d8b630721e51fe23489fbc9" kind="enumvalue"><name>UDP</name></member>
     <member refid="constants_8hpp_1a40b6c5aa3da129f5dd1b0729db36ff0d" kind="enum"><name>HostName</name></member>
-    <member refid="dummy_1a40b6c5aa3da129f5dd1b0729db36ff0da8f115e30b89dd6db2382a52a24bf6d19" kind="enumvalue"><name>LOCLHOST</name></member>
+    <member refid="dummy_1a40b6c5aa3da129f5dd1b0729db36ff0da170d066c9e8bec8ac82de5634069e158" kind="enumvalue"><name>LOCALHOST</name></member>
     <member refid="dummy_1a40b6c5aa3da129f5dd1b0729db36ff0da8e1bde3c3d303163521522cf1d62f21f" kind="enumvalue"><name>ANY</name></member>
     <member refid="constants_8hpp_1a89c7749333bf93c6cb028ec1524a06f7" kind="variable"><name>protocol</name></member>
     <member refid="constants_8hpp_1a46f9dd71a0d9785d4504c19010d83735" kind="function"><name>enumToString</name></member>
@@ -104,7 +95,7 @@
     <member refid="conversions_8hpp_1a61b1811df2888d78376a56e40cd95f96" kind="function"><name>toProto</name></member>
     <member refid="conversions_8hpp_1a3f4eaa908c27685031cf8c2d1278fd53" kind="function"><name>toMsg</name></member>
     <member refid="conversions_8hpp_1ae52389712d16c3b4975a5306c4f2eb25" kind="function"><name>toProto</name></member>
-    <member refid="conversions_8hpp_1ad66d9cb0bcdc3536d6446f0eb8d19c2f" kind="function"><name>toMsg</name></member>
+    <member refid="conversions_8hpp_1a957e63c533c9e98caa47d043417d7cf4" kind="function"><name>toMsg</name></member>
     <member refid="conversions_8hpp_1a6919a9529e61b14a681e2d594607cc4f" kind="function"><name>toProto</name></member>
     <member refid="conversions_8hpp_1a211e4a0b02a423df9adc40a47d115edb" kind="function"><name>toMsg</name></member>
     <member refid="conversions_8hpp_1a66a6fa1af54345f402abdf13ecb4a5f6" kind="function"><name>toProto</name></member>
@@ -125,7 +116,6 @@
     <member refid="conversions_8hpp_1a5fbeed003cdb224f6082e2915e86f56f" kind="function"><name>toMsg</name></member>
     <member refid="conversions_8hpp_1a5ea8c01fd6e5ac89478b6398cf79e794" kind="function"><name>toProto</name></member>
     <member refid="conversions_8hpp_1aef1c80a28830641aa9995c2e09816199" kind="function"><name>toMsg</name></member>
-    <member refid="conversions_8cpp_1a957e63c533c9e98caa47d043417d7cf4" kind="function"><name>toMsg</name></member>
   </compound>
   <compound refid="namespacesimulation__interface_1_1ports" kind="namespace"><name>simulation_interface::ports</name>
     <member refid="constants_8hpp_1a760bbcbdab973867cf21e4244555f44a" kind="variable"><name>initialize</name></member>
@@ -157,43 +147,57 @@
   </compound>
   <compound refid="conversions_8cpp" kind="file"><name>conversions.cpp</name>
   </compound>
-  <compound refid="example_8cpp" kind="file"><name>example.cpp</name>
-    <member refid="example_8cpp_1aead591d11ebde1719b5743edd43d391f" kind="function"><name>initialize_callback</name></member>
-    <member refid="example_8cpp_1ada03c45df62e264bbcf91555a8c7b4a9" kind="function"><name>update_frame_callback</name></member>
-    <member refid="example_8cpp_1a4da037c39de9ae420706332745828b02" kind="function"><name>update_sensor_frame_callback</name></member>
-    <member refid="example_8cpp_1a359eceb4ff3de50ccaa439555e3696ab" kind="function"><name>spawn_misc_object_entity_callback</name></member>
-    <member refid="example_8cpp_1ab9fd2ef0c4299ea288a4968f4feb9744" kind="function"><name>spawn_vehicle_entity_callback</name></member>
-    <member refid="example_8cpp_1a7f34ed414516cd064d14b037c527122e" kind="function"><name>spawn_pedestrian_entity_callback</name></member>
-    <member refid="example_8cpp_1afbb02754df45544c419403100f5d1ca7" kind="function"><name>despawn_entity_callback</name></member>
-    <member refid="example_8cpp_1a2d6adc0ce3ae1daa232368860748c661" kind="function"><name>attach_lidar_sensor_callback</name></member>
-    <member refid="example_8cpp_1a9d802d35b0504b7766a8117346a8e5f2" kind="function"><name>attach_detection_sensor_callback</name></member>
-    <member refid="example_8cpp_1ac3f6d5835ca3690a94f83af6dc2c290b" kind="function"><name>update_entity_status_callback</name></member>
-    <member refid="example_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
-  </compound>
   <compound refid="zmq__multi__server_8cpp" kind="file"><name>zmq_multi_server.cpp</name>
   </compound>
+  <compound refid="expect__equal__macros_8hpp" kind="file"><name>expect_equal_macros.hpp</name>
+    <member refid="expect__equal__macros_8hpp_1afe4591cb0e8a88573b879edfa7ed8b59" kind="define"><name>EXPECT_HEADER_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1adc8c456ab7ff4cbe7b6f71136e6cd783" kind="define"><name>EXPECT_TIME_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a5c830ba8b93d82a43ce06db8ee29bf74" kind="define"><name>EXPECT_DURATION_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a07746aacc9856f479f8abfd8c7de94b4" kind="define"><name>EXPECT_CLOCK_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1aa45afb2ef138b1507628869576246fde" kind="define"><name>EXPECT_POINT_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a6d38c598ec04bb977e0d7dc86af991cb" kind="define"><name>EXPECT_QUATERNION_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a7dbf5c0a7fb6b35ae1c1a1fa58efce6c" kind="define"><name>EXPECT_POSE_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1affa78cb6f8729fe4e141ac4d5ac682d8" kind="define"><name>EXPECT_VECTOR3_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a0b64d3d9026584b109aa9d7b820ffa9e" kind="define"><name>EXPECT_TWIST_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a499a8ad9e7d4c687639a9f54fff83c49" kind="define"><name>EXPECT_ACCEL_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a8638718e88d2e24be119730f101ef19d" kind="define"><name>EXPECT_PERFORMANCE_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a4930a624212ba530465a1b725591b232" kind="define"><name>EXPECT_AXLE_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a35372ad25b3952a55193926c2feb9119" kind="define"><name>EXPECT_AXLES_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1ae38663bbec4d412d30269782cab45ed8" kind="define"><name>EXPECT_BOUNDING_BOX_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1ada899d4f0e7da0a359c3333e2180f6ae" kind="define"><name>EXPECT_VEHICLE_PARAMETERS_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a13b4e7d81a3ebbc0ac4198a7593ccdeb" kind="define"><name>EXPECT_PEDESTRIAN_PARAMETERS_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a755813fa28efc46ebf283438c2ac3be8" kind="define"><name>EXPECT_MISC_OBJECT_PARAMETERS_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a35c516b61a2cfa85266140fff6409b72" kind="define"><name>EXPECT_ACTION_STATUS_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a4861e52eb70b5cf2a580084a103cb710" kind="define"><name>EXPECT_LANELET_POSE_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a1964eed350efb52128c4fab6b7470920" kind="define"><name>EXPECT_ENTITY_STATUS_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1a293debd9d58826b78e26c46912183267" kind="define"><name>EXPECT_CONTROL_COMMAND_EQ</name></member>
+    <member refid="expect__equal__macros_8hpp_1ae88fb1a1a4494cc2b8c9ef48a9b28992" kind="define"><name>EXPECT_VEHICLE_COMMAND_EQ</name></member>
+  </compound>
   <compound refid="test__conversions_8cpp" kind="file"><name>test_conversions.cpp</name>
-    <member refid="test__conversions_8cpp_1a2f9e71293729570f2b58c390029c76a3" kind="define"><name>EXPECT_CONTROL_COMMAND_EQ</name></member>
-    <member refid="test__conversions_8cpp_1a575567fa9ebea80df09fbcfd0338231e" kind="define"><name>EXPECT_HEADER_EQ</name></member>
-    <member refid="test__conversions_8cpp_1ac09deb74294c8c8d15402044cab57d74" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1a70425a8bb0ec64bfc73021c16f86b993" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1ace1c594901f1b3f69a69376ad133e982" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1a5a0f8d94eb1effd8f742d398ceb16bce" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1a025ecf0c0da6503fc8186a6d7a45938d" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1abb6d5bdba6b8419095fd07337dca2c85" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1a94cce90daf6d21edfe308515e21cbca0" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1a23248582f043b3c883e3155e6780f520" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1abd23dec10eb3271d81f447ed25fcb082" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1abdb806f2d4f7ec02eedadadc788b3826" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1a98d7be87bc0dc81bb56e2ace0d3dee46" kind="function"><name>TEST</name></member>
-    <member refid="test__conversions_8cpp_1a18eb0df4e182f7a5012335ed0d042925" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a7e8afe2c10e97ee466718ef756bd3d2b" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a26d3cc653605d010a317f1318523f245" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a082888043bf9bfaa1f106fefa2ce6d8a" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1aa3c927f0e7c5c894947cd7ad53b0bb41" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a7ba57acc8779c505963ed4a94089ec35" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1afc2fc5137d4aa80709260416a8fb9b5f" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a5e531842a05276854111c4af8001d822" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a7f53098e6d4c02dd459581378acbbe1b" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1ad8b5070d17a804f5bd24f36848e50e0f" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a5d47dce2b51193230548e28299244967" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a7002395ead869e7378ab161dd0712c36" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1aea2f7db70b476cc038abbb12409d2c26" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1af9df96875dcf4deafe9669581f2001ca" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a31ad728844d3c2ce1b214dd9bc80215f" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a62966f933b1687ce2c722d20c9e2020b" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1ae15342d98a6b6d4174cd7b9a451abbf8" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1a939f91fe0d928e05414f346ff1319a40" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1a0a5553385278f43ef3cfd0745b08f688" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a9a4ad85ad05c33f79c3ca787d4f984a0" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1ae5fc3c6b03e480a763431b7fb86381c5" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1ad54812cf101ba5b82b31deaf521db290" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1a6d1253fa622e5fc142893815417c57e0" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1ad5878066258ba7f53cafa76336d9b1ff" kind="function"><name>TEST</name></member>
+    <member refid="test__conversions_8cpp_1a2458e3eca4b74b2064d02236cd60972f" kind="function"><name>TEST</name></member>
     <member refid="test__conversions_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
   </compound>
   <compound refid="dir_b6cc3fed419ff00dacb077e8ae57c3d2" kind="dir"><name>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/include</name>

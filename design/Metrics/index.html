@@ -693,8 +693,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#traveled-distace" class="md-nav__link">
-    Traveled Distace
+  <a href="#traveled-distance" class="md-nav__link">
+    Traveled Distance
   </a>
   
 </li>
@@ -792,6 +792,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -874,8 +889,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#traveled-distace" class="md-nav__link">
-    Traveled Distace
+  <a href="#traveled-distance" class="md-nav__link">
+    Traveled Distance
   </a>
   
 </li>
@@ -924,7 +939,7 @@
                 
                 
                 <h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">#</a></h1>
-<p>Metrics classs allow you to check Autoware way of driving is valid or not.</p>
+<p>Metrics class allow you to check Autoware way of driving is valid or not.</p>
 <h2 id="lifecycle">Lifecycle<a class="headerlink" href="#lifecycle" title="Permanent link">#</a></h2>
 <p>Each metrics has a lifecycle.</p>
 <div class="mermaid">stateDiagram
@@ -943,12 +958,12 @@ update function in metrics class was called in every simulation frame in this st
 <h3 id="success">Success<a class="headerlink" href="#success" title="Permanent link">#</a></h3>
 <p>In this state, metrics class does not calculate metrics any more.</p>
 <h3 id="failure">Failure<a class="headerlink" href="#failure" title="Permanent link">#</a></h3>
-<p>In this state, metrics class throw specification vaiolation error.</p>
+<p>In this state, metrics class throw specification violation error.</p>
 <h2 id="what-types-of-metrics-can-we-use">What types of metrics can we use?<a class="headerlink" href="#what-types-of-metrics-can-we-use" title="Permanent link">#</a></h2>
-<p>If you wnat to use metrics class with C++ API, all you have to do is call API::addMetric function.</p>
+<p>If you want to use metrics class with C++ API, all you have to do is call API::addMetric function.</p>
 <div class="highlight"><pre><span></span><code><span class="n">api_</span><span class="p">.</span><span class="n">addMetric</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name of metric&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;arguments for metric you want to check&quot;</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
 </code></pre></div>
-<h3 id="traveled-distace">Traveled Distace<a class="headerlink" href="#traveled-distace" title="Permanent link">#</a></h3>
+<h3 id="traveled-distance">Traveled Distance<a class="headerlink" href="#traveled-distance" title="Permanent link">#</a></h3>
 <p>Class documentation is <a href="https://tier4.github.io/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1TraveledDistanceMetric/#public-functions">here.</a><br />
 Traveled distance metric calculates total traveled distance for target entity.</p>
 <h3 id="momentary-stop">Momentary Stop<a class="headerlink" href="#momentary-stop" title="Permanent link">#</a></h3>

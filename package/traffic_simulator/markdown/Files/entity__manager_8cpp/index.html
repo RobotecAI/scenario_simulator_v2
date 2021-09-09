@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -790,23 +805,6 @@
 <span class="p">{</span><span class="w"></span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">entity</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">EntityManager::broadcastBaseLinkTransform</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// for (const auto &amp; name : getEntityNames()) {</span>
-<span class="w">  </span><span class="c1">//   if (getEntityType(name).type == openscenario_msgs::msg::EntityType::EGO) {</span>
-<span class="w">  </span><span class="c1">//     auto status = getEntityStatus(name);</span>
-<span class="w">  </span><span class="c1">//     if (status) {</span>
-<span class="w">  </span><span class="c1">//       geometry_msgs::msg::PoseStamped pose;</span>
-<span class="w">  </span><span class="c1">//       pose.pose = status-&gt;pose;</span>
-<span class="w">  </span><span class="c1">//       pose.header.stamp = clock_ptr_-&gt;now();</span>
-<span class="w">  </span><span class="c1">//       pose.header.frame_id = &quot;base_link&quot;;</span>
-<span class="w">  </span><span class="c1">//       broadcastTransform(pose, false);</span>
-<span class="w">  </span><span class="c1">//     }</span>
-<span class="w">  </span><span class="c1">//     return;</span>
-<span class="w">  </span><span class="c1">//   }</span>
-<span class="w">  </span><span class="c1">// }</span>
-<span class="p">}</span><span class="w"></span>
-
 <span class="kt">void</span><span class="w"> </span><span class="nf">EntityManager::broadcastEntityTransform</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getEntityNames</span><span class="p">();</span><span class="w"></span>
@@ -822,7 +820,6 @@
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// broadcastBaseLinkTransform();</span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">EntityManager::broadcastTransform</span><span class="p">(</span><span class="w"></span>
@@ -1002,7 +999,16 @@
 <span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hdmap_utils_ptr_</span><span class="o">-&gt;</span><span class="n">getLongitudinalDistance</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="n">from_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="n">from_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">s</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="n">to_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="n">to_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">max_distance</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nl">distance</span> <span class="p">:</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">max_distance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">distance</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">distance_behind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hdmap_utils_ptr_</span><span class="o">-&gt;</span><span class="n">getLongitudinalDistance</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">to_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="n">to_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">s</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">from_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="n">from_status</span><span class="o">-&gt;</span><span class="n">lanelet_pose</span><span class="p">.</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distance_behind</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">distance_behind</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">max_distance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">distance_behind</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -1111,6 +1117,28 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span><span class="p">();</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">entities_</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getWaypoints</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">EntityManager</span><span class="o">::</span><span class="n">getGoalPoses</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goals</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current_time_</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">goals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">goals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entities_</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getGoalPoses</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">EntityManager</span><span class="o">::</span><span class="n">getGoalPoses</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goals</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lanelet_poses</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current_time_</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">goals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">getGoalPoses</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_poses</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="nl">lanelet_pose</span> <span class="p">:</span><span class="w"> </span><span class="n">lanelet_poses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">goals</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">toMapPose</span><span class="p">(</span><span class="n">lanelet_pose</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="n">EntityManager</span><span class="o">::</span><span class="n">isEgo</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
@@ -1323,6 +1351,11 @@
 <span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="n">status_with_traj</span><span class="p">.</span><span class="n">waypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getWaypoints</span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">first</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">goals</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">getGoalPoses</span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">goals</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="nl">goal</span> <span class="p">:</span><span class="w"> </span><span class="n">goals</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">status_with_traj</span><span class="p">.</span><span class="n">goal_pose</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">goal</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">obstacle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getObstacle</span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">first</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">obstacle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">status_with_traj</span><span class="p">.</span><span class="n">obstacle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obstacle</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
@@ -1358,7 +1391,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace traffic_simulator</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -765,7 +780,21 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-requestassignroute_1" class="md-nav__link">
+    function requestAssignRoute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-requestacquireposition" class="md-nav__link">
+    function requestAcquirePosition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-requestacquireposition_1" class="md-nav__link">
     function requestAcquirePosition
   </a>
   
@@ -931,7 +960,15 @@
 </tr>
 <tr>
 <td>virtual void</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EgoEntity#function-requestassignroute">requestAssignRoute</a></strong>(const std::vector&lt; geometry_msgs::msg::Pose &gt; &amp; waypoints) override</td>
+</tr>
+<tr>
+<td>virtual void</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EgoEntity#function-requestacquireposition">requestAcquirePosition</a></strong>(const openscenario_msgs::msg::LaneletPose &amp; lanelet_pose) override</td>
+</tr>
+<tr>
+<td>virtual void</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EgoEntity#function-requestacquireposition">requestAcquirePosition</a></strong>(const geometry_msgs::msg::Pose &amp; map_pose) override</td>
 </tr>
 <tr>
 <td>virtual auto</td>
@@ -1028,6 +1065,10 @@
 <tr>
 <td>virtual std::vector&lt; std::int64_t &gt;</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1VehicleEntity#function-getroutelanelets">getRouteLanelets</a></strong>(double horizon =100) override</td>
+</tr>
+<tr>
+<td>virtual std::vector&lt; openscenario_msgs::msg::LaneletPose &gt;</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1VehicleEntity#function-getgoalposes">getGoalPoses</a></strong>() override</td>
 </tr>
 <tr>
 <td>virtual const openscenario_msgs::msg::BoundingBox</td>
@@ -1142,6 +1183,10 @@
 <tr>
 <td>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityBase#function-getlinearjerk">getLinearJerk</a></strong>() const</td>
+</tr>
+<tr>
+<td>virtual auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityBase#function-getgoalposes">getGoalPoses</a></strong>() =0</td>
 </tr>
 <tr>
 <td>auto</td>
@@ -1276,9 +1321,21 @@
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityBase#function-requestassignroute">traffic_simulator::entity::EntityBase::requestAssignRoute</a></p>
+<h3 id="function-requestassignroute_1">function requestAssignRoute<a class="headerlink" href="#function-requestassignroute_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">requestAssignRoute</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">waypoints</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityBase#function-requestassignroute">traffic_simulator::entity::EntityBase::requestAssignRoute</a></p>
 <h3 id="function-requestacquireposition">function requestAcquirePosition<a class="headerlink" href="#function-requestacquireposition" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">requestAcquirePosition</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lanelet_pose</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityBase#function-requestacquireposition">traffic_simulator::entity::EntityBase::requestAcquirePosition</a></p>
+<h3 id="function-requestacquireposition_1">function requestAcquirePosition<a class="headerlink" href="#function-requestacquireposition_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">requestAcquirePosition</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">map_pose</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityBase#function-requestacquireposition">traffic_simulator::entity::EntityBase::requestAcquirePosition</a></p>
@@ -1355,7 +1412,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:39 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:04 UTC</p>
                 
                   
                 

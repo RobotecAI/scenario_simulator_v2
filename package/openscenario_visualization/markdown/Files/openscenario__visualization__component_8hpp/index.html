@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -961,8 +976,10 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatusWithTrajectoryArray</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">visualization_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MarkerArray</span><span class="w"> </span><span class="nf">generateDeleteMarker</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">ns</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">visualization_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MarkerArray</span><span class="w"> </span><span class="nf">generateDeleteMarker</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">goal_pose_max_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">visualization_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MarkerArray</span><span class="w"> </span><span class="nf">generateMarker</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">EntityStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">goal_pose</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">WaypointsArray</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">waypoints</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Obstacle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">obstacle</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">obstacle_find</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">visualization_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">MarkerArray</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">marker_pub_</span><span class="p">;</span><span class="w"></span>
@@ -975,7 +992,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_VISUALIZATION__OPENSCENARIO_VISUALIZATION_COMPONENT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:43 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:08 UTC</p>
                 
                   
                 

@@ -20,11 +20,11 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="6">
+      <node id="7">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/include/simulation_interface/zmq_server.hpp</label>
         <link refid="zmq__server_8hpp_source"/>
       </node>
-      <node id="5">
+      <node id="6">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/include/simulation_interface/zmq_multi_server.hpp</label>
         <link refid="zmq__multi__server_8hpp_source"/>
       </node>
@@ -33,18 +33,24 @@
         <link refid="constants_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/test/expect_equal_macros.hpp</label>
+        <link refid="expect__equal__macros_8hpp_source"/>
       </node>
       <node id="3">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/include/simulation_interface/conversions.hpp</label>
         <link refid="conversions_8hpp_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/include/simulation_interface/zmq_client.hpp</label>
         <link refid="zmq__client_8hpp_source"/>
       </node>
@@ -77,11 +83,11 @@
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacesimulation__interface" kindref="compound">simulation_interface</ref></highlight></codeline>
 <codeline lineno="21"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>TransportProtocol<sp/>{<sp/>TCP,<sp/>UDP<sp/>};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>TransportProtocol<sp/>{<sp/>TCP<sp/></highlight><highlight class="comment">/*,<sp/>UDP*/</highlight><highlight class="normal"><sp/>};</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal">std::string<sp/>enumToString(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>TransportProtocol<sp/>&amp;<sp/>protocol);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>HostName<sp/>{<sp/>LOCLHOST,<sp/>ANY<sp/>};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>HostName<sp/>{<sp/>LOCALHOST,<sp/>ANY<sp/>};</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal">std::string<sp/>enumToString(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>HostName<sp/>&amp;<sp/>hostname);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>

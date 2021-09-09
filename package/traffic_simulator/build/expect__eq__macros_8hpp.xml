@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="expect__eq__macros_8hpp" kind="file" language="C++">
+    <compoundname>expect_eq_macros.hpp</compoundname>
+    <includes local="no">gtest/gtest.h</includes>
+    <includes local="no">geometry_msgs/msg/point.hpp</includes>
+    <includes local="no">geometry_msgs/msg/vector3.hpp</includes>
+    <includedby refid="test__helper_8cpp" local="yes">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/helper/test_helper.cpp</includedby>
+    <includedby refid="test__linear__algebra_8cpp" local="yes">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/math/test_linear_algebra.cpp</includedby>
+    <includedby refid="test__traffic__light_8cpp" local="yes">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/traffic_lights/test_traffic_light.cpp</includedby>
+    <incdepgraph>
+      <node id="6825">
+        <label>geometry_msgs/msg/vector3.hpp</label>
+      </node>
+      <node id="6824">
+        <label>geometry_msgs/msg/point.hpp</label>
+      </node>
+      <node id="6823">
+        <label>gtest/gtest.h</label>
+      </node>
+      <node id="6822">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp</label>
+        <link refid="expect__eq__macros_8hpp"/>
+        <childnode refid="6823" relation="include">
+        </childnode>
+        <childnode refid="6824" relation="include">
+        </childnode>
+        <childnode refid="6825" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1a86e13536c51fa0db75c7a9170238e3bb" prot="public" static="no">
+        <name>EXPECT_POINT_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_DOUBLE_EQ(DATA0.x, DATA1.x); \
+  EXPECT_DOUBLE_EQ(DATA0.y, DATA1.y); \
+  EXPECT_DOUBLE_EQ(DATA0.z, DATA1.z);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="23" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1a5c9e26f43597559093e471b64c14e1e7" prot="public" static="no">
+        <name>EXPECT_VECTOR3_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_DOUBLE_EQ(DATA0.x, DATA1.x);   \
+  EXPECT_DOUBLE_EQ(DATA0.y, DATA1.y);   \
+  EXPECT_DOUBLE_EQ(DATA0.z, DATA1.z);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="28" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1ad020d399b8d3fe8aeea9583777465cd8" prot="public" static="no">
+        <name>EXPECT_QUATERNION_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_DOUBLE_EQ(DATA0.x, DATA1.x);      \
+  EXPECT_DOUBLE_EQ(DATA0.y, DATA1.y);      \
+  EXPECT_DOUBLE_EQ(DATA0.z, DATA1.z);      \
+  EXPECT_DOUBLE_EQ(DATA0.w, DATA1.w);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="33" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1afe5be6184b78b298468315f30adc7cc3" prot="public" static="no">
+        <name>EXPECT_POSE_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_POINT_EQ(DATA0.position, DATA1.position); \
+  EXPECT_QUATERNION_EQ(DATA0.orientation, DATA1.orientation);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="39" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1a035497b05b03ffa480b2e9d6091aecd8" prot="public" static="no">
+        <name>EXPECT_LANELET_POSE_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_EQ(DATA0.lanelet_id, DATA1.lanelet_id); \
+  EXPECT_DOUBLE_EQ(DATA0.s, DATA1.s);            \
+  EXPECT_DOUBLE_EQ(DATA0.offset, DATA1.offset);  \
+  EXPECT_VECTOR3_EQ(DATA0.rpy, DATA1.rpy);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="43" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1a4a1485180e505b7722654652da260215" prot="public" static="no">
+        <name>EXPECT_TWIST_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_VECTOR3_EQ(DATA0.linear, DATA1.linear); \
+  EXPECT_VECTOR3_EQ(DATA0.angular, DATA1.angular);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="49" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1abca2a2148d11de55795ae4b3f264c4b8" prot="public" static="no">
+        <name>EXPECT_ACCEL_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_VECTOR3_EQ(DATA0.linear, DATA1.linear); \
+  EXPECT_VECTOR3_EQ(DATA0.angular, DATA1.angular);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="53" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1a6680ad294b96400123a790886d030938" prot="public" static="no">
+        <name>EXPECT_ACTION_STATUS_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_ACCEL_EQ(DATA0.accel, DATA1.accel);  \
+  EXPECT_TWIST_EQ(DATA0.twist, DATA1.twist);  \
+  EXPECT_STREQ(DATA0.current_action.c_str(), DATA1.current_action.c_str());</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="57" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="expect__eq__macros_8hpp_1ab457dd514de3418ba271dfd4f5be31a6" prot="public" static="no">
+        <name>EXPECT_DETECTION_SENSOR_CONFIGURATION_EQ</name>
+        <param><defname>DATA0</defname></param>
+        <param><defname>DATA1</defname></param>
+        <initializer>EXPECT_STREQ(DATA0.entity().c_str(), DATA1.entity().c_str());         \
+  EXPECT_STREQ(DATA0.topic_name().c_str(), DATA1.topic_name().c_str()); \
+  EXPECT_DOUBLE_EQ(DATA0.update_duration(), DATA1.update_duration());</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" line="62" column="9" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2020<sp/>Tier<sp/>IV,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TRAFFIC_SIMULATOR__TEST__EXPECT_EQ_MACROS_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRAFFIC_SIMULATOR__TEST__EXPECT_EQ_MACROS_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gtest/gtest.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;geometry_msgs/msg/point.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;geometry_msgs/msg/vector3.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_POINT_EQ(DATA0,<sp/>DATA1)<sp/>\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.x,<sp/>DATA1.x);<sp/>\</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.y,<sp/>DATA1.y);<sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.z,<sp/>DATA1.z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_VECTOR3_EQ(DATA0,<sp/>DATA1)<sp/>\</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.x,<sp/>DATA1.x);<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.y,<sp/>DATA1.y);<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.z,<sp/>DATA1.z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_QUATERNION_EQ(DATA0,<sp/>DATA1)<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.x,<sp/>DATA1.x);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.y,<sp/>DATA1.y);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.z,<sp/>DATA1.z);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.w,<sp/>DATA1.w);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_POSE_EQ(DATA0,<sp/>DATA1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/>EXPECT_POINT_EQ(DATA0.position,<sp/>DATA1.position);<sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/>EXPECT_QUATERNION_EQ(DATA0.orientation,<sp/>DATA1.orientation);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_LANELET_POSE_EQ(DATA0,<sp/>DATA1)<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/>EXPECT_EQ(DATA0.lanelet_id,<sp/>DATA1.lanelet_id);<sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.s,<sp/>DATA1.s);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.offset,<sp/>DATA1.offset);<sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/>EXPECT_VECTOR3_EQ(DATA0.rpy,<sp/>DATA1.rpy);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_TWIST_EQ(DATA0,<sp/>DATA1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/>EXPECT_VECTOR3_EQ(DATA0.linear,<sp/>DATA1.linear);<sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/>EXPECT_VECTOR3_EQ(DATA0.angular,<sp/>DATA1.angular);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_ACCEL_EQ(DATA0,<sp/>DATA1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/>EXPECT_VECTOR3_EQ(DATA0.linear,<sp/>DATA1.linear);<sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>EXPECT_VECTOR3_EQ(DATA0.angular,<sp/>DATA1.angular);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_ACTION_STATUS_EQ(DATA0,<sp/>DATA1)<sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>EXPECT_ACCEL_EQ(DATA0.accel,<sp/>DATA1.accel);<sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>EXPECT_TWIST_EQ(DATA0.twist,<sp/>DATA1.twist);<sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>EXPECT_STREQ(DATA0.current_action.c_str(),<sp/>DATA1.current_action.c_str());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXPECT_DETECTION_SENSOR_CONFIGURATION_EQ(DATA0,<sp/>DATA1)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/>EXPECT_STREQ(DATA0.entity().c_str(),<sp/>DATA1.entity().c_str());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>EXPECT_STREQ(DATA0.topic_name().c_str(),<sp/>DATA1.topic_name().c_str());<sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>EXPECT_DOUBLE_EQ(DATA0.update_duration(),<sp/>DATA1.update_duration());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>TRAFFIC_SIMULATOR__TEST__EXPECT_EQ_MACROS_HPP_</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/expect_eq_macros.hpp"/>
+  </compounddef>
+</doxygen>

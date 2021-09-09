@@ -778,6 +778,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -903,8 +918,8 @@ We automatically build docker images by using GitHub Actions and push them into 
 <h2 id="install-docker">Install docker<a class="headerlink" href="#install-docker" title="Permanent link">#</a></h2>
 <p>Please follow the instructions below.</p>
 <p><iframe
-    src="https://hatenablog-parts.com/embed?url=https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2F" 
-    title="Install Docker Engine" 
+    src="https://hatenablog-parts.com/embed?url=https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2F"
+    title="Install Docker Engine"
     class="embed-card embed-webcard"
     scrolling="no"
     frameborder="0"
@@ -914,10 +929,10 @@ We automatically build docker images by using GitHub Actions and push them into 
 <p>If you finished installing docker, please type the commands below in order to check docker is working correctly.
 <div class="highlight"><pre><span></span><code>docker run hello-world
 </code></pre></div></p>
-<p>You can see the output like below if you have succeeded to install docker.<br />
+<p>You can see the output like below if you have succeeded to install docker.
 <div class="highlight"><pre><span></span><code>Unable to find image <span class="s1">&#39;hello-world:latest&#39;</span> locally
 latest: Pulling from library/hello-world
-b8dfde127a29: Pull <span class="nb">complete</span> 
+b8dfde127a29: Pull <span class="nb">complete</span>
 Digest: sha256:f2266cbfc127c960fd30e76b7c792dc23b588c0db76233517e1891a4e357d519
 Status: Downloaded newer image <span class="k">for</span> hello-world:latest
 
@@ -978,26 +993,26 @@ sudo apt install -y nvidia-docker2
 +-----------------------------------------------------------------------------+
 </code></pre></div>
 <h2 id="install-rocker">Install rocker<a class="headerlink" href="#install-rocker" title="Permanent link">#</a></h2>
-<iframe 
-  class="hatenablogcard" 
-  style="width:100%;height:155px;max-width:450px;" 
-  title="rocker" 
-  src="https://hatenablog-parts.com/embed?url=https://github.com/osrf/rocker" 
+<p><iframe
+  class="hatenablogcard"
+  style="width:100%;height:155px;max-width:450px;"
+  title="rocker"
+  src="https://hatenablog-parts.com/embed?url=https://github.com/osrf/rocker"
   width="300" height="150" frameborder="0" scrolling="no">
 </iframe>
-
-<p>rocker is a docker support tool for ROS.<br />
-It enables us to run rviz inside docker very easily.<br />
+</p>
+<p>rocker is a docker support tool for ROS.
+It enables us to run rviz inside docker very easily.
 You can install rocker via pip3.
 <div class="highlight"><pre><span></span><code>sudo pip3 install git+https://github.com/osrf/rocker.git
 </code></pre></div></p>
-<p>After install rocker, please check rocker works correctly.<br />
-If your machine has GPU(s), please type the commands below.<br />
+<p>After install rocker, please check rocker works correctly.
+If your machine has GPU(s), please type the commands below.
 <div class="highlight"><pre><span></span><code>rocker --nvidia --x11 osrf/ros:crystal-desktop rviz2
 </code></pre></div>
-You can see rviz working on docker.<br />
+You can see rviz working on docker.
 <img alt="Running rviz inside rocker" src="../../image/rviz_with_rocker.png" title="running rviz inside rocker." /></p>
-<p>If your machine has no GPU, please type the commands below.<br />
+<p>If your machine has no GPU, please type the commands below.
 <div class="highlight"><pre><span></span><code>rocker --x11 osrf/ros:crystal-desktop rviz2
 </code></pre></div>
 You can see the same result with NVIDIA GPU.</p>
@@ -1010,10 +1025,10 @@ docker build -t scenario_simulator_v2 .
 <h3 id="running-with-docker-image-in-your-machine">Running with docker image in your machine.<a class="headerlink" href="#running-with-docker-image-in-your-machine" title="Permanent link">#</a></h3>
 <p>Please type this commands and run <a href="../SimpleDemo/">simple demo</a> in your local terminal.</p>
 <p>If your local machine has NVIDIA GPUs,</p>
-<div class="highlight"><pre><span></span><code>rocker --nvidia --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+<div class="highlight"><pre><span></span><code>rocker --nvidia --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo launch_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <p>If your local machine does not have NVIDIA GPUs,</p>
-<div class="highlight"><pre><span></span><code>rocker --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+<div class="highlight"><pre><span></span><code>rocker --x11 scenario_simulator_v2 ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo launch_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <h3 id="running-with-docker-image-from-docker-hub">Running with docker image from Docker Hub.<a class="headerlink" href="#running-with-docker-image-from-docker-hub" title="Permanent link">#</a></h3>
 <p>We automatically build docker images of scenario_simulator_v2 by using GitHub Actions and put them into our Docker Hub repository.</p>
@@ -1022,11 +1037,11 @@ docker build -t scenario_simulator_v2 .
 <p>We can pull the docker image from Docker Hub and run simulation with scenario_simulator_v2 just typing the commands below.</p>
 <p>If your local machine has NVIDIA GPUs,</p>
 <div class="highlight"><pre><span></span><code>docker pull tier4/scenario_simulator_v2:latest
-rocker --nvidia --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+rocker --nvidia --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo launch_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <p>If your local machine does not have NVIDIA GPUs,</p>
 <div class="highlight"><pre><span></span><code>docker pull tier4/scenario_simulator_v2:latest
-rocker --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo with_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
+rocker --x11 tier4/scenario_simulator_v2:latest ros2 launch cpp_mock_scenarios mock_test.launch.py scenario:<span class="o">=</span>crashing_npc scenario:<span class="o">=</span>traffic_simulation_demo launch_rviz:<span class="o">=</span><span class="nb">true</span> timeout:<span class="o">=</span><span class="m">60</span>
 </code></pre></div>
 <p><video
   class="c-video__embed"

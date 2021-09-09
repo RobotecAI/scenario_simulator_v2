@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -1107,13 +1122,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#function-tomsg_24" class="md-nav__link">
-    function toMsg
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#function-getendpoint" class="md-nav__link">
     function getEndPoint
   </a>
@@ -1201,11 +1209,11 @@
 <tbody>
 <tr>
 <td>enum</td>
-<td TCP="TCP" UDP_="UDP,"><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#enum-transportprotocol">TransportProtocol</a></strong></td>
+<td TCP="TCP"><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#enum-transportprotocol">TransportProtocol</a></strong></td>
 </tr>
 <tr>
 <td>enum</td>
-<td ANY="ANY" LOCLHOST_="LOCLHOST,"><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#enum-hostname">HostName</a></strong></td>
+<td ANY="ANY" LOCALHOST_="LOCALHOST,"><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#enum-hostname">HostName</a></strong></td>
 </tr>
 </tbody>
 </table>
@@ -1368,7 +1376,7 @@
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#function-tomsg">toMsg</a></strong>(openscenario_msgs::ActionStatus &amp; proto, const openscenario_msgs::msg::ActionStatus &amp; s)</td>
+<td><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#function-tomsg">toMsg</a></strong>(const openscenario_msgs::ActionStatus &amp; proto, openscenario_msgs::msg::ActionStatus &amp; s)</td>
 </tr>
 <tr>
 <td>void</td>
@@ -1411,10 +1419,6 @@
 <td><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#function-tomsg">toMsg</a></strong>(const autoware_vehicle_msgs::VehicleCommand &amp; proto, autoware_vehicle_msgs::msg::VehicleCommand &amp; vehicle_command)</td>
 </tr>
 <tr>
-<td>void</td>
-<td><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#function-tomsg">toMsg</a></strong>(const openscenario_msgs::ActionStatus &amp; proto, openscenario_msgs::msg::ActionStatus &amp; s)</td>
-</tr>
-<tr>
 <td>std::string</td>
 <td><strong><a href="/scenario_simulator_v2/package/simulation_interface/markdown/Namespaces/namespacesimulation__interface#function-getendpoint">getEndPoint</a></strong>(const TransportProtocol &amp; protocol, const HostName &amp; hostname, const unsigned int &amp; port)</td>
 </tr>
@@ -1455,11 +1459,6 @@
 </thead>
 <tbody>
 <tr>
-<td>UDP</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
 <td>TCP</td>
 <td></td>
 <td></td>
@@ -1477,7 +1476,7 @@
 </thead>
 <tbody>
 <tr>
-<td>LOCLHOST</td>
+<td>LOCALHOST</td>
 <td></td>
 <td></td>
 </tr>
@@ -1713,8 +1712,8 @@
 </code></pre></div>
 <h3 id="function-tomsg_13">function toMsg<a class="headerlink" href="#function-tomsg_13" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">toMsg</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">ActionStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">proto</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">ActionStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">ActionStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">proto</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">ActionStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-tomsg_14">function toMsg<a class="headerlink" href="#function-tomsg_14" title="Permanent link">#</a></h3>
@@ -1777,12 +1776,6 @@
 <span class="w">    </span><span class="n">autoware_vehicle_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">VehicleCommand</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vehicle_command</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-tomsg_24">function toMsg<a class="headerlink" href="#function-tomsg_24" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">toMsg</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">ActionStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">proto</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">ActionStatus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
 <h3 id="function-getendpoint">function getEndPoint<a class="headerlink" href="#function-getendpoint" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getEndPoint</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">protocol</span><span class="p">,</span><span class="w"></span>
@@ -1805,7 +1798,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="w"> </span><span class="n">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="o">::</span><span class="n">TCP</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

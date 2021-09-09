@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -828,7 +843,7 @@
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">exists</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="s">&quot;route from : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; to : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route chache.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;route from : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; to : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route cache.&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data_</span><span class="p">.</span><span class="n">at</span><span class="p">({</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">});</span><span class="w"></span>
@@ -859,7 +874,7 @@
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Point</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getCenterPoints</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">exists</span><span class="p">(</span><span class="n">lanelet_id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;center point of : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route chache.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;center point of : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route cache.&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">data_</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">lanelet_id</span><span class="p">);</span><span class="w"></span>
@@ -868,7 +883,7 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">exists</span><span class="p">(</span><span class="n">lanelet_id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;center point of : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route chache.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;center point of : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route cache.&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">splines_</span><span class="p">[</span><span class="n">lanelet_id</span><span class="p">];</span><span class="w"></span>
@@ -901,7 +916,7 @@
 <span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">getLength</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">exists</span><span class="p">(</span><span class="n">lanelet_id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;length of : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route chache.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;length of : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lanelet_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; does not exists on route cache.&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">data_</span><span class="p">[</span><span class="n">lanelet_id</span><span class="p">];</span><span class="w"></span>
@@ -921,7 +936,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__HDMAP_UTILS__CACHE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

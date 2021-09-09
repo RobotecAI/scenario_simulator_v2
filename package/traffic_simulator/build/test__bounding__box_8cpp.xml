@@ -6,85 +6,85 @@
     <includes local="no">scenario_simulator_exception/exception.hpp</includes>
     <includes refid="bounding__box_8hpp" local="no">traffic_simulator/math/bounding_box.hpp</includes>
     <incdepgraph>
-      <node id="7230">
+      <node id="6847">
         <label>traffic_simulator/math/bounding_box.hpp</label>
         <link refid="bounding__box_8hpp_source"/>
-        <childnode refid="7231" relation="include">
+        <childnode refid="6848" relation="include">
         </childnode>
-        <childnode refid="7232" relation="include">
+        <childnode refid="6849" relation="include">
         </childnode>
-        <childnode refid="7233" relation="include">
+        <childnode refid="6850" relation="include">
         </childnode>
-        <childnode refid="7234" relation="include">
+        <childnode refid="6851" relation="include">
         </childnode>
-        <childnode refid="7235" relation="include">
+        <childnode refid="6852" relation="include">
         </childnode>
-        <childnode refid="7236" relation="include">
+        <childnode refid="6853" relation="include">
         </childnode>
-        <childnode refid="7237" relation="include">
+        <childnode refid="6854" relation="include">
         </childnode>
-        <childnode refid="7238" relation="include">
+        <childnode refid="6855" relation="include">
         </childnode>
-        <childnode refid="7239" relation="include">
+        <childnode refid="6856" relation="include">
         </childnode>
-        <childnode refid="7240" relation="include">
+        <childnode refid="6857" relation="include">
         </childnode>
       </node>
-      <node id="7229">
+      <node id="6846">
         <label>scenario_simulator_exception/exception.hpp</label>
       </node>
-      <node id="7238">
+      <node id="6855">
         <label>geometry_msgs/msg/pose.hpp</label>
       </node>
-      <node id="7239">
+      <node id="6856">
         <label>openscenario_msgs/msg/bounding_box.hpp</label>
       </node>
-      <node id="7236">
+      <node id="6853">
         <label>boost/geometry/geometries/point_xy.hpp</label>
       </node>
-      <node id="7231">
+      <node id="6848">
         <label>boost/assert.hpp</label>
       </node>
-      <node id="7227">
+      <node id="6844">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/math/test_bounding_box.cpp</label>
         <link refid="test__bounding__box_8cpp"/>
-        <childnode refid="7228" relation="include">
+        <childnode refid="6845" relation="include">
         </childnode>
-        <childnode refid="7229" relation="include">
+        <childnode refid="6846" relation="include">
         </childnode>
-        <childnode refid="7230" relation="include">
+        <childnode refid="6847" relation="include">
         </childnode>
       </node>
-      <node id="7232">
+      <node id="6849">
         <label>boost/assign/list_of.hpp</label>
       </node>
-      <node id="7240">
+      <node id="6857">
         <label>vector</label>
       </node>
-      <node id="7228">
+      <node id="6845">
         <label>gtest/gtest.h</label>
       </node>
-      <node id="7234">
+      <node id="6851">
         <label>boost/geometry/algorithms/disjoint.hpp</label>
       </node>
-      <node id="7237">
+      <node id="6854">
         <label>boost/optional.hpp</label>
       </node>
-      <node id="7235">
+      <node id="6852">
         <label>boost/geometry/geometries/linestring.hpp</label>
       </node>
-      <node id="7233">
+      <node id="6850">
         <label>boost/geometry.hpp</label>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
-      <memberdef kind="function" id="test__bounding__box_8cpp_1a33d8552ffaf352e5b3cc665c5bcf0ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="test__bounding__box_8cpp_1a880e5a6da3725534e91216d7b5770152" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TEST</definition>
-        <argsstring>(BoundigBox, GetPolygonDistanceWithCollision)</argsstring>
+        <argsstring>(BoundingBox, GetPolygonDistanceWithCollision)</argsstring>
         <name>TEST</name>
         <param>
-          <type>BoundigBox</type>
+          <type>BoundingBox</type>
         </param>
         <param>
           <type>GetPolygonDistanceWithCollision</type>
@@ -97,13 +97,13 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/math/test_bounding_box.cpp" line="20" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/math/test_bounding_box.cpp" bodystart="20" bodyend="33"/>
       </memberdef>
-      <memberdef kind="function" id="test__bounding__box_8cpp_1a8a2d32aa10d7e1f5e53daa11fabad298" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="test__bounding__box_8cpp_1a7a4346e9860dd4dbbc9390a35de8f85b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TEST</definition>
-        <argsstring>(BoundigBox, GetPolygonDistanceWithoutCollision)</argsstring>
+        <argsstring>(BoundingBox, GetPolygonDistanceWithoutCollision)</argsstring>
         <name>TEST</name>
         <param>
-          <type>BoundigBox</type>
+          <type>BoundingBox</type>
         </param>
         <param>
           <type>GetPolygonDistanceWithoutCollision</type>
@@ -162,7 +162,7 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scenario_simulator_exception/exception.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;traffic_simulator/math/bounding_box.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal">TEST(BoundigBox,<sp/>GetPolygonDistanceWithCollision)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">TEST(BoundingBox,<sp/>GetPolygonDistanceWithCollision)</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>pose0;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/>openscenario_msgs::msg::BoundingBox<sp/>bbox0;</highlight></codeline>
@@ -177,7 +177,7 @@
 <codeline lineno="32"><highlight class="normal"><sp/><sp/>EXPECT_EQ(traffic_simulator::math::getPolygonDistance(pose0,<sp/>bbox0,<sp/>pose1,<sp/>bbox1),<sp/>boost::none);</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal">TEST(BoundigBox,<sp/>GetPolygonDistanceWithoutCollision)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">TEST(BoundingBox,<sp/>GetPolygonDistanceWithoutCollision)</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/>geometry_msgs::msg::Pose<sp/>pose0;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/>openscenario_msgs::msg::BoundingBox<sp/>bbox0;</highlight></codeline>

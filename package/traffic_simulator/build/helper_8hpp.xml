@@ -13,66 +13,90 @@
     <includedby refid="api_8hpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/api/api.hpp</includedby>
     <includedby refid="entity__manager_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/entity_manager.cpp</includedby>
     <includedby refid="helper_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/helper/helper.cpp</includedby>
+    <includedby refid="test__helper_8cpp" local="no">/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/helper/test_helper.cpp</includedby>
     <incdepgraph>
-      <node id="2423">
+      <node id="2225">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/helper/helper.hpp</label>
         <link refid="helper_8hpp"/>
-        <childnode refid="2424" relation="include">
+        <childnode refid="2226" relation="include">
         </childnode>
-        <childnode refid="2425" relation="include">
+        <childnode refid="2227" relation="include">
         </childnode>
-        <childnode refid="2426" relation="include">
+        <childnode refid="2228" relation="include">
         </childnode>
-        <childnode refid="2427" relation="include">
+        <childnode refid="2229" relation="include">
         </childnode>
-        <childnode refid="2428" relation="include">
+        <childnode refid="2230" relation="include">
         </childnode>
-        <childnode refid="2429" relation="include">
+        <childnode refid="2231" relation="include">
         </childnode>
-        <childnode refid="2430" relation="include">
+        <childnode refid="2232" relation="include">
         </childnode>
-        <childnode refid="2431" relation="include">
+        <childnode refid="2233" relation="include">
         </childnode>
       </node>
-      <node id="2430">
+      <node id="2232">
         <label>openscenario_msgs/msg/lanelet_pose.hpp</label>
       </node>
-      <node id="2429">
+      <node id="2231">
         <label>openscenario_msgs/msg/action_status.hpp</label>
       </node>
-      <node id="2426">
+      <node id="2228">
         <label>geometry_msgs/msg/pose.hpp</label>
       </node>
-      <node id="2425">
+      <node id="2227">
         <label>cmath</label>
       </node>
-      <node id="2431">
+      <node id="2233">
         <label>string</label>
       </node>
-      <node id="2428">
+      <node id="2230">
         <label>iostream</label>
       </node>
-      <node id="2427">
+      <node id="2229">
         <label>geometry_msgs/msg/quaternion.hpp</label>
       </node>
-      <node id="2424">
+      <node id="2226">
         <label>simulation_api_schema.pb.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2433">
+      <node id="2235">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/api/api.hpp</label>
         <link refid="api_8hpp_source"/>
       </node>
-      <node id="2432">
+      <node id="2234">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/helper/helper.hpp</label>
         <link refid="helper_8hpp"/>
-        <childnode refid="2433" relation="include">
+        <childnode refid="2235" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacetraffic__simulator">traffic_simulator</innernamespace>
     <innernamespace refid="namespacetraffic__simulator_1_1helper">traffic_simulator::helper</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="helper_8hpp_1ac847a84310227155cec72f08823e2d16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, const openscenario_msgs::msg::LaneletPose &amp;ll_pose)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const openscenario_msgs::msg::LaneletPose &amp;</type>
+          <declname>ll_pose</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/helper/helper.hpp" line="103" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/helper/helper.cpp" bodystart="156" bodyend="160"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -123,19 +147,19 @@
 <codeline lineno="88"><highlight class="normal">geometry_msgs::msg::Pose<sp/>constructPose(</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>z,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>roll,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pitch,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yaw);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal">std::ostream<sp/>&amp;<sp/>operator&lt;&lt;(std::ostream<sp/>&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::LaneletPose<sp/>&amp;<sp/>ll_pose);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>LidarType<sp/>{<sp/>VLP16,<sp/>VLP32<sp/>};</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>LidarType<sp/>{<sp/>VLP16,<sp/>VLP32<sp/>};</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::LidarConfiguration<sp/>constructLidarConfiguration(</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/>LidarType<sp/>type,<sp/>std::string<sp/>entity,<sp/>std::string<sp/>topic_name,</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>horizontal_resolution<sp/>=<sp/>1.0<sp/>/<sp/>180.0<sp/>*<sp/>M_PI);</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::DetectionSensorConfiguration<sp/>constructDetectionSensorConfiguration(</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/>std::string<sp/>entity,<sp/>std::string<sp/>topic_name,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>update_duration);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>helper</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::LidarConfiguration<sp/>constructLidarConfiguration(</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>LidarType<sp/>type,<sp/>std::string<sp/>entity,<sp/>std::string<sp/>topic_name,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>horizontal_resolution<sp/>=<sp/>1.0<sp/>/<sp/>180.0<sp/>*<sp/>M_PI);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>simulation_api_schema::DetectionSensorConfiguration<sp/>constructDetectionSensorConfiguration(</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>std::string<sp/>entity,<sp/>std::string<sp/>topic_name,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>update_duration);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>helper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>traffic_simulator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">std::ostream<sp/>&amp;<sp/>operator&lt;&lt;(std::ostream<sp/>&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>openscenario_msgs::msg::LaneletPose<sp/>&amp;<sp/>ll_pose);</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>TRAFFIC_SIMULATOR__HELPER__HELPER_HPP_</highlight></codeline>
     </programlisting>

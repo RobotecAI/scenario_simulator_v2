@@ -5,59 +5,59 @@
     <includes refid="zmq__multi__server_8hpp" local="no">simulation_interface/zmq_multi_server.hpp</includes>
     <includes local="no">string</includes>
     <incdepgraph>
-      <node id="174">
+      <node id="125">
         <label>scenario_simulator_exception/exception.hpp</label>
       </node>
-      <node id="172">
+      <node id="123">
         <label>functional</label>
       </node>
-      <node id="176">
+      <node id="127">
         <label>string</label>
       </node>
-      <node id="173">
+      <node id="124">
         <label>rclcpp/rclcpp.hpp</label>
       </node>
-      <node id="170">
+      <node id="121">
         <label>simulation_interface/zmq_multi_server.hpp</label>
         <link refid="zmq__multi__server_8hpp_source"/>
-        <childnode refid="171" relation="include">
+        <childnode refid="122" relation="include">
         </childnode>
-        <childnode refid="172" relation="include">
+        <childnode refid="123" relation="include">
         </childnode>
-        <childnode refid="173" relation="include">
+        <childnode refid="124" relation="include">
         </childnode>
-        <childnode refid="174" relation="include">
+        <childnode refid="125" relation="include">
         </childnode>
-        <childnode refid="175" relation="include">
+        <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="176" relation="include">
+        <childnode refid="127" relation="include">
         </childnode>
-        <childnode refid="177" relation="include">
+        <childnode refid="128" relation="include">
         </childnode>
-        <childnode refid="178" relation="include">
+        <childnode refid="129" relation="include">
         </childnode>
       </node>
-      <node id="175">
+      <node id="126">
         <label>simulation_interface/constants.hpp</label>
         <link refid="constants_8hpp_source"/>
-        <childnode refid="176" relation="include">
+        <childnode refid="127" relation="include">
         </childnode>
       </node>
-      <node id="169">
+      <node id="120">
         <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/simulation_interface/src/zmq_multi_server.cpp</label>
         <link refid="zmq__multi__server_8cpp"/>
-        <childnode refid="170" relation="include">
+        <childnode refid="121" relation="include">
         </childnode>
-        <childnode refid="176" relation="include">
+        <childnode refid="127" relation="include">
         </childnode>
       </node>
-      <node id="177">
+      <node id="128">
         <label>thread</label>
       </node>
-      <node id="178">
+      <node id="129">
         <label>zmqpp/zmqpp.hpp</label>
       </node>
-      <node id="171">
+      <node id="122">
         <label>simulation_api_schema.pb.h</label>
       </node>
     </incdepgraph>
@@ -90,7 +90,7 @@
 <codeline lineno="21"><highlight class="normal">zmqpp::message<sp/>toZMQ(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Proto<sp/>&amp;<sp/>proto)</highlight></codeline>
 <codeline lineno="22"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/>zmqpp::message<sp/>msg;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/>std::string<sp/>serialized_str;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>std::string<sp/>serialized_str<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/>proto.SerializeToString(&amp;serialized_str);</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/>msg<sp/>&lt;&lt;<sp/>serialized_str;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>

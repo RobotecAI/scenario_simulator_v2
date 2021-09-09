@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -767,6 +782,7 @@
 <span class="c1">// See the License for the specific language governing permissions and</span>
 <span class="c1">// limitations under the License.</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;simulation_interface/constants.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 
@@ -784,28 +800,28 @@
 <span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="o">::</span><span class="nl">TCP</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;tcp&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">TransportProtocol</span><span class="o">::</span><span class="nl">UDP</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;udp&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/*</span>
+<span class="cm">    case TransportProtocol::UDP:</span>
+<span class="cm">      return &quot;udp&quot;;              </span>
+<span class="cm">      */</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;Protocol should be TCP.&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// LCOV_EXCL_LINE</span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">enumToString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HostName</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">hostname</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">hostname</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">HostName</span><span class="o">::</span><span class="nl">LOCLHOST</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">HostName</span><span class="o">::</span><span class="nl">LOCALHOST</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">HostName</span><span class="o">::</span><span class="nl">ANY</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">THROW_SIMULATION_ERROR</span><span class="p">(</span><span class="s">&quot;Hostname protocol should be LOCALHOST or ANY.&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// LCOV_EXCL_LINE</span>
 <span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace simulation_interface</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:40 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:05 UTC</p>
                 
                   
                 

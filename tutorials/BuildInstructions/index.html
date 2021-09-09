@@ -738,6 +738,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -843,7 +858,7 @@ git clone https://github.com/tier4/scenario_simulator_v2.git
 <span class="c1"># These lines are necessary right now, but it will be removed in the near future</span>
 <span class="nb">cd</span> scenario_simulator_v2
 <span class="c1"># This script clones the part of the source codes in Autoware and add it to the workspace</span>
-sh install_depends.sh foxy
+vcs import external &lt; dependency_foxy.repos
 </code></pre></div>
 <h2 id="install-dependencies-via-rosdep">Install dependencies via rosdep<a class="headerlink" href="#install-dependencies-via-rosdep" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/scenario_simulator_ws

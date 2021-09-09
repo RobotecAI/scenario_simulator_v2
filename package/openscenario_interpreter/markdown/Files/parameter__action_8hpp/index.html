@@ -675,6 +675,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../../etc/DevelopmentRules/" class="md-nav__link">
+        Development Rules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../../LICENSE/" class="md-nav__link">
         LICENSE
       </a>
@@ -718,33 +733,6 @@
   <a href="#classes" class="md-nav__link">
     Classes
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#defines" class="md-nav__link">
-    Defines
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#macro-documentation" class="md-nav__link">
-    Macro Documentation
-  </a>
-  
-    <nav class="md-nav" aria-label="Macro Documentation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#define-element" class="md-nav__link">
-    define ELEMENT
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -804,30 +792,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="defines">Defines<a class="headerlink" href="#defines" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/parameter__action_8hpp#define-element">ELEMENT</a></strong>(NAME)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
-<h3 id="define-element">define ELEMENT<a class="headerlink" href="#define-element" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#define ELEMENT(</span>
-<span class="w">    </span><span class="n">NAME</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="err">#</span><span class="n">NAME</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">child</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                           </span>\
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="n">Parameter</span><span class="err">##</span><span class="n">NAME</span><span class="o">&gt;</span><span class="p">(</span><span class="w">                                                      </span>\
-<span class="w">      </span><span class="n">child</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">,</span><span class="w"> </span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;parameterRef&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">));</span><span class="w"> </span>\
-<span class="w">  </span><span class="p">})</span><span class="w"></span>
-</code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
 <span class="c1">//</span>
@@ -867,21 +831,21 @@
 <span class="cm"> * &lt;/xsd:complexType&gt;</span>
 <span class="cm"> *</span>
 <span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
-<span class="cp">#define ELEMENT(NAME)                                                                  \</span>
-<span class="cp">  std::make_pair(#NAME, [&amp;](auto &amp;&amp; child) {                                           \</span>
-<span class="cp">    return make&lt;Parameter##NAME&gt;(                                                      \</span>
-<span class="cp">      child, outer_scope, readAttribute&lt;String&gt;(&quot;parameterRef&quot;, parent, outer_scope)); \</span>
-<span class="cp">  })</span>
 
 <span class="k">struct</span> <span class="nc">ParameterAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Element</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Scope</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">ParameterAction</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Element</span><span class="p">(</span><span class="n">choice</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">ELEMENT</span><span class="p">(</span><span class="n">SetAction</span><span class="p">),</span><span class="w"> </span><span class="n">ELEMENT</span><span class="p">(</span><span class="n">ModifyAction</span><span class="p">)))</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format off</span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Element</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">choice</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="w">   </span><span class="s">&quot;SetAction&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="w">   </span><span class="n">ParameterSetAction</span><span class="o">&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">,</span><span class="w"> </span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;parameterRef&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">));</span><span class="w"> </span><span class="p">}),</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="s">&quot;ModifyAction&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="n">ParameterModifyAction</span><span class="o">&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">,</span><span class="w"> </span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;parameterRef&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">outer_scope</span><span class="p">));</span><span class="w"> </span><span class="p">})))</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format on</span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="cp">#undef ELEMENT</span>
@@ -891,7 +855,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__PARAMETER_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on  9 September 2021 at 00:44:43 UTC</p>
+<p>Updated on  9 September 2021 at 11:30:08 UTC</p>
                 
                   
                 
