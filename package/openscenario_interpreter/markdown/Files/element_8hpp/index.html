@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -819,8 +831,11 @@
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Callee</span><span class="o">&gt;</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="n">callWithElements</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cardinality</span><span class="w"> </span><span class="n">min_occurs</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Cardinality</span><span class="w"> </span><span class="n">max_occurs</span><span class="p">,</span><span class="w"> </span><span class="n">Callee</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">call_with</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">            </span><span class="c1">//</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w">      </span><span class="c1">//</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Cardinality</span><span class="w"> </span><span class="n">min_occurs</span><span class="p">,</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Cardinality</span><span class="w"> </span><span class="n">max_occurs</span><span class="p">,</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">Callee</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">call_with</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">.</span><span class="n">children</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
 
@@ -845,13 +860,6 @@
 <span class="w">      </span><span class="n">parent</span><span class="p">.</span><span class="n">name</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot; requires class &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; at least &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">min_occurs</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; element&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">      </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min_occurs</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;s&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;, but there is no specification&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Callee</span><span class="o">&gt;</span><span class="w"></span>
-<span class="p">[[</span><span class="n">deprecated</span><span class="p">]]</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">callWithElement</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Callee</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">call_with</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">callWithElements</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">call_with</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">call_with</span><span class="p">));</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
@@ -898,7 +906,7 @@
 <span class="p">}</span><span class="w"></span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">choice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">choice</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">Element</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">callees</span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...};</span><span class="w"></span>
@@ -959,7 +967,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__READER__ELEMENT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

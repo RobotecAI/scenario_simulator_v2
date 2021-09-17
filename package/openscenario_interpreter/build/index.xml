@@ -8,7 +8,7 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AbsoluteTargetSpeed_1a782b6cc21fcd755d6868abfaff31d593" kind="variable"><name>value</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AbsoluteTargetSpeed_1a36eb189ebafd365d4e73040a7b256296" kind="function"><name>AbsoluteTargetSpeed</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AbsoluteTargetSpeed_1aa1726c6010e0e58044f2fe2e8f89e86d" kind="function"><name>getCalculateAbsoluteTargetSpeed</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1AbsoluteTargetSpeed_1a3d132f37565abe32bb336d9f365c841b" kind="function"><name>getIsEnd</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AbsoluteTargetSpeed_1ae598781d4fea60660fb20bf5e75eae0b" kind="function"><name>getIsEnd</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition" kind="struct"><name>openscenario_interpreter::syntax::AccelerationCondition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AccelerationCondition_1ae821fc60b8f07739cdb94e97fcdb3302" kind="variable"><name>value</name></member>
@@ -22,9 +22,10 @@
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction" kind="struct"><name>openscenario_interpreter::syntax::AcquirePositionAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction_1a5ca0cb8e19d731048f62244075e1929c" kind="variable"><name>position</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction_1a9c4a9be98a10ab328598280cc66a931f" kind="function"><name>AcquirePositionAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction_1aaee40a6390c84bf7d0a650293e83c323" kind="function"><name>start</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction_1abed7f4789ae5be3f7167b50d7a0e7ed2" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction_1a5f373222c8837b3143703790262448af" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction_1ad5b55863574bf5a97401f329a5f7960c" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AcquirePositionAction_1a958d057eabcc844ddc8986dca479cce6" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Act" kind="struct"><name>openscenario_interpreter::syntax::Act</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Act_1ab5f04c02552bea9582b6f292704dd5a7" kind="variable"><name>start_trigger</name></member>
@@ -35,13 +36,15 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Act_1abdf690b423a0a6aac39598ee2365df24" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Act_1aefe44f05034376687ded5297fcd185a8" kind="function"><name>stop</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Act_1adfcfc3037db531d4ed6717a65909ed54" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Act_1a003444d87ca9b5b38ef032b097679cbd" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Action" kind="struct"><name>openscenario_interpreter::syntax::Action</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1aa562fb7e4d7cf6629ac9693db1919f6b" kind="variable"><name>overridden</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1a44393d16091ec34d6a4d9c7515f18d7a" kind="function"><name>Action</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1ace1bc4a2ccc1057040e5a3de5f12c587" kind="function"><name>ready</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1a40feb62abecd3da063919a2f09784674" kind="function"><name>stop</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1ac3dcedf810667b4a6a695c6be9b38b22" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1a35900f86e3f3fc03726f69b2a70a86aa" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1a5f1acb54df143f954d32e56cf1000958" kind="function"><name>start</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1a55be2721a2cb40a4833984316ec25753" kind="function"><name>stop</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Action_1ab1eb69d2f638db71e3ff9c8490ee01f4" kind="function"><name>stopTriggered</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Actors" kind="struct"><name>openscenario_interpreter::syntax::Actors</name>
@@ -50,8 +53,12 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction" kind="struct"><name>openscenario_interpreter::syntax::AddEntityAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a2343bde3a6d50378754d548bd7036156" kind="variable"><name>position</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a5eb0ee1ef464da116942f0161ced93ad" kind="function"><name>AddEntityAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1ad4fa52dc017a164a20197fe3b002e6ae" kind="function"><name>operator()</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a7309a8c9cf827f0b33aa108cba92fb5f" kind="function"><name>AddEntityAction</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a840a8eeb601fff7ff105253c36234cbe" kind="function"><name>AddEntityAction</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a73263f005305b081f66a163733b66d63" kind="function"><name>operator()</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a56e1e79e4e7dc47e39bea1ff01efbd6a" kind="function"><name>catch</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a1353bed08fdb142c4755690b69ec2f01" kind="function"><name>accomplished</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a30900c02c8f48de91dcd3d399360583f" kind="function"><name>endsImmediately</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1AdditionalAxle" kind="struct"><name>openscenario_interpreter::syntax::AdditionalAxle</name>
   </compound>
@@ -74,9 +81,10 @@
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction" kind="struct"><name>openscenario_interpreter::syntax::AssignRouteAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction_1a14054ce7cfd6e406fcdb3cb73e7ea61e" kind="variable"><name>route_or_catalog_reference</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction_1acb6ed2718c5e2f3ab09a6f62179e8871" kind="function"><name>AssignRouteAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction_1adae7fbf5704f97c0b9d9d970cae8a09d" kind="function"><name>start</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction_1a24b61163f35f3d4b9dda8ad653a17f46" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction_1a6247c3c3b06445a41a705f79e3ec1393" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction_1a55f8af9a93c423bebc1e7995d6154ea6" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1AssignRouteAction_1a06c4069449335d2bd504a5c50e139cdf" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1utility_1_1AttributeHighlighter" kind="struct"><name>openscenario_interpreter::utility::AttributeHighlighter</name>
     <member refid="structopenscenario__interpreter_1_1utility_1_1AttributeHighlighter_1a971a6b9cd8ca84568c7ac8b43681ffb0" kind="variable"><name>name</name></member>
@@ -108,7 +116,6 @@
     <member refid="structopenscenario__interpreter_1_1Pointer_1_1Binder_1a47ba290287f23dbbd6c476affe220a1d" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1Pointer_1_1Binder_1aac32166b443317c3f6577550070bbb17" kind="function"><name>description</name></member>
     <member refid="structopenscenario__interpreter_1_1Pointer_1_1Binder_1ac4964f10dd47470bae9686ce4aa3ce07" kind="function"><name>evaluate</name></member>
-    <member refid="structopenscenario__interpreter_1_1Pointer_1_1Binder_1a6ba8fa63d2ae7e2076fc7e86594fc528" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1Pointer_1_1Binder_1ac338372458dae6a0696decb15556f221" kind="function"><name>currentState</name></member>
     <member refid="structopenscenario__interpreter_1_1Pointer_1_1Binder_1ac93a33cfd969869fa535bf8571b98a8f" kind="function"><name>write</name></member>
   </compound>
@@ -239,32 +246,48 @@
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction" kind="struct"><name>openscenario_interpreter::syntax::ControllerAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a666f51cd108266dccdf40663a9cc4212" kind="variable"><name>assign_controller_action</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a47bdf60bcfcea7ddb6fb46773e4eeaa6" kind="variable"><name>override_controller_value_action</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1ae3b14b3a35fcc0f24cc5210091452341" kind="variable"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a8cbb46c46ade3557d783fe3a7a268897" kind="function"><name>ControllerAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a1cfd615807dd888c9e53d74e56f8f541" kind="function"><name>start</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a5e63411ceec3e9e076446cac36ad0e58" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a8ddec308ec491e3ed020febe648b9e27" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a021feaef36467408e9c20eea5bb31dbb" kind="function"><name>accomplished</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a51496d0820101fa3ab410fd8709b2c7f" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a2a6667b480c11785d941816352519c32" kind="function"><name>start</name></member>
+  </compound>
+  <compound refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem" kind="struct"><name>openscenario_interpreter::syntax::CoordinateSystem</name>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1a2030d5780769bf5e99cb7032340a0206" kind="enum"><name>value_type</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1a2030d5780769bf5e99cb7032340a0206acc90c48fb3c057c412cf2d1fb77d897b" kind="enumvalue"><name>entity</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1a2030d5780769bf5e99cb7032340a0206af33c497c3aa825a2e7eed93065dafbb8" kind="enumvalue"><name>lane</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1a2030d5780769bf5e99cb7032340a0206a832c8336189d75db65c1555b5fb71f67" kind="enumvalue"><name>road</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1a2030d5780769bf5e99cb7032340a0206a1a0c291d78c71f70f5f3050755cdbb59" kind="enumvalue"><name>trajectory</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1afc90bf02a8f1825d4748785094eb4042" kind="variable"><name>value</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1afbcafbb35a9c383dbf1decd6e10b8da8" kind="function"><name>CoordinateSystem</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1a701b68859e239639faec4b151ea080aa" kind="function"><name>CoordinateSystem</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CoordinateSystem_1a79d5879aa6c2178aa334bb971e88d404" kind="function"><name>operator value_type</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction" kind="struct"><name>openscenario_interpreter::syntax::CustomCommandAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1aa076c6a591eb064c21475951294f15c2" kind="variable"><name>type</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a6994da45943a63a7b3190a70ec4118d0" kind="variable"><name>content</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a8f6369f2ef2f859968599a8df05a4196" kind="variable"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a24a8e21c20a04898eb9963725f5c3d77" kind="variable"><name>builtins</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1ac5012f67d2e07d519fb3ca75c3054e0d" kind="function"><name>CustomCommandAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a3d78859027b6d438102439412bc9ab61" kind="function"><name>evaluate</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1aa7952926be5bc67f1b3f96bc4beaea2d" kind="function"><name>walkStraightAction</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a60227dfef793dc522794d18cfad0e936" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a14f83c241bb43e5e87e016f54f186546" kind="function"><name>getNode</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1ab9e81f79b63d98661c5df1759df9c4cd" kind="function"><name>getSimulationEventsPublisher</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a670050013260f1c29f25cd08bad08bc0" kind="function"><name>accomplished</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a67aed731c39d4e49a1b2b5dee6ba3fbf" kind="function"><name>applyFaultInjectionAction</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a0e4f4117269f11079ce1f8574a9c867a" kind="function"><name>applyWalkStraightAction</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a937c46f54bffa91e84fea9540772ea5d" kind="function"><name>exitSuccess</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a910c1391076dde61840e239a4ec6cc73" kind="function"><name>exitFailure</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a632e335863177688d5d7c6d75ae8c138" kind="function"><name>error</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1ac85ccbe9d4602bb256159dd6971d7ecd" kind="function"><name>segv</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a145d03413641e850dd815535518105c2" kind="function"><name>test</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1a289998be3ea9e31b2c25570358897df9" kind="function"><name>split</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1abb834369ea88599c8d5100de674db59f" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1CustomCommandAction_1ab8a42644c542e0b204e79bb01f5e3d8a" kind="friend"><name>operator&lt;&lt;</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1concepts_1_1HasStreamOutputOperator_3_01T_00_01void__t_3_01dead479c2afca2fd44c2918207f9125367" kind="struct"><name>openscenario_interpreter::concepts::HasStreamOutputOperator&lt; T, void_t&lt; decltype(std::declval&lt; std::ostream &amp; &gt;()&lt;&lt; std::declval&lt; const T &amp; &gt;())&gt; &gt;</name>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1DeleteEntityAction" kind="struct"><name>openscenario_interpreter::syntax::DeleteEntityAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1DeleteEntityAction_1a177d71b04ee3efeccc3344f6a71f4f5b" kind="function"><name>DeleteEntityAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1DeleteEntityAction_1ad2c0e74927a1ec1a9273a9fd5608f9c6" kind="function"><name>operator()</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1DeleteEntityAction_1a5a7c135f45fa8f8f82db30e15f0ead88" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Dimensions" kind="struct"><name>openscenario_interpreter::syntax::Dimensions</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Dimensions_1a2cfe2faebdf1a44b8697b7f00db955b4" kind="variable"><name>width</name></member>
@@ -322,14 +345,15 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1DynamicsShape_1aa4f74be9ad96db4b58953e01385f9be0" kind="function"><name>operator value_type</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Entities" kind="struct"><name>openscenario_interpreter::syntax::Entities</name>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Entities_1a9a843a30e48fb06075352ae0cb198294" kind="function"><name>Entities</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Entities_1ac10dbe343efe10736701d89a0e53f928" kind="function"><name>Entities</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction" kind="struct"><name>openscenario_interpreter::syntax::EntityAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1af997f6e5b0a73b2eff296d8c56175455" kind="variable"><name>entity_ref</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1aa1a474ca0f873f8e415c92958922e385" kind="variable"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1a69849e9257958b5a2a47af7702dc0815" kind="function"><name>EntityAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1aa885be56b7950c0be54d8533f7d65c5e" kind="function"><name>evaluate</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1aa73b5fc0f34f3737e0b6152476f1985f" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1a644c258e3016ef057e57bc7e4caac651" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1a0cea9ee99ac14341f92ebe5081fb03e6" kind="function"><name>accomplished</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1ad12db23cc30cfe351abca3f70bd5e0c9" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityAction_1a0d88b7f3793933685af1433d7bb30809" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1EntityCondition" kind="struct"><name>openscenario_interpreter::syntax::EntityCondition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1EntityCondition_1a7170df55f28238ec3867bb802d8d7239" kind="function"><name>EntityCondition</name></member>
@@ -358,7 +382,7 @@
     <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1ab54fa3b463b02230f143239620c3a727" kind="function"><name>lookupUnqualifiedElement</name></member>
     <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a197e158da5f6b57525655c48b341373c" kind="function"><name>lookupChildScope</name></member>
     <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a21ca036fa7ab2491327aba58b5a8b684" kind="function"><name>lookupUnqualifiedScope</name></member>
-    <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a230fb2c09c3b55d50dfe872a86ad5aa1" kind="function"><name>addElement</name></member>
+    <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a0256ce40a210da9c1418dae4ca362a77" kind="function"><name>insert</name></member>
     <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1acee6e52085f92b8a2dfb9d236d46eaf6" kind="function"><name>findElement</name></member>
     <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a9bf5b626da8ad29889b78e5f6ee3021f" kind="function"><name>getQualifiedName</name></member>
     <member refid="structopenscenario__interpreter_1_1EnvironmentFrame_1a9b1191381e98156753659a6c063ff026" kind="function"><name>lookupQualifiedElement</name></member>
@@ -393,7 +417,6 @@
     <member refid="structopenscenario__interpreter_1_1Expression_1acafe152e266b53f63a15cc72385a1380" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1Expression_1a5b2b0502610148c14affd9023e9b10f7" kind="function"><name>description</name></member>
     <member refid="structopenscenario__interpreter_1_1Expression_1a354ae0c104982edb7cc8fb4130d03033" kind="function"><name>evaluate</name></member>
-    <member refid="structopenscenario__interpreter_1_1Expression_1a1c77bcdbe274e4c1c7f32c6d4d98a27c" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1Expression_1a8cd8c2a849965b632b9042252c939588" kind="function"><name>currentState</name></member>
     <member refid="structopenscenario__interpreter_1_1Expression_1abd692ef906feb03711ae4f028bfa924d" kind="function"><name>type</name></member>
     <member refid="structopenscenario__interpreter_1_1Expression_1af17f914e6d85b401ac539d571e37c3f1" kind="function"><name>write</name></member>
@@ -416,7 +439,15 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1GlobalAction" kind="struct"><name>openscenario_interpreter::syntax::GlobalAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1GlobalAction_1ad4f2dd1b1550e24e0073500bc751290d" kind="function"><name>GlobalAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1GlobalAction_1ad55e2b0f51743dab45dd93e1658077d2" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1GlobalAction_1a590204b422d50acaf6df651b03d56e12" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1GlobalAction_1a531bbbd155d391be7c9b58b62dc44302" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1GlobalAction_1a1341c50e60afbd6d2991e2a9035f94ee" kind="function"><name>start</name></member>
+  </compound>
+  <compound refid="structopenscenario__interpreter_1_1Scope_1_1GlobalEnvironment" kind="struct"><name>openscenario_interpreter::Scope::GlobalEnvironment</name>
+    <member refid="structopenscenario__interpreter_1_1Scope_1_1GlobalEnvironment_1a5cf1fc710b8405ed3b5b5db08f9ecdff" kind="variable"><name>pathname</name></member>
+    <member refid="structopenscenario__interpreter_1_1Scope_1_1GlobalEnvironment_1a4b6f2c7f97eabf887340e817605106b4" kind="variable"><name>entities</name></member>
+    <member refid="structopenscenario__interpreter_1_1Scope_1_1GlobalEnvironment_1a16a433aee237994f527ed6719e24ea1f" kind="function"><name>GlobalEnvironment</name></member>
+    <member refid="structopenscenario__interpreter_1_1Scope_1_1GlobalEnvironment_1a564a3edf923cc79573d2b074df56e97d" kind="function"><name>isAddedEntity</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1type__traits_1_1HasMemberFunctionAccomplished" kind="struct"><name>openscenario_interpreter::type_traits::HasMemberFunctionAccomplished</name>
   </compound>
@@ -433,10 +464,6 @@
   <compound refid="structopenscenario__interpreter_1_1type__traits_1_1HasMemberFunctionEvaluate" kind="struct"><name>openscenario_interpreter::type_traits::HasMemberFunctionEvaluate</name>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1type__traits_1_1HasMemberFunctionEvaluate_3_01T_00_01void__t_3e491924934085df9a38b02db60a1354" kind="struct"><name>openscenario_interpreter::type_traits::HasMemberFunctionEvaluate&lt; T, void_t&lt; decltype(std::declval&lt; T &gt;().evaluate())&gt; &gt;</name>
-  </compound>
-  <compound refid="structopenscenario__interpreter_1_1type__traits_1_1HasMemberFunctionStart" kind="struct"><name>openscenario_interpreter::type_traits::HasMemberFunctionStart</name>
-  </compound>
-  <compound refid="structopenscenario__interpreter_1_1type__traits_1_1HasMemberFunctionStart_3_01T_00_01void__t_3_0752582ea00759e4de8b676c48113e6b0" kind="struct"><name>openscenario_interpreter::type_traits::HasMemberFunctionStart&lt; T, void_t&lt; decltype(std::declval&lt; T &gt;().start())&gt; &gt;</name>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1concepts_1_1HasStreamOutputOperator" kind="struct"><name>openscenario_interpreter::concepts::HasStreamOutputOperator</name>
   </compound>
@@ -464,12 +491,6 @@
   <compound refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasMemberFunctionEvaluate_3_01T_00_01typenac94e421386c5218cf6e385ba6234ba80" kind="struct"><name>openscenario_interpreter::type_traits::IfHasMemberFunctionEvaluate&lt; T, typename std::enable_if&lt; HasMemberFunctionEvaluate&lt; T &gt;::value &gt;::type &gt;</name>
     <member refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasMemberFunctionEvaluate_3_01T_00_01typenac94e421386c5218cf6e385ba6234ba80_1affbd11f88546d654ec0e1230c4791482" kind="function"><name>invoke</name></member>
   </compound>
-  <compound refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasMemberFunctionStart" kind="struct"><name>openscenario_interpreter::type_traits::IfHasMemberFunctionStart</name>
-    <member refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasMemberFunctionStart_1a8c67db0daf0667a994c6bdd9ef196e44" kind="function"><name>invoke</name></member>
-  </compound>
-  <compound refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasMemberFunctionStart_3_01T_00_01typename_0c9e1288955b9aeff14e6ade95b221ba" kind="struct"><name>openscenario_interpreter::type_traits::IfHasMemberFunctionStart&lt; T, typename std::enable_if&lt; HasMemberFunctionStart&lt; T &gt;::value &gt;::type &gt;</name>
-    <member refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasMemberFunctionStart_3_01T_00_01typename_0c9e1288955b9aeff14e6ade95b221ba_1a25ffa3b5e429fe9dc2033cb0c9b0ce31" kind="function"><name>invoke</name></member>
-  </compound>
   <compound refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasStreamOutputOperator" kind="struct"><name>openscenario_interpreter::type_traits::IfHasStreamOutputOperator</name>
     <member refid="structopenscenario__interpreter_1_1type__traits_1_1IfHasStreamOutputOperator_1abf19dec6f5035dfce6446fcdcbe67515" kind="function"><name>invoke</name></member>
   </compound>
@@ -493,13 +514,15 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1InfrastructureAction" kind="struct"><name>openscenario_interpreter::syntax::InfrastructureAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1InfrastructureAction_1a50ba5c09f6dc1d6a3bd5c5df7dc95686" kind="function"><name>InfrastructureAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1InfrastructureAction_1aa78f0fdd060ef369fa9275e864de7601" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1InfrastructureAction_1a5287116a1de710fdca576863ef27957b" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1InfrastructureAction_1a3610451a0584738676d8328197fba62a" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1InfrastructureAction_1a09683e11411b33f36fc1f9182c7fbae6" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Init" kind="struct"><name>openscenario_interpreter::syntax::Init</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Init_1a08483b1ff5b66bb956423a0440bb01c0" kind="variable"><name>actions</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Init_1a31223a99cfbd8750c9aed614b9883278" kind="function"><name>Init</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Init_1a3c812e85be1a484f304ad4a991861529" kind="function"><name>evaluate</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Init_1ad0c9e58085a2cd45a15823ecaad5205a" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Init_1a87679888dc653d1514cf41a8fd9352f4" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Init_1a925e53e344f3be45972085476e4ea231" kind="function"><name>evaluate</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1InitActions" kind="struct"><name>openscenario_interpreter::syntax::InitActions</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1InitActions_1a7ae482445a7d2cabd6949a56c2715cce" kind="function"><name>InitActions</name></member>
@@ -554,6 +577,7 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a384cf086b5930e66cd6d86bdeb587572" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a932d75ba8902e0efb79cc714ace244f9" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a369da81f3f2203b0274e2ce390bacc70" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeAction_1a7d84151e1158dc37b681acfe864732c1" kind="function"><name>run</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeTarget" kind="struct"><name>openscenario_interpreter::syntax::LaneChangeTarget</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1LaneChangeTarget_1a15df4784c7dad5a21474fad524d70639" kind="function"><name>LaneChangeTarget</name></member>
@@ -570,11 +594,15 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1LateralAction" kind="struct"><name>openscenario_interpreter::syntax::LateralAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1LateralAction_1ada1838fabe502628cce60252a7eac6f8" kind="function"><name>LateralAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1LateralAction_1a8ea7792bd622069bce13364796b275fa" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1LateralAction_1a360da3a30737ae22e8ebc2a7076830dc" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1LateralAction_1ae836c6cf3e728ea141012e2e25d0ec39" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1LateralAction_1a9ae7f6139effede32bf9961a9bdfc83b" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1LongitudinalAction" kind="struct"><name>openscenario_interpreter::syntax::LongitudinalAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1LongitudinalAction_1ae7e6e46f8897e2280bab1c4b0ae28459" kind="function"><name>LongitudinalAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1LongitudinalAction_1a5a8a3565cccd0f980127f6b41ced3835" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1LongitudinalAction_1a0648481491a4df50c10f776ad9a1db86" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1LongitudinalAction_1ab30f2cc1bd19454cdb6e37f7dfe00bfa" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1LongitudinalAction_1aa78c764eea7c454c8659e026855cf78d" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver" kind="struct"><name>openscenario_interpreter::syntax::Maneuver</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a815cace1b9c19aac94ce8c55b258c664" kind="variable"><name>parameter_declarations</name></member>
@@ -583,6 +611,7 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a8b356ac1229812dcfa70e6910a11df23" kind="function"><name>stop</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a45dd70c6eeeac06ef12582bef67d04b8" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a0d29127aa6827108dff7ea85c2bf013b" kind="function"><name>ready</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1a995e0080527421a28888517a518fd850" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Maneuver_1aaac0c8e9ddd9fe90e2c19fe3ef1f0074" kind="function"><name>stopTriggered</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ManeuverGroup" kind="struct"><name>openscenario_interpreter::syntax::ManeuverGroup</name>
@@ -641,7 +670,7 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ObjectController_1aaeb16c3284175c4278f6838a6ebb5484" kind="function"><name>ObjectController</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ObjectController_1ab2c53e05e45f2542f952a763f2b562bd" kind="function"><name>ObjectController</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ObjectController_1a7d64a13ae51d13d993a2370684e2c9a2" kind="function"><name>~ObjectController</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ObjectController_1abeb329f18ff5ea17932c7f04ef99e91c" kind="function"><name>isEgo</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ObjectController_1a232a408d3d9f18a95d9b18e1a7b33826" kind="function"><name>isEgo</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ObjectController_1a20ab00236e4c184af1435ce21f9dab6e" kind="function"><name>operator openscenario_msgs::msg::DriverModel</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ObjectType" kind="struct"><name>openscenario_interpreter::syntax::ObjectType</name>
@@ -651,10 +680,10 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a939c9966c8b71f30b3a5114bd5f7694c" kind="variable"><name>file_header</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ab0985325769fa68349b168707863f5af" kind="variable"><name>category</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1af5ff4af7c8407015c667dd8306e39529" kind="variable"><name>frame</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a5b87f592db81201cbd4cfdf77652a7a8" kind="function"><name>load</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ae656f619922d2da04d022fe4b8d023e9" kind="function"><name>OpenScenario</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a09e3c24104962c7ebe545312ce106c85" kind="function"><name>complete</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1ab26d389a861a5785195ab9af9e0b7cff" kind="function"><name>evaluate</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenario_1a1d7b090cb838b85366422ce06d3051fd" kind="function"><name>load</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenarioCategory" kind="struct"><name>openscenario_interpreter::syntax::OpenScenarioCategory</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1OpenScenarioCategory_1a1c6674e4ba83e6eca9137f796aeba6cb" kind="function"><name>OpenScenarioCategory</name></member>
@@ -681,6 +710,8 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ParameterAction" kind="struct"><name>openscenario_interpreter::syntax::ParameterAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterAction_1a1bc14597fb04fa41054b5ffb181e9e59" kind="function"><name>ParameterAction</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterAction_1a8b6d744e3347c92288f70180c349c05a" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterAction_1a9bd8c90754ba9e00e660f305d4ca7b5a" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterAction_1ae5ed06299b3918b23732eebd6372efd5" kind="function"><name>endsImmediately</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ParameterAddValueRule" kind="struct"><name>openscenario_interpreter::syntax::ParameterAddValueRule</name>
@@ -713,8 +744,10 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1ab62bb7794c5706e2444fc109306e4de0" kind="variable"><name>parameter_ref</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1ae1e6f9d9c546fd5eb4247a35bad7e683" kind="variable"><name>rule</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1a7af107c70e9f7b0d2e24f835de9abec5" kind="function"><name>ParameterModifyAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1a603988a8593c541981e06a911523b70b" kind="function"><name>evaluate</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1ab89726de7bc48434a7e1b5d74ed9de6f" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1ad971203aef2f62219c02b3b677dd68a7" kind="function"><name>catch</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1a4665dca97b0319953e586aa6231c4eb3" kind="function"><name>accomplished</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterModifyAction_1ada562e9f5f3b6b06314be5b09286227a" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ParameterMultiplyByValueRule" kind="struct"><name>openscenario_interpreter::syntax::ParameterMultiplyByValueRule</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterMultiplyByValueRule_1afebd835075d97fa50ae8e08d8e232014" kind="variable"><name>value</name></member>
@@ -725,8 +758,9 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction_1a1787634f650672c4f54225a5b58f16d3" kind="variable"><name>parameter_ref</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction_1abee0b340b4365bc3ee87fb4916a7b926" kind="variable"><name>value</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction_1a12e476ee6f9761b75b649fff73907763" kind="function"><name>ParameterSetAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction_1a1fb4255055b2ef03bfd660c322606786" kind="function"><name>evaluate</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction_1a0e2a4bf5ec1ec0aa237d8e1c23f44db1" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction_1a58fd34897230311c159031f1f26b98de" kind="function"><name>accomplished</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterSetAction_1ae93537bfa3e3bb4c9bffcfd8ccc5ad9e" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ParameterType" kind="struct"><name>openscenario_interpreter::syntax::ParameterType</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ParameterType_1ad193210f70e218981d568d7c382c1c61" kind="enum"><name>value_type</name></member>
@@ -800,7 +834,9 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1PrivateAction" kind="struct"><name>openscenario_interpreter::syntax::PrivateAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1PrivateAction_1afc687365e2d516f77ad9cb5cdd4d8fbd" kind="function"><name>PrivateAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1PrivateAction_1a891a20593802d88af166763723dbce2b" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1PrivateAction_1a6662913a80370c8753dc4e2d656f8d0b" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1PrivateAction_1a646b8126a05b6083b58a5740d8227c22" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1PrivateAction_1af22d90578cc15382b1bc49c42dc16128" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Properties" kind="struct"><name>openscenario_interpreter::syntax::Properties</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Properties_1a4be8eb6e5af68e4cc9ed892c3f402683" kind="variable"><name>properties</name></member>
@@ -839,23 +875,30 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ReferenceContext_1abc824d7d35ce65ca144f771a73d4b43f" kind="function"><name>operator value_type</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition" kind="struct"><name>openscenario_interpreter::syntax::RelativeDistanceCondition</name>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a7e033db7112cddce535097f0d2bb545a" kind="variable"><name>coordinate_system</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a90ed9471a4e84bcd183f01c0b06f867d" kind="variable"><name>entity_ref</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a55088c0442af07435886fba4ae89efb1" kind="variable"><name>relative_distance_type</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1aaa9528896c10d3c626014aa34c3d0dbf" kind="variable"><name>value</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1af142cef4d862d638fbfbdecff25f9ee2" kind="variable"><name>freespace</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a9952c16d7d4394dbd11eb2c63493d0e1" kind="variable"><name>compare</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a55088c0442af07435886fba4ae89efb1" kind="variable"><name>relative_distance_type</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a3b18bfa714eddafe8ae1fc15a6b7f03f" kind="variable"><name>rule</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1aaa9528896c10d3c626014aa34c3d0dbf" kind="variable"><name>value</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1aab5621bc0765dc96fb99cf031d304429" kind="variable"><name>triggering_entities</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1ad3645d299f9056ec569ed4c1c6cbc59c" kind="variable"><name>last_checked_values</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a35c27db68cc2de5f8c11bb5023691565" kind="function"><name>RelativeDistanceCondition</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a649dde85ed8afad5736c29ce4388bdde" kind="function"><name>RelativeDistanceCondition</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a4e2d230c5b33207f804f14e7ed08d82c" kind="function"><name>description</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1ab0c7423c9361015c9b51c06f92ad8678" kind="function"><name>distance</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a4f009dca8454ab97f13837ec4e71276b" kind="function"><name>distance</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a842ff1e46f806bd6e1c224445e387c09" kind="function"><name>distance</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a676e83030520accfc025f138a77892d9" kind="function"><name>evaluate</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a5b34b9d0b55011fc45dfeb7110fd2abd" kind="function"><name>distance</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a5b34b9d0b55011fc45dfeb7110fd2abd" kind="function"><name>distance</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a5b34b9d0b55011fc45dfeb7110fd2abd" kind="function"><name>distance</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a5b34b9d0b55011fc45dfeb7110fd2abd" kind="function"><name>distance</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceCondition_1a5b34b9d0b55011fc45dfeb7110fd2abd" kind="function"><name>distance</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType" kind="struct"><name>openscenario_interpreter::syntax::RelativeDistanceType</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1ac8ac882ce2a7b4d0ce58f7ad5d509e24" kind="enum"><name>value_type</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1ac8ac882ce2a7b4d0ce58f7ad5d509e24a8ca07219dcaf80da8aebf78f4a0ab6e2" kind="enumvalue"><name>longitudinal</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1ac8ac882ce2a7b4d0ce58f7ad5d509e24a9087a20c5c12041e2c135fc717b6d327" kind="enumvalue"><name>lateral</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1ac8ac882ce2a7b4d0ce58f7ad5d509e24a9018a9364c8aab32a567aae5a5d3c9a9" kind="enumvalue"><name>cartesianDistance</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1ac8ac882ce2a7b4d0ce58f7ad5d509e24a8ffd587e749884612f001676819446d4" kind="enumvalue"><name>euclidianDistance</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1a950c590ead0767206ab680200d9e79ad" kind="variable"><name>value</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1a1adb61c82fc8af2692751a542b9744ae" kind="function"><name>RelativeDistanceType</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeDistanceType_1a28cc76405115fa58d6b3869f79dab704" kind="function"><name>operator value_type</name></member>
@@ -867,7 +910,7 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeTargetSpeed_1ad9e2c7cc03a98e1b1a6bf72f0a4be1f3" kind="variable"><name>continuous</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeTargetSpeed_1a37851ae0e33e7f2d2cf950276a03e590" kind="function"><name>RelativeTargetSpeed</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeTargetSpeed_1a0311f2697da6379a51dd776ebb519735" kind="function"><name>getCalculateAbsoluteTargetSpeed</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeTargetSpeed_1a46af693974aad05da118182c3d85f09b" kind="function"><name>getIsEnd</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeTargetSpeed_1ad61973a5468d63502d9fd6c800fcc443" kind="function"><name>getIsEnd</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1RelativeWorldPosition" kind="struct"><name>openscenario_interpreter::syntax::RelativeWorldPosition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RelativeWorldPosition_1a63229db5da57793f629ea6bda4e201c8" kind="variable"><name>orientation</name></member>
@@ -885,7 +928,7 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork_1a22e610fcd1085b1b427114abef572aae" kind="variable"><name>scene_graph_file</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork_1ae2f711ac5cabfac56db5313d2b6ddadc" kind="variable"><name>traffic_signals</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork_1aba3e27c324fcd0c0260b8ff985c95387" kind="function"><name>RoadNetwork</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork_1ad2e9bba5036504fc500fda2f9faa57c4" kind="function"><name>evaluate</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RoadNetwork_1a87ad8e629e467ad621fef7db0feae23e" kind="function"><name>evaluate</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Route" kind="struct"><name>openscenario_interpreter::syntax::Route</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Route_1a0fd6f2482e3f14504c3697366d3d6972" kind="variable"><name>closed</name></member>
@@ -906,7 +949,9 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction" kind="struct"><name>openscenario_interpreter::syntax::RoutingAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a609ffc88de4ad9aff42ad3ee7dea6ba6" kind="function"><name>RoutingAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a047fdf0f55fd4d46d197de01925340d4" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1ab504aa779de9a274e4d133f4fd0ed55a" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1ae3245d3186eda23cc613406d83f7ba3e" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a9a86adbf343c8f84b44fa9d14f8dfcf4" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Rule" kind="struct"><name>openscenario_interpreter::syntax::Rule</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Rule_1ac17ed7783d1242de9ee2a412d65ecbab" kind="enum"><name>value_type</name></member>
@@ -917,7 +962,7 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Rule_1a62d23296eeb016df9ef1ec57c93fa3bb" kind="function"><name>Rule</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Rule_1a2456e13e0128cbcf057d230006b0f0f0" kind="function"><name>Rule</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Rule_1a5d45e73cdb70284793575fc428393392" kind="function"><name>operator value_type</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Rule_1a4a18a92c76e99626901f36b4481029c0" kind="function"><name>operator()</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Rule_1a4084b313745680f326628eaa92420391" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition" kind="struct"><name>openscenario_interpreter::syntax::ScenarioDefinition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1ae87de45735e470447e25ed1b8913cf94" kind="variable"><name>parameter_declarations</name></member>
@@ -925,33 +970,34 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a7284f5f7b0a97b5bb762db93d63d4500" kind="variable"><name>road_network</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1ab633bcfee10110dedc7dd56c2b756b57" kind="variable"><name>entities</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a4cc840fac5278c5696b68a603c6cf7bb" kind="variable"><name>storyboard</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1ae9ddeccbda765d0f1c86a88a51417071" kind="function"><name>ASSERT_IS_OPTIONAL_ELEMENT</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a5a49dca9679a9b252b80c7cc5ce2d44e" kind="function"><name>ScenarioDefinition</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1aba5d53899467e3fdbb773c259b993cbe" kind="function"><name>complete</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioDefinition_1a7ce979b67734503e4baffcd43945f5e8" kind="function"><name>evaluate</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioObject" kind="struct"><name>openscenario_interpreter::syntax::ScenarioObject</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioObject_1abb66691bc1c92b5114c716bba9cf353f" kind="variable"><name>object_controller</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioObject_1aff4bc6d6c0b12075cd2ca8d88f6975b4" kind="variable"><name>is_added</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioObject_1a74b0541160a4c6c3a987b3f47c880e11" kind="function"><name>ScenarioObject</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioObject_1ae1530005ce0670fd0f46fd7713325053" kind="function"><name>evaluate</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioObject_1a86cc0910624adb69b3f441a081664bc3" kind="function"><name>activateOutOfRangeMetric</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1ScenarioObject_1afde3f6bcc23627785b099b6707d1f756" kind="function"><name>activateSensors</name></member>
   </compound>
   <compound refid="classopenscenario__interpreter_1_1Scope" kind="class"><name>openscenario_interpreter::Scope</name>
     <member refid="classopenscenario__interpreter_1_1Scope_1a38d08efc8d02cbde34f7a191f54c2db1" kind="variable"><name>frame</name></member>
+    <member refid="classopenscenario__interpreter_1_1Scope_1a6c07e7ed6edf935b77310dc37dd95249" kind="variable"><name>global_environment</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1aade3655a2b6949034ff567a90639fdb9" kind="variable"><name>name</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1a10b3826ffbeda24506a4b1f6098adf0a" kind="variable"><name>actors</name></member>
-    <member refid="classopenscenario__interpreter_1_1Scope_1ae59a0eb9f9fa26076eebf7b37e3d81e5" kind="variable"><name>pathname</name></member>
-    <member refid="classopenscenario__interpreter_1_1Scope_1a6eb516be10fe431f206ce01d0a3f5cd7" kind="variable"><name>logic_file</name></member>
-    <member refid="classopenscenario__interpreter_1_1Scope_1a654470c4c01e81f3158c036460a732b3" kind="variable"><name>scene_graph_file</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" kind="function"><name>Scope</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" kind="function"><name>Scope</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" kind="function"><name>Scope</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1a2c9dcc3e1fdae785c5c2e6d0cd4e7e6b" kind="function"><name>Scope</name></member>
+    <member refid="classopenscenario__interpreter_1_1Scope_1a140531d9487ca398162c3d8bdc1cbef6" kind="function"><name>global</name></member>
+    <member refid="classopenscenario__interpreter_1_1Scope_1a52665b2cce71e56a6e1f53c4d78da95a" kind="function"><name>global</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" kind="function"><name>localScope</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" kind="function"><name>localScope</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1aaca945840340f070418d229c6d8fa42a" kind="function"><name>makeChildScope</name></member>
-    <member refid="classopenscenario__interpreter_1_1Scope_1a6c1520691ffecd19680afe4a8ae9e1f2" kind="function"><name>addElement</name></member>
+    <member refid="classopenscenario__interpreter_1_1Scope_1a70e18724b1b9f34062516cd1fb47a20e" kind="function"><name>insert</name></member>
     <member refid="classopenscenario__interpreter_1_1Scope_1a6e06d610d0a8848a30d6f3f918d77911" kind="function"><name>findElement</name></member>
-    <member refid="classopenscenario__interpreter_1_1Scope_1a9f9e2b026864fd5a3c914adbe0081254" kind="function"><name>Scope</name></member>
+    <member refid="classopenscenario__interpreter_1_1Scope_1ae778f40de900f0c9a7d9667bb2db31d8" kind="function"><name>Scope</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1SelectedEntities" kind="struct"><name>openscenario_interpreter::syntax::SelectedEntities</name>
   </compound>
@@ -969,19 +1015,18 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aff272ab107ce475844658c7df743c4f4" kind="variable"><name>speed_action_dynamics</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a27c463e3b86c86e415275272db6db8e8" kind="variable"><name>speed_action_target</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a255768efd68c1a73b7994484976f412c" kind="variable"><name>accomplishments</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aa81b714c301881b6aa1443f4a4ec0081" kind="variable"><name>update_and_check</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1ae78208d86e73e81611c745c4250edacf" kind="variable"><name>update</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a607ebdd41dbd4fb469feb3916c37fd18" kind="function"><name>SpeedAction</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1ad4e2072c5bf19000bf94af9353831513" kind="function"><name>reset</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a73b8fb1782d92635b6ad5480ec63e493" kind="function"><name>start</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1aa6dec30455b50d07acc8e8c77629e6fc" kind="function"><name>update</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a4baba5a216c0b2f0447dcd948dc1d773" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1afabc4900aab2c068a8cdf38d98aabe5e" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1a56261a704858724b3320c57e94cd7809" kind="function"><name>endsImmediately</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedAction_1abc0ba61b3d0369f6a57c1bdbecdd2730" kind="function"><name>startImpl</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget" kind="struct"><name>openscenario_interpreter::syntax::SpeedActionTarget</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget_1a8f8c1596b8b6ebccfd85b7913e8d92de" kind="function"><name>SpeedActionTarget</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget_1aff677d8540fc2a316f52b54ae7bd3246" kind="function"><name>getCalculateAbsoluteTargetSpeed</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget_1aeb8ed1318d5dcc9aa5f89c596cd8dfbe" kind="function"><name>getIsEnd</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget_1a57c502fe848059fb4090f6b4d4a35137" kind="function"><name>getCalculateAbsoluteTargetSpeed</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget_1aef319ae99e65ec97af6e560431896103" kind="function"><name>getIsEnd</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition" kind="struct"><name>openscenario_interpreter::syntax::SpeedCondition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1SpeedCondition_1a9d002f884b253ba991ea714eb02d7f1a" kind="variable"><name>value</name></member>
@@ -1028,16 +1073,16 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Story_1aa60662f33c01e9b0e00c0fb5b5196a0a" kind="function"><name>stop</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Story_1a3e898033d2740ac81df9b77c88024747" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Story_1a179780a4f677393bfb77cf9611d3c89a" kind="function"><name>ready</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Story_1a0d4e973be33bbba37672a97f2f491c4e" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Story_1ab02317c72ef46c15d9c5bf8b8307c703" kind="function"><name>stopTriggered</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard" kind="struct"><name>openscenario_interpreter::syntax::Storyboard</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1a96512b0a18cd18160fedef3c6603026c" kind="variable"><name>init</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1aa20aa7c150178e17549ac67a5c779487" kind="variable"><name>stop_trigger</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1a09ac3ec09a3305cdcc85857932312999" kind="variable"><name>entities</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1ac79b3cdad338da6ebf4e005001587369" kind="variable"><name>engaged</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1a22be6c8f13b55a03c28402a35b756f09" kind="function"><name>Storyboard</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1af988d46b97a56355e27287bfac814011" kind="function"><name>Storyboard</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1aa942e6df55403905ae7980ff8bbd261d" kind="function"><name>start</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1afea02c1444b126d23378730d3b02cbbd" kind="function"><name>stopTriggered</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1a930ed077f901599ca71584d1b58f546c" kind="function"><name>stopTriggered</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1ac37b1b3348b4c0423b86507e8355b74a" kind="function"><name>stop</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1a02ff6909941d83c4b85e63192420bb00" kind="function"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Storyboard_1a305047c67d30e648d1d98dc8ec590166" kind="function"><name>run</name></member>
@@ -1058,19 +1103,19 @@
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1afe0e2c7aae7ce38c25a77f042429383a" kind="function"><name>BOILERPLATE</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a7816a9deb9eef600a19bb77927586dfd" kind="function"><name>BOILERPLATE</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1aec47337d8b30da3c060087be7f360657" kind="function"><name>changeStateIf</name></member>
-    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1afdad38d8cdc90ace80b807a10af58cad" kind="function"><name>changeStateIf</name></member>
-    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1acf1f12befabf2370168c0d81930d0bc1" kind="function"><name>changeStateIf</name></member>
-    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a25c9cefa5515185a7f250bf04b136821" kind="function"><name>override</name></member>
+    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1abfee47b60be1bb3dbecbb392dcbb8509" kind="function"><name>changeStateIf</name></member>
+    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a02b6a933c3ec2cfbf07c1cd1e98ea83e" kind="function"><name>changeStateIf</name></member>
+    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1ad92ea83feb951bfb7c958d0002d6a09f" kind="function"><name>override</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1aa12168a962ee2670628bcb2a2c053a9b" kind="function"><name>evaluate</name></member>
-    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1af01b36e3fbb7028e00f3ef34b5e170fb" kind="function"><name>start</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a0980316d46534bba732579d15f417211" kind="function"><name>DEFINE_PERFECT_FORWARD</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a39aa24fb41f2cbe769fe2c268f011791" kind="function"><name>DEFINE_PERFECT_FORWARD</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a5b78642f60a5328a812c1253f895c7e6" kind="function"><name>DEFINE_PERFECT_FORWARD</name></member>
+    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a058d7df9534ccffdda2568d6d4868464" kind="function"><name>DEFINE_PERFECT_FORWARD</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a4ce5d2333f877e2927f290ce6b4b8f6c" kind="function"><name>DEFINE_PERFECT_FORWARD</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1ad40bdcfa73b86bffa2fbad382c2870aa" kind="function"><name>DEFINE_PERFECT_FORWARD</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a25bb156fc90a357c41b0811c9ff951af" kind="function"><name>rename</name></member>
     <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1ab0e671a56fd9826aa3edf6b1498447f6" kind="function"><name>unique</name></member>
-    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a817915146b890e0e97984f1e0d40142c" kind="function"><name>readStoryboardElement</name></member>
+    <member refid="classopenscenario__interpreter_1_1syntax_1_1StoryboardElement_1a62ddcbd2557cdfa63c89d60e7691a5bf" kind="function"><name>readStoryboardElement</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState" kind="struct"><name>openscenario_interpreter::syntax::StoryboardElementState</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1StoryboardElementState_1a685cd1b2b7ecaf44b7747a5fc3d80e61" kind="enum"><name>value_type</name></member>
@@ -1109,13 +1154,12 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction" kind="struct"><name>openscenario_interpreter::syntax::TeleportAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ac3194f760945b33a8eecaa9bac21f16a" kind="variable"><name>position</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1af36be9c3de1969e7893a8b59846c92df" kind="variable"><name>accomplished</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a3c960ba0e5c4bcae47953d82114b7dad" kind="function"><name>TeleportAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ad2a0b45a543ec7daffe159ec77386e80" kind="function"><name>operator()</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a0bd6e24d6c102ce39dd7e6ea1d85eea6" kind="function"><name>operator()</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a55c405fe00ce3d4ff4003e30d9b69b3e" kind="function"><name>operator()</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1afb941c0cebd3d3f4a67080cc961b1451" kind="function"><name>start</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a37cb949e5ad9e09f624f4aa48e41bd2d" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1af1dd360bd6aefffe7dceb9c2537f5dd0" kind="function"><name>evaluate</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1ad7e9425b7a119da86428f4e405afa271" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a647c26601335303d07e1638f185e735b" kind="function"><name>accomplished</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a7f14e1a7f339b43115020a2477f7e6c8" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TeleportAction_1a49596ff185c268404ca27b2673031d7a" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1TimeHeadwayCondition" kind="struct"><name>openscenario_interpreter::syntax::TimeHeadwayCondition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TimeHeadwayCondition_1ac988c21adae52cdb85fac3d87b437579" kind="variable"><name>entity_ref</name></member>
@@ -1131,7 +1175,9 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction" kind="struct"><name>openscenario_interpreter::syntax::TrafficSignalAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aff7363110e6b49b97fcff77f23578563" kind="function"><name>TrafficSignalAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1a536e93f57d5ff9e98910ce37a5469e9e" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aae6739fe71eadbc4266b97af405cc96e" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1ae63a335b272d3f215683ea8a78490b16" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aff2ef1e5bd2e0f2f43e024f5093bf5fe" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalCondition" kind="struct"><name>openscenario_interpreter::syntax::TrafficSignalCondition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalCondition_1afd5c90bf73869fc95042f65b6e7b73ec" kind="typedef"><name>LaneletId</name></member>
@@ -1172,9 +1218,10 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1a534cd54feb22fac29c601d587f77c19f" kind="variable"><name>traffic_signal_controller_ref</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1a2cd8820464ef54135d1277010e9726b1" kind="variable"><name>phase</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1a138da4d1f2455e1a627d580acf740abe" kind="function"><name>TrafficSignalControllerAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1a48e8f6660fe92c1321f672a48360af82" kind="function"><name>start</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1a4eae4030a9b59d039a26dc78b8e59906" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1a34c3ae02150d8034f05b297d77f31f40" kind="function"><name>accomplished</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1a599e004ce3ce8a8760bc4159547a0c56" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1aaf6135b81bf6c81b36c2d741c734b4ba" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerAction_1aaa9967247bae8d2d0ad137091bdbd5c9" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerCondition" kind="struct"><name>openscenario_interpreter::syntax::TrafficSignalControllerCondition</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalControllerCondition_1a99a9ccc557f41379ea7b3daab5bd0efb" kind="variable"><name>phase</name></member>
@@ -1205,10 +1252,11 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a0855313de96785c9d8e995f7ad3ca371" kind="variable"><name>name</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1ac9f5554ccf5b7d0910cdb17515eb3eb8" kind="variable"><name>state</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a96389c403667f95842c7887066ff6007" kind="function"><name>TrafficSignalStateAction</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a11f95e11bcbcae3587f7eb6a81c9a610" kind="function"><name>start</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a46bfe5901723474a23eaa3e6906f3c5f" kind="function"><name>run</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a26b5eea0c967aafc31e374f2b018602a" kind="function"><name>id</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a4568bd00e85d952afa03237b7c43c575" kind="function"><name>accomplished</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1acadf895906e1233387a14dbff0d533e1" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a402198545645ea693379b5f73f347df7" kind="function"><name>endsImmediately</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalStateAction_1a677a8eb3a72d59a9f0e54fe34ffb48c0" kind="function"><name>start</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1TransitionDynamics" kind="struct"><name>openscenario_interpreter::syntax::TransitionDynamics</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1TransitionDynamics_1ad6fba1ae594879c316a7314f9ba436aa" kind="variable"><name>dynamics_shape</name></member>
@@ -1264,6 +1312,8 @@
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedAction" kind="struct"><name>openscenario_interpreter::syntax::UserDefinedAction</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedAction_1a37c86303cdca10b9fb833e64bf397272" kind="function"><name>UserDefinedAction</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedAction_1a94daa27eb53e1b9a7796af6871aa50e6" kind="function"><name>run</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedAction_1a62b1cd65a50dde81be211073a0d29657" kind="function"><name>start</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedAction_1afa04bf708de32e03dcabcf80cb9ac25b" kind="function"><name>endsImmediately</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition" kind="struct"><name>openscenario_interpreter::syntax::UserDefinedValueCondition</name>
@@ -1271,9 +1321,10 @@
     <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1a828670d3e2ed36aeeeee4d1f0abfb8bd" kind="variable"><name>value</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1aee995b10aa37cb22a69277905ded6648" kind="variable"><name>compare</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1a17924aa5b191f1cdabc081ee4c00387b" kind="variable"><name>last_checked_value</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1a69ab10cbd9590e325008d1c48fe739b5" kind="variable"><name>evaluateValue</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1ad88436d7cf8c6b22658c2eab0069f9a2" kind="function"><name>UserDefinedValueCondition</name></member>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1abce93e3c93aad7aa66ffe73c52ddbbc8" kind="function"><name>evaluate</name></member>
-    <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1a2678339b1e9bbd8112c6c1d481d39da3" kind="function"><name>description</name></member>
+    <member refid="structopenscenario__interpreter_1_1syntax_1_1UserDefinedValueCondition_1a7391abf61711e0f43752ee3d3b4c4695" kind="function"><name>description</name></member>
   </compound>
   <compound refid="structopenscenario__interpreter_1_1syntax_1_1Vehicle" kind="struct"><name>openscenario_interpreter::syntax::Vehicle</name>
     <member refid="structopenscenario__interpreter_1_1syntax_1_1Vehicle_1af5608ddb1deac79a92af6cb32f9084d6" kind="variable"><name>vehicle_category</name></member>
@@ -1337,11 +1388,11 @@
     <member refid="procedure_8hpp_1ad45c795bdf5a02a76b355185ae9144c4" kind="function"><name>getRelativePose</name></member>
     <member refid="procedure_8hpp_1aaa9ad1623902943fdcc44780ce23358e" kind="function"><name>toLanePosition</name></member>
     <member refid="procedure_8hpp_1ac90cc975d5d628d185d0e310f9a4882b" kind="function"><name>STRIP_OPTIONAL</name></member>
+    <member refid="procedure_8hpp_1a7dbf8a823bfa319cba9190d5aad256fb" kind="function"><name>STRIP_OPTIONAL</name></member>
     <member refid="procedure_8hpp_1ad0093563bce9ff2530aaf5ff7e58e169" kind="function"><name>STRIP_OPTIONAL</name></member>
     <member refid="procedure_8hpp_1a51076ad58ee54bcb90e4c145a5c1d5b8" kind="function"><name>STRIP_OPTIONAL</name></member>
     <member refid="procedure_8hpp_1a898dda2634d0cb32d09893e46e45538c" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a5144c3bc31e9c4b9d2aeb7d3b9d1b6d1" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
-    <member refid="procedure_8hpp_1a14c6fbce71e6af50fcb3e7840385801c" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a452cd9bf64e2b2e3574e6b72a4a0422e" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a7f0259e18d462c6c01023121749c1c76" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a551a0463ef5bdc5b2a6f97c5ac59fe73" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
@@ -1349,14 +1400,17 @@
     <member refid="procedure_8hpp_1ade3277f3839472ad16147eff2155ca7f" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a51127def1842ffbe4505a8fbb454984c" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a08ea72ba81ebe010886260b55dd63886" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
-    <member refid="procedure_8hpp_1a7a5a3465b55618f8805c6d9117fa9c6c" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a960e11b54bc500f8f00b9584cfce03fd" kind="function"><name>FORWARD_TO_SIMULATION_API</name></member>
     <member refid="procedure_8hpp_1a53e7daa5c71fb9473414e96d27f8c409" kind="function"><name>RENAME</name></member>
+    <member refid="procedure_8hpp_1a299e151ee0c79e16e9e4f6e03cd23c3e" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1a1a002a51da82bd4836fff10e9109746e" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1ab39960e9717b150f572816f12739e88d" kind="function"><name>RENAME</name></member>
+    <member refid="procedure_8hpp_1a4f3cc977258f3d1e4e0bb5b8b508bd51" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1ab8298758c5c18846c4f391733ab05e99" kind="function"><name>RENAME</name></member>
+    <member refid="procedure_8hpp_1a934721db6194a1ac974c23cdaa7fa276" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1aa95685215cabb1b2e4d420121c559c84" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1ad87badc404f680874611e7dded254587" kind="function"><name>RENAME</name></member>
+    <member refid="procedure_8hpp_1a8a9ffbb7e792e13c7adf5d53fdc23571" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1af1d72022fd38f44245ceb46ccc87f3d1" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1a1dee3cff32f2addf19f76556f18d3911" kind="function"><name>RENAME</name></member>
     <member refid="procedure_8hpp_1ab010632d78e3df015ad09c9cdcf050b0" kind="function"><name>RENAME</name></member>
@@ -1424,11 +1478,10 @@
     <member refid="attribute_8hpp_1a068ceef88a5d361b61ada754dc8367ed" kind="function"><name>readAttribute</name></member>
     <member refid="content_8hpp_1ae2122738b07a5fe07fb875dab26f9f96" kind="function"><name>readContent</name></member>
     <member refid="element_8hpp_1a7e5d1fcf30b939044c9eb214287b0435" kind="function"><name>callWithElements</name></member>
-    <member refid="element_8hpp_1a5d921d2100f0ea2de4c5d7f881c9bb05" kind="function"><name>callWithElement</name></member>
     <member refid="element_8hpp_1ad998e3ffea33688cf50b9c716ee2e7a3" kind="function"><name>readElement</name></member>
     <member refid="element_8hpp_1a550b9a398ff252e2347656b84795ba68" kind="function"><name>readElements</name></member>
     <member refid="element_8hpp_1aeb6b780744670941bb296c5a700a0ebe" kind="function"><name>readElementsAsElement</name></member>
-    <member refid="element_8hpp_1a96ca2eceebd904187d8e65958fa7c011" kind="function"><name>choice</name></member>
+    <member refid="element_8hpp_1aa0d5fcef4943e2bd394b41e9d07fba7a" kind="function"><name>choice</name></member>
   </compound>
   <compound refid="namespaceopenscenario__interpreter_1_1record" kind="namespace"><name>openscenario_interpreter::record</name>
     <member refid="record_8hpp_1a395e8df1a7e3ded279ce8e65e8b74259" kind="variable"><name>process_id</name></member>
@@ -1439,6 +1492,9 @@
     <member refid="split_8hpp_1ab057b2db1da5814aba13c8f0a3dbb041" kind="function"><name>split</name></member>
   </compound>
   <compound refid="namespaceopenscenario__interpreter_1_1syntax" kind="namespace"><name>openscenario_interpreter::syntax</name>
+    <member refid="relative__distance__condition_8hpp_1ae7a17041abc1b40d3a2af7608c943e76" kind="enum"><name>Between</name></member>
+    <member refid="dummy_1ae7a17041abc1b40d3a2af7608c943e76a57039053e4edc5fa70b849ffff5da71c" kind="enumvalue"><name>reference_points</name></member>
+    <member refid="dummy_1ae7a17041abc1b40d3a2af7608c943e76a7c3207e8015944c4cf0d0ce1b1207af4" kind="enumvalue"><name>closest_bounding_box_points</name></member>
     <member refid="controller_8hpp_1a84112bddd6a969ef4d48f604840244a0" kind="typedef"><name>DefaultController</name></member>
     <member refid="string_8hpp_1af86241b1a7785ee7d6e79b6ec85a1b49" kind="typedef"><name>String</name></member>
     <member refid="unsigned__integer_8hpp_1a21e4ea2d44394713e6adef67565475f2" kind="typedef"><name>UnsignedInt</name></member>
@@ -1452,7 +1508,8 @@
     <member refid="storyboard__element__state_8hpp_1a0a3624b0a479045d7f585aeae6e967a8" kind="variable"><name>running_state</name></member>
     <member refid="storyboard__element__state_8hpp_1a54998904aad78e44e7d26cc273803327" kind="variable"><name>standby_state</name></member>
     <member refid="act_8hpp_1a96c7713236ee115d676dd3d51b87d7d9" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="action_8hpp_1ab1bc0761e9b5247a0b101c9ab47be8d2" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="action_8hpp_1a3df7fe408f96bab13483f461b9e082cd" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="action_8hpp_1a0ac596de7f7a9da3047230ea3a53502b" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="arrow_8hpp_1affb2fef0f4cb36aaefb3f59cb886f940" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="arrow_8hpp_1a8920ddc472372101ce0bddda8a9c389a" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="arrow_8hpp_1a9d3f5dc406364f213c83b39d3b658443" kind="function"><name>operator&lt;&lt;</name></member>
@@ -1476,6 +1533,8 @@
     <member refid="condition__edge_8hpp_1aa5f9ff06c6aeb283943231699600d07f" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="condition__edge_8hpp_1aef820893926bfa3b4bb17e8a9bf16b68" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="condition__group_8hpp_1ac64ac5bb491cb7abd2beaf6ec43e0558" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="coordinate__system_8hpp_1ae6bc3d5be28a7cd67168146236d67b39" kind="function"><name>operator&gt;&gt;</name></member>
+    <member refid="coordinate__system_8hpp_1adf7d2f5c5e458884e2b5753e8cdb2888" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="dimensions_8hpp_1ab7b435dea4a6dcec62d4e2a65f8b3491" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="double_8hpp_1a08975a4c737d08ce5fcc679d6e9961e0" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="double_8hpp_1aec92e1bb60df83a8494e1031fe49517f" kind="function"><name>operator&lt;&lt;</name></member>
@@ -1483,18 +1542,24 @@
     <member refid="dynamics__dimension_8hpp_1adb3e4f5fd1fca3204f105c749a7a5b1c" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="dynamics__shape_8hpp_1a8e617d1da8ea9b2021ee237d3b1a35c9" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="dynamics__shape_8hpp_1a481caf80d4ae35008d069ff0b2fb51b0" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="entity__action_8hpp_1ad87ef76ff520f53c99c738635ff57ed7" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="entity__object_8hpp_1a7fdd942455745f91328d3aeadd7519d4" kind="function"><name>apply</name></member>
     <member refid="event_8hpp_1a880f802ba6ab49f0d0c8896a6ef3b4c4" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="global__action_8hpp_1a392155cc536f9eb72e7cb90d07191f88" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
+    <member refid="infrastructure__action_8hpp_1ad1eaacdd735c911a34477a801ba53f54" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="init_8hpp_1a63a6dd0d6bc6a1f9d07661bad51f1df5" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="init__actions_8hpp_1a6142eca5e872ce25f3afd49c670681f3" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="integer_8hpp_1a4147b82ff4b04254232a2e082bf15079" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="integer_8hpp_1ae8d238a42b1119c999c19d4995cb583f" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="lateral__action_8hpp_1a8a36a763f301e4b4b89f301f0190755d" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
+    <member refid="longitudinal__action_8hpp_1afc281c912021f61f82313f088d6642fc" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="maneuver_8hpp_1aeb54773d873ed99ab847680db686ab93" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="maneuver__group_8hpp_1afc9b254aae01ecd6631a1ef64bcffb68" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="misc__object__category_8hpp_1aa9e5ea47fab0ea251b2ac3bca22d9c3b" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="misc__object__category_8hpp_1ab2eaf00f730b1e78e1055e99f49fcd78" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="openscenario_8hpp_1a667d0ba496f58cfc3f7630f0a1011f37" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="openscenario_8hpp_1ab3fbaf7955e61dfc5dc1c5cd46d5dce9" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="parameter__action_8hpp_1ab9ff5e47d628c4837d0b653298df5b7c" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="parameter__declaration_8hpp_1a5631e2df39464499eec4d43f4e4e0da5" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="parameter__declarations_8hpp_1a938c52a85870201d20057695cc4e7947" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="parameter__type_8hpp_1aea6121c052490b5761f26dfd4ccfb7fe" kind="function"><name>operator&gt;&gt;</name></member>
@@ -1507,19 +1572,28 @@
     <member refid="priority_8hpp_1ab7be63c201a74f834bfe35e77c9ff752" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="priority_8hpp_1a31c47a3a1fa52c7a5c96dcd5a7502f5d" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="private_8hpp_1ab0421c59374bca72bb4983e09d04a9d0" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="private__action_8hpp_1a97b54d8d85e48237f7a345a64a5da1ed" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="reference__context_8hpp_1a280c55487e42f96343025aabca2674d8" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="reference__context_8hpp_1a7e2489add460afb9c4526bde04bc2e03" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="relative__distance__condition_8hpp_1ab5e3abbd8ea5dc25092cf204d67ef213" kind="function"><name>RelativeDistanceCondition::distance&lt; CoordinateSystem::entity, RelativeDistanceType::euclidianDistance, Between::closest_bounding_box_points &gt;</name></member>
+    <member refid="relative__distance__condition_8hpp_1ab7dfcd09b991c2dbeba2b2a423ce67c0" kind="function"><name>RelativeDistanceCondition::distance&lt; CoordinateSystem::entity, RelativeDistanceType::euclidianDistance, Between::reference_points &gt;</name></member>
+    <member refid="relative__distance__condition_8hpp_1a09c609741c6f0ce74ed00cb7b6bd7c43" kind="function"><name>RelativeDistanceCondition::distance&lt; CoordinateSystem::entity, RelativeDistanceType::lateral, Between::reference_points &gt;</name></member>
+    <member refid="relative__distance__condition_8hpp_1a4e19c34dfd79269c35de472a430b5d89" kind="function"><name>RelativeDistanceCondition::distance&lt; CoordinateSystem::entity, RelativeDistanceType::longitudinal, Between::reference_points &gt;</name></member>
+    <member refid="relative__distance__condition_8hpp_1a48b6b0d7db83b4f12a2b5558ab7f364b" kind="function"><name>RelativeDistanceCondition::distance&lt; CoordinateSystem::lane, RelativeDistanceType::longitudinal, Between::reference_points &gt;</name></member>
     <member refid="relative__distance__type_8hpp_1ad7f245c54e8b71d0135404e8cba97597" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="relative__distance__type_8hpp_1a7cdd72bde4fbd45b21d28c4ca2eb2308" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="road__network_8hpp_1af742a4eb898e111ea5687eb86bc9f246" kind="function"><name>ASSERT_IS_OPTIONAL_ELEMENT</name></member>
     <member refid="road__network_8hpp_1aa13984e6d854e3c4ba778c11f4f9030a" kind="function"><name>ASSERT_IS_OPTIONAL_ELEMENT</name></member>
     <member refid="route__strategy_8hpp_1abd7a173e2e79fc79461ed4f5db928067" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="route__strategy_8hpp_1aca998a47b938e2ce06537e75708d4e76" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="rule_8hpp_1ae85af857e643f04e8303f391a00bffa3" kind="function"><name>operator&gt;&gt;</name></member>
-    <member refid="rule_8hpp_1a60f25d360897fbdd16a802720f94d63b" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="scenario__definition_8hpp_1a6a7dc7ee6d75a125df2fbf431479bf24" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="scenario__definition_8hpp_1acd6b96c5c497fdc3126485b68ad41909" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="scenario__object_8hpp_1a3ba183114617a56b17c045b7ca68a780" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="routing__action_8hpp_1a1cbac4b5bbae03004c040c054a3433de" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
+    <member refid="rule_8hpp_1a1cc528c024c34bfed67b81278a19c8fd" kind="function"><name>operator&gt;&gt;</name></member>
+    <member refid="rule_8hpp_1ada4ce181f029152e88318294ace1de26" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="scenario__definition_8hpp_1acbe58828d382ce5df728643ffbac96d5" kind="function"><name>ASSERT_IS_OPTIONAL_ELEMENT</name></member>
+    <member refid="scenario__definition_8hpp_1ad2492d2dc93b90b44add8848d3bf7876" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="scenario__definition_8hpp_1a0043048d76b8ae2d1cd67570106991f8" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="scenario__object_8hpp_1a004b03adbca242d7e5f07e0c4aebb804" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="speed__action__target_8hpp_1a783684dab35df1cc7e3e81b931d1cd76" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="speed__target__value__type_8hpp_1a1d5cd8d70adcde34ab5fa4a61553fca1" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="speed__target__value__type_8hpp_1a6cb3020373d5a18c1c4da27b608fdb41" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="story_8hpp_1acc620f360e2042b070242f6bb7e45068" kind="function"><name>operator&lt;&lt;</name></member>
@@ -1529,6 +1603,7 @@
     <member refid="storyboard__element__state_8hpp_1a77f1fa1d89666a3a8eb26799cf68a357" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="storyboard__element__type_8hpp_1ab2e6c680128a957c53b5b4e31423844b" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="storyboard__element__type_8hpp_1a0c118397b9429cd6cb1ed1763fe5bb39" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="traffic__signal__action_8hpp_1a671244cfb823b5ef661ce40869ff6a75" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="trigger_8hpp_1a461433ef4790cdd7a7970bf3dfc4eea5" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="triggering__entities__rule_8hpp_1a01157fb3d891a934f33962803a50b0d8" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="triggering__entities__rule_8hpp_1a055a699d5cabf8c3d3345237294dedd8" kind="function"><name>operator&lt;&lt;</name></member>
@@ -1536,6 +1611,7 @@
     <member refid="unsigned__integer_8hpp_1a2211b126e513f14bcc00811afb020103" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="unsigned__short_8hpp_1a21765bc2f19346c29f5ecfa04011916b" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="unsigned__short_8hpp_1a05aa91483e5122695d3499efb9b7aabe" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="user__defined__action_8hpp_1a5171e11fd920ac666850a18abad8d5c8" kind="function"><name>DEFINE_LAZY_VISITOR</name></member>
     <member refid="vehicle_8hpp_1a47d20191a0a5a75565c2ebd0f76b8978" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="vehicle__category_8hpp_1a938917a99573db7278756b763a10dc6d" kind="function"><name>operator&gt;&gt;</name></member>
     <member refid="vehicle__category_8hpp_1a078172ac1c22bfea277e5d5226fde325" kind="function"><name>operator&lt;&lt;</name></member>
@@ -1595,6 +1671,8 @@
   <compound refid="size_8hpp" kind="file"><name>size.hpp</name>
   </compound>
   <compound refid="object_8hpp" kind="file"><name>object.hpp</name>
+    <member refid="object_8hpp_1aa3afe3681aca3c0d19bd04f187e830dd" kind="define"><name>CASE</name></member>
+    <member refid="object_8hpp_1a5ef14d4e130504a4ebd2af0960a6a6ed" kind="define"><name>DEFINE_LAZY_VISITOR</name></member>
   </compound>
   <compound refid="openscenario__interpreter_8hpp" kind="file"><name>openscenario_interpreter.hpp</name>
     <member refid="openscenario__interpreter_8hpp_1a944aaef80590057b61fb622a65359058" kind="define"><name>INTERPRETER_INFO_STREAM</name></member>
@@ -1636,6 +1714,7 @@
   <compound refid="actors_8hpp" kind="file"><name>actors.hpp</name>
   </compound>
   <compound refid="add__entity__action_8hpp" kind="file"><name>add_entity_action.hpp</name>
+    <member refid="add__entity__action_8hpp_1a8b918fdb5c26337f5a21de5fd9b050f0" kind="define"><name>APPLY_ADD_ENTITY_ACTION</name></member>
   </compound>
   <compound refid="arrow_8hpp" kind="file"><name>arrow.hpp</name>
   </compound>
@@ -1683,6 +1762,8 @@
   </compound>
   <compound refid="controller__action_8hpp" kind="file"><name>controller_action.hpp</name>
   </compound>
+  <compound refid="coordinate__system_8hpp" kind="file"><name>coordinate_system.hpp</name>
+  </compound>
   <compound refid="custom__command__action_8hpp" kind="file"><name>custom_command_action.hpp</name>
   </compound>
   <compound refid="delete__entity__action_8hpp" kind="file"><name>delete_entity_action.hpp</name>
@@ -1719,7 +1800,6 @@
   <compound refid="file__header_8hpp" kind="file"><name>file_header.hpp</name>
   </compound>
   <compound refid="global__action_8hpp" kind="file"><name>global_action.hpp</name>
-    <member refid="global__action_8hpp_1aa470251fbe80466c8732a0ad6c409e3a" kind="define"><name>BOILERPLATE</name></member>
   </compound>
   <compound refid="infrastructure__action_8hpp" kind="file"><name>infrastructure_action.hpp</name>
   </compound>
@@ -1796,7 +1876,6 @@
   <compound refid="private_8hpp" kind="file"><name>private.hpp</name>
   </compound>
   <compound refid="private__action_8hpp" kind="file"><name>private_action.hpp</name>
-    <member refid="private__action_8hpp_1aa470251fbe80466c8732a0ad6c409e3a" kind="define"><name>BOILERPLATE</name></member>
   </compound>
   <compound refid="properties_8hpp" kind="file"><name>properties.hpp</name>
   </compound>
@@ -1821,7 +1900,6 @@
   <compound refid="route__strategy_8hpp" kind="file"><name>route_strategy.hpp</name>
   </compound>
   <compound refid="routing__action_8hpp" kind="file"><name>routing_action.hpp</name>
-    <member refid="routing__action_8hpp_1aa470251fbe80466c8732a0ad6c409e3a" kind="define"><name>BOILERPLATE</name></member>
   </compound>
   <compound refid="rule_8hpp" kind="file"><name>rule.hpp</name>
   </compound>
@@ -1836,7 +1914,6 @@
   <compound refid="speed__action_8hpp" kind="file"><name>speed_action.hpp</name>
   </compound>
   <compound refid="speed__action__target_8hpp" kind="file"><name>speed_action_target.hpp</name>
-    <member refid="speed__action__target_8hpp_1a54779976125115e9d24a1c8e23a010c9" kind="define"><name>ELEMENT</name></member>
   </compound>
   <compound refid="speed__condition_8hpp" kind="file"><name>speed_condition.hpp</name>
   </compound>
@@ -1912,8 +1989,6 @@
   </compound>
   <compound refid="has__member__function__evaluate_8hpp" kind="file"><name>has_member_function_evaluate.hpp</name>
   </compound>
-  <compound refid="has__member__function__start_8hpp" kind="file"><name>has_member_function_start.hpp</name>
-  </compound>
   <compound refid="has__stream__output__operator_8hpp" kind="file"><name>has_stream_output_operator.hpp</name>
   </compound>
   <compound refid="if__has__member__function__accomplished_8hpp" kind="file"><name>if_has_member_function_accomplished.hpp</name>
@@ -1923,8 +1998,6 @@
   <compound refid="if__has__member__function__description_8hpp" kind="file"><name>if_has_member_function_description.hpp</name>
   </compound>
   <compound refid="if__has__member__function__evaluate_8hpp" kind="file"><name>if_has_member_function_evaluate.hpp</name>
-  </compound>
-  <compound refid="if__has__member__function__start_8hpp" kind="file"><name>if_has_member_function_start.hpp</name>
   </compound>
   <compound refid="if__has__stream__output__operator_8hpp" kind="file"><name>if_has_stream_output_operator.hpp</name>
   </compound>
@@ -1981,6 +2054,8 @@
   </compound>
   <compound refid="record_8cpp" kind="file"><name>record.cpp</name>
   </compound>
+  <compound refid="scope_8cpp" kind="file"><name>scope.cpp</name>
+  </compound>
   <compound refid="act_8cpp" kind="file"><name>act.cpp</name>
   </compound>
   <compound refid="action_8cpp" kind="file"><name>action.cpp</name>
@@ -2017,6 +2092,11 @@
   </compound>
   <compound refid="condition__group_8cpp" kind="file"><name>condition_group.cpp</name>
   </compound>
+  <compound refid="coordinate__system_8cpp" kind="file"><name>coordinate_system.cpp</name>
+    <member refid="coordinate__system_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
+    <member refid="coordinate__system_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
+    <member refid="coordinate__system_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
+  </compound>
   <compound refid="dimensions_8cpp" kind="file"><name>dimensions.cpp</name>
   </compound>
   <compound refid="double_8cpp" kind="file"><name>double.cpp</name>
@@ -2031,13 +2111,23 @@
     <member refid="dynamics__shape_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
     <member refid="dynamics__shape_8cpp_1a042387daeb4ef49d52ad4fb5f73a8f40" kind="define"><name>BOILERPLATE</name></member>
   </compound>
+  <compound refid="entity__action_8cpp" kind="file"><name>entity_action.cpp</name>
+  </compound>
   <compound refid="event_8cpp" kind="file"><name>event.cpp</name>
+  </compound>
+  <compound refid="global__action_8cpp" kind="file"><name>global_action.cpp</name>
+  </compound>
+  <compound refid="infrastructure__action_8cpp" kind="file"><name>infrastructure_action.cpp</name>
   </compound>
   <compound refid="init_8cpp" kind="file"><name>init.cpp</name>
   </compound>
   <compound refid="init__actions_8cpp" kind="file"><name>init_actions.cpp</name>
   </compound>
   <compound refid="integer_8cpp" kind="file"><name>integer.cpp</name>
+  </compound>
+  <compound refid="lateral__action_8cpp" kind="file"><name>lateral_action.cpp</name>
+  </compound>
+  <compound refid="longitudinal__action_8cpp" kind="file"><name>longitudinal_action.cpp</name>
   </compound>
   <compound refid="maneuver_8cpp" kind="file"><name>maneuver.cpp</name>
   </compound>
@@ -2051,6 +2141,8 @@
   <compound refid="object__controller_8cpp" kind="file"><name>object_controller.cpp</name>
   </compound>
   <compound refid="open__scenario_8cpp" kind="file"><name>open_scenario.cpp</name>
+  </compound>
+  <compound refid="parameter__action_8cpp" kind="file"><name>parameter_action.cpp</name>
   </compound>
   <compound refid="parameter__declaration_8cpp" kind="file"><name>parameter_declaration.cpp</name>
   </compound>
@@ -2076,10 +2168,14 @@
   </compound>
   <compound refid="private_8cpp" kind="file"><name>private.cpp</name>
   </compound>
+  <compound refid="private__action_8cpp" kind="file"><name>private_action.cpp</name>
+  </compound>
   <compound refid="reference__context_8cpp" kind="file"><name>reference_context.cpp</name>
     <member refid="reference__context_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
     <member refid="reference__context_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
     <member refid="reference__context_8cpp_1a3c260951a894077cecfbb688a36c8fb3" kind="define"><name>BOILERPLATE</name></member>
+  </compound>
+  <compound refid="relative__distance__condition_8cpp" kind="file"><name>relative_distance_condition.cpp</name>
   </compound>
   <compound refid="relative__distance__type_8cpp" kind="file"><name>relative_distance_type.cpp</name>
     <member refid="relative__distance__type_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
@@ -2090,6 +2186,8 @@
     <member refid="route__strategy_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
     <member refid="route__strategy_8cpp_1a042387daeb4ef49d52ad4fb5f73a8f40" kind="define"><name>BOILERPLATE</name></member>
   </compound>
+  <compound refid="routing__action_8cpp" kind="file"><name>routing_action.cpp</name>
+  </compound>
   <compound refid="rule_8cpp" kind="file"><name>rule.cpp</name>
     <member refid="rule_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
     <member refid="rule_8cpp_1a3c260951a894077cecfbb688a36c8fb3" kind="define"><name>BOILERPLATE</name></member>
@@ -2097,6 +2195,8 @@
   <compound refid="scenario__definition_8cpp" kind="file"><name>scenario_definition.cpp</name>
   </compound>
   <compound refid="scenario__object_8cpp" kind="file"><name>scenario_object.cpp</name>
+  </compound>
+  <compound refid="speed__action__target_8cpp" kind="file"><name>speed_action_target.cpp</name>
   </compound>
   <compound refid="speed__target__value__type_8cpp" kind="file"><name>speed_target_value_type.cpp</name>
     <member refid="speed__target__value__type_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
@@ -2114,6 +2214,8 @@
     <member refid="storyboard__element__type_8cpp_1a9c8f164b1af96f53e82a3e558461f33f" kind="define"><name>BOILERPLATE</name></member>
     <member refid="storyboard__element__type_8cpp_1a3c260951a894077cecfbb688a36c8fb3" kind="define"><name>BOILERPLATE</name></member>
   </compound>
+  <compound refid="traffic__signal__action_8cpp" kind="file"><name>traffic_signal_action.cpp</name>
+  </compound>
   <compound refid="trigger_8cpp" kind="file"><name>trigger.cpp</name>
   </compound>
   <compound refid="triggering__entities__rule_8cpp" kind="file"><name>triggering_entities_rule.cpp</name>
@@ -2123,6 +2225,8 @@
   <compound refid="unsigned__integer_8cpp" kind="file"><name>unsigned_integer.cpp</name>
   </compound>
   <compound refid="unsigned__short_8cpp" kind="file"><name>unsigned_short.cpp</name>
+  </compound>
+  <compound refid="user__defined__action_8cpp" kind="file"><name>user_defined_action.cpp</name>
   </compound>
   <compound refid="vehicle_8cpp" kind="file"><name>vehicle.cpp</name>
   </compound>

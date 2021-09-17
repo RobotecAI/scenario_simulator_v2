@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -838,9 +850,9 @@
 
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">EnvironmentFrame</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">anonymous_children</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">EnvironmentFrame</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">EnvironmentFrame</span><span class="p">(</span><span class="n">EnvironmentFrame</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="p">(</span><span class="n">EnvironmentFrame</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">scope_name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">parent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">parent</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -850,12 +862,12 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">EnvironmentFrame</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">EnvironmentFrame</span><span class="p">(</span><span class="n">EnvironmentFrame</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="p">(</span><span class="n">EnvironmentFrame</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
 
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">addElement</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">element</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">element</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="sc">&#39;:&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">THROW_SYNTAX_ERROR</span><span class="p">(</span><span class="s">&quot;Identifier &#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&#39; contains &#39;:&#39;&quot;</span><span class="p">);</span><span class="w"></span>
@@ -1006,40 +1018,46 @@
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">EnvironmentFrame</span><span class="o">&gt;</span><span class="w"> </span><span class="n">frame</span><span class="p">;</span><span class="w"></span>
 
+<span class="w">  </span><span class="k">struct</span> <span class="nc">GlobalEnvironment</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">pathname</span><span class="p">;</span><span class="w">  </span><span class="c1">// for substitution syntax &#39;$(dirname)&#39;</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">Element</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entities</span><span class="p">;</span><span class="w">  </span><span class="c1">// ScenarioObject or EntitySelection</span>
+
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">GlobalEnvironment</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">pathname</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">pathname</span><span class="p">(</span><span class="n">pathname</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">isAddedEntity</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EntityRef</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GlobalEnvironment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">global_environment</span><span class="p">;</span><span class="w"></span>
+
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">EntityRef</span><span class="o">&gt;</span><span class="w"> </span><span class="n">actors</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">pathname</span><span class="p">;</span><span class="w">  </span><span class="c1">// for substitution syntax &#39;$(dirname)&#39;</span>
-
-<span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">logic_file</span><span class="p">;</span><span class="w">  </span><span class="c1">// NOTE: Assigned by RoadNetwork&#39;s constructor.</span>
-
-<span class="w">  </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">scene_graph_file</span><span class="p">;</span><span class="w">  </span><span class="c1">// NOTE: Assigned by RoadNetwork&#39;s constructor.</span>
-
-<span class="w">  </span><span class="n">Scope</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Scope</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pathname</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">frame</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="p">()),</span><span class="w"> </span><span class="n">pathname</span><span class="p">(</span><span class="n">pathname</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">frame</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="p">()),</span><span class="w"> </span><span class="n">global_environment</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">GlobalEnvironment</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pathname</span><span class="p">))</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Scope</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">EnvironmentFrame</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">frame_</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">frame</span><span class="p">(</span><span class="n">frame_</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">actors</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">actors</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">pathname</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">pathname</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">logic_file</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">logic_file</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">scene_graph_file</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">scene_graph_file</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">EnvironmentFrame</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">frame</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">frame</span><span class="p">(</span><span class="n">frame</span><span class="p">),</span><span class="w"> </span><span class="n">global_environment</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">global_environment</span><span class="p">),</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">actors</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="n">actors</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">Scope</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w">  </span><span class="c1">// note: shallow copy</span>
+<span class="w">  </span><span class="n">Scope</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w">  </span><span class="c1">// NOTE: shallow copy</span>
+
 <span class="w">  </span><span class="n">Scope</span><span class="p">(</span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">global</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="n">global_environment</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">global</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="n">global_environment</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">localScope</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
@@ -1051,9 +1069,9 @@
 <span class="w">      </span><span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">EnvironmentFrame</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EnvironmentFrame</span><span class="p">(</span><span class="o">*</span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)));</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">addElement</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name_</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">element</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">insert</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name_</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">element</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">addElement</span><span class="p">(</span><span class="n">name_</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="n">name_</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">findElement</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name_</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">findElement</span><span class="p">(</span><span class="n">name_</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
@@ -1063,7 +1081,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SCOPE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

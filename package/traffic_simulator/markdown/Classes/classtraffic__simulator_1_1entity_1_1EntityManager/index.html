@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1039,6 +1051,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-createsubscription" class="md-nav__link">
+    function createSubscription
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-createpublisher" class="md-nav__link">
+    function createPublisher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-checkcollision" class="md-nav__link">
     function checkCollision
   </a>
@@ -1173,6 +1199,13 @@
         
           <li class="md-nav__item">
   <a href="#function-forward_to_entity_15" class="md-nav__link">
+    function FORWARD_TO_ENTITY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-forward_to_entity_16" class="md-nav__link">
     function FORWARD_TO_ENTITY
   </a>
   
@@ -1432,6 +1465,14 @@
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-despawnentity">despawnEntity</a></strong>(const std::string &amp; name)</td>
 </tr>
 <tr>
+<td>template \&lt;typename MessageT ,typename... Args></br>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-createsubscription">createSubscription</a></strong>(Args &amp;&amp;... args)</td>
+</tr>
+<tr>
+<td>template \&lt;typename MessageT ,typename... Args></br>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-createpublisher">createPublisher</a></strong>(Args &amp;&amp;... args)</td>
+</tr>
+<tr>
 <td>bool</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-checkcollision">checkCollision</a></strong>(const std::string &amp; name0, const std::string &amp; name1)</td>
 </tr>
@@ -1446,6 +1487,10 @@
 <tr>
 <td></td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-forward_to_hdmap_utils">FORWARD_TO_HDMAP_UTILS</a></strong>(toLaneletPose )</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager#function-forward_to_entity">FORWARD_TO_ENTITY</a></strong>(cancelRequest )</td>
 </tr>
 <tr>
 <td></td>
@@ -1781,6 +1826,20 @@
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<h3 id="function-createsubscription">function createSubscription<a class="headerlink" href="#function-createsubscription" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">MessageT</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">createSubscription</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-createpublisher">function createPublisher<a class="headerlink" href="#function-createpublisher" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">MessageT</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
+<span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">createPublisher</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
 <h3 id="function-checkcollision">function checkCollision<a class="headerlink" href="#function-checkcollision" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">checkCollision</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name0</span><span class="p">,</span><span class="w"></span>
@@ -1803,89 +1862,94 @@
 </code></pre></div>
 <h3 id="function-forward_to_entity">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">engage</span><span class="w"> </span>
+<span class="w">    </span><span class="n">cancelRequest</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-forward_to_entity_1">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_1" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">engage</span><span class="w"> </span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-forward_to_entity_2">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_2" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getBoundingBox</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_2">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_2" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_3">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_3" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getCurrentAction</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_3">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_3" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_4">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_4" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getEntityType</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_4">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_4" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_5">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_5" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getEntityStatusBeforeUpdate</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_5">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_5" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_6">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_6" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getLinearJerk</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_6">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_6" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_7">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_7" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getRouteLanelets</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_7">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_7" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_8">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_8" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getStandStillDuration</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_8">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_8" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_9">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_9" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getVehicleParameters</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_9">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_9" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_10">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_10" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">getVehicleCommand</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_10">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_10" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_11">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_11" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">ready</span><span class="w"> </span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_11">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_11" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_12">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_12" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">requestAcquirePosition</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_12">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_12" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_13">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_13" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">requestAssignRoute</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_13">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_13" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_14">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_14" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">requestLaneChange</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_14">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_14" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_15">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_15" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">requestWalkStraight</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-forward_to_entity_15">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_15" title="Permanent link">#</a></h3>
+<h3 id="function-forward_to_entity_16">function FORWARD_TO_ENTITY<a class="headerlink" href="#function-forward_to_entity_16" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">setDriverModel</span><span class="w"> </span>
 <span class="p">)</span><span class="w"></span>
@@ -1929,7 +1993,7 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:07 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:18 UTC</p>
                 
                   
                 

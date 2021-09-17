@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -861,13 +873,13 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">isEgo</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">isEgo</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">Unspecified</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">static</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultController</span><span class="p">();</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">controller</span><span class="p">[</span><span class="s">&quot;isEgo&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kt">bool</span><span class="p">(</span><span class="n">controller</span><span class="p">[</span><span class="s">&quot;isEgo&quot;</span><span class="p">]);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">Controller</span><span class="o">&gt;</span><span class="p">()[</span><span class="s">&quot;isEgo&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kt">bool</span><span class="p">(</span><span class="n">as</span><span class="o">&lt;</span><span class="n">Controller</span><span class="o">&gt;</span><span class="p">()[</span><span class="s">&quot;isEgo&quot;</span><span class="p">]);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
@@ -880,7 +892,7 @@
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">controller</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">Controller</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">DriverModel</span><span class="p">(</span><span class="n">as</span><span class="o">&lt;</span><span class="n">Controller</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
@@ -890,7 +902,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__OBJECT_CONTROLLER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

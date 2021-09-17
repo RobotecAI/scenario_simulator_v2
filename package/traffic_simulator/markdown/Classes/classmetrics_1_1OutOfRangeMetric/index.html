@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -773,6 +785,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-setentitymanager" class="md-nav__link">
+    function setEntityManager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-activatetrigger" class="md-nav__link">
     function activateTrigger
   </a>
@@ -855,6 +874,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#variable-jerk_topic" class="md-nav__link">
+    variable jerk_topic
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -912,6 +938,10 @@
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1OutOfRangeMetric#function-tojson">toJson</a></strong>() override</td>
 </tr>
 <tr>
+<td>virtual void</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1OutOfRangeMetric#function-setentitymanager">setEntityManager</a></strong>(std::shared_ptr&lt; <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager">traffic_simulator::entity::EntityManager</a> &gt; entity_manager_ptr) override</td>
+</tr>
+<tr>
 <td>virtual bool</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1OutOfRangeMetric#function-activatetrigger">activateTrigger</a></strong>() override</td>
 </tr>
@@ -921,7 +951,7 @@
 </tr>
 <tr>
 <td></td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1OutOfRangeMetric#function-outofrangemetric">OutOfRangeMetric</a></strong>(std::string target_entity, double min_velocity, double max_velocity, double min_acceleration, double max_acceleration, double min_jerk, double max_jerk) <br>Construct a new Out Of Range Metric object.</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1OutOfRangeMetric#function-outofrangemetric">OutOfRangeMetric</a></strong>(std::string target_entity, double min_velocity, double max_velocity, double min_acceleration, double max_acceleration, double min_jerk, double max_jerk, boost::optional&lt; std::string &gt; jerk_topic =boost::none) <br>Construct a new Out Of Range Metric object.</td>
 </tr>
 </tbody>
 </table>
@@ -962,6 +992,10 @@
 <td>const double</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1OutOfRangeMetric#variable-max_acceleration">max_acceleration</a></strong></td>
 </tr>
+<tr>
+<td>const boost::optional&lt; std::string &gt;</td>
+<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1OutOfRangeMetric#variable-jerk_topic">jerk_topic</a></strong></td>
+</tr>
 </tbody>
 </table>
 <h2 id="additional-inherited-members">Additional inherited members<a class="headerlink" href="#additional-inherited-members" title="Permanent link">#</a></h2>
@@ -989,10 +1023,6 @@
 <tr>
 <td>void</td>
 <td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricBase#function-success">success</a></strong>()</td>
-</tr>
-<tr>
-<td>void</td>
-<td><strong><a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricBase#function-setentitymanager">setEntityManager</a></strong>(std::shared_ptr&lt; <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classtraffic__simulator_1_1entity_1_1EntityManager">traffic_simulator::entity::EntityManager</a> &gt; entity_manager_ptr)</td>
 </tr>
 <tr>
 <td>MetricLifecycle</td>
@@ -1051,6 +1081,12 @@
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">toJson</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
 <p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricBase#function-tojson">metrics::MetricBase::toJson</a></p>
+<h3 id="function-setentitymanager">function setEntityManager<a class="headerlink" href="#function-setentitymanager" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">setEntityManager</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">entity_manager_ptr</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Reimplements</strong>: <a href="/scenario_simulator_v2/package/traffic_simulator/markdown/Classes/classmetrics_1_1MetricBase#function-setentitymanager">metrics::MetricBase::setEntityManager</a></p>
 <h3 id="function-activatetrigger">function activateTrigger<a class="headerlink" href="#function-activatetrigger" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">activateTrigger</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
 </code></pre></div>
@@ -1068,7 +1104,8 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">min_acceleration</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">max_acceleration</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">min_jerk</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">max_jerk</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">max_jerk</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">jerk_topic</span><span class="w"> </span><span class="o">=</span><span class="n">boost</span><span class="o">::</span><span class="n">none</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Construct a new Out Of Range Metric object. </p>
@@ -1104,8 +1141,11 @@
 <h3 id="variable-max_acceleration">variable max_acceleration<a class="headerlink" href="#variable-max_acceleration" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">max_acceleration</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
+<h3 id="variable-jerk_topic">variable jerk_topic<a class="headerlink" href="#variable-jerk_topic" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">jerk_topic</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:07 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:18 UTC</p>
                 
                   
                 

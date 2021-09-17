@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classmetrics_1_1CollisionMetric" kind="class" language="C++" prot="public">
+    <compoundname>metrics::CollisionMetric</compoundname>
+    <basecompoundref refid="classmetrics_1_1MetricBase" prot="public" virt="non-virtual">metrics::MetricBase</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classmetrics_1_1CollisionMetric_1a9df444f60251d2b0d0c347ecfc2f9e5e" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string metrics::CollisionMetric::target_entity</definition>
+        <argsstring></argsstring>
+        <name>target_entity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmetrics_1_1CollisionMetric_1a9722bd2fdceedc14d23982f6a482e130" prot="private" static="no" mutable="no">
+        <type>const std::vector&lt; std::string &gt;</type>
+        <definition>const std::vector&lt;std::string&gt; metrics::CollisionMetric::check_targets_</definition>
+        <argsstring></argsstring>
+        <name>check_targets_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="49" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmetrics_1_1CollisionMetric_1a0f9c6b70d8f09647fdbe383c7a0760a4" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool metrics::CollisionMetric::check_collision_with_all_entities_</definition>
+        <argsstring></argsstring>
+        <name>check_collision_with_all_entities_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="50" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmetrics_1_1CollisionMetric_1a80c7a50d539b9701adc689e03dab55ac" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>metrics::CollisionMetric::CollisionMetric</definition>
+        <argsstring>(std::string target_entity)</argsstring>
+        <name>CollisionMetric</name>
+        <param>
+          <type>std::string</type>
+          <declname>target_entity</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new Traveled Distance Metric object If you call this constructor, collision metric check collision with all entities. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target_entity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the target entity </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="32" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/collision_metric.cpp" bodystart="21" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1CollisionMetric_1af345e086287b402b164e1348d5ffe922" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>metrics::CollisionMetric::CollisionMetric</definition>
+        <argsstring>(std::string target_entity, const std::vector&lt; std::string &gt; &amp;check_targets)</argsstring>
+        <name>CollisionMetric</name>
+        <param>
+          <type>std::string</type>
+          <declname>target_entity</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>check_targets</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new Collision Metric object If your call this constructor, collision metric check collision with check target entities. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target_entity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the target entity </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>check_targets</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>targets which you want to check collision </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/collision_metric.cpp" bodystart="29" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1CollisionMetric_1a6dd9b3420ddf9b6533aa5439f7913d24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>metrics::CollisionMetric::~CollisionMetric</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~CollisionMetric</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="42" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1CollisionMetric_1afdf12240e96339bbff861bbe8d193ea9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void metrics::CollisionMetric::update</definition>
+        <argsstring>() override</argsstring>
+        <name>update</name>
+        <reimplements refid="classmetrics_1_1MetricBase_1a5535990bccf8673505854b0db5d12e51">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="43" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/collision_metric.cpp" bodystart="40" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1CollisionMetric_1a756ee22eb12faf2a93f01f6c08e81519" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>nlohmann::json</type>
+        <definition>nlohmann::json metrics::CollisionMetric::toJson</definition>
+        <argsstring>()</argsstring>
+        <name>toJson</name>
+        <reimplements refid="classmetrics_1_1MetricBase_1ac5aa1847a52eebcac7700d2b74142a06">toJson</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="44" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/collision_metric.cpp" bodystart="63" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1CollisionMetric_1a45bf383dfa484455f25e74104c4ec0a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool metrics::CollisionMetric::activateTrigger</definition>
+        <argsstring>() override</argsstring>
+        <name>activateTrigger</name>
+        <reimplements refid="classmetrics_1_1MetricBase_1a39065db1c4f9042d830d9086ef01bd99">activateTrigger</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/collision_metric.cpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="26">
+        <label>metrics::CollisionMetric</label>
+        <link refid="classmetrics_1_1CollisionMetric"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>metrics::MetricBase</label>
+        <link refid="classmetrics_1_1MetricBase"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="28">
+        <label>metrics::CollisionMetric</label>
+        <link refid="classmetrics_1_1CollisionMetric"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>metrics::MetricBase</label>
+        <link refid="classmetrics_1_1MetricBase"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" line="24" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/collision_metric.hpp" bodystart="23" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classmetrics_1_1MetricBase_1ae2715921303db9ccba0092c532a386d2" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>activate</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1a45bf383dfa484455f25e74104c4ec0a9" prot="public" virt="virtual"><scope>metrics::CollisionMetric</scope><name>activateTrigger</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1a0f9c6b70d8f09647fdbe383c7a0760a4" prot="private" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>check_collision_with_all_entities_</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1a9722bd2fdceedc14d23982f6a482e130" prot="private" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>check_targets_</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1a80c7a50d539b9701adc689e03dab55ac" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>CollisionMetric</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1af345e086287b402b164e1348d5ffe922" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>CollisionMetric</name></member>
+      <member refid="classmetrics_1_1MetricBase_1ad10d16a7f9bf83a0952d63c8daa0c751" prot="protected" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>entity_manager_ptr_</name></member>
+      <member refid="classmetrics_1_1MetricBase_1aab9f2b64fa570816fe577fca1b685af2" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>failure</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a0fcf4330afb3c26942ab0adc45026e65" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>getLifecycle</name></member>
+      <member refid="classmetrics_1_1MetricBase_1ae13ba905d9469efe56cf349890327bb1" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>MetricBase</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a26827f054a849cac63e630ee6bd7cf27" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>metrics_type</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a406041977f3badc4bf8a29568d0a3040" prot="public" virt="virtual"><scope>metrics::CollisionMetric</scope><name>setEntityManager</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a9121f7a9d69506281a9eb0533f09896c" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>success</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1a9df444f60251d2b0d0c347ecfc2f9e5e" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>target_entity</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a3bfb57e35e135f57d65d3a9a18ae8c29" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>throwException</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a91e59b872a12c5f19533165d30292463" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>toBaseJson</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1a756ee22eb12faf2a93f01f6c08e81519" prot="public" virt="virtual"><scope>metrics::CollisionMetric</scope><name>toJson</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1afdf12240e96339bbff861bbe8d193ea9" prot="public" virt="virtual"><scope>metrics::CollisionMetric</scope><name>update</name></member>
+      <member refid="classmetrics_1_1CollisionMetric_1a6dd9b3420ddf9b6533aa5439f7913d24" prot="public" virt="non-virtual"><scope>metrics::CollisionMetric</scope><name>~CollisionMetric</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a86b9bbb2ceab6c040a954a4d926eb4fb" prot="public" virt="virtual"><scope>metrics::CollisionMetric</scope><name>~MetricBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -752,8 +764,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-evaluate" class="md-nav__link">
-    function evaluate
+  <a href="#function-activatesensors" class="md-nav__link">
+    function activateSensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-activateoutofrangemetric" class="md-nav__link">
+    function activateOutOfRangeMetric
   </a>
   
 </li>
@@ -781,6 +800,13 @@
           <li class="md-nav__item">
   <a href="#variable-object_controller" class="md-nav__link">
     variable object_controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-is_added" class="md-nav__link">
+    variable is_added
   </a>
   
 </li>
@@ -820,7 +846,11 @@
 <tbody>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioObject#function-evaluate">evaluate</a></strong>()</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioObject#function-activatesensors">activateSensors</a></strong>()</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioObject#function-activateoutofrangemetric">activateOutOfRangeMetric</a></strong>(const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1Vehicle">Vehicle</a> &amp; vehicle) const</td>
 </tr>
 <tr>
 <td>template \&lt;typename Node ></br></td>
@@ -840,6 +870,10 @@
 <tr>
 <td><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ObjectController">ObjectController</a></td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioObject#variable-object_controller">object_controller</a></strong></td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1ScenarioObject#variable-is_added">is_added</a></strong></td>
 </tr>
 </tbody>
 </table>
@@ -867,11 +901,19 @@
 </tr>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-findelement">findElement</a></strong>(const std::string &amp; name_) const</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-insert">insert</a></strong>(const std::string &amp; name_, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &amp; element)</td>
 </tr>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-addelement">addElement</a></strong>(const std::string &amp; name_, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &amp; element)</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-global">global</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-global">global</a></strong>()</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-findelement">findElement</a></strong>(const std::string &amp; name_) const</td>
 </tr>
 <tr>
 <td></td>
@@ -901,20 +943,8 @@
 </thead>
 <tbody>
 <tr>
-<td>boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-scene_graph_file">scene_graph_file</a></strong></td>
-</tr>
-<tr>
-<td>const boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-pathname">pathname</a></strong></td>
-</tr>
-<tr>
 <td>const std::string</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-name">name</a></strong></td>
-</tr>
-<tr>
-<td>boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-logic_file">logic_file</a></strong></td>
 </tr>
 <tr>
 <td>std::list&lt; EntityRef &gt;</td>
@@ -953,8 +983,13 @@
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
-<h3 id="function-evaluate">function evaluate<a class="headerlink" href="#function-evaluate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">evaluate</span><span class="p">()</span><span class="w"></span>
+<h3 id="function-activatesensors">function activateSensors<a class="headerlink" href="#function-activatesensors" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">activateSensors</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-activateoutofrangemetric">function activateOutOfRangeMetric<a class="headerlink" href="#function-activateoutofrangemetric" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">activateOutOfRangeMetric</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Vehicle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vehicle</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-scenarioobject">function ScenarioObject<a class="headerlink" href="#function-scenarioobject" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
@@ -967,8 +1002,11 @@
 <h3 id="variable-object_controller">variable object_controller<a class="headerlink" href="#variable-object_controller" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">ObjectController</span><span class="w"> </span><span class="n">object_controller</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
+<h3 id="variable-is_added">variable is_added<a class="headerlink" href="#variable-is_added" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">is_added</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:10 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:21 UTC</p>
                 
                   
                 

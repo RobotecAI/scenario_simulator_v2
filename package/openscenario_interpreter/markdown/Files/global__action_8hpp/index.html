@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -737,33 +749,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#defines" class="md-nav__link">
-    Defines
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#macro-documentation" class="md-nav__link">
-    Macro Documentation
-  </a>
-  
-    <nav class="md-nav" aria-label="Macro Documentation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#define-boilerplate" class="md-nav__link">
-    define BOILERPLATE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#source-code" class="md-nav__link">
     Source code
   </a>
@@ -819,29 +804,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="defines">Defines<a class="headerlink" href="#defines" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Files/global__action_8hpp#define-boilerplate">BOILERPLATE</a></strong>(TYPE)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="macro-documentation">Macro Documentation<a class="headerlink" href="#macro-documentation" title="Permanent link">#</a></h2>
-<h3 id="define-boilerplate">define BOILERPLATE<a class="headerlink" href="#define-boilerplate" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">#define BOILERPLATE(</span>
-<span class="w">    </span><span class="n">TYPE</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">TYPE</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span>\
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">TYPE</span><span class="o">&gt;</span><span class="p">().</span><span class="n">endsImmediately</span><span class="p">();</span><span class="w"> </span>\
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-</code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
 <span class="c1">//</span>
@@ -898,26 +860,37 @@
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="cp">#define BOILERPLATE(TYPE)                \</span>
-<span class="cp">  if (is&lt;TYPE&gt;()) {                      \</span>
-<span class="cp">    return as&lt;TYPE&gt;().endsImmediately(); \</span>
-<span class="cp">  }</span>
-<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">EntityAction</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">ParameterAction</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">InfrastructureAction</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">UNSUPPORTED_ELEMENT_SPECIFIED</span><span class="p">(</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span><span class="w"></span>
-<span class="cp">#undef BOILERPLATE</span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">run</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
+
+<span class="n">DEFINE_LAZY_VISITOR</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">GlobalAction</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// CASE(EnvironmentAction),</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">EntityAction</span><span class="p">),</span><span class="w">          </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">ParameterAction</span><span class="p">),</span><span class="w">       </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">InfrastructureAction</span><span class="p">),</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// CASE(TrafficAction),</span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="n">DEFINE_LAZY_VISITOR</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">GlobalAction</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// CASE(EnvironmentAction),</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">EntityAction</span><span class="p">),</span><span class="w">          </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">ParameterAction</span><span class="p">),</span><span class="w">       </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">InfrastructureAction</span><span class="p">),</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// CASE(TrafficAction),</span>
+<span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__GLOBAL_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

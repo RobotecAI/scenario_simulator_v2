@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -848,17 +860,15 @@
 
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">ready</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="cm">/* -------------------------------------------------------------------------</span>
-<span class="cm">   *</span>
-<span class="cm">   *  A Story&#39;s goal is accomplished when all its Acts are in the completeState.</span>
-<span class="cm">   *</span>
-<span class="cm">   * ---------------------------------------------------------------------- */</span><span class="w"></span>
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">accomplished</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// NOTE: A Story&#39;s goal is accomplished when all its Acts are in the completeState.</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">all_of</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">),</span><span class="w"> </span><span class="p">[](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">each</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">each</span><span class="p">.</span><span class="k">template</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">Act</span><span class="o">&gt;</span><span class="p">().</span><span class="n">complete</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="p">});</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">stopTriggered</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
@@ -887,7 +897,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__STORY_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

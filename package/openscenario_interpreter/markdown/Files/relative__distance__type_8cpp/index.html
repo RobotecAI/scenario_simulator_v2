@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -878,9 +890,15 @@
 
 <span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">longitudinal</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">lateral</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">cartesianDistance</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">euclidianDistance</span><span class="p">);</span><span class="w"></span>
 
 <span class="cp">#undef BOILERPLATE</span>
+
+<span class="w">  </span><span class="c1">// NOTE: cartesianDistance is deprecated (since OpenSCENARIO 1.1)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cartesianDistance&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">datum</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RelativeDistanceType</span><span class="o">::</span><span class="n">euclidianDistance</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">is</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="n">UNEXPECTED_ENUMERATION_VALUE_SPECIFIED</span><span class="p">(</span><span class="n">RelativeDistanceType</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -894,7 +912,7 @@
 
 <span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">longitudinal</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">lateral</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">cartesianDistance</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">euclidianDistance</span><span class="p">);</span><span class="w"></span>
 
 <span class="cp">#undef BOILERPLATE</span>
 
@@ -906,7 +924,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

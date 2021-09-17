@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -850,7 +862,7 @@
 
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">run</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nl">actor</span> <span class="p">:</span><span class="w"> </span><span class="n">actors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">applyAssignRouteAction</span><span class="p">(</span><span class="w"></span>
@@ -858,6 +870,8 @@
 <span class="w">                 </span><span class="n">route_or_catalog_reference</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Route</span><span class="o">&gt;</span><span class="p">()));</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">static_assert</span><span class="p">(</span><span class="n">endsImmediately</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
@@ -865,7 +879,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__ASSIGN_ROUTE_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

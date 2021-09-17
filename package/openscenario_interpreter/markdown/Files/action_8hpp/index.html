@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -835,6 +847,8 @@
 <span class="cm"> * -------------------------------------------------------------------------- */</span><span class="w"></span>
 <span class="k">struct</span> <span class="nc">Action</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Scope</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">StoryboardElement</span><span class="o">&lt;</span><span class="n">Action</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Element</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">overridden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Node</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Action</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scope</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="c1">// clang-format off</span>
@@ -854,8 +868,6 @@
 
 <span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">StoryboardElement</span><span class="o">::</span><span class="n">currentState</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">Element</span><span class="o">::</span><span class="n">start</span><span class="p">;</span><span class="w"></span>
-
 <span class="w">  </span><span class="cm">/* -------------------------------------------------------------------------</span>
 <span class="cm">   *</span>
 <span class="cm">   *  An Action&#39;s goal is a function of the Action type and cannot be</span>
@@ -871,9 +883,11 @@
 
 <span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">StoryboardElement</span><span class="o">::</span><span class="n">evaluate</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">overridden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">run</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">stop</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">stop</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overridden</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">current_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">complete_state</span><span class="p">;</span><span class="w"></span>
@@ -881,22 +895,30 @@
 <span class="w">      </span><span class="n">overridden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">run</span><span class="p">(</span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Element</span><span class="o">::</span><span class="n">evaluate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
-<span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="o">&amp;</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">DEFINE_LAZY_VISITOR</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Action</span><span class="p">,</span><span class="w">                   </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">GlobalAction</span><span class="p">),</span><span class="w">       </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">UserDefinedAction</span><span class="p">),</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">PrivateAction</span><span class="p">),</span><span class="w">      </span><span class="c1">//</span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="n">DEFINE_LAZY_VISITOR</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Action</span><span class="p">,</span><span class="w">             </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">GlobalAction</span><span class="p">),</span><span class="w">       </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">UserDefinedAction</span><span class="p">),</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">PrivateAction</span><span class="p">),</span><span class="w">      </span><span class="c1">//</span>
+<span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

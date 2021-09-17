@@ -2,9 +2,11 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="classmetrics_1_1MetricBase" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>metrics::MetricBase</compoundname>
+    <derivedcompoundref refid="classmetrics_1_1CollisionMetric" prot="public" virt="non-virtual">metrics::CollisionMetric</derivedcompoundref>
     <derivedcompoundref refid="classmetrics_1_1MomentaryStopMetric" prot="public" virt="non-virtual">metrics::MomentaryStopMetric</derivedcompoundref>
     <derivedcompoundref refid="classmetrics_1_1OutOfRangeMetric" prot="public" virt="non-virtual">metrics::OutOfRangeMetric</derivedcompoundref>
     <derivedcompoundref refid="classmetrics_1_1ReactionTimeMetric" prot="public" virt="non-virtual">metrics::ReactionTimeMetric</derivedcompoundref>
+    <derivedcompoundref refid="classmetrics_1_1StandstillMetric" prot="public" virt="non-virtual">metrics::StandstillMetric</derivedcompoundref>
     <derivedcompoundref refid="classmetrics_1_1TraveledDistanceMetric" prot="public" virt="non-virtual">metrics::TraveledDistanceMetric</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classmetrics_1_1MetricBase_1a26827f054a849cac63e630ee6bd7cf27" prot="public" static="no" mutable="no">
@@ -101,7 +103,9 @@
         <argsstring>()=0</argsstring>
         <name>activateTrigger</name>
         <reimplementedby refid="classmetrics_1_1TraveledDistanceMetric_1aeca318ff6c5c6c50656a620c2a674e32">activateTrigger</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1StandstillMetric_1a0fff3b9819e92f7a693ba330215bc723">activateTrigger</reimplementedby>
         <reimplementedby refid="classmetrics_1_1ReactionTimeMetric_1a561f0ba26d89a0e00fc871f00018369e">activateTrigger</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1CollisionMetric_1a45bf383dfa484455f25e74104c4ec0a9">activateTrigger</reimplementedby>
         <reimplementedby refid="classmetrics_1_1MomentaryStopMetric_1ab7596342b80ba36b862918b51bf203a8">activateTrigger</reimplementedby>
         <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a4e3cb71963e8f46de7c6d540143260e2">activateTrigger</reimplementedby>
         <briefdescription>
@@ -118,7 +122,9 @@
         <argsstring>()=0</argsstring>
         <name>update</name>
         <reimplementedby refid="classmetrics_1_1TraveledDistanceMetric_1a1c0e779b865fb5fe31685ee8d495a235">update</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1StandstillMetric_1af66913ab77764d971a0a43699f6342ec">update</reimplementedby>
         <reimplementedby refid="classmetrics_1_1ReactionTimeMetric_1aa52600a32cd3b2788f8684bf7312378b">update</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1CollisionMetric_1afdf12240e96339bbff861bbe8d193ea9">update</reimplementedby>
         <reimplementedby refid="classmetrics_1_1MomentaryStopMetric_1ad168c0484e0c839c64b277b4c11e770f">update</reimplementedby>
         <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a32309dca73d75cb611b843acd8ed9001">update</reimplementedby>
         <briefdescription>
@@ -178,9 +184,11 @@
         <argsstring>()=0</argsstring>
         <name>toJson</name>
         <reimplementedby refid="classmetrics_1_1TraveledDistanceMetric_1a20d7a41700f7da1f52f62b115b3dfc26">toJson</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1StandstillMetric_1a1ad94cf8e9144e3062c0ea7affbae975">toJson</reimplementedby>
         <reimplementedby refid="classmetrics_1_1ReactionTimeMetric_1a8ac6167f8d9e550f6b9d93eee4f0db50">toJson</reimplementedby>
-        <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a1674a8edd3acb3d16bb1e7eabc868582">toJson</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1CollisionMetric_1a756ee22eb12faf2a93f01f6c08e81519">toJson</reimplementedby>
         <reimplementedby refid="classmetrics_1_1MomentaryStopMetric_1a82b8acb7d4f8f6ce9ff3ca1c43d93b7d">toJson</reimplementedby>
+        <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a1674a8edd3acb3d16bb1e7eabc868582">toJson</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -202,11 +210,12 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/metric_base.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/metric_base.cpp" bodystart="60" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="classmetrics_1_1MetricBase_1a406041977f3badc4bf8a29568d0a3040" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmetrics_1_1MetricBase_1a406041977f3badc4bf8a29568d0a3040" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void metrics::MetricBase::setEntityManager</definition>
         <argsstring>(std::shared_ptr&lt; traffic_simulator::entity::EntityManager &gt; entity_manager_ptr)</argsstring>
         <name>setEntityManager</name>
+        <reimplementedby refid="classmetrics_1_1OutOfRangeMetric_1a1d3f02f8bd383fdddba28dc9e8a06bac">setEntityManager</reimplementedby>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classtraffic__simulator_1_1entity_1_1EntityManager" kindref="compound">traffic_simulator::entity::EntityManager</ref> &gt;</type>
           <declname>entity_manager_ptr</declname>
@@ -251,32 +260,44 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="93">
+      <node id="98">
         <label>metrics::ReactionTimeMetric</label>
         <link refid="classmetrics_1_1ReactionTimeMetric"/>
-        <childnode refid="90" relation="public-inheritance">
+        <childnode refid="94" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>metrics::StandstillMetric</label>
+        <link refid="classmetrics_1_1StandstillMetric"/>
+        <childnode refid="94" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>metrics::TraveledDistanceMetric</label>
+        <link refid="classmetrics_1_1TraveledDistanceMetric"/>
+        <childnode refid="94" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>metrics::OutOfRangeMetric</label>
+        <link refid="classmetrics_1_1OutOfRangeMetric"/>
+        <childnode refid="94" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>metrics::CollisionMetric</label>
+        <link refid="classmetrics_1_1CollisionMetric"/>
+        <childnode refid="94" relation="public-inheritance">
         </childnode>
       </node>
       <node id="94">
-        <label>metrics::TraveledDistanceMetric</label>
-        <link refid="classmetrics_1_1TraveledDistanceMetric"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="92">
-        <label>metrics::OutOfRangeMetric</label>
-        <link refid="classmetrics_1_1OutOfRangeMetric"/>
-        <childnode refid="90" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="90">
         <label>metrics::MetricBase</label>
         <link refid="classmetrics_1_1MetricBase"/>
       </node>
-      <node id="91">
+      <node id="96">
         <label>metrics::MomentaryStopMetric</label>
         <link refid="classmetrics_1_1MomentaryStopMetric"/>
-        <childnode refid="90" relation="public-inheritance">
+        <childnode refid="94" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
@@ -291,7 +312,7 @@
       <member refid="classmetrics_1_1MetricBase_1a3f3304a866ae70cdc4e1cee7b627ebea" prot="private" virt="non-virtual"><scope>metrics::MetricBase</scope><name>lifecycle_</name></member>
       <member refid="classmetrics_1_1MetricBase_1ae13ba905d9469efe56cf349890327bb1" prot="public" virt="non-virtual"><scope>metrics::MetricBase</scope><name>MetricBase</name></member>
       <member refid="classmetrics_1_1MetricBase_1a26827f054a849cac63e630ee6bd7cf27" prot="public" virt="non-virtual"><scope>metrics::MetricBase</scope><name>metrics_type</name></member>
-      <member refid="classmetrics_1_1MetricBase_1a406041977f3badc4bf8a29568d0a3040" prot="public" virt="non-virtual"><scope>metrics::MetricBase</scope><name>setEntityManager</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a406041977f3badc4bf8a29568d0a3040" prot="public" virt="virtual"><scope>metrics::MetricBase</scope><name>setEntityManager</name></member>
       <member refid="classmetrics_1_1MetricBase_1a9121f7a9d69506281a9eb0533f09896c" prot="public" virt="non-virtual"><scope>metrics::MetricBase</scope><name>success</name></member>
       <member refid="classmetrics_1_1MetricBase_1a3bfb57e35e135f57d65d3a9a18ae8c29" prot="public" virt="non-virtual"><scope>metrics::MetricBase</scope><name>throwException</name></member>
       <member refid="classmetrics_1_1MetricBase_1a91e59b872a12c5f19533165d30292463" prot="public" virt="non-virtual"><scope>metrics::MetricBase</scope><name>toBaseJson</name></member>

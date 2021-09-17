@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -842,21 +854,33 @@
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is</span><span class="o">&lt;</span><span class="n">LaneChangeAction</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">as</span><span class="o">&lt;</span><span class="n">LaneChangeAction</span><span class="o">&gt;</span><span class="p">().</span><span class="n">endsImmediately</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">UNSUPPORTED_ELEMENT_SPECIFIED</span><span class="p">(</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">endsImmediately</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">run</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
+
+<span class="n">DEFINE_LAZY_VISITOR</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">LateralAction</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">LaneChangeAction</span><span class="p">),</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// CASE(LaneOffsetAction),</span>
+<span class="w">  </span><span class="c1">// CASE(LateralDistanceAction),</span>
+<span class="p">);</span><span class="w"></span>
+
+<span class="n">DEFINE_LAZY_VISITOR</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">LateralAction</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">CASE</span><span class="p">(</span><span class="n">LaneChangeAction</span><span class="p">),</span><span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// CASE(LaneOffsetAction),</span>
+<span class="w">  </span><span class="c1">// CASE(LateralDistanceAction),</span>
+<span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
 
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__LATERAL_ACTION_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

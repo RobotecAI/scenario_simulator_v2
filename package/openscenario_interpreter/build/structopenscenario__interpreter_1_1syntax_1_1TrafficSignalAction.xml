@@ -35,10 +35,10 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" bodystart="39" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1a536e93f57d5ff9e98910ce37a5469e9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool openscenario_interpreter::syntax::TrafficSignalAction::endsImmediately</definition>
-        <argsstring>() const</argsstring>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aae6739fe71eadbc4266b97af405cc96e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::TrafficSignalAction::endsImmediately</definition>
+        <argsstring>() const -&gt; bool</argsstring>
         <name>endsImmediately</name>
         <briefdescription>
         </briefdescription>
@@ -46,7 +46,33 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" line="49" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" bodystart="49" bodyend="57"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" line="49" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/traffic_signal_action.cpp" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1ae63a335b272d3f215683ea8a78490b16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::TrafficSignalAction::run</definition>
+        <argsstring>() -&gt; void</argsstring>
+        <name>run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/traffic_signal_action.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aff2ef1e5bd2e0f2f43e024f5093bf5fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::TrafficSignalAction::start</definition>
+        <argsstring>() -&gt; void</argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" line="53" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/traffic_signal_action.cpp" bodystart="31" bodyend="34"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -54,6 +80,23 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="824">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="822">
+        <label>openscenario_interpreter::syntax::TrafficSignalAction</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction"/>
+        <childnode refid="823" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="823">
+        <label>ComplexType</label>
+        <link refid="classopenscenario__interpreter_1_1Pointer"/>
+        <childnode refid="824" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="827">
         <label>std::shared_ptr&lt; Expression  &gt;</label>
       </node>
@@ -69,28 +112,13 @@
         <childnode refid="827" relation="public-inheritance">
         </childnode>
       </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="830">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
-      </node>
-      <node id="828">
-        <label>openscenario_interpreter::syntax::TrafficSignalAction</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction"/>
-        <childnode refid="829" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="829">
-        <label>ComplexType</label>
-        <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="830" relation="public-inheritance">
-        </childnode>
-      </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" bodystart="36" bodyend="58"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/traffic_signal_action.hpp" bodystart="36" bodyend="54"/>
     <listofallmembers>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1a536e93f57d5ff9e98910ce37a5469e9e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignalAction</scope><name>endsImmediately</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aae6739fe71eadbc4266b97af405cc96e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignalAction</scope><name>endsImmediately</name></member>
       <member refid="classopenscenario__interpreter_1_1Pointer_1a7cd639fabe0abf89dd1a83e91e97c225" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignalAction</scope><name>Pointer</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1ae63a335b272d3f215683ea8a78490b16" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignalAction</scope><name>run</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aff2ef1e5bd2e0f2f43e024f5093bf5fe" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignalAction</scope><name>start</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1TrafficSignalAction_1aff7363110e6b49b97fcff77f23578563" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::TrafficSignalAction</scope><name>TrafficSignalAction</name></member>
     </listofallmembers>
   </compounddef>

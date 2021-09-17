@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -948,6 +960,8 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_msgs/msg/driver_model.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_msgs/msg/entity_status_with_trajectory_array.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;openscenario_msgs/msg/vehicle_parameters.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/node_interfaces/get_node_topics_interface.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/node_interfaces/node_topics_interface.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;scenario_simulator_exception/exception.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
@@ -986,6 +1000,8 @@
 <span class="k">class</span> <span class="nc">EntityManager</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">Configuration</span><span class="w"> </span><span class="n">configuration</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">node_interfaces</span><span class="o">::</span><span class="n">NodeTopicsInterface</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node_topics_interface</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">StaticTransformBroadcaster</span><span class="w"> </span><span class="n">broadcaster_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">TransformBroadcaster</span><span class="w"> </span><span class="n">base_link_broadcaster_</span><span class="p">;</span><span class="w"></span>
@@ -1032,6 +1048,10 @@
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">NodeT</span><span class="p">,</span><span class="w"> </span><span class="k">class</span> <span class="nc">AllocatorT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">EntityManager</span><span class="p">(</span><span class="n">NodeT</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Configuration</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">configuration</span><span class="p">(</span><span class="n">configuration</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">node_topics_interface</span><span class="p">([](</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">using</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">node_interfaces</span><span class="o">::</span><span class="n">get_node_topics_interface</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">get_node_topics_interface</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}(</span><span class="n">node</span><span class="p">)),</span><span class="w"></span>
 <span class="w">    </span><span class="n">broadcaster_</span><span class="p">(</span><span class="n">node</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="n">base_link_broadcaster_</span><span class="p">(</span><span class="n">node</span><span class="p">),</span><span class="w"></span>
 <span class="w">    </span><span class="n">clock_ptr_</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()),</span><span class="w"></span>
@@ -1109,6 +1129,7 @@
 <span class="cp">  }                                                                            \</span>
 <span class="cp">  static_assert(true, &quot;&quot;)</span>
 
+<span class="w">  </span><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="n">cancelRequest</span><span class="p">,</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="n">engage</span><span class="p">,</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="n">getBoundingBox</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">FORWARD_TO_ENTITY</span><span class="p">(</span><span class="n">getCurrentAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="p">);</span><span class="w"></span>
@@ -1241,7 +1262,20 @@
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">toMapPose</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">openscenario_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">LaneletPose</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">step_time</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">MessageT</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">createPublisher</span><span class="p">(</span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">MessageT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">node_topics_interface</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">MessageT</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">createSubscription</span><span class="p">(</span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">MessageT</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">node_topics_interface</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">current_time</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">step_time</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateHdmapMarker</span><span class="p">();</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
@@ -1251,7 +1285,7 @@
 <span class="cp">#endif  </span><span class="c1">// TRAFFIC_SIMULATOR__ENTITY__ENTITY_MANAGER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:08 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:19 UTC</p>
                 
                   
                 

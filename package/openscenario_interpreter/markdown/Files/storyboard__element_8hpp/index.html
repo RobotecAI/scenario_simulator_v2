@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -851,7 +863,7 @@
 <span class="w">    </span><span class="n">IDENTIFIER</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">CONST</span><span class="w"></span>
 <span class="p">)</span><span class="w"> </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w">                                                             </span>\
-<span class="w">  </span><span class="k">constexpr</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">(</span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="n">CONST</span><span class="w">                                </span>\
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">(</span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="n">CONST</span><span class="o">-&gt;</span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w">                                    </span>\
 <span class="w">  </span><span class="p">{</span><span class="w">                                                                                     </span>\
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">CONST</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">).</span><span class="n">IDENTIFIER</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"> </span>\
 <span class="w">  </span><span class="p">}</span><span class="w">                                                                                     </span>\
@@ -948,20 +960,20 @@
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Boolean</span><span class="p">,</span><span class="w"> </span><span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="n">Boolean</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">consequent_state</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="n">Boolean</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">consequent_state</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="n">consequent_state</span><span class="p">,</span><span class="w"> </span><span class="n">current_state</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Predicate</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="p">,</span><span class="w"> </span><span class="n">REQUIRES</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_function</span><span class="o">&lt;</span><span class="n">Predicate</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="n">Predicate</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">predicate</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="n">Predicate</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">predicate</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="n">predicate</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">Element</span><span class="w"> </span><span class="k">override</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="k">override</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">complete</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">stopping</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">complete</span><span class="p">()</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">stopping</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">current_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop_transition</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">current_state</span><span class="p">;</span><span class="w"></span>
@@ -969,11 +981,9 @@
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-
 <span class="cp">#define DEFINE_PERFECT_FORWARD(IDENTIFIER, CONST)                                       \</span>
 <span class="cp">  template &lt;typename... Ts&gt;                                                             \</span>
-<span class="cp">  constexpr decltype(auto) IDENTIFIER(Ts &amp;&amp;... xs) CONST                                \</span>
+<span class="cp">  auto IDENTIFIER(Ts &amp;&amp;... xs) CONST-&gt;decltype(auto)                                    \</span>
 <span class="cp">  {                                                                                     \</span>
 <span class="cp">    return static_cast&lt;CONST T &amp;&gt;(*this).IDENTIFIER(std::forward&lt;decltype(xs)&gt;(xs)...); \</span>
 <span class="cp">  }                                                                                     \</span>
@@ -982,6 +992,7 @@
 <span class="w">  </span><span class="n">DEFINE_PERFECT_FORWARD</span><span class="p">(</span><span class="n">accomplished</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DEFINE_PERFECT_FORWARD</span><span class="p">(</span><span class="n">ready</span><span class="p">,</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DEFINE_PERFECT_FORWARD</span><span class="p">(</span><span class="n">run</span><span class="p">,</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">DEFINE_PERFECT_FORWARD</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DEFINE_PERFECT_FORWARD</span><span class="p">(</span><span class="n">stop</span><span class="p">,</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">DEFINE_PERFECT_FORWARD</span><span class="p">(</span><span class="n">stopTriggered</span><span class="p">,</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 
@@ -999,13 +1010,13 @@
 <span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">cdr</span><span class="p">(</span><span class="n">names</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">name</span><span class="p">));</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">U</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Node</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">readStoryboardElement</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">inner_scope</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">readStoryboardElement</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Scope</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">inner_scope</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rename</span><span class="p">(</span><span class="n">readAttribute</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">inner_scope</span><span class="p">));</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">inner_scope</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
-<span class="w">      </span><span class="n">inner_scope</span><span class="p">.</span><span class="n">addElement</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">inner_scope</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">element</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="n">SyntaxError</span><span class="p">(</span><span class="w"></span>
@@ -1048,7 +1059,7 @@
 <span class="cm">       *</span>
 <span class="cm">       * -------------------------------------------------------------------- */</span><span class="w"></span>
 <span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="nl">startTransition</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">).</span><span class="n">start</span><span class="p">();</span><span class="w">  </span><span class="c1">// NOTE: DON&#39;T USE MACRO DEFINE_PERFECT_FORWARD FOR THIS!</span>
+<span class="w">        </span><span class="n">start</span><span class="p">();</span><span class="w"></span>
 <span class="w">        </span><span class="o">++</span><span class="n">current_execution_count</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">changeStateIf</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">true_type</span><span class="p">(),</span><span class="w"> </span><span class="n">running_state</span><span class="p">);</span><span class="w"></span>
 
@@ -1162,7 +1173,7 @@
 <span class="cm">       * -------------------------------------------------------------------- */</span><span class="w"></span>
 <span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
 <span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">StoryboardElementState</span><span class="o">::</span><span class="nl">stopTransition</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">accomplished</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">accomplished</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">          </span><span class="n">stop</span><span class="p">();</span><span class="w"></span>
 <span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">current_state</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1177,7 +1188,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__STORYBOARD_ELEMENT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

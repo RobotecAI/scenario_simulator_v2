@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -787,6 +799,17 @@
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">metrics</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OutOfRangeMetric::setEntityManager</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">traffic_simulator</span><span class="o">::</span><span class="n">entity</span><span class="o">::</span><span class="n">EntityManager</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entity_manager_ptr</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">entity_manager_ptr_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">entity_manager_ptr</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">jerk_topic</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">jerk_callback_ptr_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">createSubscription</span><span class="o">&lt;</span><span class="n">JerkMessageType</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="o">*</span><span class="n">jerk_topic</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">SensorDataQoS</span><span class="p">(),</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">JerkMessageType</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">linear_jerk_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
 <span class="kt">void</span><span class="w"> </span><span class="nf">OutOfRangeMetric::update</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">getEntityStatus</span><span class="p">(</span><span class="n">target_entity</span><span class="p">);</span><span class="w"></span>
@@ -812,16 +835,18 @@
 <span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">jerk_opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">getLinearJerk</span><span class="p">(</span><span class="n">target_entity</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">jerk_opt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">linear_jerk_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jerk_opt</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">min_jerk</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">linear_jerk_</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">linear_jerk_</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">max_jerk</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">failure</span><span class="p">(</span><span class="n">SPECIFICATION_VIOLATION</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="s">&quot;current jerk (which is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linear_jerk_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;) is out of range (which is [&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">min_jerk</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">max_jerk</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;])&quot;</span><span class="p">));</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">jerk_callback_ptr_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">jerk_opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity_manager_ptr_</span><span class="o">-&gt;</span><span class="n">getLinearJerk</span><span class="p">(</span><span class="n">target_entity</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">jerk_opt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">linear_jerk_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jerk_opt</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">min_jerk</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">linear_jerk_</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">linear_jerk_</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">max_jerk</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">failure</span><span class="p">(</span><span class="n">SPECIFICATION_VIOLATION</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;current jerk (which is &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linear_jerk_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;) is out of range (which is [&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">min_jerk</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">max_jerk</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;])&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -838,7 +863,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace metrics</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:08 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:19 UTC</p>
                 
                   
                 

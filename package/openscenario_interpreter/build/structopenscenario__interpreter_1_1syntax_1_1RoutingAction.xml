@@ -35,10 +35,10 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" bodystart="40" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a047fdf0f55fd4d46d197de01925340d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool openscenario_interpreter::syntax::RoutingAction::endsImmediately</definition>
-        <argsstring>() const</argsstring>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1ab504aa779de9a274e4d133f4fd0ed55a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::RoutingAction::endsImmediately</definition>
+        <argsstring>() const -&gt; bool</argsstring>
         <name>endsImmediately</name>
         <briefdescription>
         </briefdescription>
@@ -46,7 +46,33 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" bodystart="51" bodyend="61"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/routing_action.cpp" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1ae3245d3186eda23cc613406d83f7ba3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::RoutingAction::run</definition>
+        <argsstring>() -&gt; void</argsstring>
+        <name>run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" line="53" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/routing_action.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a9a86adbf343c8f84b44fa9d14f8dfcf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::RoutingAction::start</definition>
+        <argsstring>() -&gt; void</argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/src/syntax/routing_action.cpp" bodystart="31" bodyend="34"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -54,6 +80,23 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="651">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="650">
+        <label>ComplexType</label>
+        <link refid="classopenscenario__interpreter_1_1Pointer"/>
+        <childnode refid="651" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="649">
+        <label>openscenario_interpreter::syntax::RoutingAction</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction"/>
+        <childnode refid="650" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="654">
         <label>std::shared_ptr&lt; Expression  &gt;</label>
       </node>
@@ -69,29 +112,14 @@
         <childnode refid="653" relation="public-inheritance">
         </childnode>
       </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="657">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
-      </node>
-      <node id="656">
-        <label>ComplexType</label>
-        <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="657" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="655">
-        <label>openscenario_interpreter::syntax::RoutingAction</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction"/>
-        <childnode refid="656" relation="public-inheritance">
-        </childnode>
-      </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" bodystart="37" bodyend="62"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/routing_action.hpp" bodystart="37" bodyend="56"/>
     <listofallmembers>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a047fdf0f55fd4d46d197de01925340d4" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::RoutingAction</scope><name>endsImmediately</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1ab504aa779de9a274e4d133f4fd0ed55a" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::RoutingAction</scope><name>endsImmediately</name></member>
       <member refid="classopenscenario__interpreter_1_1Pointer_1a7cd639fabe0abf89dd1a83e91e97c225" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::RoutingAction</scope><name>Pointer</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a609ffc88de4ad9aff42ad3ee7dea6ba6" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::RoutingAction</scope><name>RoutingAction</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1ae3245d3186eda23cc613406d83f7ba3e" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::RoutingAction</scope><name>run</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1RoutingAction_1a9a86adbf343c8f84b44fa9d14f8dfcf4" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::RoutingAction</scope><name>start</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

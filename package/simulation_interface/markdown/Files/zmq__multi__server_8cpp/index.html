@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -908,7 +920,8 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="n">MultiServer</span><span class="o">::</span><span class="n">poll</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">poller_</span><span class="p">.</span><span class="n">poll</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">timeout_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1L</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">poller_</span><span class="p">.</span><span class="n">poll</span><span class="p">(</span><span class="n">timeout_ms</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">poller_</span><span class="p">.</span><span class="n">has_input</span><span class="p">(</span><span class="n">initialize_sock_</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">zmqpp</span><span class="o">::</span><span class="n">message</span><span class="w"> </span><span class="n">request</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">initialize_sock_</span><span class="p">.</span><span class="n">receive</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w"></span>
@@ -1006,7 +1019,7 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace zeromq</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:08 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:20 UTC</p>
                 
                   
                 

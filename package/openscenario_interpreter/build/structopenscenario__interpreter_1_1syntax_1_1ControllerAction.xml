@@ -29,20 +29,6 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1ae3b14b3a35fcc0f24cc5210091452341" prot="public" static="no" mutable="no">
-        <type>const std::true_type</type>
-        <definition>const std::true_type openscenario_interpreter::syntax::ControllerAction::accomplished</definition>
-        <argsstring></argsstring>
-        <name>accomplished</name>
-        <initializer>{}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="68" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a8cbb46c46ade3557d783fe3a7a268897" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
@@ -74,26 +60,11 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="58" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="58" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a1cfd615807dd888c9e53d74e56f8f541" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void openscenario_interpreter::syntax::ControllerAction::start</definition>
-        <argsstring>() const</argsstring>
-        <name>start</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="66" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="66" bodyend="66"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a5e63411ceec3e9e076446cac36ad0e58" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
-        <definition>static bool openscenario_interpreter::syntax::ControllerAction::endsImmediately</definition>
-        <argsstring>()</argsstring>
-        <name>endsImmediately</name>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a8ddec308ec491e3ed020febe648b9e27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::ControllerAction::run</definition>
+        <argsstring>() const -&gt; void</argsstring>
+        <name>run</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -103,55 +74,97 @@
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="70" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a021feaef36467408e9c20eea5bb31dbb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static auto openscenario_interpreter::syntax::ControllerAction::accomplished</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>accomplished</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="66" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a51496d0820101fa3ab410fd8709b2c7f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static auto openscenario_interpreter::syntax::ControllerAction::endsImmediately</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>endsImmediately</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="68" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a2a6667b480c11785d941816352519c32" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static auto openscenario_interpreter::syntax::ControllerAction::start</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>start</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="72" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="72" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="171">
+      <node id="175">
         <label>openscenario_interpreter::syntax::AssignControllerAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1AssignControllerAction"/>
-        <childnode refid="172" relation="private-inheritance">
+        <childnode refid="176" relation="private-inheritance">
         </childnode>
-        <childnode refid="173" relation="public-inheritance">
+        <childnode refid="177" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="178">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="177">
+        <label>ComplexType</label>
+        <link refid="classopenscenario__interpreter_1_1Pointer"/>
+        <childnode refid="178" relation="public-inheritance">
         </childnode>
       </node>
       <node id="174">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
-      </node>
-      <node id="173">
-        <label>ComplexType</label>
-        <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="174" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="170">
         <label>openscenario_interpreter::syntax::OverrideControllerValueAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1OverrideControllerValueAction"/>
       </node>
-      <node id="172">
+      <node id="176">
         <label>openscenario_interpreter::Scope</label>
         <link refid="classopenscenario__interpreter_1_1Scope"/>
       </node>
-      <node id="169">
+      <node id="173">
         <label>openscenario_interpreter::syntax::ControllerAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction"/>
-        <childnode refid="170" relation="usage">
+        <childnode refid="174" relation="usage">
           <edgelabel>override_controller_value_action</edgelabel>
         </childnode>
-        <childnode refid="171" relation="usage">
+        <childnode refid="175" relation="usage">
           <edgelabel>assign_controller_action</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="39" bodyend="71"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/controller_action.hpp" bodystart="39" bodyend="73"/>
     <listofallmembers>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1ae3b14b3a35fcc0f24cc5210091452341" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>accomplished</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a021feaef36467408e9c20eea5bb31dbb" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>accomplished</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a666f51cd108266dccdf40663a9cc4212" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>assign_controller_action</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a8cbb46c46ade3557d783fe3a7a268897" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>ControllerAction</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a5e63411ceec3e9e076446cac36ad0e58" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>endsImmediately</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a51496d0820101fa3ab410fd8709b2c7f" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>endsImmediately</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a47bdf60bcfcea7ddb6fb46773e4eeaa6" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>override_controller_value_action</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a1cfd615807dd888c9e53d74e56f8f541" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>start</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a8ddec308ec491e3ed020febe648b9e27" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>run</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1ControllerAction_1a2a6667b480c11785d941816352519c32" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::ControllerAction</scope><name>start</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

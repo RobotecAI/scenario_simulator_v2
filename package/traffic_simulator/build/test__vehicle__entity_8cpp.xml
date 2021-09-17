@@ -1,0 +1,851 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="test__vehicle__entity_8cpp" kind="file" language="C++">
+    <compoundname>test_vehicle_entity.cpp</compoundname>
+    <includes local="no">gtest/gtest.h</includes>
+    <includes local="no">scenario_simulator_exception/exception.hpp</includes>
+    <includes refid="vehicle__entity_8hpp" local="no">traffic_simulator/entity/vehicle_entity.hpp</includes>
+    <includes refid="helper_8hpp" local="no">traffic_simulator/helper/helper.hpp</includes>
+    <includes refid="catalogs_8hpp" local="yes">../catalogs.hpp</includes>
+    <includes refid="expect__eq__macros_8hpp" local="yes">../expect_eq_macros.hpp</includes>
+    <incdepgraph>
+      <node id="7436">
+        <label>scenario_simulator_exception/exception.hpp</label>
+      </node>
+      <node id="7442">
+        <label>traffic_simulator/behavior/route_planner.hpp</label>
+        <link refid="route__planner_8hpp_source"/>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7444" relation="include">
+        </childnode>
+        <childnode refid="7445" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7482">
+        <label>traffic_simulator/traffic_lights/traffic_light_state.hpp</label>
+        <link refid="traffic__light__state_8hpp_source"/>
+        <childnode refid="7483" relation="include">
+        </childnode>
+        <childnode refid="7484" relation="include">
+        </childnode>
+        <childnode refid="7485" relation="include">
+        </childnode>
+      </node>
+      <node id="7505">
+        <label>iomanip</label>
+      </node>
+      <node id="7491">
+        <label>functional</label>
+      </node>
+      <node id="7444">
+        <label>queue</label>
+      </node>
+      <node id="7508">
+        <label>limits</label>
+      </node>
+      <node id="7462">
+        <label>geometry_msgs/msg/pose_stamped.hpp</label>
+      </node>
+      <node id="7502">
+        <label>openscenario_msgs/msg/entity_type.hpp</label>
+      </node>
+      <node id="7512">
+        <label>std_msgs/msg/color_rgba.hpp</label>
+      </node>
+      <node id="7490">
+        <label>behaviortree_cpp_v3/loggers/bt_cout_logger.h</label>
+      </node>
+      <node id="7461">
+        <label>geographic_msgs/msg/geo_point.hpp</label>
+      </node>
+      <node id="7524">
+        <label>openscenario_msgs/msg/misc_object_parameters.hpp</label>
+      </node>
+      <node id="7440">
+        <label>openscenario_msgs/msg/waypoints_array.hpp</label>
+      </node>
+      <node id="7517">
+        <label>traffic_simulator/helper/helper.hpp</label>
+        <link refid="helper_8hpp_source"/>
+        <childnode refid="7518" relation="include">
+        </childnode>
+        <childnode refid="7519" relation="include">
+        </childnode>
+        <childnode refid="7476" relation="include">
+        </childnode>
+        <childnode refid="7520" relation="include">
+        </childnode>
+        <childnode refid="7484" relation="include">
+        </childnode>
+        <childnode refid="7521" relation="include">
+        </childnode>
+        <childnode refid="7522" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+      </node>
+      <node id="7453">
+        <label>lanelet2_routing/RoutingGraph.h</label>
+      </node>
+      <node id="7513">
+        <label>traffic_simulator/traffic_lights/traffic_light_phase.hpp</label>
+        <link refid="traffic__light__phase_8hpp_source"/>
+        <childnode refid="7508" relation="include">
+        </childnode>
+        <childnode refid="7436" relation="include">
+        </childnode>
+        <childnode refid="7445" relation="include">
+        </childnode>
+        <childnode refid="7480" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7522">
+        <label>openscenario_msgs/msg/lanelet_pose.hpp</label>
+      </node>
+      <node id="7448">
+        <label>lanelet2_core/geometry/Lanelet.h</label>
+      </node>
+      <node id="7504">
+        <label>autoware_perception_msgs/msg/traffic_light_state_array.hpp</label>
+      </node>
+      <node id="7497">
+        <label>traffic_simulator/behavior/action_node.hpp</label>
+        <link refid="action__node_8hpp_source"/>
+        <childnode refid="7496" relation="include">
+        </childnode>
+        <childnode refid="7498" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7492" relation="include">
+        </childnode>
+        <childnode refid="7440" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7499" relation="include">
+        </childnode>
+        <childnode refid="7445" relation="include">
+        </childnode>
+        <childnode refid="7514" relation="include">
+        </childnode>
+        <childnode refid="7472" relation="include">
+        </childnode>
+        <childnode refid="7503" relation="include">
+        </childnode>
+        <childnode refid="7481" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7521">
+        <label>openscenario_msgs/msg/action_status.hpp</label>
+      </node>
+      <node id="7487">
+        <label>traffic_simulator/behavior/target_speed_planner.hpp</label>
+        <link refid="target__speed__planner_8hpp_source"/>
+        <childnode refid="7460" relation="include">
+        </childnode>
+      </node>
+      <node id="7467">
+        <label>openscenario_msgs/msg/entity_status.hpp</label>
+      </node>
+      <node id="7516">
+        <label>pugixml.hpp</label>
+      </node>
+      <node id="7483">
+        <label>autoware_perception_msgs/msg/lamp_state.hpp</label>
+      </node>
+      <node id="7476">
+        <label>geometry_msgs/msg/pose.hpp</label>
+      </node>
+      <node id="7439">
+        <label>openscenario_msgs/msg/vehicle_parameters.hpp</label>
+      </node>
+      <node id="7519">
+        <label>cmath</label>
+      </node>
+      <node id="7510">
+        <label>cassert</label>
+      </node>
+      <node id="7485">
+        <label>stdexcept</label>
+      </node>
+      <node id="7489">
+        <label>behaviortree_cpp_v3/bt_factory.h</label>
+      </node>
+      <node id="7468">
+        <label>string</label>
+      </node>
+      <node id="7492">
+        <label>openscenario_msgs/msg/obstacle.hpp</label>
+      </node>
+      <node id="7465">
+        <label>lanelet2_extension_psim/utility/utilities.hpp</label>
+      </node>
+      <node id="7469">
+        <label>traffic_simulator/hdmap_utils/cache.hpp</label>
+        <link refid="cache_8hpp_source"/>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7470" relation="include">
+        </childnode>
+        <childnode refid="7471" relation="include">
+        </childnode>
+        <childnode refid="7436" relation="include">
+        </childnode>
+        <childnode refid="7472" relation="include">
+        </childnode>
+        <childnode refid="7481" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7466">
+        <label>map</label>
+      </node>
+      <node id="7474">
+        <label>traffic_simulator/math/hermite_curve.hpp</label>
+        <link refid="hermite__curve_8hpp_source"/>
+        <childnode refid="7435" relation="include">
+        </childnode>
+        <childnode refid="7475" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7470" relation="include">
+        </childnode>
+        <childnode refid="7476" relation="include">
+        </childnode>
+        <childnode refid="7477" relation="include">
+        </childnode>
+        <childnode refid="7478" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7509">
+        <label>traffic_simulator/color_utils/color_utils.hpp</label>
+        <link refid="color__utils_8hpp_source"/>
+        <childnode refid="7510" relation="include">
+        </childnode>
+        <childnode refid="7511" relation="include">
+        </childnode>
+        <childnode refid="7466" relation="include">
+        </childnode>
+        <childnode refid="7512" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+      </node>
+      <node id="7501">
+        <label>openscenario_msgs/msg/bounding_box.hpp</label>
+      </node>
+      <node id="7441">
+        <label>rclcpp/rclcpp.hpp</label>
+      </node>
+      <node id="7452">
+        <label>lanelet2_routing/RoutingCost.h</label>
+      </node>
+      <node id="7493">
+        <label>traffic_simulator/behavior/vehicle/lane_change_action.hpp</label>
+        <link refid="lane__change__action_8hpp_source"/>
+        <childnode refid="7494" relation="include">
+        </childnode>
+        <childnode refid="7489" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7467" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7495" relation="include">
+        </childnode>
+        <childnode refid="7474" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7457">
+        <label>tf2_geometry_msgs/tf2_geometry_msgs.h</label>
+      </node>
+      <node id="7445">
+        <label>traffic_simulator/hdmap_utils/hdmap_utils.hpp</label>
+        <link refid="hdmap__utils_8hpp_source"/>
+        <childnode refid="7446" relation="include">
+        </childnode>
+        <childnode refid="7447" relation="include">
+        </childnode>
+        <childnode refid="7448" relation="include">
+        </childnode>
+        <childnode refid="7449" relation="include">
+        </childnode>
+        <childnode refid="7450" relation="include">
+        </childnode>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7452" relation="include">
+        </childnode>
+        <childnode refid="7453" relation="include">
+        </childnode>
+        <childnode refid="7454" relation="include">
+        </childnode>
+        <childnode refid="7455" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7457" relation="include">
+        </childnode>
+        <childnode refid="7458" relation="include">
+        </childnode>
+        <childnode refid="7459" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7461" relation="include">
+        </childnode>
+        <childnode refid="7462" relation="include">
+        </childnode>
+        <childnode refid="7463" relation="include">
+        </childnode>
+        <childnode refid="7464" relation="include">
+        </childnode>
+        <childnode refid="7465" relation="include">
+        </childnode>
+        <childnode refid="7466" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7467" relation="include">
+        </childnode>
+        <childnode refid="7441" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7469" relation="include">
+        </childnode>
+        <childnode refid="7474" relation="include">
+        </childnode>
+        <childnode refid="7482" relation="include">
+        </childnode>
+        <childnode refid="7481" relation="include">
+        </childnode>
+        <childnode refid="7480" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+        <childnode refid="7486" relation="include">
+        </childnode>
+      </node>
+      <node id="7473">
+        <label>exception</label>
+      </node>
+      <node id="7514">
+        <label>traffic_simulator/helper/stop_watch.hpp</label>
+        <link refid="stop__watch_8hpp_source"/>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7515" relation="include">
+        </childnode>
+        <childnode refid="7484" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+      </node>
+      <node id="7446">
+        <label>geometry_msgs/msg/vector3.h</label>
+      </node>
+      <node id="7477">
+        <label>geometry_msgs/msg/vector3.hpp</label>
+      </node>
+      <node id="7438">
+        <label>openscenario_msgs/msg/driver_model.hpp</label>
+      </node>
+      <node id="7507">
+        <label>autoware_perception_msgs/msg/traffic_light_state.hpp</label>
+      </node>
+      <node id="7451">
+        <label>lanelet2_routing/Route.h</label>
+      </node>
+      <node id="7464">
+        <label>lanelet2_extension_psim/utility/query.hpp</label>
+      </node>
+      <node id="7475">
+        <label>quaternion_operation/quaternion_operation.h</label>
+      </node>
+      <node id="7496">
+        <label>behaviortree_cpp_v3/action_node.h</label>
+      </node>
+      <node id="7463">
+        <label>lanelet2_extension_psim/utility/message_conversion.hpp</label>
+      </node>
+      <node id="7470">
+        <label>geometry_msgs/msg/point.hpp</label>
+      </node>
+      <node id="7511">
+        <label>cstdio</label>
+      </node>
+      <node id="7498">
+        <label>boost/algorithm/clamp.hpp</label>
+      </node>
+      <node id="7523">
+        <label>../catalogs.hpp</label>
+        <link refid="catalogs_8hpp_source"/>
+        <childnode refid="7524" relation="include">
+        </childnode>
+        <childnode refid="7525" relation="include">
+        </childnode>
+        <childnode refid="7439" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+      </node>
+      <node id="7479">
+        <label>vector</label>
+      </node>
+      <node id="7459">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="7435">
+        <label>gtest/gtest.h</label>
+      </node>
+      <node id="7437">
+        <label>traffic_simulator/entity/vehicle_entity.hpp</label>
+        <link refid="vehicle__entity_8hpp_source"/>
+        <childnode refid="7438" relation="include">
+        </childnode>
+        <childnode refid="7439" relation="include">
+        </childnode>
+        <childnode refid="7440" relation="include">
+        </childnode>
+        <childnode refid="7441" relation="include">
+        </childnode>
+        <childnode refid="7442" relation="include">
+        </childnode>
+        <childnode refid="7487" relation="include">
+        </childnode>
+        <childnode refid="7488" relation="include">
+        </childnode>
+        <childnode refid="7493" relation="include">
+        </childnode>
+        <childnode refid="7499" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7516" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7500">
+        <label>autoware_vehicle_msgs/msg/vehicle_command.hpp</label>
+      </node>
+      <node id="7480">
+        <label>utility</label>
+      </node>
+      <node id="7488">
+        <label>traffic_simulator/behavior/vehicle/behavior_tree.hpp</label>
+        <link refid="vehicle_2behavior__tree_8hpp_source"/>
+        <childnode refid="7489" relation="include">
+        </childnode>
+        <childnode refid="7490" relation="include">
+        </childnode>
+        <childnode refid="7491" relation="include">
+        </childnode>
+        <childnode refid="7470" relation="include">
+        </childnode>
+        <childnode refid="7466" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7467" relation="include">
+        </childnode>
+        <childnode refid="7492" relation="include">
+        </childnode>
+        <childnode refid="7440" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7445" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7478">
+        <label>traffic_simulator/math/polynomial_solver.hpp</label>
+        <link refid="polynomial__solver_8hpp_source"/>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7434">
+        <label>/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp</label>
+        <link refid="test__vehicle__entity_8cpp"/>
+        <childnode refid="7435" relation="include">
+        </childnode>
+        <childnode refid="7436" relation="include">
+        </childnode>
+        <childnode refid="7437" relation="include">
+        </childnode>
+        <childnode refid="7517" relation="include">
+        </childnode>
+        <childnode refid="7523" relation="include">
+        </childnode>
+        <childnode refid="7526" relation="include">
+        </childnode>
+      </node>
+      <node id="7455">
+        <label>lanelet2_traffic_rules/TrafficRulesFactory.h</label>
+      </node>
+      <node id="7472">
+        <label>traffic_simulator/math/catmull_rom_spline.hpp</label>
+        <link refid="catmull__rom__spline_8hpp_source"/>
+        <childnode refid="7473" relation="include">
+        </childnode>
+        <childnode refid="7470" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7474" relation="include">
+        </childnode>
+        <childnode refid="7480" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7450">
+        <label>lanelet2_core/primitives/LaneletSequence.h</label>
+      </node>
+      <node id="7484">
+        <label>iostream</label>
+      </node>
+      <node id="7495">
+        <label>traffic_simulator/behavior/vehicle/vehicle_action_node.hpp</label>
+        <link refid="vehicle__action__node_8hpp_source"/>
+        <childnode refid="7496" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7438" relation="include">
+        </childnode>
+        <childnode refid="7492" relation="include">
+        </childnode>
+        <childnode refid="7439" relation="include">
+        </childnode>
+        <childnode refid="7440" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7497" relation="include">
+        </childnode>
+        <childnode refid="7514" relation="include">
+        </childnode>
+        <childnode refid="7472" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7447">
+        <label>lanelet2_core/LaneletMap.h</label>
+      </node>
+      <node id="7506">
+        <label>traffic_simulator/traffic_lights/traffic_light.hpp</label>
+        <link refid="traffic__light_8hpp_source"/>
+        <childnode refid="7507" relation="include">
+        </childnode>
+        <childnode refid="7484" relation="include">
+        </childnode>
+        <childnode refid="7508" relation="include">
+        </childnode>
+        <childnode refid="7485" relation="include">
+        </childnode>
+        <childnode refid="7509" relation="include">
+        </childnode>
+        <childnode refid="7513" relation="include">
+        </childnode>
+        <childnode refid="7482" relation="include">
+        </childnode>
+        <childnode refid="7481" relation="include">
+        </childnode>
+        <childnode refid="7480" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+      </node>
+      <node id="7503">
+        <label>traffic_simulator/traffic_lights/traffic_light_manager.hpp</label>
+        <link refid="traffic__light__manager_8hpp_source"/>
+        <childnode refid="7504" relation="include">
+        </childnode>
+        <childnode refid="7505" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7441" relation="include">
+        </childnode>
+        <childnode refid="7485" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7445" relation="include">
+        </childnode>
+        <childnode refid="7506" relation="include">
+        </childnode>
+        <childnode refid="7481" relation="include">
+        </childnode>
+        <childnode refid="7480" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+        <childnode refid="7486" relation="include">
+        </childnode>
+      </node>
+      <node id="7481">
+        <label>unordered_map</label>
+      </node>
+      <node id="7458">
+        <label>autoware_auto_msgs/msg/had_map_bin.hpp</label>
+      </node>
+      <node id="7494">
+        <label>behaviortree_cpp_v3/behavior_tree.h</label>
+      </node>
+      <node id="7486">
+        <label>visualization_msgs/msg/marker_array.hpp</label>
+      </node>
+      <node id="7499">
+        <label>traffic_simulator/entity/entity_base.hpp</label>
+        <link refid="entity__base_8hpp_source"/>
+        <childnode refid="7500" relation="include">
+        </childnode>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7443" relation="include">
+        </childnode>
+        <childnode refid="7501" relation="include">
+        </childnode>
+        <childnode refid="7438" relation="include">
+        </childnode>
+        <childnode refid="7467" relation="include">
+        </childnode>
+        <childnode refid="7502" relation="include">
+        </childnode>
+        <childnode refid="7492" relation="include">
+        </childnode>
+        <childnode refid="7439" relation="include">
+        </childnode>
+        <childnode refid="7440" relation="include">
+        </childnode>
+        <childnode refid="7444" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+        <childnode refid="7445" relation="include">
+        </childnode>
+        <childnode refid="7503" relation="include">
+        </childnode>
+        <childnode refid="7481" relation="include">
+        </childnode>
+        <childnode refid="7479" relation="include">
+        </childnode>
+        <childnode refid="7486" relation="include">
+        </childnode>
+      </node>
+      <node id="7471">
+        <label>mutex</label>
+      </node>
+      <node id="7449">
+        <label>lanelet2_core/primitives/BasicRegulatoryElements.h</label>
+      </node>
+      <node id="7454">
+        <label>lanelet2_routing/RoutingGraphContainer.h</label>
+      </node>
+      <node id="7515">
+        <label>chrono</label>
+      </node>
+      <node id="7460">
+        <label>boost/optional.hpp</label>
+      </node>
+      <node id="7520">
+        <label>geometry_msgs/msg/quaternion.hpp</label>
+      </node>
+      <node id="7456">
+        <label>tf2/LinearMath/Matrix3x3.h</label>
+      </node>
+      <node id="7526">
+        <label>../expect_eq_macros.hpp</label>
+        <link refid="expect__eq__macros_8hpp_source"/>
+        <childnode refid="7435" relation="include">
+        </childnode>
+        <childnode refid="7470" relation="include">
+        </childnode>
+        <childnode refid="7477" relation="include">
+        </childnode>
+      </node>
+      <node id="7525">
+        <label>openscenario_msgs/msg/pedestrian_parameters.hpp</label>
+      </node>
+      <node id="7518">
+        <label>simulation_api_schema.pb.h</label>
+      </node>
+      <node id="7443">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="test__vehicle__entity_8cpp_1ac67755803a4e8d1b643815c952e54018" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST</definition>
+        <argsstring>(VEHICLE_ENTITYT, GET_VEHICLE_COMMAND)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type>VEHICLE_ENTITYT</type>
+        </param>
+        <param>
+          <type>GET_VEHICLE_COMMAND</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" line="24" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" bodystart="24" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="test__vehicle__entity_8cpp_1a257f9100539e245577b088c035582869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST</definition>
+        <argsstring>(VEHICLE_ENTITY, SET_STATUS)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type>VEHICLE_ENTITY</type>
+        </param>
+        <param>
+          <type>SET_STATUS</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" line="30" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" bodystart="30" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="test__vehicle__entity_8cpp_1aaa54cac4555dbaf5d5935f0ee95f6db2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TEST</definition>
+        <argsstring>(VEHICLE_ENTITYT, UPDATE_ENTITY_TIMESTAMP)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type>VEHICLE_ENTITYT</type>
+        </param>
+        <param>
+          <type>UPDATE_ENTITY_TIMESTAMP</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" bodystart="40" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="test__vehicle__entity_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" line="54" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp" bodystart="54" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>2015-2020<sp/>Tier<sp/>IV,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gtest/gtest.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;scenario_simulator_exception/exception.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;traffic_simulator/entity/vehicle_entity.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;traffic_simulator/helper/helper.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../catalogs.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../expect_eq_macros.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">TEST(VEHICLE_ENTITYT,<sp/>GET_VEHICLE_COMMAND)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="classtraffic__simulator_1_1entity_1_1VehicleEntity" kindref="compound">traffic_simulator::entity::VehicleEntity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;vehicle&quot;</highlight><highlight class="normal">,<sp/>getVehicleParameters());</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>EXPECT_THROW(entity.getVehicleCommand(),<sp/>common::SimulationError);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">TEST(VEHICLE_ENTITY,<sp/>SET_STATUS)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="classtraffic__simulator_1_1entity_1_1VehicleEntity" kindref="compound">traffic_simulator::entity::VehicleEntity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;vehicle&quot;</highlight><highlight class="normal">,<sp/>getVehicleParameters());</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>openscenario_msgs::msg::EntityStatus<sp/>status;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>status.lanelet_pose<sp/>=<sp/>traffic_simulator::helper::constructLaneletPose(34741,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>status.action_status<sp/>=<sp/>traffic_simulator::helper::constructActionStatus(3);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>status.bounding_box<sp/>=<sp/>entity.getBoundingBox();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>EXPECT_NO_THROW(entity.setStatus(status));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">TEST(VEHICLE_ENTITYT,<sp/>UPDATE_ENTITY_TIMESTAMP)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classtraffic__simulator_1_1entity_1_1VehicleEntity" kindref="compound">traffic_simulator::entity::VehicleEntity</ref><sp/>entity(</highlight><highlight class="stringliteral">&quot;vehicle&quot;</highlight><highlight class="normal">,<sp/>getVehicleParameters());</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>EXPECT_NO_THROW(entity.updateEntityStatusTimestamp(3));</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>openscenario_msgs::msg::EntityStatus<sp/>status;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>status.lanelet_pose<sp/>=<sp/>traffic_simulator::helper::constructLaneletPose(34741,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>status.action_status<sp/>=<sp/>traffic_simulator::helper::constructActionStatus(3);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>status.bounding_box<sp/>=<sp/>entity.getBoundingBox();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>EXPECT_NO_THROW(entity.setStatus(status));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>EXPECT_DOUBLE_EQ(entity.getStatus().time,<sp/>0.0);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>EXPECT_NO_THROW(entity.updateEntityStatusTimestamp(3));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>EXPECT_DOUBLE_EQ(entity.getStatus().time,<sp/>3.0);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**<sp/>argv)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>testing::InitGoogleTest(&amp;argc,<sp/>argv);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>RUN_ALL_TESTS();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/test/src/entity/test_vehicle_entity.cpp"/>
+  </compounddef>
+</doxygen>

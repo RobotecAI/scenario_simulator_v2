@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -817,15 +829,22 @@
 <span class="p">{</span><span class="w"></span>
 <span class="kr">inline</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">syntax</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="cm">/* ---- RelativeDistanceType ---------------------------------------------------</span>
+<span class="cm">/* ---- RelativeDistanceType (OpenSCENARIO 1.1) --------------------------------</span>
 <span class="cm"> *</span>
 <span class="cm"> *  &lt;xsd:simpleType name=&quot;RelativeDistanceType&quot;&gt;</span>
 <span class="cm"> *    &lt;xsd:union&gt;</span>
 <span class="cm"> *      &lt;xsd:simpleType&gt;</span>
 <span class="cm"> *        &lt;xsd:restriction base=&quot;xsd:string&quot;&gt;</span>
-<span class="cm"> *          &lt;xsd:enumeration value=&quot;longitudinal&quot;/&gt;</span>
 <span class="cm"> *          &lt;xsd:enumeration value=&quot;lateral&quot;/&gt;</span>
-<span class="cm"> *          &lt;xsd:enumeration value=&quot;cartesianDistance&quot;/&gt;</span>
+<span class="cm"> *          &lt;xsd:enumeration value=&quot;longitudinal&quot;/&gt;</span>
+<span class="cm"> *          &lt;xsd:enumeration value=&quot;cartesianDistance&quot;&gt;</span>
+<span class="cm"> *            &lt;xsd:annotation&gt;</span>
+<span class="cm"> *              &lt;xsd:appinfo&gt;</span>
+<span class="cm"> *                deprecated</span>
+<span class="cm"> *              &lt;/xsd:appinfo&gt;</span>
+<span class="cm"> *            &lt;/xsd:annotation&gt;</span>
+<span class="cm"> *          &lt;/xsd:enumeration&gt;</span>
+<span class="cm"> *          &lt;xsd:enumeration value=&quot;euclidianDistance&quot;/&gt;</span>
 <span class="cm"> *        &lt;/xsd:restriction&gt;</span>
 <span class="cm"> *      &lt;/xsd:simpleType&gt;</span>
 <span class="cm"> *      &lt;xsd:simpleType&gt;</span>
@@ -840,7 +859,7 @@
 <span class="w">  </span><span class="k">enum</span> <span class="nc">value_type</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">longitudinal</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">lateral</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">cartesianDistance</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">euclidianDistance</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">RelativeDistanceType</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
@@ -861,7 +880,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__RELATIVE_DISTANCE_TYPE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

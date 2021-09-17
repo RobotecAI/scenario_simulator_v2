@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -838,11 +850,10 @@
 <h3 id="define-boilerplate">define BOILERPLATE<a class="headerlink" href="#define-boilerplate" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cp">#define BOILERPLATE(</span>
 <span class="w">    </span><span class="n">TYPE</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                                           </span>\
+<span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">type_index</span><span class="p">,</span><span class="w"> </span><span class="n">functor</span><span class="o">&gt;</span><span class="p">(</span><span class="w">                                                   </span>\
 <span class="w">    </span><span class="k">typeid</span><span class="p">(</span><span class="n">TYPE</span><span class="p">),</span><span class="w"> </span><span class="p">[](</span><span class="n">Function</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EntityObject</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">entity_object</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>\
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">function</span><span class="p">(</span><span class="n">entity_object</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">TYPE</span><span class="o">&gt;</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w">           </span>\
-<span class="w">    </span><span class="p">}</span><span class="w">                                                                                         </span>\
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// Copyright 2015-2020 Tier IV, Inc. All rights reserved.</span>
@@ -903,26 +914,28 @@
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span> <span class="nc">Function</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
 <span class="k">auto</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">Function</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EntityObject</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">entity_object</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">functor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">Result</span><span class="p">(</span><span class="n">Function</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EntityObject</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...)</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+
 <span class="cp">#define BOILERPLATE(TYPE)                                                                     \</span>
-<span class="cp">  {                                                                                           \</span>
+<span class="cp">  std::make_pair&lt;std::type_index, functor&gt;(                                                   \</span>
 <span class="cp">    typeid(TYPE), [](Function &amp;&amp; function, const EntityObject &amp; entity_object, Ts &amp;&amp;... xs) { \</span>
 <span class="cp">      return function(entity_object.as&lt;TYPE&gt;(), std::forward&lt;decltype(xs)&gt;(xs)...);           \</span>
-<span class="cp">    }                                                                                         \</span>
-<span class="cp">  }</span>
+<span class="cp">    })</span>
 
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">type_index</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">Result</span><span class="p">(</span><span class="n">Function</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EntityObject</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">entity_object</span><span class="p">,</span><span class="w"> </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="n">overloads</span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">),</span><span class="w"></span>
-<span class="w">      </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">Pedestrian</span><span class="p">),</span><span class="w"></span>
-<span class="w">      </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">MiscObject</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">type_index</span><span class="p">,</span><span class="w"> </span><span class="n">functor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">overloads</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">Pedestrian</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">BOILERPLATE</span><span class="p">(</span><span class="n">MiscObject</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
 
 <span class="cp">#undef BOILERPLATE</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">overloads</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">entity_object</span><span class="p">.</span><span class="n">type</span><span class="p">())(</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">function</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">function</span><span class="p">),</span><span class="w"> </span><span class="n">entity_object</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">overloads</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">entity_object</span><span class="p">.</span><span class="n">type</span><span class="p">())(</span><span class="w"></span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">function</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">function</span><span class="p">),</span><span class="w"> </span><span class="n">entity_object</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="k">decltype</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xs</span><span class="p">)...);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">UNSUPPORTED_SETTING_DETECTED</span><span class="p">(</span><span class="n">EntityObject</span><span class="p">,</span><span class="w"> </span><span class="n">makeTypename</span><span class="p">(</span><span class="n">entity_object</span><span class="p">.</span><span class="n">type</span><span class="p">().</span><span class="n">name</span><span class="p">()));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace syntax</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace openscenario_interpreter</span>
@@ -930,7 +943,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__SYNTAX__ENTITY_OBJECT_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

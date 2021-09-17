@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classmetrics_1_1StandstillMetric" kind="class" language="C++" prot="public">
+    <compoundname>metrics::StandstillMetric</compoundname>
+    <basecompoundref refid="classmetrics_1_1MetricBase" prot="public" virt="non-virtual">metrics::MetricBase</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classmetrics_1_1StandstillMetric_1aeca6d476de8bd20abd23a05c654f9c49" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string metrics::StandstillMetric::target_entity</definition>
+        <argsstring></argsstring>
+        <name>target_entity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmetrics_1_1StandstillMetric_1a4f2da0fcc279c549698929720fd75b49" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double metrics::StandstillMetric::allow_standstill_duration</definition>
+        <argsstring></argsstring>
+        <name>allow_standstill_duration</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="41" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmetrics_1_1StandstillMetric_1a65cb2e31fab57c542b0f34cfb69e994e" prot="private" static="no" mutable="no">
+        <type>boost::optional&lt; double &gt;</type>
+        <definition>boost::optional&lt;double&gt; metrics::StandstillMetric::standstill_duration_</definition>
+        <argsstring></argsstring>
+        <name>standstill_duration_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="44" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmetrics_1_1StandstillMetric_1a6632304b8ad4a45e6e6e186b90c790bf" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>metrics::StandstillMetric::StandstillMetric</definition>
+        <argsstring>(std::string target_entity, double allow_standstill_duration=std::numeric_limits&lt; double &gt;::max())</argsstring>
+        <name>StandstillMetric</name>
+        <param>
+          <type>std::string</type>
+          <declname>target_entity</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>allow_standstill_duration</declname>
+          <defval>std::numeric_limits&lt; double &gt;::max()</defval>
+        </param>
+        <briefdescription>
+<para>Construct a new Standstill Metric object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target_entity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the target entity </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="33" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/standstill_metric.cpp" bodystart="20" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1StandstillMetric_1a119a1414e2d49bb605d2806f715aa84d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>metrics::StandstillMetric::~StandstillMetric</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~StandstillMetric</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="36" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1StandstillMetric_1af66913ab77764d971a0a43699f6342ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void metrics::StandstillMetric::update</definition>
+        <argsstring>() override</argsstring>
+        <name>update</name>
+        <reimplements refid="classmetrics_1_1MetricBase_1a5535990bccf8673505854b0db5d12e51">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/standstill_metric.cpp" bodystart="30" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1StandstillMetric_1a1ad94cf8e9144e3062c0ea7affbae975" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>nlohmann::json</type>
+        <definition>nlohmann::json metrics::StandstillMetric::toJson</definition>
+        <argsstring>()</argsstring>
+        <name>toJson</name>
+        <reimplements refid="classmetrics_1_1MetricBase_1ac5aa1847a52eebcac7700d2b74142a06">toJson</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/standstill_metric.cpp" bodystart="41" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classmetrics_1_1StandstillMetric_1a0fff3b9819e92f7a693ba330215bc723" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool metrics::StandstillMetric::activateTrigger</definition>
+        <argsstring>() override</argsstring>
+        <name>activateTrigger</name>
+        <reimplements refid="classmetrics_1_1MetricBase_1a39065db1c4f9042d830d9086ef01bd99">activateTrigger</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="39" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/metrics/standstill_metric.cpp" bodystart="28" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="184">
+        <label>metrics::StandstillMetric</label>
+        <link refid="classmetrics_1_1StandstillMetric"/>
+        <childnode refid="185" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="185">
+        <label>metrics::MetricBase</label>
+        <link refid="classmetrics_1_1MetricBase"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="186">
+        <label>metrics::StandstillMetric</label>
+        <link refid="classmetrics_1_1StandstillMetric"/>
+        <childnode refid="187" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="187">
+        <label>metrics::MetricBase</label>
+        <link refid="classmetrics_1_1MetricBase"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" line="26" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/metrics/standstill_metric.hpp" bodystart="25" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classmetrics_1_1MetricBase_1ae2715921303db9ccba0092c532a386d2" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>activate</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1a0fff3b9819e92f7a693ba330215bc723" prot="public" virt="virtual"><scope>metrics::StandstillMetric</scope><name>activateTrigger</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1a4f2da0fcc279c549698929720fd75b49" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>allow_standstill_duration</name></member>
+      <member refid="classmetrics_1_1MetricBase_1ad10d16a7f9bf83a0952d63c8daa0c751" prot="protected" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>entity_manager_ptr_</name></member>
+      <member refid="classmetrics_1_1MetricBase_1aab9f2b64fa570816fe577fca1b685af2" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>failure</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a0fcf4330afb3c26942ab0adc45026e65" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>getLifecycle</name></member>
+      <member refid="classmetrics_1_1MetricBase_1ae13ba905d9469efe56cf349890327bb1" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>MetricBase</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a26827f054a849cac63e630ee6bd7cf27" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>metrics_type</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a406041977f3badc4bf8a29568d0a3040" prot="public" virt="virtual"><scope>metrics::StandstillMetric</scope><name>setEntityManager</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1a65cb2e31fab57c542b0f34cfb69e994e" prot="private" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>standstill_duration_</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1a6632304b8ad4a45e6e6e186b90c790bf" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>StandstillMetric</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a9121f7a9d69506281a9eb0533f09896c" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>success</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1aeca6d476de8bd20abd23a05c654f9c49" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>target_entity</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a3bfb57e35e135f57d65d3a9a18ae8c29" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>throwException</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a91e59b872a12c5f19533165d30292463" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>toBaseJson</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1a1ad94cf8e9144e3062c0ea7affbae975" prot="public" virt="virtual"><scope>metrics::StandstillMetric</scope><name>toJson</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1af66913ab77764d971a0a43699f6342ec" prot="public" virt="virtual"><scope>metrics::StandstillMetric</scope><name>update</name></member>
+      <member refid="classmetrics_1_1MetricBase_1a86b9bbb2ceab6c040a954a4d926eb4fb" prot="public" virt="virtual"><scope>metrics::StandstillMetric</scope><name>~MetricBase</name></member>
+      <member refid="classmetrics_1_1StandstillMetric_1a119a1414e2d49bb605d2806f715aa84d" prot="public" virt="non-virtual"><scope>metrics::StandstillMetric</scope><name>~StandstillMetric</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

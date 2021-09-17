@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -964,6 +976,7 @@
 <span class="cp">  static_assert(true, &quot;&quot;)</span>
 
 <span class="n">STRIP_OPTIONAL</span><span class="p">(</span><span class="n">getBoundingBoxDistance</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
+<span class="n">STRIP_OPTIONAL</span><span class="p">(</span><span class="n">getLongitudinalDistance</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;::</span><span class="n">infinity</span><span class="p">());</span><span class="w"></span>
 <span class="n">STRIP_OPTIONAL</span><span class="p">(</span><span class="n">getStandStillDuration</span><span class="p">,</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
 <span class="n">STRIP_OPTIONAL</span><span class="p">(</span><span class="n">getTimeHeadway</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">value_type</span><span class="o">&gt;::</span><span class="n">quiet_NaN</span><span class="p">());</span><span class="w"></span>
 
@@ -979,7 +992,6 @@
 
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">attachDetectionSensor</span><span class="p">);</span><span class="w"></span>
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">attachLidarSensor</span><span class="p">);</span><span class="w"></span>
-<span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">despawn</span><span class="p">);</span><span class="w"></span>
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">engage</span><span class="p">);</span><span class="w"></span>
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">getCurrentTime</span><span class="p">);</span><span class="w"></span>
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">initialize</span><span class="p">);</span><span class="w"></span>
@@ -987,7 +999,6 @@
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">ready</span><span class="p">);</span><span class="w"></span>
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">setEntityStatus</span><span class="p">);</span><span class="w"></span>
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">setTargetSpeed</span><span class="p">);</span><span class="w"></span>
-<span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">spawn</span><span class="p">);</span><span class="w"></span>
 <span class="n">FORWARD_TO_SIMULATION_API</span><span class="p">(</span><span class="n">updateFrame</span><span class="p">);</span><span class="w"></span>
 
 <span class="cp">#undef FORWARD_TO_SIMULATION_API</span>
@@ -1003,11 +1014,15 @@
 <span class="c1">// NOTE: See OpenSCENARIO 1.1 Figure 2. Actions and conditions</span>
 
 <span class="n">RENAME</span><span class="p">(</span><span class="n">applyAcquirePositionAction</span><span class="p">,</span><span class="w"> </span><span class="n">requestAcquirePosition</span><span class="p">);</span><span class="w"></span>
+<span class="n">RENAME</span><span class="p">(</span><span class="n">applyAddEntityAction</span><span class="p">,</span><span class="w"> </span><span class="n">spawn</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">applyAssignControllerAction</span><span class="p">,</span><span class="w"> </span><span class="n">setDriverModel</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">applyAssignRouteAction</span><span class="p">,</span><span class="w"> </span><span class="n">requestAssignRoute</span><span class="p">);</span><span class="w"></span>
+<span class="n">RENAME</span><span class="p">(</span><span class="n">applyDeleteEntityAction</span><span class="p">,</span><span class="w"> </span><span class="n">despawn</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">applyLaneChangeAction</span><span class="p">,</span><span class="w"> </span><span class="n">requestLaneChange</span><span class="p">);</span><span class="w"></span>
+<span class="n">RENAME</span><span class="p">(</span><span class="n">applyTeleportAction</span><span class="p">,</span><span class="w"> </span><span class="n">setEntityStatus</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">applyWalkStraightAction</span><span class="p">,</span><span class="w"> </span><span class="n">requestWalkStraight</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">evaluateCollisionCondition</span><span class="p">,</span><span class="w"> </span><span class="n">checkCollision</span><span class="p">);</span><span class="w"></span>
+<span class="n">RENAME</span><span class="p">(</span><span class="n">evaluateCurrentState</span><span class="p">,</span><span class="w"> </span><span class="n">getCurrentAction</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">evaluateReachPositionCondition</span><span class="p">,</span><span class="w"> </span><span class="n">reachPosition</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">getTrafficSignalArrow</span><span class="p">,</span><span class="w"> </span><span class="n">getTrafficLightArrow</span><span class="p">);</span><span class="w"></span>
 <span class="n">RENAME</span><span class="p">(</span><span class="n">getTrafficSignalColor</span><span class="p">,</span><span class="w"> </span><span class="n">getTrafficLightColor</span><span class="p">);</span><span class="w"></span>
@@ -1021,7 +1036,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__PROCEDURE_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

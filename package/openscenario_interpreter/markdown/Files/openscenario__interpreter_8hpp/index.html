@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1025,7 +1037,7 @@
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">(</span><span class="n">error</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w">  </span><span class="c1">// NOTE: MUST BE LAST OF CATCH STATEMENTS.</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w">  </span><span class="c1">// NOTE: MUST BE LAST OF CATCH STATEMENTS.</span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">isAnErrorIntended</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Pass</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
 <span class="w">                          </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="o">&lt;</span><span class="n">common</span><span class="o">::</span><span class="n">junit</span><span class="o">::</span><span class="n">Error</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;InternalError&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="n">what</span><span class="p">());</span><span class="w"></span>
@@ -1044,7 +1056,7 @@
 <span class="cp">#endif  </span><span class="c1">// OPENSCENARIO_INTERPRETER__OPENSCENARIO_INTERPRETER_HPP_</span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 

@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -752,15 +764,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-update" class="md-nav__link">
-    function update
+  <a href="#function-start" class="md-nav__link">
+    function start
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#function-start" class="md-nav__link">
-    function start
+  <a href="#function-run" class="md-nav__link">
+    function run
   </a>
   
 </li>
@@ -805,6 +817,13 @@
   
     <nav class="md-nav" aria-label="Public Attributes Documentation">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-update" class="md-nav__link">
+    variable update
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#variable-speed_action_target" class="md-nav__link">
@@ -862,11 +881,11 @@
 <tbody>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedAction#function-update">update</a></strong>()</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedAction#function-start">start</a></strong>()</td>
 </tr>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedAction#function-start">start</a></strong>()</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedAction#function-run">run</a></strong>()</td>
 </tr>
 <tr>
 <td>auto</td>
@@ -895,6 +914,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>std::function&lt; bool(const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1EntityRef">EntityRef</a> &amp;)&gt;</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedAction#variable-update">update</a></strong></td>
+</tr>
 <tr>
 <td>const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedActionTarget">SpeedActionTarget</a></td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/structopenscenario__interpreter_1_1syntax_1_1SpeedAction#variable-speed_action_target">speed_action_target</a></strong></td>
@@ -933,11 +956,19 @@
 </tr>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-findelement">findElement</a></strong>(const std::string &amp; name_) const</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-insert">insert</a></strong>(const std::string &amp; name_, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &amp; element)</td>
 </tr>
 <tr>
 <td>auto</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-addelement">addElement</a></strong>(const std::string &amp; name_, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Pointer">Element</a> &amp; element)</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-global">global</a></strong>() const</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-global">global</a></strong>()</td>
+</tr>
+<tr>
+<td>auto</td>
+<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#function-findelement">findElement</a></strong>(const std::string &amp; name_) const</td>
 </tr>
 <tr>
 <td></td>
@@ -967,20 +998,8 @@
 </thead>
 <tbody>
 <tr>
-<td>boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-scene_graph_file">scene_graph_file</a></strong></td>
-</tr>
-<tr>
-<td>const boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-pathname">pathname</a></strong></td>
-</tr>
-<tr>
 <td>const std::string</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-name">name</a></strong></td>
-</tr>
-<tr>
-<td>boost::filesystem::path</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope#variable-logic_file">logic_file</a></strong></td>
 </tr>
 <tr>
 <td>std::list&lt; EntityRef &gt;</td>
@@ -989,11 +1008,11 @@
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">#</a></h2>
-<h3 id="function-update">function update<a class="headerlink" href="#function-update" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">update</span><span class="p">()</span><span class="w"></span>
-</code></pre></div>
 <h3 id="function-start">function start<a class="headerlink" href="#function-start" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+<h3 id="function-run">function run<a class="headerlink" href="#function-run" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">run</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-reset">function reset<a class="headerlink" href="#function-reset" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">reset</span><span class="p">()</span><span class="w"></span>
@@ -1012,6 +1031,9 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">#</a></h2>
+<h3 id="variable-update">variable update<a class="headerlink" href="#variable-update" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EntityRef</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">update</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 <h3 id="variable-speed_action_target">variable speed_action_target<a class="headerlink" href="#variable-speed_action_target" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">SpeedActionTarget</span><span class="w"> </span><span class="n">speed_action_target</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -1022,7 +1044,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="w"> </span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">accomplishments</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:10 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:21 UTC</p>
                 
                   
                 

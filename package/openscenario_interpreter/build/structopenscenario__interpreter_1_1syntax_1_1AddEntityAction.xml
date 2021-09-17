@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
   <compounddef id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction" kind="struct" language="C++" prot="public">
     <compoundname>openscenario_interpreter::syntax::AddEntityAction</compoundname>
+    <basecompoundref refid="classopenscenario__interpreter_1_1Scope" prot="private" virt="non-virtual">openscenario_interpreter::Scope</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a2343bde3a6d50378754d548bd7036156" prot="public" static="no" mutable="no">
         <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1Position" kindref="compound">Position</ref></type>
@@ -14,30 +15,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="37" bodyend="-1"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="38" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a5eb0ee1ef464da116942f0161ced93ad" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename Node</type>
-          </param>
-          <param>
-            <type>typename <ref refid="classopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref></type>
-          </param>
-        </templateparamlist>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a7309a8c9cf827f0b33aa108cba92fb5f" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>openscenario_interpreter::syntax::AddEntityAction::AddEntityAction</definition>
-        <argsstring>(const Node &amp;node, Scope &amp;outer_scope)</argsstring>
+        <argsstring>(const Scope &amp;scope, const Position &amp;position)</argsstring>
         <name>AddEntityAction</name>
         <param>
-          <type>const Node &amp;</type>
-          <declname>node</declname>
+          <type>const <ref refid="classopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
+          <declname>scope</declname>
         </param>
         <param>
-          <type><ref refid="classopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
-          <declname>outer_scope</declname>
+          <type>const <ref refid="structopenscenario__interpreter_1_1syntax_1_1Position" kindref="compound">Position</ref> &amp;</type>
+          <declname>position</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -47,13 +40,23 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="40" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1ad4fa52dc017a164a20197fe3b002e6ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>auto</type>
-        <definition>auto openscenario_interpreter::syntax::AddEntityAction::operator()</definition>
-        <argsstring>(const String &amp;) const</argsstring>
-        <name>operator()</name>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a840a8eeb601fff7ff105253c36234cbe" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Tree</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>openscenario_interpreter::syntax::AddEntityAction::AddEntityAction</definition>
+        <argsstring>(const Tree &amp;tree, Scope &amp;scope)</argsstring>
+        <name>AddEntityAction</name>
         <param>
-          <type>const String &amp;</type>
+          <type>const Tree &amp;</type>
+          <declname>tree</declname>
+        </param>
+        <param>
+          <type><ref refid="classopenscenario__interpreter_1_1Scope" kindref="compound">Scope</ref> &amp;</type>
+          <declname>scope</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -61,42 +64,138 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="45" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="45" bodyend="45"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="46" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a73263f005305b081f66a163733b66d63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto openscenario_interpreter::syntax::AddEntityAction::operator()</definition>
+        <argsstring>(const std::string &amp;entity_ref) const -&gt; void try</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>entity_ref</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="55" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a56e1e79e4e7dc47e39bea1ff01efbd6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>openscenario_interpreter::syntax::AddEntityAction::catch</definition>
+        <argsstring>(const std::out_of_range &amp;)</argsstring>
+        <name>catch</name>
+        <param>
+          <type>const std::out_of_range &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="107" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a1353bed08fdb142c4755690b69ec2f01" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static auto openscenario_interpreter::syntax::AddEntityAction::accomplished</definition>
+        <argsstring>() noexcept -&gt; bool</argsstring>
+        <name>accomplished</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="51" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a30900c02c8f48de91dcd3d399360583f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static auto openscenario_interpreter::syntax::AddEntityAction::endsImmediately</definition>
+        <argsstring>() noexcept -&gt; bool</argsstring>
+        <name>endsImmediately</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="53" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="50">
-        <label>std::shared_ptr&lt; Expression  &gt;</label>
-      </node>
-      <node id="48">
-        <label>openscenario_interpreter::syntax::Position</label>
-        <link refid="structopenscenario__interpreter_1_1syntax_1_1Position"/>
-        <childnode refid="49" relation="public-inheritance">
+    <inheritancegraph>
+      <node id="46">
+        <label>openscenario_interpreter::syntax::AddEntityAction</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction"/>
+        <childnode refid="47" relation="private-inheritance">
         </childnode>
       </node>
       <node id="47">
+        <label>openscenario_interpreter::Scope</label>
+        <link refid="classopenscenario__interpreter_1_1Scope"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="52">
+        <label>std::shared_ptr&lt; Expression  &gt;</label>
+      </node>
+      <node id="50">
+        <label>openscenario_interpreter::syntax::Position</label>
+        <link refid="structopenscenario__interpreter_1_1syntax_1_1Position"/>
+        <childnode refid="51" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="48">
         <label>openscenario_interpreter::syntax::AddEntityAction</label>
         <link refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction"/>
-        <childnode refid="48" relation="usage">
+        <childnode refid="49" relation="private-inheritance">
+        </childnode>
+        <childnode refid="50" relation="usage">
           <edgelabel>position</edgelabel>
         </childnode>
       </node>
-      <node id="49">
+      <node id="51">
         <label>Element</label>
         <link refid="classopenscenario__interpreter_1_1Pointer"/>
-        <childnode refid="50" relation="public-inheritance">
+        <childnode refid="52" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="49">
+        <label>openscenario_interpreter::Scope</label>
+        <link refid="classopenscenario__interpreter_1_1Scope"/>
+      </node>
     </collaborationgraph>
-    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="36" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="35" bodyend="46"/>
+    <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" line="37" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/openscenario/openscenario_interpreter/include/openscenario_interpreter/syntax/add_entity_action.hpp" bodystart="36" bodyend="110"/>
     <listofallmembers>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a5eb0ee1ef464da116942f0161ced93ad" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>AddEntityAction</name></member>
-      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1ad4fa52dc017a164a20197fe3b002e6ae" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>operator()</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a1353bed08fdb142c4755690b69ec2f01" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>accomplished</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a10b3826ffbeda24506a4b1f6098adf0a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>actors</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a7309a8c9cf827f0b33aa108cba92fb5f" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>AddEntityAction</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a840a8eeb601fff7ff105253c36234cbe" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>AddEntityAction</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a56e1e79e4e7dc47e39bea1ff01efbd6a" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>catch</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a30900c02c8f48de91dcd3d399360583f" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>endsImmediately</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6e06d610d0a8848a30d6f3f918d77911" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>findElement</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a140531d9487ca398162c3d8bdc1cbef6" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>global</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a52665b2cce71e56a6e1f53c4d78da95a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>global</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a70e18724b1b9f34062516cd1fb47a20e" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>insert</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aadff2e8f2596e50f25246d9602eb8d18" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>localScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a81a89c19fa47be12aabf28dc87a4bc0d" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>localScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aaca945840340f070418d229c6d8fa42a" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>makeChildScope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1aade3655a2b6949034ff567a90639fdb9" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>name</name></member>
+      <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a73263f005305b081f66a163733b66d63" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>operator()</name></member>
       <member refid="structopenscenario__interpreter_1_1syntax_1_1AddEntityAction_1a2343bde3a6d50378754d548bd7036156" prot="public" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>position</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a6e1f374442352c5c86eb1c63e1454a1c" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a3da70b847b0daded6ce397ac0f1b7fa5" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1ac2732f157198c385fb788574698b1185" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>Scope</name></member>
+      <member refid="classopenscenario__interpreter_1_1Scope_1a2c9dcc3e1fdae785c5c2e6d0cd4e7e6b" prot="private" virt="non-virtual"><scope>openscenario_interpreter::syntax::AddEntityAction</scope><name>Scope</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

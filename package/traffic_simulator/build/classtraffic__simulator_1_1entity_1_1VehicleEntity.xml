@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/vehicle_entity.cpp" bodystart="90" bodyend="132"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="55" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/vehicle_entity.cpp" bodystart="94" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1VehicleEntity_1afa792a184e28a81af3ec642988489212" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -185,18 +185,19 @@
         </inbodydescription>
         <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="61" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/vehicle_entity.cpp" bodystart="77" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a4f96805e870fc82a5a512383e0a5d84f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1VehicleEntity_1ad7e96e8d1c0bd69fcc5636f64d65d773" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void traffic_simulator::entity::VehicleEntity::cancelRequest</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() override</argsstring>
         <name>cancelRequest</name>
+        <reimplements refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a7c7965edb660a1a36b41adfd8d4f395f">cancelRequest</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="63" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/vehicle_entity.cpp" bodystart="83" bodyend="83"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="63" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/vehicle_entity.cpp" bodystart="83" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a71ca47a68a4737560df2c30ef618ab3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::optional&lt; openscenario_msgs::msg::VehicleParameters &gt;</type>
@@ -285,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="89" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/vehicle_entity.cpp" bodystart="85" bodyend="88"/>
+        <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="89" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/src/entity/vehicle_entity.cpp" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a3addacfa59627b573a0cfbcdab0f01e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const openscenario_msgs::msg::BoundingBox</type>
@@ -418,38 +419,38 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="240">
+      <node id="250">
         <label>traffic_simulator::entity::EntityBase</label>
         <link refid="classtraffic__simulator_1_1entity_1_1EntityBase"/>
       </node>
-      <node id="241">
+      <node id="251">
         <label>traffic_simulator::entity::EgoEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1EgoEntity"/>
-        <childnode refid="239" relation="public-inheritance">
+        <childnode refid="249" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="239">
+      <node id="249">
         <label>traffic_simulator::entity::VehicleEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1VehicleEntity"/>
-        <childnode refid="240" relation="public-inheritance">
+        <childnode refid="250" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="243">
+      <node id="253">
         <label>traffic_simulator::entity::EntityBase</label>
         <link refid="classtraffic__simulator_1_1entity_1_1EntityBase"/>
       </node>
-      <node id="242">
+      <node id="252">
         <label>traffic_simulator::entity::VehicleEntity</label>
         <link refid="classtraffic__simulator_1_1entity_1_1VehicleEntity"/>
-        <childnode refid="243" relation="public-inheritance">
+        <childnode refid="253" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
     <location file="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" line="40" column="1" bodyfile="/home/runner/work/scenario_simulator_v2/scenario_simulator_v2/simulation/traffic_simulator/include/traffic_simulator/entity/vehicle_entity.hpp" bodystart="39" bodyend="145"/>
     <listofallmembers>
-      <member refid="classtraffic__simulator_1_1entity_1_1VehicleEntity_1a4f96805e870fc82a5a512383e0a5d84f" prot="public" virt="non-virtual"><scope>traffic_simulator::entity::VehicleEntity</scope><name>cancelRequest</name></member>
+      <member refid="classtraffic__simulator_1_1entity_1_1VehicleEntity_1ad7e96e8d1c0bd69fcc5636f64d65d773" prot="public" virt="virtual"><scope>traffic_simulator::entity::VehicleEntity</scope><name>cancelRequest</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a663d357ca5bbde5ff198254cf910769c" prot="protected" virt="non-virtual"><scope>traffic_simulator::entity::VehicleEntity</scope><name>current_marker_</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a68ac9642755f613b95c1326b73193f02" prot="public" virt="virtual"><scope>traffic_simulator::entity::VehicleEntity</scope><name>engage</name></member>
       <member refid="classtraffic__simulator_1_1entity_1_1EntityBase_1a7ac2a2df785d151c5141cb51f6b19e99" prot="protected" virt="non-virtual"><scope>traffic_simulator::entity::VehicleEntity</scope><name>entity_type_</name></member>

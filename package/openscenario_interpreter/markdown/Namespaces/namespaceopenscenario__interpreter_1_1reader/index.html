@@ -616,6 +616,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../design/SimulationResultFormat/" class="md-nav__link">
+        Simulation Result Format
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -841,13 +853,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#function-callwithelement" class="md-nav__link">
-    function callWithElement
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -948,16 +953,12 @@
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1reader#function-readattribute">readAttribute</a></strong>(const std::string &amp; name, const Node &amp; node, const <a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Classes/classopenscenario__interpreter_1_1Scope">Scope</a> &amp; scope, T &amp;&amp; value)</td>
 </tr>
 <tr>
-<td>template \&lt;typename... Ts></br>decltype(auto)</td>
+<td>template \&lt;typename... Ts></br>auto</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1reader#function-choice">choice</a></strong>(const XML &amp; node, Ts &amp;&amp;... xs)</td>
 </tr>
 <tr>
 <td>template \&lt;typename Callee ></br>void</td>
 <td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1reader#function-callwithelements">callWithElements</a></strong>(const XML &amp; parent, const std::string &amp; name, const Cardinality min_occurs, const Cardinality max_occurs, Callee &amp;&amp; call_with)</td>
-</tr>
-<tr>
-<td>template \&lt;typename Callee ></br>decltype(auto)</td>
-<td><strong><a href="/scenario_simulator_v2/package/openscenario_interpreter/markdown/Namespaces/namespaceopenscenario__interpreter_1_1reader#function-callwithelement">callWithElement</a></strong>(const XML &amp; parent, const std::string &amp; name, Callee &amp;&amp; call_with)</td>
 </tr>
 </tbody>
 </table>
@@ -1054,7 +1055,7 @@
 </code></pre></div>
 <h3 id="function-choice">function choice<a class="headerlink" href="#function-choice" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Ts</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">choice</span><span class="p">(</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">choice</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">Ts</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">xs</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
@@ -1069,20 +1070,12 @@
 <span class="w">    </span><span class="n">Callee</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">call_with</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-callwithelement">function callWithElement<a class="headerlink" href="#function-callwithelement" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Callee</span><span class="w"> </span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">decltype</span><span class="p">(</span><span class="k">auto</span><span class="p">)</span><span class="w"> </span><span class="n">callWithElement</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">XML</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Callee</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">call_with</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
 <h2 id="attributes-documentation">Attributes Documentation<a class="headerlink" href="#attributes-documentation" title="Permanent link">#</a></h2>
 <h3 id="variable-unbounded">variable unbounded<a class="headerlink" href="#variable-unbounded" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">unbounded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">Cardinality</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 16 September 2021 at 00:43:11 UTC</p>
+<p>Updated on 17 September 2021 at 09:39:22 UTC</p>
                 
                   
                 
