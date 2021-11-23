@@ -21,7 +21,7 @@
 #include "random_test_runner/file_interactions/junit_xml_reporter.hpp"
 #include "random_test_runner/file_interactions/yaml_test_params_saver.hpp"
 
-const double test_timeout = 60.0;
+const double test_timeout = 20.0;
 const bool attach_sensors = false;
 
 traffic_simulator_msgs::msg::VehicleParameters getVehicleParameters()

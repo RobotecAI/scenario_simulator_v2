@@ -65,7 +65,7 @@ class RandomTestRunnerLaunch(object):
                                "values": ["simple_sensor_simulator", "unity"]},
 
             # control arguments #
-            "test_count": {"default": 5, "description": "Test count to be performed in test suite"},
+            "test_count": {"default": 1, "description": "Test count to be performed in test suite"},
             "input_dir":
                 {"default": "",
                  "description": "Directory containing the result.yaml file to be replayed. "
@@ -77,7 +77,7 @@ class RandomTestRunnerLaunch(object):
             # test suite arguments #
             "test_name": {"default": "random_test",
                           "description": "Test name. Used for descriptive purposes only"},
-            "map_name": {"default": "kashiwanoha_map",
+            "map_name": {"default": "shinjuku_map",
                          "description": "Package name containing map information (lanelet, point cloud, etc)"},
             "ego_goal_lanelet_id":
                 {"default": -1,
@@ -95,12 +95,21 @@ class RandomTestRunnerLaunch(object):
                 {"default": 20.0,
                  "description": "Distance from goal set by ego_goal_lanelet_id and ego_goal_s, within which goal "
                                 "pose will be randomized if ego_goal_partial_randomization is set to true"},
+            "start_lanelet_id":
+                {"default": -1,
+                 "description": "Start lanelet id. If applicable, ego will be spawned here and NPCs will be spawned "
+                                "around this place. If -1, start will be chosen randomly"},
+            "start_s":
+                {"default": 0.0,
+                 "description": "Start lanelet s (translation along the lanelet in meters). If applicable, ego will be "
+                                "spawned here and NPCs will be spawned around this place."
+                                "If start_lanelet_id equals -1, s will be chosen randomly"},
             "npc_count": {"default": 10, "description": "Generated npc count"},
             "npc_min_speed": {"default": 0.5, "description": "Minimum speed of generated npcs"},
             "npc_max_speed": {"default": 3.0, "description": "Maximum speed of generated npcs"},
             "npc_min_distance_to_ego": {"default": 10.0,
                                         "description":  "Minimum distance of generated npcs from ego"},
-            "npc_max_distance_to_ego": {"default": 100.0,
+            "npc_max_distance_to_ego": {"default": 60.0,
                                         "description": "Maximum distance of generated npcs from ego"},
 
             # test case arguments #

@@ -50,7 +50,8 @@ TestDescription TestRandomizer::generate()
   std::tie(ret.ego_start_position, ret.ego_goal_position) = generateEgoRoute(
     test_suite_parameters_.ego_goal_lanelet_id, test_suite_parameters_.ego_goal_s,
     test_suite_parameters_.ego_goal_partial_randomization,
-    test_suite_parameters_.ego_goal_partial_randomization_distance);
+    test_suite_parameters_.ego_goal_partial_randomization_distance,
+    test_suite_parameters_.start_lanelet_id, test_suite_parameters_.start_s);
   ret.ego_goal_pose = lanelet_utils_->toMapPose(ret.ego_goal_position).pose;
 
   std::vector<LaneletPart> lanelets_around_start = lanelet_utils_->getLanesWithinDistance(
@@ -68,35 +69,48 @@ TestDescription TestRandomizer::generate()
 
 std::pair<traffic_simulator_msgs::msg::LaneletPose, traffic_simulator_msgs::msg::LaneletPose>
 TestRandomizer::generateEgoRoute(
-  int64_t goal_lanelet_id, double goal_s, bool partial_randomization, double randomization_distance)
+  int64_t goal_lanelet_id, double goal_s, bool partial_randomization, double randomization_distance,
+  int64_t start_lanelet_id, double start_s)
 {
-  traffic_simulator_msgs::msg::LaneletPose goal_pose;
-  auto goal_pose_from_params =
-    traffic_simulator::helper::constructLaneletPose(goal_lanelet_id, goal_s);
   for (int attempt_number = 0; attempt_number < max_randomization_attempts; attempt_number++) {
-    if (goal_lanelet_id < 0) {
-      RCLCPP_INFO(logger_, "Goal randomization: full");
-      goal_pose = generateRandomPosition();
-    } else if (partial_randomization) {
-      RCLCPP_INFO(
-        logger_,
-        fmt::format("Goal randomization: partial within distance: {}", randomization_distance)
-          .c_str());
-      std::vector<LaneletPart> lanelets_around_goal =
-        lanelet_utils_->getLanesWithinDistance(goal_pose_from_params, 0.0, randomization_distance);
-      goal_pose = generatePoseFromLanelets(lanelets_around_goal);
-    } else {
-      RCLCPP_INFO(logger_, "Goal randomization: none - taken directly from parameters");
-      goal_pose = goal_pose_from_params;
-    }
-
-    auto start_pose = generateRandomPosition();
+    auto goal_pose = generateEgoGoal(goal_lanelet_id, goal_s, partial_randomization, randomization_distance);
+    auto start_pose = generateEgoStart(start_lanelet_id, start_s);
 
     if (isFeasibleRoute(start_pose, goal_pose)) {
       return {start_pose, goal_pose};
     }
   }
   throw std::runtime_error("Was not able to randomize ego path - are boundaries too tight?");
+}
+
+traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoStart(int64_t start_lanelet_id, double goal_s) {
+  if (start_lanelet_id < 0) {
+    return generateRandomPosition();
+  }
+  return traffic_simulator::helper::constructLaneletPose(start_lanelet_id, goal_s);
+}
+
+traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoGoal(int64_t goal_lanelet_id, double goal_s, bool partial_randomization, double randomization_distance) {
+  traffic_simulator_msgs::msg::LaneletPose goal_pose;
+  auto goal_pose_from_params =
+    traffic_simulator::helper::constructLaneletPose(goal_lanelet_id, goal_s);
+  if (goal_lanelet_id < 0) {
+    RCLCPP_INFO(logger_, "Goal randomization: full");
+    goal_pose = generateRandomPosition();
+  } else if (partial_randomization) {
+    RCLCPP_INFO(
+      logger_,
+      fmt::format("Goal randomization: partial within distance: {}", randomization_distance)
+        .c_str());
+    std::vector<LaneletPart> lanelets_around_goal =
+      lanelet_utils_->getLanesWithinDistance(goal_pose_from_params, 0.0, randomization_distance);
+    goal_pose = generatePoseFromLanelets(lanelets_around_goal);
+  } else {
+    RCLCPP_INFO(logger_, "Goal randomization: none - taken directly from parameters");
+    goal_pose = goal_pose_from_params;
+  }
+  return goal_pose;
+
 }
 
 traffic_simulator_msgs::msg::LaneletPose

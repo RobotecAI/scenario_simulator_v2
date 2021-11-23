@@ -112,6 +112,8 @@ TestSuiteParameters RandomTestRunner::collectTestSuiteParameters()
     this->declare_parameter<bool>("ego_goal_partial_randomization", false);
   tp.ego_goal_partial_randomization_distance =
     this->declare_parameter<double>("ego_goal_partial_randomization_distance", 30.0);
+  tp.start_lanelet_id = this->declare_parameter<int64_t>("start_lanelet_id", -1);
+  tp.start_s = this->declare_parameter<double>("start_s", 0.0);
   tp.npcs_count = this->declare_parameter<int>("npc_count", 10);
   tp.npc_min_speed = this->declare_parameter<double>("npc_min_speed", 0.5);
   tp.npc_max_speed = this->declare_parameter<double>("npc_max_speed", 3.0);

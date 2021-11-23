@@ -64,6 +64,9 @@ struct TestSuiteParameters
   bool ego_goal_partial_randomization = false;
   double ego_goal_partial_randomization_distance = 30.0;
 
+  int64_t start_lanelet_id = -1;
+  double start_s = 0.0;
+
   int64_t npcs_count = 10;
   double npc_min_speed = 0.5;
   double npc_max_speed = 3.0;
