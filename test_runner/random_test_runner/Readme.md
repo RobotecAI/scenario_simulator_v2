@@ -92,8 +92,8 @@ random_test:
   npc_count: 10
   npc_min_speed: 0.500000000000000000
   npc_max_speed: 3.000000000000000000
-  npc_min_spawn_distance_from_ego: 10.000000000000000000
-  npc_max_spawn_distance_from_ego: 50.000000000000000000
+  npc_min_spawn_distance_from_start: 10.000000000000000000
+  npc_max_spawn_distance_from_start: 50.000000000000000000
   test_cases:
     - seed: 1281242544
     - seed: 3644198185
@@ -205,8 +205,8 @@ Core test parameters. It sets map name, ego goal information and npc spawning pa
 | `npc_count`                               | `10`                | Generated npc count                                                                                                                                                       |
 | `npc_min_speed`                           | `0.5`               | Minimum speed of generated npcs                                                                                                                                           |
 | `npc_max_speed`                           | `3.0`               | Maximum speed of generated npcs                                                                                                                                           |
-| `npc_min_spawn_distance_from_ego`         | `10.0`              | Minimum distance of generated npcs from ego                                                                                                                               |
-| `npc_max_spawn_distance_from_ego`         | `100.0`             | Maximum distance of generated npcs from ego                                                                                                                               |
+| `npc_min_spawn_distance_from_start`         | `10.0`              | Minimum distance of generated npcs from ego                                                                                                                               |
+| `npc_max_spawn_distance_from_start`         | `100.0`             | Maximum distance of generated npcs from ego                                                                                                                               |
 
 #### Test case parameters
 

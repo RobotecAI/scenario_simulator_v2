@@ -43,8 +43,8 @@ struct convert<TestSuiteParameters>
     node["npc_count"] = rhs.npcs_count;
     node["npc_min_speed"] = rhs.npc_min_speed;
     node["npc_max_speed"] = rhs.npc_max_speed;
-    node["npc_min_spawn_distance_from_ego"] = rhs.npc_min_spawn_distance_from_ego;
-    node["npc_max_spawn_distance_from_ego"] = rhs.npc_max_spawn_distance_from_ego;
+    node["npc_min_spawn_distance_from_start"] = rhs.npc_min_spawn_distance_from_start;
+    node["npc_max_spawn_distance_from_start"] = rhs.npc_max_spawn_distance_from_start;
     return node;
   }
 
@@ -64,8 +64,8 @@ struct convert<TestSuiteParameters>
     rhs.npcs_count = node["npc_count"].as<int64_t>();
     rhs.npc_min_speed = node["npc_min_speed"].as<double>();
     rhs.npc_max_speed = node["npc_max_speed"].as<double>();
-    rhs.npc_min_spawn_distance_from_ego = node["npc_min_spawn_distance_from_ego"].as<double>();
-    rhs.npc_max_spawn_distance_from_ego = node["npc_max_spawn_distance_from_ego"].as<double>();
+    rhs.npc_min_spawn_distance_from_start = node["npc_min_spawn_distance_from_start"].as<double>();
+    rhs.npc_max_spawn_distance_from_start = node["npc_max_spawn_distance_from_start"].as<double>();
 
     return true;
   }

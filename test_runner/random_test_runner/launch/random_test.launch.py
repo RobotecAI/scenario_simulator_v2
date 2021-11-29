@@ -107,10 +107,10 @@ class RandomTestRunnerLaunch(object):
             "npc_count": {"default": 10, "description": "Generated npc count"},
             "npc_min_speed": {"default": 0.5, "description": "Minimum speed of generated npcs"},
             "npc_max_speed": {"default": 3.0, "description": "Maximum speed of generated npcs"},
-            "npc_min_distance_to_ego": {"default": 10.0,
-                                        "description":  "Minimum distance of generated npcs from ego"},
-            "npc_max_distance_to_ego": {"default": 60.0,
-                                        "description": "Maximum distance of generated npcs from ego"},
+            "npc_min_spawn_distance_from_start": {"default": 10.0,
+                                                  "description":  "Minimum distance of generated npcs from ego"},
+            "npc_max_spawn_distance_from_start": {"default": 60.0,
+                                                  "description": "Maximum distance of generated npcs from ego"},
 
             # test case arguments #
             "seed": {"default": -1, "description": "Randomization seed. If -1, seed will be generated for each test"},

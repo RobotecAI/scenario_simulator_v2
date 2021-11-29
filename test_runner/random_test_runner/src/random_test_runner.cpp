@@ -117,10 +117,10 @@ TestSuiteParameters RandomTestRunner::collectTestSuiteParameters()
   tp.npcs_count = this->declare_parameter<int>("npc_count", 10);
   tp.npc_min_speed = this->declare_parameter<double>("npc_min_speed", 0.5);
   tp.npc_max_speed = this->declare_parameter<double>("npc_max_speed", 3.0);
-  tp.npc_min_spawn_distance_from_ego =
-    this->declare_parameter<double>("npc_min_spawn_distance_from_ego", 10.0);
-  tp.npc_max_spawn_distance_from_ego =
-    this->declare_parameter<double>("npc_max_spawn_distance_from_ego", 100.0);
+  tp.npc_min_spawn_distance_from_start =
+    this->declare_parameter<double>("npc_min_spawn_distance_from_start", 10.0);
+  tp.npc_max_spawn_distance_from_start =
+    this->declare_parameter<double>("npc_max_spawn_distance_from_start", 100.0);
   tp.name = this->declare_parameter<std::string>("test_name", "random_test");
   tp.map_name = this->declare_parameter<std::string>("map_name", "kashiwanoha_map");
   return tp;
