@@ -73,7 +73,8 @@ TestRandomizer::generateEgoRoute(
   int64_t start_lanelet_id, double start_s)
 {
   for (int attempt_number = 0; attempt_number < max_randomization_attempts; attempt_number++) {
-    auto goal_pose = generateEgoGoal(goal_lanelet_id, goal_s, partial_randomization, randomization_distance);
+    auto goal_pose =
+      generateEgoGoal(goal_lanelet_id, goal_s, partial_randomization, randomization_distance);
     auto start_pose = generateEgoStart(start_lanelet_id, start_s);
 
     if (isFeasibleRoute(start_pose, goal_pose)) {
@@ -83,14 +84,18 @@ TestRandomizer::generateEgoRoute(
   throw std::runtime_error("Was not able to randomize ego path - are boundaries too tight?");
 }
 
-traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoStart(int64_t start_lanelet_id, double goal_s) {
+traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoStart(
+  int64_t start_lanelet_id, double goal_s)
+{
   if (start_lanelet_id < 0) {
     return generateRandomPosition();
   }
   return traffic_simulator::helper::constructLaneletPose(start_lanelet_id, goal_s);
 }
 
-traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoGoal(int64_t goal_lanelet_id, double goal_s, bool partial_randomization, double randomization_distance) {
+traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoGoal(
+  int64_t goal_lanelet_id, double goal_s, bool partial_randomization, double randomization_distance)
+{
   traffic_simulator_msgs::msg::LaneletPose goal_pose;
   auto goal_pose_from_params =
     traffic_simulator::helper::constructLaneletPose(goal_lanelet_id, goal_s);
@@ -110,7 +115,6 @@ traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoGoal(int64_t
     goal_pose = goal_pose_from_params;
   }
   return goal_pose;
-
 }
 
 traffic_simulator_msgs::msg::LaneletPose

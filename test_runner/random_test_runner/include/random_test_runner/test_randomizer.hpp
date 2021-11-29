@@ -42,11 +42,12 @@ private:
   traffic_simulator_msgs::msg::LaneletPose generateRandomPoseWithinMinDistanceFromPosesFromLanelets(
     const std::vector<traffic_simulator_msgs::msg::LaneletPose> & poses, double min_distance,
     const std::vector<LaneletPart> & lanelets);
-  std::pair<traffic_simulator_msgs::msg::LaneletPose, traffic_simulator_msgs::msg::LaneletPose> generateEgoRoute( int64_t goal_lanelet_id, double goal_s, bool partial_randomization, double randomization_distance,
-    int64_t start_lanelet_id, double start_s);
+  std::pair<traffic_simulator_msgs::msg::LaneletPose, traffic_simulator_msgs::msg::LaneletPose>
+  generateEgoRoute(
+    int64_t goal_lanelet_id, double goal_s, bool partial_randomization,
+    double randomization_distance, int64_t start_lanelet_id, double start_s);
   traffic_simulator_msgs::msg::LaneletPose generateEgoStart(int64_t goal_lanelet_id, double goal_s);
-  traffic_simulator_msgs::msg::LaneletPose
-  generateEgoGoal(
+  traffic_simulator_msgs::msg::LaneletPose generateEgoGoal(
     int64_t goal_lanelet_id, double goal_s, bool partial_randomization,
     double randomization_distance);
   int64_t getRandomLaneletId();
