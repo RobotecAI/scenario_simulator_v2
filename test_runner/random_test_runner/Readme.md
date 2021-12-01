@@ -16,11 +16,26 @@ Inside Autoware.Auto directory run and enter ade:
 ade --rc .aderc-amd64-foxy-lgsvl start --update --enter
 ```
 
-enter Autoware.Auto directory, install required dependencies and build
+enter Autoware.Auto directory, download required dependencies:
 
 ```shell
 cd <autoware_auto_directory_name>
 vcs import < autoware.auto.foxy.repos
+```
+
+update `scenario.simulator.v2.repos` file to point to correct branch:
+
+```shell
+echo "  repositories:
+    src/external/scenario_simulator:
+        type: git
+        url: https://github.com/robotecai/scenario_simulator_v2.git
+        version: feature/AJD-296-random_testing" > ./tools/simulation/scenario.simulator.v2.repos
+```
+
+get `scenario_simulator_v2`, install dependencies and build solution
+
+```shell
 ./tools/simulation/get_scenario_simulator_v2.sh
 colcon build --packages-up-to random_test_runner scenario_simulator_launch kashiwanoha_map --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
