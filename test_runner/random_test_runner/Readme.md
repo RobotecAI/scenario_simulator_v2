@@ -11,6 +11,18 @@ Random test runner allows running randomly generated scenarios to test autoware 
 
 It is assumed that you are running Autoware.Auto in ADE environment with default paths. See [Autoware.Auto documentation](https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation-ade.html) for instructions how to correctly set up Autoware.Auto and ADE.
 
+Clone `Autoware.Auto` repository and move to created directory:
+```
+git clone git@gitlab.com:autowarefoundation/autoware.auto/AutowareAuto.git 
+cd AutowareAuto
+```
+
+When working with `random_test_runner` please make sure to use a bit older version of Autoware.Auto. Inside Autoware.Auto directory execute:
+```shell
+git checkout c32704d5c
+```
+to switch to known working version.
+
 Inside Autoware.Auto directory run and enter ade:
 ```shell
 ade --rc .aderc-amd64-foxy-lgsvl start --update --enter
