@@ -72,7 +72,7 @@ In second:
 
 ```shell
 source install/setup.bash
-ros2 launch random_test_runner random_test.launch.py
+ros2 launch random_test_runner random_test.launch.py map_name:="kashiwanoha_map"
 ```
 
 Which will run random tests with default parameters. You should see several npcs spawned in random locations around the ego vehicle, which will move on random path.
