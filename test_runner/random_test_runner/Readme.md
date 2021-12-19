@@ -11,18 +11,51 @@ Random test runner allows running randomly generated scenarios to test autoware 
 
 It is assumed that you are running Autoware.Auto in ADE environment with default paths. See [Autoware.Auto documentation](https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation-ade.html) for instructions how to correctly set up Autoware.Auto and ADE.
 
+Clone `Autoware.Auto` repository and move to created directory:
+```
+git clone git@gitlab.com:autowarefoundation/autoware.auto/AutowareAuto.git 
+cd AutowareAuto
+```
+
+When working with `random_test_runner` please make sure to use a bit older version of Autoware.Auto. Inside Autoware.Auto directory execute:
+```shell
+git checkout c32704d5c
+```
+to switch to known working version.
+
 Inside Autoware.Auto directory run and enter ade:
 ```shell
 ade --rc .aderc-amd64-foxy-lgsvl start --update --enter
 ```
 
-enter Autoware.Auto directory, install required dependencies and build
+enter Autoware.Auto directory, download required dependencies:
 
 ```shell
 cd <autoware_auto_directory_name>
 vcs import < autoware.auto.foxy.repos
+```
+
+update `scenario.simulator.v2.repos` file to point to correct branch:
+
+```shell
+echo "  repositories:
+    src/external/scenario_simulator:
+        type: git
+        url: https://github.com/robotecai/scenario_simulator_v2.git
+        version: feature/AJD-293-random_traffic_lights" > ./tools/simulation/scenario.simulator.v2.repos
+```
+
+get `scenario_simulator_v2`, install dependencies
+
+```shell
 ./tools/simulation/get_scenario_simulator_v2.sh
-colcon build --packages-up-to random_test_runner scenario_simulator_launch kashiwanoha_map --cmake-args -DCMAKE_BUILD_TYPE=Release
+```
+
+download modified `kashiwanoha_map` with additional traffic lights from [here](https://drive.google.com/file/d/1bnATq6E6enD7yQQbfN73FjQyjZ3MRT2y/view?usp=sharing) and extract it to `<scenario_simulator_path>/map/` directory.
+
+build solution
+```shell
+colcon build --packages-up-to random_test_runner scenario_simulator_launch kashiwanoha_map_new_traffic_lights --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
 
 ### AutowareArchitectureProposal
@@ -45,7 +78,7 @@ In second:
 
 ```shell
 source install/setup.bash
-ros2 launch random_test_runner random_test.launch.py
+ros2 launch random_test_runner random_test.launch.py map_name:="kashiwanoha_map_new_traffic_lights"
 ```
 
 Which will run random tests with default parameters. You should see several npcs spawned in random locations around the ego vehicle, which will move on random path.
@@ -59,47 +92,35 @@ Exemplary content of those files can be seen below:
 `result.junit.xml`:
 ```xml
 <?xml version="1.0"?>
-<testsuites failures="0" errors="6" tests="6">
-  <testsuite name="random_test" failures="0" errors="6" tests="6">
-    <testcase name="4">
-      <error type="stand still" message="Ego seems to be stuck" />
-    </testcase>
-    <testcase name="2">
-      <error type="collision" message="npc2 and ego collided at 6.249999999999986s" />
-      <error type="stand still" message="Ego seems to be stuck" />
-    </testcase>
-    <testcase name="3">
-      <error type="collision" message="npc1 and ego collided at 17.25000000000011s" />
-      <error type="timeout" message="Ego failed to reach goal within timeout" />
-    </testcase>
-    <testcase name="1">
-      <error type="stand still" message="Ego seems to be stuck" />
-    </testcase>
-    <testcase name="0" />
-  </testsuite>
+<testsuites failures="0" errors="0" tests="0">
+   <testsuite name="random_test" failures="0" errors="0" tests="0">
+      <testcase name="2" />
+      <testcase name="1" />
+      <testcase name="0" />
+   </testsuite>
 </testsuites>
 ```
 
 `result.yaml`:
 ```yaml
 random_test:
-  name: video_test
-  map_name: kashiwanoha_map
-  ego_goal_s: 5.000000000000000000
-  ego_goal_lanelet_id: -1
-  ego_goal_partial_randomization: false
-  ego_goal_partial_randomization_distance: 30
-  npc_count: 10
-  npc_min_speed: 0.500000000000000000
-  npc_max_speed: 3.000000000000000000
-  npc_min_spawn_distance_from_ego: 10.000000000000000000
-  npc_max_spawn_distance_from_ego: 50.000000000000000000
-  test_cases:
-    - seed: 1281242544
-    - seed: 3644198185
-    - seed: 2673087374
-    - seed: 1312244741
-    - seed: 2518911638
+   test_name: random_test
+   map_name: kashiwanoha_map_new_traffic_lights
+   ego_goal_s: 0
+   ego_goal_lanelet_id: -1
+   ego_goal_partial_randomization: false
+   ego_goal_partial_randomization_distance: 20
+   npc_count: 0
+   npc_min_speed: 0.5
+   npc_max_speed: 3
+   npc_min_spawn_distance_from_ego: 30
+   npc_max_spawn_distance_from_ego: 100
+   min_green_light_duration: 3
+   max_green_light_duration: 10
+   test_cases:
+      - seed: 4181894907
+      - seed: 3229451657
+      - seed: 3173578686
 ```
 
 ## How to replay
@@ -123,11 +144,24 @@ Random test runner will load `result.yaml` file and rerun test.
 Instruction is based on `kashiwanoha_map` Unity project but can be applied to any other projects supporting [`ZeorMQ` interface](https://tier4.github.io/scenario_simulator_v2-docs/design/ZeroMQ/). 
 
 To run `random_test_runner` with Unity Kashiwanoha project: 
-1. Clone and run [Kashiwanoha project](https://gitlab.com/robotec.ai/tieriv/kashiwanoha).
-2. Make sure that package name in `map_name` parameter is `kashiwanoha_map`. For projects other than Kashiwanoha, make sure to change it to correct package name.  
-3. Execute `random_test_runner` launch with `simulator_type` parameter:
+1. Build and source latelet2 scene builder using [lanelet2_scene_builder](https://gitlab.com/robotec.ai/tieriv/lanelet2-scene-builder) and [lanelet2_scene_msgs](https://gitlab.com/robotec.ai/tieriv/lanelet2-scene-msgs) instructions
+2. Clone [Kashiwanoha project](https://gitlab.com/robotec.ai/tieriv/kashiwanoha).
+3. Checkout branch 
 ```shell
-ros2 launch random_test_runner random_test.launch.py simulator_type:="unity"
+git checkout feature/AJD-293-random_traffic_lights
+```
+4. Source ros galactic environment
+```shell
+source /opt/ros/galactic/setup.bash
+```
+5. Run `kashiwanoha` project 
+6. Execute lanelet2 scene builder node. This will spawn traffic lights
+```shell
+ros2 run lanelet2_scene_builder lanelet2_scene_builder --ros-args -p osm_file:=<AUTOWARE_DIRECTORY>/install/kashiwanoha_map_new_traffic_lights/share/kashiwanoha_map_new_traffic_lights/map/lanelet2_map.osm
+```
+7. Execute `random_test_runner` launch with `simulator_type` parameter and correct map name:
+```shell
+ros2 launch random_test_runner random_test.launch.py simulator_type:="unity" map_name:="kashiwanoha_map_new_traffic_lights" test_count:=3
 ```
 |  NOTE: Since currently unity integration does not support ego vehicle, `random_test_runner` does not spawn it. |
 |----------------------------------------------------------------------------------------------------------------|
@@ -194,19 +228,22 @@ High level parameters not directly related to the test itself
 
 Core test parameters. It sets map name, ego goal information and npc spawning parameters.
 
-| Parameter name                            | Default value       | Description                                                                                                                                                               |
-|-------------------------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `test_name`                               | `"random_test"`     | Test name. Used for descriptive purposes only                                                                                                                             |
-| `map_name`                                | `"kashiwanoha_map"` | Package name containing map information (lanelet, point cloud, etc)                                                                                                       |
-| `ego_goal_lanelet_id`                     | `-1`                | Goal lanelet's id. If `-1`, goal will be chosen randomly                                                                                                                  |
-| `ego_goal_s`                              | `0.0`               | Goal lanelet's s (translation along the lanelet in meters). If `ego_goal_lanelet_id` equals `-1`, s will be chosen randomly                                               |
-| `ego_goal_partial_randomization`          | `False`             | If `true`, goal will be randomized within distance set in `ego_goal_partial_randomization_distance` value. If `ego_goal_lanelet_id` is set to `-1`, this value is ignored |
-| `ego_goal_partial_randomization_distance` | `30.0`              | Distance in meters from goal set by `ego_goal_lanelet_id` and `ego_goal_s`, within which goal pose will be randomized if `ego_goal_partial_randomization` is set to true  |
-| `npc_count`                               | `10`                | Generated npc count                                                                                                                                                       |
-| `npc_min_speed`                           | `0.5`               | Minimum speed of generated npcs                                                                                                                                           |
-| `npc_max_speed`                           | `3.0`               | Maximum speed of generated npcs                                                                                                                                           |
-| `npc_min_spawn_distance_from_ego`         | `10.0`              | Minimum distance of generated npcs from ego                                                                                                                               |
-| `npc_max_spawn_distance_from_ego`         | `100.0`             | Maximum distance of generated npcs from ego                                                                                                                               |
+| Parameter name                            | Default value       | Description                                                                                                                                                                                                                                                               |
+|-------------------------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `test_name`                               | `"random_test"`     | Test name. Used for descriptive purposes only                                                                                                                                                                                                                             |
+| `map_name`                                | `"kashiwanoha_map"` | Package name containing map information (lanelet, point cloud, etc)                                                                                                                                                                                                       |
+| `traffic_lights_generator_type`|  "collision_based"  | Algorithm which will be used to compute traffic lights phases. Possible values are `collision_based` or `direction_based`. Meaning is that phases are generated based on collisions between lanelets, or based on geographical direction of the stop lines, respectively. |
+| `ego_goal_lanelet_id`                     | `-1`                | Goal lanelet's id. If `-1`, goal will be chosen randomly                                                                                                                                                                                                                  |
+| `ego_goal_s`                              | `0.0`               | Goal lanelet's s (translation along the lanelet in meters). If `ego_goal_lanelet_id` equals `-1`, s will be chosen randomly                                                                                                                                               |
+| `ego_goal_partial_randomization`          | `False`             | If `true`, goal will be randomized within distance set in `ego_goal_partial_randomization_distance` value. If `ego_goal_lanelet_id` is set to `-1`, this value is ignored                                                                                                 |
+| `ego_goal_partial_randomization_distance` | `30.0`              | Distance in meters from goal set by `ego_goal_lanelet_id` and `ego_goal_s`, within which goal pose will be randomized if `ego_goal_partial_randomization` is set to true                                                                                                  |
+| `npc_count`                               | `10`                | Generated npc count                                                                                                                                                                                                                                                       |
+| `npc_min_speed`                           | `0.5`               | Minimum speed of generated npcs                                                                                                                                                                                                                                           |
+| `npc_max_speed`                           | `3.0`               | Maximum speed of generated npcs                                                                                                                                                                                                                                           |
+| `npc_min_spawn_distance_from_start`       | `10.0`              | Minimum distance of generated npcs from ego                                                                                                                                                                                                                               |
+| `npc_max_spawn_distance_from_start`       | `100.0`             | Maximum distance of generated npcs from ego                                                                                                                                                                                                                               |
+| `min_green_light_duration`                | `3.0`               | Minimum duration of green traffic light                                                                                                                                                                                                                                   |
+| `max_green_light_duration`                | `10.0`              | Maximum duration of green traffic light                                                                                                                                                                                                                                   |
 
 #### Test case parameters
 

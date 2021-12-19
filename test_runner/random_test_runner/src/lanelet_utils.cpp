@@ -14,7 +14,7 @@
 //
 // Co-developed by Tier IV, Inc. and Robotec.AI sp. z o.o.
 
-#include "random_test_runner/lanelet_utils.hpp"
+#include "random_test_runner/lanelet_tools/lanelet_utils.hpp"
 
 #include <lanelet2_core/geometry/Lanelet.h>
 #include <lanelet2_io/Io.h>
@@ -24,6 +24,7 @@
 #include <lanelet2_extension_psim/projection/mgrs_projector.hpp>
 
 #include "geographic_msgs/msg/geo_point.hpp"
+#include "random_test_runner/lanelet_tools/phases_generator.hpp"
 #include "traffic_simulator/hdmap_utils/hdmap_utils.hpp"
 #include "traffic_simulator/math/linear_algebra.hpp"
 
@@ -44,6 +45,14 @@ LaneletUtils::LaneletUtils(const boost::filesystem::path & filename)
 
   hdmap_utils_ptr_ =
     std::make_shared<hdmap_utils::HdMapUtils>(filename, geographic_msgs::msg::GeoPoint());
+}
+
+std::vector<std::set<int64_t>> LaneletUtils::getTrafficLightsPhases(
+  TrafficLightsGeneratorType generator_type)
+{
+  return makeTrafficLightsPhaseGenerator(
+           generator_type, lanelet_map_ptr_, vehicle_routing_graph_ptr_)
+    ->generate();
 }
 
 std::vector<int64_t> LaneletUtils::getLaneletIds() { return hdmap_utils_ptr_->getLaneletIds(); }

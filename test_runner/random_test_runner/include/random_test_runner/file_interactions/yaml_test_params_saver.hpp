@@ -36,6 +36,8 @@ struct convert<TestSuiteParameters>
     Node node;
     node["test_name"] = rhs.name;
     node["map_name"] = rhs.map_name;
+    node["traffic_lights_generator_type"] =
+      trafficLightsGeneratorTypeToString(rhs.traffic_lights_generator_type);
     node["ego_goal_s"] = rhs.ego_goal_s;
     node["ego_goal_lanelet_id"] = rhs.ego_goal_lanelet_id;
     node["ego_goal_partial_randomization"] = rhs.ego_goal_partial_randomization;
@@ -43,8 +45,10 @@ struct convert<TestSuiteParameters>
     node["npc_count"] = rhs.npcs_count;
     node["npc_min_speed"] = rhs.npc_min_speed;
     node["npc_max_speed"] = rhs.npc_max_speed;
-    node["npc_min_spawn_distance_from_ego"] = rhs.npc_min_spawn_distance_from_ego;
-    node["npc_max_spawn_distance_from_ego"] = rhs.npc_max_spawn_distance_from_ego;
+    node["npc_min_spawn_distance_from_start"] = rhs.npc_min_spawn_distance_from_start;
+    node["npc_max_spawn_distance_from_start"] = rhs.npc_max_spawn_distance_from_start;
+    node["min_green_light_duration"] = rhs.min_green_light_duration;
+    node["max_green_light_duration"] = rhs.max_green_light_duration;
     return node;
   }
 
@@ -56,6 +60,8 @@ struct convert<TestSuiteParameters>
 
     rhs.name = node["test_name"].as<std::string>();
     rhs.map_name = node["map_name"].as<std::string>();
+    rhs.traffic_lights_generator_type =
+      trafficLightsGeneratorTypeFromString(node["traffic_lights_generator_type"].as<std::string>());
     rhs.ego_goal_s = node["ego_goal_s"].as<double>();
     rhs.ego_goal_lanelet_id = node["ego_goal_lanelet_id"].as<int64_t>();
     rhs.ego_goal_partial_randomization = node["ego_goal_partial_randomization"].as<bool>();
@@ -64,8 +70,10 @@ struct convert<TestSuiteParameters>
     rhs.npcs_count = node["npc_count"].as<int64_t>();
     rhs.npc_min_speed = node["npc_min_speed"].as<double>();
     rhs.npc_max_speed = node["npc_max_speed"].as<double>();
-    rhs.npc_min_spawn_distance_from_ego = node["npc_min_spawn_distance_from_ego"].as<double>();
-    rhs.npc_max_spawn_distance_from_ego = node["npc_max_spawn_distance_from_ego"].as<double>();
+    rhs.npc_min_spawn_distance_from_start = node["npc_min_spawn_distance_from_start"].as<double>();
+    rhs.npc_max_spawn_distance_from_start = node["npc_max_spawn_distance_from_start"].as<double>();
+    rhs.min_green_light_duration = node["min_green_light_duration"].as<double>();
+    rhs.max_green_light_duration = node["max_green_light_duration"].as<double>();
 
     return true;
   }

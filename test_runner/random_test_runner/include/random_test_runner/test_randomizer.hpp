@@ -21,7 +21,7 @@
 #include <rclcpp/logger.hpp>
 
 #include "random_test_runner/data_types.hpp"
-#include "random_test_runner/lanelet_utils.hpp"
+#include "random_test_runner/lanelet_tools/lanelet_utils.hpp"
 #include "random_test_runner/randomizers.hpp"
 
 class LaneletUtils;
@@ -45,6 +45,10 @@ private:
   std::pair<traffic_simulator_msgs::msg::LaneletPose, traffic_simulator_msgs::msg::LaneletPose>
   generateEgoRoute(
     int64_t goal_lanelet_id, double goal_s, bool partial_randomization,
+    double randomization_distance, int64_t start_lanelet_id, double start_s);
+  traffic_simulator_msgs::msg::LaneletPose generateEgoStart(int64_t goal_lanelet_id, double goal_s);
+  traffic_simulator_msgs::msg::LaneletPose generateEgoGoal(
+    int64_t goal_lanelet_id, double goal_s, bool partial_randomization,
     double randomization_distance);
   int64_t getRandomLaneletId();
   double getRandomS(int64_t lanelet_id);
@@ -55,6 +59,7 @@ private:
   NPCDescription generateNpcFromLaneletsWithMinDistanceFromPoses(
     int npc_id, const std::vector<traffic_simulator_msgs::msg::LaneletPose> & poses,
     double min_distance, const std::vector<LaneletPart> & lanelets);
+  std::vector<TrafficLightsDescription> generateTrafficLightDescription();
 
   rclcpp::Logger logger_;
 

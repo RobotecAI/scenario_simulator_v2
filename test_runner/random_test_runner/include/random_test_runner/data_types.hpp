@@ -21,6 +21,7 @@
 #include <ostream>
 
 #include "spdlog/fmt/fmt.h"
+#include "traffic_simulator/traffic_lights/traffic_light_state.hpp"
 #include "traffic_simulator_msgs/msg/action_status.hpp"
 #include "traffic_simulator_msgs/msg/entity_status.hpp"
 #include "traffic_simulator_msgs/msg/lanelet_pose.hpp"
@@ -32,6 +33,12 @@ struct NPCDescription
   std::string name;
 };
 
+struct TrafficLightsDescription
+{
+  int64_t id;
+  std::vector<std::pair<double, traffic_simulator::TrafficLightColor>> phase;
+};
+
 struct TestDescription
 {
   traffic_simulator_msgs::msg::LaneletPose ego_goal_position;
@@ -39,11 +46,18 @@ struct TestDescription
   traffic_simulator_msgs::msg::LaneletPose ego_start_position;
 
   std::vector<NPCDescription> npcs_descriptions;
+  std::vector<TrafficLightsDescription> traffic_lights_description;
 };
 
 enum RandomTestType { RANDOM_RUN, REPLAY };
 
 enum SimulatorType { SIMPLE_SENSOR_SIMULATOR, UNITY };
+
+enum TrafficLightsGeneratorType { COLLISION_BASED, DIRECTION_BASED };
+
+TrafficLightsGeneratorType trafficLightsGeneratorTypeFromString(
+  const std::string & generator_type_str);
+std::string trafficLightsGeneratorTypeToString(TrafficLightsGeneratorType generator_type);
 
 struct TestControlParameters
 {
@@ -58,17 +72,25 @@ struct TestSuiteParameters
 {
   std::string name = "random_test";
   std::string map_name = "kashiwanoha_map";
+  TrafficLightsGeneratorType traffic_lights_generator_type =
+    TrafficLightsGeneratorType::COLLISION_BASED;
 
   int64_t ego_goal_lanelet_id = -1;
   double ego_goal_s = 0.0;
   bool ego_goal_partial_randomization = false;
   double ego_goal_partial_randomization_distance = 30.0;
 
+  int64_t start_lanelet_id = -1;
+  double start_s = 0.0;
+
   int64_t npcs_count = 10;
   double npc_min_speed = 0.5;
   double npc_max_speed = 3.0;
-  double npc_min_spawn_distance_from_ego = 10.0;
-  double npc_max_spawn_distance_from_ego = 100.0;
+  double npc_min_spawn_distance_from_start = 10.0;
+  double npc_max_spawn_distance_from_start = 100.0;
+
+  double min_green_light_duration = 3.0;
+  double max_green_light_duration = 10.0;
 };
 
 struct TestCaseParameters
@@ -129,17 +151,53 @@ DEFINE_FMT_FORMATTER(
   "ego_goal_lanelet_id: {} ego_goal_s: {} ego_goal_partial_randomization: {} "
   "ego_goal_partial_randomization_distance: {} npcs_count: {} npc_min_speed: "
   "{} "
-  "npc_max_speed: {} npc_min_spawn_distance_from_ego: {} "
-  "npc_max_spawn_distance_from_ego: {} "
+  "npc_max_speed: {} npc_min_spawn_distance_from_start: {} "
+  "npc_max_spawn_distance_from_start: {} "
   "name: {} map_name: {}",
   v.ego_goal_lanelet_id, v.ego_goal_s, v.ego_goal_partial_randomization,
   v.ego_goal_partial_randomization_distance, v.npcs_count, v.npc_min_speed, v.npc_max_speed,
-  v.npc_min_spawn_distance_from_ego, v.npc_max_spawn_distance_from_ego, v.name, v.map_name)
+  v.npc_min_spawn_distance_from_start, v.npc_max_spawn_distance_from_start, v.name, v.map_name)
 
 DEFINE_FMT_FORMATTER(TestCaseParameters, "seed: {}", v.seed)
 
 DEFINE_FMT_FORMATTER(
   NPCDescription, "name: {}, start_position: {}, speed: {}", v.name, v.start_position, v.speed)
+
+template <>
+struct fmt::formatter<TrafficLightsDescription>
+{
+  template <typename ParseContext>
+  constexpr auto parse(ParseContext & ctx)
+  {
+    return ctx.begin();
+  }
+
+  template <typename FormatContext>
+  auto format(const TrafficLightsDescription & v, FormatContext & ctx)
+  {
+    fmt::format_to(ctx.out(), "traffic light id: {}\n", v.id);
+    for (size_t idx = 0; idx < v.phase.size(); idx++) {
+      fmt::format_to(
+        ctx.out(), "[{}]: {}s: {}\n", idx, v.phase[idx].first, toString(v.phase[idx].second));
+    }
+    return ctx.out();
+  }
+
+  static std::string toString(traffic_simulator::TrafficLightColor color)
+  {
+    switch (color) {
+      case traffic_simulator::TrafficLightColor::NONE:
+        return "NONE";
+      case traffic_simulator::TrafficLightColor::RED:
+        return "RED";
+      case traffic_simulator::TrafficLightColor::GREEN:
+        return "GREEN";
+      case traffic_simulator::TrafficLightColor::YELLOW:
+        return "YELLOW";
+    }
+    return "ERROR";
+  }
+};
 
 template <>
 struct fmt::formatter<TestDescription>
@@ -160,6 +218,9 @@ struct fmt::formatter<TestDescription>
       v.ego_start_position, v.ego_goal_position, v.ego_goal_pose);
     for (size_t idx = 0; idx < v.npcs_descriptions.size(); idx++) {
       fmt::format_to(ctx.out(), "[{}]: {}\n", idx, v.npcs_descriptions[idx]);
+    }
+    for (size_t idx = 0; idx < v.traffic_lights_description.size(); idx++) {
+      fmt::format_to(ctx.out(), "[{}]: {}\n", idx, v.traffic_lights_description[idx]);
     }
     return ctx.out();
   }

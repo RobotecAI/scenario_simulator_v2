@@ -23,7 +23,7 @@
 #include <vector>
 
 #include "random_test_runner/file_interactions/yaml_test_params_saver.hpp"
-#include "random_test_runner/lanelet_utils.hpp"
+#include "random_test_runner/lanelet_tools/lanelet_utils.hpp"
 #include "random_test_runner/test_randomizer.hpp"
 #include "rclcpp/logger.hpp"
 #include "spdlog/fmt/fmt.h"
@@ -112,15 +112,21 @@ TestSuiteParameters RandomTestRunner::collectTestSuiteParameters()
     this->declare_parameter<bool>("ego_goal_partial_randomization", false);
   tp.ego_goal_partial_randomization_distance =
     this->declare_parameter<double>("ego_goal_partial_randomization_distance", 30.0);
+  tp.traffic_lights_generator_type = trafficLightsGeneratorTypeFromString(
+    this->declare_parameter<std::string>("traffic_lights_generator_type", "random_test"));
+  tp.start_lanelet_id = this->declare_parameter<int64_t>("start_lanelet_id", -1);
+  tp.start_s = this->declare_parameter<double>("start_s", 0.0);
   tp.npcs_count = this->declare_parameter<int>("npc_count", 10);
   tp.npc_min_speed = this->declare_parameter<double>("npc_min_speed", 0.5);
   tp.npc_max_speed = this->declare_parameter<double>("npc_max_speed", 3.0);
-  tp.npc_min_spawn_distance_from_ego =
-    this->declare_parameter<double>("npc_min_spawn_distance_from_ego", 10.0);
-  tp.npc_max_spawn_distance_from_ego =
-    this->declare_parameter<double>("npc_max_spawn_distance_from_ego", 100.0);
+  tp.npc_min_spawn_distance_from_start =
+    this->declare_parameter<double>("npc_min_spawn_distance_from_start", 10.0);
+  tp.npc_max_spawn_distance_from_start =
+    this->declare_parameter<double>("npc_max_spawn_distance_from_start", 100.0);
   tp.name = this->declare_parameter<std::string>("test_name", "random_test");
   tp.map_name = this->declare_parameter<std::string>("map_name", "kashiwanoha_map");
+  tp.min_green_light_duration = this->declare_parameter<double>("min_green_light_duration", 3.0);
+  tp.max_green_light_duration = this->declare_parameter<double>("max_green_light_duration", 10.0);
   return tp;
 }
 

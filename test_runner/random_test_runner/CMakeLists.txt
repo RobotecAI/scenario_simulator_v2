@@ -43,6 +43,8 @@ ament_auto_add_executable(random_test_runner
   src/lanelet_utils.cpp
   src/random_test_runner.cpp
   src/random_test_runner_node.cpp
+  src/data_types.cpp
+  src/phases_generator.cpp
 )
 
 target_link_libraries(random_test_runner

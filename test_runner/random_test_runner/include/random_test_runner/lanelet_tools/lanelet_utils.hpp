@@ -21,8 +21,9 @@
 #include <lanelet2_routing/RoutingGraph.h>
 
 #include <boost/filesystem.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <set>
 
-#include "geometry_msgs/msg/pose_stamped.hpp"
 #include "random_test_runner/data_types.hpp"
 
 namespace hdmap_utils
@@ -56,6 +57,7 @@ public:
   std::vector<LaneletPart> getLanesWithinDistance(
     const traffic_simulator_msgs::msg::LaneletPose & pose, double min_distance,
     double max_distance);
+  std::vector<std::set<int64_t>> getTrafficLightsPhases(TrafficLightsGeneratorType generator_type);
 
   std::vector<int64_t> getLaneletIds();
   geometry_msgs::msg::PoseStamped toMapPose(traffic_simulator_msgs::msg::LaneletPose lanelet_pose);

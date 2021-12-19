@@ -99,6 +99,10 @@ void TestExecutor::initialize()
       traffic_simulator::helper::constructActionStatus(npc_descr.speed));
     api_->setTargetSpeed(npc_descr.name, npc_descr.speed, true);
   }
+
+  for (const auto & traffic_light_description : test_description_.traffic_lights_description) {
+    api_->setTrafficLightColorPhase(traffic_light_description.id, traffic_light_description.phase);
+  }
 }
 
 void TestExecutor::update(double current_time)
