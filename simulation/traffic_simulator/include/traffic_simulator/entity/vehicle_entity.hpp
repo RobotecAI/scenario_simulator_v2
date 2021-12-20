@@ -89,6 +89,10 @@ public:
     behavior_plugin_ptr_->setDriverModel(model);
   }
 
+  void setAccelerationLimit(double acceleration) override;
+
+  void setDecelerationLimit(double deceleration) override;
+
   auto getDriverModel() -> const traffic_simulator_msgs::msg::DriverModel override;
 
   void setHdMapUtils(const std::shared_ptr<hdmap_utils::HdMapUtils> & ptr) override
@@ -99,7 +103,7 @@ public:
   }
 
   void setTrafficLightManager(
-    const std::shared_ptr<traffic_simulator::TrafficLightManager> & ptr) override
+    const std::shared_ptr<traffic_simulator::TrafficLightManagerBase> & ptr) override
   {
     EntityBase::setTrafficLightManager(ptr);
     behavior_plugin_ptr_->setTrafficLightManager(traffic_light_manager_);
