@@ -32,8 +32,7 @@ class TestExecutor
 public:
   TestExecutor(
     std::shared_ptr<traffic_simulator::API> api, TestDescription description,
-    JunitXmlReporterTestCase test_case_reporter, bool spawn_ego,
-    rclcpp::Logger logger);
+    JunitXmlReporterTestCase test_case_reporter, bool spawn_ego, rclcpp::Logger logger);
 
   void initialize();
   void update(double current_time);

@@ -88,12 +88,12 @@ RandomTestRunner::RandomTestRunner(const rclcpp::NodeOptions & option)
       fmt::format("Generating test {}/{}", test_id + 1, test_case_parameters_vector.size())
         .c_str());
     test_executors_.emplace_back(
-            api_,
-            TestRandomizer(
+      api_,
+      TestRandomizer(
         get_logger(), validated_params, test_case_parameters_vector[test_id], lanelet_utils)
         .generate(),
-            error_reporter_.spawnTestCase(validated_params.name, std::to_string(test_id)),
-            test_control_parameters.spawn_ego, get_logger());
+      error_reporter_.spawnTestCase(validated_params.name, std::to_string(test_id)),
+      test_control_parameters.spawn_ego, get_logger());
     yaml_test_params_saver.addTestCase(test_case_parameters_vector[test_id], validated_params.name);
   }
 
