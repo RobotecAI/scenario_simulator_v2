@@ -65,7 +65,7 @@ struct TestControlParameters
   std::string output_dir = "/tmp";
   RandomTestType random_test_type = RandomTestType::RANDOM_RUN;
   int64_t test_count = 5;
-  SimulatorType simulator_type = SimulatorType::SIMPLE_SENSOR_SIMULATOR;
+  bool spawn_ego = false;
 };
 
 struct TestSuiteParameters

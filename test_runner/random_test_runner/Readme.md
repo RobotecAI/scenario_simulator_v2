@@ -9,59 +9,17 @@ Random test runner allows running randomly generated scenarios to test autoware 
 
 ### Autoware.Auto
 
-It is assumed that you are running Autoware.Auto in ADE environment with default paths. See [Autoware.Auto documentation](https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation-ade.html) for instructions how to correctly set up Autoware.Auto and ADE.
-
-Clone `Autoware.Auto` repository and move to created directory:
-```
-git clone git@gitlab.com:autowarefoundation/autoware.auto/AutowareAuto.git 
-cd AutowareAuto
-```
-
-When working with `random_test_runner` please make sure to use a bit older version of Autoware.Auto. Inside Autoware.Auto directory execute:
-```shell
-git checkout c32704d5c
-```
-to switch to known working version.
-
-Inside Autoware.Auto directory run and enter ade:
-```shell
-ade --rc .aderc-amd64-foxy-lgsvl start --update --enter
-```
-
-enter Autoware.Auto directory, download required dependencies:
-
-```shell
-cd <autoware_auto_directory_name>
-vcs import < autoware.auto.foxy.repos
-```
-
-update `scenario.simulator.v2.repos` file to point to correct branch:
-
-```shell
-echo "  repositories:
-    src/external/scenario_simulator:
-        type: git
-        url: https://github.com/robotecai/scenario_simulator_v2.git
-        version: feature/AJD-293-random_traffic_lights" > ./tools/simulation/scenario.simulator.v2.repos
-```
-
-get `scenario_simulator_v2`, install dependencies
-
-```shell
-./tools/simulation/get_scenario_simulator_v2.sh
-```
-
-download modified `kashiwanoha_map` with additional traffic lights from [here](https://drive.google.com/file/d/1bnATq6E6enD7yQQbfN73FjQyjZ3MRT2y/view?usp=sharing) and extract it to `<scenario_simulator_path>/map/` directory.
-
-build solution
-```shell
-colcon build --packages-up-to random_test_runner scenario_simulator_launch kashiwanoha_map_new_traffic_lights --cmake-args -DCMAKE_BUILD_TYPE=Release
-```
+| NOTE: Autoware.Auto is not currently supported by random testing. |
+|-------------------------------------------------------------------|
 
 ### AutowareArchitectureProposal
 
 | NOTE: AutowareArchitectureProposal is not yet supported by random testing. |
 |----------------------------------------------------------------------------|
+
+### No-autoware mode
+
+
 
 ## How to run
 
@@ -159,9 +117,9 @@ source /opt/ros/galactic/setup.bash
 ```shell
 ros2 run lanelet2_scene_builder lanelet2_scene_builder --ros-args -p osm_file:=<AUTOWARE_DIRECTORY>/install/kashiwanoha_map_new_traffic_lights/share/kashiwanoha_map_new_traffic_lights/map/lanelet2_map.osm
 ```
-7. Execute `random_test_runner` launch with `simulator_type` parameter and correct map name:
+7. Execute `random_test_runner` launch with `spawn_ego` parameter and correct map name:
 ```shell
-ros2 launch random_test_runner random_test.launch.py simulator_type:="unity" map_name:="kashiwanoha_map_new_traffic_lights" test_count:=3
+ros2 launch random_test_runner random_test.launch.py spawn_ego:="unity" map_name:="kashiwanoha_map_new_traffic_lights" test_count:=3
 ```
 |  NOTE: Since currently unity integration does not support ego vehicle, `random_test_runner` does not spawn it. |
 |----------------------------------------------------------------------------------------------------------------|
@@ -181,7 +139,7 @@ Please refer to [Node parameters](#node-parameters) chapter for more details on 
 | Parameter name               | Default value                 | Description                                                                                                                                                                                                                 |
 |------------------------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `test_parameters_filename`   |  `""`                         | Yaml filename within `random_test_runner/param directory` containing test parameters. With exception from [Launch arguments](#launch-arguments) chapter, parameters specified here will override values passed as arguments |
-| `simulator_type`             |  `"simple_sensor_simulator"`  | Backend simulator. Supported values are `unity` and `simple_sensor_simulator`. It's also accepted by the node but should be supplied as direct launch argument                                                              |
+| `simulator_type`             |  `"simple_sensor_simulator"`  | Backend simulator. Supported values are `unity` and `simple_sensor_simulator`.                                                                                                                                              |
 
 ### Autoware related arguments
 
@@ -193,7 +151,6 @@ and sensor model is used in the simulation
 | `architecture_type` | `"awf/auto"`                  | Autoware architecture type. Possible values: `awf/auto`, `tier4/proposal` |
 | `sensor_model`      | `"aip_xx1"`                   | Ego sensor model                                                          |
 | `vehicle_model`     | `"lexus"`                     | Ego vehicle model                                                         |
-
 
 ## Node parameters
 
@@ -222,7 +179,6 @@ High level parameters not directly related to the test itself
 | `input_dir`       |  `""`                         |  Directory containing the result.yaml file to be replayed. If not empty, tests will be replayed from result.yaml          |
 | `output_dir`      |  `"/tmp"`                     |  Directory to which result.yaml and result.junit.xml files will be placed                                                 |
 | `test_count`      |  `5`                          |  Number of test cases to be performed in the test suite                                                                   |
-| `simulator_type`  |  `"simple_sensor_simulator"`  |  Backend simulator. Supported values are `unity` and `simple_sensor_simulator`. It should be set only via launch argument |
 
 #### Test suite parameters
 
@@ -232,10 +188,11 @@ Core test parameters. It sets map name, ego goal information and npc spawning pa
 |-------------------------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `test_name`                               | `"random_test"`     | Test name. Used for descriptive purposes only                                                                                                                                                                                                                             |
 | `map_name`                                | `"kashiwanoha_map"` | Package name containing map information (lanelet, point cloud, etc)                                                                                                                                                                                                       |
-| `traffic_lights_generator_type`|  "collision_based"  | Algorithm which will be used to compute traffic lights phases. Possible values are `collision_based` or `direction_based`. Meaning is that phases are generated based on collisions between lanelets, or based on geographical direction of the stop lines, respectively. |
+| `traffic_lights_generator_type`           |  "collision_based"  | Algorithm which will be used to compute traffic lights phases. Possible values are `collision_based` or `direction_based`. Meaning is that phases are generated based on collisions between lanelets, or based on geographical direction of the stop lines, respectively. |
+| "spawn_ego"                               | `false`             | If `true`, ego vehicle will be spawned in start position                                                                                                                                                                                                                  |
 | `ego_goal_lanelet_id`                     | `-1`                | Goal lanelet's id. If `-1`, goal will be chosen randomly                                                                                                                                                                                                                  |
 | `ego_goal_s`                              | `0.0`               | Goal lanelet's s (translation along the lanelet in meters). If `ego_goal_lanelet_id` equals `-1`, s will be chosen randomly                                                                                                                                               |
-| `ego_goal_partial_randomization`          | `False`             | If `true`, goal will be randomized within distance set in `ego_goal_partial_randomization_distance` value. If `ego_goal_lanelet_id` is set to `-1`, this value is ignored                                                                                                 |
+| `ego_goal_partial_randomization`          | `false`             | If `true`, goal will be randomized within distance set in `ego_goal_partial_randomization_distance` value. If `ego_goal_lanelet_id` is set to `-1`, this value is ignored                                                                                                 |
 | `ego_goal_partial_randomization_distance` | `30.0`              | Distance in meters from goal set by `ego_goal_lanelet_id` and `ego_goal_s`, within which goal pose will be randomized if `ego_goal_partial_randomization` is set to true                                                                                                  |
 | `npc_count`                               | `10`                | Generated npc count                                                                                                                                                                                                                                                       |
 | `npc_min_speed`                           | `0.5`               | Minimum speed of generated npcs                                                                                                                                                                                                                                           |

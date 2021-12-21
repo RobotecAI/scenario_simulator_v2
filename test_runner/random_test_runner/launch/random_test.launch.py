@@ -20,6 +20,7 @@
 # Co-developed by Tier IV, Inc. and Robotec.AI sp. z o.o.
 
 import os
+import sys
 
 from ament_index_python.packages import get_package_share_directory
 
@@ -27,9 +28,9 @@ from launch import LaunchDescription
 
 from launch.events import Shutdown
 from launch.event_handlers import OnProcessExit
-from launch.actions import EmitEvent, RegisterEventHandler, OpaqueFunction
+from launch.actions import EmitEvent, RegisterEventHandler, OpaqueFunction, LogInfo
 from launch.actions.declare_launch_argument import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, TextSubstitution
 from launch_ros.actions import Node
 
 def default_autoware_launch_package_of(architecture_type):
@@ -43,6 +44,13 @@ def default_autoware_launch_file_of(architecture_type):
         "awf/auto": "autoware_auto.launch.py",
         "tier4/proposal": "planning_simulator.launch.xml",
     }[architecture_type]
+
+def to_bool(string):
+    if string in ['True', 'true']:
+        return True
+    if string in ['False', 'false']:
+        return False
+    raise RuntimeError("Couldn't convert {} to bool".format(string))
 
 class RandomTestRunnerLaunch(object):
     def __init__(self):
@@ -79,6 +87,8 @@ class RandomTestRunnerLaunch(object):
                           "description": "Test name. Used for descriptive purposes only"},
             "map_name": {"default": "kashiwanoha_map",
                          "description": "Package name containing map information (lanelet, point cloud, etc)"},
+            "spawn_ego": {"default": False,
+                         "description": "If true, ego vehicle will be spawned in start position"},
             "traffic_lights_generator_type":
                 {"default": "collision_based",
                  "description": "Algorithm which will be used to compute traffic lights phases. It can be either"
@@ -162,12 +172,22 @@ class RandomTestRunnerLaunch(object):
 
         return declared_launch_arguments
 
+
     def launch_setup(self, context, *args, **kwargs):
         test_param_file = self.random_test_runner_launch_configuration["test_parameters_filename"].perform(context)
         print("Test param file", test_param_file)
 
         autoware_architecture = self.autoware_launch_configuration["architecture_type"].perform(context)
         print("Autoware architecture", autoware_architecture)
+
+        simulator_type = self.random_test_runner_launch_configuration["simulator_type"].perform(context)
+        print("Chosen simulator type", simulator_type)
+        spawn_ego = to_bool(self.random_test_runner_launch_configuration["spawn_ego"].perform(context))
+        print("Should spawn ego? ", spawn_ego)
+
+        if spawn_ego and (simulator_type == "unity"):
+            return [LogInfo(msg=TextSubstitution(
+                text="Ego cannot be spawned by random test runner in Unity environment"))]
 
         parameters = [self.autoware_launch_configuration,
                       {"autoware_launch_package": default_autoware_launch_package_of(autoware_architecture),
@@ -205,9 +225,7 @@ class RandomTestRunnerLaunch(object):
             ),
         ]
 
-        simulation_type = self.random_test_runner_launch_configuration["simulator_type"].perform(context)
-        print("Chosen simulation type", simulation_type)
-        if simulation_type == "simple_sensor_simulator":
+        if simulator_type == "simple_sensor_simulator":
             launch_description.append(
                 Node(
                     package="simple_sensor_simulator",

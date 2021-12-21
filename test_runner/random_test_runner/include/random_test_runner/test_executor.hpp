@@ -32,7 +32,7 @@ class TestExecutor
 public:
   TestExecutor(
     std::shared_ptr<traffic_simulator::API> api, TestDescription description,
-    JunitXmlReporterTestCase test_case_reporter, SimulatorType simulator_type,
+    JunitXmlReporterTestCase test_case_reporter, bool spawn_ego,
     rclcpp::Logger logger);
 
   void initialize();
@@ -50,7 +50,7 @@ private:
   EgoCollisionMetric ego_collision_metric_;
   JunitXmlReporterTestCase error_reporter_;
 
-  SimulatorType simulator_type_;
+  bool spawn_ego_;
 
   bool scenario_completed_ = false;
 

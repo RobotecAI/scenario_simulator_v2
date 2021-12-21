@@ -53,11 +53,11 @@ traffic_simulator_msgs::msg::VehicleParameters getVehicleParameters()
 
 TestExecutor::TestExecutor(
   std::shared_ptr<traffic_simulator::API> api, TestDescription description,
-  JunitXmlReporterTestCase test_case_reporter, SimulatorType simulator_type, rclcpp::Logger logger)
+  JunitXmlReporterTestCase test_case_reporter, bool spawn_ego, rclcpp::Logger logger)
 : api_(std::move(api)),
   test_description_(std::move(description)),
   error_reporter_(std::move(test_case_reporter)),
-  simulator_type_(simulator_type),
+  spawn_ego_(spawn_ego),
   logger_(logger)
 {
 }
@@ -70,7 +70,7 @@ void TestExecutor::initialize()
   api_->initialize(1.0, 0.05);
   api_->updateFrame();
 
-  if (simulator_type_ == SimulatorType::SIMPLE_SENSOR_SIMULATOR) {
+  if (spawn_ego_) {
     api_->spawn(ego_name_, getVehicleParameters(), traffic_simulator::VehicleBehavior::autoware());
     api_->setEntityStatus(
       ego_name_, test_description_.ego_start_position,
@@ -110,7 +110,7 @@ void TestExecutor::update(double current_time)
   bool timeout_reached = current_time >= test_timeout;
 
   if (timeout_reached) {
-    if (simulator_type_ == SimulatorType::SIMPLE_SENSOR_SIMULATOR) {
+    if (spawn_ego_) {
       traffic_simulator_msgs::msg::EntityStatus status = api_->getEntityStatus(ego_name_);
       if (!goal_reached_metric_.isGoalReached(status)) {
         RCLCPP_INFO(logger_, "Timeout reached");
@@ -121,7 +121,7 @@ void TestExecutor::update(double current_time)
     return;
   }
 
-  if (simulator_type_ == SimulatorType::SIMPLE_SENSOR_SIMULATOR) {
+  if (spawn_ego_) {
     traffic_simulator_msgs::msg::EntityStatus status = api_->getEntityStatus(ego_name_);
     for (const auto & npc : test_description_.npcs_descriptions) {
       if (api_->entityExists(npc.name) && api_->checkCollision(ego_name_, npc.name)) {
@@ -151,7 +151,7 @@ void TestExecutor::deinitialize()
 {
   RCLCPP_INFO(logger_, fmt::format("Deinitialize: {}", test_description_).c_str());
 
-  if (simulator_type_ == SimulatorType::SIMPLE_SENSOR_SIMULATOR) {
+  if (spawn_ego_) {
     api_->despawn(ego_name_);
   }
   for (const auto & npc : test_description_.npcs_descriptions) {
