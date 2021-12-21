@@ -1,11 +1,13 @@
 # Random test runner
 
-Random test runner allows running randomly generated scenarios to test autoware autonomy implementation.
+Random test runner allows running randomly generated scenarios to test autonomy implementation.
 
 | NOTE: Currently only `Autoware.Auto` (`awf/auto`) is supported. `AutowareArchitectureProposal` (`tier4/proposal`) will be supported in the future. |
 |----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ## How to build
+
+### Prerequisites 
 
 ### Autoware.Auto
 
@@ -19,13 +21,40 @@ Random test runner allows running randomly generated scenarios to test autoware 
 
 ### No-autoware mode
 
+Make sure to have installed and sourced ros2 environment. Supported distributions are `foxy` and `galactic`. Also make sure to have `pip` installed.
 
+```shell
+sudo apt update
+source /opt/ros/foxy/setup.bash
+sudo apt install -y python3-pip python3-rosdep2 python3-vcstool python3-colcon-common-extensions
+rosdep update
+```
+
+Prepare ROS workspace, clone repository on branch `feature/AJD-293-random_traffic_lights`, import and install dependencies
+
+```bash
+mkdir -p ~/scenario_simulator_ws/src
+cd ~/scenario_simulator_ws/src
+git clone https://github.com/tier4/scenario_simulator_v2.git
+cd scenario_simulator_v2
+git checkout feature/AJD-293-random_traffic_lights
+vcs import external < dependency_foxy.repos
+cd ~/scenario_simulator_ws
+source /opt/ros/foxy/setup.bash
+rosdep install -iry --from-paths src/scenario_simulator_v2 --rosdistro foxy
+```
+
+## Build scenario_simulator_vs
+
+```bash
+colcon build --symlink-install
+```
 
 ## How to run
 
 First complete build described in [How to build](#how-to-build) section for autoware architecture you are using.
 
-Then, in first terminal run: 
+Then, in the first terminal run: 
 
 ```shell
 source install/setup.bash
