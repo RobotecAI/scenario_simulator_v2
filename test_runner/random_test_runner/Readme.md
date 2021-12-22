@@ -2,8 +2,8 @@
 
 Random test runner allows running randomly generated scenarios to test autonomy implementation.
 
-| NOTE: Currently only `Autoware.Auto` (`awf/auto`) is supported. `AutowareArchitectureProposal` (`tier4/proposal`) will be supported in the future. |
-|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| NOTE: Currently no Autoware is supported. They will be supported in the future. |
+|---------------------------------------------------------------------------------|
 
 ## How to build
 
