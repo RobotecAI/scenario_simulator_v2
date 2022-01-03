@@ -19,6 +19,7 @@
 #include <lanelet2_core/LaneletMap.h>
 #include <lanelet2_routing/RoutingGraph.h>
 
+#include <cmath>
 #include <lanelet2_extension_psim/regulatory_elements/autoware_traffic_light.hpp>
 #include <unordered_set>
 
@@ -154,8 +155,6 @@ public:
   }
 };
 
-#include <cmath>
-
 class DirectionBasedTrafficLightsPhaseGenerator : public TrafficLightsPhaseGenerator
 {
 public:
@@ -210,7 +209,7 @@ public:
 
       if (distance > greatest_distance) {
         greatest_distance = distance;
-        greatest_distance_direction_average = direction + distance / 2;
+        greatest_distance_direction_average = direction + distance / 2.0;
         if (greatest_distance_direction_average > M_PI) {
           greatest_distance_direction_average -= M_PI;
         }
@@ -264,10 +263,10 @@ TrafficLightsPhaseGeneratorPtr makeTrafficLightsPhaseGenerator(
   lanelet::routing::RoutingGraphConstPtr routing_graph_ptr)
 {
   switch (generator_type) {
-    case TrafficLightsGeneratorType::COLLISION_BASED:
+    case TrafficLightsGeneratorType::LANELET_COLLISION_BASED:
       return std::make_shared<CollisionBasedTrafficLightsPhaseGenerator>(
         std::move(lanelet_map_ptr), std::move(routing_graph_ptr));
-    case TrafficLightsGeneratorType::DIRECTION_BASED:
+    case TrafficLightsGeneratorType::LANELET_STOPLINE_DIRECTION_BASED:
       return std::make_shared<DirectionBasedTrafficLightsPhaseGenerator>(
         std::move(lanelet_map_ptr), std::move(routing_graph_ptr));
   }

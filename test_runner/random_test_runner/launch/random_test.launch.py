@@ -90,10 +90,10 @@ class RandomTestRunnerLaunch(object):
             "spawn_ego": {"default": False,
                          "description": "If true, ego vehicle will be spawned in start position"},
             "traffic_lights_generator_type":
-                {"default": "collision_based",
+                {"default": "lanelet_collision_based",
                  "description": "Algorithm which will be used to compute traffic lights phases. It can be either"
                                 "based on collisions between lanelets, or based on direction of the stop lines.",
-                 "values": ["collision_based", "direction_based"]},
+                 "values": ["lanelet_collision_based", "lanelet_stopline_direction_based"]},
             "ego_goal_lanelet_id":
                 {"default": -1,
                  "description": "Goal lanelet id. If -1, goal will be chosen randomly"},

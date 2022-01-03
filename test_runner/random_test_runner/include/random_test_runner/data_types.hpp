@@ -53,7 +53,7 @@ enum RandomTestType { RANDOM_RUN, REPLAY };
 
 enum SimulatorType { SIMPLE_SENSOR_SIMULATOR, UNITY };
 
-enum TrafficLightsGeneratorType { COLLISION_BASED, DIRECTION_BASED };
+enum TrafficLightsGeneratorType { LANELET_COLLISION_BASED, LANELET_STOPLINE_DIRECTION_BASED };
 
 TrafficLightsGeneratorType trafficLightsGeneratorTypeFromString(
   const std::string & generator_type_str);
@@ -73,7 +73,7 @@ struct TestSuiteParameters
   std::string name = "random_test";
   std::string map_name = "kashiwanoha_map";
   TrafficLightsGeneratorType traffic_lights_generator_type =
-    TrafficLightsGeneratorType::COLLISION_BASED;
+    TrafficLightsGeneratorType::LANELET_COLLISION_BASED;
 
   int64_t ego_goal_lanelet_id = -1;
   double ego_goal_s = 0.0;

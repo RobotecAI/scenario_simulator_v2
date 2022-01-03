@@ -139,12 +139,12 @@ TestRandomizer::generateEgoRoute(
 }
 
 traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoStart(
-  int64_t start_lanelet_id, double goal_s)
+  int64_t start_lanelet_id, double start_s)
 {
   if (start_lanelet_id < 0) {
     return generateRandomPosition();
   }
-  return traffic_simulator::helper::constructLaneletPose(start_lanelet_id, goal_s);
+  return traffic_simulator::helper::constructLaneletPose(start_lanelet_id, start_s);
 }
 
 traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoGoal(

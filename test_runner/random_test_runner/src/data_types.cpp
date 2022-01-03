@@ -19,10 +19,10 @@
 TrafficLightsGeneratorType trafficLightsGeneratorTypeFromString(
   const std::string & generator_type_str)
 {
-  if (generator_type_str == "collision_based") {
-    return TrafficLightsGeneratorType::COLLISION_BASED;
-  } else if (generator_type_str == "direction_based") {
-    return TrafficLightsGeneratorType::DIRECTION_BASED;
+  if (generator_type_str == "lanelet_collision_based") {
+    return TrafficLightsGeneratorType::LANELET_COLLISION_BASED;
+  } else if (generator_type_str == "lanelet_stopline_direction_based") {
+    return TrafficLightsGeneratorType::LANELET_STOPLINE_DIRECTION_BASED;
   }
   throw std::runtime_error(fmt::format(
     "Failed to convert {} to traffic lights phases generator type", generator_type_str));
@@ -31,10 +31,10 @@ TrafficLightsGeneratorType trafficLightsGeneratorTypeFromString(
 std::string trafficLightsGeneratorTypeToString(TrafficLightsGeneratorType generator_type)
 {
   switch (generator_type) {
-    case TrafficLightsGeneratorType::COLLISION_BASED:
-      return "collision_based";
-    case TrafficLightsGeneratorType::DIRECTION_BASED:
-      return "direction_based";
+    case TrafficLightsGeneratorType::LANELET_COLLISION_BASED:
+      return "lanelet_collision_based";
+    case TrafficLightsGeneratorType::LANELET_STOPLINE_DIRECTION_BASED:
+      return "lanelet_stopline_direction_based";
   }
   throw std::runtime_error(fmt::format(
     "Failed to convert traffic lights phases generator type {} to string", generator_type));
