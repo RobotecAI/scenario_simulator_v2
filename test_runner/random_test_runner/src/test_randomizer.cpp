@@ -141,7 +141,7 @@ TestRandomizer::generateEgoRoute(
 traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoStart(
   int64_t start_lanelet_id, double start_s)
 {
-  if (start_lanelet_id < 0) {
+  if (start_lanelet_id == -1) {
     return generateRandomPosition();
   }
   return traffic_simulator::helper::constructLaneletPose(start_lanelet_id, start_s);
@@ -153,7 +153,7 @@ traffic_simulator_msgs::msg::LaneletPose TestRandomizer::generateEgoGoal(
   traffic_simulator_msgs::msg::LaneletPose goal_pose;
   auto goal_pose_from_params =
     traffic_simulator::helper::constructLaneletPose(goal_lanelet_id, goal_s);
-  if (goal_lanelet_id < 0) {
+  if (goal_lanelet_id == -1) {
     RCLCPP_INFO(logger_, "Goal randomization: full");
     goal_pose = generateRandomPosition();
   } else if (partial_randomization) {

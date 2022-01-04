@@ -171,26 +171,37 @@ SimulatorType RandomTestRunner::simulatorTypeFromString(const std::string & simu
 TestSuiteParameters RandomTestRunner::validateParameters(
   const TestSuiteParameters & test_parameters, std::shared_ptr<LaneletUtils> lanelet_utils)
 {
-  TestSuiteParameters tp = test_parameters;
+  validateLaneletPose(
+    test_parameters.ego_goal_lanelet_id, test_parameters.ego_goal_s, lanelet_utils);
+  validateLaneletPose(test_parameters.start_lanelet_id, test_parameters.start_s, lanelet_utils);
+  return test_parameters;
+}
 
-  if (tp.ego_goal_lanelet_id == -1) {
-    return tp;
+void RandomTestRunner::validateLaneletPose(
+  int64_t lanelet_id, double s, std::shared_ptr<LaneletUtils> lanelet_utils)
+{
+  if (lanelet_id < -1) {
+    throw std::runtime_error(fmt::format(
+      "Lanelet id can be either non negative or -1. Provided value {} is invalid", lanelet_id));
+  }
+
+  if (lanelet_id == -1) {
+    return;
   }
 
   auto lanelet_ids = lanelet_utils->getLaneletIds();
 
-  if (std::none_of(lanelet_ids.begin(), lanelet_ids.end(), [&tp](int64_t lanelet_id) {
-        return tp.ego_goal_lanelet_id == lanelet_id;
-      })) {
-    throw std::runtime_error(fmt::format("Lanelet {} does not exists.", tp.ego_goal_lanelet_id));
+  if (std::none_of(
+        lanelet_ids.begin(), lanelet_ids.end(),
+        [lanelet_id](int64_t existing_lanelet_id) { return lanelet_id == existing_lanelet_id; })) {
+    throw std::runtime_error(fmt::format("Lanelet {} does not exists.", lanelet_id));
   }
 
-  if (!lanelet_utils->isInLanelet(tp.ego_goal_lanelet_id, tp.ego_goal_s)) {
+  if (!lanelet_utils->isInLanelet(lanelet_id, s)) {
     throw std::runtime_error(fmt::format(
-      "Invalid position inside lanelet: {}. Lanelet {} has length of {}.", tp.ego_goal_s,
-      tp.ego_goal_lanelet_id, lanelet_utils->getLaneletLength(tp.ego_goal_lanelet_id)));
+      "Invalid position inside lanelet: {}. Lanelet {} has length of {}.", s, lanelet_id,
+      lanelet_utils->getLaneletLength(lanelet_id)));
   }
-  return tp;
 }
 
 void RandomTestRunner::update()
