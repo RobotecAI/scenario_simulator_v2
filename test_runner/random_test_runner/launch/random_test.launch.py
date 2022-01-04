@@ -96,7 +96,8 @@ class RandomTestRunnerLaunch(object):
                  "values": ["lanelet_collision_based", "lanelet_stopline_direction_based"]},
             "ego_goal_lanelet_id":
                 {"default": -1,
-                 "description": "Goal lanelet id. If -1, goal will be chosen randomly"},
+                 "description": "Goal lanelet id. . Must be a valid id for map specified in `map_name` parameter. "
+                                "If -1, goal will be chosen randomly"},
             "ego_goal_s":
                 {"default": 0.0,
                  "description": "Goal lanelet s (translation along the lanelet in meters). "
@@ -112,8 +113,9 @@ class RandomTestRunnerLaunch(object):
                                 "pose will be randomized if ego_goal_partial_randomization is set to true"},
             "start_lanelet_id":
                 {"default": -1,
-                 "description": "Start lanelet id. If applicable, ego will be spawned here and NPCs will be spawned "
-                                "around this place. If -1, start will be chosen randomly"},
+                 "description": "Start lanelet id. Must be a valid id for map specified in `map_name` parameter. If "
+                                "applicable, ego will be spawned here and NPCs will be spawned around this place. "
+                                "If -1, start will be chosen randomly."},
             "start_s":
                 {"default": 0.0,
                  "description": "Start lanelet s (translation along the lanelet in meters). If applicable, ego will be "
