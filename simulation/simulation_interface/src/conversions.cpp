@@ -509,6 +509,24 @@ void toProto(
 }
 
 #ifndef SCENARIO_SIMULATOR_V2_BACKWARD_COMPATIBLE_TO_AWF_AUTO
+
+simulation_api_schema::TrafficLightState_LampState_State trafficLightToLampStateState(
+  const autoware_auto_perception_msgs::msg::TrafficLight & tl)
+{
+  using AATrafficLightMsg = autoware_auto_perception_msgs::msg::TrafficLight;
+  using SimApiSchemaLampState = simulation_api_schema::TrafficLightState_LampState_State;
+  switch (tl.color) {
+    case AATrafficLightMsg::RED:
+      return SimApiSchemaLampState::TrafficLightState_LampState_State_RED;
+    case AATrafficLightMsg::AMBER:
+      return SimApiSchemaLampState::TrafficLightState_LampState_State_YELLOW;
+    case AATrafficLightMsg::GREEN:
+      return SimApiSchemaLampState::TrafficLightState_LampState_State_GREEN;
+    default:
+      return SimApiSchemaLampState::TrafficLightState_LampState_State_UNKNOWN;
+  }
+}
+
 void toProto(
   const autoware_auto_perception_msgs::msg::TrafficSignal & traffic_light_state,
   simulation_api_schema::TrafficLightState & proto)
@@ -516,6 +534,7 @@ void toProto(
   proto.set_id(traffic_light_state.map_primitive_id);
   for (const autoware_auto_perception_msgs::msg::TrafficLight & ls : traffic_light_state.lights) {
     simulation_api_schema::TrafficLightState::LampState lamp_state;
+    lamp_state.set_type(trafficLightToLampStateState(ls));
     // TODO(murooka) type is separated into color, shape, status
     *proto.add_lamp_states() = lamp_state;
   }
