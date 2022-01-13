@@ -44,10 +44,18 @@ source /opt/ros/foxy/setup.bash
 rosdep install -iry --from-paths src/scenario_simulator_v2 --rosdistro foxy
 ```
 
-## Build scenario_simulator_vs
+Build scenario_simulator
 
 ```bash
 colcon build --symlink-install
+```
+
+### Custom map preparation
+
+Download `kashiwanoha_map_new_traffic_lights` map package from [here](https://drive.google.com/drive/folders/1GNYM-6RA4YskrFUPTqlJEpS1jEvBdCI0) and place it in `<scenario_simulator_root>/map` directory, then call
+
+```bash
+colcon build --packages-up-to kashiwanoha_map_new_traffic_lights --symlink-install
 ```
 
 ## How to run
@@ -217,8 +225,8 @@ Core test parameters. It sets map name, ego goal information and npc spawning pa
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `test_name`                               | `"random_test"`             | Test name. Used for descriptive purposes only                                                                                                                                                                                                                                                      |
 | `map_name`                                | `"kashiwanoha_map"`         | Package name containing map information (lanelet, point cloud, etc)                                                                                                                                                                                                                                |
-| `traffic_lights_generator_type`           | '"lanelet_collision_based"' | Algorithm which will be used to compute traffic lights phases. Possible values are `lanelet_collision_based` or `lanelet_stopline_direction_based`. Meaning is that phases are generated based on collisions between lanelets, or based on geographical direction of the stop lines, respectively. |
-| 'spawn_ego'                               | `false`                     | If `true`, ego vehicle will be spawned in start position                                                                                                                                                                                                                                           |
+| `traffic_lights_generator_type`           | `"lanelet_collision_based"` | Algorithm which will be used to compute traffic lights phases. Possible values are `lanelet_collision_based` or `lanelet_stopline_direction_based`. Meaning is that phases are generated based on collisions between lanelets, or based on geographical direction of the stop lines, respectively. |
+| `spawn_ego`                               | `false`                     | If `true`, ego vehicle will be spawned in start position                                                                                                                                                                                                                                           |
 | `ego_goal_lanelet_id`                     | `-1`                        | Ego goal lanelet's id. Must be a valid id for map specified in `map_name` parameter. If `-1`, goal will be chosen randomly                                                                                                                                                                         |
 | `ego_goal_s`                              | `0.0`                       | Ego goal lanelet's s (translation along the lanelet in meters). If `ego_goal_lanelet_id` equals `-1`, s will be chosen randomly                                                                                                                                                                    |
 | `ego_goal_partial_randomization`          | `false`                     | If `true`, goal will be randomized within distance set in `ego_goal_partial_randomization_distance` value. If `ego_goal_lanelet_id` is set to `-1`, this value is ignored                                                                                                                          |
@@ -230,8 +238,8 @@ Core test parameters. It sets map name, ego goal information and npc spawning pa
 | `npc_max_spawn_distance_from_start`       | `100.0`                     | Maximum distance of generated npcs from ego                                                                                                                                                                                                                                                        |
 | `min_green_light_duration`                | `3.0`                       | Minimum duration of green traffic light                                                                                                                                                                                                                                                            |
 | `max_green_light_duration`                | `10.0`                      | Maximum duration of green traffic light                                                                                                                                                                                                                                                            |
-| 'start_lanelet_id'                        | '-1'                        | Start lanelet id. Must be a valid id for map specified in `map_name` parameter. If applicable, ego will be spawned here and NPCs will be spawned around this place. If -1, start will be chosen randomly                                                                                           |
-| 'start_s'                                 | '0.0'                       | Start lanelet s (translation along the lanelet in meters). If applicable, ego will be spawned here and NPCs will be spawned around this place. If 'start_lanelet_id' equals -1, s will be chosen randomly                                                                                          |
+| `start_lanelet_id`                        | `-1`                        | Start lanelet id. Must be a valid id for map specified in `map_name` parameter. If applicable, ego will be spawned here and NPCs will be spawned around this place. If -1, start will be chosen randomly                                                                                           |
+| `start_s`                                 | `0.0`                       | Start lanelet s (translation along the lanelet in meters). If applicable, ego will be spawned here and NPCs will be spawned around this place. If `start_lanelet_id` equals -1, s will be chosen randomly                                                                                          |
 
 #### Test case parameters
 
