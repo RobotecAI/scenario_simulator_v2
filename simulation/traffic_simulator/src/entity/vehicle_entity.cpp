@@ -92,7 +92,16 @@ void VehicleEntity::requestAcquirePosition(const geometry_msgs::msg::Pose & map_
 void VehicleEntity::requestLaneChange(const std::int64_t to_lanelet_id)
 {
   behavior_plugin_ptr_->setRequest("lane_change");
-  behavior_plugin_ptr_->setToLaneletId(to_lanelet_id);
+  const auto parameter = lane_change::Parameter(
+    lane_change::AbsoluteTarget(to_lanelet_id), lane_change::TrajectoryShape::CUBIC,
+    lane_change::Constraint());
+  behavior_plugin_ptr_->setLaneChangeParameters(parameter);
+}
+
+void VehicleEntity::requestLaneChange(const traffic_simulator::lane_change::Parameter & parameter)
+{
+  behavior_plugin_ptr_->setRequest("lane_change");
+  behavior_plugin_ptr_->setLaneChangeParameters(parameter);
 }
 
 void VehicleEntity::cancelRequest()
@@ -102,6 +111,11 @@ void VehicleEntity::cancelRequest()
 }
 
 void VehicleEntity::setTargetSpeed(double target_speed, bool continuous)
+{
+  target_speed_planner_.setTargetSpeed(target_speed, continuous);
+}
+
+void VehicleEntity::setTargetSpeed(const RelativeTargetSpeed & target_speed, bool continuous)
 {
   target_speed_planner_.setTargetSpeed(target_speed, continuous);
 }
@@ -123,7 +137,7 @@ void VehicleEntity::onUpdate(double current_time, double step_time)
     behavior_plugin_ptr_->setOtherEntityStatus(other_status_);
     behavior_plugin_ptr_->setEntityTypeList(entity_type_list_);
     behavior_plugin_ptr_->setEntityStatus(status_.get());
-    target_speed_planner_.update(status_->action_status.twist.linear.x);
+    target_speed_planner_.update(status_->action_status.twist.linear.x, other_status_);
     behavior_plugin_ptr_->setTargetSpeed(target_speed_planner_.getTargetSpeed());
     if (status_->lanelet_pose_valid) {
       behavior_plugin_ptr_->setRouteLanelets(

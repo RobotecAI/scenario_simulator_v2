@@ -46,8 +46,6 @@ void EntityBase::requestSpeedChange(
 {
   switch (transition) {
     case SpeedChangeTransition::LINEAR: {
-      auto status = getStatus();
-      status.action_status.twist.linear.x = target_speed;
       setAccelerationLimit(std::fabs(constraint.value));
       setDecelerationLimit(std::fabs(constraint.value));
       setTargetSpeed(target_speed, continuous);
@@ -60,6 +58,74 @@ void EntityBase::requestSpeedChange(
       setStatus(status);
       break;
     }
+  }
+}
+
+void EntityBase::requestSpeedChange(
+  const RelativeTargetSpeed & target_speed, const SpeedChangeTransition transition,
+  const SpeedChangeConstraint constraint, const bool continuous)
+{
+  switch (transition) {
+    case SpeedChangeTransition::LINEAR: {
+      setAccelerationLimit(std::fabs(constraint.value));
+      setDecelerationLimit(std::fabs(constraint.value));
+      setTargetSpeed(target_speed, continuous);
+      break;
+    }
+    case SpeedChangeTransition::STEP: {
+      auto status = getStatus();
+      status.action_status.twist.linear.x = target_speed.getAbsoluteValue(other_status_);
+      setTargetSpeed(target_speed, continuous);
+      setStatus(status);
+      break;
+    }
+  }
+}
+
+void EntityBase::requestLaneChange(
+  const traffic_simulator::lane_change::AbsoluteTarget & target,
+  const traffic_simulator::lane_change::TrajectoryShape trajectory_shape,
+  const lane_change::Constraint & constraint)
+{
+  auto param = traffic_simulator::lane_change::Parameter(target, trajectory_shape, constraint);
+  requestLaneChange(param);
+}
+
+void EntityBase::requestLaneChange(
+  const traffic_simulator::lane_change::RelativeTarget & target,
+  const traffic_simulator::lane_change::TrajectoryShape trajectory_shape,
+  const lane_change::Constraint & constraint)
+{
+  std::int64_t reference_lanelet_id = 0;
+  if (target.entity_name == name) {
+    if (!getStatus().lanelet_pose_valid) {
+      THROW_SEMANTIC_ERROR(
+        "Target entity does not assigned to lanelet. Please check Target entity name : ",
+        target.entity_name, " exists on lane.");
+    }
+    reference_lanelet_id = getStatus().lanelet_pose.lanelet_id;
+  } else {
+    if (other_status_.find(target.entity_name) == other_status_.end()) {
+      THROW_SEMANTIC_ERROR(
+        "Target entity : ", target.entity_name, " does not exist. Please check ",
+        target.entity_name, " exists.");
+    }
+    if (!other_status_.at(target.entity_name).lanelet_pose_valid) {
+      THROW_SEMANTIC_ERROR(
+        "Target entity does not assigned to lanelet. Please check Target entity name : ",
+        target.entity_name, " exists on lane.");
+    }
+    reference_lanelet_id = other_status_.at(target.entity_name).lanelet_pose.lanelet_id;
+  }
+  const auto lane_change_target_id = hdmap_utils_ptr_->getLaneChangeableLaneletId(
+    reference_lanelet_id, target.direction, target.shift);
+  if (lane_change_target_id) {
+    requestLaneChange(
+      traffic_simulator::lane_change::AbsoluteTarget(lane_change_target_id.get(), target.offset),
+      trajectory_shape, constraint);
+  } else {
+    THROW_SEMANTIC_ERROR(
+      "Failed to calculate absolute target lane. Please check the target lane exists.");
   }
 }
 
@@ -116,7 +182,9 @@ const traffic_simulator_msgs::msg::EntityStatus EntityBase::getStatus() const
   if (!status_) {
     THROW_SEMANTIC_ERROR("status is not set");
   } else {
-    return this->status_.get();
+    auto status = this->status_.get();
+    status.bounding_box = getBoundingBox();
+    return status;
   }
 }
 

@@ -17,6 +17,7 @@
 
 #include <boost/optional.hpp>
 #include <string>
+#include <traffic_simulator/data_type/data_types.hpp>
 #include <traffic_simulator/hdmap_utils/hdmap_utils.hpp>
 #include <traffic_simulator/traffic_lights/traffic_light_manager.hpp>
 #include <traffic_simulator_msgs/msg/driver_model.hpp>
@@ -34,6 +35,7 @@ namespace entity_behavior
 class BehaviorPluginBase
 {
 public:
+  virtual ~BehaviorPluginBase() = default;
   virtual void configure(const rclcpp::Logger & logger) = 0;
   virtual void update(double current_time, double step_time) = 0;
   virtual const std::string & getCurrentAction() const = 0;
@@ -62,7 +64,7 @@ public:
   DEFINE_GETTER_SETTER(RouteLanelets, "route_lanelets", std::vector<std::int64_t>)
   DEFINE_GETTER_SETTER(StepTime, "step_time", double)
   DEFINE_GETTER_SETTER(TargetSpeed, "target_speed", boost::optional<double>)
-  DEFINE_GETTER_SETTER(ToLaneletId, "to_lanelet_id", std::int64_t)
+  DEFINE_GETTER_SETTER(LaneChangeParameters, "lane_change_parameters", traffic_simulator::lane_change::Parameter)
   DEFINE_GETTER_SETTER(TrafficLightManager, "traffic_light_manager", std::shared_ptr<traffic_simulator::TrafficLightManagerBase>)
   DEFINE_GETTER_SETTER(UpdatedStatus, "updated_status", traffic_simulator_msgs::msg::EntityStatus)
   DEFINE_GETTER_SETTER(VehicleParameters, "vehicle_parameters", traffic_simulator_msgs::msg::VehicleParameters)

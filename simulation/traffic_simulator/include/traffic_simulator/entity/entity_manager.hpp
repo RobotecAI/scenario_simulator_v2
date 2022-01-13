@@ -251,6 +251,14 @@ public:
     const std::string & name, const double target_speed, const SpeedChangeTransition transition,
     const SpeedChangeConstraint constraint, const bool continuous);
 
+  void setTargetSpeed(
+    const std::string & name, const RelativeTargetSpeed & target_speed, bool continuous);
+
+  void requestSpeedChange(
+    const std::string & name, const RelativeTargetSpeed & target_speed,
+    const SpeedChangeTransition transition, const SpeedChangeConstraint constraint,
+    const bool continuous);
+
   traffic_simulator_msgs::msg::EntityStatus updateNpcLogic(
     const std::string & name,
     const std::unordered_map<std::string, traffic_simulator_msgs::msg::EntityType> & type_list);
@@ -345,7 +353,8 @@ public:
   bool reachPosition(
     const std::string & name, const std::string & target_name, const double tolerance) const;
 
-  void requestLaneChange(const std::string & name, const Direction & direction);
+  void requestLaneChange(
+    const std::string & name, const traffic_simulator::lane_change::Direction & direction);
 
   bool setEntityStatus(const std::string & name, traffic_simulator_msgs::msg::EntityStatus status);
 

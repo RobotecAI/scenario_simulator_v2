@@ -1,9 +1,15 @@
 # Release Notes
 
 ## Difference between the latest release and master
+- Start supporting linear trajectory shape while changing lane. ([pull request](https://github.com/tier4/scenario_simulator_v2/pull/661))
+- Fix context panel to display simulation time. (Contribution by [Utaro-M](https://github.com/Utaro-M)).
+- Support new vehicle_model_type `DELAY_STEER_VEL` ([pull request](https://github.com/tier4/scenario_simulator_v2/pull/660)).
+
+## Version 0.6.1
 - Add API::requestSpeedChange function. ([link](https://github.com/tier4/scenario_simulator_v2/pull/618))
 - Fix syntax `Controller` to not to overwrite `traffic_simulator`'s `DriverModel` ([pull request](https://github.com/tier4/scenario_simulator_v2/pull/649)).
 - Update simulation models ([pull request](https://github.com/tier4/scenario_simulator_v2/pull/652)).
+- Enable request relative speed change. ([link](https://github.com/tier4/scenario_simulator_v2/pull/654))
 
 ## Version 0.6.0
 - Start supporting Autoware.Universe. ([link](https://github.com/tier4/scenario_simulator_v2/pull/614))
@@ -20,6 +26,7 @@
 
 ## Version 0.5.7
 - Fix problem in getNormalVector function. (Contribution by [Utaro-M](https://github.com/Utaro-M)).
+
 ## Version 0.5.6
 - Fix context panel to display conditions' status. (Contribution by [Utaro-M](https://github.com/Utaro-M)).
 - Add NPC Behavior Plugin and Behavior-Tree Plugin for Vehicle and Pedestrian. ([link](https://github.com/tier4/scenario_simulator_v2-docs/pull/566))

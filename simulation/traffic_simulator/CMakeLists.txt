@@ -33,6 +33,7 @@ ament_auto_add_library(traffic_simulator SHARED
   src/behavior/route_planner.cpp
   src/behavior/target_speed_planner.cpp
   src/color_utils/color_utils.cpp
+  src/data_type/data_types.cpp
   src/entity/ego_entity.cpp
   src/entity/entity_base.cpp
   src/entity/entity_manager.cpp
@@ -66,6 +67,7 @@ ament_auto_add_library(traffic_simulator SHARED
   src/traffic_lights/traffic_light_state.cpp
   src/vehicle_model/sim_model_delay_steer_acc.cpp
   src/vehicle_model/sim_model_delay_steer_acc_geared.cpp
+  src/vehicle_model/sim_model_delay_steer_vel.cpp
   src/vehicle_model/sim_model_ideal_steer_acc.cpp
   src/vehicle_model/sim_model_ideal_steer_acc_geared.cpp
   src/vehicle_model/sim_model_ideal_steer_vel.cpp

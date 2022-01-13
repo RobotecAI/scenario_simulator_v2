@@ -49,6 +49,7 @@ namespace entity
 enum class VehicleModelType {
   DELAY_STEER_ACC,
   DELAY_STEER_ACC_GEARED,
+  DELAY_STEER_VEL,
   IDEAL_STEER_ACC,
   IDEAL_STEER_ACC_GEARED,
   IDEAL_STEER_VEL,
@@ -125,6 +126,8 @@ public:
   auto setStatus(const traffic_simulator_msgs::msg::EntityStatus & status) -> bool override;
 
   void setTargetSpeed(double, bool) override;
+
+  void setTargetSpeed(const RelativeTargetSpeed & target_speed, bool continuous) override;
 
   auto setUpperBoundSpeed(double) -> void override;
 };

@@ -75,7 +75,9 @@ public:
 
   void requestAcquirePosition(const geometry_msgs::msg::Pose & map_pose) override;
 
-  void requestLaneChange(const std::int64_t to_lanelet_id);
+  void requestLaneChange(const std::int64_t to_lanelet_id) override;
+
+  void requestLaneChange(const traffic_simulator::lane_change::Parameter & parameter) override;
 
   void cancelRequest() override;
 
@@ -110,6 +112,8 @@ public:
   }
 
   void setTargetSpeed(double target_speed, bool continuous) override;
+
+  void setTargetSpeed(const RelativeTargetSpeed & target_speed, bool continuous) override;
 
   const traffic_simulator_msgs::msg::BoundingBox getBoundingBox() const override
   {

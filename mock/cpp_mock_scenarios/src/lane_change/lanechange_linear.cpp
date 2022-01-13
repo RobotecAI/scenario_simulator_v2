@@ -26,65 +26,58 @@
 #include <string>
 #include <vector>
 
-class StopAtCrosswalkScenario : public cpp_mock_scenarios::CppScenarioNode
+class LaneChangeLeftScenario : public cpp_mock_scenarios::CppScenarioNode
 {
 public:
-  explicit StopAtCrosswalkScenario(const rclcpp::NodeOptions & option)
+  explicit LaneChangeLeftScenario(const rclcpp::NodeOptions & option)
   : cpp_mock_scenarios::CppScenarioNode(
-      "stop_at_crosswalk", ament_index_cpp::get_package_share_directory("kashiwanoha_map") + "/map",
+      "lanechange_left", ament_index_cpp::get_package_share_directory("kashiwanoha_map") + "/map",
       "lanelet2_map.osm", __FILE__, false, option)
   {
     start();
   }
 
 private:
+  bool requested = false;
+  bool lanechange_finished = false;
   void onUpdate() override
   {
-    const auto t = api_.getCurrentTime();
-    // LCOV_EXCL_START
-    if (api_.entityExists("bob") && api_.checkCollision("ego", "bob")) {
-      stop(cpp_mock_scenarios::Result::FAILURE);
+    if (api_.isInLanelet("ego", 34513, 0.1)) {
+      lanechange_finished = true;
     }
-    if (t >= 6.1 && 6.15 >= t) {
-      const auto vel = api_.getEntityStatus("ego").action_status.twist.linear.x;
-      if (std::fabs(0.01) <= vel) {
-        stop(cpp_mock_scenarios::Result::FAILURE);
-      }
-    }
-    // LCOV_EXCL_STOP
-    if (t >= 10) {
+    if (lanechange_finished && api_.isInLanelet("ego", 34510, 0.1)) {
       stop(cpp_mock_scenarios::Result::SUCCESS);
     }
+    // LCOV_EXCL_START
+    if (api_.getCurrentTime() >= 10.0) {
+      stop(cpp_mock_scenarios::Result::FAILURE);
+    }
+    // LCOV_EXCL_STOP
   }
-
   void onInitialize() override
   {
     api_.spawn("ego", getVehicleParameters());
     api_.setEntityStatus(
-      "ego", traffic_simulator::helper::constructLaneletPose(120545, 0),
+      "ego", traffic_simulator::helper::constructLaneletPose(34462, 10, 0, 0, 0, 0),
       traffic_simulator::helper::constructActionStatus(10));
-    api_.setTargetSpeed("ego", 8, true);
-    api_.requestAssignRoute(
-      "ego", std::vector<traffic_simulator_msgs::msg::LaneletPose>{
-               traffic_simulator::helper::constructLaneletPose(34675, 0.0),
-               traffic_simulator::helper::constructLaneletPose(34690, 0.0)});
-
-    api_.spawn("bob", getPedestrianParameters());
-    api_.setEntityStatus(
-      "bob", traffic_simulator::helper::constructLaneletPose(34378, 0.0),
-      traffic_simulator::helper::constructActionStatus(1));
-    api_.requestWalkStraight("bob");
+    api_.setTargetSpeed("ego", 10, true);
+    /*
+    api_.requestLaneChange("ego", traffic_simulator::lane_change::Direction::LEFT);
+    */
+    api_.requestLaneChange(
+      "ego",
+      traffic_simulator::lane_change::RelativeTarget(
+        "ego", traffic_simulator::lane_change::Direction::LEFT, 1, 0),
+      traffic_simulator::lane_change::TrajectoryShape::LINEAR,
+      traffic_simulator::lane_change::Constraint());
   }
-
-private:
-  bool lanechange_executed_;
 };
 
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
   rclcpp::NodeOptions options;
-  auto component = std::make_shared<StopAtCrosswalkScenario>(options);
+  auto component = std::make_shared<LaneChangeLeftScenario>(options);
   rclcpp::spin(component);
   rclcpp::shutdown();
   return 0;
