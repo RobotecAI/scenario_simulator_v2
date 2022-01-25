@@ -136,7 +136,7 @@ Random test runner will load `result.yaml` file and rerun test.
 
 ## Running with unity
 
-Instruction is based on `kashiwanoha_map` Unity project but can be applied to any other projects supporting [`ZeorMQ` interface](https://tier4.github.io/scenario_simulator_v2-docs/design/ZeroMQ/). 
+Instruction is based on `kashiwanoha_map` Unity project but can be applied to any other projects supporting [`ZeroMQ` interface](https://tier4.github.io/scenario_simulator_v2-docs/design/ZeroMQ/). 
 
 To run `random_test_runner` with Unity Kashiwanoha project: 
 1. Build and source latelet2 scene builder using [lanelet2_scene_builder](https://gitlab.com/robotec.ai/tieriv/lanelet2-scene-builder) and [lanelet2_scene_msgs](https://gitlab.com/robotec.ai/tieriv/lanelet2-scene-msgs) instructions
@@ -156,7 +156,7 @@ ros2 run lanelet2_scene_builder lanelet2_scene_builder --ros-args -p osm_file:=<
 ```
 7. Execute `random_test_runner` launch with `spawn_ego` parameter and correct map name:
 ```shell
-ros2 launch random_test_runner random_test.launch.py spawn_ego:="unity" map_name:="kashiwanoha_map_new_traffic_lights" test_count:=3
+ros2 launch random_test_runner random_test.launch.py simulator_type:="unity" map_name:="kashiwanoha_map_new_traffic_lights" test_count:=3
 ```
 |  NOTE: Since currently unity integration does not support ego vehicle, `random_test_runner` does not spawn it. |
 |----------------------------------------------------------------------------------------------------------------|
