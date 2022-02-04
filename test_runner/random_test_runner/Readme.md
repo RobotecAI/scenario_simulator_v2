@@ -154,7 +154,7 @@ source /opt/ros/galactic/setup.bash
 ```shell
 ros2 run lanelet2_scene_builder lanelet2_scene_builder --ros-args -p osm_file:=<AUTOWARE_DIRECTORY>/install/kashiwanoha_map_new_traffic_lights/share/kashiwanoha_map_new_traffic_lights/map/lanelet2_map.osm
 ```
-7. Execute `random_test_runner` launch with `spawn_ego` parameter and correct map name:
+7. Execute `random_test_runner` launch with `simulator_type` parameter and correct map name:
 ```shell
 ros2 launch random_test_runner random_test.launch.py simulator_type:="unity" map_name:="kashiwanoha_map_new_traffic_lights" test_count:=3
 ```
