@@ -18,6 +18,7 @@
 #include <scenario_simulator_exception/exception.hpp>
 #include <string>
 #include <traffic_simulator/math/catmull_rom_spline.hpp>
+#include <traffic_simulator/math/catmull_rom_subspline.hpp>
 #include <vector>
 
 namespace entity_behavior
@@ -41,7 +42,7 @@ FollowFrontEntityAction::calculateObstacle(const traffic_simulator_msgs::msg::Wa
   if (distance_to_front_entity_.get() < 0) {
     return boost::none;
   }
-  if (distance_to_front_entity_.get() > trajectory->getLength()) {
+  if (distance_to_front_entity_.get() > trajectory2->getLength()) {
     return boost::none;
   }
   traffic_simulator_msgs::msg::Obstacle obstacle;
@@ -62,9 +63,8 @@ const traffic_simulator_msgs::msg::WaypointsArray FollowFrontEntityAction::calcu
     waypoints.waypoints = reference_trajectory->getTrajectory(
       entity_status.lanelet_pose.s, entity_status.lanelet_pose.s + horizon, 1.0,
       entity_status.lanelet_pose.offset);
-    trajectory = std::make_unique<traffic_simulator::math::CatmullRomSpline>(
-      reference_trajectory->getSubspline(
-        entity_status.lanelet_pose.s, entity_status.lanelet_pose.s + horizon));
+    trajectory2 = std::make_unique<traffic_simulator::math::CatmullRomSubspline>(
+      reference_trajectory, entity_status.lanelet_pose.s, entity_status.lanelet_pose.s + horizon);
     return waypoints;
   } else {
     return traffic_simulator_msgs::msg::WaypointsArray();
@@ -87,19 +87,19 @@ BT::NodeStatus FollowFrontEntityAction::tick()
   if (waypoints.waypoints.empty()) {
     return BT::NodeStatus::FAILURE;
   }
-  if (trajectory == nullptr) {
+  if (trajectory2 == nullptr) {
     return BT::NodeStatus::FAILURE;
   }
 
-  auto distance_to_stopline = hdmap_utils->getDistanceToStopLine(route_lanelets, *trajectory);
-  auto distance_to_conflicting_entity = getDistanceToConflictingEntity(route_lanelets, *trajectory);
-  const auto front_entity_name = getFrontEntityName(*trajectory);
+  auto distance_to_stopline = hdmap_utils->getDistanceToStopLine(route_lanelets, *trajectory2);
+  auto distance_to_conflicting_entity = getDistanceToConflictingEntity(route_lanelets, *trajectory2);
+  const auto front_entity_name = getFrontEntityName(*trajectory2);
   if (!front_entity_name) {
     return BT::NodeStatus::FAILURE;
   }
 
   distance_to_front_entity_ =
-    getDistanceToTargetEntityPolygon(*trajectory, front_entity_name.get());
+    getDistanceToTargetEntityPolygon(*trajectory2, front_entity_name.get());
 
   if (!distance_to_front_entity_) {
     return BT::NodeStatus::FAILURE;
