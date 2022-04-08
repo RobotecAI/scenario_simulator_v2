@@ -66,7 +66,6 @@ public:
 
   double getLength() const override
   {
-    std::cout << "subspline length: " << end_s_ - start_s_ << ", spline length: " << spline_->getLength() << std::endl;
     return end_s_ - start_s_;
   }
 
@@ -77,14 +76,14 @@ public:
     auto s = spline_->getCollisionPointIn2D(polygon, search_backward, close_start_end);
 
     if (!s) {
-      return s;
-    }
-
-    if (s < start_s_ || end_s_ < s) {
       return boost::none;
     }
 
-    return s;
+    if (s.get() < start_s_ || end_s_ < s.get()) {
+      return boost::none;
+    }
+
+    return s.get() - start_s_;  // - start_s_ ???
   }
 
 private:
