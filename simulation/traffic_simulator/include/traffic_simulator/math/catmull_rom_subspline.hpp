@@ -60,7 +60,6 @@ public:
 //    double width, double s, double z_offset = 0) const;
 //  const std::vector<geometry_msgs::msg::Point> getPolygon(
 //    double width, size_t num_points = 30, double z_offset = 0);
-//  CatmullRomSpline getSubspline(double start_s, double end_s) const;
 
   explicit CatmullRomSubspline(std::shared_ptr<traffic_simulator::math::CatmullRomSpline> spline,
                                double start_s, double end_s) : spline_(spline), start_s_(start_s), end_s_(end_s) {}

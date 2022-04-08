@@ -30,11 +30,7 @@ class CatmullRomSpline : public CatmullRomInterface
 {
 public:
   CatmullRomSpline() = default;
-  CatmullRomSpline(const CatmullRomSpline &) = default;
   explicit CatmullRomSpline(const std::vector<geometry_msgs::msg::Point> & control_points);
-  explicit CatmullRomSpline(
-    const std::vector<HermiteCurve> & curves, double staring_curve_length,
-    double ending_curve_length);
   double getLength() const override { return total_length_; }
   double getMaximum2DCurvature() const;
   const geometry_msgs::msg::Point getPoint(double s) const;
@@ -61,7 +57,6 @@ public:
     double width, double s, double z_offset = 0) const;
   const std::vector<geometry_msgs::msg::Point> getPolygon(
     double width, size_t num_points = 30, double z_offset = 0);
-  CatmullRomSpline getSubspline(double start_s, double end_s) const;
 
 private:
   const std::vector<geometry_msgs::msg::Point> getRightBounds(
