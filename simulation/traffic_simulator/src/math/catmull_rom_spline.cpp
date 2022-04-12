@@ -232,7 +232,6 @@ CatmullRomSpline::CatmullRomSpline(const std::vector<geometry_msgs::msg::Point> 
   for (const auto & length : length_list_) {
     total_length_ = total_length_ + length;
   }
-
   checkConnection();
 }
 

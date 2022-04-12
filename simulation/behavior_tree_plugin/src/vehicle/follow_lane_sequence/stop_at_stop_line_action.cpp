@@ -16,7 +16,6 @@
 #include <behavior_tree_plugin/vehicle/follow_lane_sequence/stop_at_stop_line_action.hpp>
 #include <scenario_simulator_exception/exception.hpp>
 #include <string>
-#include <traffic_simulator/math/catmull_rom_spline.hpp>
 #include <utility>
 #include <vector>
 
@@ -42,7 +41,7 @@ StopAtStopLineAction::calculateObstacle(const traffic_simulator_msgs::msg::Waypo
   if (distance_to_stopline_.get() < 0) {
     return boost::none;
   }
-  if (distance_to_stopline_.get() > trajectory2->getLength()) {
+  if (distance_to_stopline_.get() > trajectory->getLength()) {
     return boost::none;
   }
   traffic_simulator_msgs::msg::Obstacle obstacle;
@@ -63,7 +62,7 @@ const traffic_simulator_msgs::msg::WaypointsArray StopAtStopLineAction::calculat
     waypoints.waypoints = reference_trajectory->getTrajectory(
       entity_status.lanelet_pose.s, entity_status.lanelet_pose.s + horizon, 1.0,
       entity_status.lanelet_pose.offset);
-    trajectory2 = std::make_unique<traffic_simulator::math::CatmullRomSubspline>(
+    trajectory = std::make_unique<traffic_simulator::math::CatmullRomSubspline>(
       reference_trajectory, entity_status.lanelet_pose.s, entity_status.lanelet_pose.s + horizon);
     return waypoints;
   } else {
@@ -105,13 +104,12 @@ BT::NodeStatus StopAtStopLineAction::tick()
   if (waypoints.waypoints.empty()) {
     return BT::NodeStatus::FAILURE;
   }
-  if (trajectory2 == nullptr) {
+  if (trajectory == nullptr) {
     return BT::NodeStatus::FAILURE;
   }
-
-  distance_to_stopline_ = hdmap_utils->getDistanceToStopLine(route_lanelets, *trajectory2);
-  const auto distance_to_stop_target = getDistanceToConflictingEntity(route_lanelets, *trajectory2);
-  const auto distance_to_front_entity = getDistanceToFrontEntity(*trajectory2);
+  distance_to_stopline_ = hdmap_utils->getDistanceToStopLine(route_lanelets, *trajectory);
+  const auto distance_to_stop_target = getDistanceToConflictingEntity(route_lanelets, *trajectory);
+  const auto distance_to_front_entity = getDistanceToFrontEntity(*trajectory);
   if (!distance_to_stopline_) {
     stopped_ = false;
     return BT::NodeStatus::FAILURE;
@@ -128,6 +126,7 @@ BT::NodeStatus StopAtStopLineAction::tick()
       return BT::NodeStatus::FAILURE;
     }
   }
+
   if (std::fabs(entity_status.action_status.twist.linear.x) < 0.001) {
     if (distance_to_stopline_) {
       if (distance_to_stopline_.get() <= vehicle_parameters.bounding_box.dimensions.x + 5) {

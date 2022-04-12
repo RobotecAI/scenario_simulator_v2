@@ -1,4 +1,4 @@
-// Copyright 2015-2020 TierIV.inc. All rights reserved.
+// Copyright 2015-2022 TierIV.inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #ifndef TRAFFIC_SIMULATOR__MATH__CATMULL_ROM_SUBSPLINE_HPP_
 #define TRAFFIC_SIMULATOR__MATH__CATMULL_ROM_SUBSPLINE_HPP_
 
@@ -18,6 +19,7 @@
 #include <geometry_msgs/msg/point.hpp>
 #include <string>
 #include <traffic_simulator/math/catmull_rom_interface.hpp>
+#include <traffic_simulator/math/catmull_rom_spline.hpp>
 #include <traffic_simulator/math/hermite_curve.hpp>
 #include <utility>
 #include <vector>
@@ -29,62 +31,17 @@ namespace math
 class CatmullRomSubspline : public CatmullRomInterface
 {
 public:
-//  CatmullRomSpline() = default;
-//  CatmullRomSpline(const CatmullRomSpline &) = default;
-//  explicit CatmullRomSpline(const std::vector<geometry_msgs::msg::Point> & control_points);
-//  explicit CatmullRomSpline(
-//    const std::vector<HermiteCurve> & curves, double staring_curve_length,
-//    double ending_curve_length);
-//  double getMaximum2DCurvature() const;
-//  const geometry_msgs::msg::Point getPoint(double s) const;
-//  const geometry_msgs::msg::Point getPoint(double s, double offset) const;
-//  const geometry_msgs::msg::Vector3 getTangentVector(double s) const;
-//  const geometry_msgs::msg::Vector3 getNormalVector(double s) const;
-//  const geometry_msgs::msg::Pose getPose(double s) const;
-//  const std::vector<geometry_msgs::msg::Point> getTrajectory(
-//    double start_s, double end_s, double resolution, double offset = 0.0) const;
-//  boost::optional<double> getSValue(
-//    const geometry_msgs::msg::Pose & pose, double threshold_distance = 3.0);
-//  double getSquaredDistanceIn2D(const geometry_msgs::msg::Point & point, double s) const;
-//  geometry_msgs::msg::Vector3 getSquaredDistanceVector(
-//    const geometry_msgs::msg::Point & point, double s) const;
-//  boost::optional<double> getCollisionPointIn2D(
-//    const geometry_msgs::msg::Point & point0, const geometry_msgs::msg::Point & point1,
-//    bool search_backward = false) const;
-//  boost::optional<double> getCollisionPointIn2D(
-//    const std::vector<geometry_msgs::msg::Point> & polygon, bool search_backward = false,
-//    bool close_start_end = true) const;
-//  const geometry_msgs::msg::Point getRightBoundsPoint(
-//    double width, double s, double z_offset = 0) const;
-//  const geometry_msgs::msg::Point getLeftBoundsPoint(
-//    double width, double s, double z_offset = 0) const;
-//  const std::vector<geometry_msgs::msg::Point> getPolygon(
-//    double width, size_t num_points = 30, double z_offset = 0);
-
-  explicit CatmullRomSubspline(std::shared_ptr<traffic_simulator::math::CatmullRomSpline> spline,
-                               double start_s, double end_s) : spline_(spline), start_s_(start_s), end_s_(end_s) {}
-
-  double getLength() const override
+  explicit CatmullRomSubspline(
+    std::shared_ptr<traffic_simulator::math::CatmullRomSpline> spline, double start_s, double end_s)
+  : spline_(spline), start_s_(start_s), end_s_(end_s)
   {
-    return end_s_ - start_s_;
   }
+
+  double getLength() const override;
 
   boost::optional<double> getCollisionPointIn2D(
     const std::vector<geometry_msgs::msg::Point> & polygon, bool search_backward = false,
-    bool close_start_end = true) const override
-  {
-    auto s = spline_->getCollisionPointIn2D(polygon, search_backward, close_start_end);
-
-    if (!s) {
-      return boost::none;
-    }
-
-    if (s.get() < start_s_ || end_s_ < s.get()) {
-      return boost::none;
-    }
-
-    return s.get() - start_s_;  // - start_s_ ???
-  }
+    bool close_start_end = true) const override;
 
 private:
   std::shared_ptr<traffic_simulator::math::CatmullRomSpline> spline_;

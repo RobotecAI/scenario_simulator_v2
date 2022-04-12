@@ -279,7 +279,6 @@ boost::optional<double> ActionNode::getDistanceToTargetEntityPolygon(
       status.pose, traffic_simulator::math::getPointsFromBbox(
                      status.bounding_box, width_extension_right, width_extension_left,
                      length_extension_front, length_extension_rear));
-
     return spline.getCollisionPointIn2D(polygon, false, true);
   }
   return boost::none;

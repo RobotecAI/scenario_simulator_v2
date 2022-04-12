@@ -17,7 +17,6 @@
 #include <scenario_simulator_exception/exception.hpp>
 #include <string>
 #include <traffic_simulator/helper/stop_watch.hpp>
-#include <traffic_simulator/math/catmull_rom_spline.hpp>
 #include <vector>
 
 namespace entity_behavior
@@ -47,8 +46,9 @@ const traffic_simulator_msgs::msg::WaypointsArray FollowLaneAction::calculateWay
     waypoints.waypoints = reference_trajectory->getTrajectory(
       entity_status.lanelet_pose.s, entity_status.lanelet_pose.s + getHorizon(), 1.0,
       entity_status.lanelet_pose.offset);
-    trajectory2 = std::make_unique<traffic_simulator::math::CatmullRomSubspline>(
-        reference_trajectory, entity_status.lanelet_pose.s, entity_status.lanelet_pose.s + getHorizon());
+    trajectory = std::make_unique<traffic_simulator::math::CatmullRomSubspline>(
+      reference_trajectory, entity_status.lanelet_pose.s,
+      entity_status.lanelet_pose.s + getHorizon());
     return waypoints;
   } else {
     return traffic_simulator_msgs::msg::WaypointsArray();
@@ -85,11 +85,10 @@ BT::NodeStatus FollowLaneAction::tick()
     if (getRightOfWayEntities(route_lanelets).size() != 0) {
       return BT::NodeStatus::FAILURE;
     }
-    if (trajectory2 == nullptr) {
+    if (trajectory == nullptr) {
       return BT::NodeStatus::FAILURE;
     }
-
-    auto distance_to_front_entity = getDistanceToFrontEntity(*trajectory2);
+    auto distance_to_front_entity = getDistanceToFrontEntity(*trajectory);
     if (distance_to_front_entity) {
       if (
         distance_to_front_entity.get() <= calculateStopDistance(driver_model.deceleration) +
@@ -98,15 +97,15 @@ BT::NodeStatus FollowLaneAction::tick()
       }
     }
     const auto distance_to_traffic_stop_line =
-      getDistanceToTrafficLightStopLine(route_lanelets, *trajectory2);
+      getDistanceToTrafficLightStopLine(route_lanelets, *trajectory);
     if (distance_to_traffic_stop_line) {
       if (distance_to_traffic_stop_line.get() <= getHorizon()) {
         return BT::NodeStatus::FAILURE;
       }
     }
-    auto distance_to_stopline = hdmap_utils->getDistanceToStopLine(route_lanelets, *trajectory2);
+    auto distance_to_stopline = hdmap_utils->getDistanceToStopLine(route_lanelets, *trajectory);
     auto distance_to_conflicting_entity =
-      getDistanceToConflictingEntity(route_lanelets, *trajectory2);
+      getDistanceToConflictingEntity(route_lanelets, *trajectory);
     if (distance_to_stopline) {
       if (
         distance_to_stopline.get() <= calculateStopDistance(driver_model.deceleration) +

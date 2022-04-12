@@ -43,10 +43,9 @@
 #include <string>
 #include <traffic_simulator/data_type/data_types.hpp>
 #include <traffic_simulator/hdmap_utils/cache.hpp>
-#include <traffic_simulator/math/hermite_curve.hpp>
 #include <traffic_simulator/math/catmull_rom_interface.hpp>
 #include <traffic_simulator/math/catmull_rom_spline.hpp>
-#include <traffic_simulator/math/catmull_rom_subspline.hpp>
+#include <traffic_simulator/math/hermite_curve.hpp>
 #include <traffic_simulator/traffic_lights/traffic_light_state.hpp>
 #include <traffic_simulator_msgs/msg/bounding_box.hpp>
 #include <traffic_simulator_msgs/msg/entity_status.hpp>

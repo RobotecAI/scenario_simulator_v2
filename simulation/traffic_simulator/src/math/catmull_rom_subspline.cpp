@@ -12,29 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef TRAFFIC_SIMULATOR__MATH__CATMULL_ROM_INTERFACE_HPP_
-#define TRAFFIC_SIMULATOR__MATH__CATMULL_ROM_INTERFACE_HPP_
-
 #include <boost/optional.hpp>
-#include <exception>
-#include <geometry_msgs/msg/point.hpp>
-#include <string>
-#include <utility>
+#include <traffic_simulator/math/catmull_rom_subspline.hpp>
 #include <vector>
 
 namespace traffic_simulator
 {
 namespace math
 {
-class CatmullRomInterface
+double CatmullRomSubspline::getLength() const { return end_s_ - start_s_; }
+
+boost::optional<double> CatmullRomSubspline::getCollisionPointIn2D(
+  const std::vector<geometry_msgs::msg::Point> & polygon, bool search_backward,
+  bool close_start_end) const
 {
-public:
-  virtual double getLength() const = 0;
-  virtual boost::optional<double> getCollisionPointIn2D(
-    const std::vector<geometry_msgs::msg::Point> & polygon, bool search_backward = false,
-    bool close_start_end = true) const = 0;
-};
+  auto s = spline_->getCollisionPointIn2D(polygon, search_backward, close_start_end);
+
+  if (!s) {
+    return boost::none;
+  }
+
+  if (s.get() < start_s_ || end_s_ < s.get()) {
+    return boost::none;
+  }
+
+  return s.get() - start_s_;
+}
+
 }  // namespace math
 }  // namespace traffic_simulator
-
-#endif  // TRAFFIC_SIMULATOR__MATH__CATMULL_ROM_INTERFACE_HPP_
