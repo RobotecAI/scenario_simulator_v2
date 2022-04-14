@@ -6,6 +6,55 @@ This tutorial describes all steps necessary to run `scenario_simulator_v2` witho
 
 This instruction assumes operating system: Ubuntu 20.04 LTS Desktop. It can be downloaded [here](https://ubuntu.com/download/desktop/thank-you?version=20.04.4&architecture=amd64)
 
+## Cleaning old installations
+
+### Cleaning ROS2 installation
+
+Before building process, you might want to remove older ROS2 distribution.
+
+Please note, however, that several ROS2 distributions can coexist within the system.
+
+Preparing distribution to be used is done via `source` of desired distribution's setup script.
+In case of ROS2 Galacic Geochelone:
+
+```shell
+source /opt/ros/galactic/setup.bash
+```
+
+However, removing unused distributions can keep filesystem cleaner. Therefore, to remove for example ROS 2 Foxy Fitzroy, call:
+
+```shell
+sudo apt remove ros-foxy-*
+```
+
+### Making sure environment is clean
+
+Please make sure to remove any instances of ROS2 scripts `source` executions from `~/.bashrc` file.
+
+If different distribution's setup script is sourced by default in `~/.bashrc`, it might interfere with the build process.
+
+### Cleaning `scenario_simulator_v2` build
+
+To clean the build, remove directories created during `colcon build` process
+
+For example, in case of directory used during the installation, to clean `scenario_simulator_v2` build call:
+
+```shell
+rm -rf ~/scenario_simulator_ws/{install,build,log}
+```
+
+Any other workspace build can be cleaned analogously, if necessary.
+
+### Removing unnecessary `scenario_simulator_v2` installations
+
+If necessary, to clear old `scenario_simulator_v2` installations, remove their workspace entirely.
+
+For example, in case of directory used during the installation, to remove `scenario_simulator_v2` call:
+```shell
+rm -rf ~/scenario_simulator_ws
+```
+Any other workspace directory can be removed analogously, if necessary.
+
 ## How to build
 
 ### Install and setup ROS2 environment
@@ -39,7 +88,7 @@ LC_ALL=
 If it's not execute:
 
 ```
-sudo apt-get update && sudo apt-get install -y locales
+sudo apt update && sudo apt install -y locales
 sudo locale-gen en_US en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 LANG=en_US.UTF-8
@@ -63,6 +112,77 @@ sudo apt update
 sudo apt install -y ros-galactic-desktop
 ```
 
+### Install and configure Cyclone DDS - can be done once
+
+Install Cyclone DDS 
+
+```shell
+sudo apt install ros-galactic-rmw-cyclonedds-cpp
+```
+
+Set Cyclone DDS as default RMW implementation by adding the following line to `~/.bashrc`
+```shell
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+```
+
+Create the following directory
+
+```shell
+sudo mkdir -p /opt/autoware
+```
+
+Create and insert the following content into created file (`cyclonedds_config.xml`) using command:
+
+```
+echo "<?xml version="1.0" encoding="UTF-8" ?>
+<CycloneDDS xmlns="https://cdds.io/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://cdds.io/config https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
+    <Domain id="any">
+        <General>
+            <NetworkInterfaceAddress>logging_bond0</NetworkInterfaceAddress>
+            <AllowMulticast>spdp</AllowMulticast>
+            <MaxMessageSize>65500B</MaxMessageSize>
+            <FragmentSize>4000B</FragmentSize>
+        </General>
+        <Internal>
+            <MinimumSocketReceiveBufferSize>10MB</MinimumSocketReceiveBufferSize>
+            <Watermarks>
+                <WhcHigh>500kB</WhcHigh>
+            </Watermarks>
+        </Internal>
+        <Tracing>
+            <Verbosity>config</Verbosity>
+            <OutputFile>/tmp/cyclonedds.log</OutputFile>
+        </Tracing>
+    </Domain>
+</CycloneDDS>
+" | sudo tee /opt/autoware/cyclonedds_config.xml > /dev/null
+```
+
+Add the following line to the `~/.bashrc` file
+
+```shell
+export CYCLONEDDS_URI=file:///opt/autoware/cyclonedds_config.xml
+```
+
+Then execute
+```shell
+source ~/.bashrc
+```
+
+### Configure network interfaces - HAS TO BE DONE ON EACH NEW TERMINAL 
+
+Change maximum receive buffer size
+
+```shell
+sudo sysctl -w net.core.rmem_max=2147483647
+```
+
+Set localhost to support multicast 
+
+```shell
+sudo ifconfig lo multicast
+```
+
 ### Get `scenario_simulator_v2`
 
 Install git
@@ -70,20 +190,23 @@ Install git
 sudo apt install -y git
 ```
 
+Throughout this document we will use `~/scenario_simulator_ws` as an exemplary `scenario_simulator_v2` workspace
+directory. However, it can be replaced with any other directory.
+
 Create directory for a workspace and enter this directory.
-Throughout this document replace `<workspace_directory>` with a convenient name.
+
 ```
-mkdir -p <workspace_directory>/src
-cd <workspace_directory>/src
+mkdir -p ~/scenario_simulator_ws/src
+cd ~/scenario_simulator_ws/src
 ```
 
-Clone `scenario_simulator_v2` repository and enter it's directory:
+Clone `scenario_simulator_v2` repository:
 
 ```
 git clone https://github.com/tier4/scenario_simulator_v2.git
 ```
 
-### Downloading dependencies
+### Download dependencies
 
 Install vcs tools
 ```
@@ -108,7 +231,7 @@ rosdep update
 rosdep install -iry --from-paths . --rosdistro galactic
 ```
 
-### Building `scenario_simulator_v2`
+### Build `scenario_simulator_v2`
 
 Install `colcon` build tool:
 ```
@@ -137,12 +260,33 @@ Summary: 47 packages finished [12min 48s]
   1 package had stderr output: simple_sensor_simulator
 ```
 
-## How to run
+## How to run a sample scenario
 
 This part of the instruction is based on scenario:
 ```
-<workspace_directory>/src/scenario_simulator_v2/test_runner/scenario_test_runner/scenario/sample.yaml
+~/scenario_simulator_ws/src/scenario_simulator_v2/test_runner/scenario_test_runner/scenario/sample.yaml
+
 ```
+
+### Map directory structure
+
+Sample scenario specifies `map` directory in `kashiwanoha_map` package that contains map information of 
+the University of Tokyo Kashiwa Campus test site.
+
+```yaml
+    filepath: $(ros2 pkg prefix --share kashiwanoha_map)/map
+```
+
+To run a scenario, `scenario_simulator_v2` expects two files to be present in this directory:
+
+    - one point cloud file with `*.pcd` extension
+    - one lanelet2 map file with `*.osm` extension
+
+
+Please make sure that `~/scenario_simulator_ws/src/scenario_simulator_v2/map/kashiwanoha_map/map` contains, among others,
+two required files. Other files present there are not used by `scenario_simulator_v2` during the scenario execution.
+    
+This requirement is true for any map path specified in the scenario file.
 
 ### Necessary scenario modification
 
