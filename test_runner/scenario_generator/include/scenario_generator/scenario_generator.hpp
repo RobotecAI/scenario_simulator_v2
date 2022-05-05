@@ -20,6 +20,10 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
+#include <nav_msgs/msg/path.hpp>
+
+#include "traffic_simulator/hdmap_utils/hdmap_utils.hpp"
+#include "traffic_simulator/behavior/route_planner.hpp"
 
 
 class ScenarioGenerator : public rclcpp::Node
@@ -31,10 +35,20 @@ private:
   void onInitPose(geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr);
   void onGoalPose(geometry_msgs::msg::PoseStamped::SharedPtr);
 
+  void publishVisualization(const std::vector<geometry_msgs::msg::Pose> &);
+  void printPythonCode(const std::vector<geometry_msgs::msg::Pose> &);
+
   rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr init_pose_sub_;
   rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr goal_pose_sub_;
 
+  rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr planned_path_pub_;
+
+  std::shared_ptr<hdmap_utils::HdMapUtils> hdmap_utils_ptr_;
+  std::shared_ptr<traffic_simulator::RoutePlanner> route_planner_ptr_;
+
   geometry_msgs::msg::Pose init_pose_;
+
+  int trajectory_print_counter_{0};
 };
 
 #endif  // SCENARIO_GENERATOR__SCENARIO_GENERATOR_HPP

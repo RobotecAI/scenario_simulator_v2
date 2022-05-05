@@ -17,29 +17,120 @@
 
 #include "scenario_generator/scenario_generator.hpp"
 
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2/LinearMath/Matrix3x3.h"
+
+#include "traffic_simulator/api/configuration.hpp"
+
+
+const double PLANNING_HORIZON_M = 300.0;
+
+
+double getYawDeg(const geometry_msgs::msg::Quaternion & q_msg)
+{
+  double roll, pitch, yaw;
+  auto q = tf2::Quaternion(q_msg.x, q_msg.y, q_msg.z, q_msg.w);
+  auto m = tf2::Matrix3x3(q);
+  m.getRPY(roll, pitch, yaw);
+  return yaw * 180.0 / M_PI;
+}
 
 ScenarioGenerator::ScenarioGenerator(const rclcpp::NodeOptions & option)
 : Node("scenario_generator", option)
 {
   init_pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
     "trajectory/initial_pose", 1, std::bind(&ScenarioGenerator::onInitPose, this, std::placeholders::_1));
-
   goal_pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
     "trajectory/goal_pose", 1, std::bind(&ScenarioGenerator::onGoalPose, this, std::placeholders::_1));
+
+  planned_path_pub_ = this->create_publisher<nav_msgs::msg::Path>("trajectory/planned_path", 1);
+
+  std::string map_path = "/home/daniel/AJD-428/scenario_simulator_v2/map/kashiwanoha_map/map"; // TODO: parametrize
+
+  traffic_simulator::Configuration configuration(map_path);
+  hdmap_utils_ptr_ =
+      std::make_shared<hdmap_utils::HdMapUtils>(configuration.lanelet2_map_path(), geographic_msgs::msg::GeoPoint());
+  route_planner_ptr_ = std::make_shared<traffic_simulator::RoutePlanner>(hdmap_utils_ptr_);
 }
 
 void ScenarioGenerator::onInitPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
 {
   init_pose_ = msg.get()->pose.pose;
 
-  RCLCPP_INFO_STREAM(get_logger(), "Received new init pose: (x: " << init_pose_.position.x << ", y:"
-                                                                  << init_pose_.position.y << ", z: "
-                                                                  << init_pose_.position.z << ")");
+  RCLCPP_INFO_STREAM(get_logger(), "Received new init pose: (x: " << init_pose_.position.x
+                                                                  << ", y:" << init_pose_.position.y
+                                                                  << ", z: " << init_pose_.position.z << ")");
 }
 
 void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
 {
-  RCLCPP_INFO_STREAM(get_logger(), "Received new goal pose: (x: " << msg->pose.position.x << ", y:"
-                                                                  << msg->pose.position.y << ", z: "
-                                                                  << msg->pose.position.z << ")");
+  RCLCPP_INFO_STREAM(get_logger(), "Received new goal pose: (x: " << msg->pose.position.x
+                                                                  << ", y:" << msg->pose.position.y
+                                                                  << ", z: " << msg->pose.position.z << ")");
+
+  auto initLaneletPose = hdmap_utils_ptr_->toLaneletPose(init_pose_, true);
+  auto goalLaneletPose = hdmap_utils_ptr_->toLaneletPose(msg->pose, true);
+
+  if (!initLaneletPose)
+  {
+    RCLCPP_ERROR_STREAM(get_logger(), "Init pose is not on the lanelet!");
+    return;
+  }
+
+  if (!goalLaneletPose)
+  {
+    RCLCPP_ERROR_STREAM(get_logger(), "Goal pose is not on the lanelet!");
+    return;
+  }
+
+  auto route_lanelets = route_planner_ptr_->getRouteLanelets(initLaneletPose.get(), goalLaneletPose.get(),
+                                                             PLANNING_HORIZON_M);
+  auto spline = std::make_shared<traffic_simulator::math::CatmullRomSpline>(
+      hdmap_utils_ptr_->getCenterPoints(route_lanelets));
+  auto goalS = spline->getSValue(msg->pose);
+  auto trajectory = spline->getOrientedTrajectory(initLaneletPose.get().s, goalS.get(), 1);
+
+  publishVisualization(trajectory);
+
+  // TODO: transform to Unity frame
+
+  printPythonCode(trajectory);
+}
+
+void ScenarioGenerator::publishVisualization(const std::vector<geometry_msgs::msg::Pose> & trajectory)
+{
+  std_msgs::msg::Header header;
+  header.frame_id = "map";
+  header.stamp = get_clock()->now();
+
+  nav_msgs::msg::Path path;
+  path.header = header;
+
+  for (const auto & pose : trajectory)
+  {
+    geometry_msgs::msg::PoseStamped pose_stamped;
+    pose_stamped.pose = pose;
+    pose_stamped.header = header;
+    path.poses.push_back(pose_stamped);
+  }
+
+  planned_path_pub_->publish(path);
+}
+
+void ScenarioGenerator::printPythonCode(const std::vector<geometry_msgs::msg::Pose> & trajectory)
+{
+  std::string trajectory_name = "tr_" + std::to_string(trajectory_print_counter_);
+  std::cout << "\nThis is your python code:\n```" << std::endl;
+  std::cout << trajectory_name << " = Trajectory(default_speed=2.5)" << std::endl;  // TODO: parametrize speed
+  for (const auto & pose : trajectory)
+  {
+    std::cout << trajectory_name << ".move_abs(pose=Pose(x=" << pose.position.x <<
+                                                      ", y=" << pose.position.y <<
+                                                      ", z=" << pose.position.z <<
+                                                      ", yaw=" << getYawDeg(pose.orientation) <<
+                                                      "))" << std::endl;
+  }
+  std::cout << "```\n" << std::endl;
+
+  trajectory_print_counter_++;
 }

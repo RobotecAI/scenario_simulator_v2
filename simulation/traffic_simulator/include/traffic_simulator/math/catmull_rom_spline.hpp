@@ -39,6 +39,8 @@ public:
   const geometry_msgs::msg::Pose getPose(double s) const;
   const std::vector<geometry_msgs::msg::Point> getTrajectory(
     double start_s, double end_s, double resolution, double offset = 0.0) const;
+  std::vector<geometry_msgs::msg::Pose> getOrientedTrajectory(
+      double start_s, double end_s, double resolution) const;
   boost::optional<double> getSValue(
     const geometry_msgs::msg::Pose & pose, double threshold_distance = 3.0);
   double getSquaredDistanceIn2D(const geometry_msgs::msg::Point & point, double s) const;

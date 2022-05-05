@@ -124,6 +124,35 @@ const std::vector<geometry_msgs::msg::Point> CatmullRomSpline::getTrajectory(
   }
 }
 
+std::vector<geometry_msgs::msg::Pose> CatmullRomSpline::getOrientedTrajectory(
+    double start_s, double end_s, double resolution) const
+{
+  std::vector<geometry_msgs::msg::Pose> ret;
+  resolution = std::fabs(resolution);
+  double s = start_s;
+
+  if (start_s > end_s)
+  {
+    while (s >= end_s)
+    {
+      auto p = getPose(s);
+      ret.emplace_back(p);
+      s = s - resolution;
+    }
+    return ret;
+  }
+  else
+  {
+    while (s <= end_s)
+    {
+      auto p = getPose(s);
+      ret.emplace_back(p);
+      s = s + resolution;
+    }
+    return ret;
+  }
+}
+
 CatmullRomSpline::CatmullRomSpline(const std::vector<geometry_msgs::msg::Point> & control_points)
 : control_points(control_points)
 {
