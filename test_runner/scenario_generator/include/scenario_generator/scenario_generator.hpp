@@ -35,6 +35,8 @@ private:
   void onInitPose(geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr);
   void onGoalPose(geometry_msgs::msg::PoseStamped::SharedPtr);
 
+  std::vector<geometry_msgs::msg::Pose> transformToUnityFrame(const std::vector<geometry_msgs::msg::Pose> &);
+
   void publishVisualization(const std::vector<geometry_msgs::msg::Pose> &);
   void printPythonCode(const std::vector<geometry_msgs::msg::Pose> &);
 
@@ -47,6 +49,8 @@ private:
   std::shared_ptr<traffic_simulator::RoutePlanner> route_planner_ptr_;
 
   geometry_msgs::msg::Pose init_pose_;
+
+  geometry_msgs::msg::Vector3 lanelet_to_unity_tf_;
 
   int trajectory_print_counter_{0};
 };

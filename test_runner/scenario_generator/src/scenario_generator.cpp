@@ -32,6 +32,7 @@ double getYawDeg(const geometry_msgs::msg::Quaternion & q_msg)
   auto q = tf2::Quaternion(q_msg.x, q_msg.y, q_msg.z, q_msg.w);
   auto m = tf2::Matrix3x3(q);
   m.getRPY(roll, pitch, yaw);
+//  std::cout << "roll: " << roll * 180.0 / M_PI << ", pitch: " << pitch * 180.0 / M_PI << ", yaw: " << yaw * 180.0 / M_PI << std::endl;
   return yaw * 180.0 / M_PI;
 }
 
@@ -50,6 +51,11 @@ ScenarioGenerator::ScenarioGenerator(const rclcpp::NodeOptions & option)
       std::make_shared<hdmap_utils::HdMapUtils>(map_path, geographic_msgs::msg::GeoPoint());
 
   route_planner_ptr_ = std::make_shared<traffic_simulator::RoutePlanner>(hdmap_utils_ptr_);
+
+  // based on Shinjuku scene settings in Unity
+  lanelet_to_unity_tf_.x = 81655.73;
+  lanelet_to_unity_tf_.y = 50137.43;
+  lanelet_to_unity_tf_.z = 42.49998;
 }
 
 void ScenarioGenerator::onInitPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
@@ -91,9 +97,35 @@ void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::Shared
 
   publishVisualization(trajectory);
 
-  // TODO: transform to Unity frame
+  auto transformed_trajectory = transformToUnityFrame(trajectory);
 
-  printPythonCode(trajectory);
+  printPythonCode(transformed_trajectory);
+}
+
+std::vector<geometry_msgs::msg::Pose>
+ScenarioGenerator::transformToUnityFrame(const std::vector<geometry_msgs::msg::Pose> &trajectory)
+{
+  std::vector<geometry_msgs::msg::Pose> transformed_trajectory = trajectory;
+
+  for (auto & pose : transformed_trajectory)
+  {
+    // apply mgrs offset
+    pose.position.x -= lanelet_to_unity_tf_.x;
+    pose.position.y -= lanelet_to_unity_tf_.y;
+    pose.position.z -= lanelet_to_unity_tf_.z;
+
+    // change to Unity coordinates
+    auto pose_copy = pose;
+    pose.position.x = -pose_copy.position.x;
+    pose.position.y = pose_copy.position.z;
+    pose.position.z = -pose_copy.position.y;
+
+//    std::cout << "x: " << pose.orientation.x << ", y: " << pose.orientation.y << ", z: " << pose.orientation.z << ", w: " << pose.orientation.w << std::endl;
+//    pose.orientation.z = pose_copy.orientation.z;
+//    pose.orientation.w = -pose_copy.orientation.w;
+  }
+
+  return transformed_trajectory;
 }
 
 void ScenarioGenerator::publishVisualization(const std::vector<geometry_msgs::msg::Pose> & trajectory)
@@ -126,7 +158,7 @@ void ScenarioGenerator::printPythonCode(const std::vector<geometry_msgs::msg::Po
     std::cout << trajectory_name << ".move_abs(pose=Pose(x=" << pose.position.x <<
                                                       ", y=" << pose.position.y <<
                                                       ", z=" << pose.position.z <<
-                                                      ", yaw=" << getYawDeg(pose.orientation) <<
+//                                                      ", yaw=" << getYawDeg(pose.orientation) <<
                                                       "))" << std::endl;
   }
   std::cout << "```\n" << std::endl;
