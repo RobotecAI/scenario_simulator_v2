@@ -46,6 +46,7 @@ def generate_launch_description():
     scenario_generator_node = Node(
         package='scenario_generator',
         executable='scenario_generator',
+        output='screen',
         parameters=[
             {'lanelet_map_path': lanelet_map_path}
         ]
