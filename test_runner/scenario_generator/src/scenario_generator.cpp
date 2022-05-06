@@ -45,11 +45,10 @@ ScenarioGenerator::ScenarioGenerator(const rclcpp::NodeOptions & option)
 
   planned_path_pub_ = this->create_publisher<nav_msgs::msg::Path>("trajectory/planned_path", 1);
 
-  std::string map_path = "/home/daniel/AJD-428/scenario_simulator_v2/map/kashiwanoha_map/map"; // TODO: parametrize
-
-  traffic_simulator::Configuration configuration(map_path);
+  std::string map_path = this->declare_parameter<std::string>("lanelet_map_path", "");
   hdmap_utils_ptr_ =
-      std::make_shared<hdmap_utils::HdMapUtils>(configuration.lanelet2_map_path(), geographic_msgs::msg::GeoPoint());
+      std::make_shared<hdmap_utils::HdMapUtils>(map_path, geographic_msgs::msg::GeoPoint());
+
   route_planner_ptr_ = std::make_shared<traffic_simulator::RoutePlanner>(hdmap_utils_ptr_);
 }
 

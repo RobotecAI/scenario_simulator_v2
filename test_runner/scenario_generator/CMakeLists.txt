@@ -18,6 +18,11 @@ ament_auto_add_executable(${PROJECT_NAME}
   src/scenario_generator.cpp
 )
 
+install(
+  DIRECTORY launch rviz
+  DESTINATION share/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
