@@ -49,6 +49,8 @@ ScenarioGenerator::ScenarioGenerator(const rclcpp::NodeOptions & option)
     "trajectory/initial_pose", 1, std::bind(&ScenarioGenerator::onInitPose, this, std::placeholders::_1));
   goal_pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
     "trajectory/goal_pose", 1, std::bind(&ScenarioGenerator::onGoalPose, this, std::placeholders::_1));
+  trajectory_type_sub_ = this->create_subscription<std_msgs::msg::String>(
+    "trajectory/option", 1, std::bind(&ScenarioGenerator::onOption, this, std::placeholders::_1));
 
   planned_path_pub_ = this->create_publisher<nav_msgs::msg::Path>("trajectory/planned_path", 1);
 
@@ -64,22 +66,91 @@ ScenarioGenerator::ScenarioGenerator(const rclcpp::NodeOptions & option)
   lanelet_to_unity_tf_.z = 42.49998;
 }
 
+void ScenarioGenerator::onOption(const std_msgs::msg::String::SharedPtr msg)
+{
+  if (msg->data == "p")
+  {
+    std::cout << "Changed mode to pedestrian." << std::endl;
+    current_trajectory_option_ = TrajectoryOption::PEDESTRIAN;
+  }
+  else if (msg->data == "v")
+  {
+    std::cout << "Changed mode to vehicle" << std::endl;
+    current_trajectory_option_ = TrajectoryOption::VEHICLE;
+  }
+  else
+  {
+    std::cout << "Invalid option " << std::quoted(msg->data) << std::endl;
+  }
+}
+
 void ScenarioGenerator::onInitPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
 {
-  init_pose_ = msg.get()->pose.pose;
+  RCLCPP_INFO_STREAM(get_logger(), "Received new init pose: (x: " << msg->pose.pose.position.x
+                                                       << ", y:" << msg->pose.pose.position.y
+                                                       << ", z: " << msg->pose.pose.position.z << ")");
 
-  RCLCPP_INFO_STREAM(get_logger(), "Received new init pose: (x: " << init_pose_.position.x
-                                                                  << ", y:" << init_pose_.position.y
-                                                                  << ", z: " << init_pose_.position.z << ")");
+  switch (current_trajectory_option_) {
+    case TrajectoryOption::NONE:
+      std::cout << "Choose trajectory generation option first by publishing on 'trajectory/option' topic." << std::endl;
+      return;
+    case TrajectoryOption::PEDESTRIAN:
+      handlePedestrianInitPose(msg);
+      break;
+    case TrajectoryOption::VEHICLE:
+      handleVehicleInitPose(msg);
+      break;
+  }
+
+  publishVisualization(collected_poses_);
 }
 
 void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
 {
-  RCLCPP_INFO_STREAM(get_logger(), "Received new goal pose: (x: " << msg->pose.position.x
-                                                                  << ", y:" << msg->pose.position.y
-                                                                  << ", z: " << msg->pose.position.z << ")");
+  if (collected_poses_.empty())
+  {
+    std::cout << "Set the init pose before setting the goal pose." << std::endl;
+    return;
+  }
 
-  auto initLaneletPose = hdmap_utils_ptr_->toLaneletPose(init_pose_, true);
+  RCLCPP_INFO_STREAM(get_logger(), "Received new goal pose: (x: " << msg->pose.position.x
+                                                       << ", y:" << msg->pose.position.y
+                                                       << ", z: " << msg->pose.position.z << ")");
+
+  switch (current_trajectory_option_) {
+    case TrajectoryOption::NONE:
+      std::cout << "Choose trajectory generation option first by publishing on 'trajectory/option' topic." << std::endl;
+      return;
+    case TrajectoryOption::PEDESTRIAN:
+      handlePedestrianGoalPose(msg);
+      break;
+    case TrajectoryOption::VEHICLE:
+      handleVehicleGoalPose(msg);
+      break;
+  }
+
+  publishVisualization(collected_poses_);
+  auto transformed_trajectory = transformToUnityFrame(collected_poses_);
+  printPythonCode(transformed_trajectory);
+  clear();
+}
+
+void ScenarioGenerator::handleVehicleInitPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
+{
+  collected_poses_.clear();
+  collected_poses_.push_back(msg.get()->pose.pose);
+}
+
+void ScenarioGenerator::handlePedestrianInitPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
+{
+  // do not clear init pose
+  // pedestrian's trajectory is just a collection of N init poses and 1 goal psoe
+  collected_poses_.push_back(msg.get()->pose.pose);
+}
+
+void ScenarioGenerator::handleVehicleGoalPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+{
+  auto initLaneletPose = hdmap_utils_ptr_->toLaneletPose(collected_poses_[0], true);
   auto goalLaneletPose = hdmap_utils_ptr_->toLaneletPose(msg->pose, true);
 
   if (!initLaneletPose)
@@ -99,13 +170,18 @@ void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::Shared
   auto spline = std::make_shared<traffic_simulator::math::CatmullRomSpline>(
       hdmap_utils_ptr_->getCenterPoints(route_lanelets));
   auto goalS = spline->getSValue(msg->pose);
-  auto trajectory = spline->getOrientedTrajectory(initLaneletPose.get().s, goalS.get(), 1);
+  collected_poses_ = spline->getOrientedTrajectory(initLaneletPose.get().s, goalS.get(), 1);
+}
 
-  publishVisualization(trajectory);
+void ScenarioGenerator::handlePedestrianGoalPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+{
+  collected_poses_.push_back(msg.get()->pose);
+}
 
-  auto transformed_trajectory = transformToUnityFrame(trajectory);
-
-  printPythonCode(transformed_trajectory);
+void ScenarioGenerator::clear()
+{
+  // cleanup after the trajectory is finished
+  collected_poses_.clear();
 }
 
 std::vector<geometry_msgs::msg::Pose>
