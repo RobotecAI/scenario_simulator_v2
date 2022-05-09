@@ -33,7 +33,13 @@ double getYawDeg(const geometry_msgs::msg::Quaternion & q_msg)
   auto m = tf2::Matrix3x3(q);
   m.getRPY(roll, pitch, yaw);
 //  std::cout << "roll: " << roll * 180.0 / M_PI << ", pitch: " << pitch * 180.0 / M_PI << ", yaw: " << yaw * 180.0 / M_PI << std::endl;
-  return yaw * 180.0 / M_PI;
+
+  auto yaw_deg = yaw * 180.0 / M_PI;
+
+  // unity transformation: (workaround) easier to do on angles than on quaternions
+  auto yaw_unity = -yaw_deg - 90;
+
+  return yaw_unity;
 }
 
 ScenarioGenerator::ScenarioGenerator(const rclcpp::NodeOptions & option)
@@ -158,7 +164,7 @@ void ScenarioGenerator::printPythonCode(const std::vector<geometry_msgs::msg::Po
     std::cout << trajectory_name << ".move_abs(pose=Pose(x=" << pose.position.x <<
                                                       ", y=" << pose.position.y <<
                                                       ", z=" << pose.position.z <<
-//                                                      ", yaw=" << getYawDeg(pose.orientation) <<
+                                                      ", yaw=" << getYawDeg(pose.orientation) <<
                                                       "))" << std::endl;
   }
   std::cout << "```\n" << std::endl;
