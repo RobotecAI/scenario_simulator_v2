@@ -24,6 +24,12 @@ To use the `scenario_generator`:
 
 6. Generate python trajectories by init/goal pose in rviz
 
-    > NOTE: You can change trajectory mode by publishing on `/trajectory/option` topic:
-    > * 'v' for veicles (lanelet planning)
-    > * 'p' for pedestrians (simple collecting of the poses)
+    NOTE: You can change trajectory mode by publishing on `/trajectory/option` topic:
+
+    ```bash
+    ros2 topic pub /trajectory/option std_msgs/msg/String "data: 'MODE'" -1
+    ```
+
+    where `MODE` options are:
+    * `v` for vehicles (lanelet planning)
+    * `p` for pedestrians (simple collecting of the poses)
