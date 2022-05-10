@@ -52,7 +52,7 @@ private:
   std::vector<geometry_msgs::msg::Pose> transformToUnityFrame(const std::vector<geometry_msgs::msg::Pose> &);
 
   void publishVisualization(const std::vector<geometry_msgs::msg::Pose> &);
-  void printPythonCode(const std::vector<geometry_msgs::msg::Pose> &);
+  void generatePythonCode(const std::vector<geometry_msgs::msg::Pose> &trajectory);
 
   void clear();
 

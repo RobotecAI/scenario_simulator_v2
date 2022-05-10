@@ -131,7 +131,7 @@ void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::Shared
 
   publishVisualization(collected_poses_);
   auto transformed_trajectory = transformToUnityFrame(collected_poses_);
-  printPythonCode(transformed_trajectory);
+  generatePythonCode(transformed_trajectory);
   clear();
 }
 
@@ -230,20 +230,28 @@ void ScenarioGenerator::publishVisualization(const std::vector<geometry_msgs::ms
   planned_path_pub_->publish(path);
 }
 
-void ScenarioGenerator::printPythonCode(const std::vector<geometry_msgs::msg::Pose> & trajectory)
+void ScenarioGenerator::generatePythonCode(const std::vector<geometry_msgs::msg::Pose> & trajectory)
 {
   std::string trajectory_name = "tr_" + std::to_string(trajectory_print_counter_);
-  std::cout << "\nThis is your python code:\n```" << std::endl;
-  std::cout << trajectory_name << " = Trajectory(default_speed=2.5)" << std::endl;  // TODO: parametrize speed
+  std::stringstream ss;
+
+  ss << trajectory_name << " = Trajectory(default_speed=2.5)" << std::endl;  // TODO: parametrize speed
   for (const auto & pose : trajectory)
   {
-    std::cout << trajectory_name << ".move_abs(pose=Pose(x=" << pose.position.x <<
-                                                      ", y=" << pose.position.y <<
-                                                      ", z=" << pose.position.z <<
-                                                      ", yaw=" << getYawDeg(pose.orientation) <<
-                                                      "))" << std::endl;
+    ss << trajectory_name << ".move_abs(pose=Pose(x=" << pose.position.x <<
+                                               ", y=" << pose.position.y <<
+                                               ", z=" << pose.position.z <<
+                                               ", yaw=" << getYawDeg(pose.orientation) <<
+                                               "))" << std::endl;
   }
-  std::cout << "```\n" << std::endl;
+
+  // print the code
+  std::cout << "\nThis is your python code:\n```\n" << ss.str() << "```\n" << std::endl;
+
+  // save the code to the file
+  std::ofstream output_file;
+  output_file.open("/tmp/generated_trajectory.py", std::ios_base::app);
+  output_file << ss.str() << std::endl;
 
   trajectory_print_counter_++;
 }
