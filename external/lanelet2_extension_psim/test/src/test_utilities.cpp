@@ -1,4 +1,4 @@
-// Copyright 2015-2019 Autoware Foundation
+// Copyright 2015-2019 Tier IV, Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lanelet2_extension_psim/utility/utilities.hpp"
-
 #include <gtest/gtest.h>
 #include <lanelet2_routing/RoutingGraphContainer.h>
 #include <lanelet2_traffic_rules/TrafficRulesFactory.h>
 
+#include <lanelet2_extension_psim/utility/utilities.hpp>
 #include <map>
 
 using lanelet::Lanelet;

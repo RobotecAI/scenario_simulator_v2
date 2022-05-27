@@ -1,4 +1,4 @@
-// Copyright 2015-2019 Autoware Foundation. All rights reserved.
+// Copyright 2015-2019 Tier IV, Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,11 +11,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+
 // Authors: Ryohsuke Mitsudome
 
-#ifndef LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
-#define LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
+#ifndef LANELET2_EXTENSION_PSIM__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
+#define LANELET2_EXTENSION_PSIM__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
 
 #include <lanelet2_core/primitives/BasicRegulatoryElements.h>
 #include <lanelet2_core/primitives/Lanelet.h>
@@ -92,4 +92,4 @@ static lanelet::RegisterRegulatoryElement<DetectionArea> regDetectionArea;
 }  // namespace autoware
 }  // namespace lanelet
 
-#endif  // LANELET2_EXTENSION__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_
+#endif  // LANELET2_EXTENSION_PSIM__REGULATORY_ELEMENTS__DETECTION_AREA_HPP_

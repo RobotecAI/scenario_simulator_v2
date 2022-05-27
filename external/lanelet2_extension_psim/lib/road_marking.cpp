@@ -1,4 +1,4 @@
-// Copyright 2020 Tier IV, Inc.
+// Copyright 2015-2019 Tier IV, Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,13 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lanelet2_extension_psim/regulatory_elements/road_marking.hpp"
-
-#include <boost/variant.hpp>
-
 #include <lanelet2_core/primitives/RegulatoryElement.h>
 
 #include <algorithm>
+#include <boost/variant.hpp>
+#include <lanelet2_extension_psim/regulatory_elements/road_marking.hpp>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -73,7 +71,7 @@ void RoadMarking::setRoadMarking(const LineString3d & road_marking)
 void RoadMarking::removeRoadMarking() { parameters()[RoleName::Refers] = {}; }
 
 #if __cplusplus < 201703L
-constexpr char RoadMarking::RuleName[];  // instantiate string in cpp file
+constexpr char RoadMarking::RuleName[];  // instanciate string in cpp file
 #endif
 
 }  // namespace autoware

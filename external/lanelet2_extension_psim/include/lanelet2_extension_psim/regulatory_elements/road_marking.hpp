@@ -1,4 +1,4 @@
-// Copyright 2020 Tier IV, Inc.
+// Copyright 2015-2019 Tier IV, Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LANELET2_EXTENSION__REGULATORY_ELEMENTS__ROAD_MARKING_HPP_
-#define LANELET2_EXTENSION__REGULATORY_ELEMENTS__ROAD_MARKING_HPP_
+#ifndef LANELET2_EXTENSION_PSIM__REGULATORY_ELEMENTS__ROAD_MARKING_HPP_
+#define LANELET2_EXTENSION_PSIM__REGULATORY_ELEMENTS__ROAD_MARKING_HPP_
 
 #include <lanelet2_core/primitives/BasicRegulatoryElements.h>
 #include <lanelet2_core/primitives/LineString.h>
@@ -68,4 +68,4 @@ static lanelet::RegisterRegulatoryElement<RoadMarking> regRoadMarking;
 }  // namespace autoware
 }  // namespace lanelet
 
-#endif  // LANELET2_EXTENSION__REGULATORY_ELEMENTS__ROAD_MARKING_HPP_
+#endif  // LANELET2_EXTENSION_PSIM__REGULATORY_ELEMENTS__ROAD_MARKING_HPP_
