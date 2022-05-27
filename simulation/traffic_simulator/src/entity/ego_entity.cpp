@@ -287,7 +287,7 @@ auto EgoEntity::getRouteLanelets() const -> std::vector<std::int64_t>
   std::vector<std::int64_t> ids = {};
   if (universe) {
     const auto points = universe->getPathWithLaneId().points;
-    for (const auto point : points) {
+    for (const auto & point : points) {
       std::copy(point.lane_ids.begin(), point.lane_ids.end(), std::back_inserter(ids));
     }
     auto result = std::unique(ids.begin(), ids.end());
