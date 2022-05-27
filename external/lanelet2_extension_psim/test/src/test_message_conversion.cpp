@@ -11,8 +11,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-#include "lanelet2_extension/utility/message_conversion.hpp"
-#include "lanelet2_extension/utility/query.hpp"
+#include "lanelet2_extension_psim/utility/message_conversion.hpp"
+#include "lanelet2_extension_psim/utility/query.hpp"
 
 #include <gtest/gtest.h>
 #include <math.h>

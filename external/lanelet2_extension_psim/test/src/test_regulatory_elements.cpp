@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lanelet2_extension/regulatory_elements/autoware_traffic_light.hpp"
+#include "lanelet2_extension_psim/regulatory_elements/autoware_traffic_light.hpp"
 
 #include <gtest/gtest.h>
 #include <lanelet2_core/Attribute.h>

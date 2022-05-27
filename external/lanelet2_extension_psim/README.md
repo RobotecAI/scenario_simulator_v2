@@ -1,4 +1,4 @@
-# lanelet2_extension package
+# lanelet2_extension_psim package
 
 This package contains external library for Lanelet2 and is meant to ease the use of Lanelet2 in Autoware.
 
@@ -72,16 +72,16 @@ Currently it contains following conversions:
 
 ## Nodes
 
-### lanelet2_extension_sample
+### lanelet2_extension_psim_sample
 
-Code for this explains how this lanelet2_extension library is used.
+Code for this explains how this lanelet2_extension_psim library is used.
 The executable is not meant to do anything.
 
-### autoware_lanelet2_extension
+### autoware_lanelet2_extension_psim
 
 This node checks if an .osm file follows the Autoware version of Lanelet2 format.
 You can check by running:
 
 ```sh
-ros2 run lanelet2_extension autoware_lanelet2_validation _map_file:=<path/to/map.osm>
+ros2 run lanelet2_extension_psim autoware_lanelet2_validation _map_file:=<path/to/map.osm>
 ```

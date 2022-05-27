@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(lanelet2_extension)
+project(lanelet2_extension_psim)
 
 find_package(autoware_cmake REQUIRED)
 autoware_package()
@@ -30,7 +30,7 @@ include_directories(
 
 add_definitions(${GeographicLib_DEFINITIONS})
 
-ament_auto_add_library(lanelet2_extension_lib SHARED
+ament_auto_add_library(lanelet2_extension_psim_lib SHARED
   lib/autoware_osm_parser.cpp
   lib/autoware_traffic_light.cpp
   lib/detection_area.cpp
@@ -43,35 +43,35 @@ ament_auto_add_library(lanelet2_extension_lib SHARED
   lib/virtual_traffic_light.cpp
   lib/visualization.cpp
 )
-target_link_libraries(lanelet2_extension_lib
+target_link_libraries(lanelet2_extension_psim_lib
   ${GeographicLib_LIBRARIES}
 )
 
-ament_auto_add_executable(lanelet2_extension_sample src/sample_code.cpp)
-add_dependencies(lanelet2_extension_sample lanelet2_extension_lib)
-target_link_libraries(lanelet2_extension_sample
-  lanelet2_extension_lib
+ament_auto_add_executable(lanelet2_extension_psim_sample src/sample_code.cpp)
+add_dependencies(lanelet2_extension_psim_sample lanelet2_extension_psim_lib)
+target_link_libraries(lanelet2_extension_psim_sample
+  lanelet2_extension_psim_lib
 )
 
 ament_auto_add_executable(autoware_lanelet2_validation src/validation.cpp)
-add_dependencies(autoware_lanelet2_validation lanelet2_extension_lib)
+add_dependencies(autoware_lanelet2_validation lanelet2_extension_psim_lib)
 target_link_libraries(autoware_lanelet2_validation
   ${catkin_LIBRARIES}
   ${PUGIXML_LIBRARIES}
-  lanelet2_extension_lib
+  lanelet2_extension_psim_lib
 )
 
 if(BUILD_TESTING)
   ament_add_ros_isolated_gtest(message_conversion-test test/src/test_message_conversion.cpp)
-  target_link_libraries(message_conversion-test lanelet2_extension_lib)
+  target_link_libraries(message_conversion-test lanelet2_extension_psim_lib)
   ament_add_ros_isolated_gtest(projector-test test/src/test_projector.cpp)
-  target_link_libraries(projector-test lanelet2_extension_lib)
+  target_link_libraries(projector-test lanelet2_extension_psim_lib)
   ament_add_ros_isolated_gtest(query-test test/src/test_query.cpp)
-  target_link_libraries(query-test lanelet2_extension_lib)
+  target_link_libraries(query-test lanelet2_extension_psim_lib)
   ament_add_ros_isolated_gtest(regulatory_elements-test test/src/test_regulatory_elements.cpp)
-  target_link_libraries(regulatory_elements-test lanelet2_extension_lib)
+  target_link_libraries(regulatory_elements-test lanelet2_extension_psim_lib)
   ament_add_ros_isolated_gtest(utilities-test test/src/test_utilities.cpp)
-  target_link_libraries(utilities-test lanelet2_extension_lib)
+  target_link_libraries(utilities-test lanelet2_extension_psim_lib)
 endif()
 
 ament_auto_package()

@@ -17,9 +17,9 @@
 #ifndef LANELET2_EXTENSION__VISUALIZATION__VISUALIZATION_HPP_
 #define LANELET2_EXTENSION__VISUALIZATION__VISUALIZATION_HPP_
 
-#include "lanelet2_extension/regulatory_elements/autoware_traffic_light.hpp"
-#include "lanelet2_extension/regulatory_elements/no_stopping_area.hpp"
-#include "lanelet2_extension/utility/query.hpp"
+#include "lanelet2_extension_psim/regulatory_elements/autoware_traffic_light.hpp"
+#include "lanelet2_extension_psim/regulatory_elements/no_stopping_area.hpp"
+#include "lanelet2_extension_psim/utility/query.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 

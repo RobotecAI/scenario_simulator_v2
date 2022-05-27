@@ -83,7 +83,7 @@ private:
 };
 static lanelet::RegisterRegulatoryElement<AutowareTrafficLight> regAutowareTraffic;
 
-// moved to lanelet2_extension/lib/autoware_traffic_light.cpp to avoid multiple
+// moved to lanelet2_extension_psim/lib/autoware_traffic_light.cpp to avoid multiple
 // definition errors
 /*
 #if __cplusplus < 201703L

@@ -14,7 +14,7 @@
 //
 // Authors: Ryohsuke Mitsudome
 
-#include "lanelet2_extension/regulatory_elements/detection_area.hpp"
+#include "lanelet2_extension_psim/regulatory_elements/detection_area.hpp"
 
 #include <boost/variant.hpp>
 

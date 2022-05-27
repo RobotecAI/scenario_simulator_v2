@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lanelet2_extension/utility/utilities.hpp"
+#include "lanelet2_extension_psim/utility/utilities.hpp"
 
 #include <gtest/gtest.h>
 #include <lanelet2_routing/RoutingGraphContainer.h>

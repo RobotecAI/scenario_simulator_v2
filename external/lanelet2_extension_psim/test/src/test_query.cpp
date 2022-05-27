@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lanelet2_extension/utility/query.hpp"
+#include "lanelet2_extension_psim/utility/query.hpp"
 
 #include <gtest/gtest.h>
 #include <math.h>

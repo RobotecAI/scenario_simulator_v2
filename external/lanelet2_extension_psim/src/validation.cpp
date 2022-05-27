@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lanelet2_extension/projection/mgrs_projector.hpp"
-#include "lanelet2_extension/regulatory_elements/autoware_traffic_light.hpp"
+#include "lanelet2_extension_psim/projection/mgrs_projector.hpp"
+#include "lanelet2_extension_psim/regulatory_elements/autoware_traffic_light.hpp"
 
 #include <pugixml.hpp>
 #include <rclcpp/rclcpp.hpp>
@@ -45,7 +45,7 @@ constexpr const char * Elevation = "ele";
 void printUsage()
 {
   std::cout << "Usage:" << std::endl
-            << "ros2 run lanelet2_extension autoware_lanelet2_validation"
+            << "ros2 run lanelet2_extension_psim autoware_lanelet2_validation"
                " --ros-args -p map_file:=<path to osm file>"
             << std::endl;
 }

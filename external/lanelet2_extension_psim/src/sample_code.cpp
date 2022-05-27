@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "lanelet2_extension/projection/mgrs_projector.hpp"
-#include "lanelet2_extension/regulatory_elements/autoware_traffic_light.hpp"
+#include "lanelet2_extension_psim/projection/mgrs_projector.hpp"
+#include "lanelet2_extension_psim/regulatory_elements/autoware_traffic_light.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 
