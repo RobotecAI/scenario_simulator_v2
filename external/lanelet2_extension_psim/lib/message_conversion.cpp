@@ -1,4 +1,4 @@
-// Copyright 2015-2019 Tier IV, Inc. All rights reserved.
+// Copyright 2015-2019 Autoware Foundation. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,8 +11,15 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+//
 // Authors: Simon Thompson, Ryohsuke Mitsudome
+
+#include "lanelet2_extension/utility/message_conversion.hpp"
+
+#include "lanelet2_extension/projection/mgrs_projector.hpp"
+
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
 
 #include <lanelet2_core/primitives/Lanelet.h>
 #include <lanelet2_io/Exceptions.h>
@@ -22,15 +29,9 @@
 #include <lanelet2_io/io_handlers/Serialize.h>
 #include <lanelet2_projection/UTM.h>
 
-#include <boost/archive/binary_iarchive.hpp>
-#include <boost/archive/binary_oarchive.hpp>
-#include <lanelet2_extension_psim/exception.hpp>
-#include <lanelet2_extension_psim/projection/mgrs_projector.hpp>
-#include <lanelet2_extension_psim/utility/message_conversion.hpp>
-#include <memory>
-#include <rclcpp/rclcpp.hpp>
 #include <sstream>
 #include <string>
+#include <utility>
 
 namespace lanelet
 {
@@ -38,33 +39,11 @@ namespace utils
 {
 namespace conversion
 {
-void toBinMsg(
-  const std::unique_ptr<LaneletMap> & map, autoware_auto_mapping_msgs::msg::HADMapBin * msg)
-{
-  if (msg == nullptr) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "msg is null pointer!";
-    lanelet::HdMapException(sstream.str());
-  }
-
-  std::stringstream ss;
-  boost::archive::binary_oarchive oa(ss);
-  oa << *map;
-  auto id_counter = lanelet::utils::getId();
-  oa << id_counter;
-
-  std::string data_str(ss.str());
-
-  msg->data.clear();
-  msg->data.assign(data_str.begin(), data_str.end());
-}
-
 void toBinMsg(const lanelet::LaneletMapPtr & map, autoware_auto_mapping_msgs::msg::HADMapBin * msg)
 {
   if (msg == nullptr) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "msg is null pointer!";
-    lanelet::HdMapException(sstream.str());
+    std::cerr << __FUNCTION__ << "msg is null pointer!";
+    return;
   }
 
   std::stringstream ss;
@@ -82,36 +61,13 @@ void toBinMsg(const lanelet::LaneletMapPtr & map, autoware_auto_mapping_msgs::ms
 void fromBinMsg(const autoware_auto_mapping_msgs::msg::HADMapBin & msg, lanelet::LaneletMapPtr map)
 {
   if (!map) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "msg is null pointer!";
-    lanelet::HdMapException(sstream.str());
+    std::cerr << __FUNCTION__ << ": map is null pointer!";
     return;
   }
 
   std::string data_str;
   data_str.assign(msg.data.begin(), msg.data.end());
-  std::stringstream ss;
-  ss << data_str;
-  boost::archive::binary_iarchive oa(ss);
-  oa >> *map;
-  lanelet::Id id_counter;
-  oa >> id_counter;
-  lanelet::utils::registerId(id_counter);
-  // *map = std::move(laneletMap);
-}
 
-void fromBinMsg(
-  const autoware_auto_mapping_msgs::msg::HADMapBin & msg, const std::unique_ptr<LaneletMap> & map)
-{
-  if (!map) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "msg is null pointer!";
-    lanelet::HdMapException(sstream.str());
-    return;
-  }
-
-  std::string data_str;
-  data_str.assign(msg.data.begin(), msg.data.end());
   std::stringstream ss;
   ss << data_str;
   boost::archive::binary_iarchive oa(ss);
@@ -136,9 +92,7 @@ void fromBinMsg(
 void toGeomMsgPt(const geometry_msgs::msg::Point32 & src, geometry_msgs::msg::Point * dst)
 {
   if (dst == nullptr) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "pointer is null!";
-    lanelet::HdMapException(sstream.str());
+    std::cerr << __FUNCTION__ << "pointer is null!";
     return;
   }
   dst->x = src.x;
@@ -148,9 +102,7 @@ void toGeomMsgPt(const geometry_msgs::msg::Point32 & src, geometry_msgs::msg::Po
 void toGeomMsgPt(const Eigen::Vector3d & src, geometry_msgs::msg::Point * dst)
 {
   if (dst == nullptr) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "pointer is null!";
-    lanelet::HdMapException(sstream.str());
+    std::cerr << __FUNCTION__ << "pointer is null!";
     return;
   }
   dst->x = src.x();
@@ -160,9 +112,7 @@ void toGeomMsgPt(const Eigen::Vector3d & src, geometry_msgs::msg::Point * dst)
 void toGeomMsgPt(const lanelet::ConstPoint3d & src, geometry_msgs::msg::Point * dst)
 {
   if (dst == nullptr) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "pointer is null!";
-    lanelet::HdMapException(sstream.str());
+    std::cerr << __FUNCTION__ << "pointer is null!";
     return;
   }
   dst->x = src.x();
@@ -172,9 +122,7 @@ void toGeomMsgPt(const lanelet::ConstPoint3d & src, geometry_msgs::msg::Point * 
 void toGeomMsgPt(const lanelet::ConstPoint2d & src, geometry_msgs::msg::Point * dst)
 {
   if (dst == nullptr) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "pointer is null!";
-    lanelet::HdMapException(sstream.str());
+    std::cerr << __FUNCTION__ << "pointer is null!" << std::endl;
     return;
   }
   dst->x = src.x();
@@ -185,9 +133,7 @@ void toGeomMsgPt(const lanelet::ConstPoint2d & src, geometry_msgs::msg::Point * 
 void toGeomMsgPt32(const Eigen::Vector3d & src, geometry_msgs::msg::Point32 * dst)
 {
   if (dst == nullptr) {
-    std::stringstream sstream;
-    sstream << __FUNCTION__ << "pointer is null!";
-    lanelet::HdMapException(sstream.str());
+    std::cerr << __FUNCTION__ << "pointer is null!" << std::endl;
     return;
   }
   dst->x = src.x();

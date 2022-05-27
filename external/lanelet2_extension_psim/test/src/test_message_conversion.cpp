@@ -1,4 +1,4 @@
-// Copyright 2015-2019 Tier IV, Inc. All rights reserved.
+// Copyright 2015-2019 Autoware Foundation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,12 +11,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+#include "lanelet2_extension/utility/message_conversion.hpp"
+#include "lanelet2_extension/utility/query.hpp"
 
 #include <gtest/gtest.h>
 #include <math.h>
-
-#include <lanelet2_extension_psim/utility/message_conversion.hpp>
-#include <lanelet2_extension_psim/utility/query.hpp>
 
 using lanelet::Lanelet;
 using lanelet::LineString3d;
@@ -58,8 +57,7 @@ TEST_F(TestSuite, BinMsgConversion)
 
   lanelet::utils::conversion::toBinMsg(single_lanelet_map_ptr, &bin_msg);
 
-  ASSERT_NE(static_cast<size_t>(0), bin_msg.data.size())
-    << "converted bin message does not have any data";
+  ASSERT_NE(0U, bin_msg.data.size()) << "converted bin message does not have any data";
 
   lanelet::utils::conversion::fromBinMsg(bin_msg, regenerated_map);
 
@@ -67,7 +65,7 @@ TEST_F(TestSuite, BinMsgConversion)
   auto regenerated_lanelet = lanelet::utils::query::laneletLayer(regenerated_map);
 
   ASSERT_EQ(original_lanelet.front().id(), regenerated_lanelet.front().id())
-    << "regerated map has different id";
+    << "regenerated map has different id";
 }
 
 TEST_F(TestSuite, ToGeomMsgPt)

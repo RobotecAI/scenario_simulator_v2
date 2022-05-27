@@ -1,4 +1,4 @@
-// Copyright 2015-2019 Tier IV, Inc. All rights reserved.
+// Copyright 2015-2019 Autoware Foundation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "lanelet2_extension/regulatory_elements/autoware_traffic_light.hpp"
+
 #include <gtest/gtest.h>
 #include <lanelet2_core/Attribute.h>
 #include <lanelet2_core/LaneletMap.h>
 #include <math.h>
 
-#include <lanelet2_extension_psim/regulatory_elements/autoware_traffic_light.hpp>
 #include <vector>
 
 using lanelet::LineString3d;
