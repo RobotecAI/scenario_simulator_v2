@@ -21,9 +21,9 @@ namespace openscenario_interpreter
 {
 inline namespace utility
 {
-auto car = [](auto && pare) noexcept -> decltype(auto) { return std::get<0>(pare); };
+inline auto car = [](auto && pare) noexcept -> decltype(auto) { return std::get<0>(pare); };
 
-auto cdr = [](auto && pare) noexcept -> decltype(auto) { return std::get<1>(pare); };
+inline auto cdr = [](auto && pare) noexcept -> decltype(auto) { return std::get<1>(pare); };
 
 #define COMPOSE(NAME, F, G)                         \
   template <typename... Ts>                         \
