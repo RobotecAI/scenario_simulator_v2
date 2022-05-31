@@ -179,7 +179,7 @@ def launch_setup(context, *args, **kwargs):
             package="rviz2",
             executable="rviz2",
             name="rviz2",
-            output={"stderr": "log", "stdout": "log"},
+           # output={"stderr": "log", "stdout": "log"},
             condition=IfCondition(launch_rviz),
             arguments=[
                 "-d",

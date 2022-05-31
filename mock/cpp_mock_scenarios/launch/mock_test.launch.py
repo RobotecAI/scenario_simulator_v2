@@ -136,7 +136,7 @@ def generate_launch_description():
                 package="rviz2",
                 executable="rviz2",
                 name="rviz2",
-                output={"stderr": "log", "stdout": "log"},
+                #output={"stderr": "log", "stdout": "log"},
                 condition=IfCondition(launch_rviz),
                 arguments=[
                     "-d",
