@@ -248,6 +248,8 @@ auto EgoEntity::getEntityStatus(const double time, const double step_time) const
     }
 
     if (lanelet_pose) {
+
+        if (lanelet_pose->lanelet_id == 0) std::cout << "Requesting center point : " << lanelet_pose->lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
       traffic_simulator::math::CatmullRomSpline spline(
         hdmap_utils_ptr_->getCenterPoints(lanelet_pose->lanelet_id));
       if (const auto s_value = spline.getSValue(status.pose)) {

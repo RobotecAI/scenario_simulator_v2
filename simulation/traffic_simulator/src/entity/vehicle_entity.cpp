@@ -139,6 +139,9 @@ void VehicleEntity::onUpdate(double current_time, double step_time)
     if (previous_route_lanelets_ != route_lanelets) {
       previous_route_lanelets_ = route_lanelets;
       try {
+          for (const auto lanelet_id : route_lanelets) {
+              if (lanelet_id == 0) std::cout << "Requesting center point : " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+          }
         spline_ = std::make_shared<traffic_simulator::math::CatmullRomSpline>(
           hdmap_utils_ptr_->getCenterPoints(route_lanelets));
       } catch (const common::scenario_simulator_exception::SemanticError & error) {

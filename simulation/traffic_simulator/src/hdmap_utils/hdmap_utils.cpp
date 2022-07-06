@@ -186,7 +186,9 @@ boost::optional<double> HdMapUtils::getCollisionPointInLaneCoordinate(
   using Point = bg::model::d2::point_xy<double>;
   using Line = bg::model::linestring<Point>;
   using Polygon = bg::model::polygon<Point, false>;
-  auto center_points = getCenterPoints(lanelet_id);
+
+    if (lanelet_id == 0) std::cout << "Requesting center point : " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+    auto center_points = getCenterPoints(lanelet_id);
   std::vector<Point> path_collision_points;
     if (crossing_lanelet_id == 0) std::cout << "Requesting : " << crossing_lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
   lanelet_map_ptr_->laneletLayer.get(crossing_lanelet_id);
@@ -723,7 +725,9 @@ std::vector<std::int64_t> HdMapUtils::getRoute(
 std::shared_ptr<traffic_simulator::math::CatmullRomSpline> HdMapUtils::getCenterPointsSpline(
   std::int64_t lanelet_id)
 {
-  getCenterPoints(lanelet_id);
+
+    if (lanelet_id == 0) std::cout << "Requesting center point : " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+    getCenterPoints(lanelet_id);
   return center_points_cache_.getCenterPointsSpline(lanelet_id);
 }
 
@@ -735,7 +739,8 @@ std::vector<geometry_msgs::msg::Point> HdMapUtils::getCenterPoints(
     return ret;
   }
   for (const auto lanelet_id : lanelet_ids) {
-    std::vector<geometry_msgs::msg::Point> center_points = getCenterPoints(lanelet_id);
+      if (lanelet_id == 0) std::cout << "Requesting center point : " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+      std::vector<geometry_msgs::msg::Point> center_points = getCenterPoints(lanelet_id);
     std::copy(center_points.begin(), center_points.end(), std::back_inserter(ret));
   }
   ret.erase(std::unique(ret.begin(), ret.end()), ret.end());
