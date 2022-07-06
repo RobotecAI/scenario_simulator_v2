@@ -244,6 +244,9 @@ auto EgoEntity::getEntityStatus(const double time, const double step_time) const
     if (route_lanelets.empty()) {
       lanelet_pose = hdmap_utils_ptr_->toLaneletPose(status.pose, getBoundingBox(), false, 1.0);
     } else {
+        for (const auto& id : route_lanelets) {
+            if (id == 0) std::cout << "Requesting to lanelet pose vector: " << id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+        }
       lanelet_pose = hdmap_utils_ptr_->toLaneletPose(status.pose, route_lanelets, 1.0);
     }
 

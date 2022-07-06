@@ -165,6 +165,7 @@ PedestrianActionNode::calculateEntityStatusUpdatedInWorldFrame(double target_spe
   entity_status_updated.action_status.accel = accel_new;
   boost::optional<traffic_simulator_msgs::msg::LaneletPose> lanelet_pose;
   if (entity_status.lanelet_pose_valid) {
+      if (entity_status.lanelet_pose.lanelet_id == 0) std::cout << "Requesting to lanelet pose: " << entity_status.lanelet_pose.lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
     lanelet_pose = hdmap_utils->toLaneletPose(pose_new, entity_status.lanelet_pose.lanelet_id, 1.0);
   } else {
     lanelet_pose = hdmap_utils->toLaneletPose(pose_new, entity_status.bounding_box, true);

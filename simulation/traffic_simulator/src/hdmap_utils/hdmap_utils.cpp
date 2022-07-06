@@ -391,6 +391,7 @@ boost::optional<std::int64_t> HdMapUtils::matchToLane(
      * @brief Hard coded parameter. Matching threshold for lanelet.
      */
     if (match.distance <= 1.0) {
+        if (match.lanelet.id() == 0) std::cout << "Requesting to lanelet pose: " << match.lanelet.id() << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
       auto lanelet_pose = toLaneletPose(pose, match.lanelet.id());
       if (lanelet_pose) {
         id_and_distance.emplace_back(std::make_pair<std::int64_t, double>(
@@ -416,6 +417,7 @@ boost::optional<traffic_simulator_msgs::msg::LaneletPose> HdMapUtils::toLaneletP
     return boost::none;
   }
   for (const auto & id : lanelet_ids) {
+      if (id == 0) std::cout << "Requesting to lanelet pose: " << id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
     const auto lanelet_pose = toLaneletPose(pose, id, matching_distance);
     if (lanelet_pose) {
       return lanelet_pose;
@@ -462,6 +464,7 @@ boost::optional<traffic_simulator_msgs::msg::LaneletPose> HdMapUtils::toLaneletP
   geometry_msgs::msg::Pose pose, std::vector<std::int64_t> lanelet_ids, double matching_distance)
 {
   for (const auto id : lanelet_ids) {
+      if (id == 0) std::cout << "Requesting to lanelet pose: " << id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
     const auto lanelet_pose = toLaneletPose(pose, id, matching_distance);
     if (lanelet_pose) {
       return lanelet_pose.get();
@@ -478,12 +481,14 @@ boost::optional<traffic_simulator_msgs::msg::LaneletPose> HdMapUtils::toLaneletP
   if (!lanelet_id) {
     return toLaneletPose(pose, include_crosswalk, matching_distance);
   }
-  const auto pose_in_target_lanelet = toLaneletPose(pose, lanelet_id.get(), matching_distance);
+    if (lanelet_id.get() == 0) std::cout << "Requesting to lanelet pose: " << lanelet_id.get() << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+    const auto pose_in_target_lanelet = toLaneletPose(pose, lanelet_id.get(), matching_distance);
   if (pose_in_target_lanelet) {
     return pose_in_target_lanelet;
   }
   const auto previous = getPreviousLaneletIds(lanelet_id.get());
   for (const auto id : previous) {
+      if (id == 0) std::cout << "Requesting to lanelet pose: " << id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
     const auto pose_in_previous = toLaneletPose(pose, id, matching_distance);
     if (pose_in_previous) {
       return pose_in_previous;
@@ -491,6 +496,7 @@ boost::optional<traffic_simulator_msgs::msg::LaneletPose> HdMapUtils::toLaneletP
   }
   const auto next = getNextLaneletIds(lanelet_id.get());
   for (const auto id : previous) {
+      if (id == 0) std::cout << "Requesting to lanelet pose: " << id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
     const auto pose_in_next = toLaneletPose(pose, id, matching_distance);
     if (pose_in_next) {
       return pose_in_next;
