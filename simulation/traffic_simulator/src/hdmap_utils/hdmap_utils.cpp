@@ -427,6 +427,8 @@ boost::optional<traffic_simulator_msgs::msg::LaneletPose> HdMapUtils::toLaneletP
 boost::optional<traffic_simulator_msgs::msg::LaneletPose> HdMapUtils::toLaneletPose(
   geometry_msgs::msg::Pose pose, std::int64_t lanelet_id, double matching_distance)
 {
+
+    if (lanelet_id == 0) std::cout << "Requesting center point spline: " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
   const auto spline = getCenterPointsSpline(lanelet_id);
   const auto s = spline->getSValue(pose, matching_distance);
   if (!s) {
@@ -979,6 +981,7 @@ HdMapUtils::getLaneChangeTrajectory(
     toMapPose(along_pose.lanelet_id, along_pose.s, along_pose.offset + 5.0).pose.position;
   const auto right_point =
     toMapPose(along_pose.lanelet_id, along_pose.s, along_pose.offset - 5.0).pose.position;
+    if (lane_change_parameter.target.lanelet_id == 0) std::cout << "Requesting center point spline: " << lane_change_parameter.target.lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
   const auto collision_point = getCenterPointsSpline(lane_change_parameter.target.lanelet_id)
                                  ->getCollisionPointIn2D(left_point, right_point);
   if (!collision_point) {
@@ -1093,6 +1096,7 @@ geometry_msgs::msg::Vector3 HdMapUtils::getVectorFromPose(
 
 bool HdMapUtils::isInLanelet(std::int64_t lanelet_id, double s)
 {
+    if (lanelet_id == 0) std::cout << "Requesting center point  spline: " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
   const auto spline = getCenterPointsSpline(lanelet_id);
   double l = spline->getLength();
   if (s > l) {
@@ -1107,6 +1111,7 @@ std::vector<geometry_msgs::msg::Point> HdMapUtils::toMapPoints(
   std::int64_t lanelet_id, std::vector<double> s)
 {
   std::vector<geometry_msgs::msg::Point> ret;
+    if (lanelet_id == 0) std::cout << "Requesting center point  spline: " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
   const auto spline = getCenterPointsSpline(lanelet_id);
   for (const auto & s_value : s) {
     ret.push_back(spline->getPoint(s_value));
@@ -1119,6 +1124,7 @@ geometry_msgs::msg::PoseStamped HdMapUtils::toMapPose(
 {
   geometry_msgs::msg::PoseStamped ret;
   ret.header.frame_id = "map";
+    if (lanelet_id == 0) std::cout << "Requesting center point spline: " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
   const auto spline = getCenterPointsSpline(lanelet_id);
   ret.pose = spline->getPose(s);
   const auto normal_vec = spline->getNormalVector(s);
@@ -1154,6 +1160,7 @@ geometry_msgs::msg::PoseStamped HdMapUtils::toMapPose(
 boost::optional<geometry_msgs::msg::Vector3> HdMapUtils::getTangentVector(
   std::int64_t lanelet_id, double s)
 {
+    if (lanelet_id == 0) std::cout << "Requesting center point spline: " << lanelet_id << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
   return getCenterPointsSpline(lanelet_id)->getTangentVector(s);
 }
 
