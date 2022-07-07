@@ -289,7 +289,10 @@ auto EgoEntity::getRouteLanelets() const -> std::vector<std::int64_t>
     bool print_vector = false;
     for (const auto & point : points) {
         for (const auto& id : point.lane_ids) {
-            if (id == 0) print_vector = true;
+            if (id == 0) {
+                print_vector = true;
+                break;
+            }
         }
       std::copy(point.lane_ids.begin(), point.lane_ids.end(), std::back_inserter(ids));
     }
@@ -305,7 +308,10 @@ auto EgoEntity::getRouteLanelets() const -> std::vector<std::int64_t>
     auto result = std::unique(ids.begin(), ids.end());
     ids.erase(result, ids.end());
     for (const auto& id : ids) {
-      if (id == 0) print_vector = true;
+      if (id == 0) {
+          print_vector = true;
+          break;
+      }
     }
 
     if (print_vector) {
