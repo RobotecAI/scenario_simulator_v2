@@ -84,12 +84,13 @@ private:
 public:
   auto getPathWithLaneId() const -> const PathWithLaneId &
   {
-      for (const auto& point : current_value_of_PathWithLaneId->points) {
+      auto ret = std::atomic_load(&current_value_of_PathWithLaneId);
+      for (const auto& point : ret->points) {
           for (const auto& id : point.lane_ids) {
-              if (id == 0) std::cout << "Requesting data: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+              std::cout << "Requesting data concelaer: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
           }
       }
-      return *std::atomic_load(&current_value_of_PathWithLaneId);
+      return *ret;
   }
 
   CONCEALER_DEFINE_SUBSCRIPTION(Trajectory);
@@ -144,7 +145,7 @@ public:
             [this](const PathWithLaneId::ConstSharedPtr message) {
                 for (const auto& point : message->points) {
                     for (const auto& id : point.lane_ids) {
-                        if (id == 0) std::cout << "Requesting subscriber: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+                        std::cout << "Requesting subscriber: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
                     }
                 }
                 std::atomic_store(&current_value_of_PathWithLaneId, std::move(std::make_shared<PathWithLaneId>(*message)));
