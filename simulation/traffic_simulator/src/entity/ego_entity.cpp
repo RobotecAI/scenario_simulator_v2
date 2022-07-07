@@ -286,17 +286,35 @@ auto EgoEntity::getRouteLanelets() const -> std::vector<std::int64_t>
   std::vector<std::int64_t> ids = {};
   if (universe) {
     const auto points = universe->getPathWithLaneId().points;
+    bool print_vector = false;
     for (const auto & point : points) {
         for (const auto& id : point.lane_ids) {
-            if (id == 0) std::cout << "Requesting autoware route lanelets: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+            if (id == 0) print_vector = true;
         }
       std::copy(point.lane_ids.begin(), point.lane_ids.end(), std::back_inserter(ids));
     }
+    if (print_vector) {
+        std::cout << "Requesting autoware route lanelets: " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+        for (const auto & point : points) {
+            for (const auto &id: point.lane_ids) {
+                std::cout << id << " , ";
+            }
+            std::cout << std::endl;
+        }
+    }
     auto result = std::unique(ids.begin(), ids.end());
     ids.erase(result, ids.end());
-      for (const auto& id : ids) {
-          if (id == 0) std::cout << "Requesting autoware route lanelets: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
-      }
+    for (const auto& id : ids) {
+      if (id == 0) print_vector = true;
+    }
+
+    if (print_vector) {
+        std::cout << "Requesting autoware route lanelets: " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+        for (const auto& id : ids) {
+            std::cout << id << " , ";
+        }
+        std::cout << std::endl;
+    }
   }
   return ids;
 }

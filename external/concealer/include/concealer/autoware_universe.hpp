@@ -85,10 +85,12 @@ public:
   auto getPathWithLaneId() const -> const PathWithLaneId &
   {
       auto ret = std::atomic_load(&current_value_of_PathWithLaneId);
+      std::cout << "Requesting data concelaer: " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
       for (const auto& point : ret->points) {
           for (const auto& id : point.lane_ids) {
-              std::cout << "Requesting data concelaer: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+              std::cout << id << " , ";
           }
+          std::cout << std::endl;
       }
       return *ret;
   }
@@ -143,10 +145,12 @@ public:
     subscription_of_PathWithLaneId(static_cast<Autoware &>(*this).template create_subscription<PathWithLaneId>(
             "/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id", 1,
             [this](const PathWithLaneId::ConstSharedPtr message) {
+                std::cout << "Requesting subscriber: " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
                 for (const auto& point : message->points) {
                     for (const auto& id : point.lane_ids) {
-                        std::cout << "Requesting subscriber: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+                        std::cout << id << " , " << std::endl;
                     }
+                    std::cout << std::endl;
                 }
                 std::atomic_store(&current_value_of_PathWithLaneId, std::move(std::make_shared<PathWithLaneId>(*message)));
             }
