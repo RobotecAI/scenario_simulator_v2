@@ -287,10 +287,16 @@ auto EgoEntity::getRouteLanelets() const -> std::vector<std::int64_t>
   if (universe) {
     const auto points = universe->getPathWithLaneId().points;
     for (const auto & point : points) {
+        for (const auto& id : point.lane_ids) {
+            if (id == 0) std::cout << "Requesting autoware route lanelets: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+        }
       std::copy(point.lane_ids.begin(), point.lane_ids.end(), std::back_inserter(ids));
     }
     auto result = std::unique(ids.begin(), ids.end());
     ids.erase(result, ids.end());
+      for (const auto& id : ids) {
+          if (id == 0) std::cout << "Requesting autoware route lanelets: " << id << " " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
+      }
   }
   return ids;
 }
