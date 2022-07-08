@@ -82,17 +82,17 @@ private:
   rclcpp::Subscription<PathWithLaneId>::SharedPtr subscription_of_PathWithLaneId;
 
 public:
-  auto getPathWithLaneId() const -> const PathWithLaneId &
+  auto getPathWithLaneId() const -> PathWithLaneId
   {
-      auto ret = std::atomic_load(&current_value_of_PathWithLaneId);
+      auto ret = *std::atomic_load(&current_value_of_PathWithLaneId);
       std::cout << "Requesting data concelaer: " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
-      for (const auto& point : ret->points) {
+      for (const auto& point : ret.points) {
           for (const auto& id : point.lane_ids) {
-              std::cout << id << " , ";
+              std::cout << id << ", ";
           }
           std::cout << std::endl;
       }
-      return *ret;
+      return ret;
   }
 
   CONCEALER_DEFINE_SUBSCRIPTION(Trajectory);
@@ -148,7 +148,7 @@ public:
                 std::cout << "Requesting subscriber: " << __PRETTY_FUNCTION__ << ":" << __LINE__ << std::endl;
                 for (const auto& point : message->points) {
                     for (const auto& id : point.lane_ids) {
-                        std::cout << id << " , " << std::endl;
+                        std::cout << id << ", ";
                     }
                     std::cout << std::endl;
                 }
