@@ -53,6 +53,7 @@ ScenarioGenerator::ScenarioGenerator(const rclcpp::NodeOptions & option)
     "trajectory/option", 1, std::bind(&ScenarioGenerator::onOption, this, std::placeholders::_1));
 
   planned_path_pub_ = this->create_publisher<nav_msgs::msg::Path>("trajectory/planned_path", 1);
+  area_pub_ = this->create_publisher<geometry_msgs::msg::PolygonStamped>("trajectory/area", 1);
 
   std::string map_path = this->declare_parameter<std::string>("lanelet_map_path", "");
   hdmap_utils_ptr_ =
@@ -78,6 +79,11 @@ void ScenarioGenerator::onOption(const std_msgs::msg::String::SharedPtr msg)
     std::cout << "Changed mode to vehicle" << std::endl;
     current_trajectory_option_ = TrajectoryOption::VEHICLE;
   }
+  else if (msg->data == "a")
+  {
+    std::cout << "Changed mode to area" << std::endl;
+    current_trajectory_option_ = TrajectoryOption::SPAWNING_AREA;
+  }
   else
   {
     std::cout << "Invalid option " << std::quoted(msg->data) << std::endl;
@@ -95,14 +101,17 @@ void ScenarioGenerator::onInitPose(const geometry_msgs::msg::PoseWithCovarianceS
       std::cout << "Choose trajectory generation option first by publishing on 'trajectory/option' topic." << std::endl;
       return;
     case TrajectoryOption::PEDESTRIAN:
-      handlePedestrianInitPose(msg);
+      appendCollectedPose(msg);
       break;
     case TrajectoryOption::VEHICLE:
-      handleVehicleInitPose(msg);
+      overwriteCollectedPoses(msg);
+      break;
+    case TrajectoryOption::SPAWNING_AREA:
+      appendCollectedPose(msg);
       break;
   }
 
-  publishVisualization(collected_poses_);
+  publishTrajectoryVisualization(collected_poses_);
 }
 
 void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
@@ -114,7 +123,7 @@ void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::Shared
   }
 
   RCLCPP_INFO_STREAM(get_logger(), "Received new goal pose: (x: " << msg->pose.position.x
-                                                       << ", y:" << msg->pose.position.y
+                                                       << ", y: " << msg->pose.position.y
                                                        << ", z: " << msg->pose.position.z << ")");
 
   switch (current_trajectory_option_) {
@@ -122,33 +131,48 @@ void ScenarioGenerator::onGoalPose(const geometry_msgs::msg::PoseStamped::Shared
       std::cout << "Choose trajectory generation option first by publishing on 'trajectory/option' topic." << std::endl;
       return;
     case TrajectoryOption::PEDESTRIAN:
-      handlePedestrianGoalPose(msg);
-      break;
+      {
+        appendCollectedPose(msg);
+        publishTrajectoryVisualization(collected_poses_);
+        auto transformed_trajectory = transformToUnityFrame(collected_poses_);
+        generateTrajectoryPythonCode(transformed_trajectory);
+        break;
+      }
     case TrajectoryOption::VEHICLE:
-      handleVehicleGoalPose(msg);
-      break;
+      {
+        appendCollectedPoseAndInterpolate(msg);
+        publishTrajectoryVisualization(collected_poses_);
+        auto transformed_trajectory = transformToUnityFrame(collected_poses_);
+        generateTrajectoryPythonCode(transformed_trajectory);
+        break;
+      }
+    case TrajectoryOption::SPAWNING_AREA:
+      {
+        appendCollectedPose(msg);
+        publishPolygonVisualization(collected_poses_);
+        auto transformed_poses = transformToUnityFrame(collected_poses_);
+        generateAreaPythonCode(transformed_poses);
+        break;
+      }
   }
 
-  publishVisualization(collected_poses_);
-  auto transformed_trajectory = transformToUnityFrame(collected_poses_);
-  generatePythonCode(transformed_trajectory);
   clear();
 }
 
-void ScenarioGenerator::handleVehicleInitPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
+void ScenarioGenerator::overwriteCollectedPoses(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
 {
   collected_poses_.clear();
   collected_poses_.push_back(msg.get()->pose.pose);
 }
 
-void ScenarioGenerator::handlePedestrianInitPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
+void ScenarioGenerator::appendCollectedPose(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
 {
   // do not clear init pose
   // pedestrian's trajectory is just a collection of N init poses and 1 goal psoe
   collected_poses_.push_back(msg.get()->pose.pose);
 }
 
-void ScenarioGenerator::handleVehicleGoalPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+void ScenarioGenerator::appendCollectedPoseAndInterpolate(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
 {
   auto initLaneletPose = hdmap_utils_ptr_->toLaneletPose(collected_poses_[0], true);
   auto goalLaneletPose = hdmap_utils_ptr_->toLaneletPose(msg->pose, true);
@@ -173,7 +197,7 @@ void ScenarioGenerator::handleVehicleGoalPose(const geometry_msgs::msg::PoseStam
   collected_poses_ = spline->getOrientedTrajectory(initLaneletPose.get().s, goalS.get(), 1);
 }
 
-void ScenarioGenerator::handlePedestrianGoalPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+void ScenarioGenerator::appendCollectedPose(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
 {
   collected_poses_.push_back(msg.get()->pose);
 }
@@ -210,7 +234,7 @@ ScenarioGenerator::transformToUnityFrame(const std::vector<geometry_msgs::msg::P
   return transformed_trajectory;
 }
 
-void ScenarioGenerator::publishVisualization(const std::vector<geometry_msgs::msg::Pose> & trajectory)
+void ScenarioGenerator::publishTrajectoryVisualization(const std::vector<geometry_msgs::msg::Pose> & trajectory)
 {
   std_msgs::msg::Header header;
   header.frame_id = "map";
@@ -230,7 +254,28 @@ void ScenarioGenerator::publishVisualization(const std::vector<geometry_msgs::ms
   planned_path_pub_->publish(path);
 }
 
-void ScenarioGenerator::generatePythonCode(const std::vector<geometry_msgs::msg::Pose> & trajectory)
+void ScenarioGenerator::publishPolygonVisualization(const std::vector<geometry_msgs::msg::Pose> & poses)
+{
+  std_msgs::msg::Header header;
+  header.frame_id = "map";
+  header.stamp = get_clock()->now();
+
+  geometry_msgs::msg::PolygonStamped poly;
+  poly.header = header;
+
+  for (const auto & pose : poses)
+  {
+    geometry_msgs::msg::Point32 point;
+    point.x = pose.position.x;
+    point.y = pose.position.y;
+    point.z = pose.position.z;
+    poly.polygon.points.push_back(point);
+  }
+
+  area_pub_->publish(poly);
+}
+
+void ScenarioGenerator::generateTrajectoryPythonCode(const std::vector<geometry_msgs::msg::Pose> & trajectory)
 {
   std::string trajectory_name = "tr_" + std::to_string(trajectory_print_counter_);
   std::stringstream ss;
@@ -254,4 +299,35 @@ void ScenarioGenerator::generatePythonCode(const std::vector<geometry_msgs::msg:
   output_file << ss.str() << std::endl;
 
   trajectory_print_counter_++;
+}
+
+void ScenarioGenerator::generateAreaPythonCode(const std::vector<geometry_msgs::msg::Pose> & poses)
+{
+  std::string area_name = "area_" + std::to_string(area_print_counter_);
+  std::stringstream ss;
+
+  ss << area_name << " = Polygon([";
+  for (int i=0; i < poses.size(); ++i)
+  {
+    ss << "(" << poses[i].position.x << ", " << poses[i].position.z << ")";
+
+    if (i == poses.size() - 1)
+    {
+      ss << "])" << std::endl;
+    }
+    else
+    {
+      ss << ", ";
+    }
+  }
+
+  // print the code
+  std::cout << "\nThis is your python code:\n```\n" << ss.str() << "```\n" << std::endl;
+
+  // save the code to the file
+  std::ofstream output_file;
+  output_file.open("/tmp/generated_trajectory.py", std::ios_base::app);
+  output_file << ss.str() << std::endl;
+
+  area_print_counter_++;
 }

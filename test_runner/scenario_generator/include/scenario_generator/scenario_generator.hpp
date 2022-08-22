@@ -20,6 +20,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
+#include <geometry_msgs/msg/polygon_stamped.hpp>
 #include <nav_msgs/msg/path.hpp>
 #include <std_msgs/msg/string.hpp>
 
@@ -31,7 +32,8 @@ enum class TrajectoryOption
 {
   NONE,
   VEHICLE,
-  PEDESTRIAN
+  PEDESTRIAN,
+  SPAWNING_AREA,
 };
 
 class ScenarioGenerator : public rclcpp::Node
@@ -44,15 +46,17 @@ private:
   void onGoalPose(geometry_msgs::msg::PoseStamped::SharedPtr);
   void onOption(std_msgs::msg::String::SharedPtr);
 
-  void handleVehicleInitPose(geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr);
-  void handlePedestrianInitPose(geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr);
-  void handleVehicleGoalPose(geometry_msgs::msg::PoseStamped::SharedPtr);
-  void handlePedestrianGoalPose(geometry_msgs::msg::PoseStamped::SharedPtr);
+  void overwriteCollectedPoses(geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr);
+  void appendCollectedPose(geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr);
+  void appendCollectedPoseAndInterpolate(geometry_msgs::msg::PoseStamped::SharedPtr);
+  void appendCollectedPose(geometry_msgs::msg::PoseStamped::SharedPtr);
 
   std::vector<geometry_msgs::msg::Pose> transformToUnityFrame(const std::vector<geometry_msgs::msg::Pose> &);
 
-  void publishVisualization(const std::vector<geometry_msgs::msg::Pose> &);
-  void generatePythonCode(const std::vector<geometry_msgs::msg::Pose> &trajectory);
+  void publishTrajectoryVisualization(const std::vector<geometry_msgs::msg::Pose> &);
+  void publishPolygonVisualization(const std::vector<geometry_msgs::msg::Pose> &);
+  void generateTrajectoryPythonCode(const std::vector<geometry_msgs::msg::Pose> &);
+  void generateAreaPythonCode(const std::vector<geometry_msgs::msg::Pose> &);
 
   void clear();
 
@@ -61,6 +65,7 @@ private:
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr trajectory_type_sub_;
 
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr planned_path_pub_;
+  rclcpp::Publisher<geometry_msgs::msg::PolygonStamped>::SharedPtr area_pub_;
 
   TrajectoryOption current_trajectory_option_;
 
@@ -72,6 +77,7 @@ private:
   geometry_msgs::msg::Vector3 lanelet_to_unity_tf_;
 
   int trajectory_print_counter_{0};
+  int area_print_counter_{0};
 };
 
 #endif  // SCENARIO_GENERATOR__SCENARIO_GENERATOR_HPP

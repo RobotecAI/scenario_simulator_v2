@@ -17,7 +17,7 @@ To use the `scenario_generator`:
 5. Run Autoware with:
 
     ```bash
-     ros2 launch random_test_runner random_test.launch.py architecture_type:=awf/universe sensor_model:=sample_sensor_kit vehicle_model:=sample_vehicle map_name:=shinjuku_map
+    ros2 launch random_test_runner random_test.launch.py architecture_type:=awf/universe sensor_model:=sample_sensor_kit vehicle_model:=sample_vehicle map_name:=shinjuku_map
     ```
 
     and kill it after lanelet map is displayed in rviz
@@ -33,3 +33,4 @@ To use the `scenario_generator`:
     where `MODE` options are:
     * `v` for vehicles (lanelet planning)
     * `p` for pedestrians (simple collecting of the poses)
+    * `a` for spawning areas (polygons)
