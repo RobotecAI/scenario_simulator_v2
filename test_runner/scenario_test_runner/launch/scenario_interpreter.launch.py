@@ -137,70 +137,17 @@ def launch_setup(context, *args, **kwargs):
         DeclareLaunchArgument("sigterm_timeout",         default_value=sigterm_timeout        ),
         DeclareLaunchArgument("vehicle_model",           default_value=vehicle_model          ),
         DeclareLaunchArgument("workflow",                default_value=workflow               ),
+
         # fmt: on
-        Node(
-            package="scenario_test_runner",
-            executable="scenario_test_runner",
-            namespace="simulation",
-            name="scenario_test_runner",
-            output="screen",
-            on_exit=Shutdown(),
-            arguments=[
-                # fmt: off
-                "--global-frame-rate",       global_frame_rate,
-                "--global-real-time-factor", global_real_time_factor,
-                "--global-timeout",          global_timeout,
-                "--output-directory",        output_directory,
-                "--scenario",                scenario,
-                "--workflow",                workflow,
-                # fmt: on
-            ],
-        ),
-        Node(
-            package="simple_sensor_simulator",
-            executable="simple_sensor_simulator_node",
-            namespace="simulation",
-            name="simple_sensor_simulator",
-            output="screen",
-            parameters=[{"port": port}],
-        ),
-      #  LifecycleNode(
-      #      package="openscenario_interpreter",
-      #      executable="openscenario_interpreter_node",
-      #      namespace="simulation",
-      #      name="openscenario_interpreter",
-      #      output="screen",
-      #      parameters=make_parameters(),
-      #      prefix=['xterm -e valgrind --tools=callgrind'],
-      #      # on_exit=Shutdown(),
-      #  ),
-        Node(
+        LifecycleNode(
             package="openscenario_interpreter",
-            executable="openscenario_preprocessor_node",
+            executable="openscenario_interpreter_node",
             namespace="simulation",
-            name="openscenario_preprocessor",
+            name="openscenario_interpreter",
             output="screen",
-        ),
-        Node(
-            package="openscenario_visualization",
-            executable="openscenario_visualization_node",
-            namespace="simulation",
-            name="openscenario_visualizer",
-            output="screen",
-        ),
-        Node(
-            package="rviz2",
-            executable="rviz2",
-            name="rviz2",
-            output={"stderr": "log", "stdout": "log"},
-            condition=IfCondition(launch_rviz),
-            arguments=[
-                "-d",
-                str(
-                    Path(get_package_share_directory("traffic_simulator"))
-                    / "config/scenario_simulator_v2.rviz"
-                ),
-            ],
+            parameters=make_parameters(),
+    #        prefix=['xterm -e valgrind --tools=callgrind'],
+            # on_exit=Shutdown(),
         ),
     ]
 
