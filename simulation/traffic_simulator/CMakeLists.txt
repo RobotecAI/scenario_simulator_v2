@@ -20,6 +20,7 @@ find_package(lanelet2_matching REQUIRED)
 find_package(tinyxml2_vendor REQUIRED)
 find_package(quaternion_operation REQUIRED)
 find_package(pluginlib REQUIRED)
+find_package(easy_profiler REQUIRED)
 include(FindProtobuf REQUIRED)
 
 ament_auto_find_build_dependencies()
@@ -69,7 +70,8 @@ target_link_libraries(traffic_simulator
   zmq
   stdc++fs
   Boost::filesystem
-  ${PROTOBUF_LIBRARY})
+  ${PROTOBUF_LIBRARY}
+  easy_profiler)
 
 # workaround to allow deprecated header to build on both galactic and humble
 if(${tf2_geometry_msgs_VERSION} VERSION_LESS 0.18.0)

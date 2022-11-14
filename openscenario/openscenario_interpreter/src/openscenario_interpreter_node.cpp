@@ -17,9 +17,12 @@
 #include <cstdlib>
 #include <memory>
 #include <openscenario_interpreter/openscenario_interpreter.hpp>
+#include <easy/profiler.h>
 
 int main(const int argc, char const * const * const argv)
 {
+  EASY_PROFILER_ENABLE;
+
   google::InitGoogleLogging(argv[0]);
   google::InstallFailureSignalHandler();
 
@@ -36,6 +39,7 @@ int main(const int argc, char const * const * const argv)
   executor.spin();
 
   rclcpp::shutdown();
+  profiler::dumpBlocksToFile("ts.prof");
 
   return 0;
 }

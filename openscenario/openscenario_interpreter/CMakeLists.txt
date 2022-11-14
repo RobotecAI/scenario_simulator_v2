@@ -11,6 +11,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake_auto REQUIRED)
+find_package(easy_profiler REQUIRED)
 
 ament_auto_find_build_dependencies()
 
@@ -32,7 +33,7 @@ ament_auto_add_library(${PROJECT_NAME} SHARED
   src/record.cpp
   src/scope.cpp)
 
-target_link_libraries(${PROJECT_NAME} Boost::filesystem glog pugixml)
+target_link_libraries(${PROJECT_NAME} Boost::filesystem glog pugixml easy_profiler)
 
 ament_auto_add_library(openscenario_preprocessor SHARED
   src/openscenario_preprocessor.cpp)
@@ -54,7 +55,7 @@ rclcpp_components_register_nodes(openscenario_preprocessor "openscenario_interpr
 # ------------------------------------------------------------------------------
 
 ament_auto_add_executable(${PROJECT_NAME}_node src/${PROJECT_NAME}_node.cpp)
-target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME} easy_profiler)
 
 ament_auto_add_executable(openscenario_preprocessor_node src/openscenario_preprocessor_node.cpp)
 target_link_libraries(openscenario_preprocessor_node openscenario_preprocessor)

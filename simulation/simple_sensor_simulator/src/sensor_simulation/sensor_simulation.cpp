@@ -16,6 +16,7 @@
 #include <simple_sensor_simulator/sensor_simulation/sensor_simulation.hpp>
 #include <string>
 #include <vector>
+#include <easy/profiler.h>
 
 namespace simple_sensor_simulator
 {
@@ -23,8 +24,10 @@ void SensorSimulation::updateSensorFrame(
   double current_time, const rclcpp::Time & current_ros_time,
   const std::vector<traffic_simulator_msgs::EntityStatus> & status)
 {
+    EASY_FUNCTION(profiler::colors::Red);
   std::vector<std::string> lidar_detected_objects = {};
   for (auto & sensor : lidar_sensors_) {
+      EASY_BLOCK("lidar_sensor", profiler::colors::Green);
     sensor->update(current_time, status, current_ros_time);
     const auto objects = sensor->getDetectedObjects();
     for (const auto & obj : objects) {
@@ -34,9 +37,11 @@ void SensorSimulation::updateSensorFrame(
     }
   }
   for (auto & sensor : detection_sensors_) {
+      EASY_BLOCK("detection sensor", profiler::colors::Green);
     sensor->update(current_time, status, current_ros_time, lidar_detected_objects);
   }
   for (auto & sensor : occupancy_grid_sensors_) {
+      EASY_BLOCK("occupancy grid sensor", profiler::colors::Green);
     sensor->update(current_time, status, current_ros_time, lidar_detected_objects);
   }
 }

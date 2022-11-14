@@ -33,6 +33,7 @@
 #include <scenario_simulator_exception/exception.hpp>
 #include <simple_junit/junit5.hpp>
 #include <utility>
+#include <easy/profiler.h>
 
 #define INTERPRETER_INFO_STREAM(...) \
   RCLCPP_INFO_STREAM(get_logger(), "\x1b[32m" << __VA_ARGS__ << "\x1b[0m")
@@ -226,6 +227,7 @@ public:
     */
 
     return [this](const auto & statistics) {
+      EASY_FUNCTION(profiler::colors::Yellow);
       RCLCPP_WARN_STREAM(
         get_logger(),
         "Your machine is not powerful enough to run the scenario at the specified frame rate ("

@@ -13,16 +13,19 @@
 // limitations under the License.
 
 #include <memory>
+#include <easy/profiler.h>
 #include <rclcpp/rclcpp.hpp>
 #include <simple_sensor_simulator/simple_sensor_simulator.hpp>
 #include <string>
 
 int main(int argc, char * argv[])
 {
+  EASY_PROFILER_ENABLE;
   rclcpp::init(argc, argv);
   rclcpp::NodeOptions options;
   auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
   rclcpp::spin(component);
   rclcpp::shutdown();
+  profiler::dumpBlocksToFile("ts_sss.prof");
   return 0;
 }

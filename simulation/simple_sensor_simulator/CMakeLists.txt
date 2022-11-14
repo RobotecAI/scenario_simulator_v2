@@ -20,6 +20,7 @@ endif()
 find_package(ament_cmake_auto REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(PCL REQUIRED)
+find_package(easy_profiler REQUIRED)
 
 ament_auto_find_build_dependencies()
 
@@ -46,6 +47,7 @@ target_link_libraries(simple_sensor_simulator_component
   pthread
   sodium
   zmq
+  easy_profiler
 )
 ament_target_dependencies(simple_sensor_simulator_component
   simulation_interface

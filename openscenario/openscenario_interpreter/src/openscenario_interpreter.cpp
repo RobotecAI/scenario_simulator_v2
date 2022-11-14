@@ -165,10 +165,12 @@ auto Interpreter::on_activate(const rclcpp_lifecycle::State &) -> Result
   auto evaluate_storyboard = [this]() {
     withExceptionHandler(
       [this](auto &&...) {
+          EASY_BLOCK("failed_to_activate", profiler::colors::Red);
         publishCurrentContext();
         deactivate();
       },
       [this]() {
+        EASY_BLOCK("evaluate_storyboard", profiler::colors::Blue);
         withTimeoutHandler(defaultTimeoutHandler(), [this]() {
           if (std::isnan(evaluateSimulationTime())) {
             if (not waiting_for_engagement_to_be_completed and engageable()) {

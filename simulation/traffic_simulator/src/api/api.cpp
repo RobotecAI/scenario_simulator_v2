@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <easy/profiler.h>
 #include <tf2/LinearMath/Quaternion.h>
 
 #include <limits>
@@ -28,6 +29,14 @@ metrics::MetricLifecycle API::getMetricLifecycle(const std::string & name)
 {
   return metrics_manager_.getLifecycle(name);
 }
+
+//void API::startProfiling() {
+//    EASY_PROFILER_ENABLE;
+//}
+//
+//void API::endProfiling() {
+//    profiler::dumpBlocksToFile("ts.prof");
+//}
 
 bool API::metricExists(const std::string & name) { return metrics_manager_.exists(name); }
 
@@ -253,6 +262,7 @@ bool API::attachLidarSensor(const std::string & entity_name, const helper::Lidar
 
 bool API::updateSensorFrame()
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   if (configuration.standalone_mode) {
     return true;
   } else {
@@ -262,6 +272,7 @@ bool API::updateSensorFrame()
       clock_.getCurrentRosTimeAsMsg().clock, *req.mutable_current_ros_time());
     simulation_api_schema::UpdateSensorFrameResponse res;
     zeromq_client_.call(req, res);
+      EASY_BLOCK("updateSensorFrame", profiler::colors::Blue);
     return res.result().success();
   }
 }
@@ -328,32 +339,60 @@ bool API::updateEntityStatusInSim()
 
 bool API::updateFrame()
 {
+  EASY_FUNCTION(profiler::colors::Magenta); // Magenta block with name "foo"
   boost::optional<traffic_simulator_msgs::msg::EntityStatus> ego_status_before_update = boost::none;
+
+  EASY_BLOCK("Entity manager update");
   entity_manager_ptr_->update(clock_.getCurrentSimulationTime(), clock_.getStepTime());
+  EASY_END_BLOCK;
+
+  EASY_BLOCK("traffic controller execute");
   traffic_controller_ptr_->execute();
+  EASY_END_BLOCK;
 
   if (not configuration.standalone_mode) {
+    EASY_BLOCK("not standalone");
+    EASY_BLOCK("update frame request");
     simulation_api_schema::UpdateFrameRequest req;
     req.set_current_time(clock_.getCurrentSimulationTime());
     simulation_interface::toProto(
       clock_.getCurrentRosTimeAsMsg().clock, *req.mutable_current_ros_time());
     simulation_api_schema::UpdateFrameResponse res;
     zeromq_client_.call(req, res);
+    EASY_END_BLOCK;
+    EASY_BLOCK("update frame request success");
     if (!res.result().success()) {
       return false;
     }
+    EASY_END_BLOCK;
+    EASY_BLOCK("broadcast transform");
     entity_manager_ptr_->broadcastEntityTransform();
+    EASY_END_BLOCK;
+    EASY_BLOCK("clock update");
     clock_.update();
+    EASY_END_BLOCK;
+    EASY_BLOCK("publish");
     clock_pub_->publish(clock_.getCurrentRosTimeAsMsg());
     debug_marker_pub_->publish(entity_manager_ptr_->makeDebugMarker());
+    EASY_END_BLOCK;
+    EASY_BLOCK("metrics");
     metrics_manager_.calculate();
+    EASY_END_BLOCK;
+    EASY_BLOCK("update frame request success");
     if (!updateEntityStatusInSim()) {
       return false;
     }
+    EASY_END_BLOCK;
+    EASY_BLOCK("update frame request success");
     updateTrafficLightsInSim();
+    EASY_END_BLOCK;
+    EASY_BLOCK("update sensor frame");
     return updateSensorFrame();
   } else {
+    EASY_BLOCK("Standalone");
+    EASY_BLOCK("broadcast transform");
     entity_manager_ptr_->broadcastEntityTransform();
+    EASY_END_BLOCK;
     clock_.update();
     clock_pub_->publish(clock_.getCurrentRosTimeAsMsg());
     debug_marker_pub_->publish(entity_manager_ptr_->makeDebugMarker());

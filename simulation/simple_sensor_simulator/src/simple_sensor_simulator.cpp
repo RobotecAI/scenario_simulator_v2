@@ -26,6 +26,8 @@
 #include <utility>
 #include <vector>
 
+#include <easy/profiler.h>
+
 namespace simple_sensor_simulator
 {
 ScenarioSimulator::ScenarioSimulator(const rclcpp::NodeOptions & options)
@@ -83,6 +85,7 @@ void ScenarioSimulator::updateFrame(
   const simulation_api_schema::UpdateFrameRequest & req,
   simulation_api_schema::UpdateFrameResponse & res)
 {
+  EASY_FUNCTION(profiler::colors::Blue);
   res = simulation_api_schema::UpdateFrameResponse();
   if (!initialized_) {
     res.mutable_result()->set_description("simulator have not initialized yet.");
@@ -101,6 +104,7 @@ void ScenarioSimulator::updateEntityStatus(
   const simulation_api_schema::UpdateEntityStatusRequest & req,
   simulation_api_schema::UpdateEntityStatusResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   entity_status_ = {};
   for (const auto proto : req.status()) {
     entity_status_.emplace_back(proto);
@@ -114,6 +118,7 @@ void ScenarioSimulator::spawnVehicleEntity(
   const simulation_api_schema::SpawnVehicleEntityRequest & req,
   simulation_api_schema::SpawnVehicleEntityResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   if (ego_vehicles_.size() != 0 && req.is_ego()) {
     throw SimulationRuntimeError("multi ego does not support");
   }
@@ -131,6 +136,7 @@ void ScenarioSimulator::spawnPedestrianEntity(
   const simulation_api_schema::SpawnPedestrianEntityRequest & req,
   simulation_api_schema::SpawnPedestrianEntityResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   pedestrians_.emplace_back(req.parameters());
   res = simulation_api_schema::SpawnPedestrianEntityResponse();
   res.mutable_result()->set_success(true);
@@ -141,6 +147,7 @@ void ScenarioSimulator::spawnMiscObjectEntity(
   const simulation_api_schema::SpawnMiscObjectEntityRequest & req,
   simulation_api_schema::SpawnMiscObjectEntityResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   misc_objects_.emplace_back(req.parameters());
   res = simulation_api_schema::SpawnMiscObjectEntityResponse();
   res.mutable_result()->set_success(true);
@@ -151,6 +158,7 @@ void ScenarioSimulator::despawnEntity(
   const simulation_api_schema::DespawnEntityRequest & req,
   simulation_api_schema::DespawnEntityResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   bool found = false;
   res = simulation_api_schema::DespawnEntityResponse();
   std::vector<traffic_simulator_msgs::VehicleParameters> vehicles;
@@ -191,6 +199,7 @@ void ScenarioSimulator::attachDetectionSensor(
   const simulation_api_schema::AttachDetectionSensorRequest & req,
   simulation_api_schema::AttachDetectionSensorResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   sensor_sim_.attachDetectionSensor(current_time_, req.configuration(), *this);
   res = simulation_api_schema::AttachDetectionSensorResponse();
   res.mutable_result()->set_success(true);
@@ -200,6 +209,7 @@ void ScenarioSimulator::attachLidarSensor(
   const simulation_api_schema::AttachLidarSensorRequest & req,
   simulation_api_schema::AttachLidarSensorResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   sensor_sim_.attachLidarSensor(current_time_, req.configuration(), *this);
   res = simulation_api_schema::AttachLidarSensorResponse();
   res.mutable_result()->set_success(true);
@@ -209,6 +219,7 @@ void ScenarioSimulator::attachOccupancyGridSensor(
   const simulation_api_schema::AttachOccupancyGridSensorRequest & req,
   simulation_api_schema::AttachOccupancyGridSensorResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   res = simulation_api_schema::AttachOccupancyGridSensorResponse();
   sensor_sim_.attachOccupancyGridSensor(current_time_, req.configuration(), *this);
   res.mutable_result()->set_success(true);
@@ -218,6 +229,7 @@ void ScenarioSimulator::updateSensorFrame(
   const simulation_api_schema::UpdateSensorFrameRequest & req,
   simulation_api_schema::UpdateSensorFrameResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   constexpr double e = std::numeric_limits<double>::epsilon();
   if (std::abs(req.current_time() - current_time_) > e) {
     res.mutable_result()->set_success(false);
@@ -235,6 +247,7 @@ void ScenarioSimulator::updateTrafficLights(
   const simulation_api_schema::UpdateTrafficLightsRequest & req,
   simulation_api_schema::UpdateTrafficLightsResponse & res)
 {
+    EASY_FUNCTION(profiler::colors::Blue);
   // TODO: handle traffic lights in simple simulator
   (void)req;
   res = simulation_api_schema::UpdateTrafficLightsResponse();

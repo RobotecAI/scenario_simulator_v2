@@ -77,9 +77,17 @@ public:
       node, "debug_marker", rclcpp::QoS(100), rclcpp::PublisherOptionsWithAllocator<AllocatorT>())),
     zeromq_client_(simulation_interface::protocol, configuration.simulator_host)
   {
+//    startProfiling();
     metrics_manager_.setEntityManager(entity_manager_ptr_);
     setVerbose(configuration.verbose);
   }
+//
+//  void startProfiling();
+//  void endProfiling();
+//
+//  ~API() {
+//      endProfiling();
+//  }
 
   template <typename T, typename... Ts>
   void addMetric(const std::string & name, Ts &&... xs)
