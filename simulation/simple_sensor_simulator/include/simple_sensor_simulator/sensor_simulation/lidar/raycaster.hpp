@@ -17,7 +17,6 @@
 
 #include <simulation_api_schema.pb.h>
 
-#include <rclcpp/rclcpp.hpp>
 #include <embree3/rtcore.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include <quaternion_operation/quaternion_operation.h>
