@@ -58,6 +58,7 @@ void Raycaster::setDirection(const simulation_api_schema::LidarConfiguration & c
 
     auto quat_directions = getDirections(
     vertical_angles, horizontal_angle_start, horizontal_angle_end, horizontal_resolution);
+    rotation_matrices_.clear();
     for(const auto & q : quat_directions){
       rotation_matrices_.push_back(quaternion_operation::getRotationMatrix(q));
     }
@@ -95,7 +96,7 @@ std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
 }
 
 const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
-  std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose & origin,
+  std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,
   double horizontal_resolution, std::vector<double> vertical_angles, double horizontal_angle_start,
   double horizontal_angle_end, double max_distance, double min_distance)
 {
@@ -108,8 +109,8 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
 const std::vector<std::string> & Raycaster::getDetectedObject() const { return detected_objects_; }
 
 const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
-  std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose & origin,
-  std::vector<geometry_msgs::msg::Quaternion> & directions, double max_distance, double min_distance)
+  std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,
+  std::vector<geometry_msgs::msg::Quaternion> directions, double max_distance, double min_distance)
 {
   detected_objects_ = {};
   pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());

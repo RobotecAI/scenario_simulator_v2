@@ -51,8 +51,8 @@ public:
     primitive_ptrs_.emplace(name, std::move(primitive_ptr));
   }
   const sensor_msgs::msg::PointCloud2 raycast(
-    std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose & origin,
-    double horizontal_resolution = 0, std::vector<double> vertical_angles={0},
+    std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,
+    double horizontal_resolution, std::vector<double> vertical_angles,
     double horizontal_angle_start = 0, double horizontal_angle_end = 2 * M_PI,
     double max_distance = 100, double min_distance = 0);
   const std::vector<std::string> & getDetectedObject() const;
@@ -75,8 +75,8 @@ private:
   std::random_device seed_gen_;
   std::default_random_engine engine_;
   const sensor_msgs::msg::PointCloud2 raycast(
-    std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose & origin,
-    std::vector<geometry_msgs::msg::Quaternion> & directions, double max_distance = 100, double min_distance = 0);
+    std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,
+    std::vector<geometry_msgs::msg::Quaternion> directions, double max_distance = 100, double min_distance = 0);
   std::vector<std::string> detected_objects_;
   std::unordered_map<unsigned int, std::string> geometry_ids_;
   std::vector<Eigen::Matrix3d> rotation_matrices_;
