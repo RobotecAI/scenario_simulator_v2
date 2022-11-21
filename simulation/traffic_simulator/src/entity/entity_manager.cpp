@@ -173,8 +173,13 @@ auto EntityManager::getLongitudinalDistance(const LaneletPose & from, const Lane
   auto forward_distance =
     hdmap_utils_ptr_->getLongitudinalDistance(from.lanelet_id, from.s, to.lanelet_id, to.s);
 
+
   auto backward_distance =
     hdmap_utils_ptr_->getLongitudinalDistance(to.lanelet_id, to.s, from.lanelet_id, from.s);
+
+    std::cout << "<<<<< getLongitudinalDistance entity manager fwd: "
+    << (forward_distance ? *forward_distance : -2137.2137)
+    << " bwd: " << (backward_distance ? *backward_distance : -2137.2137) << std::endl;
 
   if (forward_distance && backward_distance) {
     if (forward_distance.get() > backward_distance.get()) {

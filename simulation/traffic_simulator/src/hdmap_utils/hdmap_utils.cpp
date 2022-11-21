@@ -1160,6 +1160,11 @@ boost::optional<double> HdMapUtils::getLongitudinalDistance(
     }
   }
   const auto route = getRoute(from_lanelet_id, to_lanelet_id, true);
+  std::stringstream ss;
+  for (const auto lanelet_id : route) {
+      ss << lanelet_id << ", ";
+  }
+  std::cout << "Route: " << from_lanelet_id << ":" << from_s << " -> " << to_lanelet_id << ":" << to_s << ": " << ss.str() << std::endl;
   if (route.empty()) {
     return boost::none;
   }
@@ -1173,6 +1178,7 @@ boost::optional<double> HdMapUtils::getLongitudinalDistance(
       distance = distance + getLaneletLength(lanelet_id);
     }
   }
+  std::cout << "<<<<<< distance in hdmaputils: " << distance << std::endl;
   return distance;
 }
 

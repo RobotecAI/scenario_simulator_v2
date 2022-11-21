@@ -120,7 +120,9 @@ auto RelativeDistanceCondition::distance<
   if (
     global().entities->at(triggering_entity).as<ScenarioObject>().is_added and
     global().entities->at(entity_ref).as<ScenarioObject>().is_added) {
-    return makeNativeRelativeLanePosition(triggering_entity, entity_ref).s;
+    double curr_distance = makeNativeRelativeLanePosition(triggering_entity, entity_ref).s;
+      std::cout << "<<<< Computed distance" << curr_distance << std::endl;
+      return curr_distance;
   } else {
     return Double::nan();
   }
@@ -164,12 +166,14 @@ auto RelativeDistanceCondition::distance<
 
 auto RelativeDistanceCondition::distance(const EntityRef & triggering_entity) -> double
 {
+    std::cout << "<<< Computing distance" << std::endl;
   APPLY(SWITCH_COORDINATE_SYSTEM, SWITCH_RELATIVE_DISTANCE_TYPE, SWITCH_FREESPACE, DISTANCE);
   return Double::nan();
 }
 
 auto RelativeDistanceCondition::evaluate() -> Object
 {
+  std::cout << "<<< Computing distance evaluate" << std::endl;
   results.clear();
 
   return asBoolean(triggering_entities.apply([&](const auto & triggering_entity) {
