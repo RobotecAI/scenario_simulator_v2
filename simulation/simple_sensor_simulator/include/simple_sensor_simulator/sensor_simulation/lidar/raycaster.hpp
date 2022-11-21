@@ -93,7 +93,7 @@ private:
     auto & directions = ref_directions.get();
     auto & rotation_matrices = ref_rotation_matrices.get();
     auto & thread_detected_ids = ref_thread_detected_ids.get();
-    for (int i = thread_id; i < directions.size(); i += thread_count) {
+    for (unsigned int i = thread_id; i < directions.size(); i += thread_count) {
       RTCRayHit rayhit = {};
       rayhit.ray.org_x = origin.position.x;
       rayhit.ray.org_y = origin.position.y;
