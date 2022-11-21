@@ -686,7 +686,7 @@ std::vector<std::int64_t> HdMapUtils::getFollowingLanelets(
 }
 
 std::vector<std::int64_t> HdMapUtils::getRoute(
-  std::int64_t from_lanelet_id, std::int64_t to_lanelet_id)
+  std::int64_t from_lanelet_id, std::int64_t to_lanelet_id, bool allow_lane_changing)
 {
   if (route_cache_.exists(from_lanelet_id, to_lanelet_id)) {
     return route_cache_.getRoute(from_lanelet_id, to_lanelet_id);
@@ -695,7 +695,7 @@ std::vector<std::int64_t> HdMapUtils::getRoute(
   const auto lanelet = lanelet_map_ptr_->laneletLayer.get(from_lanelet_id);
   const auto to_lanelet = lanelet_map_ptr_->laneletLayer.get(to_lanelet_id);
   lanelet::Optional<lanelet::routing::Route> route =
-    vehicle_routing_graph_ptr_->getRoute(lanelet, to_lanelet, 0, false);
+    vehicle_routing_graph_ptr_->getRoute(lanelet, to_lanelet, 0, allow_lane_changing);
   if (!route) {
     route_cache_.appendData(from_lanelet_id, to_lanelet_id, ret);
     return ret;
@@ -1159,7 +1159,7 @@ boost::optional<double> HdMapUtils::getLongitudinalDistance(
       return to_s - from_s;
     }
   }
-  const auto route = getRoute(from_lanelet_id, to_lanelet_id);
+  const auto route = getRoute(from_lanelet_id, to_lanelet_id, true);
   if (route.empty()) {
     return boost::none;
   }
