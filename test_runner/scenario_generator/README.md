@@ -22,15 +22,17 @@ To use the `scenario_generator`:
 
     and kill it after lanelet map is displayed in rviz
 
-6. Generate python trajectories by init/goal pose in rviz
-
-    NOTE: You can change trajectory mode by publishing on `/trajectory/option` topic:
+6. Define what you want to generate by publishing on `/trajectory/option` topic:
 
     ```bash
-    ros2 topic pub /trajectory/option std_msgs/msg/String "data: 'MODE'" -1
+    ros2 topic pub /trajectory/option std_msgs/msg/String "data: 'OPTION'" -1
     ```
 
-    where `MODE` options are:
+    where `OPTION` options are:
     * `v` for vehicles (lanelet planning)
     * `p` for pedestrians (simple collecting of the poses)
     * `a` for spawning areas (polygons)
+
+7. Generate trajectories or areas using init and goal pose in rviz. Define every but last point using init pose, then define the last point using goal pose. For polygons, the side between the first and the last point will be added.
+
+8. Enjoy the generated code!
