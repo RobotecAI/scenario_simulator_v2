@@ -116,6 +116,58 @@ private:
       }
     }
   }
+
+  static void intersect4(
+    RTCScene scene,
+    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud, RTCIntersectContext context,
+    geometry_msgs::msg::Pose origin,
+    std::set<unsigned int> detected_ids, double max_distance,
+    double min_distance,
+    const std::vector<Eigen::Matrix3d> rotation_matrices)
+  {
+    const auto orientation_matrix = quaternion_operation::getRotationMatrix(origin.orientation);
+    unsigned int ray_packet_size = 4;
+    const std::unique_ptr<int[]> valid {new int[ray_packet_size] {-1}};
+    for (unsigned int i = 0; i < rotation_matrices.size()-(ray_packet_size-1); i += ray_packet_size)
+    {
+      RTCRayHit4 rayhit = {};
+      for (unsigned int j = 0; j < ray_packet_size; j++)
+      {
+        rayhit.ray.org_x[j] = origin.position.x;
+        rayhit.ray.org_y[j] = origin.position.y;
+        rayhit.ray.org_z[j] = origin.position.z;
+        // make raycast interact with all objects
+        rayhit.ray.mask[j] = 0b11111111'11111111'11111111'11111111;
+        rayhit.ray.tfar[j] = max_distance;
+        rayhit.ray.tnear[j] = min_distance;
+        rayhit.ray.flags[j] = false;
+
+        const auto rotation_mat = orientation_matrix * rotation_matrices.at(i+j);
+        rayhit.ray.dir_x[j] = rotation_mat(0);
+        rayhit.ray.dir_y[j] = rotation_mat(1);
+        rayhit.ray.dir_z[j] = rotation_mat(2);
+        rayhit.hit.geomID[j] = RTC_INVALID_GEOMETRY_ID;
+      }
+      rtcIntersect4(valid.get(), scene, &context, &rayhit);
+      for (unsigned int j = 0; j < ray_packet_size; j++)
+      {
+        if (rayhit.hit.geomID[j] != RTC_INVALID_GEOMETRY_ID)
+        {
+          double distance = rayhit.ray.tfar[j];
+          pcl::PointXYZI p;
+          {
+            p.x = rotation_matrices.at(i+j)(0) * distance;
+            p.y = rotation_matrices.at(i+j)(1) * distance;
+            p.z = rotation_matrices.at(i+j)(2) * distance;
+          }
+          cloud->emplace_back(p);
+          detected_ids.insert(rayhit.hit.geomID[j]);
+        }
+      }
+
+
+    }
+  }
 };
 }  // namespace simple_sensor_simulator
 

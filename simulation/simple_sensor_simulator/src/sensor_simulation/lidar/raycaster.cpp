@@ -102,37 +102,49 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
   double max_distance, double min_distance)
 {
   detected_objects_ = {};
+  std::set<unsigned int> detected_ids = {};
   pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());
   for (auto & pair : primitive_ptrs_) {
     auto id = pair.second->addToScene(device_, scene_);
     geometry_ids_.insert({id, pair.first});
   }
 
-  // Run as many threads as physical cores (which is usually /2 virtual threads)
-  // In heavy loads virtual threads (hyper-threading) add little to the overall performance
-  // This also minimizes cost of creating a thread (roughly 10us on Intel/Linux)
-  int thread_count = std::thread::hardware_concurrency() / 2;
-  // Per thread data structures:
-  std::vector<std::thread> threads(thread_count);
-  std::vector<std::set<unsigned int>> thread_detected_ids(thread_count);
-  std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> thread_cloud(thread_count);
+  // // Run as many threads as physical cores (which is usually /2 virtual threads)
+  // // In heavy loads virtual threads (hyper-threading) add little to the overall performance
+  // // This also minimizes cost of creating a thread (roughly 10us on Intel/Linux)
+  // int thread_count = std::thread::hardware_concurrency() / 2;
+  // // Per thread data structures:
+  // std::vector<std::thread> threads(thread_count);
+  // std::vector<std::set<unsigned int>> thread_detected_ids(thread_count);
+  // std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> thread_cloud(thread_count);
 
   rtcCommitScene(scene_);
   RTCIntersectContext context;
-  for (unsigned int i = 0; i < threads.size(); ++i) {
-    thread_cloud[i] = pcl::PointCloud<pcl::PointXYZI>::Ptr(new pcl::PointCloud<pcl::PointXYZI>());
-    threads[i] = std::thread(
-      intersect, i, thread_count, scene_, thread_cloud[i], context, origin,
-      std::ref(thread_detected_ids[i]), max_distance, min_distance, std::ref(rotation_matrices_));
-  }
-  for (unsigned int i = 0; i < threads.size(); ++i) {
-    threads[i].join();
-    (*cloud) += *(thread_cloud[i]);
-  }
-  for (auto && detected_ids_in_thread : thread_detected_ids) {
-    for (const auto & id : detected_ids_in_thread) {
-      detected_objects_.emplace_back(geometry_ids_[id]);
-    }
+
+
+  // for (unsigned int i = 0; i < threads.size(); ++i) {
+  //   thread_cloud[i] = pcl::PointCloud<pcl::PointXYZI>::Ptr(new pcl::PointCloud<pcl::PointXYZI>());
+  //   threads[i] = std::thread(
+  //     intersect, i, thread_count, scene_, thread_cloud[i], context, origin,
+  //     std::ref(thread_detected_ids[i]), max_distance, min_distance, std::ref(rotation_matrices_));
+  // }
+  // for (unsigned int i = 0; i < threads.size(); ++i) {
+  //   threads[i].join();
+  //   (*cloud) += *(thread_cloud[i]);
+  // }
+  // for (auto && detected_ids_in_thread : thread_detected_ids) {
+  //   for (const auto & id : detected_ids_in_thread) {
+  //     detected_objects_.emplace_back(geometry_ids_[id]);
+  //   }
+  // }
+
+
+  intersect4(scene_, cloud, context, origin, detected_ids, max_distance, min_distance, rotation_matrices_);
+
+  // std::set<unsigned int>::iterator it;
+  for (auto iterator = detected_ids.begin(); iterator != detected_ids.end(); ++iterator)
+  {
+    detected_objects_.emplace_back(geometry_ids_[*iterator]);
   }
 
   for (const auto & id : geometry_ids_) {
