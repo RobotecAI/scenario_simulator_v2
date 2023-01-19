@@ -51,10 +51,9 @@ void Raycaster::setDirection(
   const simulation_api_schema::LidarConfiguration & configuration, double horizontal_angle_start,
   double horizontal_angle_end)
 {
-  std::vector<double> vertical_angles;
-  for (const auto v : configuration.vertical_angles()) {
-    vertical_angles.emplace_back(v);
-  }
+  std::vector<double> vertical_angles(
+    configuration.vertical_angles().begin(),
+    configuration.vertical_angles().end());
 
   auto quat_directions = getDirections(
     vertical_angles, horizontal_angle_start, horizontal_angle_end,
