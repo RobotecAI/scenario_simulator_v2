@@ -79,10 +79,6 @@ public:
       detected_objects_ = {};
     }
   }
-
-private:
-  // Override
-  Raycaster raycaster_;
 };
 
 template <>
