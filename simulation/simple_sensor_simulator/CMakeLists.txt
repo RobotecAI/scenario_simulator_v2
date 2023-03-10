@@ -25,11 +25,15 @@ find_package(PCL REQUIRED)
 
 ament_auto_find_build_dependencies()
 
-link_directories(${PCL_LIBRARY_DIRS})
+link_directories(
+  lib
+  ${PCL_LIBRARY_DIRS}
+)
 include_directories(
   include
   ${EIGEN3_INCLUDE_DIR}
   ${PCL_INCLUDE_DIRS}
+  rgl
 )
 
 ament_auto_add_library(simple_sensor_simulator_component SHARED
@@ -49,6 +53,7 @@ target_link_libraries(simple_sensor_simulator_component
   pthread
   sodium
   zmq
+  RobotecGPULidar
 )
 ament_target_dependencies(simple_sensor_simulator_component
   simulation_interface

@@ -30,6 +30,7 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
+#include <rgl/api/core.h>
 
 namespace simple_sensor_simulator
 {
@@ -52,6 +53,8 @@ public:
     std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,
     double max_distance = 100, double min_distance = 0);
   const std::vector<std::string> & getDetectedObject() const;
+  void addEntity(const std::string & name, float depth, float width, float height);
+  bool setEntityPose(const std::string & name, const geometry_msgs::msg::Pose & pose);
   void setDirection(
     const simulation_api_schema::LidarConfiguration & configuration,
     double horizontal_angle_start = 0, double horizontal_angle_end = 2 * M_PI);
@@ -66,13 +69,15 @@ private:
   double previous_horizontal_resolution_;
   std::vector<double> previous_vertical_angles_;
   std::unordered_map<std::string, std::unique_ptr<primitives::Primitive>> primitive_ptrs_;
+  std::unordered_map<std::string, rgl_entity_t> entities_;   // Maps simulator names to RGL entity handles
   RTCDevice device_;
   RTCScene scene_;
   std::random_device seed_gen_;
   std::default_random_engine engine_;
   std::vector<std::string> detected_objects_;
   std::unordered_map<unsigned int, std::string> geometry_ids_;
-  std::vector<Eigen::Matrix3d> rotation_matrices_;
+  std::vector<Eigen::Matrix3d> rotation_matrices_;   // Rotation matrices of rays in global tf
+  std::vector<rgl_mat3x4f> rotation_matrices_rgl_;   // Rotation Matrices of rays in rgl format
 
   static void intersect(
     int thread_id, int thread_count, RTCScene scene,

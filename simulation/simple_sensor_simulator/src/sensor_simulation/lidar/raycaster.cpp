@@ -23,6 +23,13 @@
 #include <utility>
 #include <vector>
 
+#define CATCH_RGL_ERROR(err) if (err != 0) { std::cout << err << std::endl; holder(); }
+
+void holder()
+{
+
+}
+
 namespace simple_sensor_simulator
 {
 Raycaster::Raycaster()
@@ -31,6 +38,9 @@ Raycaster::Raycaster()
   scene_(rtcNewScene(device_)),
   engine_(seed_gen_())
 {
+  int32_t major, minor, patch;
+  CATCH_RGL_ERROR(rgl_get_version_info(&major, &minor, &patch));
+  std::cout << "====================" << major << "." << minor << "." << patch << std::endl;
 }
 
 Raycaster::Raycaster(std::string embree_config)
@@ -45,6 +55,197 @@ Raycaster::~Raycaster()
 {
   rtcReleaseScene(scene_);
   rtcReleaseDevice(device_);
+}
+
+rgl_mat3x4f getRglIdentity()
+{
+  rgl_mat3x4f mat;
+
+  mat.value[0][0] = 1;
+  mat.value[1][0] = 0;
+  mat.value[2][0] = 0;
+
+  mat.value[0][1] = 0;
+  mat.value[1][1] = 1;
+  mat.value[2][1] = 0;
+
+  mat.value[0][2] = 0;
+  mat.value[1][2] = 0;
+  mat.value[2][2] = 1;
+
+  mat.value[0][3] = 0;
+  mat.value[1][3] = 0;
+  mat.value[2][3] = 0;
+
+  return mat;
+}
+
+void setRglMatRotation(rgl_mat3x4f & entity_tf, const Eigen::Matrix3d & rotation)
+{
+  entity_tf.value[0][0] = static_cast<float>(rotation(0, 0));
+  entity_tf.value[1][0] = static_cast<float>(rotation(1, 0));
+  entity_tf.value[2][0] = static_cast<float>(rotation(2, 0));
+
+  entity_tf.value[0][1] = static_cast<float>(rotation(0, 1));
+  entity_tf.value[1][1] = static_cast<float>(rotation(1, 1));
+  entity_tf.value[2][1] = static_cast<float>(rotation(2, 1));
+
+  entity_tf.value[0][2] = static_cast<float>(rotation(0, 2));
+  entity_tf.value[1][2] = static_cast<float>(rotation(1, 2));
+  entity_tf.value[2][2] = static_cast<float>(rotation(2, 2));
+}
+
+rgl_mat3x4f getRglMatRotation(const Eigen::Matrix3d & rotation)
+{
+  rgl_mat3x4f tf;
+  setRglMatRotation(tf, rotation);
+  return tf;
+}
+
+void setRglMatPosition(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose)
+{
+  entity_tf.value[0][3] = pose.position.x;
+  entity_tf.value[1][3] = pose.position.y;
+  entity_tf.value[2][3] = pose.position.z;
+}
+
+/**
+ * Sets values in provided RGL matrix to match transformation stored in pose
+ * @param entity_tf RGL matrix to change values
+ * @param pose pose with values to transfer into RGL matrix
+ */
+void setRglMatPose(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose)
+{
+  setRglMatRotation(entity_tf, quaternion_operation::getRotationMatrix(pose.orientation));
+  setRglMatPosition(entity_tf, pose);
+}
+
+void initBoxVertices(rgl_vec3f (&vertices)[8], float depth, float width, float height)
+{
+  vertices[0].value[0] = -0.5 * depth;
+  vertices[0].value[1] = -0.5 * width;
+  vertices[0].value[2] = -0.5 * height;
+
+  vertices[1].value[0] = -0.5 * depth;
+  vertices[1].value[1] = -0.5 * width;
+  vertices[1].value[2] = +0.5 * height;
+
+  vertices[2].value[0] = -0.5 * depth;
+  vertices[2].value[1] = +0.5 * width;
+  vertices[2].value[2] = -0.5 * height;
+
+  vertices[3].value[0] = -0.5 * depth;
+  vertices[3].value[1] = +0.5 * width;
+  vertices[3].value[2] = +0.5 * height;
+
+  vertices[4].value[0] = +0.5 * depth;
+  vertices[4].value[1] = -0.5 * width;
+  vertices[4].value[2] = -0.5 * height;
+
+  vertices[5].value[0] = +0.5 * depth;
+  vertices[5].value[1] = -0.5 * width;
+  vertices[5].value[2] = +0.5 * height;
+
+  vertices[6].value[0] = +0.5 * depth;
+  vertices[6].value[1] = +0.5 * width;
+  vertices[6].value[2] = -0.5 * height;
+
+  vertices[7].value[0] = +0.5 * depth;
+  vertices[7].value[1] = +0.5 * width;
+  vertices[7].value[2] = +0.5 * height;
+}
+
+void initBoxIndices(rgl_vec3i (&indices)[12])
+{
+  indices[0].value[0] = 0;
+  indices[0].value[1] = 1;
+  indices[0].value[2] = 2;
+
+  indices[1].value[0] = 1;
+  indices[1].value[1] = 3;
+  indices[1].value[2] = 2;
+
+  indices[2].value[0] = 4;
+  indices[2].value[1] = 6;
+  indices[2].value[2] = 5;
+
+  indices[3].value[0] = 5;
+  indices[3].value[1] = 6;
+  indices[3].value[2] = 7;
+
+  indices[4].value[0] = 0;
+  indices[4].value[1] = 4;
+  indices[4].value[2] = 1;
+
+  indices[5].value[0] = 1;
+  indices[5].value[1] = 4;
+  indices[5].value[2] = 5;
+
+  indices[6].value[0] = 2;
+  indices[6].value[1] = 3;
+  indices[6].value[2] = 6;
+
+  indices[7].value[0] = 3;
+  indices[7].value[1] = 7;
+  indices[7].value[2] = 6;
+
+  indices[8].value[0] = 0;
+  indices[8].value[1] = 2;
+  indices[8].value[2] = 4;
+
+  indices[9].value[0] = 2;
+  indices[9].value[1] = 6;
+  indices[9].value[2] = 4;
+
+  indices[10].value[0] = 1;
+  indices[10].value[1] = 5;
+  indices[10].value[2] = 3;
+
+  indices[11].value[0] = 3;
+  indices[11].value[1] = 5;
+  indices[11].value[2] = 7;
+}
+
+/**
+ * Creates a RGL mesh and entity of an object and stores it, if entity with provided name already exists this does nothing
+ * @param name Name of the entity to create
+ * @param depth Depth of a box model used in lidar simulation
+ * @param width Width of a box model used in lidar simulation
+ * @param height Height of a box model used in lidar simulation
+ */
+void Raycaster::addEntity(const std::string & name, float depth, float width, float height)
+{
+  const auto it = entities_.find(name);   // if entity exists skip adding
+  if (it != entities_.end()) {
+    return;
+  }
+  rgl_mesh_t mesh = nullptr;
+  rgl_vec3f vertices[8];
+  initBoxVertices(vertices, depth, width, height);
+  rgl_vec3i indices[12];
+  initBoxIndices(indices);
+  CATCH_RGL_ERROR(rgl_mesh_create(&mesh, vertices, 8, indices, 12));   // Saves handle to a mesh in the pointer "mesh"
+  rgl_entity_t entity = nullptr;
+  CATCH_RGL_ERROR(rgl_entity_create(&entity, nullptr, mesh));   // Saves handle to an entity in the pointer "entity"
+  entities_[name] = entity;   // Adds handle to entity to the map, all things in entity (and mesh referenced) are allocated by `rgl_` functions
+}
+
+/**
+ * Sets pose of an entity with provided name
+ * @param name Name of an entity to relocate
+ * @param pose Desired pose to locate entity at
+ * @return True if an entite with provided was found, else false
+ */
+bool Raycaster::setEntityPose(const std::string & name, const geometry_msgs::msg::Pose & pose)
+{
+  const auto it = entities_.find(name);
+  if (it == entities_.end()) {
+    return false;
+  }
+  rgl_mat3x4f entity_tf;
+  setRglMatPose(entity_tf, pose);
+  CATCH_RGL_ERROR(rgl_entity_set_pose(it->second, &entity_tf));
+  return true;
 }
 
 void Raycaster::setDirection(
@@ -62,6 +263,7 @@ void Raycaster::setDirection(
   rotation_matrices_.clear();
   for (const auto & q : quat_directions) {
     rotation_matrices_.push_back(quaternion_operation::getRotationMatrix(q));
+    rotation_matrices_rgl_.push_back(getRglMatRotation(quaternion_operation::getRotationMatrix(q)));   // Add ray rotations in RGL format
   }
 }
 
@@ -109,6 +311,37 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
     geometry_ids_.insert({id, pair.first});
   }
 
+  rgl_node_t use_rays = nullptr, lidar_pose = nullptr, raytrace = nullptr, compact = nullptr;
+
+  /* Set matrix to transform rays into origin tf */
+  rgl_mat3x4f lidar_pose_tf = getRglIdentity();
+  setRglMatPose(lidar_pose_tf, origin);
+
+  CATCH_RGL_ERROR(rgl_node_rays_from_mat3x4f(&use_rays, rotation_matrices_rgl_.data(), rotation_matrices_rgl_.size()));
+  CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose, &lidar_pose_tf));
+  CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace, nullptr, static_cast<float>(max_distance)));
+  CATCH_RGL_ERROR(rgl_node_points_compact(&compact));
+
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, lidar_pose));
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose, raytrace));
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace, compact));
+
+  CATCH_RGL_ERROR(rgl_graph_run(compact));
+
+  int32_t out_count, out_size_of;
+  CATCH_RGL_ERROR(rgl_graph_get_result_size(compact, RGL_FIELD_XYZ_F32, &out_count, &out_size_of));
+
+  static std::vector<rgl_vec3f> results;
+
+  if (out_count > 0) {
+    results.resize(static_cast<size_t>(out_count));
+    CATCH_RGL_ERROR(rgl_graph_get_result_data(compact, RGL_FIELD_XYZ_F32, results.data()));
+    std::cout << "==================== HITS: " << out_count << " ====================" << std::endl;
+  } else {
+    std::cout << "==================== NO HITS ====================" << std::endl;
+  }
+
+/*
   // Run as many threads as physical cores (which is usually /2 virtual threads)
   // In heavy loads virtual threads (hyper-threading) add little to the overall performance
   // This also minimizes cost of creating a thread (roughly 10us on Intel/Linux)
@@ -142,6 +375,7 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
 
   geometry_ids_.clear();
   primitive_ptrs_.clear();
+*/
 
   sensor_msgs::msg::PointCloud2 pointcloud_msg;
   pcl::toROSMsg(*cloud, pointcloud_msg);

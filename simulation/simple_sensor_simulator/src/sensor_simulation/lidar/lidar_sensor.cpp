@@ -30,11 +30,14 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
   -> sensor_msgs::msg::PointCloud2
 {
   boost::optional<geometry_msgs::msg::Pose> ego_pose;
+  std::cout << "==================================== Number of entities: " << status.size() << " ============\n";
   for (const auto & s : status) {
     if (configuration_.entity() == s.name()) {
       geometry_msgs::msg::Pose pose;
       simulation_interface::toMsg(s.pose(), pose);
       ego_pose = pose;
+      std::cout << "============ ego ============" << std::endl;
+      std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
     } else {
       geometry_msgs::msg::Pose pose;
       simulation_interface::toMsg(s.pose(), pose);
@@ -46,11 +49,24 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
       pose.position.x = pose.position.x + center.x();
       pose.position.y = pose.position.y + center.y();
       pose.position.z = pose.position.z + center.z();
-      raycaster_.addPrimitive<simple_sensor_simulator::primitives::Box>(
-        s.name(), s.bounding_box().dimensions().x(), s.bounding_box().dimensions().y(),
-        s.bounding_box().dimensions().z(), pose);
+      // raycaster_.addPrimitive<simple_sensor_simulator::primitives::Box>(
+      //   s.name(), s.bounding_box().dimensions().x(), s.bounding_box().dimensions().y(),
+      //   s.bounding_box().dimensions().z(), pose);
+      raycaster_.addEntity(s.name(), s.bounding_box().dimensions().x(), s.bounding_box().dimensions().y(),
+        s.bounding_box().dimensions().z());
+      raycaster_.setEntityPose(s.name(), pose);
+      std::cout << "============ entity ============" << std::endl;
+      std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
     }
   }
+  geometry_msgs::msg::Pose pose;
+  pose.position.x = 3765.15;
+  pose.position.y = 73797.6;
+  pose.position.z = -2.20885;
+  raycaster_.addEntity("testowanazwa", 4.77, 2.25, 2.5);
+  raycaster_.setEntityPose("testowanazwa", pose);
+  std::cout << "============ phantom entity ============" << std::endl;
+  std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
   if (ego_pose) {
     std::vector<double> vertical_angles;
     for (const auto v : configuration_.vertical_angles()) {
