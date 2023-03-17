@@ -23,39 +23,15 @@
 #include <utility>
 #include <vector>
 
-#define CATCH_RGL_ERROR(err) if (err != 0) { std::cout << err << std::endl; holder(); }
-
-void holder()
-{
-
-}
-
-namespace simple_sensor_simulator
-{
-Raycaster::Raycaster()
-: primitive_ptrs_(0),
-  device_(rtcNewDevice(nullptr)),
-  scene_(rtcNewScene(device_)),
-  engine_(seed_gen_())
-{
-  int32_t major, minor, patch;
-  CATCH_RGL_ERROR(rgl_get_version_info(&major, &minor, &patch));
-  std::cout << "====================" << major << "." << minor << "." << patch << std::endl;
-}
-
-Raycaster::Raycaster(std::string embree_config)
-: primitive_ptrs_(0),
-  device_(rtcNewDevice(embree_config.c_str())),
-  scene_(rtcNewScene(device_)),
-  engine_(seed_gen_())
+#define RAYCASTER_DEBUG 1
+#if RAYCASTER_DEBUG == 1
+#define CATCH_RGL_ERROR(err) { if (err != 0) {std::cout << "RGL error code: " << err << std::endl; breaker();} }
+void breaker()   // put your breakpoint here
 {
 }
-
-Raycaster::~Raycaster()
-{
-  rtcReleaseScene(scene_);
-  rtcReleaseDevice(device_);
-}
+#else
+#define CATCH_RGL_ERROR(err) err
+#endif
 
 rgl_mat3x4f getRglIdentity()
 {
@@ -80,28 +56,53 @@ rgl_mat3x4f getRglIdentity()
   return mat;
 }
 
-void setRglMatRotation(rgl_mat3x4f & entity_tf, const Eigen::Matrix3d & rotation)
+void printMat(const Eigen::Matrix3d & mat)
 {
-  entity_tf.value[0][0] = static_cast<float>(rotation(0, 0));
-  entity_tf.value[1][0] = static_cast<float>(rotation(1, 0));
-  entity_tf.value[2][0] = static_cast<float>(rotation(2, 0));
-
-  entity_tf.value[0][1] = static_cast<float>(rotation(0, 1));
-  entity_tf.value[1][1] = static_cast<float>(rotation(1, 1));
-  entity_tf.value[2][1] = static_cast<float>(rotation(2, 1));
-
-  entity_tf.value[0][2] = static_cast<float>(rotation(0, 2));
-  entity_tf.value[1][2] = static_cast<float>(rotation(1, 2));
-  entity_tf.value[2][2] = static_cast<float>(rotation(2, 2));
+  printf("%.2f %.2f %.2f\n", mat(0, 0), mat(0, 1), mat(0, 2));
+  printf("%.2f %.2f %.2f\n", mat(1, 0), mat(1, 1), mat(1, 2));
+  printf("%.2f %.2f %.2f\n", mat(2, 0), mat(2, 1), mat(2, 2));
 }
 
+void printMat(const rgl_mat3x4f & mat)
+{
+  printf("%.2f %.2f %.2f %.2f\n", mat.value[0][0], mat.value[0][1], mat.value[0][2], mat.value[0][3]);
+  printf("%.2f %.2f %.2f %.2f\n", mat.value[1][0], mat.value[1][1], mat.value[1][2], mat.value[1][3]);
+  printf("%.2f %.2f %.2f %.2f\n", mat.value[2][0], mat.value[2][1], mat.value[2][2], mat.value[2][3]);
+}
+
+/**
+ * Sets values from given Eigen Matrix3d to the given reference of rgl_mat3x4f
+ * @param entity_tf reference to the matrix where values are applied
+ * @param rotation rotation matrix fromw hich values should be copied
+ */
+void setRglMatRotation(rgl_mat3x4f & entity_tf, const Eigen::Matrix3d & rotation)
+{
+  // const auto rotationT = rotation.transpose();
+
+  for (uint8_t row = 0; row < 3; ++row) {
+    for (uint8_t col = 0; col < 3; ++col) {
+      entity_tf.value[row][col] = static_cast<float>(rotation(col, row));   // transpose matrix
+    }
+  }
+}
+
+/**
+ * Convert Eigen Matrix3d to rgl_mat3x4f
+ * @param rotation matrix from which values will be copied
+ * @return rotation in matrix rgl_mat3x4f
+ */
 rgl_mat3x4f getRglMatRotation(const Eigen::Matrix3d & rotation)
 {
-  rgl_mat3x4f tf;
+  rgl_mat3x4f tf = getRglIdentity();
   setRglMatRotation(tf, rotation);
   return tf;
 }
 
+/**
+ * Sets values from given geometry_msgs Pose to the given reference of rgl_mat3x4f
+ * @param entity_tf reference to the matrix where values are applied
+ * @param pose pose message from which values should be copied
+ */
 void setRglMatPosition(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose)
 {
   entity_tf.value[0][3] = pose.position.x;
@@ -120,6 +121,13 @@ void setRglMatPose(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pos
   setRglMatPosition(entity_tf, pose);
 }
 
+/**
+ * Initialize vertices of a box with given dimensions
+ * @param vertices reference to an array to write values to
+ * @param depth depth of a box
+ * @param width width of a box
+ * @param height height of a box
+ */
 void initBoxVertices(rgl_vec3f (&vertices)[8], float depth, float width, float height)
 {
   vertices[0].value[0] = -0.5 * depth;
@@ -155,6 +163,10 @@ void initBoxVertices(rgl_vec3f (&vertices)[8], float depth, float width, float h
   vertices[7].value[2] = +0.5 * height;
 }
 
+/**
+ * Initialize indices of a box (works with initBoxVertices())
+ * @param indices reference to an array to write values to
+ */
 void initBoxIndices(rgl_vec3i (&indices)[12])
 {
   indices[0].value[0] = 0;
@@ -206,6 +218,34 @@ void initBoxIndices(rgl_vec3i (&indices)[12])
   indices[11].value[2] = 7;
 }
 
+
+namespace simple_sensor_simulator
+{
+Raycaster::Raycaster()
+: primitive_ptrs_(0),
+  device_(rtcNewDevice(nullptr)),
+  scene_(rtcNewScene(device_)),
+  engine_(seed_gen_())
+{
+  int32_t major, minor, patch;
+  CATCH_RGL_ERROR(rgl_get_version_info(&major, &minor, &patch));
+  std::cout << "====================" << major << "." << minor << "." << patch << std::endl;
+}
+
+Raycaster::Raycaster(std::string embree_config)
+: primitive_ptrs_(0),
+  device_(rtcNewDevice(embree_config.c_str())),
+  scene_(rtcNewScene(device_)),
+  engine_(seed_gen_())
+{
+}
+
+Raycaster::~Raycaster()
+{
+  rtcReleaseScene(scene_);
+  rtcReleaseDevice(device_);
+}
+
 /**
  * Creates a RGL mesh and entity of an object and stores it, if entity with provided name already exists this does nothing
  * @param name Name of the entity to create
@@ -234,7 +274,7 @@ void Raycaster::addEntity(const std::string & name, float depth, float width, fl
  * Sets pose of an entity with provided name
  * @param name Name of an entity to relocate
  * @param pose Desired pose to locate entity at
- * @return True if an entite with provided was found, else false
+ * @return True if an entity with provided was found, else false
  */
 bool Raycaster::setEntityPose(const std::string & name, const geometry_msgs::msg::Pose & pose)
 {
@@ -253,6 +293,8 @@ void Raycaster::setDirection(
   double horizontal_angle_end)
 {
   std::vector<double> vertical_angles;
+  // for (double v = -3.1415; v < 3.1415; v += 0.01) {
+  // for (double v = 0; v < 3.1415*2; v += 0.01) {
   for (const auto v : configuration.vertical_angles()) {
     vertical_angles.emplace_back(v);
   }
@@ -261,6 +303,7 @@ void Raycaster::setDirection(
     vertical_angles, horizontal_angle_start, horizontal_angle_end,
     configuration.horizontal_resolution());
   rotation_matrices_.clear();
+  rotation_matrices_rgl_.clear();
   for (const auto & q : quat_directions) {
     rotation_matrices_.push_back(quaternion_operation::getRotationMatrix(q));
     rotation_matrices_rgl_.push_back(getRglMatRotation(quaternion_operation::getRotationMatrix(q)));   // Add ray rotations in RGL format
@@ -301,7 +344,7 @@ std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
 const std::vector<std::string> & Raycaster::getDetectedObject() const { return detected_objects_; }
 
 const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
-  std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,
+  std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,   // origin is ego pose, no offset
   double max_distance, double min_distance)
 {
   detected_objects_ = {};
@@ -311,20 +354,30 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
     geometry_ids_.insert({id, pair.first});
   }
 
-  rgl_node_t use_rays = nullptr, lidar_pose = nullptr, raytrace = nullptr, compact = nullptr;
+  static rgl_node_t use_rays = nullptr, lidar_pose = nullptr, raytrace = nullptr, compact = nullptr;
+  static bool init = true;
 
   /* Set matrix to transform rays into origin tf */
   rgl_mat3x4f lidar_pose_tf = getRglIdentity();
   setRglMatPose(lidar_pose_tf, origin);
 
-  CATCH_RGL_ERROR(rgl_node_rays_from_mat3x4f(&use_rays, rotation_matrices_rgl_.data(), rotation_matrices_rgl_.size()));
+  /* initialize rays only once */
+  if (init) {
+    CATCH_RGL_ERROR(rgl_node_rays_from_mat3x4f(&use_rays, rotation_matrices_rgl_.data(), rotation_matrices_rgl_.size()));
+  }
+  /* set transformation of ego to every ray every time raycast is called */
   CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose, &lidar_pose_tf));
   CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace, nullptr, static_cast<float>(max_distance)));
   CATCH_RGL_ERROR(rgl_node_points_compact(&compact));
 
-  CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, lidar_pose));
-  CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose, raytrace));
-  CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace, compact));
+  /* create graph only once */
+  if (init) {
+    CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, lidar_pose));
+    CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose, raytrace));
+    // CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, raytrace));
+    CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace, compact));
+  }
+  init = false;
 
   CATCH_RGL_ERROR(rgl_graph_run(compact));
 
@@ -337,6 +390,14 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
     results.resize(static_cast<size_t>(out_count));
     CATCH_RGL_ERROR(rgl_graph_get_result_data(compact, RGL_FIELD_XYZ_F32, results.data()));
     std::cout << "==================== HITS: " << out_count << " ====================" << std::endl;
+    std::cout << "First hit: "
+              << (*results.begin()).value[0] << ' '
+              << (*results.begin()).value[1] << ' '
+              << (*results.begin()).value[2] << std::endl;
+    std::cout << "Last hit: "
+              << (*results.rbegin()).value[0] << ' '
+              << (*results.rbegin()).value[1] << ' '
+              << (*results.rbegin()).value[2] << std::endl;
   } else {
     std::cout << "==================== NO HITS ====================" << std::endl;
   }

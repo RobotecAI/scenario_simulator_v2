@@ -55,14 +55,18 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
       raycaster_.addEntity(s.name(), s.bounding_box().dimensions().x(), s.bounding_box().dimensions().y(),
         s.bounding_box().dimensions().z());
       raycaster_.setEntityPose(s.name(), pose);
-      std::cout << "============ entity ============" << std::endl;
+      std::cout << "============ " << s.name() << " ============" << std::endl;
       std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
     }
   }
   geometry_msgs::msg::Pose pose;
-  pose.position.x = 3765.15;
-  pose.position.y = 73797.6;
-  pose.position.z = -2.20885;
+  pose.position.x = 3760.21;// + 10;
+  pose.position.y = 73795;// + 10;
+  pose.position.z = -2.09542 + 10;
+
+  // pose.position.x = 3790.91;
+  // pose.position.y = 73810.8;
+  // pose.position.z = -2.80007;
   raycaster_.addEntity("testowanazwa", 4.77, 2.25, 2.5);
   raycaster_.setEntityPose("testowanazwa", pose);
   std::cout << "============ phantom entity ============" << std::endl;
