@@ -73,54 +73,84 @@ void printMat(const rgl_mat3x4f & mat)
 }
 
 /**
- * Sets values from given Eigen Matrix3d to the given reference of rgl_mat3x4f
- * @param entity_tf reference to the matrix where values are applied
- * @param rotation rotation matrix fromw hich values should be copied
+ * Sets given rotation to RGL matrix with possible correction for RGL base orientation aligned with Z axis
+ * @param entity_tf reference to the matrix where changes are applied
+ * @param rotation rotation quaternion to apply
+ * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
  */
-void setRglMatRotation(rgl_mat3x4f & entity_tf, const Eigen::Matrix3d & rotation)
+void setRglMatRotation(rgl_mat3x4f & entity_tf, geometry_msgs::msg::Quaternion rotation, const bool correct_rgl_bias = true)
 {
-  // const auto rotationT = rotation.transpose();
+/*
+  geometry_msgs::msg::Vector3 rpy1;
+  rpy1.x = PI/4;
+  rpy1.y = PI/4;
+  rpy1.z = 0;
+  geometry_msgs::msg::Vector3 rpy2;
+  rpy2.x = 0;
+  rpy2.y = 0;
+  rpy2.z = PI/2;
+  const auto q1 = quaternion_operation::convertEulerAngleToQuaternion(rpy1);
+  const auto q2 = quaternion_operation::convertEulerAngleToQuaternion(rpy2);
+  const auto r1 = quaternion_operation::rotation(q1, q2);   // rotates around local frame
+  const auto r2 = q2*q1;   // rotates around global frame
+  std::cout << "Rot1: " << r1.x << ' ' << r1.y << ' ' << r1.z << ' ' << r1.w << std::endl;
+  std::cout << "Rot2: " << r2.x << ' ' << r2.y << ' ' << r2.z << ' ' << r2.w << std::endl;
+*/
+
+  if (correct_rgl_bias) {
+    geometry_msgs::msg::Vector3 rpy;
+    rpy.x = 0;
+    rpy.y = PI/2;
+    rpy.z = 0;
+    const auto bias = quaternion_operation::convertEulerAngleToQuaternion(rpy);
+    rotation = quaternion_operation::rotation(rotation, bias);   // rotates about a local frame
+    // rotation = bias * rotation;   // rotates about a global frame
+  }
+  const auto rotation_mat = quaternion_operation::getRotationMatrix(rotation);
 
   for (uint8_t row = 0; row < 3; ++row) {
     for (uint8_t col = 0; col < 3; ++col) {
-      entity_tf.value[row][col] = static_cast<float>(rotation(row, col));   // transpose matrix
+      // no need to convert from column-major to row-major as () operator already does this
+      entity_tf.value[row][col] = static_cast<float>(rotation_mat(row, col));
     }
   }
 }
 
 /**
- * Convert Eigen Matrix3d to rgl_mat3x4f
- * @param rotation matrix from which values will be copied
+ * Converts quaternion rotation to RGL matrix rotation (position is set to [0, 0, 0])
+ * @param rotation rotation quaternion
+ * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
  * @return rotation in matrix rgl_mat3x4f
  */
-rgl_mat3x4f getRglMatRotation(const Eigen::Matrix3d & rotation)
+rgl_mat3x4f getRglMatRotation(const geometry_msgs::msg::Quaternion & rotation, const bool correct_rgl_bias = true)
 {
   rgl_mat3x4f tf = getRglIdentity();
-  setRglMatRotation(tf, rotation);
+  setRglMatRotation(tf, rotation, correct_rgl_bias);
   return tf;
 }
 
 /**
- * Sets values from given geometry_msgs Pose to the given reference of rgl_mat3x4f
- * @param entity_tf reference to the matrix where values are applied
- * @param pose pose message from which values should be copied
+ * Sets given position to RGL matrix
+ * @param entity_tf reference to the matrix to modify
+ * @param position position to set in matrix
  */
-void setRglMatPosition(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose)
+void setRglMatPosition(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Point & position)
 {
-  entity_tf.value[0][3] = pose.position.x;
-  entity_tf.value[1][3] = pose.position.y;
-  entity_tf.value[2][3] = pose.position.z;
+  entity_tf.value[0][3] = position.x;
+  entity_tf.value[1][3] = position.y;
+  entity_tf.value[2][3] = position.z;
 }
 
 /**
- * Sets values in provided RGL matrix to match transformation stored in pose
+ * Converts pose (both position and orientation) to RGL matrix
  * @param entity_tf RGL matrix to change values
  * @param pose pose with values to transfer into RGL matrix
+ * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
  */
-void setRglMatPose(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose)
+void setRglMatPose(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose, const bool correct_rgl_bias = true)
 {
-  setRglMatRotation(entity_tf, quaternion_operation::getRotationMatrix(pose.orientation));
-  setRglMatPosition(entity_tf, pose);
+  setRglMatRotation(entity_tf, pose.orientation, correct_rgl_bias);
+  setRglMatPosition(entity_tf, pose.position);
 }
 
 /**
@@ -263,20 +293,20 @@ void Raycaster::addEntity(const std::string & name, float depth, float width, fl
   }
   rgl_mesh_t mesh = nullptr;
   rgl_vec3f vertices[8];
-  initBoxVertices(vertices, depth, width, height);
+  initBoxVertices(vertices, depth, width, height);   // TODO check whether box is oriented in way it should
   rgl_vec3i indices[12];
   initBoxIndices(indices);
-  CATCH_RGL_ERROR(rgl_mesh_create(&mesh, vertices, 8, indices, 12));   // Saves handle to a mesh in the pointer "mesh"
+  CATCH_RGL_ERROR(rgl_mesh_create(&mesh, vertices, 8, indices, 12));   // Saves handle to a mesh in the pointer 'mesh'
   rgl_entity_t entity = nullptr;
-  CATCH_RGL_ERROR(rgl_entity_create(&entity, nullptr, mesh));   // Saves handle to an entity in the pointer "entity"
-  entities_[name] = entity;   // Adds handle to entity to the map, all things in entity (and mesh referenced) are allocated by `rgl_` functions
+  CATCH_RGL_ERROR(rgl_entity_create(&entity, nullptr, mesh));   // Saves handle to an entity in the pointer 'entity'
+  entities_[name] = entity;   // Adds handle to entity to the map, every element in entity (including mesh referenced) are allocated by `rgl_` functions
 }
 
 /**
  * Sets pose of an entity with provided name
  * @param name Name of an entity to relocate
- * @param pose Desired pose to locate entity at
- * @return True if an entity with provided was found, else false
+ * @param pose Desired entity pose
+ * @return True if an entity with provided name exists, else false
  */
 bool Raycaster::setEntityPose(const std::string & name, const geometry_msgs::msg::Pose & pose)
 {
@@ -308,7 +338,7 @@ void Raycaster::setDirection(
   rotation_matrices_rgl_.clear();
   for (const auto & q : quat_directions) {
     rotation_matrices_.push_back(quaternion_operation::getRotationMatrix(q));
-    rotation_matrices_rgl_.push_back(getRglMatRotation(quaternion_operation::getRotationMatrix(q)));   // Add ray rotations in RGL format
+    rotation_matrices_rgl_.push_back(getRglMatRotation(q));   // Add ray rotations in RGL format
   }
 }
 
@@ -328,7 +358,7 @@ std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
       for (const auto vertical_angle : vertical_angles) {
         geometry_msgs::msg::Vector3 rpy;
         rpy.x = 0;
-        rpy.y = vertical_angle + PI/2;
+        rpy.y = vertical_angle;// + PI/2;
         rpy.z = horizontal_angle;
         std::cout << "RPY: " << rpy.x << ' ' << rpy.y << ' ' << rpy.z << std::endl;
         auto quat = quaternion_operation::convertEulerAngleToQuaternion(rpy);
@@ -336,6 +366,7 @@ std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
       }
     }
     directions_ = directions;
+    std::cout << "==================================SIZE: " << directions.size() << std::endl;
     previous_horizontal_angle_end_ = horizontal_angle_end;
     previous_horizontal_angle_start_ = horizontal_angle_start;
     previous_horizontal_resolution_ = horizontal_resolution;
@@ -362,7 +393,9 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
 
   /* Set matrix to transform rays into origin tf */
   rgl_mat3x4f lidar_pose_tf = getRglIdentity();
-  setRglMatPose(lidar_pose_tf, origin);
+  /* do not correct RGL bias, as this pose is fed directly to RGL to transform all rays (account for lidar pose)
+  and everything added to rgl is already corrected */
+  setRglMatPose(lidar_pose_tf, origin, false);
 
   /* initialize rays only once */
   if (init) {
@@ -377,7 +410,6 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
   if (init) {
     CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, lidar_pose));
     CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose, raytrace));
-    // CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, raytrace));
     CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace, compact));
   }
   init = false;
