@@ -33,8 +33,6 @@ void breaker()   // put your breakpoint here
 #define CATCH_RGL_ERROR(err) err
 #endif
 
-#define PI 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089
-
 rgl_mat3x4f getRglIdentity()
 {
   rgl_mat3x4f mat;
@@ -82,13 +80,13 @@ void setRglMatRotation(rgl_mat3x4f & entity_tf, geometry_msgs::msg::Quaternion r
 {
 /*
   geometry_msgs::msg::Vector3 rpy1;
-  rpy1.x = PI/4;
-  rpy1.y = PI/4;
+  rpy1.x = M_PI/4;
+  rpy1.y = M_PI/4;
   rpy1.z = 0;
   geometry_msgs::msg::Vector3 rpy2;
   rpy2.x = 0;
   rpy2.y = 0;
-  rpy2.z = PI/2;
+  rpy2.z = M_PI/2;
   const auto q1 = quaternion_operation::convertEulerAngleToQuaternion(rpy1);
   const auto q2 = quaternion_operation::convertEulerAngleToQuaternion(rpy2);
   const auto r1 = quaternion_operation::rotation(q1, q2);   // rotates around local frame
@@ -100,7 +98,7 @@ void setRglMatRotation(rgl_mat3x4f & entity_tf, geometry_msgs::msg::Quaternion r
   if (correct_rgl_bias) {
     geometry_msgs::msg::Vector3 rpy;
     rpy.x = 0;
-    rpy.y = PI/2;
+    rpy.y = M_PI/2;
     rpy.z = 0;
     const auto bias = quaternion_operation::convertEulerAngleToQuaternion(rpy);
     rotation = quaternion_operation::rotation(rotation, bias);   // rotates about a local frame
@@ -358,7 +356,7 @@ std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
       for (const auto vertical_angle : vertical_angles) {
         geometry_msgs::msg::Vector3 rpy;
         rpy.x = 0;
-        rpy.y = vertical_angle;// + PI/2;
+        rpy.y = vertical_angle;// + M_PI/2;
         rpy.z = horizontal_angle;
         std::cout << "RPY: " << rpy.x << ' ' << rpy.y << ' ' << rpy.z << std::endl;
         auto quat = quaternion_operation::convertEulerAngleToQuaternion(rpy);
