@@ -33,6 +33,8 @@ void breaker()   // put your breakpoint here
 #define CATCH_RGL_ERROR(err) err
 #endif
 
+#define PI 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089
+
 rgl_mat3x4f getRglIdentity()
 {
   rgl_mat3x4f mat;
@@ -81,7 +83,7 @@ void setRglMatRotation(rgl_mat3x4f & entity_tf, const Eigen::Matrix3d & rotation
 
   for (uint8_t row = 0; row < 3; ++row) {
     for (uint8_t col = 0; col < 3; ++col) {
-      entity_tf.value[row][col] = static_cast<float>(rotation(col, row));   // transpose matrix
+      entity_tf.value[row][col] = static_cast<float>(rotation(row, col));   // transpose matrix
     }
   }
 }
@@ -326,8 +328,9 @@ std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
       for (const auto vertical_angle : vertical_angles) {
         geometry_msgs::msg::Vector3 rpy;
         rpy.x = 0;
-        rpy.y = vertical_angle;
+        rpy.y = vertical_angle + PI/2;
         rpy.z = horizontal_angle;
+        std::cout << "RPY: " << rpy.x << ' ' << rpy.y << ' ' << rpy.z << std::endl;
         auto quat = quaternion_operation::convertEulerAngleToQuaternion(rpy);
         directions.emplace_back(quat);
       }

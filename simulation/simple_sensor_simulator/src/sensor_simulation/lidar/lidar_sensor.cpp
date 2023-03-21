@@ -60,9 +60,9 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
     }
   }
   geometry_msgs::msg::Pose pose;
-  pose.position.x = 3760.21;// + 10;
+  pose.position.x = 3760.21 + 10;
   pose.position.y = 73795;// + 10;
-  pose.position.z = -2.09542 + 10;
+  pose.position.z = -2.09542;// + 10;
 
   // pose.position.x = 3790.91;
   // pose.position.y = 73810.8;
