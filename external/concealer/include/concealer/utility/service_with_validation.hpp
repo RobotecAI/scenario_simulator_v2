@@ -22,17 +22,18 @@
 #include <tier4_external_api_msgs/msg/response_status.hpp>
 #include <type_traits>
 
-template <typename T>
-struct has_status_in_response
+template <typename T, typename = void>
+struct has_data_member_status : public std::false_type
 {
-  template <typename U>
-  static std::true_type test(decltype(&U::Response::status));
-
-  template <typename U>
-  static std::false_type test(...);
-
-  static constexpr bool value = decltype(test<T>(nullptr))::value;
 };
+
+template <typename T>
+struct has_data_member_status<T, std::void_t<decltype(std::declval<T>().status)>> : public std::true_type
+{
+};
+
+template <typename T>
+constexpr auto has_data_member_status_v = has_data_member_status<T>::value;
 
 namespace concealer
 {
@@ -58,7 +59,7 @@ public:
         continue;
       }
       if (const auto & service_call_result = callWithTimeoutValidation(request)) {
-        if constexpr (has_status_in_response<T>::value) {
+        if constexpr (has_data_member_status_v<typename T::Response>) {
           if constexpr (std::is_same<
                           tier4_external_api_msgs::msg::ResponseStatus,
                           decltype(T::Response::status)>::value) {
@@ -79,14 +80,9 @@ public:
                                 : " (" + service_call_status.message + ")"));
             }
           } else {
-            RCLCPP_INFO_STREAM(
-              logger,
-              service_name << " response has a status attribute but of invalid type. Continuing.");
             return;
           }
         } else {
-          RCLCPP_INFO_STREAM(
-            logger, service_name << " response doesn't have status attribute. Continuing.");
           return;
         }
       }
