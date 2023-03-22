@@ -61,6 +61,9 @@ public:
 
 private:
   void initRglNodes();
+  bool adjustPose(const std::string & name, const geometry_msgs::msg::Pose & pose, 
+    const geometry_msgs::msg::Pose & origin);
+  bool setRglPoses(const geometry_msgs::msg::Pose & origin);
   std::vector<geometry_msgs::msg::Quaternion> getDirections(
     const std::vector<double> & vertical_angles, double horizontal_angle_start,
     double horizontal_angle_end, double horizontal_resolution);
@@ -71,6 +74,7 @@ private:
   std::vector<double> previous_vertical_angles_;
   std::unordered_map<std::string, std::unique_ptr<primitives::Primitive>> primitive_ptrs_;
   std::unordered_map<std::string, rgl_entity_t> entities_;   // Maps simulator names to RGL entity handles
+  std::unordered_map<std::string, geometry_msgs::msg::Pose> entities_pose_;   // Maps simulator names to original poses in world frame
   RTCDevice device_;
   RTCScene scene_;
   std::random_device seed_gen_;

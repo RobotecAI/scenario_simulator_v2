@@ -22,6 +22,7 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
+#include <geometry/transform.hpp>
 
 #define RAYCASTER_DEBUG 1
 #if RAYCASTER_DEBUG == 1
@@ -303,31 +304,20 @@ Raycaster::Raycaster(std::string embree_config)
 
 /**
  * Initialize RGL nodes and connect them into a graph (this only needs to be done once)
-*/
+ */
 void Raycaster::initRglNodes()
 {
   use_rays_ = nullptr;
-  lidar_pose_ = nullptr;
   raytrace_ = nullptr;
   compact_ = nullptr;
-  lidar_position_inv_ = nullptr;
-  lidar_rotation_inv_ = nullptr;
-
-  rgl_mat3x4f dummy = getRglIdentity();
 
   assert( !rotation_matrices_rgl_.empty() );   // check whether ray directions have already been initialized
   CATCH_RGL_ERROR(rgl_node_rays_from_mat3x4f(&use_rays_, rotation_matrices_rgl_.data(), rotation_matrices_rgl_.size()));
-  CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose_, &dummy));
   CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace_, nullptr, 1));
   CATCH_RGL_ERROR(rgl_node_points_compact(&compact_));
-  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_position_inv_, &dummy));
-  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_rotation_inv_, &dummy));
 
-  CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays_, lidar_pose_));
-  CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose_, raytrace_));
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays_, raytrace_));
   CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace_, compact_));
-  CATCH_RGL_ERROR(rgl_graph_node_add_child(compact_, lidar_position_inv_));
-  CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_position_inv_, lidar_rotation_inv_));
 }
 
 Raycaster::~Raycaster()
@@ -358,7 +348,8 @@ void Raycaster::addEntity(const std::string & name, float depth, float width, fl
   CATCH_RGL_ERROR(rgl_mesh_create(&mesh, vertices, 8, indices, 12));   // Saves handle to a mesh in the pointer 'mesh'
   rgl_entity_t entity = nullptr;
   CATCH_RGL_ERROR(rgl_entity_create(&entity, nullptr, mesh));   // Saves handle to an entity in the pointer 'entity'
-  entities_[name] = entity;   // Adds handle to entity to the map, every element in entity (including mesh referenced) are allocated by `rgl_` functions
+  entities_.insert({name, entity});   // Adds handle to entity to the map, every element in entity (including mesh referenced) are allocated by `rgl_` functions
+  entities_pose_.insert({name, geometry_msgs::msg::Pose()});
 }
 
 /**
@@ -369,13 +360,48 @@ void Raycaster::addEntity(const std::string & name, float depth, float width, fl
  */
 bool Raycaster::setEntityPose(const std::string & name, const geometry_msgs::msg::Pose & pose)
 {
+  const auto it = entities_pose_.find(name);
+  if (it == entities_pose_.end()) {
+    return false;
+  }
+  it->second = pose;
+  return true;
+}
+
+/**
+ * Adjusts RGL entity pose to account for ego offset in world frame, in other worlds convert pose
+ * from world frame to origin frame
+ * @param name Name of the entity to adjust
+ * @param pose Pose (position and orientation) of entity in world frame
+ * @param origin pose (position and orientation) of ego in world frame
+ * @return True if entity with provided name exists, else false
+ */
+bool Raycaster::adjustPose(const std::string & name, const geometry_msgs::msg::Pose & pose,
+  const geometry_msgs::msg::Pose & origin)
+{
   const auto it = entities_.find(name);
   if (it == entities_.end()) {
     return false;
   }
+  const auto pose_new = math::geometry::getRelativePose(origin, pose);
   rgl_mat3x4f entity_tf;
-  setRglMatPose(entity_tf, pose, false);
+  setRglMatPose(entity_tf, pose_new, false);
   CATCH_RGL_ERROR(rgl_entity_set_pose(it->second, &entity_tf));
+  return true;
+}
+
+/**
+ * Adjust poses of all RGL entities to comply with ego frame
+ * @param origin Pose of new base frame to locate entites
+ * @return True if successfully set all poses, else false
+ */
+bool Raycaster::setRglPoses(const geometry_msgs::msg::Pose & origin)
+{
+  for (const auto & [name, pose] : entities_pose_) {
+    if (!adjustPose(name, pose, origin)) {
+      return false;
+    }
+  }
   return true;
 }
 
@@ -443,34 +469,14 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
     auto id = pair.second->addToScene(device_, scene_);
     geometry_ids_.insert({id, pair.first});
   }
-
-  rgl_mat3x4f lidar_pose_tf = getRglIdentity();
-  rgl_mat3x4f lidar_position_inv_tf = getRglIdentity();
-  rgl_mat3x4f lidar_rotation_inv_tf = getRglIdentity();
-  /* do not correct RGL bias, as this pose is fed directly to RGL to transform all rays (account for lidar pose)
-  and everything added to rgl is already corrected */
-  setRglMatPose(lidar_pose_tf, origin, false);
-  /* TODO optimal solution would be to cast rays with lidar position at [0, 0, 0]
-  (higher floating point precision + no need to transform all points), this
-  requires to change positions of every entity to account for created offset */
-  setRglMatPositionInv(lidar_position_inv_tf, origin);
-  setRglMatRotationInv(lidar_rotation_inv_tf, origin, false);
-
-  /* set transformation of ego to every ray every time raycast is called */
-  CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose_, &lidar_pose_tf));
+  setRglPoses(origin);
   CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace_, nullptr, static_cast<float>(max_distance)));
-  CATCH_RGL_ERROR(rgl_node_points_compact(&compact_));   // does nothing
-  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_position_inv_, &lidar_position_inv_tf));
-  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_rotation_inv_, &lidar_rotation_inv_tf));
-
   CATCH_RGL_ERROR(rgl_graph_run(use_rays_));
-
   int32_t out_count, out_size_of;
-  CATCH_RGL_ERROR(rgl_graph_get_result_size(lidar_rotation_inv_, RGL_FIELD_XYZ_F32, &out_count, &out_size_of));
-
+  CATCH_RGL_ERROR(rgl_graph_get_result_size(compact_, RGL_FIELD_XYZ_F32, &out_count, &out_size_of));
   std::vector<rgl_vec3f> results;
   results.resize(static_cast<size_t>(out_count));
-  CATCH_RGL_ERROR(rgl_graph_get_result_data(lidar_rotation_inv_, RGL_FIELD_XYZ_F32, results.data()));
+  CATCH_RGL_ERROR(rgl_graph_get_result_data(compact_, RGL_FIELD_XYZ_F32, results.data()));
   for (const auto & r : results) {
     pcl::PointXYZI p;
     {
