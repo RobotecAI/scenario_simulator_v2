@@ -347,7 +347,7 @@ bool Raycaster::setEntityPose(const std::string & name, const geometry_msgs::msg
     return false;
   }
   rgl_mat3x4f entity_tf;
-  setRglMatPose(entity_tf, pose);
+  setRglMatPose(entity_tf, pose, false);
   CATCH_RGL_ERROR(rgl_entity_set_pose(it->second, &entity_tf));
   return true;
 }
