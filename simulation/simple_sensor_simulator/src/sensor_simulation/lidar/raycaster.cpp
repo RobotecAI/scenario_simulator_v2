@@ -152,6 +152,50 @@ void setRglMatPose(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pos
 }
 
 /**
+ * Inverts pose and converts it (both position and orientation) to RGL matrix
+ * @param entity_tf RGL matrix to change values
+ * @param pose pose with values to transfer into RGL matrix
+ * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
+ */
+void setRglMatPoseInv(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose, const bool correct_rgl_bias = true)
+{
+  auto pose_inv = pose;
+  // pose_inv.orientation.x = 0;
+  // pose_inv.orientation.y = 0;
+  // pose_inv.orientation.z = 0;
+  // pose_inv.orientation.w = 1;
+  // pose_inv.orientation.x = -pose.orientation.x;
+  // pose_inv.orientation.y = -pose.orientation.y;
+  // pose_inv.orientation.z = -pose.orientation.z;
+  // pose_inv.orientation.w = -pose.orientation.w;
+  pose_inv.position.x = -pose.position.x;
+  pose_inv.position.y = -pose.position.y;
+  pose_inv.position.z = -pose.position.z;
+
+  // setRglMatRotation(entity_tf, pose_inv.orientation, correct_rgl_bias);
+  setRglMatPosition(entity_tf, pose_inv.position);
+}
+
+void setRglMatPoseInv2(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose, const bool correct_rgl_bias = true)
+{
+  auto pose_inv = pose;
+  // pose_inv.orientation.x = 0;
+  // pose_inv.orientation.y = 0;
+  // pose_inv.orientation.z = 0;
+  // pose_inv.orientation.w = 1;
+  pose_inv.orientation.x = -pose.orientation.x;
+  pose_inv.orientation.y = -pose.orientation.y;
+  pose_inv.orientation.z = -pose.orientation.z;
+  // pose_inv.orientation.w = -pose.orientation.w;
+  // pose_inv.position.x = -pose.position.x;
+  // pose_inv.position.y = -pose.position.y;
+  // pose_inv.position.z = -pose.position.z;
+
+  setRglMatRotation(entity_tf, pose_inv.orientation, correct_rgl_bias);
+  // setRglMatPosition(entity_tf, pose_inv.position);
+}
+
+/**
  * Initialize vertices of a box with given dimensions
  * @param vertices reference to an array to write values to
  * @param depth depth of a box
@@ -386,14 +430,19 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
     geometry_ids_.insert({id, pair.first});
   }
 
-  static rgl_node_t use_rays = nullptr, lidar_pose = nullptr, raytrace = nullptr, compact = nullptr;
+  static rgl_node_t use_rays = nullptr, lidar_pose = nullptr, raytrace = nullptr, compact = nullptr, lidar_pose_inv = nullptr, lidar_pose_inv2 = nullptr;
   static bool init = true;
 
   /* Set matrix to transform rays into origin tf */
   rgl_mat3x4f lidar_pose_tf = getRglIdentity();
+  rgl_mat3x4f lidar_inv_pose_tf = getRglIdentity();
+  rgl_mat3x4f lidar_inv_pose_tf2 = getRglIdentity();
   /* do not correct RGL bias, as this pose is fed directly to RGL to transform all rays (account for lidar pose)
   and everything added to rgl is already corrected */
   setRglMatPose(lidar_pose_tf, origin, false);
+  // FIXME pcl should be in lidar frame, add conversion from wolrd to lidar, best before casting rays
+  setRglMatPoseInv(lidar_inv_pose_tf, origin, false);
+  setRglMatPoseInv2(lidar_inv_pose_tf2, origin, false);
 
   /* initialize rays only once */
   if (init) {
@@ -403,25 +452,29 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
   CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose, &lidar_pose_tf));
   CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace, nullptr, static_cast<float>(max_distance)));
   CATCH_RGL_ERROR(rgl_node_points_compact(&compact));
+  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_pose_inv, &lidar_inv_pose_tf));
+  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_pose_inv2, &lidar_inv_pose_tf2));
 
   /* create graph only once */
   if (init) {
     CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, lidar_pose));
     CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose, raytrace));
     CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace, compact));
+    CATCH_RGL_ERROR(rgl_graph_node_add_child(compact, lidar_pose_inv));
+    CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose_inv, lidar_pose_inv2));
   }
   init = false;
 
   CATCH_RGL_ERROR(rgl_graph_run(compact));
 
   int32_t out_count, out_size_of;
-  CATCH_RGL_ERROR(rgl_graph_get_result_size(compact, RGL_FIELD_XYZ_F32, &out_count, &out_size_of));
+  CATCH_RGL_ERROR(rgl_graph_get_result_size(lidar_pose_inv2, RGL_FIELD_XYZ_F32, &out_count, &out_size_of));
 
   static std::vector<rgl_vec3f> results;
 
   if (out_count > 0) {
     results.resize(static_cast<size_t>(out_count));
-    CATCH_RGL_ERROR(rgl_graph_get_result_data(compact, RGL_FIELD_XYZ_F32, results.data()));
+    CATCH_RGL_ERROR(rgl_graph_get_result_data(lidar_pose_inv2, RGL_FIELD_XYZ_F32, results.data()));
     for (const auto & result : results) {
       pcl::PointXYZI p;
       {
