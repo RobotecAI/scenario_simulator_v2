@@ -422,6 +422,16 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
   if (out_count > 0) {
     results.resize(static_cast<size_t>(out_count));
     CATCH_RGL_ERROR(rgl_graph_get_result_data(compact, RGL_FIELD_XYZ_F32, results.data()));
+    for (const auto & result : results) {
+      pcl::PointXYZI p;
+      {
+        p.x = result.value[0];
+        p.y = result.value[1];
+        p.z = result.value[2];
+      }
+      cloud->emplace_back(p);
+      // should add ID
+    }
     std::cout << "==================== HITS: " << out_count << " ====================" << std::endl;
     std::cout << "First hit: "
               << (*results.begin()).value[0] << ' '

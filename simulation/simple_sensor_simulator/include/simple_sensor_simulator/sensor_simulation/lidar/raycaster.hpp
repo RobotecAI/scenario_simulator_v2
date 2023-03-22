@@ -76,7 +76,7 @@ private:
   std::default_random_engine engine_;
   std::vector<std::string> detected_objects_;
   std::unordered_map<unsigned int, std::string> geometry_ids_;
-  std::vector<Eigen::Matrix3d> rotation_matrices_;   // Rotation matrices of rays in global tf
+  std::vector<Eigen::Matrix3d> rotation_matrices_;   // Rotation matrices of rays in local tf
   std::vector<rgl_mat3x4f> rotation_matrices_rgl_;   // Rotation Matrices of rays in rgl format
 
   static void intersect(
