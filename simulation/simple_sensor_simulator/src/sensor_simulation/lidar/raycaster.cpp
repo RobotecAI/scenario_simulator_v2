@@ -291,9 +291,6 @@ Raycaster::Raycaster()
   scene_(rtcNewScene(device_)),
   engine_(seed_gen_())
 {
-  int32_t major, minor, patch;
-  CATCH_RGL_ERROR(rgl_get_version_info(&major, &minor, &patch));
-  std::cout << "====================" << major << "." << minor << "." << patch << std::endl;
 }
 
 Raycaster::Raycaster(std::string embree_config)
@@ -304,10 +301,40 @@ Raycaster::Raycaster(std::string embree_config)
 {
 }
 
+/**
+ * Initialize RGL nodes and connect them into a graph (this only needs to be done once)
+*/
+void Raycaster::initRglNodes()
+{
+  use_rays_ = nullptr;
+  lidar_pose_ = nullptr;
+  raytrace_ = nullptr;
+  compact_ = nullptr;
+  lidar_position_inv_ = nullptr;
+  lidar_rotation_inv_ = nullptr;
+
+  rgl_mat3x4f dummy = getRglIdentity();
+
+  assert( !rotation_matrices_rgl_.empty() );   // check whether ray directions have already been initialized
+  CATCH_RGL_ERROR(rgl_node_rays_from_mat3x4f(&use_rays_, rotation_matrices_rgl_.data(), rotation_matrices_rgl_.size()));
+  CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose_, &dummy));
+  CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace_, nullptr, 1));
+  CATCH_RGL_ERROR(rgl_node_points_compact(&compact_));
+  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_position_inv_, &dummy));
+  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_rotation_inv_, &dummy));
+
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays_, lidar_pose_));
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose_, raytrace_));
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace_, compact_));
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(compact_, lidar_position_inv_));
+  CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_position_inv_, lidar_rotation_inv_));
+}
+
 Raycaster::~Raycaster()
 {
   rtcReleaseScene(scene_);
   rtcReleaseDevice(device_);
+  CATCH_RGL_ERROR(rgl_graph_destroy(use_rays_));
 }
 
 /**
@@ -357,8 +384,6 @@ void Raycaster::setDirection(
   double horizontal_angle_end)
 {
   std::vector<double> vertical_angles;
-  // for (double v = -3.1415; v < 3.1415; v += 0.01) {
-  // for (double v = 0; v < 3.1415*2; v += 0.01) {
   for (const auto v : configuration.vertical_angles()) {
     vertical_angles.emplace_back(v);
   }
@@ -372,6 +397,7 @@ void Raycaster::setDirection(
     rotation_matrices_.push_back(quaternion_operation::getRotationMatrix(q));
     rotation_matrices_rgl_.push_back(getRglMatRotation(q));   // Add ray rotations in RGL format
   }
+  initRglNodes();   // init RGL here because ray directions are needed
 }
 
 std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
@@ -390,15 +416,13 @@ std::vector<geometry_msgs::msg::Quaternion> Raycaster::getDirections(
       for (const auto vertical_angle : vertical_angles) {
         geometry_msgs::msg::Vector3 rpy;
         rpy.x = 0;
-        rpy.y = vertical_angle;// + M_PI/2;
+        rpy.y = vertical_angle;
         rpy.z = horizontal_angle;
-        std::cout << "RPY: " << rpy.x << ' ' << rpy.y << ' ' << rpy.z << std::endl;
         auto quat = quaternion_operation::convertEulerAngleToQuaternion(rpy);
         directions.emplace_back(quat);
       }
     }
     directions_ = directions;
-    std::cout << "==================================SIZE: " << directions.size() << std::endl;
     previous_horizontal_angle_end_ = horizontal_angle_end;
     previous_horizontal_angle_start_ = horizontal_angle_start;
     previous_horizontal_resolution_ = horizontal_resolution;
@@ -411,7 +435,7 @@ const std::vector<std::string> & Raycaster::getDetectedObject() const { return d
 
 const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
   std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,   // origin is ego pose, no offset
-  double max_distance, double min_distance)
+  double max_distance, double min_distance)   // RGL does not support min_distance
 {
   detected_objects_ = {};
   pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());
@@ -420,74 +444,42 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
     geometry_ids_.insert({id, pair.first});
   }
 
-  static rgl_node_t use_rays = nullptr, lidar_pose = nullptr, raytrace = nullptr, compact = nullptr,
-                    lidar_position_inv = nullptr, lidar_rotation_inv = nullptr;
-  static bool init = true;
-
-  /* Set matrix to transform rays into origin tf */
   rgl_mat3x4f lidar_pose_tf = getRglIdentity();
   rgl_mat3x4f lidar_position_inv_tf = getRglIdentity();
   rgl_mat3x4f lidar_rotation_inv_tf = getRglIdentity();
   /* do not correct RGL bias, as this pose is fed directly to RGL to transform all rays (account for lidar pose)
   and everything added to rgl is already corrected */
   setRglMatPose(lidar_pose_tf, origin, false);
-  /* TODO optimal solution would be to cast rays with lidar position at [0, 0, 0] (higher floating point precision),
-  this requires to change positions of every entity to account for created offset */
+  /* TODO optimal solution would be to cast rays with lidar position at [0, 0, 0]
+  (higher floating point precision + no need to transform all points), this
+  requires to change positions of every entity to account for created offset */
   setRglMatPositionInv(lidar_position_inv_tf, origin);
   setRglMatRotationInv(lidar_rotation_inv_tf, origin, false);
 
-  /* initialize rays only once */
-  if (init) {
-    CATCH_RGL_ERROR(rgl_node_rays_from_mat3x4f(&use_rays, rotation_matrices_rgl_.data(), rotation_matrices_rgl_.size()));
-  }
   /* set transformation of ego to every ray every time raycast is called */
-  CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose, &lidar_pose_tf));
-  CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace, nullptr, static_cast<float>(max_distance)));
-  CATCH_RGL_ERROR(rgl_node_points_compact(&compact));
-  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_position_inv, &lidar_position_inv_tf));
-  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_rotation_inv, &lidar_rotation_inv_tf));
+  CATCH_RGL_ERROR(rgl_node_rays_transform(&lidar_pose_, &lidar_pose_tf));
+  CATCH_RGL_ERROR(rgl_node_raytrace(&raytrace_, nullptr, static_cast<float>(max_distance)));
+  CATCH_RGL_ERROR(rgl_node_points_compact(&compact_));   // does nothing
+  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_position_inv_, &lidar_position_inv_tf));
+  CATCH_RGL_ERROR(rgl_node_points_transform(&lidar_rotation_inv_, &lidar_rotation_inv_tf));
 
-  /* create graph only once */
-  if (init) {
-    CATCH_RGL_ERROR(rgl_graph_node_add_child(use_rays, lidar_pose));
-    CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_pose, raytrace));
-    CATCH_RGL_ERROR(rgl_graph_node_add_child(raytrace, compact));
-    CATCH_RGL_ERROR(rgl_graph_node_add_child(compact, lidar_position_inv));
-    CATCH_RGL_ERROR(rgl_graph_node_add_child(lidar_position_inv, lidar_rotation_inv));
-  }
-  init = false;
-
-  CATCH_RGL_ERROR(rgl_graph_run(compact));
+  CATCH_RGL_ERROR(rgl_graph_run(use_rays_));
 
   int32_t out_count, out_size_of;
-  CATCH_RGL_ERROR(rgl_graph_get_result_size(lidar_rotation_inv, RGL_FIELD_XYZ_F32, &out_count, &out_size_of));
+  CATCH_RGL_ERROR(rgl_graph_get_result_size(lidar_rotation_inv_, RGL_FIELD_XYZ_F32, &out_count, &out_size_of));
 
-  static std::vector<rgl_vec3f> results;
-
-  if (out_count > 0) {
-    results.resize(static_cast<size_t>(out_count));
-    CATCH_RGL_ERROR(rgl_graph_get_result_data(lidar_rotation_inv, RGL_FIELD_XYZ_F32, results.data()));
-    for (const auto & result : results) {
-      pcl::PointXYZI p;
-      {
-        p.x = result.value[0];
-        p.y = result.value[1];
-        p.z = result.value[2];
-      }
-      cloud->emplace_back(p);
-      // should add ID
+  std::vector<rgl_vec3f> results;
+  results.resize(static_cast<size_t>(out_count));
+  CATCH_RGL_ERROR(rgl_graph_get_result_data(lidar_rotation_inv_, RGL_FIELD_XYZ_F32, results.data()));
+  for (const auto & r : results) {
+    pcl::PointXYZI p;
+    {
+      p.x = r.value[0];
+      p.y = r.value[1];
+      p.z = r.value[2];
     }
-    std::cout << "==================== HITS: " << out_count << " ====================" << std::endl;
-    std::cout << "First hit: "
-              << (*results.begin()).value[0] << ' '
-              << (*results.begin()).value[1] << ' '
-              << (*results.begin()).value[2] << std::endl;
-    std::cout << "Last hit: "
-              << (*results.rbegin()).value[0] << ' '
-              << (*results.rbegin()).value[1] << ' '
-              << (*results.rbegin()).value[2] << std::endl;
-  } else {
-    std::cout << "==================== NO HITS ====================" << std::endl;
+    cloud->emplace_back(p);
+    // TODO should add ID
   }
 
 /*

@@ -60,6 +60,7 @@ public:
     double horizontal_angle_start = 0, double horizontal_angle_end = 2 * M_PI);
 
 private:
+  void initRglNodes();
   std::vector<geometry_msgs::msg::Quaternion> getDirections(
     const std::vector<double> & vertical_angles, double horizontal_angle_start,
     double horizontal_angle_end, double horizontal_resolution);
@@ -78,6 +79,7 @@ private:
   std::unordered_map<unsigned int, std::string> geometry_ids_;
   std::vector<Eigen::Matrix3d> rotation_matrices_;   // Rotation matrices of rays in local tf
   std::vector<rgl_mat3x4f> rotation_matrices_rgl_;   // Rotation Matrices of rays in rgl format
+  rgl_node_t use_rays_, lidar_pose_, raytrace_, compact_, lidar_position_inv_, lidar_rotation_inv_;   // RGL nodes
 
   static void intersect(
     int thread_id, int thread_count, RTCScene scene,

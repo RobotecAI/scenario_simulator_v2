@@ -31,6 +31,7 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
 {
   boost::optional<geometry_msgs::msg::Pose> ego_pose;
   std::cout << "==================================== Number of entities: " << status.size() << " ============\n";
+  // TODO delete all these unnecessary prints
   for (const auto & s : status) {
     if (configuration_.entity() == s.name()) {
       geometry_msgs::msg::Pose pose;
@@ -59,7 +60,7 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
       std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
     }
   }
-  geometry_msgs::msg::Pose pose;
+  geometry_msgs::msg::Pose pose; // TODO delete phantom entity
   pose.position.x = 3760.21;// + 10;
   pose.position.y = 73795 + 10;
   pose.position.z = -2.09542;// + 10;
