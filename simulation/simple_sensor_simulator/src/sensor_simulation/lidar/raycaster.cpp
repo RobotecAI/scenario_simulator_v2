@@ -23,6 +23,7 @@
 #include <utility>
 #include <vector>
 #include <geometry/transform.hpp>
+#include <rgl/utils/rgl_utils.hpp>
 
 #define RAYCASTER_DEBUG 1
 #if RAYCASTER_DEBUG == 1
@@ -33,256 +34,6 @@ void breaker()   // put your breakpoint here
 #else
 #define CATCH_RGL_ERROR(err) err
 #endif
-
-rgl_mat3x4f getRglIdentity()
-{
-  rgl_mat3x4f mat;
-
-  mat.value[0][0] = 1;
-  mat.value[1][0] = 0;
-  mat.value[2][0] = 0;
-
-  mat.value[0][1] = 0;
-  mat.value[1][1] = 1;
-  mat.value[2][1] = 0;
-
-  mat.value[0][2] = 0;
-  mat.value[1][2] = 0;
-  mat.value[2][2] = 1;
-
-  mat.value[0][3] = 0;
-  mat.value[1][3] = 0;
-  mat.value[2][3] = 0;
-
-  return mat;
-}
-
-void printMat(const Eigen::Matrix3d & mat)
-{
-  printf("%.2f %.2f %.2f\n", mat(0, 0), mat(0, 1), mat(0, 2));
-  printf("%.2f %.2f %.2f\n", mat(1, 0), mat(1, 1), mat(1, 2));
-  printf("%.2f %.2f %.2f\n", mat(2, 0), mat(2, 1), mat(2, 2));
-}
-
-void printMat(const rgl_mat3x4f & mat)
-{
-  printf("%.2f %.2f %.2f %.2f\n", mat.value[0][0], mat.value[0][1], mat.value[0][2], mat.value[0][3]);
-  printf("%.2f %.2f %.2f %.2f\n", mat.value[1][0], mat.value[1][1], mat.value[1][2], mat.value[1][3]);
-  printf("%.2f %.2f %.2f %.2f\n", mat.value[2][0], mat.value[2][1], mat.value[2][2], mat.value[2][3]);
-}
-
-/**
- * Sets given rotation to RGL matrix with possible correction for RGL base orientation aligned with Z axis
- * @param entity_tf reference to the matrix where changes are applied
- * @param rotation rotation quaternion to apply
- * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
- */
-void setRglMatRotation(rgl_mat3x4f & entity_tf, geometry_msgs::msg::Quaternion rotation, const bool correct_rgl_bias = true)
-{
-/*
-  geometry_msgs::msg::Vector3 rpy1;
-  rpy1.x = M_PI/4;
-  rpy1.y = M_PI/4;
-  rpy1.z = 0;
-  geometry_msgs::msg::Vector3 rpy2;
-  rpy2.x = 0;
-  rpy2.y = 0;
-  rpy2.z = M_PI/2;
-  const auto q1 = quaternion_operation::convertEulerAngleToQuaternion(rpy1);
-  const auto q2 = quaternion_operation::convertEulerAngleToQuaternion(rpy2);
-  const auto r1 = quaternion_operation::rotation(q1, q2);   // rotates around local frame
-  const auto r2 = q2*q1;   // rotates around global frame
-  std::cout << "Rot1: " << r1.x << ' ' << r1.y << ' ' << r1.z << ' ' << r1.w << std::endl;
-  std::cout << "Rot2: " << r2.x << ' ' << r2.y << ' ' << r2.z << ' ' << r2.w << std::endl;
-*/
-
-  if (correct_rgl_bias) {
-    geometry_msgs::msg::Vector3 rpy;
-    rpy.x = 0;
-    rpy.y = M_PI/2;
-    rpy.z = 0;
-    const auto bias = quaternion_operation::convertEulerAngleToQuaternion(rpy);
-    rotation = quaternion_operation::rotation(rotation, bias);   // rotates about a local frame
-    // rotation = bias * rotation;   // rotates about a global frame
-  }
-  const auto rotation_mat = quaternion_operation::getRotationMatrix(rotation);
-
-  for (uint8_t row = 0; row < 3; ++row) {
-    for (uint8_t col = 0; col < 3; ++col) {
-      // no need to convert from column-major to row-major as () operator already does this
-      entity_tf.value[row][col] = static_cast<float>(rotation_mat(row, col));
-    }
-  }
-}
-
-/**
- * Converts quaternion rotation to RGL matrix rotation (position is set to [0, 0, 0])
- * @param rotation rotation quaternion
- * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
- * @return rotation in matrix rgl_mat3x4f
- */
-rgl_mat3x4f getRglMatRotation(const geometry_msgs::msg::Quaternion & rotation, const bool correct_rgl_bias = true)
-{
-  rgl_mat3x4f tf = getRglIdentity();
-  setRglMatRotation(tf, rotation, correct_rgl_bias);
-  return tf;
-}
-
-/**
- * Sets given position to RGL matrix
- * @param entity_tf reference to the matrix to modify
- * @param position position to set in matrix
- */
-void setRglMatPosition(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Point & position)
-{
-  entity_tf.value[0][3] = position.x;
-  entity_tf.value[1][3] = position.y;
-  entity_tf.value[2][3] = position.z;
-}
-
-/**
- * Converts pose (both position and orientation) to RGL matrix
- * @param entity_tf RGL matrix to change values
- * @param pose pose with values to transfer into RGL matrix
- * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
- */
-void setRglMatPose(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose, const bool correct_rgl_bias = true)
-{
-  setRglMatRotation(entity_tf, pose.orientation, correct_rgl_bias);
-  setRglMatPosition(entity_tf, pose.position);
-}
-
-/**
- * Inverts position and converts it to RGL matrix
- * @param entity_tf RGL matrix to modify
- * @param pose pose with position to invert
- * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
- */
-void setRglMatPositionInv(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose)
-{
-  auto pose_inv = pose;
-  {
-    pose_inv.position.x = -pose.position.x;
-    pose_inv.position.y = -pose.position.y;
-    pose_inv.position.z = -pose.position.z;
-  }
-  setRglMatPosition(entity_tf, pose_inv.position);
-}
-
-/**
- * Inverts rotation and converts it to RGL matrix
- * @param entity_tf RGL matrix to modify
- * @param pose pose with rotation to invert
- * @param correct_rgl_bias optional, if set to true applies 90 degree rotation about Y axis
- */
-void setRglMatRotationInv(rgl_mat3x4f & entity_tf, const geometry_msgs::msg::Pose & pose, const bool correct_rgl_bias = true)
-{
-  auto pose_inv = pose;
-  {
-    pose_inv.orientation.x = -pose.orientation.x;
-    pose_inv.orientation.y = -pose.orientation.y;
-    pose_inv.orientation.z = -pose.orientation.z;
-  }
-  setRglMatRotation(entity_tf, pose_inv.orientation, correct_rgl_bias);
-}
-
-/**
- * Initialize vertices of a box with given dimensions
- * @param vertices reference to an array to write values to
- * @param depth depth of a box
- * @param width width of a box
- * @param height height of a box
- */
-void initBoxVertices(rgl_vec3f (&vertices)[8], float depth, float width, float height)
-{
-  vertices[0].value[0] = -0.5 * depth;
-  vertices[0].value[1] = -0.5 * width;
-  vertices[0].value[2] = -0.5 * height;
-
-  vertices[1].value[0] = -0.5 * depth;
-  vertices[1].value[1] = -0.5 * width;
-  vertices[1].value[2] = +0.5 * height;
-
-  vertices[2].value[0] = -0.5 * depth;
-  vertices[2].value[1] = +0.5 * width;
-  vertices[2].value[2] = -0.5 * height;
-
-  vertices[3].value[0] = -0.5 * depth;
-  vertices[3].value[1] = +0.5 * width;
-  vertices[3].value[2] = +0.5 * height;
-
-  vertices[4].value[0] = +0.5 * depth;
-  vertices[4].value[1] = -0.5 * width;
-  vertices[4].value[2] = -0.5 * height;
-
-  vertices[5].value[0] = +0.5 * depth;
-  vertices[5].value[1] = -0.5 * width;
-  vertices[5].value[2] = +0.5 * height;
-
-  vertices[6].value[0] = +0.5 * depth;
-  vertices[6].value[1] = +0.5 * width;
-  vertices[6].value[2] = -0.5 * height;
-
-  vertices[7].value[0] = +0.5 * depth;
-  vertices[7].value[1] = +0.5 * width;
-  vertices[7].value[2] = +0.5 * height;
-}
-
-/**
- * Initialize indices of a box (works with initBoxVertices())
- * @param indices reference to an array to write values to
- */
-void initBoxIndices(rgl_vec3i (&indices)[12])
-{
-  indices[0].value[0] = 0;
-  indices[0].value[1] = 1;
-  indices[0].value[2] = 2;
-
-  indices[1].value[0] = 1;
-  indices[1].value[1] = 3;
-  indices[1].value[2] = 2;
-
-  indices[2].value[0] = 4;
-  indices[2].value[1] = 6;
-  indices[2].value[2] = 5;
-
-  indices[3].value[0] = 5;
-  indices[3].value[1] = 6;
-  indices[3].value[2] = 7;
-
-  indices[4].value[0] = 0;
-  indices[4].value[1] = 4;
-  indices[4].value[2] = 1;
-
-  indices[5].value[0] = 1;
-  indices[5].value[1] = 4;
-  indices[5].value[2] = 5;
-
-  indices[6].value[0] = 2;
-  indices[6].value[1] = 3;
-  indices[6].value[2] = 6;
-
-  indices[7].value[0] = 3;
-  indices[7].value[1] = 7;
-  indices[7].value[2] = 6;
-
-  indices[8].value[0] = 0;
-  indices[8].value[1] = 2;
-  indices[8].value[2] = 4;
-
-  indices[9].value[0] = 2;
-  indices[9].value[1] = 6;
-  indices[9].value[2] = 4;
-
-  indices[10].value[0] = 1;
-  indices[10].value[1] = 5;
-  indices[10].value[2] = 3;
-
-  indices[11].value[0] = 3;
-  indices[11].value[1] = 5;
-  indices[11].value[2] = 7;
-}
-
 
 namespace simple_sensor_simulator
 {
@@ -302,9 +53,6 @@ Raycaster::Raycaster(std::string embree_config)
 {
 }
 
-/**
- * Initialize RGL nodes and connect them into a graph (this only needs to be done once)
- */
 void Raycaster::initRglNodes()
 {
   use_rays_ = nullptr;
@@ -327,13 +75,6 @@ Raycaster::~Raycaster()
   CATCH_RGL_ERROR(rgl_graph_destroy(use_rays_));
 }
 
-/**
- * Creates a RGL mesh and entity of an object and stores it, if entity with provided name already exists this does nothing
- * @param name Name of the entity to create
- * @param depth Depth of a box model used in lidar simulation
- * @param width Width of a box model used in lidar simulation
- * @param height Height of a box model used in lidar simulation
- */
 void Raycaster::addEntity(const std::string & name, float depth, float width, float height)
 {
   const auto it = entities_.find(name);   // if entity exists skip adding
@@ -342,9 +83,9 @@ void Raycaster::addEntity(const std::string & name, float depth, float width, fl
   }
   rgl_mesh_t mesh = nullptr;
   rgl_vec3f vertices[8];
-  initBoxVertices(vertices, depth, width, height);   // TODO check whether box is oriented in way it should
+  rgl::initBoxVertices(vertices, depth, width, height);   // TODO check whether box is oriented in way it should
   rgl_vec3i indices[12];
-  initBoxIndices(indices);
+  rgl::initBoxIndices(indices);
   CATCH_RGL_ERROR(rgl_mesh_create(&mesh, vertices, 8, indices, 12));   // Saves handle to a mesh in the pointer 'mesh'
   rgl_entity_t entity = nullptr;
   CATCH_RGL_ERROR(rgl_entity_create(&entity, nullptr, mesh));   // Saves handle to an entity in the pointer 'entity'
@@ -352,12 +93,6 @@ void Raycaster::addEntity(const std::string & name, float depth, float width, fl
   entities_pose_.insert({name, geometry_msgs::msg::Pose()});
 }
 
-/**
- * Sets pose of an entity with provided name
- * @param name Name of an entity to relocate
- * @param pose Desired entity pose
- * @return True if an entity with provided name exists, else false
- */
 bool Raycaster::setEntityPose(const std::string & name, const geometry_msgs::msg::Pose & pose)
 {
   const auto it = entities_pose_.find(name);
@@ -368,14 +103,6 @@ bool Raycaster::setEntityPose(const std::string & name, const geometry_msgs::msg
   return true;
 }
 
-/**
- * Adjusts RGL entity pose to account for ego offset in world frame, in other worlds convert pose
- * from world frame to origin frame
- * @param name Name of the entity to adjust
- * @param pose Pose (position and orientation) of entity in world frame
- * @param origin pose (position and orientation) of ego in world frame
- * @return True if entity with provided name exists, else false
- */
 bool Raycaster::adjustPose(const std::string & name, const geometry_msgs::msg::Pose & pose,
   const geometry_msgs::msg::Pose & origin)
 {
@@ -385,16 +112,11 @@ bool Raycaster::adjustPose(const std::string & name, const geometry_msgs::msg::P
   }
   const auto pose_new = math::geometry::getRelativePose(origin, pose);
   rgl_mat3x4f entity_tf;
-  setRglMatPose(entity_tf, pose_new, false);
+  rgl::setRglMatPose(entity_tf, pose_new, false);
   CATCH_RGL_ERROR(rgl_entity_set_pose(it->second, &entity_tf));
   return true;
 }
 
-/**
- * Adjust poses of all RGL entities to comply with ego frame
- * @param origin Pose of new base frame to locate entites
- * @return True if successfully set all poses, else false
- */
 bool Raycaster::setRglPoses(const geometry_msgs::msg::Pose & origin)
 {
   for (const auto & [name, pose] : entities_pose_) {
@@ -421,7 +143,7 @@ void Raycaster::setDirection(
   rotation_matrices_rgl_.clear();
   for (const auto & q : quat_directions) {
     rotation_matrices_.push_back(quaternion_operation::getRotationMatrix(q));
-    rotation_matrices_rgl_.push_back(getRglMatRotation(q));   // Add ray rotations in RGL format
+    rotation_matrices_rgl_.push_back(rgl::getRglMatRotation(q));   // Add ray rotations in RGL format
   }
   initRglNodes();   // init RGL here because ray directions are needed
 }
@@ -488,7 +210,7 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
     // TODO should add ID
   }
 
-/*
+#if __DO_NOT_COMPILE_THIS__  // this legacy code is here only for reference
   // Run as many threads as physical cores (which is usually /2 virtual threads)
   // In heavy loads virtual threads (hyper-threading) add little to the overall performance
   // This also minimizes cost of creating a thread (roughly 10us on Intel/Linux)
@@ -522,7 +244,7 @@ const sensor_msgs::msg::PointCloud2 Raycaster::raycast(
 
   geometry_ids_.clear();
   primitive_ptrs_.clear();
-*/
+#endif  // DO_NOT_COMPILE_THIS_
 
   sensor_msgs::msg::PointCloud2 pointcloud_msg;
   pcl::toROSMsg(*cloud, pointcloud_msg);

@@ -22,6 +22,8 @@
 #include <string>
 #include <vector>
 
+#define PRINT_DEBUG_INFO_LIDAR_SENSOR 0
+
 namespace simple_sensor_simulator
 {
 template <>
@@ -30,15 +32,19 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
   -> sensor_msgs::msg::PointCloud2
 {
   boost::optional<geometry_msgs::msg::Pose> ego_pose;
+#if PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
   std::cout << "==================================== Number of entities: " << status.size() << " ============\n";
+#endif  // PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
   // TODO delete all these unnecessary prints
   for (const auto & s : status) {
     if (configuration_.entity() == s.name()) {
       geometry_msgs::msg::Pose pose;
       simulation_interface::toMsg(s.pose(), pose);
       ego_pose = pose;
+#if PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
       std::cout << "============ ego ============" << std::endl;
       std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
+#endif  // PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
     } else {
       geometry_msgs::msg::Pose pose;
       simulation_interface::toMsg(s.pose(), pose);
@@ -56,8 +62,10 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
       raycaster_.addEntity(s.name(), s.bounding_box().dimensions().x(), s.bounding_box().dimensions().y(),
         s.bounding_box().dimensions().z());
       raycaster_.setEntityPose(s.name(), pose);
+#if PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
       std::cout << "============ " << s.name() << " ============" << std::endl;
       std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
+#endif  // PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
     }
   }
   geometry_msgs::msg::Pose pose; // TODO delete phantom entity
@@ -70,8 +78,10 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
   // pose.position.z = -2.80007;
   raycaster_.addEntity("testowanazwa", 4.77, 2.25, 2.5);
   raycaster_.setEntityPose("testowanazwa", pose);
+#if PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
   std::cout << "============ phantom entity ============" << std::endl;
   std::cout << pose.position.x << ' ' << pose.position.y << ' ' << pose.position.z << std::endl;
+#endif  // PRINT_DEBUG_INFO_LIDAR_SENSOR == 1
   if (ego_pose) {
     std::vector<double> vertical_angles;
     for (const auto v : configuration_.vertical_angles()) {

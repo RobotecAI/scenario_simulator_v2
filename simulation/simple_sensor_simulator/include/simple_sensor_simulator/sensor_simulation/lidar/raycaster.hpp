@@ -53,16 +53,45 @@ public:
     std::string frame_id, const rclcpp::Time & stamp, geometry_msgs::msg::Pose origin,
     double max_distance = 100, double min_distance = 0);
   const std::vector<std::string> & getDetectedObject() const;
+/**
+ * Creates a RGL mesh and entity of an object and stores it, if entity with provided name already exists this does nothing
+ * @param name Name of the entity to create
+ * @param depth Depth of a box model used in lidar simulation
+ * @param width Width of a box model used in lidar simulation
+ * @param height Height of a box model used in lidar simulation
+ */
   void addEntity(const std::string & name, float depth, float width, float height);
+/**
+ * Sets pose of an entity with provided name
+ * @param name Name of an entity to relocate
+ * @param pose Desired entity pose
+ * @return True if an entity with provided name exists, else false
+ */
   bool setEntityPose(const std::string & name, const geometry_msgs::msg::Pose & pose);
   void setDirection(
     const simulation_api_schema::LidarConfiguration & configuration,
     double horizontal_angle_start = 0, double horizontal_angle_end = 2 * M_PI);
 
 private:
+/**
+ * Initialize RGL nodes and connect them into a graph (this only needs to be done once)
+ */
   void initRglNodes();
+/**
+ * Adjusts RGL entity pose to account for ego offset in world frame, in other worlds convert pose
+ * from world frame to origin frame
+ * @param name Name of the entity to adjust
+ * @param pose Pose (position and orientation) of entity in world frame
+ * @param origin pose (position and orientation) of ego in world frame
+ * @return True if entity with provided name exists, else false
+ */
   bool adjustPose(const std::string & name, const geometry_msgs::msg::Pose & pose, 
     const geometry_msgs::msg::Pose & origin);
+/**
+ * Adjust poses of all RGL entities to comply with ego frame
+ * @param origin Pose of new base frame to locate entites
+ * @return True if successfully set all poses, else false
+ */
   bool setRglPoses(const geometry_msgs::msg::Pose & origin);
   std::vector<geometry_msgs::msg::Quaternion> getDirections(
     const std::vector<double> & vertical_angles, double horizontal_angle_start,

@@ -47,6 +47,7 @@ ament_auto_add_library(simple_sensor_simulator_component SHARED
   src/sensor_simulation/primitives/primitive.cpp
   src/sensor_simulation/sensor_simulation.cpp
   src/simple_sensor_simulator.cpp
+  src/rgl/utils/rgl_utils.cpp
 )
 target_link_libraries(simple_sensor_simulator_component
   embree3
