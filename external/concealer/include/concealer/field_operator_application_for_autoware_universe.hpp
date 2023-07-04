@@ -16,7 +16,6 @@
 #define CONCEALER__AUTOWARE_UNIVERSE_USER_HPP_
 
 #include <autoware_adapi_v1_msgs/msg/mrm_state.hpp>
-#include <autoware_adapi_v1_msgs/srv/set_route_points.hpp>
 #include <autoware_auto_control_msgs/msg/ackermann_control_command.hpp>
 #include <autoware_auto_perception_msgs/msg/traffic_signal_array.hpp>
 #include <autoware_auto_planning_msgs/msg/path_with_lane_id.hpp>
@@ -30,6 +29,7 @@
 #include <concealer/utility/publisher_wrapper.hpp>
 #include <concealer/utility/service_with_validation.hpp>
 #include <concealer/utility/subscriber_wrapper.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
 #include <autoware_adapi_v1_msgs/srv/change_operation_mode.hpp>
 #include <tier4_external_api_msgs/srv/engage.hpp>
@@ -50,6 +50,8 @@ class FieldOperatorApplicationFor<AutowareUniverse>
 
   // clang-format off
   PublisherWrapper<geometry_msgs::msg::PoseWithCovarianceStamped>     setInitialPose;
+  PublisherWrapper<geometry_msgs::msg::PoseStamped>               setCheckpoint;
+  PublisherWrapper<geometry_msgs::msg::PoseStamped>               setGoalPose;
 
   SubscriberWrapper<tier4_system_msgs::msg::AutowareState, ThreadSafety::safe>         getAutowareState;
   SubscriberWrapper<autoware_auto_control_msgs::msg::AckermannControlCommand>          getAckermannControlCommand;
@@ -61,7 +63,6 @@ class FieldOperatorApplicationFor<AutowareUniverse>
 
   ServiceWithValidation<tier4_rtc_msgs::srv::CooperateCommands>               requestCooperateCommands;
   ServiceWithValidation<autoware_adapi_v1_msgs::srv::ChangeOperationMode>     requestEngage;
-  ServiceWithValidation<autoware_adapi_v1_msgs::srv::SetRoutePoints>          requestSetRoutePoints;
   ServiceWithValidation<tier4_external_api_msgs::srv::SetVelocityLimit>       requestSetVelocityLimit;
 
   Cooperator current_cooperator = Cooperator::simulator;
@@ -111,6 +112,8 @@ public:
   : FieldOperatorApplication(std::forward<decltype(xs)>(xs)...),
     // clang-format off
     setInitialPose("/initialpose", *this),
+    setCheckpoint("/planning/mission_planning/checkpoint", *this),
+    setGoalPose("/planning/mission_planning/goal", *this),
     getAutowareState("/api/iv_msgs/autoware/state", *this),
     getAckermannControlCommand("/control/command/control_cmd", *this),
     getCooperateStatusArray("/api/external/get/rtc_status", *this, [this](const auto & v) { latest_cooperate_status_array = v;
@@ -121,7 +124,6 @@ public:
     getTurnIndicatorsCommandImpl("/control/command/turn_indicators_cmd", *this),
     requestCooperateCommands("/api/external/set/rtc_commands", *this),
     requestEngage("/api/operation_mode/change_to_autonomous", *this),
-    requestSetRoutePoints("/api/routing/set_route_points", *this),
     requestSetVelocityLimit("/api/autoware/set/velocity_limit", *this),
     getPathWithLaneId("/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id", *this)
   // clang-format on
