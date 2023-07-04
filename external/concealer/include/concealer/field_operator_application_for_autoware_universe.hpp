@@ -32,7 +32,7 @@
 #include <concealer/utility/subscriber_wrapper.hpp>
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
 #include <autoware_adapi_v1_msgs/srv/change_operation_mode.hpp>
-#include <autoware_adapi_v1_msgs/srv/initialize_localization.hpp>
+#include <tier4_external_api_msgs/srv/engage.hpp>
 #include <tier4_planning_msgs/msg/trajectory.hpp>
 #include <tier4_external_api_msgs/srv/set_velocity_limit.hpp>
 #include <tier4_external_api_msgs/msg/emergency.hpp>
@@ -49,6 +49,8 @@ class FieldOperatorApplicationFor<AutowareUniverse>
   friend class TransitionAssertion<FieldOperatorApplicationFor<AutowareUniverse>>;
 
   // clang-format off
+  PublisherWrapper<geometry_msgs::msg::PoseWithCovarianceStamped>     setInitialPose;
+
   SubscriberWrapper<tier4_system_msgs::msg::AutowareState, ThreadSafety::safe>         getAutowareState;
   SubscriberWrapper<autoware_auto_control_msgs::msg::AckermannControlCommand>          getAckermannControlCommand;
   SubscriberWrapper<tier4_rtc_msgs::msg::CooperateStatusArray>                         getCooperateStatusArray;
@@ -59,7 +61,6 @@ class FieldOperatorApplicationFor<AutowareUniverse>
 
   ServiceWithValidation<tier4_rtc_msgs::srv::CooperateCommands>               requestCooperateCommands;
   ServiceWithValidation<autoware_adapi_v1_msgs::srv::ChangeOperationMode>     requestEngage;
-  ServiceWithValidation<autoware_adapi_v1_msgs::srv::InitializeLocalization>  requestInitialPose;
   ServiceWithValidation<autoware_adapi_v1_msgs::srv::SetRoutePoints>          requestSetRoutePoints;
   ServiceWithValidation<tier4_external_api_msgs::srv::SetVelocityLimit>       requestSetVelocityLimit;
 
@@ -109,6 +110,7 @@ public:
   CONCEALER_PUBLIC explicit FieldOperatorApplicationFor(Ts &&... xs)
   : FieldOperatorApplication(std::forward<decltype(xs)>(xs)...),
     // clang-format off
+    setInitialPose("/initialpose", *this),
     getAutowareState("/api/iv_msgs/autoware/state", *this),
     getAckermannControlCommand("/control/command/control_cmd", *this),
     getCooperateStatusArray("/api/external/get/rtc_status", *this, [this](const auto & v) { latest_cooperate_status_array = v;
@@ -119,7 +121,6 @@ public:
     getTurnIndicatorsCommandImpl("/control/command/turn_indicators_cmd", *this),
     requestCooperateCommands("/api/external/set/rtc_commands", *this),
     requestEngage("/api/operation_mode/change_to_autonomous", *this),
-    requestInitialPose("/api/localization/initialize", *this),
     requestSetRoutePoints("/api/routing/set_route_points", *this),
     requestSetVelocityLimit("/api/autoware/set/velocity_limit", *this),
     getPathWithLaneId("/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id", *this)

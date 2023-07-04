@@ -243,10 +243,7 @@ auto FieldOperatorApplicationFor<AutowareUniverse>::initialize(
         initial_pose_msg.header.frame_id = "map";
         initial_pose_msg.pose.pose = initial_pose;
 
-        auto request = std::make_shared<autoware_adapi_v1_msgs::srv::InitializeLocalization::Request>();
-        std::vector<geometry_msgs::msg::PoseWithCovarianceStamped> stamped_poses = {initial_pose_msg};
-        request->pose.push_back(initial_pose_msg) ;
-        requestInitialPose(request);
+        return setInitialPose(initial_pose_msg);
       });
 
       // TODO(yamacir-kit) AFTER /api/autoware/set/initialize_pose IS SUPPORTED.
