@@ -371,6 +371,7 @@ auto FieldOperatorApplicationFor<AutowareUniverse>::receiveEmergencyState(
   if (message.emergency) {
     throw common::Error("Emergency state received");
   }
+  minimum_risk_maneuver_state = "NORMAL";
   minimum_risk_maneuver_behavior = "";
 }
 
