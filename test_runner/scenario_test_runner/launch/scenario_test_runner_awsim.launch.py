@@ -61,7 +61,7 @@ def launch_setup(context, *args, **kwargs):
     architecture_type       = LaunchConfiguration("architecture_type",       default="awf/universe")
     autoware_launch_file    = LaunchConfiguration("autoware_launch_file",    default=default_autoware_launch_file_of(architecture_type.perform(context)))
     autoware_launch_package = LaunchConfiguration("autoware_launch_package", default=default_autoware_launch_package_of(architecture_type.perform(context)))
-    global_frame_rate       = LaunchConfiguration("global_frame_rate",       default=3.0)
+    global_frame_rate       = LaunchConfiguration("global_frame_rate",       default=10.0)
     global_real_time_factor = LaunchConfiguration("global_real_time_factor", default=1.0)
     global_timeout          = LaunchConfiguration("global_timeout",          default=180)
     initialize_duration     = LaunchConfiguration("initialize_duration",     default=120)
