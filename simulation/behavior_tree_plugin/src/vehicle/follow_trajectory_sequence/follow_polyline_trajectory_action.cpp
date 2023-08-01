@@ -13,7 +13,8 @@
 // limitations under the License.
 
 #include <behavior_tree_plugin/vehicle/follow_trajectory_sequence/follow_polyline_trajectory_action.hpp>
-
+#include <type_traits>
+#include <typeinfo>
 namespace entity_behavior
 {
 namespace vehicle
@@ -46,6 +47,33 @@ auto FollowPolylineTrajectoryAction::calculateObstacle(
   return std::nullopt;
 }
 
+template <class T>
+std::string
+type_name()
+{
+    typedef typename std::remove_reference<T>::type TR;
+    std::unique_ptr<char, void(*)(void*)> own
+           (
+#ifndef _MSC_VER
+                abi::__cxa_demangle(typeid(TR).name(), nullptr,
+                                           nullptr, nullptr),
+#else
+                nullptr,
+#endif
+                std::free
+           );
+    std::string r = own != nullptr ? own.get() : typeid(TR).name();
+    if (std::is_const<TR>::value)
+        r += " const";
+    if (std::is_volatile<TR>::value)
+        r += " volatile";
+    if (std::is_lvalue_reference<T>::value)
+        r += "&";
+    else if (std::is_rvalue_reference<T>::value)
+        r += "&&";
+    return r;
+}
+
 auto FollowPolylineTrajectoryAction::providedPorts() -> BT::PortsList
 {
   auto ports = VehicleActionNode::providedPorts();
@@ -56,16 +84,22 @@ auto FollowPolylineTrajectoryAction::providedPorts() -> BT::PortsList
 
 auto FollowPolylineTrajectoryAction::tick() -> BT::NodeStatus
 {
+  if (!trajectory_follower)
+  {
+    trajectory_follower = std::make_unique<PositionModePolylineTrajectoryFollower>();
+  }
+
   if (getBlackBoardValues();
       request != traffic_simulator::behavior::Request::FOLLOW_POLYLINE_TRAJECTORY or
-      not getInput<decltype(trajectory_parameter)>(
-        "polyline_trajectory_parameter", trajectory_parameter) or
+      not getInput<decltype(trajectory_parameter)>("polyline_trajectory_parameter", trajectory_parameter) or
       not getInput<decltype(target_speed)>("target_speed", target_speed) or
       not trajectory_parameter) {
     return BT::NodeStatus::FAILURE;
   } else if (
+
     const auto updated_status =
-      makeUpdatedStatus(entity_status, trajectory_parameter, behavior_parameter, step_time)) {
+      trajectory_follower->followTrajectory(entity_status, trajectory_parameter, behavior_parameter, step_time)) {
+      // makeUpdatedStatus(entity_status, trajectory_parameter, behavior_parameter, step_time)) {
     setOutput("updated_status", *updated_status);
     setOutput("waypoints", calculateWaypoints());
     setOutput("obstacle", calculateObstacle(calculateWaypoints()));
