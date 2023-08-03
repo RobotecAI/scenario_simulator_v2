@@ -23,7 +23,7 @@ auto FollowPolylineTrajectoryAction::calculateWaypoints()
 {
   auto waypoints = traffic_simulator_msgs::msg::WaypointsArray();
   waypoints.waypoints.push_back(entity_status.pose.position);
-  for (const auto & vertex : trajectory_parameter->shape.vertices) {
+  for (const auto & vertex : polyline_trajectory->shape.vertices) {
     waypoints.waypoints.push_back(vertex.position.position);
   }
   return waypoints;
@@ -49,7 +49,7 @@ auto FollowPolylineTrajectoryAction::calculateObstacle(
 auto FollowPolylineTrajectoryAction::providedPorts() -> BT::PortsList
 {
   auto ports = VehicleActionNode::providedPorts();
-  ports.emplace(BT::InputPort<decltype(trajectory_parameter)>("polyline_trajectory_parameter"));
+  ports.emplace(BT::InputPort<decltype(polyline_trajectory)>("polyline_trajectory"));
   ports.emplace(BT::InputPort<decltype(target_speed)>("target_speed"));
   return ports;
 }
@@ -57,20 +57,19 @@ auto FollowPolylineTrajectoryAction::providedPorts() -> BT::PortsList
 auto FollowPolylineTrajectoryAction::tick() -> BT::NodeStatus
 {
   if (!trajectory_follower) {
-    trajectory_follower = std::make_unique<PositionModePolylineTrajectoryFollower>();
+    trajectory_follower = std::make_unique<traffic_simulator::behavior::PositionModePolylineTrajectoryFollower>();
   }
 
   if (getBlackBoardValues();
       request != traffic_simulator::behavior::Request::FOLLOW_POLYLINE_TRAJECTORY or
-      not getInput<decltype(trajectory_parameter)>(
-        "polyline_trajectory_parameter", trajectory_parameter) or
+      not getInput<decltype(polyline_trajectory)>("polyline_trajectory", polyline_trajectory) or
       not getInput<decltype(target_speed)>("target_speed", target_speed) or
-      not trajectory_parameter) {
+      not polyline_trajectory) {
     trajectory_follower.reset();
     return BT::NodeStatus::FAILURE;
   } else if (trajectory_follower->setParameters(entity_status, behavior_parameter, step_time);
              const auto updated_status =
-               trajectory_follower->followTrajectory(trajectory_parameter)) {
+               trajectory_follower->followTrajectory(polyline_trajectory)) {
     setOutput("updated_status", *updated_status);
     setOutput("waypoints", calculateWaypoints());
     setOutput("obstacle", calculateObstacle(calculateWaypoints()));

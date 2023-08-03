@@ -226,10 +226,9 @@ void VehicleEntity::requestAssignRoute(const std::vector<geometry_msgs::msg::Pos
 }
 
 auto VehicleEntity::requestFollowTrajectory(
-  const std::shared_ptr<follow_trajectory::Parameter<follow_trajectory::Polyline>> & parameter)
-  -> void
+  const std::shared_ptr<traffic_simulator_msgs::msg::PolylineTrajectory> & parameter) -> void
 {
-  behavior_plugin_ptr_->setFollowPolylineTrajectoryParameter(parameter);
+  behavior_plugin_ptr_->setPolylineTrajectory(parameter);
   behavior_plugin_ptr_->setRequest(behavior::Request::FOLLOW_POLYLINE_TRAJECTORY);
 }
 
@@ -302,7 +301,7 @@ void VehicleEntity::setHdMapUtils(const std::shared_ptr<hdmap_utils::HdMapUtils>
 }
 
 void VehicleEntity::setTrafficLightManager(
-  const std::shared_ptr<traffic_simulator::TrafficLightManagerBase> & ptr)
+  const std::shared_ptr<traffic_simulator::TrafficLightManager> & ptr)
 {
   EntityBase::setTrafficLightManager(ptr);
   behavior_plugin_ptr_->setTrafficLightManager(traffic_light_manager_);

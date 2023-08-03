@@ -15,7 +15,7 @@
 #ifndef BEHAVIOR_TREE_PLUGIN__VEHICLE__FOLLOW_POLYLINE_TRAJECTORY_ACTION_HPP_
 #define BEHAVIOR_TREE_PLUGIN__VEHICLE__FOLLOW_POLYLINE_TRAJECTORY_ACTION_HPP_
 
-#include <behavior_tree_plugin/vehicle/follow_trajectory_sequence/polyline_trajectory_follower.hpp>
+#include <traffic_simulator/behavior/polyline_trajectory_follower.hpp>
 #include <behavior_tree_plugin/vehicle/vehicle_action_node.hpp>
 
 namespace entity_behavior
@@ -24,17 +24,13 @@ namespace vehicle
 {
 struct FollowPolylineTrajectoryAction : public VehicleActionNode
 {
-  ~FollowPolylineTrajectoryAction() = default;
-
-  std::shared_ptr<
-    traffic_simulator::follow_trajectory::Parameter<traffic_simulator::follow_trajectory::Polyline>>
-    trajectory_parameter;
+  std::shared_ptr<traffic_simulator_msgs::msg::PolylineTrajectory> polyline_trajectory;
 
   std::optional<double> target_speed;
 
   std::string mode = "";
 
-  std::unique_ptr<PolylineTrajectoryFollower> trajectory_follower;
+  std::unique_ptr<traffic_simulator::behavior::PositionModePolylineTrajectoryFollower> trajectory_follower;
 
   using VehicleActionNode::VehicleActionNode;
 
