@@ -15,8 +15,8 @@
 #ifndef BEHAVIOR_TREE_PLUGIN__VEHICLE__FOLLOW_POLYLINE_TRAJECTORY_ACTION_HPP_
 #define BEHAVIOR_TREE_PLUGIN__VEHICLE__FOLLOW_POLYLINE_TRAJECTORY_ACTION_HPP_
 
-#include <behavior_tree_plugin/vehicle/vehicle_action_node.hpp>
 #include <behavior_tree_plugin/vehicle/follow_trajectory_sequence/polyline_trajectory_follower.hpp>
+#include <behavior_tree_plugin/vehicle/vehicle_action_node.hpp>
 
 namespace entity_behavior
 {
@@ -24,12 +24,6 @@ namespace vehicle
 {
 struct FollowPolylineTrajectoryAction : public VehicleActionNode
 {
-  // FollowPolylineTrajectoryAction(const std::string & name, const BT::NodeConfiguration & config): VehicleActionNode(name, config) 
-  //{
-    // getInput<decltype(trajectory_parameter)>("polyline_trajectory_parameter", trajectory_parameter);
-  //   trajectory_parameter->dynamic_constraints_ignorable ? mode = "true" : mode = "false";
-  // }
-
   ~FollowPolylineTrajectoryAction() = default;
 
   std::shared_ptr<
@@ -41,9 +35,8 @@ struct FollowPolylineTrajectoryAction : public VehicleActionNode
   std::string mode = "";
 
   std::unique_ptr<PolylineTrajectoryFollower> trajectory_follower;
-  using VehicleActionNode::VehicleActionNode;
 
-  //traffic_simulator::follow_trajectory::TrajectoryFollower follower;
+  using VehicleActionNode::VehicleActionNode;
 
   auto calculateWaypoints() -> const traffic_simulator_msgs::msg::WaypointsArray override;
 

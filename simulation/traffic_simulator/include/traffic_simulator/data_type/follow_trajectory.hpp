@@ -77,12 +77,6 @@ struct Parameter  // OpenSCENARIO 1.2 FollowTrajectoryAction
   }
 };
 
-auto makeUpdatedStatus(
-  const traffic_simulator_msgs::msg::EntityStatus &,
-  std::shared_ptr<traffic_simulator::follow_trajectory::Parameter<
-    traffic_simulator::follow_trajectory::Polyline>> &,
-  const traffic_simulator_msgs::msg::BehaviorParameter &, double step_time)
-  -> std::optional<traffic_simulator_msgs::msg::EntityStatus>;
 }  // namespace follow_trajectory
 }  // namespace traffic_simulator
 
