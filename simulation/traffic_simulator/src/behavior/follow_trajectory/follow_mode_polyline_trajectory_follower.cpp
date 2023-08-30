@@ -1,5 +1,8 @@
+#include <quaternion_operation/quaternion_operation.h>
+
 #include <geometry/vector3/hypot.hpp>
 #include <geometry/vector3/operator.hpp>
+#include <geometry_msgs/msg/pose_array.hpp>
 #include <iostream>
 #include <scenario_simulator_exception/exception.hpp>
 #include <traffic_simulator/behavior/follow_trajectory/follow_mode_polyline_trajectory_follower.hpp>
@@ -48,6 +51,15 @@ FollowModePolylineTrajectoryFollower::followTrajectory(
   const auto [target_position, desired_speed] = target_and_speed_data.value();
 
   const auto desired_steering = getSteering(target_position, desired_speed);
+
+  auto interpolated_line = interpolate(3.5, true);
+  geometry_msgs::msg::PoseArray path_msg = geometry_msgs::msg::PoseArray();
+  std::for_each(interpolated_line.begin(), interpolated_line.end(), [&](const auto & element) {
+    path_msg.poses.push_back(element);
+  });
+  path_msg.header.frame_id = "map";
+  path_msg.header.stamp = rclcpp::Time();
+  publisher().publish(path_msg);
 
   return vehicle.createUpdatedStatus(desired_steering, desired_speed, step_time_m);
 }

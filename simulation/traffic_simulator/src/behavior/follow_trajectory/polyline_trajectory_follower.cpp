@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <quaternion_operation/quaternion_operation.h>
+
 #include <arithmetic/floating_point/comparison.hpp>
 #include <geometry/vector3/operator.hpp>
 #include <iostream>
@@ -254,6 +256,79 @@ auto PolylineTrajectoryFollower::getDesiredAcceleration(
   }
 
   return desired_acceleration;
+}
+
+std::vector<geometry_msgs::msg::Pose> PolylineTrajectoryFollower::interpolate(double dx, bool loop)
+{
+  std::vector<geometry_msgs::msg::Pose> trajectoryVector;
+
+  if (!polyline_trajectory_m->shape.vertices.empty())
+    trajectoryVector.push_back(polyline_trajectory_m->shape.vertices[0].position);
+
+  auto create_orientation_with_yaw = [](auto const & yaw) {
+    geometry_msgs::msg::Vector3 orientation;
+    orientation.x = 0;
+    orientation.y = 0;
+    orientation.z = yaw;
+    return quaternion_operation::convertEulerAngleToQuaternion(orientation);
+  };
+
+  for (size_t i = 0; i < polyline_trajectory_m->shape.vertices.size() - 1; ++i) {
+    const geometry_msgs::msg::Pose & currentPoint =
+      polyline_trajectory_m->shape.vertices[i].position;
+    const geometry_msgs::msg::Pose & nextPoint =
+      polyline_trajectory_m->shape.vertices[i + 1].position;
+
+    double distance = std::hypot(
+      nextPoint.position.x - currentPoint.position.x,
+      nextPoint.position.y - currentPoint.position.y);
+    int numInterpolatedPoints = std::max(1, static_cast<int>(std::ceil(distance / dx)));
+    double xStep = (nextPoint.position.x - currentPoint.position.x) / numInterpolatedPoints;
+    double yStep = (nextPoint.position.y - currentPoint.position.y) / numInterpolatedPoints;
+    double yaw = std::atan2(
+      nextPoint.position.y - currentPoint.position.y,
+      nextPoint.position.x - currentPoint.position.x);
+    for (int j = 1; j <= numInterpolatedPoints; ++j) {
+      geometry_msgs::msg::Pose point;
+      point.position.x = currentPoint.position.x + j * xStep;
+      point.position.y = currentPoint.position.y + j * yStep;
+      point.position.z = 0.0;
+      point.orientation = create_orientation_with_yaw(yaw);
+      trajectoryVector.push_back(point);
+    }
+  }
+  if (trajectoryVector.size() > 1) {
+    trajectoryVector.front().orientation = create_orientation_with_yaw(std::atan2(
+      trajectoryVector[1].position.y - trajectoryVector[0].position.y,
+      trajectoryVector[1].position.x - trajectoryVector[0].position.x));
+
+    if (loop) {
+      const geometry_msgs::msg::Pose & currentPoint =
+        polyline_trajectory_m->shape.vertices[polyline_trajectory_m->shape.vertices.size() - 1]
+          .position;
+      const geometry_msgs::msg::Pose & nextPoint =
+        polyline_trajectory_m->shape.vertices[0].position;
+      double distance = std::hypot(
+        nextPoint.position.x - currentPoint.position.x,
+        nextPoint.position.y - currentPoint.position.y);
+      int numInterpolatedPoints = std::max(1, static_cast<int>(std::ceil(distance / dx)));
+      double xStep = (nextPoint.position.x - currentPoint.position.x) / numInterpolatedPoints;
+      double yStep = (nextPoint.position.y - currentPoint.position.y) / numInterpolatedPoints;
+      double yaw = std::atan2(
+        nextPoint.position.y - currentPoint.position.y,
+        nextPoint.position.x - currentPoint.position.x);
+      for (int j = 1; j <= numInterpolatedPoints; ++j) {
+        geometry_msgs::msg::Pose point;
+        point.position.x = currentPoint.position.x + j * xStep;
+        point.position.y = currentPoint.position.y + j * yStep;
+        point.position.z = 0.0;
+        point.orientation = create_orientation_with_yaw(yaw);
+        trajectoryVector.push_back(point);
+      }
+    }
+  }
+
+  return trajectoryVector;
 }
 
 }  // namespace follow_trajectory

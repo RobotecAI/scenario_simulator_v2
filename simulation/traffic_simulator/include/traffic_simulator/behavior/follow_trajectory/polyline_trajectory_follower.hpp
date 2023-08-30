@@ -15,7 +15,10 @@
 #ifndef TRAFFIC_SIMULATOR__BEHAVIOR__POLYLINE_TRAJECTORY_FOLLOWER_HPP_
 #define TRAFFIC_SIMULATOR__BEHAVIOR__POLYLINE_TRAJECTORY_FOLLOWER_HPP_
 
+#include <geometry_msgs/msg/pose_array.hpp>
 #include <optional>
+#include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/string.hpp>
 #include <traffic_simulator/behavior/follow_trajectory/vehicle_model.hpp>
 #include <traffic_simulator_msgs/msg/behavior_parameter.hpp>
 #include <traffic_simulator_msgs/msg/entity_status.hpp>
@@ -69,6 +72,21 @@ protected:
   Vehicle vehicle;
   traffic_simulator_msgs::msg::BehaviorParameter behavior_parameter_m;
   mutable std::shared_ptr<traffic_simulator_msgs::msg::PolylineTrajectory> polyline_trajectory_m;
+
+  static auto node() -> rclcpp::Node &
+  {
+    static rclcpp::Node node{"TrajectoryFollower", "simulation"};
+    return node;
+  }
+
+  static auto publisher() -> rclcpp::Publisher<geometry_msgs::msg::PoseArray> &
+  {
+    static auto publisher = node().create_publisher<geometry_msgs::msg::PoseArray>(
+      "/trajectory_follower/path", rclcpp::QoS(1).reliable());
+    return *publisher;
+  }
+
+  std::vector<geometry_msgs::msg::Pose> interpolate(double dx, bool loop);
 };
 
 }  // namespace follow_trajectory
