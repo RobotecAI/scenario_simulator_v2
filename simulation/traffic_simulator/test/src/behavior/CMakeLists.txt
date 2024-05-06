@@ -1,0 +1,2 @@
+ament_add_gtest(test_route_planner test_route_planner.cpp)
+target_link_libraries(test_route_planner traffic_simulator)
