@@ -619,12 +619,12 @@ TEST(EntityBase, getDistanceToRightLaneBound)
   lanelet::Id id = 120659;
   lanelet::Id id_next = 120660;
 
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id);
   auto bbox = makeBoundingBox(entity_center_offset);
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
 
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
   dummy._setRouteLanelets({id_previous, id, id_next});
 
   auto distance_result = dummy.getDistanceToRightLaneBound();
@@ -641,12 +641,12 @@ TEST(EntityBase, getDistanceToLaneBound)
   lanelet::Id id = 120659;
   lanelet::Id id_next = 120660;
 
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id);
   auto bbox = makeBoundingBox(entity_center_offset);
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
 
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
   dummy._setRouteLanelets({id_previous, id, id_next});
 
   auto distance_result = dummy.getDistanceToLaneBound();
@@ -656,17 +656,9 @@ TEST(EntityBase, getDistanceToLaneBound)
   EXPECT_NEAR(distance_result, distance_actual, 0.1);
 }
 
-TEST(EntityBase, getDistanceToLeftLaneBound_empty)
+TEST_F(EntityBaseTest, getDistanceToLeftLaneBound_empty)
 {
   // fix is to be implemented, 2nd issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   auto ids = std::vector<lanelet::Id>{};
 
   // auto left = dummy.getDistanceToLeftLaneBound(ids);
@@ -674,34 +666,18 @@ TEST(EntityBase, getDistanceToLeftLaneBound_empty)
   throw std::runtime_error("Fix not implemented");
 }
 
-TEST(EntityBase, getDistanceToRightLaneBound_empty)
+TEST_F(EntityBaseTest, getDistanceToRightLaneBound_empty)
 {
   // fix is to be implemented, 2nd issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   auto ids = std::vector<lanelet::Id>{};
 
   // auto right = dummy.getDistanceToRightLaneBound(ids);
   throw std::runtime_error("Fix not implemented");
 }
 
-TEST(EntityBase, getDistanceToLaneBound_empty)
+TEST_F(EntityBaseTest, getDistanceToLaneBound_empty)
 {
   // fix is to be implemented, 2nd issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   auto ids = std::vector<lanelet::Id>{};
 
   // auto distance = dummy.getDistanceToLaneBound(ids);
@@ -735,12 +711,12 @@ TEST(EntityBase, getDistanceToRightLaneBound_many)
   lanelet::Id id_0 = 120659;
   lanelet::Id id_1 = 120659;
 
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id_0);
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id_0);
   auto bbox = makeBoundingBox(entity_center_offset);
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
 
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
 
   lanelet::Ids ids{id_0, id_1};
   auto distance_result = dummy.getDistanceToRightLaneBound(ids);
@@ -755,12 +731,12 @@ TEST(EntityBase, getDistanceToLaneBound_many)
   lanelet::Id id_0 = 120659;
   lanelet::Id id_1 = 120659;
 
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id_0);
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id_0);
   auto bbox = makeBoundingBox(entity_center_offset);
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
 
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
 
   lanelet::Ids ids{id_0, id_1};
   auto distance_result = dummy.getDistanceToLaneBound(ids);
@@ -906,16 +882,8 @@ TEST_F(EntityBaseTest, getMapPoseFromRelativePose_relative)
   EXPECT_POSE_NEAR(result_pose, static_cast<geometry_msgs::msg::Pose>(ref_pose), eps);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteNotContinuous)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteNotContinuous)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 
   const double target_speed = 3.0;
@@ -937,16 +905,8 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteNotContinuous)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteContinuous)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteContinuous)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 
   const double target_speed = 3.0;
@@ -969,16 +929,8 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteContinuous)
   EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteReached)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteReached)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 
   const double target_speed = 3.0;
@@ -989,19 +941,11 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteReached)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeNotContinuousInvalidTarget)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeNotContinuousInvalidTarget)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1020,21 +964,13 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeNotContinuousInvalidTarge
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeNotContinuous)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeNotContinuous)
 {
   // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1058,20 +994,12 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeNotContinuous)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeContinuousInvalidTarget)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeContinuousInvalidTarget)
 {
   // "requestSpeedChange" will not throw when "continuous" == true, explained in the 6th issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1090,21 +1018,13 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeContinuousInvalidTarget)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeContinuous)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeContinuous)
 {
   // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1129,22 +1049,14 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeContinuous)
   EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintNoneReached)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintNoneReached)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
   dummy.setLinearVelocity(target_speed);
 
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1166,21 +1078,13 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintNoneReached)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintNone)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintNone)
 {
   // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1207,21 +1111,13 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintNone)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionStep)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionStep)
 {
   // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1240,19 +1136,11 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTra
   EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeContinuous)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeContinuous)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1272,22 +1160,14 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeContinuous)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeReached)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeReached)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
   dummy.setLinearVelocity(target_speed);
 
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1310,23 +1190,16 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeReached)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionStep)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionStep)
 {
   // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
-  lanelet::Id id = 120659;
-
   const double initial_speed = 25.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1346,23 +1219,16 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionS
   EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionNotStepNoTime)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionNotStepNoTime)
 {
   // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1382,16 +1248,8 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionN
   EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintNoneReached)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintNoneReached)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double target_speed = 20.0;
   dummy.setLinearVelocity(target_speed);
 
@@ -1408,16 +1266,8 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintNoneReached)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintNone)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintNone)
 {
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double target_speed = 20.0;
   traffic_simulator::speed_change::Constraint constraint(
     traffic_simulator::speed_change::Constraint::Type::NONE, 0.0);
@@ -1437,17 +1287,9 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintNone)
   EXPECT_FALSE(dummy._getTargetSpeed().has_value());
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionStep)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionStep)
 {
   // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
-  lanelet::Id id = 120659;
-
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-
   const double target_speed = 20.0;
   traffic_simulator::speed_change::Constraint constraint(
     traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, 0.0);
@@ -1459,17 +1301,10 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTra
   EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionStep)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionStep)
 {
   // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
-  lanelet::Id id = 120659;
-
   const double initial_speed = 25.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double target_speed = 20.0;
@@ -1484,17 +1319,10 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionS
   EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionNotStepNoTime)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionNotStepNoTime)
 {
   // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double target_speed = 20.0;
@@ -1509,16 +1337,9 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionN
   EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionLinear)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionLinear)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double target_speed = 20.0;
@@ -1547,17 +1368,11 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTra
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(
-  EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionAutoAccelerate)
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionAutoAccelerate)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double target_speed = 20.0;
@@ -1586,17 +1401,11 @@ TEST(
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(
-  EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionAutoDecelerate)
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionAutoDecelerate)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 30.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double target_speed = 20.0;
@@ -1625,22 +1434,15 @@ TEST(
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionLinear)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionLinear)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1673,24 +1475,18 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTra
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(
-  EntityBase, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionAutoAccelerate)
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionAutoAccelerate)
 {
   // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1724,24 +1520,18 @@ TEST(
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(
-  EntityBase, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionAutoDecelerate)
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionAutoDecelerate)
 {
   // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
-  lanelet::Id id = 120659;
-
   const double initial_speed = 30.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1775,16 +1565,9 @@ TEST(
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionLinear)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionLinear)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 25.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double target_speed = 20.0;
@@ -1811,16 +1594,9 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionL
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionAuto)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionAuto)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double target_speed = 20.0;
@@ -1847,22 +1623,15 @@ TEST(EntityBase, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionA
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionLinear)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionLinear)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 25.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
@@ -1894,22 +1663,15 @@ TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionL
   EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
 }
 
-TEST(EntityBase, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionAuto)
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionAuto)
 {
-  lanelet::Id id = 120659;
-
   const double initial_speed = 10.0;
-  auto hdmap_utils_ptr = makeHdMapUtilsSharedPointer();
-  auto pose = makeCanonicalizedLaneletPose(hdmap_utils_ptr, id);
-  auto bbox = makeBoundingBox();
-  auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
-  DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
   dummy.setLinearVelocity(initial_speed);
 
   const double bob_speed = 17.0;
   const double delta_speed = 3.0;
   const double target_speed = bob_speed + delta_speed;
-  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox, bob_speed, "bob");
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
   std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
     others;
   others.emplace("bob_entity", bob_status);
