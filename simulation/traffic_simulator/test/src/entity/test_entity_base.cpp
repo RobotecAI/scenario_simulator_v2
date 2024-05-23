@@ -625,10 +625,10 @@ TEST(EntityBase, getDistanceToRightLaneBound)
   auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
 
   DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-  dummy.setRouteLanelets({id_previous, id, id_next});
+  dummy._setRouteLanelets({id_previous, id, id_next});
 
   auto distance_result = dummy.getDistanceToRightLaneBound();
-  double distance_actual = (lane_width - bbox.dimensions.y) / 2 + entity_center_offset;
+  double distance_actual = (lane_width - bbox.dimensions.y) / 2.0 + entity_center_offset;
   EXPECT_NEAR(distance_result, distance_actual, 0.1);
 }
 
@@ -647,12 +647,12 @@ TEST(EntityBase, getDistanceToLaneBound)
   auto status = makeCanonicalizedEntityStatus(hdmap_utils_ptr, pose, bbox);
 
   DummyEntity dummy("dummy_entity", status, hdmap_utils_ptr);
-  dummy.setRouteLanelets({id_previous, id, id_next});
+  dummy._setRouteLanelets({id_previous, id, id_next});
 
   auto distance_result = dummy.getDistanceToLaneBound();
   double distance_actual = std::min(
-    (lane_width - bbox.dimensions.y) / 2 - entity_center_offset,
-    (lane_width - bbox.dimensions.y) / 2 + entity_center_offset);
+    (lane_width - bbox.dimensions.y) / 2.0 - entity_center_offset,
+    (lane_width - bbox.dimensions.y) / 2.0 + entity_center_offset);
   EXPECT_NEAR(distance_result, distance_actual, 0.1);
 }
 
