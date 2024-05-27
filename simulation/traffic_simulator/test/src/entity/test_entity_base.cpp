@@ -610,6 +610,81 @@ TEST(EntityBase, getDistanceToLeftLaneBound)
   EXPECT_NEAR(distance_result, distance_actual, 0.1);
 }
 
+TEST(EntityBase, getDistanceToRightLaneBound)
+{
+  // see issue 1 at the end of this file
+  const double lane_width = 3.0;
+  const double entity_center_offset = -0.5;
+  lanelet::Id id_previous = 34666;
+  lanelet::Id id = 120659;
+  lanelet::Id id_next = 120660;
+
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id);
+  auto bbox = makeBoundingBox(entity_center_offset);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
+
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
+  dummy._setRouteLanelets({id_previous, id, id_next});
+
+  auto distance_result = dummy.getDistanceToRightLaneBound();
+  double distance_actual = (lane_width - bbox.dimensions.y) / 2.0 + entity_center_offset;
+  EXPECT_NEAR(distance_result, distance_actual, 0.1);
+}
+
+TEST(EntityBase, getDistanceToLaneBound)
+{
+  // see issue 1 at the end of this file
+  const double lane_width = 3.0;
+  const double entity_center_offset = -0.5;
+  lanelet::Id id_previous = 34666;
+  lanelet::Id id = 120659;
+  lanelet::Id id_next = 120660;
+
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id);
+  auto bbox = makeBoundingBox(entity_center_offset);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
+
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
+  dummy._setRouteLanelets({id_previous, id, id_next});
+
+  auto distance_result = dummy.getDistanceToLaneBound();
+  double distance_actual = std::min(
+    (lane_width - bbox.dimensions.y) / 2.0 - entity_center_offset,
+    (lane_width - bbox.dimensions.y) / 2.0 + entity_center_offset);
+  EXPECT_NEAR(distance_result, distance_actual, 0.1);
+}
+
+TEST_F(EntityBaseTest, getDistanceToLeftLaneBound_empty)
+{
+  // fix is to be implemented, 2nd issue
+  auto ids = std::vector<lanelet::Id>{};
+
+  // auto left = dummy.getDistanceToLeftLaneBound(ids);
+
+  throw std::runtime_error("Fix not implemented");
+}
+
+TEST_F(EntityBaseTest, getDistanceToRightLaneBound_empty)
+{
+  // fix is to be implemented, 2nd issue
+  auto ids = std::vector<lanelet::Id>{};
+
+  // auto right = dummy.getDistanceToRightLaneBound(ids);
+  throw std::runtime_error("Fix not implemented");
+}
+
+TEST_F(EntityBaseTest, getDistanceToLaneBound_empty)
+{
+  // fix is to be implemented, 2nd issue
+  auto ids = std::vector<lanelet::Id>{};
+
+  // auto distance = dummy.getDistanceToLaneBound(ids);
+
+  throw std::runtime_error("Fix not implemented");
+}
+
 TEST(EntityBase, getDistanceToLeftLaneBound_many)
 {
   const double entity_center_offset = -0.5;
@@ -626,6 +701,46 @@ TEST(EntityBase, getDistanceToLeftLaneBound_many)
   lanelet::Ids ids{id_0, id_1};
   auto distance_result = dummy.getDistanceToLeftLaneBound(ids);
   auto distance_actual = dummy.getDistanceToLeftLaneBound(id_0);
+  EXPECT_NEAR(distance_result, distance_actual, 0.1);
+}
+
+TEST(EntityBase, getDistanceToRightLaneBound_many)
+{
+  // typo, 1st issue
+  const double entity_center_offset = -0.5;
+  lanelet::Id id_0 = 120659;
+  lanelet::Id id_1 = 120659;
+
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id_0);
+  auto bbox = makeBoundingBox(entity_center_offset);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
+
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
+
+  lanelet::Ids ids{id_0, id_1};
+  auto distance_result = dummy.getDistanceToRightLaneBound(ids);
+  auto distance_actual = dummy.getDistanceToRightLaneBound(id_0);
+  EXPECT_NEAR(distance_result, distance_actual, 0.1);
+}
+
+TEST(EntityBase, getDistanceToLaneBound_many)
+{
+  // typo, 1st issue
+  const double entity_center_offset = -0.5;
+  lanelet::Id id_0 = 120659;
+  lanelet::Id id_1 = 120659;
+
+  auto hdmap_utils = makeHdMapUtilsSharedPointer();
+  auto pose = makeCanonicalizedLaneletPose(hdmap_utils, id_0);
+  auto bbox = makeBoundingBox(entity_center_offset);
+  auto status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox);
+
+  DummyEntity dummy("dummy_entity", status, hdmap_utils);
+
+  lanelet::Ids ids{id_0, id_1};
+  auto distance_result = dummy.getDistanceToLaneBound(ids);
+  auto distance_actual = dummy.getDistanceToLaneBound(id_0);
   EXPECT_NEAR(distance_result, distance_actual, 0.1);
 }
 
@@ -766,3 +881,846 @@ TEST_F(EntityBaseTest, getMapPoseFromRelativePose_relative)
   auto ref_pose = makeCanonicalizedLaneletPose(hdmap_utils, id, s);
   EXPECT_POSE_NEAR(result_pose, static_cast<geometry_msgs::msg::Pose>(ref_pose), eps);
 }
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteNotContinuous)
+{
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  const double target_speed = 3.0;
+  const bool continuous = false;
+
+  dummy.requestSpeedChange(target_speed, continuous);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteContinuous)
+{
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  const double target_speed = 3.0;
+  const bool continuous = true;
+
+  dummy.requestSpeedChange(target_speed, continuous);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteReached)
+{
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  const double target_speed = 3.0;
+  const bool continuous = false;
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.requestSpeedChange(target_speed, continuous);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeNotContinuousInvalidTarget)
+{
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "invalid_name", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  bool continuous = false;
+
+  EXPECT_THROW(dummy.requestSpeedChange(relative_taget_speed, continuous), common::Error);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeNotContinuous)
+{
+  // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  bool continuous = false;
+  EXPECT_NO_THROW(dummy.requestSpeedChange(relative_taget_speed, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(dummy._getTargetSpeed().value(), target_speed);
+
+  dummy.setLinearVelocity(target_speed);
+
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeContinuousInvalidTarget)
+{
+  // "requestSpeedChange" will not throw when "continuous" == true, explained in the 6th issue
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "invalid_name", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  bool continuous = true;
+
+  EXPECT_THROW(dummy.requestSpeedChange(relative_taget_speed, continuous), common::Error);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeContinuous)
+{
+  // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  bool continuous = true;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(relative_taget_speed, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintNoneReached)
+{
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  dummy.setLinearVelocity(target_speed);
+
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::NONE, 0.0);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintNone)
+{
+  // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::NONE, 0.0);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionStep)
+{
+  // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, 0.0);
+  auto transition = traffic_simulator::speed_change::Transition::STEP;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeContinuous)
+{
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, 10.0);
+  auto transition = traffic_simulator::speed_change::Transition::STEP;
+  bool continuous = true;
+
+  EXPECT_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous),
+    common::Error);
+
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeReached)
+{
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  dummy.setLinearVelocity(target_speed);
+
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 10.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::LINEAR;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionStep)
+{
+  // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
+  const double initial_speed = 25.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 10.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::STEP;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionNotStepNoTime)
+{
+  // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 0.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::LINEAR;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintNoneReached)
+{
+  const double target_speed = 20.0;
+  dummy.setLinearVelocity(target_speed);
+
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::NONE, 0.0);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintNone)
+{
+  const double target_speed = 20.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::NONE, 0.0);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionStep)
+{
+  // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
+  const double target_speed = 20.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, 0.0);
+  auto transition = traffic_simulator::speed_change::Transition::STEP;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionStep)
+{
+  // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
+  const double initial_speed = 25.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double target_speed = 20.0;
+  const double constraint_value = 10.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::STEP;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionNotStepNoTime)
+{
+  // internal call of "requestSpeedChange" is being issued with manual and forceful speed change, 5th issue
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double target_speed = 20.0;
+  const double constraint_value = 0.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::LINEAR;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, target_speed);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionLinear)
+{
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double target_speed = 20.0;
+  const double constraint_value = 5.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::LINEAR;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, initial_speed);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionAutoAccelerate)
+{
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double target_speed = 20.0;
+  const double constraint_value = 5.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, initial_speed);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedAbsoluteConstraintAccelerationTransitionAutoDecelerate)
+{
+  const double initial_speed = 30.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double target_speed = 20.0;
+  const double constraint_value = 5.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, initial_speed);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionLinear)
+{
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 0.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::LINEAR;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, initial_speed);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionAutoAccelerate)
+{
+  // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 0.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, initial_speed);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(
+  EntityBaseTest,
+  requestSpeedChange_targetSpeedRelativeConstraintAccelerationTransitionAutoDecelerate)
+{
+  // "requestSpeedChange" is unable to change the "target_speed", explained in the 4th issue
+  const double initial_speed = 30.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 0.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::LONGITUDINAL_ACCELERATION, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  EXPECT_EQ(dummy.getCurrentTwist().linear.x, initial_speed);
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionLinear)
+{
+  const double initial_speed = 25.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double target_speed = 20.0;
+  const double constraint_value = 10.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::LINEAR;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedAbsoluteConstraintTimeTransitionAuto)
+{
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double target_speed = 20.0;
+  const double constraint_value = 10.0;
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(dummy.requestSpeedChange(target_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionLinear)
+{
+  const double initial_speed = 25.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 10.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::LINEAR;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+TEST_F(EntityBaseTest, requestSpeedChange_targetSpeedRelativeConstraintTimeTransitionAuto)
+{
+  const double initial_speed = 10.0;
+  dummy.setLinearVelocity(initial_speed);
+
+  const double bob_speed = 17.0;
+  const double delta_speed = 3.0;
+  const double target_speed = bob_speed + delta_speed;
+  auto bob_status = makeCanonicalizedEntityStatus(hdmap_utils, pose, bbox, bob_speed, "bob");
+  std::unordered_map<std::string, traffic_simulator::entity_status::CanonicalizedEntityStatus>
+    others;
+  others.emplace("bob_entity", bob_status);
+  dummy.setOtherStatus(others);
+
+  const double constraint_value = 10.0;
+  traffic_simulator::speed_change::RelativeTargetSpeed relative_taget_speed(
+    "bob_entity", traffic_simulator::speed_change::RelativeTargetSpeed::Type::DELTA, delta_speed);
+  traffic_simulator::speed_change::Constraint constraint(
+    traffic_simulator::speed_change::Constraint::Type::TIME, constraint_value);
+  auto transition = traffic_simulator::speed_change::Transition::AUTO;
+  bool continuous = false;
+
+  EXPECT_NO_THROW(
+    dummy.requestSpeedChange(relative_taget_speed, transition, constraint, continuous));
+
+  const double current_time = 5.0;
+  const double step_time = 7.0;
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_TRUE(dummy._getTargetSpeed().has_value());
+  EXPECT_EQ(target_speed, dummy._getTargetSpeed().value());
+
+  dummy.setLinearVelocity(target_speed);
+  dummy.onPostUpdate(current_time, step_time);
+  EXPECT_FALSE(dummy._getTargetSpeed().has_value());
+
+  auto default_constraints = dummy.getDefaultDynamicConstraints();
+  auto current_constraints = dummy.getDynamicConstraints();
+  EXPECT_DYNAMIC_CONSTRAINTS_EQ(default_constraints, current_constraints);
+}
+
+/*
+ISSUES:
+1: 182: "getDistanceToRightLaneBound" typo
+2: 183: sigsegv on empty "distances" vector
+3: 595, 581: removal of these lines might be considered.
+  It looks like a job to change the "target_speed" is added after
+  the "target_speed" is already set for the desired value.
+  The job will do nothing, if continuous == false and the target_speed is already set
+4: 644: this line should be moved down, just like in 604, 630, 587.
+  "target_speed" often will not be set because of this line.
+5: 385, 437, 512, 545: it is unclear, why is a request to change the speed being issued,
+  and then, immediately, the speed is forcefully changed.
+  The job assigned to change the target speed will return early anyway,
+  after checking "isTargetSpeedReached" (if continuous == false)
+6: 551, 618: "requestSpeedChange" throws on invalid entity name if-and-only-if continuous is false.
+  Order of checking in the if statement might be swapped to fix this.
+7: 49, 59: it should be considered to make the "cancelRequest" and "appendDebugMarker" functions
+  purely virtual, or make them throw.
+8: 565: "requestSpeedChange" throws if "continuous" == true with "RelativeTargetSpeed",
+  whereas it does not when called with absolute ratget speed, in line 456.
+*/
