@@ -100,7 +100,6 @@ TEST(LongitudinalSpeedPlanner, getAccelerationDuration_acceleration)
 
 TEST(LongitudinalSpeedPlanner, getAccelerationDuration_zero)
 {
-  // possible negative duration, 1st issue
   auto planner = makeLongitudinalSpeedPlanner();
 
   geometry_msgs::msg::Twist current_twist{};
@@ -142,7 +141,6 @@ TEST(LongitudinalSpeedPlanner, getAccelerationDuration_zero)
 
 TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_jerk)
 {
-  // possible sqrt of a negative number, results in a nan, 2nd issue
   auto planner = makeLongitudinalSpeedPlanner();
 
   geometry_msgs::msg::Twist current_twist{};
@@ -178,7 +176,6 @@ TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_jerk)
 
 TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_acceleration)
 {
-  // possible sqrt of a negative number, results in a nan, 2nd issue
   auto planner = makeLongitudinalSpeedPlanner();
 
   geometry_msgs::msg::Twist current_twist{};
@@ -217,7 +214,6 @@ TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_accelera
 
 TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_deceleration)
 {
-  // possible sqrt of a negative number, results in a nan, 2nd issue
   auto planner = makeLongitudinalSpeedPlanner();
 
   geometry_msgs::msg::Twist current_twist{};
@@ -442,14 +438,3 @@ TEST(LongitudinalSpeedPlanner, getRunningDistance_zero)
 
   EXPECT_EQ(distance, 0.0);
 }
-
-/*
-ISSUES:
-1: 185, 199: negative duration can be returned, possibly because
-  "getQuadraticAccelerationDurationWithConstantJerk" is being invoked if-and-only-if
-  "v" and "target_speed" is almost equal, which does not seem correct.
-  This part of the code also seems incongruent with the comments in 184, 188, 198 and 202.
-2: 59, 68: possible sqrt of a negative number.
-  "target_speed" value can overwhelm the equation. The equation itself
-  (its derivation) could not be understood.
-*/
