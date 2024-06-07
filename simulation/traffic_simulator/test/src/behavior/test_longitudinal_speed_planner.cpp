@@ -341,24 +341,24 @@ TEST(LongitudinalSpeedPlanner, getAccelerationDuration_zero)
       .max_deceleration_rate(1.0)
       .max_speed(10.0);
 
-  const double epsilon = 1e-5;
+  const double difference = 1e-5;
   {
     const double result_duration = planner.getAccelerationDuration(
-      current_twist.linear.x + epsilon, constraints, current_twist, current_accel);
+      current_twist.linear.x + difference, constraints, current_twist, current_accel);
     EXPECT_GE(result_duration, 0.0);
-    EXPECT_LE(result_duration, epsilon);
+    EXPECT_LE(result_duration, difference);
   }
   {
     const double result_duration = planner.getAccelerationDuration(
       current_twist.linear.x + 0.0100, constraints, current_twist, current_accel);
     EXPECT_GE(result_duration, 0.0);
-    EXPECT_LE(result_duration, 0.0100 + epsilon);
+    EXPECT_LE(result_duration, 0.0100 + difference);
   }
   {
     const double result_duration = planner.getAccelerationDuration(
       current_twist.linear.x + 0.0099, constraints, current_twist, current_accel);
     EXPECT_GE(result_duration, 0.0);
-    EXPECT_LE(result_duration, 0.0099 + epsilon);
+    EXPECT_LE(result_duration, 0.0099 + difference);
   }
 }
 
@@ -414,7 +414,7 @@ TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_accelera
       .max_deceleration_rate(1.0)
       .max_speed(10.0);
 
-  const double epsilon = 1e-5;
+  const double difference = 1e-5;
   const double acceleration_duration = 1.0;
   const double plausible_lower_bound = 0.0;
   const double plausible_upper_bound = 1e2;
@@ -422,14 +422,14 @@ TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_accelera
   {
     const auto current_twist = makeTwistWithLinearX(10.0);
     const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
-      current_twist.linear.x + epsilon, current_twist, current_accel, acceleration_duration,
+      current_twist.linear.x + difference, current_twist, current_accel, acceleration_duration,
       constraints);
     EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
   }
   {
     const auto current_twist = makeTwistWithLinearX(0.0);
     const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
-      current_twist.linear.x + epsilon, current_twist, current_accel, acceleration_duration,
+      current_twist.linear.x + difference, current_twist, current_accel, acceleration_duration,
       constraints);
     EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
   }
@@ -452,7 +452,7 @@ TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_decelera
       .max_deceleration_rate(1.0)
       .max_speed(10.0);
 
-  const double epsilon = 1e-5;
+  const double difference = 1e-5;
   const double acceleration_duration = 1.0;
   const double plausible_lower_bound = 0.0;
   const double plausible_upper_bound = 1e2;
@@ -460,14 +460,14 @@ TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_decelera
   {
     const auto current_twist = makeTwistWithLinearX(10.0);
     const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
-      current_twist.linear.x - epsilon, current_twist, current_accel, acceleration_duration,
+      current_twist.linear.x - difference, current_twist, current_accel, acceleration_duration,
       constraints);
     EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
   }
   {
     const auto current_twist = makeTwistWithLinearX(0.0);
     const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
-      current_twist.linear.x - epsilon, current_twist, current_accel, acceleration_duration,
+      current_twist.linear.x - difference, current_twist, current_accel, acceleration_duration,
       constraints);
     EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
   }
