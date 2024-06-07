@@ -322,3 +322,153 @@ TEST(LongitudinalSpeedPlanner, getRunningDistance_zero)
 
   EXPECT_EQ(distance, 0.0);
 }
+
+/**
+ * @note Test calculations correctness of acceleration duration with some positive
+ * acceleration and speed very close to the target_speed - so the acceleration duration is zero.
+ */
+TEST(LongitudinalSpeedPlanner, getAccelerationDuration_zero)
+{
+  const auto planner = makeLongitudinalSpeedPlanner();
+
+  const auto current_twist = makeTwistWithLinearX(1.0);
+  const auto current_accel = makeAccelWithLinearX(1.0);
+  const auto constraints =
+    traffic_simulator_msgs::build<traffic_simulator_msgs::msg::DynamicConstraints>()
+      .max_acceleration(1.0)
+      .max_acceleration_rate(1.0)
+      .max_deceleration(1.0)
+      .max_deceleration_rate(1.0)
+      .max_speed(10.0);
+
+  const double epsilon = 1e-5;
+  {
+    const double result_duration = planner.getAccelerationDuration(
+      current_twist.linear.x + epsilon, constraints, current_twist, current_accel);
+    EXPECT_GE(result_duration, 0.0);
+    EXPECT_LE(result_duration, epsilon);
+  }
+  {
+    const double result_duration = planner.getAccelerationDuration(
+      current_twist.linear.x + 0.0100, constraints, current_twist, current_accel);
+    EXPECT_GE(result_duration, 0.0);
+    EXPECT_LE(result_duration, 0.0100 + epsilon);
+  }
+  {
+    const double result_duration = planner.getAccelerationDuration(
+      current_twist.linear.x + 0.0099, constraints, current_twist, current_accel);
+    EXPECT_GE(result_duration, 0.0);
+    EXPECT_LE(result_duration, 0.0099 + epsilon);
+  }
+}
+
+/**
+ * @note Test constraints calculation correctness in situation of target_speed significantly
+ * bigger than current speed - goal is to test the branch setting new jerk constraints.
+ */
+TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_jerk)
+{
+  auto planner = makeLongitudinalSpeedPlanner();
+
+  const auto current_accel = makeAccelWithLinearX(1.0);
+  const auto constraints =
+    traffic_simulator_msgs::build<traffic_simulator_msgs::msg::DynamicConstraints>()
+      .max_acceleration(1.0)
+      .max_acceleration_rate(1.0)
+      .max_deceleration(1.0)
+      .max_deceleration_rate(1.0)
+      .max_speed(10.0);
+
+  const double target_speed = 5.0;
+  const double acceleration_duration = 1.0;
+  const double plausible_lower_bound = 0.0;
+  const double plausible_upper_bound = 1e2;
+
+  {
+    const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
+      target_speed, makeTwistWithLinearX(10.0), current_accel, acceleration_duration, constraints);
+    EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
+  }
+  {
+    const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
+      target_speed, makeTwistWithLinearX(1.0), current_accel, acceleration_duration, constraints);
+    EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
+  }
+}
+
+/**
+ * @note Test constraints calculation correctness in situation of target_speed slightly larger
+ * than curent speed - goal is to test the branch setting new acceleration limit.
+ */
+
+TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_acceleration)
+{
+  auto planner = makeLongitudinalSpeedPlanner();
+  const auto current_accel = makeAccelWithLinearX(1.0);
+
+  const auto constraints =
+    traffic_simulator_msgs::build<traffic_simulator_msgs::msg::DynamicConstraints>()
+      .max_acceleration(1.0)
+      .max_acceleration_rate(1.0)
+      .max_deceleration(1.0)
+      .max_deceleration_rate(1.0)
+      .max_speed(10.0);
+
+  const double epsilon = 1e-5;
+  const double acceleration_duration = 1.0;
+  const double plausible_lower_bound = 0.0;
+  const double plausible_upper_bound = 1e2;
+
+  {
+    const auto current_twist = makeTwistWithLinearX(10.0);
+    const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
+      current_twist.linear.x + epsilon, current_twist, current_accel, acceleration_duration,
+      constraints);
+    EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
+  }
+  {
+    const auto current_twist = makeTwistWithLinearX(0.0);
+    const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
+      current_twist.linear.x + epsilon, current_twist, current_accel, acceleration_duration,
+      constraints);
+    EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
+  }
+}
+
+/**
+ * @note Test constraints calculation correctness in situation of target_speed slightly smaller
+ * than curent speed - goal is to test the branch setting new deceleration limit.
+ */
+TEST(LongitudinalSpeedPlanner, planConstraintsFromJerkAndTimeConstraint_deceleration)
+{
+  auto planner = makeLongitudinalSpeedPlanner();
+
+  const auto current_accel = makeAccelWithLinearX(-1.0);
+  const auto constraints =
+    traffic_simulator_msgs::build<traffic_simulator_msgs::msg::DynamicConstraints>()
+      .max_acceleration(1.0)
+      .max_acceleration_rate(1.0)
+      .max_deceleration(1.0)
+      .max_deceleration_rate(1.0)
+      .max_speed(10.0);
+
+  const double epsilon = 1e-5;
+  const double acceleration_duration = 1.0;
+  const double plausible_lower_bound = 0.0;
+  const double plausible_upper_bound = 1e2;
+
+  {
+    const auto current_twist = makeTwistWithLinearX(10.0);
+    const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
+      current_twist.linear.x - epsilon, current_twist, current_accel, acceleration_duration,
+      constraints);
+    EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
+  }
+  {
+    const auto current_twist = makeTwistWithLinearX(0.0);
+    const auto new_constraints = planner.planConstraintsFromJerkAndTimeConstraint(
+      current_twist.linear.x - epsilon, current_twist, current_accel, acceleration_duration,
+      constraints);
+    EXPECT_CONSTRAINTS_BOUNDED(new_constraints, plausible_lower_bound, plausible_upper_bound);
+  }
+}
