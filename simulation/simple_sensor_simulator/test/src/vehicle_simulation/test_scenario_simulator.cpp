@@ -17,69 +17,105 @@
 #include <ament_index_cpp/get_package_share_directory.hpp>
 #include <geometry_msgs/msg/pose.hpp>
 #include <simple_sensor_simulator/simple_sensor_simulator.hpp>
+#include <simulation_interface/conversions.hpp>
+#include <simulation_interface/zmq_multi_client.hpp>
 #include <traffic_simulator/simulation_clock/simulation_clock.hpp>
 #include <zmqpp/zmqpp.hpp>
 
 #include "../utils/expect_eq_macros.hpp"
 
-class Client
+auto makeInitializeRequest() -> simulation_api_schema::InitializeRequest
 {
-public:
-  Client()
-  : context(), socket(this->context, zmqpp::socket_type::request), address{"tcp://localhost:5555"}
-  {
-    socket.connect(address);
-  }
-  auto send(zmqpp::message & msg) -> void { socket.send(msg); }
-  auto recv(zmqpp::message & msg) -> void { socket.receive(msg); }
+  auto request = simulation_api_schema::InitializeRequest();
+  request.set_lanelet2_map_path(
+    ament_index_cpp::get_package_share_directory("traffic_simulator") + "/map/lanelet2_map.osm");
+  return request;
+}
 
-private:
-  zmqpp::context context;
-  zmqpp::socket socket;
-  std::string address;
-};
-
-int main(int argc, char ** argv)
+auto makeUpdateFrameRequest() -> simulation_api_schema::UpdateFrameRequest
 {
-  auto server = std::thread([&argc, &argv] {
-    rclcpp::init(argc, argv);
+  auto request = simulation_api_schema::UpdateFrameRequest();
+  return request;
+}
+
+TEST(ScenarioSimulator, initialize_defaultPort)
+{
+  auto server = std::thread([] {
+    rclcpp::init(0, nullptr);
     rclcpp::NodeOptions options;
     auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
     rclcpp::spin(component);
-    rclcpp::shutdown();
   });
 
-  auto client = Client();
+  auto multi_client =
+    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
 
-  auto clock = traffic_simulator::SimulationClock(true, 1.0, 10.0);
-  auto request = simulation_api_schema::InitializeRequest();
-  request.set_realtime_factor(1.0);
-  request.set_step_time(0.1);
-  request.set_initialize_time(0.0);
-  simulation_interface::toProto(clock.getCurrentRosTime(), *request.mutable_initialize_ros_time());
-  request.set_lanelet2_map_path(
-    ament_index_cpp::get_package_share_directory("traffic_simulator") + "/map/lanelet2_map.osm");
+  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
 
-  zmqpp::message req_message = zeromq::toZMQ(request);
-  std::cout << "REQ\n" << request.DebugString() << std::endl;
-  client.send(req_message);
-
-  zmqpp::message rep_message;
-  client.recv(rep_message);
-
-  auto response = zeromq::toProto<simulation_api_schema::InitializeResponse>(rep_message);
-  std::cout << "REP\n" << response.DebugString() << std::endl;
-  if (response.result().success()) {
-    std::cout << "worked lol\n";
-  } else {
-    std::cout << ":(\n" << response.result().DebugString() << std::endl;
-  }
-
-  {
-    zmqpp::message my_final_message;
-    my_final_message << "destroy";
-    client.send(my_final_message);
-  }
+  rclcpp::shutdown();
   server.join();
-  return 0;
+}
+
+TEST(ScenarioSimulator, initialize_customPort)
+{
+  auto server = std::thread([] {
+    rclcpp::init(0, nullptr);
+    rclcpp::NodeOptions options;
+    rclcpp::Parameter port_param("port", rclcpp::ParameterValue(1234));
+    options.parameter_overrides().push_back(port_param);
+    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
+    rclcpp::spin(component);
+  });
+
+  auto multi_client =
+    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 1234U);
+
+  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
+
+  rclcpp::shutdown();
+  server.join();
+}
+
+TEST(ScenarioSimulator, updateFrame_correct)
+{
+  auto server = std::thread([] {
+    rclcpp::init(0, nullptr);
+    rclcpp::NodeOptions options;
+    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
+    rclcpp::spin(component);
+  });
+
+  auto multi_client =
+    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
+
+  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(multi_client.call(makeUpdateFrameRequest()).result().success());
+
+  rclcpp::shutdown();
+  server.join();
+}
+
+TEST(ScenarioSimulator, updateFrame_noInitialize)
+{
+  // uhhh theres missing "initialized_(false)," in the constructor
+  auto server = std::thread([] {
+    rclcpp::init(0, nullptr);
+    rclcpp::NodeOptions options;
+    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
+    rclcpp::spin(component);
+  });
+
+  auto multi_client =
+    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
+
+  EXPECT_FALSE(multi_client.call(makeUpdateFrameRequest()).result().success());
+
+  rclcpp::shutdown();
+  server.join();
+}
+
+int main(int argc, char ** argv)
+{
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }

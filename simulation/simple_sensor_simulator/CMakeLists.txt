@@ -89,6 +89,7 @@ if(BUILD_TESTING)
 
   add_subdirectory(test)
   find_package(Protobuf REQUIRED)
+  find_package(rclcpp REQUIRED)
   include_directories(${Protobuf_INCLUDE_DIRS})
   target_link_libraries(simple_sensor_simulator_component ${Protobuf_LIBRARIES})
 endif()
