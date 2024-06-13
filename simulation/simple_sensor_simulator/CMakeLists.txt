@@ -88,6 +88,9 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 
   add_subdirectory(test)
+  find_package(Protobuf REQUIRED)
+  include_directories(${Protobuf_INCLUDE_DIRS})
+  target_link_libraries(simple_sensor_simulator_component ${Protobuf_LIBRARIES})
 endif()
 
 ament_auto_package()
