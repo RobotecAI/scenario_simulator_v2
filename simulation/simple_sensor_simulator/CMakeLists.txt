@@ -36,6 +36,8 @@ ament_auto_add_library(simple_sensor_simulator_component SHARED
   src/sensor_simulation/detection_sensor/detection_sensor.cpp
   src/sensor_simulation/lidar/lidar_sensor.cpp
   src/sensor_simulation/lidar/raycaster.cpp
+  src/sensor_simulation/lidar/detection_target.cpp
+  src/sensor_simulation/lidar/point_cloud_manager.cpp
   src/sensor_simulation/occupancy_grid/occupancy_grid_sensor.cpp
   src/sensor_simulation/occupancy_grid/occupancy_grid_builder.cpp
   src/sensor_simulation/occupancy_grid/grid_traversal.cpp
@@ -57,6 +59,7 @@ target_link_libraries(simple_sensor_simulator_component
   pthread
   sodium
   zmq
+  ${PCL_LIBRARIES}
 )
 ament_target_dependencies(simple_sensor_simulator_component
   simulation_interface

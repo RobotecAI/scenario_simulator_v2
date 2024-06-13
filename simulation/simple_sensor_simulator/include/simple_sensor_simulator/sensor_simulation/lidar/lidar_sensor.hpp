@@ -21,6 +21,7 @@
 #include <queue>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
+#include <simple_sensor_simulator/sensor_simulation/lidar/config/lidar_parameters.hpp>
 #include <simple_sensor_simulator/sensor_simulation/lidar/raycaster.hpp>
 #include <string>
 #include <vector>
@@ -34,14 +35,20 @@ protected:
 
   simulation_api_schema::LidarConfiguration configuration_;
 
-  Raycaster raycaster_;
   std::vector<std::string> detected_objects_;
+  std::shared_ptr<LidarParameters> lidar_parameters_;
+  Raycaster raycaster_;
 
   explicit LidarSensorBase(
     const double current_simulation_time,
-    const simulation_api_schema::LidarConfiguration & configuration)
-  : previous_simulation_time_(current_simulation_time), configuration_(configuration)
+    const simulation_api_schema::LidarConfiguration & configuration,
+    std::shared_ptr<LidarParameters> lidar_parameters)
+  : previous_simulation_time_(current_simulation_time),
+    configuration_(configuration),
+    lidar_parameters_(lidar_parameters),
+    raycaster_(*lidar_parameters_.get())
   {
+    lidar_parameters->updateFromConfig(configuration);
   }
 
 public:
@@ -68,10 +75,12 @@ public:
   explicit LidarSensor(
     const double current_simulation_time,
     const simulation_api_schema::LidarConfiguration & configuration,
-    const typename rclcpp::Publisher<T>::SharedPtr & publisher_ptr)
-  : LidarSensorBase(current_simulation_time, configuration), publisher_ptr_(publisher_ptr)
+    const typename rclcpp::Publisher<T>::SharedPtr & publisher_ptr,
+    std::shared_ptr<LidarParameters> lidar_parameters =
+      std::make_shared<LidarParameters>())  // temp solution
+  : LidarSensorBase(current_simulation_time, configuration, lidar_parameters),
+    publisher_ptr_(publisher_ptr)
   {
-    raycaster_.setDirection(configuration);
   }
 
   auto update(
@@ -98,10 +107,6 @@ public:
       publisher_ptr_->publish(pointcloud);
     }
   }
-
-private:
-  // Override
-  Raycaster raycaster_;
 };
 
 template <>

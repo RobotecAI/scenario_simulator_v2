@@ -47,12 +47,13 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
       pose.position.x = pose.position.x + center.x();
       pose.position.y = pose.position.y + center.y();
       pose.position.z = pose.position.z + center.z();
-      raycaster_.addPrimitive<simple_sensor_simulator::primitives::Box>(
-        entity.name(),                           //
-        entity.bounding_box().dimensions().x(),  //
-        entity.bounding_box().dimensions().y(),  //
-        entity.bounding_box().dimensions().z(),  //
-        pose);
+
+      Eigen::Vector3f target_dimensions(
+        entity.bounding_box().dimensions().x(), entity.bounding_box().dimensions().y(),
+        entity.bounding_box().dimensions().z());
+
+      raycaster_.addDetectionTarget<simple_sensor_simulator::DetectionTarget>(
+        entity.name(), target_dimensions, pose);
     }
   }
 
@@ -62,7 +63,7 @@ auto LidarSensor<sensor_msgs::msg::PointCloud2>::raycast(
       vertical_angles.push_back(vertical_angle);
     }
     const auto pointcloud = raycaster_.raycast("base_link", current_ros_time, ego_pose.value());
-    detected_objects_ = raycaster_.getDetectedObject();
+    detected_objects_ = raycaster_.getDetectedTargets();
     return pointcloud;
   } else {
     throw simple_sensor_simulator::SimulationRuntimeError("failed to find ego vehicle");
