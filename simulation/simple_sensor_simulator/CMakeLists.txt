@@ -86,6 +86,7 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   find_package(ament_cmake_gtest REQUIRED)
   ament_lint_auto_find_test_dependencies()
+<<<<<<< HEAD
 
   add_subdirectory(test)
   find_package(Protobuf REQUIRED)
@@ -93,5 +94,9 @@ if(BUILD_TESTING)
   include_directories(${Protobuf_INCLUDE_DIRS})
   target_link_libraries(simple_sensor_simulator_component ${Protobuf_LIBRARIES})
 endif()
+=======
+>>>>>>> f4db270be6d63f05cee19b81f49bb5a4ccebd454
 
+  add_subdirectory(test)
+endif()
 ament_auto_package()
