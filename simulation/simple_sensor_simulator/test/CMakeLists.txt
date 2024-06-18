@@ -10,4 +10,5 @@ target_link_libraries(test_vertex simple_sensor_simulator_component)
 ament_add_gtest(test_raycaster src/lidar/test_raycaster.cpp)
 target_link_libraries(test_raycaster simple_sensor_simulator_component ${Protobuf_LIBRARIES})
 
-add_subdirectory(src/vehicle_simulation)
+ament_add_gtest(test_scenario_simulator src/test_scenario_simulator.cpp)
+target_link_libraries(test_scenario_simulator simple_sensor_simulator_component)
