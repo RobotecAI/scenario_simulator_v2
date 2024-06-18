@@ -24,7 +24,7 @@
 #include <traffic_simulator/simulation_clock/simulation_clock.hpp>
 #include <zmqpp/zmqpp.hpp>
 
-#include "utils/expect_eq_macros.hpp"
+#include "sensor_simulation/expect_eq_macros.hpp"
 
 auto makeInitializeRequest() -> simulation_api_schema::InitializeRequest
 {
