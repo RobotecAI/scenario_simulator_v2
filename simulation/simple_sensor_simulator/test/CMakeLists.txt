@@ -9,3 +9,6 @@ include_directories(${Protobuf_INCLUDE_DIRS})
 
 ament_add_gtest(test_scenario_simulator src/test_scenario_simulator.cpp)
 target_link_libraries(test_scenario_simulator simple_sensor_simulator_component ${Protobuf_LIBRARIES})
+
+ament_add_gtest(test_sensor_simulation src/sensor_simulation/test_sensor_simulation.cpp)
+target_link_libraries(test_sensor_simulation simple_sensor_simulator_component ${Protobuf_LIBRARIES})
