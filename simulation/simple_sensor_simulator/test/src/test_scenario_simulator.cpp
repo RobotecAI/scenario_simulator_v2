@@ -21,6 +21,7 @@
 #include <simple_sensor_simulator/simple_sensor_simulator.hpp>
 #include <simulation_interface/conversions.hpp>
 #include <simulation_interface/zmq_multi_client.hpp>
+#include <traffic_simulator/helper/helper.hpp>
 #include <traffic_simulator/simulation_clock/simulation_clock.hpp>
 #include <zmqpp/zmqpp.hpp>
 
@@ -37,7 +38,8 @@ auto makeInitializeRequest() -> simulation_api_schema::InitializeRequest
 auto makeUpdateFrameRequest() -> simulation_api_schema::UpdateFrameRequest
 {
   auto request = simulation_api_schema::UpdateFrameRequest();
-  // to be filled up
+  request.set_current_scenario_time(1.0);
+  request.set_current_simulation_time(1.0);
   return request;
 }
 
@@ -77,6 +79,39 @@ auto makeSpawnMiscObjectEntityRequest(const std::string name = "name")
   const auto params = traffic_simulator_msgs::msg::MiscObjectParameters{};
   simulation_interface::toProto(params, *request.mutable_parameters());
   request.mutable_parameters()->set_name(name);
+  return request;
+}
+
+auto makeAttachDetectionSensorRequest() -> simulation_api_schema::AttachDetectionSensorRequest
+{
+  auto request = simulation_api_schema::AttachDetectionSensorRequest();
+  auto configuration = traffic_simulator::helper::constructDetectionSensorConfiguration(
+    "entity_name", "awf/universe", 1.0);
+  *request.mutable_configuration() = configuration;
+  return request;
+}
+
+auto makeAttachLidarSensorRequest() -> simulation_api_schema::AttachLidarSensorRequest
+{
+  auto request = simulation_api_schema::AttachLidarSensorRequest();
+  auto configuration = traffic_simulator::helper::constructLidarConfiguration(
+    traffic_simulator::helper::LidarType::VLP16, "entity_name", "awf/universe", 1.0);
+  *request.mutable_configuration() = configuration;
+  return request;
+}
+
+auto makeAttachOccupancyGridSensorRequest()
+  -> simulation_api_schema::AttachOccupancyGridSensorRequest
+{
+  auto request = simulation_api_schema::AttachOccupancyGridSensorRequest();
+  auto configuration = simulation_api_schema::OccupancyGridSensorConfiguration();
+
+  configuration.set_entity("entity_name");
+  configuration.set_architecture_type("awf/universe");
+  configuration.set_update_duration(1.0);
+  configuration.set_range(300.0);
+  configuration.set_resolution(1.0);
+  *request.mutable_configuration() = configuration;
   return request;
 }
 
@@ -343,6 +378,72 @@ TEST(ScenarioSimulator, despawnEntity_invalidName)
 
   EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
   EXPECT_FALSE(multi_client.call(makeDespawnEntityRequest("invalid")).result().success());
+
+  rclcpp::shutdown();
+  server.join();
+}
+
+/**
+ * @note Test attaching detection sensor with a request to attach a sensor with a valid configuration.
+ */
+TEST(ScenarioSimulator, attachDetectionSensor)
+{
+  auto server = std::thread([] {
+    rclcpp::init(0, nullptr);
+    rclcpp::NodeOptions options;
+    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
+    rclcpp::spin(component);
+  });
+
+  auto multi_client =
+    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
+
+  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(multi_client.call(makeAttachDetectionSensorRequest()).result().success());
+
+  rclcpp::shutdown();
+  server.join();
+}
+
+/**
+ * @note Test attaching lidar sensor with a request to attach a sensor with a valid configuration.
+ */
+TEST(ScenarioSimulator, attachLidarSensor)
+{
+  auto server = std::thread([] {
+    rclcpp::init(0, nullptr);
+    rclcpp::NodeOptions options;
+    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
+    rclcpp::spin(component);
+  });
+
+  auto multi_client =
+    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
+
+  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(multi_client.call(makeAttachLidarSensorRequest()).result().success());
+
+  rclcpp::shutdown();
+  server.join();
+}
+
+/**
+ * @note Test attaching occupancy grid sensor with a request to attach a sensor with a valid configuration.
+ */
+TEST(ScenarioSimulator, attachOccupancyGridSensor)
+{
+  auto server = std::thread([] {
+    rclcpp::init(0, nullptr);
+    rclcpp::NodeOptions options;
+    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
+    rclcpp::spin(component);
+  });
+
+  auto multi_client =
+    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
+
+  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(multi_client.call(makeAttachOccupancyGridSensorRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
