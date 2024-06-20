@@ -53,7 +53,7 @@ TEST_F(LidarSensorTest, update_goBackInTime)
   // Ensure there are detected objects
   ASSERT_FALSE(lidar_->getDetectedObjects().empty());
 
-  lidar_->update(current_simulation_time_, status_, current_ros_time_);
+  lidar_->update(current_simulation_time_, status_, rclcpp::Time(1));
 
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
@@ -74,6 +74,8 @@ TEST_F(LidarSensorTest, getDetectedObjects)
   rclcpp::spin_some(node_);
 
   const auto & detected_objects = lidar_->getDetectedObjects();
+
+  // LidarSensor returns duplicates. To avoid them, a set is used.
   std::set<std::string> unique_objects(detected_objects.begin(), detected_objects.end());
 
   ASSERT_FALSE(unique_objects.empty());

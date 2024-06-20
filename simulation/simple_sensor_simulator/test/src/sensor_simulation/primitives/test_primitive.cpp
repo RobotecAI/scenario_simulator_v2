@@ -102,8 +102,7 @@ TEST_F(PrimitiveTest, addToScene_zeros)
 }
 
 /**
- * @note Test basic functionality. Test obtaining triangles correctness with a non
- * trivial Primitive pose.
+ * @note Test basic functionality. Test obtaining triangles correctness.
  */
 TEST_F(PrimitiveTest, getTriangles)
 {
@@ -205,14 +204,14 @@ TEST_F(PrimitiveTest, getMin_withTransform)
 {
   const auto sensor_pose =
     geometry_msgs::build<geometry_msgs::msg::Pose>()
-      .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(1.0).y(0.0).z(0.0))
+      .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(5.0).y(2.0).z(1.0))
       .orientation(
         geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(0.0).y(0.0).z(0.0).w(1.0));
 
   const auto min_x = primitive_->getMin(math::geometry::Axis::X, sensor_pose);
 
   EXPECT_TRUE(min_x.has_value());
-  EXPECT_NEAR(min_x.value(), -1.0f, std::numeric_limits<double>::epsilon());
+  EXPECT_NEAR(min_x.value(), -5.0f, std::numeric_limits<double>::epsilon());
 }
 
 /**
@@ -245,14 +244,14 @@ TEST_F(PrimitiveTest, getMax_withTransform)
 {
   const auto sensor_pose =
     geometry_msgs::build<geometry_msgs::msg::Pose>()
-      .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(2.0).y(0.0).z(0.0))
+      .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(6.0).y(3.0).z(2.0))
       .orientation(
         geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(0.0).y(0.0).z(0.0).w(1.0));
 
   const auto max_x = primitive_->getMax(math::geometry::Axis::X, sensor_pose);
 
   EXPECT_TRUE(max_x.has_value());
-  EXPECT_NEAR(max_x.value(), 0.0f, std::numeric_limits<double>::epsilon());
+  EXPECT_NEAR(max_x.value(), -4.0f, std::numeric_limits<double>::epsilon());
 }
 
 /**
