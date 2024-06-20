@@ -190,8 +190,7 @@ TEST_F(ScenarioSimulatorTest, updateFrame_correct)
  */
 TEST_F(ScenarioSimulatorTest, updateFrame_noInitialize)
 {
-  // undefined behaviour !!! there is missing "initialized_(false)," in the ScenarioSimulator constructor
-
+  // UB is entered during this test. ScenarioSimulator constructor is missing "initialized_(false),"
   EXPECT_FALSE(client.call(makeUpdateFrameRequest()).result().success());
 
   rclcpp::shutdown();
