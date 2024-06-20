@@ -16,16 +16,21 @@
 
 #include <simple_sensor_simulator/sensor_simulation/sensor_simulation.hpp>
 
+class SensorSimulationTest : public testing::Test
+{
+protected:
+  SensorSimulationTest() : node(rclcpp::Node{"name", rclcpp::NodeOptions{}}) {}
+  rclcpp::Node node;
+};
+
 /**
  * @note Test function behavior when called with a configuration architecture type other than
  * "awf/universe" - the goal is to test error throwing.
  */
-TEST(SensorSimulation, attachLidarSensor_wrongArchitecture)
+TEST_F(SensorSimulationTest, attachLidarSensor_wrongArchitecture)
 {
   auto configuration = simulation_api_schema::LidarConfiguration{};
   configuration.set_architecture_type("wrong/architecture");
-
-  auto node = rclcpp::Node{"name", rclcpp::NodeOptions{}};
 
   EXPECT_THROW(
     simple_sensor_simulator::SensorSimulation().attachLidarSensor(0.0, configuration, node),
@@ -35,12 +40,10 @@ TEST(SensorSimulation, attachLidarSensor_wrongArchitecture)
 /**
  * @note Test basic functionality. Test attaching a lidar sensor correctness with a sample lidar configuration.
  */
-TEST(SensorSimulation, attachLidarSensor_correctConfiguration)
+TEST_F(SensorSimulationTest, attachLidarSensor_correctConfiguration)
 {
   auto configuration = simulation_api_schema::LidarConfiguration{};
   configuration.set_architecture_type("awf/universe");
-
-  auto node = rclcpp::Node{"name", rclcpp::NodeOptions{}};
 
   EXPECT_NO_THROW(
     simple_sensor_simulator::SensorSimulation().attachLidarSensor(0.0, configuration, node));
@@ -50,12 +53,10 @@ TEST(SensorSimulation, attachLidarSensor_correctConfiguration)
  * @note Test function behavior when called with a configuration architecture type other than
  * "awf/universe" - the goal is to test error throwing.
  */
-TEST(SensorSimulation, attachDetectionSensor_wrongArchitecture)
+TEST_F(SensorSimulationTest, attachDetectionSensor_wrongArchitecture)
 {
   auto configuration = simulation_api_schema::DetectionSensorConfiguration{};
   configuration.set_architecture_type("wrong/architecture");
-
-  auto node = rclcpp::Node{"name", rclcpp::NodeOptions{}};
 
   EXPECT_THROW(
     simple_sensor_simulator::SensorSimulation().attachDetectionSensor(0.0, configuration, node),
@@ -66,12 +67,10 @@ TEST(SensorSimulation, attachDetectionSensor_wrongArchitecture)
  * @note Test basic functionality. Test attaching a detection sensor correctness
  * with a sample detection sensor configuration.
  */
-TEST(SensorSimulation, attachDetectionSensor_correctConfiguration)
+TEST_F(SensorSimulationTest, attachDetectionSensor_correctConfiguration)
 {
   auto configuration = simulation_api_schema::DetectionSensorConfiguration{};
   configuration.set_architecture_type("awf/universe");
-
-  auto node = rclcpp::Node{"name", rclcpp::NodeOptions{}};
 
   EXPECT_NO_THROW(
     simple_sensor_simulator::SensorSimulation().attachDetectionSensor(0.0, configuration, node));
@@ -81,12 +80,10 @@ TEST(SensorSimulation, attachDetectionSensor_correctConfiguration)
  * @note Test function behavior when called with a configuration architecture type other than
  * "awf/universe" - the goal is to test error throwing.
  */
-TEST(SensorSimulation, attachOccupancyGridSensor_wrongArchitecture)
+TEST_F(SensorSimulationTest, attachOccupancyGridSensor_wrongArchitecture)
 {
   auto configuration = simulation_api_schema::OccupancyGridSensorConfiguration{};
   configuration.set_architecture_type("wrong/architecture");
-
-  auto node = rclcpp::Node{"name", rclcpp::NodeOptions{}};
 
   EXPECT_THROW(
     simple_sensor_simulator::SensorSimulation().attachOccupancyGridSensor(0.0, configuration, node),
@@ -97,12 +94,10 @@ TEST(SensorSimulation, attachOccupancyGridSensor_wrongArchitecture)
  * @note Test basic functionality. Test attaching a occupancy grid sensor correctness
  * with a sample occupancy grid sensor configuration.
  */
-TEST(SensorSimulation, attachOccupancyGridSensor_correctConfiguration)
+TEST_F(SensorSimulationTest, attachOccupancyGridSensor_correctConfiguration)
 {
   auto configuration = simulation_api_schema::OccupancyGridSensorConfiguration{};
   configuration.set_architecture_type("awf/universe");
-
-  auto node = rclcpp::Node{"name", rclcpp::NodeOptions{}};
 
   EXPECT_NO_THROW(simple_sensor_simulator::SensorSimulation().attachOccupancyGridSensor(
     0.0, configuration, node));

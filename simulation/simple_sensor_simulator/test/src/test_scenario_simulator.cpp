@@ -15,15 +15,12 @@
 #include <gtest/gtest.h>
 
 #include <ament_index_cpp/get_package_share_directory.hpp>
-#include <functional>
 #include <geometry_msgs/msg/pose.hpp>
 #include <simple_sensor_simulator/exception.hpp>
 #include <simple_sensor_simulator/simple_sensor_simulator.hpp>
 #include <simulation_interface/conversions.hpp>
 #include <simulation_interface/zmq_multi_client.hpp>
 #include <traffic_simulator/helper/helper.hpp>
-#include <traffic_simulator/simulation_clock/simulation_clock.hpp>
-#include <zmqpp/zmqpp.hpp>
 
 #include "sensor_simulation/expect_eq_macros.hpp"
 
@@ -115,6 +112,23 @@ auto makeAttachOccupancyGridSensorRequest()
   return request;
 }
 
+class ScenarioSimulatorTest : public testing::Test
+{
+protected:
+  ScenarioSimulatorTest()
+  : server([] {
+      rclcpp::init(0, nullptr);
+      rclcpp::NodeOptions options;
+      auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
+      rclcpp::spin(component);
+    }),
+    client(simulation_interface::TransportProtocol::TCP, "localhost", 5555U)
+  {
+  }
+  std::thread server;
+  zeromq::MultiClient client;
+};
+
 /**
  * @note Test initialization correctness with a sample request with the default port (5555).
  */
@@ -127,10 +141,10 @@ TEST(ScenarioSimulator, initialize_defaultPort)
     rclcpp::spin(component);
   });
 
-  auto multi_client =
+  auto client =
     zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
 
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -150,10 +164,10 @@ TEST(ScenarioSimulator, initialize_customPort)
     rclcpp::spin(component);
   });
 
-  auto multi_client =
+  auto client =
     zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 1234U);
 
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -162,20 +176,10 @@ TEST(ScenarioSimulator, initialize_customPort)
 /**
  * @note Test updating frame correctness with a sample request.
 */
-TEST(ScenarioSimulator, updateFrame_correct)
+TEST_F(ScenarioSimulatorTest, updateFrame_correct)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeUpdateFrameRequest()).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeUpdateFrameRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -184,20 +188,11 @@ TEST(ScenarioSimulator, updateFrame_correct)
 /**
  * @note Test updating frame correctness with a sample request before requesting initialization.
  */
-TEST(ScenarioSimulator, updateFrame_noInitialize)
+TEST_F(ScenarioSimulatorTest, updateFrame_noInitialize)
 {
   // undefined behaviour !!! there is missing "initialized_(false)," in the ScenarioSimulator constructor
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
 
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_FALSE(multi_client.call(makeUpdateFrameRequest()).result().success());
+  EXPECT_FALSE(client.call(makeUpdateFrameRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -207,20 +202,10 @@ TEST(ScenarioSimulator, updateFrame_noInitialize)
  * @note Test spawning vehicle entity correctness with a request to spawn
  * Ego vehicle when Ego vehicle is not spawned yet.
  */
-TEST(ScenarioSimulator, spawnVehicleEntity_firstEgo)
+TEST_F(ScenarioSimulatorTest, spawnVehicleEntity_firstEgo)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeSpawnVehicleEntityRequest("ego", true)).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeSpawnVehicleEntityRequest("ego", true)).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -229,20 +214,10 @@ TEST(ScenarioSimulator, spawnVehicleEntity_firstEgo)
 /**
  * @note Test spawning vehicle entity correctness with a request to spawn a NPC vehicle.
  */
-TEST(ScenarioSimulator, spawnVehicleEntity_npc)
+TEST_F(ScenarioSimulatorTest, spawnVehicleEntity_npc)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeSpawnVehicleEntityRequest("npc", false)).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeSpawnVehicleEntityRequest("npc", false)).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -251,20 +226,10 @@ TEST(ScenarioSimulator, spawnVehicleEntity_npc)
 /**
  * @note Test spawning pedestrian entity correctness with a request to spawn a NPC pedestrian.
  */
-TEST(ScenarioSimulator, spawnPedestrianEntity)
+TEST_F(ScenarioSimulatorTest, spawnPedestrianEntity)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeSpawnPedestrianEntityRequest("bob")).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeSpawnPedestrianEntityRequest("bob")).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -273,20 +238,10 @@ TEST(ScenarioSimulator, spawnPedestrianEntity)
 /**
  * @note Test spawning misc object entity correctness with a request to spawn a misc object.
  */
-TEST(ScenarioSimulator, spawnMiscObjectEntity)
+TEST_F(ScenarioSimulatorTest, spawnMiscObjectEntity)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeSpawnMiscObjectEntityRequest("blob")).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeSpawnMiscObjectEntityRequest("blob")).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -295,21 +250,11 @@ TEST(ScenarioSimulator, spawnMiscObjectEntity)
 /**
  * @note Test despawning an entity with a request to despawn an existing vehicle.
  */
-TEST(ScenarioSimulator, despawnEntity_vehicle)
+TEST_F(ScenarioSimulatorTest, despawnEntity_vehicle)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeSpawnVehicleEntityRequest("npc", false)).result().success());
-  EXPECT_TRUE(multi_client.call(makeDespawnEntityRequest("npc")).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeSpawnVehicleEntityRequest("npc", false)).result().success());
+  EXPECT_TRUE(client.call(makeDespawnEntityRequest("npc")).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -318,21 +263,11 @@ TEST(ScenarioSimulator, despawnEntity_vehicle)
 /**
  * @note Test despawning an entity with a request to despawn an existing pedestrian.
  */
-TEST(ScenarioSimulator, despawnEntity_pedestrian)
+TEST_F(ScenarioSimulatorTest, despawnEntity_pedestrian)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeSpawnPedestrianEntityRequest("bob")).result().success());
-  EXPECT_TRUE(multi_client.call(makeDespawnEntityRequest("bob")).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeSpawnPedestrianEntityRequest("bob")).result().success());
+  EXPECT_TRUE(client.call(makeDespawnEntityRequest("bob")).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -341,21 +276,11 @@ TEST(ScenarioSimulator, despawnEntity_pedestrian)
 /**
  * @note Test despawning an entity with a request to despawn an existing misc object.
  */
-TEST(ScenarioSimulator, despawnEntity_miscObject)
+TEST_F(ScenarioSimulatorTest, despawnEntity_miscObject)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeSpawnMiscObjectEntityRequest("blob")).result().success());
-  EXPECT_TRUE(multi_client.call(makeDespawnEntityRequest("blob")).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeSpawnMiscObjectEntityRequest("blob")).result().success());
+  EXPECT_TRUE(client.call(makeDespawnEntityRequest("blob")).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -364,20 +289,10 @@ TEST(ScenarioSimulator, despawnEntity_miscObject)
 /**
  * @note Test despawning an entity with a request to despawn an entity that does not exist.
  */
-TEST(ScenarioSimulator, despawnEntity_invalidName)
+TEST_F(ScenarioSimulatorTest, despawnEntity_invalidName)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_FALSE(multi_client.call(makeDespawnEntityRequest("invalid")).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_FALSE(client.call(makeDespawnEntityRequest("invalid")).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -386,20 +301,10 @@ TEST(ScenarioSimulator, despawnEntity_invalidName)
 /**
  * @note Test attaching detection sensor with a request to attach a sensor with a valid configuration.
  */
-TEST(ScenarioSimulator, attachDetectionSensor)
+TEST_F(ScenarioSimulatorTest, attachDetectionSensor)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeAttachDetectionSensorRequest()).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeAttachDetectionSensorRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -408,20 +313,10 @@ TEST(ScenarioSimulator, attachDetectionSensor)
 /**
  * @note Test attaching lidar sensor with a request to attach a sensor with a valid configuration.
  */
-TEST(ScenarioSimulator, attachLidarSensor)
+TEST_F(ScenarioSimulatorTest, attachLidarSensor)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeAttachLidarSensorRequest()).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeAttachLidarSensorRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
@@ -430,20 +325,10 @@ TEST(ScenarioSimulator, attachLidarSensor)
 /**
  * @note Test attaching occupancy grid sensor with a request to attach a sensor with a valid configuration.
  */
-TEST(ScenarioSimulator, attachOccupancyGridSensor)
+TEST_F(ScenarioSimulatorTest, attachOccupancyGridSensor)
 {
-  auto server = std::thread([] {
-    rclcpp::init(0, nullptr);
-    rclcpp::NodeOptions options;
-    auto component = std::make_shared<simple_sensor_simulator::ScenarioSimulator>(options);
-    rclcpp::spin(component);
-  });
-
-  auto multi_client =
-    zeromq::MultiClient(simulation_interface::TransportProtocol::TCP, "localhost", 5555U);
-
-  EXPECT_TRUE(multi_client.call(makeInitializeRequest()).result().success());
-  EXPECT_TRUE(multi_client.call(makeAttachOccupancyGridSensorRequest()).result().success());
+  EXPECT_TRUE(client.call(makeInitializeRequest()).result().success());
+  EXPECT_TRUE(client.call(makeAttachOccupancyGridSensorRequest()).result().success());
 
   rclcpp::shutdown();
   server.join();
