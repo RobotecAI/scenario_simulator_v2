@@ -16,7 +16,7 @@
 
 #include <limits>
 
-#include "../expect_eq_macros.hpp"
+#include "../../utils/expect_eq_macros.hpp"
 
 /**
  * @note Test basic functionality. Test update process correctness with no position noise, no delay
@@ -26,7 +26,7 @@
  */
 TEST_F(DetectionSensorTest, update_unknownSubtype)
 {
-  createEntity("unknown", EntityType::VEHICLE, EntitySubtype::UNKNOWN);
+  initializeEntityStatus("unknown", EntityType::VEHICLE, EntitySubtype::UNKNOWN);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -34,8 +34,8 @@ TEST_F(DetectionSensorTest, update_unknownSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::UNKNOWN);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -50,7 +50,7 @@ TEST_F(DetectionSensorTest, update_unknownSubtype)
  */
 TEST_F(DetectionSensorTest, update_carSubtype)
 {
-  createEntity("car", EntityType::VEHICLE, EntitySubtype::CAR);
+  initializeEntityStatus("car", EntityType::VEHICLE, EntitySubtype::CAR);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -58,8 +58,8 @@ TEST_F(DetectionSensorTest, update_carSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::CAR);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -74,7 +74,7 @@ TEST_F(DetectionSensorTest, update_carSubtype)
  */
 TEST_F(DetectionSensorTest, update_truckSubtype)
 {
-  createEntity("truck", EntityType::VEHICLE, EntitySubtype::TRUCK);
+  initializeEntityStatus("truck", EntityType::VEHICLE, EntitySubtype::TRUCK);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -82,8 +82,8 @@ TEST_F(DetectionSensorTest, update_truckSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::TRUCK);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -98,7 +98,7 @@ TEST_F(DetectionSensorTest, update_truckSubtype)
  */
 TEST_F(DetectionSensorTest, update_busSubtype)
 {
-  createEntity("bus", EntityType::VEHICLE, EntitySubtype::BUS);
+  initializeEntityStatus("bus", EntityType::VEHICLE, EntitySubtype::BUS);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -106,8 +106,8 @@ TEST_F(DetectionSensorTest, update_busSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::BUS);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -122,7 +122,7 @@ TEST_F(DetectionSensorTest, update_busSubtype)
  */
 TEST_F(DetectionSensorTest, update_trailerSubtype)
 {
-  createEntity("trailer", EntityType::VEHICLE, EntitySubtype::TRAILER);
+  initializeEntityStatus("trailer", EntityType::VEHICLE, EntitySubtype::TRAILER);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -130,8 +130,8 @@ TEST_F(DetectionSensorTest, update_trailerSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::TRAILER);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -147,7 +147,7 @@ TEST_F(DetectionSensorTest, update_trailerSubtype)
  */
 TEST_F(DetectionSensorTest, update_motorcycleSubtype)
 {
-  createEntity("motorcycle", EntityType::VEHICLE, EntitySubtype::MOTORCYCLE);
+  initializeEntityStatus("motorcycle", EntityType::VEHICLE, EntitySubtype::MOTORCYCLE);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -155,8 +155,8 @@ TEST_F(DetectionSensorTest, update_motorcycleSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::MOTORCYCLE);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -171,7 +171,7 @@ TEST_F(DetectionSensorTest, update_motorcycleSubtype)
  */
 TEST_F(DetectionSensorTest, update_bicycleSubtype)
 {
-  createEntity("bicycle", EntityType::VEHICLE, EntitySubtype::BICYCLE);
+  initializeEntityStatus("bicycle", EntityType::VEHICLE, EntitySubtype::BICYCLE);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -179,8 +179,8 @@ TEST_F(DetectionSensorTest, update_bicycleSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::BICYCLE);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -196,7 +196,7 @@ TEST_F(DetectionSensorTest, update_bicycleSubtype)
  */
 TEST_F(DetectionSensorTest, update_pedestrianSubtype)
 {
-  createEntity("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
+  initializeEntityStatus("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -204,8 +204,8 @@ TEST_F(DetectionSensorTest, update_pedestrianSubtype)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::PEDESTRIAN);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -224,7 +224,7 @@ TEST_F(DetectionSensorTest, update_detectionDelay)
   detection_sensor_ = std::make_unique<DetectionSensor<DetectedObjectsMsg>>(
     0.0, config_, detected_objects_publisher_, ground_truth_objects_publisher_);
 
-  createEntity("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
+  initializeEntityStatus("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
 
   // Initial update: before the delay period, should not detect the object
   detection_sensor_->update(
@@ -247,8 +247,8 @@ TEST_F(DetectionSensorTest, update_detectionDelay)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::PEDESTRIAN);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
@@ -268,7 +268,7 @@ TEST_F(DetectionSensorTest, update_looseAllData)
   detection_sensor_ = std::make_unique<DetectionSensor<DetectedObjectsMsg>>(
     0.0, config_, detected_objects_publisher_, ground_truth_objects_publisher_);
 
-  createEntity("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
+  initializeEntityStatus("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -276,8 +276,8 @@ TEST_F(DetectionSensorTest, update_looseAllData)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  EXPECT_EQ(received_msg_->objects.size(), 0);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(0));
 }
 
 /**
@@ -293,7 +293,7 @@ TEST_F(DetectionSensorTest, update_lidarBasedDetection)
   detection_sensor_ = std::make_unique<DetectionSensor<DetectedObjectsMsg>>(
     0.0, config_, detected_objects_publisher_, ground_truth_objects_publisher_);
 
-  createEntity("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
+  initializeEntityStatus("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -301,8 +301,8 @@ TEST_F(DetectionSensorTest, update_lidarBasedDetection)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), 1);
+  ASSERT_NE(received_msg_, nullptr);
+  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
   EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::PEDESTRIAN);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
