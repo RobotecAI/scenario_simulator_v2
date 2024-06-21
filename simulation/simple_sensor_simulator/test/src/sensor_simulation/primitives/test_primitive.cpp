@@ -16,7 +16,7 @@
 
 #include <limits>
 
-#include "../expect_eq_macros.hpp"
+#include "../../utils/expect_eq_macros.hpp"
 
 /**
  * @note Test basic functionality. Test adding to scene correctness with a sample primitive.
@@ -35,7 +35,7 @@ TEST_F(PrimitiveTest, addToScene_sample)
   ASSERT_NE(geom_id, RTC_INVALID_GEOMETRY_ID);
 
   const RTCGeometry geom = rtcGetGeometry(scene, geom_id);
-  ASSERT_TRUE(geom != nullptr);
+  ASSERT_NE(geom, nullptr);
 
   rtcCommitScene(scene);
 
@@ -77,7 +77,7 @@ TEST_F(PrimitiveTest, addToScene_zeros)
   ASSERT_NE(geom_id, RTC_INVALID_GEOMETRY_ID);
 
   const RTCGeometry geom = rtcGetGeometry(scene, geom_id);
-  ASSERT_TRUE(geom != nullptr);
+  ASSERT_NE(geom, nullptr);
 
   rtcCommitScene(scene);
 
@@ -142,16 +142,14 @@ TEST_F(PrimitiveTest, getVertex)
 TEST_F(PrimitiveTest, get2DConvexHull_normal)
 {
   const std::vector<geometry_msgs::msg::Point> expected_hull = {
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(0.0).y(1.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(0.0).y(3.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(2.0).y(3.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(2.0).y(1.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(0.0).y(1.0).z(0.0)};
+    utils::makePoint(0.0, 1.0, 0.0), utils::makePoint(0.0, 3.0, 0.0),
+    utils::makePoint(2.0, 3.0, 0.0), utils::makePoint(2.0, 1.0, 0.0),
+    utils::makePoint(0.0, 1.0, 0.0)};
 
   const auto hull = primitive_->get2DConvexHull();
 
   EXPECT_GT(hull.size(), 0);
-  ASSERT_TRUE(hull.size() == expected_hull.size());
+  ASSERT_EQ(hull.size(), expected_hull.size());
   for (size_t i = 0; i < hull.size(); ++i) {
     EXPECT_POINT_NEAR(hull[i], expected_hull[i], std::numeric_limits<double>::epsilon())
   }
@@ -164,22 +162,16 @@ TEST_F(PrimitiveTest, get2DConvexHull_normal)
 TEST_F(PrimitiveTest, get2DConvexHull_withTransform)
 {
   const std::vector<geometry_msgs::msg::Point> expected_hull = {
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(-1.0).y(0.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(-1.0).y(2.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(1.0).y(2.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(1.0).y(0.0).z(0.0),
-    geometry_msgs::build<geometry_msgs::msg::Point>().x(-1.0).y(0.0).z(0.0)};
+    utils::makePoint(-1.0, 0.0, 0.0), utils::makePoint(-1.0, 2.0, 0.0),
+    utils::makePoint(1.0, 2.0, 0.0), utils::makePoint(1.0, 0.0, 0.0),
+    utils::makePoint(-1.0, 0.0, 0.0)};
 
-  const auto sensor_pose =
-    geometry_msgs::build<geometry_msgs::msg::Pose>()
-      .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(1.0).y(1.0).z(1.0))
-      .orientation(
-        geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(0.0).y(0.0).z(0.0).w(1.0));
+  const auto sensor_pose = utils::makePose(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0);
 
   const auto hull = primitive_->get2DConvexHull(sensor_pose);
 
   EXPECT_GT(hull.size(), 0);
-  ASSERT_TRUE(hull.size() == expected_hull.size());
+  ASSERT_EQ(hull.size(), expected_hull.size());
   for (size_t i = 0; i < hull.size(); ++i) {
     EXPECT_POINT_NEAR(hull[i], expected_hull[i], std::numeric_limits<double>::epsilon())
   }
@@ -192,7 +184,7 @@ TEST_F(PrimitiveTest, getMin)
 {
   const auto min_x = primitive_->getMin(math::geometry::Axis::X);
 
-  EXPECT_TRUE(min_x.has_value());
+  ASSERT_TRUE(min_x.has_value());
   EXPECT_NEAR(min_x.value(), 0.0f, std::numeric_limits<double>::epsilon());
 }
 
@@ -202,15 +194,11 @@ TEST_F(PrimitiveTest, getMin)
  */
 TEST_F(PrimitiveTest, getMin_withTransform)
 {
-  const auto sensor_pose =
-    geometry_msgs::build<geometry_msgs::msg::Pose>()
-      .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(5.0).y(2.0).z(1.0))
-      .orientation(
-        geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(0.0).y(0.0).z(0.0).w(1.0));
+  const auto sensor_pose = utils::makePose(5.0, 2.0, 1.0, 0.0, 0.0, 0.0, 1.0);
 
   const auto min_x = primitive_->getMin(math::geometry::Axis::X, sensor_pose);
 
-  EXPECT_TRUE(min_x.has_value());
+  ASSERT_TRUE(min_x.has_value());
   EXPECT_NEAR(min_x.value(), -5.0f, std::numeric_limits<double>::epsilon());
 }
 
@@ -232,7 +220,7 @@ TEST_F(PrimitiveTest, getMax)
 {
   const auto max_x = primitive_->getMax(math::geometry::Axis::X);
 
-  EXPECT_TRUE(max_x.has_value());
+  ASSERT_TRUE(max_x.has_value());
   EXPECT_NEAR(max_x.value(), 2.0f, std::numeric_limits<double>::epsilon());
 }
 
@@ -242,15 +230,11 @@ TEST_F(PrimitiveTest, getMax)
  */
 TEST_F(PrimitiveTest, getMax_withTransform)
 {
-  const auto sensor_pose =
-    geometry_msgs::build<geometry_msgs::msg::Pose>()
-      .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(6.0).y(3.0).z(2.0))
-      .orientation(
-        geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(0.0).y(0.0).z(0.0).w(1.0));
+  const auto sensor_pose = utils::makePose(6.0, 3.0, 2.0, 0.0, 0.0, 0.0, 1.0);
 
   const auto max_x = primitive_->getMax(math::geometry::Axis::X, sensor_pose);
 
-  EXPECT_TRUE(max_x.has_value());
+  ASSERT_TRUE(max_x.has_value());
   EXPECT_NEAR(max_x.value(), -4.0f, std::numeric_limits<double>::epsilon());
 }
 

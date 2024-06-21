@@ -26,8 +26,8 @@ TEST_F(LidarSensorTest, update_noEgo)
 }
 
 /**
- * @note Test basic functionality. Test lidar sensor correctness on a sample scene with some vehicle - the goal is to check if the
- * correct pointcloud is published on the correct topic.
+ * @note Test basic functionality. Test lidar sensor correctness on a sample scene with some vehicle
+ * - the goal is to check if the correct pointcloud is published on the correct topic.
  */
 TEST_F(LidarSensorTest, update_correct)
 {
@@ -36,7 +36,7 @@ TEST_F(LidarSensorTest, update_correct)
   // Spin the node to process callbacks
   rclcpp::spin_some(node_);
 
-  ASSERT_TRUE(received_msg_ != nullptr);
+  ASSERT_NE(received_msg_, nullptr);
   const auto total_num_of_points = received_msg_->width * received_msg_->height;
   EXPECT_GT(total_num_of_points, 0);
   EXPECT_EQ(received_msg_->header.frame_id, "base_link");
@@ -62,7 +62,8 @@ TEST_F(LidarSensorTest, update_goBackInTime)
 }
 
 /**
- * @note Test basic functionality. Test detected objects obtaining from the statuses list containing Ego.
+ * @note Test basic functionality. Test detected objects obtaining from the statuses list containing
+ * Ego.
  */
 TEST_F(LidarSensorTest, getDetectedObjects)
 {
