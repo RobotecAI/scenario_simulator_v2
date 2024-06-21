@@ -20,9 +20,10 @@
 
 #include <geometry_msgs/msg/point.hpp>
 #include <geometry_msgs/msg/pose.hpp>
-#include <optional>
 #include <simple_sensor_simulator/sensor_simulation/primitives/primitive.hpp>
 #include <vector>
+
+#include "../../utils/helper_functions.hpp"
 
 using namespace simple_sensor_simulator::primitives;
 using namespace simple_sensor_simulator;
@@ -43,8 +44,8 @@ public:
   auto setVertices(const std::vector<Vertex> & vertices) -> void { vertices_ = vertices; }
   auto setTriangles(const std::vector<Triangle> & triangles) -> void { triangles_ = triangles; }
 
-  auto getVerticesSize() const -> int { return vertices_.size(); }
-  auto getTrianglesSize() const -> int { return triangles_.size(); }
+  auto getVerticesSize() const -> size_t { return vertices_.size(); }
+  auto getTrianglesSize() const -> size_t { return triangles_.size(); }
 
   auto getVertices() const -> const std::vector<Vertex> & { return vertices_; }
   auto getTriangles() const -> const std::vector<Triangle> & { return triangles_; }
@@ -57,14 +58,9 @@ class PrimitiveTest : public ::testing::Test
 {
 protected:
   PrimitiveTest()
+  : pose_(utils::makePose(1.0, 2.0, 0.0, 0.0, 0.0, 0.0, 1.0)),
+    primitive_(std::make_unique<DummyPrimitive>("DummyPrimitive", pose_))
   {
-    pose_ = geometry_msgs::build<geometry_msgs::msg::Pose>()
-              .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(1.0).y(2.0).z(0.0))
-              .orientation(
-                geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(0.0).y(0.0).z(0.0).w(1.0));
-
-    primitive_ = std::make_unique<DummyPrimitive>("DummyPrimitive", pose_);
-
     primitive_->setVertices(
       {{-1.0f, -1.0f, -1.0f},
        {1.0f, -1.0f, -1.0f},
