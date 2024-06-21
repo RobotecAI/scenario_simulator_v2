@@ -19,28 +19,31 @@
 
 #include <geometry_msgs/msg/point.hpp>
 #include <geometry_msgs/msg/pose.hpp>
-#include <geometry_msgs/msg/vector3.hpp>
 #include <geometry_msgs/msg/quaternion.hpp>
+#include <geometry_msgs/msg/vector3.hpp>
 
 namespace utils
 {
 
-constexpr double degToRad(double deg) { return deg * M_PI / 180.0; }
+constexpr auto degToRad(const double deg) -> double { return deg * M_PI / 180.0; }
 
-inline auto makePoint(double px, double py, double pz) -> geometry_msgs::msg::Point
+inline auto makePoint(const double px, const double py, const double pz)
+  -> geometry_msgs::msg::Point
 {
   return geometry_msgs::build<geometry_msgs::msg::Point>().x(px).y(py).z(pz);
 }
 
-inline auto makePose(double px, double py, double pz, double ox, double oy, double oz, double ow)
-  -> geometry_msgs::msg::Pose
+inline auto makePose(
+  const double px, const double py, const double pz, const double ox, const double oy,
+  const double oz, const double ow) -> geometry_msgs::msg::Pose
 {
   return geometry_msgs::build<geometry_msgs::msg::Pose>()
     .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(px).y(py).z(pz))
     .orientation(geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(ox).y(oy).z(oz).w(ow));
 }
 
-inline auto makeDimensions(double x, double y, double z) -> geometry_msgs::msg::Vector3
+inline auto makeDimensions(const double x, const double y, const double z)
+  -> geometry_msgs::msg::Vector3
 {
   return geometry_msgs::build<geometry_msgs::msg::Vector3>().x(x).y(y).z(z);
 }

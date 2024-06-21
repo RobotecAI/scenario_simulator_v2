@@ -81,7 +81,7 @@ private:
   }
 
   auto makeEntity(
-    const std::string & name, EntityType::Enum type, const geometry_msgs::msg::Pose & pose,
+    const std::string & name, const EntityType::Enum type, const geometry_msgs::msg::Pose & pose,
     const geometry_msgs::msg::Vector3 & dimensions) -> EntityStatus
   {
     EntityStatus status;
