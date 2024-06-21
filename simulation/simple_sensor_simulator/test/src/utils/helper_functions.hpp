@@ -17,10 +17,19 @@
 
 #include <simulation_api_schema.pb.h>
 
+#include <cmath>
 #include <geometry_msgs/msg/point.hpp>
 #include <geometry_msgs/msg/pose.hpp>
 #include <geometry_msgs/msg/quaternion.hpp>
 #include <geometry_msgs/msg/vector3.hpp>
+#include <optional>
+#include <traffic_simulator_msgs/msg/entity_status.hpp>
+#include <traffic_simulator_msgs/msg/entity_subtype.hpp>
+#include <traffic_simulator_msgs/msg/entity_type.hpp>
+
+using EntitySubtype = traffic_simulator_msgs::EntitySubtype;
+using EntityType = traffic_simulator_msgs::EntityType;
+using EntityStatus = traffic_simulator_msgs::EntityStatus;
 
 namespace utils
 {
@@ -77,6 +86,55 @@ inline auto constructLidarConfiguration(
   configuration.add_vertical_angles(degToRad(13.0));
   configuration.add_vertical_angles(degToRad(15.0));
   return configuration;
+}
+
+inline auto createEntityStatus(
+  const std::string & name, const EntityType::Enum type,
+  const std::optional<EntitySubtype::Enum> & subtype, const geometry_msgs::msg::Pose & pose,
+  const geometry_msgs::msg::Vector3 & dimensions) -> EntityStatus
+{
+  EntityStatus status;
+  status.set_name(name);
+  status.mutable_type()->set_type(type);
+
+  if (subtype) {
+    status.mutable_subtype()->set_value(*subtype);
+  }
+
+  auto new_pose = status.mutable_pose();
+  auto new_position = new_pose->mutable_position();
+  new_position->set_x(pose.position.x);
+  new_position->set_y(pose.position.y);
+  new_position->set_z(pose.position.z);
+
+  auto new_orientation = new_pose->mutable_orientation();
+  new_orientation->set_x(pose.orientation.x);
+  new_orientation->set_y(pose.orientation.y);
+  new_orientation->set_z(pose.orientation.z);
+  new_orientation->set_w(pose.orientation.w);
+
+  auto new_bounding_box = status.mutable_bounding_box();
+  auto new_dimensions = new_bounding_box->mutable_dimensions();
+  new_dimensions->set_x(dimensions.x);
+  new_dimensions->set_y(dimensions.y);
+  new_dimensions->set_z(dimensions.z);
+
+  return status;
+}
+
+inline auto makeEntity(
+  const std::string & name, const EntityType::Enum type, const EntitySubtype::Enum subtype,
+  const geometry_msgs::msg::Pose & pose, const geometry_msgs::msg::Vector3 & dimensions)
+  -> EntityStatus
+{
+  return createEntityStatus(name, type, subtype, pose, dimensions);
+}
+
+inline auto makeEntity(
+  const std::string & name, const EntityType::Enum type, const geometry_msgs::msg::Pose & pose,
+  const geometry_msgs::msg::Vector3 & dimensions) -> EntityStatus
+{
+  return createEntityStatus(name, type, std::nullopt, pose, dimensions);
 }
 
 }  // namespace utils

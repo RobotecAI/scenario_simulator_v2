@@ -67,7 +67,7 @@ TEST_F(LidarSensorTest, update_goBackInTime)
  */
 TEST_F(LidarSensorTest, getDetectedObjects)
 {
-  const std::set<std::string> expected_objects = {other1_status_.name(), other2_status_.name()};
+  const std::set<std::string> expected_objects = {status_[1].name(), status_[2].name()};
 
   lidar_->update(current_simulation_time_, status_, current_ros_time_);
 
@@ -77,7 +77,7 @@ TEST_F(LidarSensorTest, getDetectedObjects)
   const auto & detected_objects = lidar_->getDetectedObjects();
 
   // LidarSensor returns duplicates. To avoid them, a set is used.
-  std::set<std::string> unique_objects(detected_objects.begin(), detected_objects.end());
+  const std::set<std::string> unique_objects(detected_objects.begin(), detected_objects.end());
 
   ASSERT_FALSE(unique_objects.empty());
   EXPECT_EQ(unique_objects, expected_objects);
