@@ -1,0 +1,2 @@
+ament_add_gtest(test_traffic_light_detector test_traffic_light_detector.cpp)
+target_link_libraries(test_traffic_light_detector simple_sensor_simulator_component ${Protobuf_LIBRARIES})
