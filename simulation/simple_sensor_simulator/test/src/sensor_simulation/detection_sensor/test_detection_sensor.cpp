@@ -20,134 +20,15 @@
 
 /**
  * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and UNKNOWN
- * entity positioned closer to Ego than the range parameter (in configuration) - the goal is to test
- * the standard detection functionality when an entity is detected because it is close to Ego.
- */
-TEST_F(DetectionSensorTest, update_unknownSubtype)
-{
-  initializeEntityStatus("unknown", EntityType::VEHICLE, EntitySubtype::UNKNOWN);
-
-  detection_sensor_->update(
-    current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
-
-  // Spin the node to process callbacks
-  rclcpp::spin_some(node_);
-
-  ASSERT_NE(received_msg_, nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::UNKNOWN);
-  EXPECT_POSITION_NEAR(
-    received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
-    std::numeric_limits<double>::epsilon());
-}
-
-/**
- * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and CAR
- * entity positioned closer to Ego than the range parameter (in configuration) - the goal is to test
- * the standard detection functionality when an entity is detected because it is close to Ego.
- */
-TEST_F(DetectionSensorTest, update_carSubtype)
-{
-  initializeEntityStatus("car", EntityType::VEHICLE, EntitySubtype::CAR);
-
-  detection_sensor_->update(
-    current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
-
-  // Spin the node to process callbacks
-  rclcpp::spin_some(node_);
-
-  ASSERT_NE(received_msg_, nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::CAR);
-  EXPECT_POSITION_NEAR(
-    received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
-    std::numeric_limits<double>::epsilon());
-}
-
-/**
- * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and TRUCK
- * entity positioned closer to Ego than the range parameter (in configuration) - the goal is to test
- * the standard detection functionality when an entity is detected because it is close to Ego.
- */
-TEST_F(DetectionSensorTest, update_truckSubtype)
-{
-  initializeEntityStatus("truck", EntityType::VEHICLE, EntitySubtype::TRUCK);
-
-  detection_sensor_->update(
-    current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
-
-  // Spin the node to process callbacks
-  rclcpp::spin_some(node_);
-
-  ASSERT_NE(received_msg_, nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::TRUCK);
-  EXPECT_POSITION_NEAR(
-    received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
-    std::numeric_limits<double>::epsilon());
-}
-
-/**
- * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and BUS
- * entity positioned closer to Ego than the range parameter (in configuration) - the goal is to test
- * the standard detection functionality when an entity is detected because it is close to Ego.
- */
-TEST_F(DetectionSensorTest, update_busSubtype)
-{
-  initializeEntityStatus("bus", EntityType::VEHICLE, EntitySubtype::BUS);
-
-  detection_sensor_->update(
-    current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
-
-  // Spin the node to process callbacks
-  rclcpp::spin_some(node_);
-
-  ASSERT_NE(received_msg_, nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::BUS);
-  EXPECT_POSITION_NEAR(
-    received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
-    std::numeric_limits<double>::epsilon());
-}
-
-/**
- * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and TRAILER
- * entity positioned closer to Ego than the range parameter (in configuration) - the goal is to test
- * the standard detection functionality when an entity is detected because it is close to Ego.
- */
-TEST_F(DetectionSensorTest, update_trailerSubtype)
-{
-  initializeEntityStatus("trailer", EntityType::VEHICLE, EntitySubtype::TRAILER);
-
-  detection_sensor_->update(
-    current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
-
-  // Spin the node to process callbacks
-  rclcpp::spin_some(node_);
-
-  ASSERT_NE(received_msg_, nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::TRAILER);
-  EXPECT_POSITION_NEAR(
-    received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
-    std::numeric_limits<double>::epsilon());
-}
-
-/**
- * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and
- * MOTORCYCLE entity positioned closer to Ego than the range parameter (in configuration) - the goal
+ * and filter_by_range = true (in configuration), no probability of lost (configuration) and a
+ * specific entity positioned closer to Ego than the range parameter (in configuration) - the goal
  * is to test the standard detection functionality when an entity is detected because it is close to
  * Ego.
  */
-TEST_F(DetectionSensorTest, update_motorcycleSubtype)
+TEST_P(DetectionSensorTestParameterized, update)
 {
-  initializeEntityStatus("motorcycle", EntityType::VEHICLE, EntitySubtype::MOTORCYCLE);
+  const auto param = GetParam();
+  initializeEntityStatus(param.entity_name_, param.entity_type_, param.entity_subtype_);
 
   detection_sensor_->update(
     current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
@@ -157,60 +38,31 @@ TEST_F(DetectionSensorTest, update_motorcycleSubtype)
 
   ASSERT_NE(received_msg_, nullptr);
   ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::MOTORCYCLE);
+  EXPECT_EQ(received_msg_->objects[0].classification[0].label, param.expected_label_);
   EXPECT_POSITION_NEAR(
     received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
     std::numeric_limits<double>::epsilon());
 }
 
-/**
- * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and BICYCLE
- * entity positioned closer to Ego than the range parameter (in configuration) - the goal is to test
- * the standard detection functionality when an entity is detected because it is close to Ego
- */
-TEST_F(DetectionSensorTest, update_bicycleSubtype)
-{
-  initializeEntityStatus("bicycle", EntityType::VEHICLE, EntitySubtype::BICYCLE);
-
-  detection_sensor_->update(
-    current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
-
-  // Spin the node to process callbacks
-  rclcpp::spin_some(node_);
-
-  ASSERT_NE(received_msg_, nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::BICYCLE);
-  EXPECT_POSITION_NEAR(
-    received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
-    std::numeric_limits<double>::epsilon());
-}
-
-/**
- * @note Test basic functionality. Test update process correctness with no position noise, no delay
- * and filter_by_range = true (in configuration), no probability of lost (configuration) and
- * PEDESTRIAN entity positioned closer to Ego than the range parameter (in configuration) - the goal
- * is to test the standard detection functionality when an entity is detected because it is close to
- * Ego
- */
-TEST_F(DetectionSensorTest, update_pedestrianSubtype)
-{
-  initializeEntityStatus("pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN);
-
-  detection_sensor_->update(
-    current_simulation_time_, status_, current_ros_time_, lidar_detected_entities_);
-
-  // Spin the node to process callbacks
-  rclcpp::spin_some(node_);
-
-  ASSERT_NE(received_msg_, nullptr);
-  ASSERT_EQ(received_msg_->objects.size(), static_cast<size_t>(1));
-  EXPECT_EQ(received_msg_->objects[0].classification[0].label, ObjectClassification::PEDESTRIAN);
-  EXPECT_POSITION_NEAR(
-    received_msg_->objects[0].kinematics.pose_with_covariance.pose.position, entity_pose_.position,
-    std::numeric_limits<double>::epsilon());
-}
+INSTANTIATE_TEST_SUITE_P(
+  DetectionSensorTests, DetectionSensorTestParameterized,
+  ::testing::Values(
+    DetectionTestParam{
+      "unknown", EntityType::VEHICLE, EntitySubtype::UNKNOWN, ObjectClassification::UNKNOWN},
+    DetectionTestParam{"car", EntityType::VEHICLE, EntitySubtype::CAR, ObjectClassification::CAR},
+    DetectionTestParam{
+      "truck", EntityType::VEHICLE, EntitySubtype::TRUCK, ObjectClassification::TRUCK},
+    DetectionTestParam{"bus", EntityType::VEHICLE, EntitySubtype::BUS, ObjectClassification::BUS},
+    DetectionTestParam{
+      "trailer", EntityType::VEHICLE, EntitySubtype::TRAILER, ObjectClassification::TRAILER},
+    DetectionTestParam{
+      "motorcycle", EntityType::VEHICLE, EntitySubtype::MOTORCYCLE,
+      ObjectClassification::MOTORCYCLE},
+    DetectionTestParam{
+      "bicycle", EntityType::VEHICLE, EntitySubtype::BICYCLE, ObjectClassification::BICYCLE},
+    DetectionTestParam{
+      "pedestrian", EntityType::PEDESTRIAN, EntitySubtype::PEDESTRIAN,
+      ObjectClassification::PEDESTRIAN}));
 
 /**
  * @note Test basic functionality. Test update process correctness with no position noise, a

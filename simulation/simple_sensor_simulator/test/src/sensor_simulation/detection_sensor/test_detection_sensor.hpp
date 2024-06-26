@@ -100,4 +100,17 @@ private:
   }
 };
 
+struct DetectionTestParam
+{
+  std::string entity_name_;
+  EntityType::Enum entity_type_;
+  EntitySubtype::Enum entity_subtype_;
+  int expected_label_;
+};
+
+class DetectionSensorTestParameterized : public DetectionSensorTest,
+                                         public ::testing::WithParamInterface<DetectionTestParam>
+{
+};
+
 #endif  // SIMPLE_SENSOR_SIMULATOR__TEST__TEST_DETECTION_SENSOR_HPP_
