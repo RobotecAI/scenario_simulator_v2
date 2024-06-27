@@ -68,23 +68,22 @@ class TrafficLightDetectorTest_AutoPerceptionMsgs : public TrafficLightDetectorT
 {
 protected:
   TrafficLightDetectorTest_AutoPerceptionMsgs()
-  {
-    publisher_auto_ =
+  : publisher_auto_(
       std::make_shared<traffic_simulator::TrafficLightPublisher<AutoPerceptionTrafficSignalArray>>(
-        perception_msgs_topic_, node_, hdmap_utils_);
-    subscription_auto_ = node_->create_subscription<AutoPerceptionTrafficSignalArray>(
+        perception_msgs_topic_, node_, hdmap_utils_)),
+    subscription_auto_(node_->create_subscription<AutoPerceptionTrafficSignalArray>(
       perception_msgs_topic_, 10,
-      [this](const AutoPerceptionTrafficSignalArray::SharedPtr msg) { received_msg_auto_ = msg; });
-
-    traffic_lights_detector_auto_ =
-      std::make_unique<traffic_lights::TrafficLightsDetector>(publisher_auto_);
+      [this](const AutoPerceptionTrafficSignalArray::SharedPtr msg) { received_msg_auto_ = msg; })),
+    traffic_lights_detector_auto_(
+      std::make_unique<traffic_lights::TrafficLightsDetector>(publisher_auto_))
+  {
   }
 
-  const std::string perception_msgs_topic_ = "traffic_light_detector_output_perception";
+  const std::string perception_msgs_topic_{"traffic_light_detector_output_perception"};
 
   std::shared_ptr<traffic_simulator::TrafficLightPublisherBase> publisher_auto_;
-  std::unique_ptr<traffic_lights::TrafficLightsDetector> traffic_lights_detector_auto_;
   rclcpp::Subscription<AutoPerceptionTrafficSignalArray>::SharedPtr subscription_auto_;
+  std::unique_ptr<traffic_lights::TrafficLightsDetector> traffic_lights_detector_auto_;
   AutoPerceptionTrafficSignalArray::SharedPtr received_msg_auto_;
 };
 
@@ -93,24 +92,24 @@ class TrafficLightDetectorTest_PerceptionMsgs : public TrafficLightDetectorTestB
 {
 protected:
   TrafficLightDetectorTest_PerceptionMsgs()
-  {
-    publisher_perception_ =
+  : publisher_perception_(
       std::make_shared<traffic_simulator::TrafficLightPublisher<PerceptionTrafficSignalArray>>(
-        auto_perception_msgs_topic_, node_, hdmap_utils_);
-    subscription_perception_ = node_->create_subscription<PerceptionTrafficSignalArray>(
-      auto_perception_msgs_topic_, 10, [this](const PerceptionTrafficSignalArray::SharedPtr msg) {
+        auto_perception_msgs_topic_, node_, hdmap_utils_)),
+    subscription_perception_(node_->create_subscription<PerceptionTrafficSignalArray>(
+      auto_perception_msgs_topic_, 10,
+      [this](const PerceptionTrafficSignalArray::SharedPtr msg) {
         received_msg_perception_ = msg;
-      });
-
-    traffic_lights_detector_perception_ =
-      std::make_unique<traffic_lights::TrafficLightsDetector>(publisher_perception_);
+      })),
+    traffic_lights_detector_perception_(
+      std::make_unique<traffic_lights::TrafficLightsDetector>(publisher_perception_))
+  {
   }
 
-  const std::string auto_perception_msgs_topic_ = "traffic_light_detector_output_auto";
+  const std::string auto_perception_msgs_topic_{"traffic_light_detector_output_auto"};
 
   std::shared_ptr<traffic_simulator::TrafficLightPublisherBase> publisher_perception_;
-  std::unique_ptr<traffic_lights::TrafficLightsDetector> traffic_lights_detector_perception_;
   rclcpp::Subscription<PerceptionTrafficSignalArray>::SharedPtr subscription_perception_;
+  std::unique_ptr<traffic_lights::TrafficLightsDetector> traffic_lights_detector_perception_;
   PerceptionTrafficSignalArray::SharedPtr received_msg_perception_;
 };
 
