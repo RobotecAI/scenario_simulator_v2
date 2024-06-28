@@ -1,7 +1,3 @@
-add_subdirectory(src/sensor_simulation/lidar)
-add_subdirectory(src/sensor_simulation/primitives)
-add_subdirectory(src/sensor_simulation/occupancy_grid)
-
 find_package(Protobuf REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS})
 
@@ -10,3 +6,13 @@ target_link_libraries(test_scenario_simulator simple_sensor_simulator_component 
 
 ament_add_gtest(test_sensor_simulation src/sensor_simulation/test_sensor_simulation.cpp)
 target_link_libraries(test_sensor_simulation simple_sensor_simulator_component ${Protobuf_LIBRARIES})
+
+install(
+  DIRECTORY map
+  DESTINATION share/${PROJECT_NAME})
+
+add_subdirectory(src/sensor_simulation/lidar)
+add_subdirectory(src/sensor_simulation/primitives)
+add_subdirectory(src/sensor_simulation/occupancy_grid)
+add_subdirectory(src/sensor_simulation/detection_sensor)
+add_subdirectory(src/sensor_simulation/traffic_lights)

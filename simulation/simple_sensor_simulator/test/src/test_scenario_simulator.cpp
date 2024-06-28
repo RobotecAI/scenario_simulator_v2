@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "sensor_simulation/expect_eq_macros.hpp"
 #include "test_scenario_simulator.hpp"
+
+#include "utils/expect_eq_macros.hpp"
 
 /**
  * @note Test initialization correctness with a sample request with the default port (5555).
