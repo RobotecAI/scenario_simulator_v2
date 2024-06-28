@@ -1,2 +1,5 @@
 ament_add_gtest(test_grid_traversal test_grid_traversal.cpp)
 target_link_libraries(test_grid_traversal simple_sensor_simulator_component)
+
+ament_add_gtest(test_occupancy_grid_builder test_occupancy_grid_builder.cpp)
+target_link_libraries(test_occupancy_grid_builder simple_sensor_simulator_component ${Protobuf_LIBRARIES})

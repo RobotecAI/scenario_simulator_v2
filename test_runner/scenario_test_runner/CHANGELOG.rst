@@ -23,6 +23,91 @@ Changelog for package scenario_test_runner
 * refactor: delete workflow.Workflow and rename workflow.py to scenario.py
 * Contributors: Kotaro Yoshimoto, Tatsuya Yamasaki
 
+2.2.2 (2024-06-28)
+------------------
+
+2.2.1 (2024-06-27)
+------------------
+* Merge remote-tracking branch 'origin/master' into fix/issue1276-re
+* Contributors: Masaya Kataoka
+
+2.2.0 (2024-06-24)
+------------------
+* Merge branch 'master' into feature/clear_route_api
+* Merge remote-tracking branch 'origin/master' into feature/clear_route_api
+* Merge branch 'master' into feature/clear_route_api
+* Merge branch 'master' into feature/clear_route_api
+* Contributors: Masaya Kataoka, Taiga
+
+2.1.11 (2024-06-24)
+-------------------
+* Merge branch 'master' of github.com:tier4/scenario_simulator_v2 into feature/unit_tests/miscellaneous
+* resolve merge confilct
+* resolve merge
+* Merge branch 'master' of github.com:tier4/scenario_simulator_v2 into feature/unit_tests/miscellaneous
+* Contributors: robomic
+
+2.1.10 (2024-06-24)
+-------------------
+* Merge branch 'master' of github.com:tier4/scenario_simulator_v2 into feature/unit_tests/misc_object_entity
+* Contributors: robomic
+
+2.1.9 (2024-06-24)
+------------------
+
+2.1.8 (2024-06-20)
+------------------
+* Merge branch 'master' into feature/simple_sensor_simulator_unit_test
+* Merge branch 'master' into feature/simple_sensor_simulator_unit_test
+* Contributors: Kotaro Yoshimoto, SzymonParapura
+
+2.1.7 (2024-06-19)
+------------------
+* Merge branch 'master' into feature/improve-ros-parameter-handling
+* Merge branch 'master' into feature/improve-ros-parameter-handling
+* Contributors: Masaya Kataoka, Mateusz Palczuk
+
+2.1.6 (2024-06-18)
+------------------
+
+2.1.5 (2024-06-18)
+------------------
+
+2.1.4 (2024-06-14)
+------------------
+* Merge branch 'master' into fix/remove_quaternion_operation
+* fix
+* Merge branch 'master' into fix/remove_quaternion_operation
+* Remove quaternion_operation
+* Contributors: Masaya Kataoka, Taiga Takano
+
+2.1.3 (2024-06-14)
+------------------
+* Merge branch 'master' into fix/issue1276
+* Contributors: Masaya Kataoka
+
+2.1.2 (2024-06-13)
+------------------
+* Merge branch 'master' into fix/interpreter/fault-injection-action
+* Merge branch 'master' into fix/interpreter/fault-injection-action
+* Merge branch 'master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge branch 'master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Merge remote-tracking branch 'origin/master' into fix/interpreter/fault-injection-action
+* Contributors: Tatsuya Yamasaki, yamacir-kit
+
 2.1.1 (2024-06-11)
 ------------------
 * Merge branch 'master' into fix/reorder
