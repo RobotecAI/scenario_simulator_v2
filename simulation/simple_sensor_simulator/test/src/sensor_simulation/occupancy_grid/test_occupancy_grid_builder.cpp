@@ -20,17 +20,6 @@
 #include <simple_sensor_simulator/sensor_simulation/occupancy_grid/grid_traversal.hpp>
 #include <simple_sensor_simulator/sensor_simulation/occupancy_grid/occupancy_grid_builder.hpp>
 
-auto printGrid(const simple_sensor_simulator::OccupancyGridBuilder & builder) -> void
-{
-  const auto & grid = builder.get();
-  for (size_t i = static_cast<size_t>(0); i < builder.height; ++i) {
-    for (size_t j = static_cast<size_t>(0); j < builder.width; ++j) {
-      std::cout << static_cast<int>(grid.at(i * builder.width + j)) << ", ";
-    }
-    std::cout << std::endl;
-  }
-}
-
 auto makePose(const double x, const double y) -> geometry_msgs::msg::Pose
 {
   return geometry_msgs::build<geometry_msgs::msg::Pose>()
@@ -65,13 +54,6 @@ TEST(OccupancyGridBuilder, add_overLimit)
  */
 TEST(OccupancyGridBuilder, add_primitiveInside)
 {
-  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
-    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
-    static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 4.0, 0.0));
-  builder.add(makeBox(2.0f, -5.0, 0.0));
-  builder.build();
-  const auto & result_obtained = builder.get();
   const auto result_expected = std::vector<int8_t>{
     // clang-format off
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 
@@ -86,7 +68,16 @@ TEST(OccupancyGridBuilder, add_primitiveInside)
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1,
     // clang-format on
   };
-  EXPECT_EQ(result_expected, result_obtained);
+
+  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
+    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
+    static_cast<int8_t>(1));
+  builder.add(makeBox(5.0f, 4.0, 0.0));
+  builder.add(makeBox(2.0f, -5.0, 0.0));
+
+  builder.build();
+
+  EXPECT_EQ(result_expected, builder.get());
 }
 
 /**
@@ -95,13 +86,6 @@ TEST(OccupancyGridBuilder, add_primitiveInside)
  */
 TEST(OccupancyGridBuilder, add_primitiveProtruding)
 {
-  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
-    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
-    static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 9.0, -4.0));
-  builder.add(makeBox(2.0f, -10.0, 3.0));
-  builder.build();
-  const auto & result_obtained = builder.get();
   const auto result_expected = std::vector<int8_t>{
     // clang-format off
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 
@@ -116,7 +100,16 @@ TEST(OccupancyGridBuilder, add_primitiveProtruding)
     2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     // clang-format on
   };
-  EXPECT_EQ(result_expected, result_obtained);
+
+  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
+    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
+    static_cast<int8_t>(1));
+  builder.add(makeBox(5.0f, 9.0, -4.0));
+  builder.add(makeBox(2.0f, -10.0, 3.0));
+
+  builder.build();
+
+  EXPECT_EQ(result_expected, builder.get());
 }
 
 /**
@@ -125,12 +118,6 @@ TEST(OccupancyGridBuilder, add_primitiveProtruding)
  */
 TEST(OccupancyGridBuilder, add_primitiveInCenter)
 {
-  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
-    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
-    static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 0.0, 0.0));
-  builder.build();
-  const auto & result_obtained = builder.get();
   const auto result_expected = std::vector<int8_t>{
     // clang-format off
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
@@ -157,7 +144,15 @@ TEST(OccupancyGridBuilder, add_primitiveInCenter)
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,     
     */
   };
-  EXPECT_EQ(result_expected, result_obtained);
+
+  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
+    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
+    static_cast<int8_t>(1));
+  builder.add(makeBox(5.0f, 0.0, 0.0));
+
+  builder.build();
+
+  EXPECT_EQ(result_expected, builder.get());
 }
 
 /**
@@ -166,13 +161,6 @@ TEST(OccupancyGridBuilder, add_primitiveInCenter)
  */
 TEST(OccupancyGridBuilder, reset)
 {
-  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
-    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
-    static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 0.0, 0.0));
-  builder.reset(makePose(0.0, 0.0));
-  builder.build();
-  const auto & result_obtained = builder.get();
   const auto result_expected = std::vector<int8_t>{
     // clang-format off
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -187,7 +175,16 @@ TEST(OccupancyGridBuilder, reset)
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     // clang-format on
   };
-  EXPECT_EQ(result_expected, result_obtained);
+
+  auto builder = simple_sensor_simulator::OccupancyGridBuilder(
+    1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
+    static_cast<int8_t>(1));
+  builder.add(makeBox(5.0f, 0.0, 0.0));
+  builder.reset(makePose(0.0, 0.0));
+
+  builder.build();
+
+  EXPECT_EQ(result_expected, builder.get());
 }
 
 int main(int argc, char ** argv)
