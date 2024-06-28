@@ -20,13 +20,15 @@
 #include <simple_sensor_simulator/simple_sensor_simulator.hpp>
 #include <simulation_interface/conversions.hpp>
 #include <simulation_interface/zmq_multi_client.hpp>
-#include <traffic_simulator/helper/helper.hpp>
+
+#include "utils/helper_functions.hpp"
 
 auto makeInitializeRequest() -> simulation_api_schema::InitializeRequest
 {
   auto request = simulation_api_schema::InitializeRequest();
   request.set_lanelet2_map_path(
-    ament_index_cpp::get_package_share_directory("traffic_simulator") + "/map/lanelet2_map.osm");
+    ament_index_cpp::get_package_share_directory("simple_sensor_simulator") +
+    "/map/lanelet2_map.osm");
   return request;
 }
 
@@ -80,18 +82,16 @@ auto makeSpawnMiscObjectEntityRequest(const std::string name = "name")
 auto makeAttachDetectionSensorRequest() -> simulation_api_schema::AttachDetectionSensorRequest
 {
   auto request = simulation_api_schema::AttachDetectionSensorRequest();
-  auto configuration = traffic_simulator::helper::constructDetectionSensorConfiguration(
-    "entity_name", "awf/universe", 1.0);
-  *request.mutable_configuration() = configuration;
+  *request.mutable_configuration() =
+    utils::constructDetectionSensorConfiguration("entity_name", "awf/universe", 1.0);
   return request;
 }
 
 auto makeAttachLidarSensorRequest() -> simulation_api_schema::AttachLidarSensorRequest
 {
   auto request = simulation_api_schema::AttachLidarSensorRequest();
-  auto configuration = traffic_simulator::helper::constructLidarConfiguration(
-    traffic_simulator::helper::LidarType::VLP16, "entity_name", "awf/universe", 1.0);
-  *request.mutable_configuration() = configuration;
+  *request.mutable_configuration() =
+    utils::constructLidarConfiguration("entity_name", "awf/universe", 0.0, 1.0 / 180.0 * M_PI);
   return request;
 }
 
@@ -99,14 +99,8 @@ auto makeAttachOccupancyGridSensorRequest()
   -> simulation_api_schema::AttachOccupancyGridSensorRequest
 {
   auto request = simulation_api_schema::AttachOccupancyGridSensorRequest();
-  auto configuration = simulation_api_schema::OccupancyGridSensorConfiguration();
-
-  configuration.set_entity("entity_name");
-  configuration.set_architecture_type("awf/universe");
-  configuration.set_update_duration(1.0);
-  configuration.set_range(300.0);
-  configuration.set_resolution(1.0);
-  *request.mutable_configuration() = configuration;
+  *request.mutable_configuration() =
+    utils::constructOccupancyGridSensorConfiguration("entity_name", "awf/universe", 1.0);
   return request;
 }
 

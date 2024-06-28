@@ -20,19 +20,7 @@
 #include <simple_sensor_simulator/sensor_simulation/occupancy_grid/grid_traversal.hpp>
 #include <simple_sensor_simulator/sensor_simulation/occupancy_grid/occupancy_grid_builder.hpp>
 
-auto makePose(const double x, const double y) -> geometry_msgs::msg::Pose
-{
-  return geometry_msgs::build<geometry_msgs::msg::Pose>()
-    .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(x).y(y).z(0.0))
-    .orientation(
-      geometry_msgs::build<geometry_msgs::msg::Quaternion>().x(0.0).y(0.0).z(0.0).w(1.0));
-}
-
-auto makeBox(const float size, const double x, const double y)
-  -> simple_sensor_simulator::primitives::Box
-{
-  return simple_sensor_simulator::primitives::Box(size, size, size, makePose(x, y));
-}
+#include "../../utils/helper_functions.hpp"
 
 /**
  * @note Test function behavior when called after the limit has been reached.
@@ -43,9 +31,9 @@ TEST(OccupancyGridBuilder, add_overLimit)
   auto builder = simple_sensor_simulator::OccupancyGridBuilder(
     0.1, static_cast<size_t>(20), static_cast<size_t>(40));
   for (int i = 0; i < static_cast<int>(std::numeric_limits<std::int16_t>::max()); ++i) {
-    builder.add(makeBox(5.0f, 0.0, 0.0));
+    builder.add(utils::makeBox(5.0f, 0.0, 0.0));
   }
-  EXPECT_THROW(builder.add(makeBox(5.0f, 0.0, 0.0)), std::runtime_error);
+  EXPECT_THROW(builder.add(utils::makeBox(5.0f, 0.0, 0.0)), std::runtime_error);
 }
 
 /**
@@ -72,8 +60,8 @@ TEST(OccupancyGridBuilder, add_primitiveInside)
   auto builder = simple_sensor_simulator::OccupancyGridBuilder(
     1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
     static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 4.0, 0.0));
-  builder.add(makeBox(2.0f, -5.0, 0.0));
+  builder.add(utils::makeBox(5.0f, 4.0, 0.0));
+  builder.add(utils::makeBox(2.0f, -5.0, 0.0));
 
   builder.build();
 
@@ -104,8 +92,8 @@ TEST(OccupancyGridBuilder, add_primitiveProtruding)
   auto builder = simple_sensor_simulator::OccupancyGridBuilder(
     1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
     static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 9.0, -4.0));
-  builder.add(makeBox(2.0f, -10.0, 3.0));
+  builder.add(utils::makeBox(5.0f, 9.0, -4.0));
+  builder.add(utils::makeBox(2.0f, -10.0, 3.0));
 
   builder.build();
 
@@ -148,7 +136,7 @@ TEST(OccupancyGridBuilder, add_primitiveInCenter)
   auto builder = simple_sensor_simulator::OccupancyGridBuilder(
     1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
     static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 0.0, 0.0));
+  builder.add(utils::makeBox(5.0f, 0.0, 0.0));
 
   builder.build();
 
@@ -179,8 +167,8 @@ TEST(OccupancyGridBuilder, reset)
   auto builder = simple_sensor_simulator::OccupancyGridBuilder(
     1.0, static_cast<size_t>(10), static_cast<size_t>(20), static_cast<int8_t>(2),
     static_cast<int8_t>(1));
-  builder.add(makeBox(5.0f, 0.0, 0.0));
-  builder.reset(makePose(0.0, 0.0));
+  builder.add(utils::makeBox(5.0f, 0.0, 0.0));
+  builder.reset(utils::makePose(0.0, 0.0));
 
   builder.build();
 

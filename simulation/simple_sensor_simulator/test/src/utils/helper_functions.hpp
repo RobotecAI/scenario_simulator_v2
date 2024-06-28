@@ -23,6 +23,7 @@
 #include <geometry_msgs/msg/quaternion.hpp>
 #include <geometry_msgs/msg/vector3.hpp>
 #include <optional>
+#include <simple_sensor_simulator/sensor_simulation/primitives/box.hpp>
 #include <traffic_simulator_msgs/msg/entity_status.hpp>
 #include <traffic_simulator_msgs/msg/entity_subtype.hpp>
 #include <traffic_simulator_msgs/msg/entity_type.hpp>
@@ -43,8 +44,8 @@ inline auto makePoint(const double px, const double py, const double pz)
 }
 
 inline auto makePose(
-  const double px, const double py, const double pz, const double ox, const double oy,
-  const double oz, const double ow) -> geometry_msgs::msg::Pose
+  const double px, const double py, const double pz = 0.0, const double ox = 0.0,
+  const double oy = 0.0, const double oz = 0.0, const double ow = 1.0) -> geometry_msgs::msg::Pose
 {
   return geometry_msgs::build<geometry_msgs::msg::Pose>()
     .position(geometry_msgs::build<geometry_msgs::msg::Point>().x(px).y(py).z(pz))
@@ -55,6 +56,12 @@ inline auto makeDimensions(const double x, const double y, const double z)
   -> geometry_msgs::msg::Vector3
 {
   return geometry_msgs::build<geometry_msgs::msg::Vector3>().x(x).y(y).z(z);
+}
+
+inline auto makeBox(const float size, const double x, const double y)
+  -> simple_sensor_simulator::primitives::Box
+{
+  return simple_sensor_simulator::primitives::Box(size, size, size, utils::makePose(x, y));
 }
 
 auto constructDetectionSensorConfiguration(
@@ -108,6 +115,21 @@ inline auto constructLidarConfiguration(
   configuration.add_vertical_angles(degToRad(11.0));
   configuration.add_vertical_angles(degToRad(13.0));
   configuration.add_vertical_angles(degToRad(15.0));
+  return configuration;
+}
+
+inline auto constructOccupancyGridSensorConfiguration(
+  const std::string & entity, const std::string & architecture_type,
+  const double horizontal_resolution)
+  -> const simulation_api_schema::OccupancyGridSensorConfiguration
+{
+  auto configuration = simulation_api_schema::OccupancyGridSensorConfiguration();
+
+  configuration.set_entity(entity);
+  configuration.set_architecture_type(architecture_type);
+  configuration.set_update_duration(1.0);
+  configuration.set_range(300.0);
+  configuration.set_resolution(horizontal_resolution);
   return configuration;
 }
 
