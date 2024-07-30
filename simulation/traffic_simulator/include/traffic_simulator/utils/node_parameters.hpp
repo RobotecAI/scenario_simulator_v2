@@ -15,7 +15,6 @@
 #ifndef TRAFFIC_SIMULATOR__UTILS__NODE_PARAMETERS_HPP_
 #define TRAFFIC_SIMULATOR__UTILS__NODE_PARAMETERS_HPP_
 
-#include <geographic_msgs/msg/geo_point.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <scenario_simulator_exception/exception.hpp>
 
@@ -38,8 +37,6 @@ auto getParameter(
   }
   return node_parameters->get_parameter(name).get_value<ParameterT>();
 }
-
-auto getOrigin(const rclcpp::node_interfaces::NodeParametersInterface::SharedPtr & node_parameters)
-  -> geographic_msgs::msg::GeoPoint;
 }  // namespace traffic_simulator
+
 #endif  //TRAFFIC_SIMULATOR__UTILS__NODE_PARAMETERS_HPP_
