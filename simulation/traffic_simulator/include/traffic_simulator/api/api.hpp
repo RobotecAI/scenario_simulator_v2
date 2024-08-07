@@ -261,23 +261,23 @@ public:
 
   auto relativeLaneletPose(
     const std::string & from_entity_name, const std::string & to_entity_name,
-    const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>;
+    const bool allow_lane_change) -> std::optional<LaneletDistance>;
 
   auto relativeLaneletPose(
     const std::string & from_entity_name, const LaneletPose & to_lanelet_pose,
-    const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>;
+    const bool allow_lane_change) -> std::optional<LaneletDistance>;
 
   auto relativeLaneletPose(
     const LaneletPose & from_lanelet_pose, const std::string & to_entity_name,
-    const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>;
+    const bool allow_lane_change) -> std::optional<LaneletDistance>;
 
   auto boundingBoxRelativeLaneletPose(
     const std::string & from_entity_name, const std::string & to_entity_name,
-    const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>;
+    const bool allow_lane_change) -> std::optional<LaneletDistance>;
 
   auto boundingBoxRelativeLaneletPose(
     const std::string & from_entity_name, const LaneletPose & to_lanelet_pose,
-    const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>;
+    const bool allow_lane_change) -> std::optional<LaneletDistance>;
 
   // traffics, lanelet
   auto getHdmapUtils() const -> const std::shared_ptr<hdmap_utils::HdMapUtils> &;

@@ -104,6 +104,12 @@ private:
   geometry_msgs::msg::Pose map_pose_;
   inline static bool consider_pose_by_road_slope_{false};
 };
+
+struct LaneletDistance
+{
+  double longitudinal = std::numeric_limits<double>::quiet_NaN();
+  double lateral = std::numeric_limits<double>::quiet_NaN();
+};
 }  // namespace lanelet_pose
 
 auto isSameLaneletId(const CanonicalizedLaneletPose &, const CanonicalizedLaneletPose &) -> bool;

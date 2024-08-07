@@ -450,7 +450,7 @@ auto API::relativePose(
 
 auto API::relativeLaneletPose(
   const std::string & from_entity_name, const std::string & to_entity_name,
-  const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>
+  const bool allow_lane_change) -> std::optional<LaneletDistance>
 {
   const auto from_entity = getEntity(from_entity_name);
   const auto to_entity = getEntity(to_entity_name);
@@ -466,7 +466,7 @@ auto API::relativeLaneletPose(
 
 auto API::relativeLaneletPose(
   const std::string & from_entity_name, const LaneletPose & to_lanelet_pose,
-  const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>
+  const bool allow_lane_change) -> std::optional<LaneletDistance>
 {
   const auto canonicalized_lanelet_pose = pose::canonicalize(to_lanelet_pose, getHdmapUtils());
   const auto from_entity = getEntity(from_entity_name);
@@ -481,7 +481,7 @@ auto API::relativeLaneletPose(
 
 auto API::relativeLaneletPose(
   const LaneletPose & from_lanelet_pose, const std::string & to_entity_name,
-  const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>
+  const bool allow_lane_change) -> std::optional<LaneletDistance>
 {
   const auto canonicalized_lanelet_pose = pose::canonicalize(from_lanelet_pose, getHdmapUtils());
   const auto to_entity = getEntity(to_entity_name);
@@ -496,7 +496,7 @@ auto API::relativeLaneletPose(
 
 auto API::boundingBoxRelativeLaneletPose(
   const std::string & from_entity_name, const std::string & to_entity_name,
-  const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>
+  const bool allow_lane_change) -> std::optional<LaneletDistance>
 {
   const auto from_entity = getEntity(from_entity_name);
   const auto to_entity = getEntity(to_entity_name);
@@ -513,7 +513,7 @@ auto API::boundingBoxRelativeLaneletPose(
 
 auto API::boundingBoxRelativeLaneletPose(
   const std::string & from_entity_name, const LaneletPose & to_lanelet_pose,
-  const bool allow_lane_change) -> std::optional<CanonicalizedLaneletPose>
+  const bool allow_lane_change) -> std::optional<LaneletDistance>
 {
   const auto canonicalized_lanelet_pose = pose::canonicalize(to_lanelet_pose, getHdmapUtils());
   const auto from_entity = getEntity(from_entity_name);
