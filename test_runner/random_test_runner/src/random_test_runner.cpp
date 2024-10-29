@@ -101,7 +101,9 @@ RandomTestRunner::RandomTestRunner(const rclcpp::NodeOptions & option)
         .generate(),
       error_reporter_.spawnTestCase(validated_params.name, std::to_string(test_id)),
       test_control_parameters.test_timeout, test_control_parameters.architecture_type,
-      get_logger());
+      get_logger(),
+      test_control_parameters.output_dir,
+      test_id);
     yaml_test_params_saver.addTestCase(test_case_parameters_vector[test_id], validated_params.name);
   }
 

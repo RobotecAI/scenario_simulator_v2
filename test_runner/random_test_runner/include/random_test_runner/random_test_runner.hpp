@@ -24,6 +24,7 @@
 #include "random_test_runner/data_types.hpp"
 #include "random_test_runner/file_interactions/junit_xml_reporter.hpp"
 #include "random_test_runner/test_executor.hpp"
+#include "random_test_runner/test_scenario_writer.hpp"
 
 namespace traffic_simulator
 {
@@ -50,8 +51,8 @@ private:
 
   std::random_device seed_randomization_device_;
 
-  std::vector<TestExecutor<traffic_simulator::API>> test_executors_;
-  std::vector<TestExecutor<traffic_simulator::API>>::iterator current_test_executor_;
+  std::vector<TestScenarioWriter<traffic_simulator::API>> test_executors_;
+  std::vector<TestScenarioWriter<traffic_simulator::API>>::iterator current_test_executor_;
 
   JunitXmlReporter error_reporter_;
 
