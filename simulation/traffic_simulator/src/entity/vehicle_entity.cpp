@@ -69,18 +69,6 @@ auto VehicleEntity::getDefaultDynamicConstraints() const
   return default_dynamic_constraints;
 }
 
-auto VehicleEntity::getDefaultMatchingDistanceForLaneletPoseCalculation() const -> double
-{
-  /// @note The lanelet matching algorithm should be equivalent to the one used in
-  /// EgoEntitySimulation::setStatus
-  /// @note The offset value has been increased to 1.5 because a value of 1.0 was often insufficient when changing lanes. ( @Hans_Robo )
-  return std::max(
-           vehicle_parameters.axles.front_axle.track_width,
-           vehicle_parameters.axles.rear_axle.track_width) *
-           0.5 +
-         1.5;
-}
-
 auto VehicleEntity::getBehaviorParameter() const -> traffic_simulator_msgs::msg::BehaviorParameter
 {
   return behavior_plugin_ptr_->getBehaviorParameter();
@@ -124,39 +112,6 @@ auto VehicleEntity::getWaypoints() -> const traffic_simulator_msgs::msg::Waypoin
       THROW_SIMULATION_ERROR("Failed to calculate waypoint in NPC logics.");
     }
   }
-}
-
-auto VehicleEntity::onUpdate(const double current_time, const double step_time) -> void
-{
-  EntityBase::onUpdate(current_time, step_time);
-
-  behavior_plugin_ptr_->setOtherEntityStatus(other_status_);
-  behavior_plugin_ptr_->setCanonicalizedEntityStatus(status_);
-  behavior_plugin_ptr_->setTargetSpeed(target_speed_);
-  auto route_lanelets = getRouteLanelets();
-  behavior_plugin_ptr_->setRouteLanelets(route_lanelets);
-
-  // recalculate spline only when input data changes
-  if (previous_route_lanelets_ != route_lanelets) {
-    previous_route_lanelets_ = route_lanelets;
-    try {
-      spline_ = std::make_shared<math::geometry::CatmullRomSpline>(
-        hdmap_utils_ptr_->getCenterPoints(route_lanelets));
-    } catch (const common::scenario_simulator_exception::SemanticError & error) {
-      // reset the ptr when spline cannot be calculated
-      spline_.reset();
-    }
-  }
-  behavior_plugin_ptr_->setReferenceTrajectory(spline_);
-  /// @note CanonicalizedEntityStatus is updated here, it is not skipped even if isAtEndOfLanelets return true
-  behavior_plugin_ptr_->update(current_time, step_time);
-  if (const auto canonicalized_lanelet_pose = status_->getCanonicalizedLaneletPose()) {
-    if (pose::isAtEndOfLanelets(canonicalized_lanelet_pose.value(), hdmap_utils_ptr_)) {
-      stopAtCurrentPosition();
-      return;
-    }
-  }
-  EntityBase::onPostUpdate(current_time, step_time);
 }
 
 void VehicleEntity::requestAcquirePosition(const CanonicalizedLaneletPose & lanelet_pose)
@@ -247,6 +202,12 @@ void VehicleEntity::requestLaneChange(const traffic_simulator::lane_change::Para
   behavior_plugin_ptr_->setLaneChangeParameters(parameter);
 }
 
+void VehicleEntity::setBehaviorParameter(
+  const traffic_simulator_msgs::msg::BehaviorParameter & parameter)
+{
+  behavior_plugin_ptr_->setBehaviorParameter(parameter);
+}
+
 auto VehicleEntity::getMaxAcceleration() const -> double
 {
   return std::clamp(
@@ -311,17 +272,56 @@ void VehicleEntity::setDecelerationRateLimit(double deceleration_rate)
   setBehaviorParameter(behavior_parameter);
 }
 
-void VehicleEntity::setBehaviorParameter(
-  const traffic_simulator_msgs::msg::BehaviorParameter & parameter)
-{
-  behavior_plugin_ptr_->setBehaviorParameter(parameter);
-}
-
 void VehicleEntity::setTrafficLights(
   const std::shared_ptr<traffic_simulator::TrafficLightsBase> & ptr)
 {
   EntityBase::setTrafficLights(ptr);
   behavior_plugin_ptr_->setTrafficLights(traffic_lights_);
+}
+
+auto VehicleEntity::onUpdate(const double current_time, const double step_time) -> void
+{
+  EntityBase::onUpdate(current_time, step_time);
+
+  behavior_plugin_ptr_->setOtherEntityStatus(other_status_);
+  behavior_plugin_ptr_->setCanonicalizedEntityStatus(status_);
+  behavior_plugin_ptr_->setTargetSpeed(target_speed_);
+  auto route_lanelets = getRouteLanelets();
+  behavior_plugin_ptr_->setRouteLanelets(route_lanelets);
+
+  // recalculate spline only when input data changes
+  if (previous_route_lanelets_ != route_lanelets) {
+    previous_route_lanelets_ = route_lanelets;
+    try {
+      spline_ = std::make_shared<math::geometry::CatmullRomSpline>(
+        hdmap_utils_ptr_->getCenterPoints(route_lanelets));
+    } catch (const common::scenario_simulator_exception::SemanticError & error) {
+      // reset the ptr when spline cannot be calculated
+      spline_.reset();
+    }
+  }
+  behavior_plugin_ptr_->setReferenceTrajectory(spline_);
+  /// @note CanonicalizedEntityStatus is updated here, it is not skipped even if isAtEndOfLanelets return true
+  behavior_plugin_ptr_->update(current_time, step_time);
+  if (const auto canonicalized_lanelet_pose = status_->getCanonicalizedLaneletPose()) {
+    if (pose::isAtEndOfLanelets(canonicalized_lanelet_pose.value(), hdmap_utils_ptr_)) {
+      stopAtCurrentPosition();
+      return;
+    }
+  }
+  EntityBase::onPostUpdate(current_time, step_time);
+}
+
+auto VehicleEntity::getDefaultMatchingDistanceForLaneletPoseCalculation() const -> double
+{
+  /// @note The lanelet matching algorithm should be equivalent to the one used in
+  /// EgoEntitySimulation::setStatus
+  /// @note The offset value has been increased to 1.5 because a value of 1.0 was often insufficient when changing lanes. ( @Hans_Robo )
+  return std::max(
+           vehicle_parameters.axles.front_axle.track_width,
+           vehicle_parameters.axles.rear_axle.track_width) *
+           0.5 +
+         1.5;
 }
 
 }  // namespace entity
