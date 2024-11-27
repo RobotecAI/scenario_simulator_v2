@@ -90,7 +90,7 @@ private:
   auto getSampleLaneletPose(const traffic_simulator::LaneletPose & lanelet_pose)
     -> std::optional<traffic_simulator::CanonicalizedLaneletPose>
   {
-    return traffic_simulator::pose::canonicalize(lanelet_pose, api_.getHdmapUtils());
+    return traffic_simulator::pose::toCanonicalizedLaneletPose(lanelet_pose);
   }
 };
 }  // namespace cpp_mock_scenarios

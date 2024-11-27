@@ -72,7 +72,7 @@ void PedestrianEntity::requestAssignRoute(const std::vector<geometry_msgs::msg::
     if (
       const auto canonicalized_lanelet_pose = pose::toCanonicalizedLaneletPose(
         waypoint, status_->getBoundingBox(), true,
-        getDefaultMatchingDistanceForLaneletPoseCalculation(), hdmap_utils_ptr_)) {
+        getDefaultMatchingDistanceForLaneletPoseCalculation())) {
       route.emplace_back(canonicalized_lanelet_pose.value());
     } else {
       THROW_SEMANTIC_ERROR("Waypoint of pedestrian entity should be on lane.");
@@ -148,7 +148,7 @@ void PedestrianEntity::requestAcquirePosition(const geometry_msgs::msg::Pose & m
   if (
     const auto canonicalized_lanelet_pose = pose::toCanonicalizedLaneletPose(
       map_pose, status_->getBoundingBox(), true,
-      getDefaultMatchingDistanceForLaneletPoseCalculation(), hdmap_utils_ptr_)) {
+      getDefaultMatchingDistanceForLaneletPoseCalculation())) {
     requestAcquirePosition(canonicalized_lanelet_pose.value());
   } else {
     THROW_SEMANTIC_ERROR("Goal of the pedestrian entity should be on lane.");
@@ -256,7 +256,7 @@ auto PedestrianEntity::onUpdate(const double current_time, const double step_tim
   /// @note CanonicalizedEntityStatus is updated here, it is not skipped even if isAtEndOfLanelets return true
   behavior_plugin_ptr_->update(current_time, step_time);
   if (const auto canonicalized_lanelet_pose = status_->getCanonicalizedLaneletPose()) {
-    if (pose::isAtEndOfLanelets(canonicalized_lanelet_pose.value(), hdmap_utils_ptr_)) {
+    if (pose::isAtEndOfLanelets(canonicalized_lanelet_pose.value())) {
       stopAtCurrentPosition();
       return;
     }

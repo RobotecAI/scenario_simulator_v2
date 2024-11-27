@@ -51,8 +51,7 @@ TEST(EgoEntitySimulation, calculateAccelerationBySlope)
       initial_status.name = "ego";
       initial_status.lanelet_pose_valid = true;
       initial_status.lanelet_pose = lanelet_pose;
-      initial_status.pose =
-        traffic_simulator::pose::toMapPose(initial_status.lanelet_pose, hdmap_utils);
+      initial_status.pose = traffic_simulator::pose::toMapPose(initial_status.lanelet_pose);
 
       EgoEntitySimulation ego_entity_simulation(
         initial_status, traffic_simulator_msgs::msg::VehicleParameters(), 1.f / 30.f, hdmap_utils,

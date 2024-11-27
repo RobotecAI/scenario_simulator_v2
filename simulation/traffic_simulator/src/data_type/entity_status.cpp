@@ -73,12 +73,11 @@ auto CanonicalizedEntityStatus::set(
 
   std::optional<CanonicalizedLaneletPose> canonicalized_lanelet_pose;
   if (status.lanelet_pose_valid) {
-    canonicalized_lanelet_pose = pose::canonicalize(status.lanelet_pose, hdmap_utils_ptr);
+    canonicalized_lanelet_pose = pose::toCanonicalizedLaneletPose(status.lanelet_pose);
   } else {
     // prefer the current lanelet
     canonicalized_lanelet_pose = pose::toCanonicalizedLaneletPose(
-      status.pose, getBoundingBox(), lanelet_ids, include_crosswalk, matching_distance,
-      hdmap_utils_ptr);
+      status.pose, getBoundingBox(), lanelet_ids, include_crosswalk, matching_distance);
   }
   set(CanonicalizedEntityStatus(status, canonicalized_lanelet_pose));
 }

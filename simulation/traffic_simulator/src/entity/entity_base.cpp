@@ -98,7 +98,7 @@ auto EntityBase::getCanonicalizedLaneletPose(const double matching_distance) con
   // prefer the current lanelet
   return pose::toCanonicalizedLaneletPose(
     status_->getMapPose(), status_->getBoundingBox(), status_->getLaneletIds(), include_crosswalk,
-    matching_distance, hdmap_utils_ptr_);
+    matching_distance);
 }
 
 auto EntityBase::getDefaultMatchingDistanceForLaneletPoseCalculation() const -> double
@@ -729,8 +729,8 @@ auto EntityBase::requestSynchronize(
           : other_status_.find(target_name)->second.getLaneletPose();
 
       const auto target_entity_distance = longitudinalDistance(
-        CanonicalizedLaneletPose(target_entity_lanelet_pose, hdmap_utils_ptr_), target_sync_pose,
-        true, true, true, hdmap_utils_ptr_);
+        CanonicalizedLaneletPose(target_entity_lanelet_pose), target_sync_pose, true, true, true,
+        hdmap_utils_ptr_);
       if (!target_entity_distance.has_value() || target_entity_distance.value() < 0.0) {
         RCLCPP_WARN_ONCE(
           rclcpp::get_logger("traffic_simulator"),

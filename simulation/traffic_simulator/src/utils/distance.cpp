@@ -65,7 +65,7 @@ auto longitudinalDistance(
     if (to.hasAlternativeLaneletPose()) {
       if (
         const auto to_canonicalized_opt = to.getAlternativeLaneletPoseBaseOnShortestRouteFrom(
-          static_cast<LaneletPose>(from), hdmap_utils_ptr, allow_lane_change)) {
+          static_cast<LaneletPose>(from), allow_lane_change)) {
         to_canonicalized = to_canonicalized_opt.value();
       }
     }
@@ -90,7 +90,7 @@ auto longitudinalDistance(
     /**
      * @brief A matching distance of about 1.5*lane widths is given as the matching distance to match the
      * Entity present on the adjacent Lanelet.
-     * The length of the horizontal bar must intersect with the adjacent lanelet, 
+     * The length of the horizontal bar must intersect with the adjacent lanelet,
      * so it is always 10m regardless of the entity type.
      */
     constexpr double matching_distance = 5.0;
@@ -110,9 +110,8 @@ auto longitudinalDistance(
       for (const auto & to_pose : to_poses) {
         if (
           const auto distance = longitudinalDistance(
-            CanonicalizedLaneletPose(from_pose, hdmap_utils_ptr),
-            CanonicalizedLaneletPose(to_pose, hdmap_utils_ptr), false, include_opposite_direction,
-            allow_lane_change, hdmap_utils_ptr)) {
+            CanonicalizedLaneletPose(from_pose), CanonicalizedLaneletPose(to_pose), false,
+            include_opposite_direction, allow_lane_change, hdmap_utils_ptr)) {
           distances.emplace_back(distance.value());
         }
       }

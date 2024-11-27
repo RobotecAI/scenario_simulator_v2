@@ -179,7 +179,7 @@ auto TrafficSource::isPoseValid(
     auto corrected_pose = lanelet_pose.value();
     corrected_pose.rpy.z = 0.0;
 
-    auto out_pose = std::make_optional<CanonicalizedLaneletPose>(corrected_pose, hdmap_utils_);
+    auto out_pose = std::make_optional<CanonicalizedLaneletPose>(corrected_pose);
 
     /// @note Step 3: check whether the bounding box can be outside lanelet
     if (not configuration_.require_footprint_fitting) {
