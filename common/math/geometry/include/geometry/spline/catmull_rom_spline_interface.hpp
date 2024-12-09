@@ -34,6 +34,8 @@ public:
   virtual std::optional<double> getCollisionPointIn2D(
     const std::vector<geometry_msgs::msg::Point> & polygon,
     const bool search_backward = false) const = 0;
+  virtual std::vector<geometry_msgs::msg::Point> getPolygon(
+    const double width, const size_t num_points = 30, const double z_offset = 0) const = 0;
 };
 }  // namespace geometry
 }  // namespace math

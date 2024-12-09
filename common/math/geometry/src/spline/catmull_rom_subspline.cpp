@@ -61,5 +61,11 @@ std::optional<double> CatmullRomSubspline::getCollisionPointIn2D(
   }
   return *begin - start_s_;
 }
+
+std::vector<geometry_msgs::msg::Point> CatmullRomSubspline::getPolygon(
+  const double width, const size_t num_points, const double z_offset) const
+{
+  return spline_->getPolygon(width, num_points, z_offset);
+}
 }  // namespace geometry
 }  // namespace math
