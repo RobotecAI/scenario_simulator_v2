@@ -46,6 +46,9 @@ public:
     const std::vector<geometry_msgs::msg::Point> & polygon,
     const bool search_backward = false) const override;
 
+  std::vector<geometry_msgs::msg::Point> getPolygon(
+    const double width, const size_t num_points = 30, const double z_offset = 0) const override;
+
 private:
   std::shared_ptr<math::geometry::CatmullRomSpline> spline_;
   double start_s_;

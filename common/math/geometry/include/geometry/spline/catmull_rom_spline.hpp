@@ -58,8 +58,8 @@ public:
   auto getCollisionPointIn2D(
     const std::vector<geometry_msgs::msg::Point> & polygon,
     const bool search_backward = false) const -> std::optional<double> override;
-  auto getPolygon(const double width, const size_t num_points = 30, const double z_offset = 0)
-    -> std::vector<geometry_msgs::msg::Point>;
+  auto getPolygon(const double width, const size_t num_points = 30, const double z_offset = 0) const
+    -> std::vector<geometry_msgs::msg::Point> override;
   const std::vector<geometry_msgs::msg::Point> control_points;
   virtual ~CatmullRomSpline() = default;
 

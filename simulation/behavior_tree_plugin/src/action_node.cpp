@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <behavior_tree_plugin/action_node.hpp>
 #include <geometry/bounding_box.hpp>
+#include <geometry/intersection/collision.hpp>
 #include <geometry/quaternion/euler_to_quaternion.hpp>
 #include <geometry/quaternion/get_rotation.hpp>
 #include <geometry/quaternion/get_rotation_matrix.hpp>
@@ -247,6 +248,7 @@ auto ActionNode::getFrontEntityName(const math::geometry::CatmullRomSplineInterf
 {
   std::vector<double> distances;
   std::vector<std::string> entities;
+
   for (const auto & each : other_entity_status) {
     const auto distance = getDistanceToTargetEntityPolygon(spline, each.first);
     const auto quat = math::geometry::getRotation(
@@ -316,14 +318,27 @@ auto ActionNode::getDistanceToTargetEntityPolygon(
   double width_extension_left, double length_extension_front, double length_extension_rear) const
   -> std::optional<double>
 {
+  std::optional<double> distance{std::nullopt};
   if (status.laneMatchingSucceed()) {
     const auto polygon = math::geometry::transformPoints(
       status.getMapPose(), math::geometry::getPointsFromBbox(
                              status.getBoundingBox(), width_extension_right, width_extension_left,
                              length_extension_front, length_extension_rear));
-    return spline.getCollisionPointIn2D(polygon, false);
+    const auto splinePolygon =
+      spline.getPolygon(canonicalized_entity_status->getBoundingBox().dimensions.y);
+    for (const auto & point : polygon) {
+      if (math::geometry::contains(splinePolygon, point)) {
+        const auto dst = traffic_simulator::pose::boundingBoxRelativePose(
+          canonicalized_entity_status->getMapPose(), canonicalized_entity_status->getBoundingBox(),
+          status.getMapPose(), traffic_simulator_msgs::msg::BoundingBox());
+        if (dst and (distance.value() >= 0)) {
+          distance.emplace(dst.value().position.x);
+          break;
+        }
+      }
+    }
   }
-  return std::nullopt;
+  return distance;
 }
 
 auto ActionNode::getDistanceToConflictingEntity(
