@@ -24,6 +24,7 @@
 #include <autoware_lanelet2_extension/projection/mgrs_projector.hpp>
 #include <geographic_msgs/msg/geo_point.hpp>
 #include <geometry/vector3/normalize.hpp>
+#include <geometry/distance.hpp>
 #include <geometry/vector3/operator.hpp>
 #include <optional>
 #include <traffic_simulator/hdmap_utils/hdmap_utils.hpp>
@@ -182,109 +183,138 @@ std::vector<LaneletPart> LaneletUtils::getLanesWithinDistance(
     throw std::runtime_error("Min distance cannot be greater than max distance");
   }
 
-  std::multimap<int64_t, LaneletPartForRouting> lanelets_within_distance;
-  std::queue<LaneletPartForRouting> lanelets_to_test;
-
-  lanelet::ConstLanelet starting_lanelet = lanelet_map_ptr_->laneletLayer.get(pose.lanelet_id);
-  lanelets_to_test.emplace(
-    starting_lanelet, min_distance, max_distance, SearchDirection::FORWARD, pose.s);
-  lanelets_to_test.emplace(
-    starting_lanelet, min_distance, max_distance, SearchDirection::BACKWARD, pose.s);
-
-  std::optional<traffic_simulator_msgs::msg::LaneletPose> opposite_lane_pose =
-    getOppositeLaneLet(pose);
-  if (opposite_lane_pose) {
-    lanelet::ConstLanelet opposite_lanelet =
-      lanelet_map_ptr_->laneletLayer.get(opposite_lane_pose->lanelet_id);
-    lanelets_to_test.emplace(
-      opposite_lanelet, min_distance, max_distance, SearchDirection::FORWARD,
-      opposite_lane_pose->s);
-    lanelets_to_test.emplace(
-      opposite_lanelet, min_distance, max_distance, SearchDirection::BACKWARD,
-      opposite_lane_pose->s);
-  }
-
-  lanelet::ConstLanelets next_lanelets = vehicle_routing_graph_ptr_->besides(starting_lanelet);
-  for (const auto & lanelet : next_lanelets) {
-    if (lanelet.id() == starting_lanelet.id()) {
-      continue;
-    }
-    lanelets_to_test.emplace(lanelet, min_distance, max_distance, SearchDirection::FORWARD, pose.s);
-    lanelets_to_test.emplace(
-      lanelet, min_distance, max_distance, SearchDirection::BACKWARD, pose.s);
-  }
-
-  while (!lanelets_to_test.empty()) {
-    auto & current_lanelet = lanelets_to_test.front();
-    double current_lanelet_length = getLaneletLength(current_lanelet.lanelet.id());
-    switch (current_lanelet.direction) {
-      case SearchDirection::FORWARD:
-        current_lanelet.start_s = current_lanelet.pose_s + current_lanelet.min_distance_remaining;
-        current_lanelet.end_s = current_lanelet.pose_s + current_lanelet.max_distance_remaining;
-
-        if (current_lanelet.end_s > current_lanelet_length) {
-          current_lanelet.end_s = current_lanelet_length;
-
-          double remaining_length_forward = current_lanelet_length - current_lanelet.pose_s;
-
-          double remaining_min_distance_forward =
-            std::max(0.0, current_lanelet.min_distance_remaining - remaining_length_forward);
-          double remaining_max_distance_forward =
-            std::max(0.0, current_lanelet.max_distance_remaining - remaining_length_forward);
-
-          lanelet::ConstLanelets next_lanelets =
-            vehicle_routing_graph_ptr_->following(current_lanelet.lanelet);
-          for (const auto & lanelet : next_lanelets) {
-            lanelets_to_test.emplace(
-              lanelet, remaining_min_distance_forward, remaining_max_distance_forward,
-              SearchDirection::FORWARD, 0.0);
-          }
-        }
-
-        if (current_lanelet.start_s < current_lanelet_length) {
-          lanelets_within_distance.emplace(current_lanelet.lanelet.id(), current_lanelet);
-        }
-
-        break;
-      case SearchDirection::BACKWARD:
-        current_lanelet.start_s = current_lanelet.pose_s - current_lanelet.max_distance_remaining;
-        current_lanelet.end_s = current_lanelet.pose_s - current_lanelet.min_distance_remaining;
-
-        if (current_lanelet.start_s < 0.0) {
-          current_lanelet.start_s = 0.0;
-
-          double remaining_length_backward = current_lanelet.pose_s;
-
-          double remaining_min_distance_backward =
-            std::max(0.0, current_lanelet.min_distance_remaining - remaining_length_backward);
-          double remaining_max_distance_backward =
-            std::max(0.0, current_lanelet.max_distance_remaining - remaining_length_backward);
-
-          lanelet::ConstLanelets previous_lanelets =
-            vehicle_routing_graph_ptr_->previous(current_lanelet.lanelet);
-          for (const auto & lanelet : previous_lanelets) {
-            lanelets_to_test.emplace(
-              lanelet, remaining_min_distance_backward, remaining_max_distance_backward,
-              SearchDirection::BACKWARD, getLaneletLength(lanelet.id()));
-          }
-        }
-
-        if (current_lanelet.end_s > 0.0) {
-          lanelets_within_distance.emplace(current_lanelet.lanelet.id(), current_lanelet);
-        }
-        break;
-      default:
-        throw std::runtime_error("No tested lanelet can have INVALID search directions");
-    }
-
-    lanelets_to_test.pop();
-  }
+  auto map_pose = hdmap_utils_ptr_->toMapPose(pose);
+  map_pose.pose.position.z = 0.0;
 
   std::vector<LaneletPart> ret;
-  for (const auto & lanelet_part_key_value : lanelets_within_distance) {
-    const auto & lanelet_part = lanelet_part_key_value.second;
-    ret.emplace_back(
-      LaneletPart{lanelet_part.lanelet.id(), lanelet_part.start_s, lanelet_part.end_s});
+
+  for (auto lanelet : lanelet_map_ptr_->laneletLayer) {
+    for (auto point : lanelet.centerline2d()) {
+      geometry_msgs::msg::Point point_pose;
+      point_pose.x = point.x();
+      point_pose.y = point.y();
+      if (math::geometry::getDistance(map_pose.pose.position, point_pose) < max_distance)  {
+        if (lanelet.hasAttribute("subtype")) {
+          if (lanelet.attributes().at("subtype") == "road") {
+            ret.emplace_back(
+                LaneletPart{lanelet.id(), 0.0, hdmap_utils_ptr_->getLaneletLength(lanelet.id())});
+          }
+        }
+        break;
+      }
+    }
   }
+
+//  for (const auto & r : ret) {
+//    std::cout << "Lanelet: " << r.lanelet_id << " " << r.start_s << "<->" << r.end_s << std::endl;
+//  }
+
   return ret;
+
+
+//  std::multimap<int64_t, LaneletPartForRouting> lanelets_within_distance;
+//  std::queue<LaneletPartForRouting> lanelets_to_test;
+//
+//  lanelet::ConstLanelet starting_lanelet = lanelet_map_ptr_->laneletLayer.get(pose.lanelet_id);
+//  lanelets_to_test.emplace(
+//    starting_lanelet, min_distance, max_distance, SearchDirection::FORWARD, pose.s);
+//  lanelets_to_test.emplace(
+//    starting_lanelet, min_distance, max_distance, SearchDirection::BACKWARD, pose.s);
+//
+//  std::optional<traffic_simulator_msgs::msg::LaneletPose> opposite_lane_pose =
+//    getOppositeLaneLet(pose);
+//  if (opposite_lane_pose) {
+//    lanelet::ConstLanelet opposite_lanelet =
+//      lanelet_map_ptr_->laneletLayer.get(opposite_lane_pose->lanelet_id);
+//    lanelets_to_test.emplace(
+//      opposite_lanelet, min_distance, max_distance, SearchDirection::FORWARD,
+//      opposite_lane_pose->s);
+//    lanelets_to_test.emplace(
+//      opposite_lanelet, min_distance, max_distance, SearchDirection::BACKWARD,
+//      opposite_lane_pose->s);
+//  }
+//
+//  lanelet::ConstLanelets next_lanelets = vehicle_routing_graph_ptr_->besides(starting_lanelet);
+//  for (const auto & lanelet : next_lanelets) {
+//    if (lanelet.id() == starting_lanelet.id()) {
+//      continue;
+//    }
+//    lanelets_to_test.emplace(lanelet, min_distance, max_distance, SearchDirection::FORWARD, pose.s);
+//    lanelets_to_test.emplace(
+//      lanelet, min_distance, max_distance, SearchDirection::BACKWARD, pose.s);
+//  }
+//
+//  while (!lanelets_to_test.empty()) {
+//    auto & current_lanelet = lanelets_to_test.front();
+//    double current_lanelet_length = getLaneletLength(current_lanelet.lanelet.id());
+//    switch (current_lanelet.direction) {
+//      case SearchDirection::FORWARD:
+//        current_lanelet.start_s = current_lanelet.pose_s + current_lanelet.min_distance_remaining;
+//        current_lanelet.end_s = current_lanelet.pose_s + current_lanelet.max_distance_remaining;
+//
+//        if (current_lanelet.end_s > current_lanelet_length) {
+//          current_lanelet.end_s = current_lanelet_length;
+//
+//          double remaining_length_forward = current_lanelet_length - current_lanelet.pose_s;
+//
+//          double remaining_min_distance_forward =
+//            std::max(0.0, current_lanelet.min_distance_remaining - remaining_length_forward);
+//          double remaining_max_distance_forward =
+//            std::max(0.0, current_lanelet.max_distance_remaining - remaining_length_forward);
+//
+//          lanelet::ConstLanelets next_lanelets =
+//            vehicle_routing_graph_ptr_->following(current_lanelet.lanelet);
+//          for (const auto & lanelet : next_lanelets) {
+//            lanelets_to_test.emplace(
+//              lanelet, remaining_min_distance_forward, remaining_max_distance_forward,
+//              SearchDirection::FORWARD, 0.0);
+//          }
+//        }
+//
+//        if (current_lanelet.start_s < current_lanelet_length) {
+//          lanelets_within_distance.emplace(current_lanelet.lanelet.id(), current_lanelet);
+//        }
+//
+//        break;
+//      case SearchDirection::BACKWARD:
+//        current_lanelet.start_s = current_lanelet.pose_s - current_lanelet.max_distance_remaining;
+//        current_lanelet.end_s = current_lanelet.pose_s - current_lanelet.min_distance_remaining;
+//
+//        if (current_lanelet.start_s < 0.0) {
+//          current_lanelet.start_s = 0.0;
+//
+//          double remaining_length_backward = current_lanelet.pose_s;
+//
+//          double remaining_min_distance_backward =
+//            std::max(0.0, current_lanelet.min_distance_remaining - remaining_length_backward);
+//          double remaining_max_distance_backward =
+//            std::max(0.0, current_lanelet.max_distance_remaining - remaining_length_backward);
+//
+//          lanelet::ConstLanelets previous_lanelets =
+//            vehicle_routing_graph_ptr_->previous(current_lanelet.lanelet);
+//          for (const auto & lanelet : previous_lanelets) {
+//            lanelets_to_test.emplace(
+//              lanelet, remaining_min_distance_backward, remaining_max_distance_backward,
+//              SearchDirection::BACKWARD, getLaneletLength(lanelet.id()));
+//          }
+//        }
+//
+//        if (current_lanelet.end_s > 0.0) {
+//          lanelets_within_distance.emplace(current_lanelet.lanelet.id(), current_lanelet);
+//        }
+//        break;
+//      default:
+//        throw std::runtime_error("No tested lanelet can have INVALID search directions");
+//    }
+//
+//    lanelets_to_test.pop();
+//  }
+//
+//  std::vector<LaneletPart> ret;
+//  for (const auto & lanelet_part_key_value : lanelets_within_distance) {
+//    const auto & lanelet_part = lanelet_part_key_value.second;
+//    ret.emplace_back(
+//      LaneletPart{lanelet_part.lanelet.id(), lanelet_part.start_s, lanelet_part.end_s});
+//  }
+//  return ret;
 }

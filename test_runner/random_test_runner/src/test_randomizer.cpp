@@ -46,6 +46,8 @@ TestRandomizer::TestRandomizer(
 TestDescription TestRandomizer::generate()
 {
   TestDescription ret;
+//  test_suite_parameters_.npc_min_spawn_distance_from_ego = 0.0;
+//  test_suite_parameters_.npc_max_spawn_distance_from_ego = 20.0;
 
   std::tie(ret.ego_start_position, ret.ego_goal_position) = generateEgoRoute(
     test_suite_parameters_.ego_goal_lanelet_id, test_suite_parameters_.ego_goal_s,
@@ -56,6 +58,9 @@ TestDescription TestRandomizer::generate()
   std::vector<LaneletPart> lanelets_around_start = lanelet_utils_->getLanesWithinDistance(
     ret.ego_start_position, test_suite_parameters_.npc_min_spawn_distance_from_ego,
     test_suite_parameters_.npc_max_spawn_distance_from_ego);
+
+
+  std::cout << "Found " << lanelets_around_start.size() << "lanelets: " << fmt::format("{}", test_suite_parameters_) << std::endl;
 
   for (const auto& l : lanelets_around_start) {
     RCLCPP_INFO_STREAM(logger_, fmt::format("Lanelet: {} {}<->{}", l.lanelet_id, l.start_s, l.end_s));
@@ -93,7 +98,7 @@ TestRandomizer::generateEgoRoute(
       goal_pose = goal_pose_from_params;
     }
 
-    auto start_pose = traffic_simulator::helper::constructLaneletPose(203, getRandomS(203));
+    auto start_pose = traffic_simulator::helper::constructLaneletPose(298, 10.0);
 
     if (isFeasibleRoute(start_pose, goal_pose)) {
       return {start_pose, goal_pose};

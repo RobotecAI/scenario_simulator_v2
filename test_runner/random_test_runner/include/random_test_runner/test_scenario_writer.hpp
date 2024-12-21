@@ -49,19 +49,20 @@ public:
     RCLCPP_INFO_STREAM(logger_, fmt::format("Generating scenario: {}", filename));
     std::ofstream ss(filename);
     addHeader(ss);
-    addEgoDef(ss);
+//    addEgoDef(ss);
     for (const NPCDescription& d : test_description_.npcs_descriptions) {
       addNPCDef(ss, d);
     }
     initializeStoryboard(ss);
-    addEgoInitActions(ss, test_description_.ego_start_position, test_description_.ego_goal_position);
+//    addEgoInitActions(ss, test_description_.ego_start_position, test_description_.ego_goal_position);
     for (const NPCDescription& d : test_description_.npcs_descriptions) {
       addNPCInitActions(ss, d);
     }
-    addStoryHeaderReachPositionConditionAndTimeoutCondition(ss, test_description_.ego_goal_position);
-    for (const NPCDescription& d : test_description_.npcs_descriptions) {
-      addCollisionCondition(ss, ego_name_, d.name);
-    }
+//    addStoryHeaderReachPositionConditionAndTimeoutCondition(ss, test_description_.ego_goal_position);
+    addStoryHeaderAndTimeoutCondition(ss);
+//    for (const NPCDescription& d : test_description_.npcs_descriptions) {
+//      addCollisionCondition(ss, ego_name_, d.name);
+//    }
 
     for (std::size_t i = 0; i + 1 < test_description_.npcs_descriptions.size(); i++) {
       for (std::size_t j = i + 1; j < test_description_.npcs_descriptions.size(); j++) {
@@ -256,6 +257,43 @@ private:
           "                          p: 0\n"
           "                          r: 0\n";
   }
+  void addStoryHeaderAndTimeoutCondition(std::ostream& ss) {
+    ss << "    Story:\n"
+          "      - name: ''\n"
+          "        Act:\n"
+          "          - name: _EndCondition\n"
+          "            ManeuverGroup:\n"
+          "              - maximumExecutionCount: 1\n"
+          "                name: ''\n"
+          "                Actors:\n"
+          "                  selectTriggeringEntities: false\n"
+          "                  EntityRef: []\n"
+          "                Maneuver:\n"
+          "                  - name: ''\n"
+          "                    Event:\n"
+          "                      - name: ''\n"
+          "                        priority: parallel\n"
+          "                        StartTrigger:\n"
+          "                          ConditionGroup:\n"
+          "                            - Condition:\n"
+          "                                - name: ''\n"
+          "                                  delay: 0\n"
+          "                                  conditionEdge: none\n"
+          "                                  ByValueCondition:\n"
+          "                                    SimulationTimeCondition:\n"
+          "                                      value: " << test_timeout_ << "\n"
+          "                                      rule: greaterThan\n"
+          "                        Action:\n"
+          "                          - name: ''\n"
+          "                            UserDefinedAction:\n"
+          "                              CustomCommandAction:\n"
+          "                                type: exitSuccess\n"
+          "                      - name: ''\n"
+          "                        priority: parallel\n"
+          "                        StartTrigger:\n"
+          "                          ConditionGroup:\n";
+  }
+
   void addStoryHeaderReachPositionConditionAndTimeoutCondition(std::ostream& ss, const traffic_simulator::LaneletPose& pose) {
     ss << "    Story:\n"
           "      - name: ''\n"
