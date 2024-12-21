@@ -58,7 +58,17 @@ public:
     for (const NPCDescription& d : test_description_.npcs_descriptions) {
       addNPCInitActions(ss, d);
     }
-    addEmptyStoryAndEndCondition(ss);
+    addStoryHeaderReachPositionConditionAndTimeoutCondition(ss, test_description_.ego_goal_position);
+    for (const NPCDescription& d : test_description_.npcs_descriptions) {
+      addCollisionCondition(ss, ego_name_, d.name);
+    }
+
+    for (std::size_t i = 0; i + 1 < test_description_.npcs_descriptions.size(); i++) {
+      for (std::size_t j = i + 1; j < test_description_.npcs_descriptions.size(); j++) {
+        addCollisionCondition(ss, test_description_.npcs_descriptions[i].name, test_description_.npcs_descriptions[j].name);
+      }
+    }
+    closeTheStory(ss);
   }
 
   auto update() -> void
@@ -117,9 +127,7 @@ private:
           "    description: ''\n"
           "    author: HAL9000\n"
           "  CatalogLocations:\n"
-          "    VehicleCatalog:\n"
-          "      Directory:\n"
-          "        path: $(ros2 pkg prefix --share scenario_simulator_v2_scenarios)/catalog\n"
+          "    CatalogLocation: []\n"
           "  RoadNetwork:\n"
           "    LogicFile:\n"
           "      filepath: " << map_path << "\n"
@@ -133,10 +141,18 @@ private:
     ss << "      - name: " << ego_name_ << "\n";
     addVehicleParameters(ss, getVehicleParameters());
     ss << "        ObjectController:\n"
-          "          Controller:\n"
-          "            name: 'Autoware'\n"
-          "            Properties:\n"
-          "              Property: []\n";
+          "          Controller:\n";
+    if (run_autoware_) {
+      ss << "            name: 'Autoware'\n"
+            "            Properties:\n"
+            "              Property: \n"
+            "                - name: isEgo\n"
+            "                  value: 'true'\n";
+    } else {
+      ss << "            name: ''\n"
+            "            Properties:\n"
+            "              Property: []\n";
+    }
   }
 
   void addNPCDef(std::ostream & ss, const NPCDescription& d) {
@@ -240,6 +256,102 @@ private:
           "                          p: 0\n"
           "                          r: 0\n";
   }
+  void addStoryHeaderReachPositionConditionAndTimeoutCondition(std::ostream& ss, const traffic_simulator::LaneletPose& pose) {
+    ss << "    Story:\n"
+          "      - name: ''\n"
+          "        Act:\n"
+          "          - name: _EndCondition\n"
+          "            ManeuverGroup:\n"
+          "              - maximumExecutionCount: 1\n"
+          "                name: ''\n"
+          "                Actors:\n"
+          "                  selectTriggeringEntities: false\n"
+          "                  EntityRef:\n"
+          "                    - entityRef: ego\n"
+          "                Maneuver:\n"
+          "                  - name: ''\n"
+          "                    Event:\n"
+          "                      - name: ''\n"
+          "                        priority: parallel\n"
+          "                        StartTrigger:\n"
+          "                          ConditionGroup:\n"
+          "                            - Condition:\n"
+          "                                - name: ''\n"
+          "                                  delay: 0\n"
+          "                                  conditionEdge: none\n"
+          "                                  ByEntityCondition:\n"
+          "                                    TriggeringEntities:\n"
+          "                                      triggeringEntitiesRule: any\n"
+          "                                      EntityRef:\n"
+          "                                        - entityRef: ego\n"
+          "                                    EntityCondition:\n"
+          "                                      ReachPositionCondition:\n"
+          "                                        Position:\n"
+          "                                          LanePosition:\n"
+          "                                            roadId: ''\n"
+          "                                            laneId: '" << pose.lanelet_id << "'\n"
+          "                                            s: " << pose.s << "\n"
+          "                                            offset: " << pose.offset << "\n"
+          "                                            Orientation:\n"
+          "                                              type: relative\n"
+          "                                              h: 0\n"
+          "                                              p: 0\n"
+          "                                              r: 0\n"
+          "                                        tolerance: 1\n"
+          "                        Action:\n"
+          "                          - name: ''\n"
+          "                            UserDefinedAction:\n"
+          "                              CustomCommandAction:\n"
+          "                                type: exitSuccess\n"
+          "                      - name: ''\n"
+          "                        priority: parallel\n"
+          "                        StartTrigger:\n"
+          "                          ConditionGroup:\n"
+          "                            - Condition:\n"
+          "                                - name: ''\n"
+          "                                  delay: 0\n"
+          "                                  conditionEdge: none\n"
+          "                                  ByValueCondition:\n"
+          "                                    SimulationTimeCondition:\n"
+          "                                      value: " << test_timeout_ << "\n"
+          "                                      rule: greaterThan\n";
+  }
+
+  void addCollisionCondition(std::ostream& ss, const std::string& entity1_name, const std::string& entity2_name) {
+    ss << "                            - Condition:\n"
+          "                                - name: ''\n"
+          "                                  delay: 0\n"
+          "                                  conditionEdge: none\n"
+          "                                  ByEntityCondition:\n"
+          "                                    TriggeringEntities:\n"
+          "                                      triggeringEntitiesRule: any\n"
+          "                                      EntityRef:\n"
+          "                                        - entityRef: " << entity1_name << "\n"
+          "                                    EntityCondition:\n"
+          "                                      CollisionCondition:\n"
+          "                                        EntityRef:\n"
+          "                                          entityRef: " << entity2_name << "\n";
+  }
+
+  void closeTheStory(std::ostream& ss) {
+    ss << "                        Action:\n"
+          "                          - name: ''\n"
+          "                            UserDefinedAction:\n"
+          "                              CustomCommandAction:\n"
+          "                                type: exitFailure\n"
+          "            StartTrigger:\n"
+          "              ConditionGroup:\n"
+          "                - Condition:\n"
+          "                    - name: ''\n"
+          "                      delay: 0\n"
+          "                      conditionEdge: none\n"
+          "                      ByValueCondition:\n"
+          "                        SimulationTimeCondition:\n"
+          "                          value: 0\n"
+          "                          rule: greaterThan\n"
+          "    StopTrigger:\n"
+          "      ConditionGroup: []\n";
+  }
 
   void addEmptyStoryAndEndCondition(std::ostream& ss) {
     ss << "    Story:\n"
@@ -290,7 +402,8 @@ private:
   const std::string ego_name_ = "ego";
 
   double test_timeout_;
-  std::string map_path = "$(ros2 pkg prefix --share kashiwanoha_map)/map";
+  std::string map_path = "$(ros2 pkg prefix --share shinjuku_map)/map";
+  bool run_autoware_ = false;
 
   bool scenario_completed_ = false;
 

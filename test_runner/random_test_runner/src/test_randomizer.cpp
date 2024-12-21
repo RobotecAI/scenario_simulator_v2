@@ -57,6 +57,10 @@ TestDescription TestRandomizer::generate()
     ret.ego_start_position, test_suite_parameters_.npc_min_spawn_distance_from_ego,
     test_suite_parameters_.npc_max_spawn_distance_from_ego);
 
+  for (const auto& l : lanelets_around_start) {
+    RCLCPP_INFO_STREAM(logger_, fmt::format("Lanelet: {} {}<->{}", l.lanelet_id, l.start_s, l.end_s));
+  }
+
   std::vector<traffic_simulator_msgs::msg::LaneletPose> npc_poses;
   for (int npc_id = 0; npc_id < test_suite_parameters_.npcs_count; npc_id++) {
     ret.npcs_descriptions.emplace_back(generateNpcFromLaneletsWithMinDistanceFromPoses(
@@ -89,7 +93,7 @@ TestRandomizer::generateEgoRoute(
       goal_pose = goal_pose_from_params;
     }
 
-    auto start_pose = generateRandomPosition();
+    auto start_pose = traffic_simulator::helper::constructLaneletPose(203, getRandomS(203));
 
     if (isFeasibleRoute(start_pose, goal_pose)) {
       return {start_pose, goal_pose};
