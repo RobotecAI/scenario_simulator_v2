@@ -95,7 +95,7 @@ public:
 
   auto updateNpcLogic(
     const std::string & name, const double current_time, const double step_time,
-    const std::shared_ptr<DistancesMap> distances) -> const CanonicalizedEntityStatus &;
+    const std::shared_ptr<EuclideanDistancesMap> & distances) -> const CanonicalizedEntityStatus &;
 
   auto updateHdmapMarker() const -> void;
 
@@ -269,6 +269,8 @@ public:
       }
     }
   }
+
+  auto calculateEuclideanDistances() -> std::shared_ptr<EuclideanDistancesMap>;
 
 private:
   /* */ Configuration configuration_;
