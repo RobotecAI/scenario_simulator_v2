@@ -73,26 +73,6 @@ public:
   class CoordinateSystemConversion
   {
   protected:
-    /// @brief Returns true if the entity exists or the argument is not an entity name
-    template <typename PossibleEntityType>
-    static auto doesEntityExistIfIsEntityName(const PossibleEntityType & possible_entity_name)
-      -> bool
-    {
-      if constexpr (std::is_convertible_v<PossibleEntityType, std::string>) {
-        return core->isEntityExist(possible_entity_name);
-      }
-      return true;
-    }
-
-    template <typename PossibleFirstEntityType, typename PossibleSecondEntityType>
-    static auto doesEntityExistIfIsEntityName(
-      const PossibleFirstEntityType & first_possible_entity_name,
-      const PossibleSecondEntityType & second_possible_entity_name) -> bool
-    {
-      return doesEntityExistIfIsEntityName(first_possible_entity_name) and
-             doesEntityExistIfIsEntityName(second_possible_entity_name);
-    }
-
     static auto convertToNativeLanePosition(const NativeWorldPosition & map_pose)
       -> NativeLanePosition
     {
@@ -681,7 +661,7 @@ public:
 
     static auto evaluateStandStill(const std::string & entity_name) -> double
     {
-      if (core->isEntityExist(entity_name)) {
+      if (doesEntityExistIfIsEntityName(entity_name)) {
         return core->getEntity(entity_name).getStandStillDuration();
       } else {
         return std::numeric_limits<double>::quiet_NaN();
@@ -690,7 +670,7 @@ public:
 
     static auto evaluateSpeed(const std::string & entity_name) -> Eigen::Vector3d
     {
-      if (core->isEntityExist(entity_name)) {
+      if (doesEntityExistIfIsEntityName(entity_name)) {
         const auto linear = core->getEntity(entity_name).getCurrentTwist().linear;
         return Eigen::Vector3d(linear.x, linear.y, linear.z);
       } else {
@@ -702,7 +682,7 @@ public:
     static auto evaluateRelativeSpeed(
       const std::string & from_entity_name, const std::string & to_entity_name) -> Eigen::Vector3d
     {
-      if (core->isEntityExist(from_entity_name) && core->isEntityExist(to_entity_name)) {
+      if (doesEntityExistIfIsEntityName(from_entity_name, to_entity_name)) {
         return core->relativeSpeed(from_entity_name, to_entity_name);
       } else {
         return Eigen::Vector3d::Constant(std::numeric_limits<double>::quiet_NaN());
@@ -711,7 +691,7 @@ public:
 
     static auto evaluateAcceleration(const std::string & entity_name) -> double
     {
-      if (core->isEntityExist(entity_name)) {
+      if (doesEntityExistIfIsEntityName(entity_name)) {
         return core->getEntity(entity_name).getCurrentAccel().linear.x;
       } else {
         return std::numeric_limits<double>::quiet_NaN();
@@ -723,7 +703,7 @@ public:
       const std::string & first_entity_name, const std::string & second_entity_name, Ts &&... xs)
       -> bool
     {
-      if (core->isEntityExist(first_entity_name) && core->isEntityExist(second_entity_name)) {
+      if (doesEntityExistIfIsEntityName(first_entity_name, second_entity_name)) {
         return core->checkCollision(
           first_entity_name, second_entity_name, std::forward<decltype(xs)>(xs)...);
       } else {
@@ -734,7 +714,7 @@ public:
     static auto evaluateTimeHeadway(
       const std::string & from_entity_name, const std::string & to_entity_name) -> double
     {
-      if (core->isEntityExist(from_entity_name) && core->isEntityExist(to_entity_name)) {
+      if (doesEntityExistIfIsEntityName(from_entity_name, to_entity_name)) {
         if (const auto time_headway = core->timeHeadway(from_entity_name, to_entity_name)) {
           return time_headway.value();
         }
@@ -746,7 +726,7 @@ public:
     template <typename... Ts>
     static auto evaluateCurrentState(const std::string & entity_name, Ts &&... xs) -> std::string
     {
-      if (core->isEntityExist(entity_name)) {
+      if (doesEntityExistIfIsEntityName(entity_name)) {
         return core->getEntity(entity_name).getCurrentAction(std::forward<decltype(xs)>(xs)...);
       } else {
         return "not spawned";
@@ -757,7 +737,7 @@ public:
     static auto evaluateRelativeHeading(
       const std::string & entity_name, const OSCLanePosition & osc_lane_position)
     {
-      if (core->isEntityExist(entity_name)) {
+      if (doesEntityExistIfIsEntityName(entity_name)) {
         const auto lane_pose = static_cast<NativeLanePosition>(osc_lane_position);
         if (const auto relative_yaw = core->laneletRelativeYaw(entity_name, lane_pose)) {
           return static_cast<Double>(std::abs(relative_yaw.value()));
@@ -768,7 +748,7 @@ public:
 
     static auto evaluateRelativeHeading(const std::string & entity_name)
     {
-      if (core->isEntityExist(entity_name)) {
+      if (doesEntityExistIfIsEntityName(entity_name)) {
         if (const auto relative_yaw = core->getEntity(entity_name).getLaneletRelativeYaw()) {
           return static_cast<Double>(std::abs(relative_yaw.value()));
         }
@@ -877,6 +857,27 @@ public:
       return core->getV2ITrafficLights()->resetUpdate(std::forward<decltype(xs)>(xs)...);
     }
   };
+
+protected:
+  /// @brief Returns true if the entity exists or the argument is not an entity name
+  /// @note Should be used with caution, if the argument is not an entity name, but is convertible to string this will check for entity existence
+  template <typename PossibleEntityType>
+  static auto doesEntityExistIfIsEntityName(const PossibleEntityType & possible_entity_name) -> bool
+  {
+    if constexpr (std::is_convertible_v<PossibleEntityType, std::string>) {
+      return core->isEntityExist(possible_entity_name);
+    }
+    return true;
+  }
+
+  template <typename FirstPossibleEntityType, typename SecondPossibleEntityType>
+  static auto doesEntityExistIfIsEntityName(
+    const FirstPossibleEntityType & first_possible_entity_name,
+    const SecondPossibleEntityType & second_possible_entity_name) -> bool
+  {
+    return doesEntityExistIfIsEntityName(first_possible_entity_name) and
+           doesEntityExistIfIsEntityName(second_possible_entity_name);
+  }
 };
 }  // namespace openscenario_interpreter
 
