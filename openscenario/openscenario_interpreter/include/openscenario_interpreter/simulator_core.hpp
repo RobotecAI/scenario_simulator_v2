@@ -179,6 +179,26 @@ public:
       }
       return traffic_simulator::pose::quietNaNPose();
     }
+
+    template <typename FirstType, typename SecondType>
+    static auto evaluateLateralRelativeLanes(
+      const FirstType & from_pose_or_entity_name, const SecondType & to_pose_or_entity_name,
+      const RoutingAlgorithm::value_type routing_algorithm = RoutingAlgorithm::undefined) -> int
+    {
+      traffic_simulator::RoutingConfiguration routing_configuration;
+      routing_configuration.allow_lane_change =
+        (routing_algorithm == RoutingAlgorithm::value_type::shortest);
+      if (doesEntityExistIfIsEntityName(from_pose_or_entity_name, to_pose_or_entity_name)) {
+        if (
+          const auto lane_changes = core->countLaneChanges(
+            from_pose_or_entity_name, to_pose_or_entity_name, routing_configuration)) {
+          return lane_changes.value().first - lane_changes.value().second;
+        }
+      }
+      throw common::Error(
+        "Failed to evaluate lateral relative lanes between ", from_pose_or_entity_name, " and ",
+        to_pose_or_entity_name);
+    }
   };
 
   class DistanceConditionEvaluation
@@ -291,27 +311,6 @@ public:
         }
       }
       return std::numeric_limits<double>::quiet_NaN();
-    }
-
-    // Lane coordinate system distance
-    template <typename FirstType, typename SecondType>
-    static auto lateralRelativeLanes(
-      const FirstType & from_pose_or_entity_name, const SecondType & to_pose_or_entity_name,
-      const RoutingAlgorithm::value_type routing_algorithm = RoutingAlgorithm::undefined) -> int
-    {
-      traffic_simulator::RoutingConfiguration routing_configuration;
-      routing_configuration.allow_lane_change =
-        (routing_algorithm == RoutingAlgorithm::value_type::shortest);
-      if (prerequisite(from_pose_or_entity_name, to_pose_or_entity_name)) {
-        if (
-          const auto lane_changes = core->countLaneChanges(
-            from_pose_or_entity_name, to_pose_or_entity_name, routing_configuration)) {
-          return lane_changes.value().first - lane_changes.value().second;
-        }
-      }
-      throw common::Error(
-        "Failed to evaluate lateral relative lanes between ", from_pose_or_entity_name, " and ",
-        to_pose_or_entity_name);
     }
 
     template <typename FirstType, typename SecondType>
