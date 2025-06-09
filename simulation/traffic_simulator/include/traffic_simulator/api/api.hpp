@@ -57,10 +57,8 @@ struct MicsObjectBehavior
 class API
 {
 public:
-  template <typename NodeT, typename AllocatorT = std::allocator<void>>
-  explicit API(
-    NodeT && node, const Configuration & configuration, const double realtime_factor,
-    const double frame_rate)
+  template <typename NodeT, typename AllocatorT = std::allocator<void>, typename... Ts>
+  explicit API(NodeT && node, const Configuration & configuration, Ts &&... xs)
   : configuration_(configuration),
     node_parameters_(
       rclcpp::node_interfaces::get_node_parameters_interface(std::forward<NodeT>(node))),
@@ -70,8 +68,8 @@ public:
     debug_marker_pub_(rclcpp::create_publisher<visualization_msgs::msg::MarkerArray>(
       node, "debug_marker", rclcpp::QoS(100), rclcpp::PublisherOptionsWithAllocator<AllocatorT>())),
     clock_(
-      common::getParameter<bool>(node_parameters_, "use_sim_time", true), realtime_factor,
-      frame_rate),
+      common::getParameter<bool>(node_parameters_, "use_sim_time", true),
+      std::forward<decltype(xs)>(xs)...),
     zeromq_client_(
       simulation_interface::protocol, configuration.simulator_host,
       common::getParameter<int>(node_parameters_, "port", 5555)),
