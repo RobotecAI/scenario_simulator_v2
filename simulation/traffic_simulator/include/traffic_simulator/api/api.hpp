@@ -310,26 +310,6 @@ public:
     const std::string & from_entity_name, const std::string & to_entity_name,
     const RoutingConfiguration & routing_configuration) const -> std::optional<std::pair<int, int>>;
 
-  auto laneletDistance(
-    const std::string & from_entity_name, const std::string & to_entity_name,
-    const RoutingConfiguration & routing_configuration) -> LaneletDistance;
-
-  auto laneletDistance(
-    const std::string & from_entity_name, const LaneletPose & to_lanelet_pose,
-    const RoutingConfiguration & routing_configuration) -> LaneletDistance;
-
-  auto laneletDistance(
-    const LaneletPose & from_lanelet_pose, const std::string & to_entity_name,
-    const RoutingConfiguration & routing_configuration) -> LaneletDistance;
-
-  auto boundingBoxLaneletDistance(
-    const std::string & from_entity_name, const std::string & to_entity_name,
-    const RoutingConfiguration & routing_configuration) -> LaneletDistance;
-
-  auto boundingBoxLaneletDistance(
-    const std::string & from_entity_name, const LaneletPose & to_lanelet_pose,
-    const RoutingConfiguration & routing_configuration) -> LaneletDistance;
-
   // traffics, lanelet
   auto getHdmapUtils() const -> const std::shared_ptr<hdmap_utils::HdMapUtils> &;
 
