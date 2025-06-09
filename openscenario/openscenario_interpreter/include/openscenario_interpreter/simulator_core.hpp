@@ -402,10 +402,7 @@ public:
     template <typename... Ts>
     static auto applyAcquirePositionAction(const std::string & entity_name, Ts &&... xs)
     {
-      // TODO(dmoszynski, TauTheLepton): check if this is still needed, on master there is one line
-      auto & entity = core->getEntity(entity_name);
-      entity.requestClearRoute();
-      return entity.requestAcquirePosition(std::forward<decltype(xs)>(xs)...);
+      return core->getEntity(entity_name).requestAcquirePosition(std::forward<decltype(xs)>(xs)...);
     }
 
     template <typename... Ts>
