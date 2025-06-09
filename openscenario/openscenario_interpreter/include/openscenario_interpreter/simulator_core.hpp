@@ -55,7 +55,10 @@ public:
     }
   }
 
-  static auto activateNonUserDefinedControllers() -> void { core->startNpcLogic(); }
+  static auto activateNonUserDefinedControllers() -> decltype(auto)
+  {
+    return core->startNpcLogic();
+  }
 
   static auto active() -> bool { return static_cast<bool>(core); }
 
@@ -188,6 +191,7 @@ public:
       traffic_simulator::RoutingConfiguration routing_configuration;
       routing_configuration.allow_lane_change =
         (routing_algorithm == RoutingAlgorithm::value_type::shortest);
+
       if (doesEntityExistIfIsEntityName(from_pose_or_entity_name, to_pose_or_entity_name)) {
         if (
           const auto lane_changes = core->countLaneChanges(
@@ -214,7 +218,7 @@ public:
     template <typename PerformanceType, typename PropertiesType>
     static auto activatePerformanceAssertion(
       const std::string & entity_name, const PerformanceType & performance,
-      const PropertiesType & properties) -> void
+      const PropertiesType & properties)
     {
       core->getEntity(entity_name)
         .activateOutOfRangeJob(
@@ -396,8 +400,9 @@ public:
     }
 
     template <typename... Ts>
-    static auto applyAcquirePositionAction(const std::string & entity_name, Ts &&... xs) -> void
+    static auto applyAcquirePositionAction(const std::string & entity_name, Ts &&... xs)
     {
+      // TODO(dmoszynski, TauTheLepton): check if this is still needed, on master there is one line
       auto & entity = core->getEntity(entity_name);
       entity.requestClearRoute();
       return entity.requestAcquirePosition(std::forward<decltype(xs)>(xs)...);
@@ -574,17 +579,17 @@ public:
   class NonStandardOperation
   {
   protected:
-    static auto engage(const std::string & ego_name) -> void
+    static auto engage(const std::string & ego_name) -> decltype(auto)
     {
-      core->getEgoEntity(ego_name).engage();
+      return core->getEgoEntity(ego_name).engage();
     }
 
-    static auto isEngageable(const std::string & ego_name) -> bool
+    static auto isEngageable(const std::string & ego_name) -> decltype(auto)
     {
       return core->getEgoEntity(ego_name).isEngageable();
     }
 
-    static auto isEngaged(const std::string & ego_name) -> bool
+    static auto isEngaged(const std::string & ego_name) -> decltype(auto)
     {
       return core->getEgoEntity(ego_name).isEngaged();
     }
@@ -594,29 +599,29 @@ public:
     {
       /// @note here ego name is not passed from OpenScenarioInterpreter, it uses first found
       if (const auto ego_name = core->getFirstEgoName()) {
-        core->getEgoEntity(ego_name.value())
+        return core->getEgoEntity(ego_name.value())
           .sendCooperateCommand(std::forward<decltype(xs)>(xs)...);
       } else {
         throw common::Error("No ego entity exists.");
       }
     }
 
-    static auto getMinimumRiskManeuverBehaviorName(const std::string & ego_name) -> std::string
+    static auto getMinimumRiskManeuverBehaviorName(const std::string & ego_name) -> decltype(auto)
     {
       return core->getEgoEntity(ego_name).getMinimumRiskManeuverBehaviorName();
     }
 
-    static auto getMinimumRiskManeuverStateName(const std::string & ego_name) -> std::string
+    static auto getMinimumRiskManeuverStateName(const std::string & ego_name) -> decltype(auto)
     {
       return core->getEgoEntity(ego_name).getMinimumRiskManeuverStateName();
     }
 
-    static auto getEmergencyStateName(const std::string & ego_name) -> std::string
+    static auto getEmergencyStateName(const std::string & ego_name) -> decltype(auto)
     {
       return core->getEgoEntity(ego_name).getEmergencyStateName();
     }
 
-    static auto getTurnIndicatorsCommandName(const std::string & ego_name) -> std::string
+    static auto getTurnIndicatorsCommandName(const std::string & ego_name) -> decltype(auto)
     {
       return core->getEgoEntity(ego_name).getTurnIndicatorsCommandName();
     }
