@@ -305,6 +305,12 @@ auto FollowWaypointController::getAcceleration(
   const auto [local_min_acceleration, local_max_acceleration] =
     getAccelerationLimits(acceleration, speed);
 
+  const auto analytic_acceleration = 2 * (remaining_distance - speed * step_time) / std::pow(step_time, 2);
+
+  if (analytic_acceleration == std::clamp(analytic_acceleration, local_min_acceleration, local_max_acceleration))
+  {
+    return analytic_acceleration;
+  }
 
   const double step_acceleration =
     (local_max_acceleration - local_min_acceleration) / number_of_acceleration_candidates;
