@@ -72,6 +72,11 @@ auto makeUpdatedStatus(
   constexpr bool include_opposite_direction{false};
   constexpr bool allow_lane_change{true};
 
+  std::ostringstream msg;
+  msg << "+++++++++++++++++++++++ makeUpdatedStatus +++++++++++++++++++++++";
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+  msg.str("");
+
   const auto include_crosswalk = [](const auto & entity_type) {
     return (traffic_simulator_msgs::msg::EntityType::PEDESTRIAN == entity_type.type) ||
            (traffic_simulator_msgs::msg::EntityType::MISC_OBJECT == entity_type.type);
@@ -119,6 +124,11 @@ auto makeUpdatedStatus(
   };
 
   auto discard_the_front_waypoint_and_recurse = [&]() {
+
+      std::ostringstream msg;
+      msg << "++++ discard_the_front_waypoint_and_recurse ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
     /*
        The OpenSCENARIO standard does not define the behavior when the value of
        Timing.domainAbsoluteRelative is "relative". The standard only states
@@ -176,6 +186,9 @@ auto makeUpdatedStatus(
      See https://www.researchgate.net/publication/2495826_Steering_Behaviors_For_Autonomous_Characters
   */
   if (polyline_trajectory.shape.vertices.empty()) {
+      msg << "++++ polyline_trajectory.shape.vertices.empty() ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
     return std::nullopt;
   } else if (const auto position = entity_status.pose.position; any(is_infinity_or_nan, position)) {
     throw common::Error(
@@ -212,6 +225,9 @@ auto makeUpdatedStatus(
        miraculously becomes zero.
     */
     isDefinitelyLessThan(distance_to_front_waypoint, std::numeric_limits<double>::epsilon())) {
+            msg << "++++ isDefinitelyLessThan(distance_to_front_waypoint, std::numeric_limits<double>::epsilon())) ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
     return discard_the_front_waypoint_and_recurse();
   } else if (
     const auto [distance, remaining_time] =
@@ -284,6 +300,9 @@ auto makeUpdatedStatus(
         }
       }();
     isDefinitelyLessThan(distance, std::numeric_limits<double>::epsilon())) {
+      msg << "++++ isDefinitelyLessThan(distance, std::numeric_limits<double>::epsilon())) ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
     return discard_the_front_waypoint_and_recurse();
   } else if (const auto acceleration = entity_status.action_status.accel.linear.x;  // [m/s^2]
              std::isinf(acceleration) or std::isnan(acceleration)) {
@@ -358,6 +377,10 @@ auto makeUpdatedStatus(
     */
     const auto desired_acceleration = [&]() -> double {
       try {
+        std::ostringstream msg;
+        msg << "---------------- follow_waypoint_controller.getAcceleration ----------------";
+        RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+        msg.str("");
         return follow_waypoint_controller.getAcceleration(
           remaining_time, distance, acceleration, speed);
       } catch (const ControllerError & e) {
@@ -389,6 +412,10 @@ auto makeUpdatedStatus(
                     variable is `followingMode == position`.
                  */
                  if (polyline_trajectory.dynamic_constraints_ignorable) {
+                    std::ostringstream msg;
+                    msg << "---------------- desired_velocity ----------------";
+                    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+                    msg.str("");
                    const auto dx = target_position.x - position.x;
                    const auto dy = target_position.y - position.y;
                    /// @note if entity is on lane use pitch from lanelet, otherwise use pitch on target
@@ -399,6 +426,10 @@ auto makeUpdatedStatus(
                             .y
                        : std::atan2(target_position.z - position.z, std::hypot(dy, dx));
                    const auto yaw = std::atan2(dy, dx);  // Use yaw on target
+
+                   msg << "dx " << dx << " dy " << dy << " pitch " << pitch <<  " yaw " << yaw << " desired_speed " << desired_speed;
+                    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+                    msg.str("");
                    return geometry_msgs::build<geometry_msgs::msg::Vector3>()
                      .x(std::cos(pitch) * std::cos(yaw) * desired_speed)
                      .y(std::cos(pitch) * std::sin(yaw) * desired_speed)
@@ -436,6 +467,9 @@ auto makeUpdatedStatus(
                }();
              (speed * step_time) > distance_to_front_waypoint &&
              innerProduct(desired_velocity, current_velocity) < 0.0) {
+      msg << "++++ (speed * step_time) > distance_to_front_waypoint && innerProduct(desired_velocity, current_velocity) < 0.0 ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
     return discard_the_front_waypoint_and_recurse();
   } else if (auto predicted_state_opt = follow_waypoint_controller.getPredictedWaypointArrivalState(
                desired_acceleration, remaining_time, distance, acceleration, speed);
@@ -540,6 +574,9 @@ auto makeUpdatedStatus(
         /// maximum speed including braking - in this case accuracy of arrival is checked
         if (follow_waypoint_controller.areConditionsOfArrivalMet(
               acceleration, speed, distance_to_front_waypoint)) {
+                      msg << "++++ follow_waypoint_controller.areConditionsOfArrivalMet 1 ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
           return discard_the_front_waypoint_and_recurse();
         }
       } else {
@@ -547,6 +584,9 @@ auto makeUpdatedStatus(
         /// irrelevant
         if (auto this_step_distance = (speed + desired_acceleration * step_time) * step_time;
             this_step_distance > distance_to_front_waypoint) {
+                                    msg << "++++ this_step_distance ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
           return discard_the_front_waypoint_and_recurse();
         }
       }
@@ -561,6 +601,9 @@ auto makeUpdatedStatus(
     } else if (isDefinitelyLessThan(remaining_time_to_front_waypoint, step_time / 2.0)) {
       if (follow_waypoint_controller.areConditionsOfArrivalMet(
             acceleration, speed, distance_to_front_waypoint)) {
+                      msg << "++++ follow_waypoint_controller.areConditionsOfArrivalMet 2 ++++";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
         return discard_the_front_waypoint_and_recurse();
       } else {
         throw common::SimulationError(
@@ -585,9 +628,16 @@ auto makeUpdatedStatus(
     updated_status.pose.orientation = [&]() {
       if (desired_velocity.y == 0 && desired_velocity.x == 0 && desired_velocity.z == 0) {
         /// @note Do not change orientation if there is no designed_velocity vector
+        msg << "Do not change orientation if there is no designed_velocity vector";
+        RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+        msg.str("");
         return entity_status.pose.orientation;
       } else {
         /// @note if there is a designed_velocity vector, set the orientation in the direction of it
+        msg << "if there is a designed_velocity vector, set the orientation in the direction of it "
+        << "y " << desired_velocity.y << " x " << desired_velocity.x << " z " << desired_velocity.z;
+        RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+        msg.str("");
         return math::geometry::convertDirectionToQuaternion(desired_velocity);
       }
     }();

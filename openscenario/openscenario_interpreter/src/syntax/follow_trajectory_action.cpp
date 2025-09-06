@@ -17,6 +17,7 @@
 #include <openscenario_interpreter/syntax/polyline.hpp>
 #include <openscenario_interpreter/syntax/timing.hpp>
 #include <openscenario_interpreter/syntax/trajectory.hpp>
+#include <rclcpp/rclcpp.hpp>
 
 namespace openscenario_interpreter
 {
@@ -34,7 +35,9 @@ FollowTrajectoryAction::FollowTrajectoryAction(const pugi::xml_node & node, Scop
 
 auto FollowTrajectoryAction::accomplished() -> bool
 {
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "FollowTrajectoryAction::accomplished()");
   if (trajectory_ref.trajectory.as<Trajectory>().closed) {
+    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "trajectory_ref.trajectory.as<Trajectory>().closed -> false");
     return false;
   } else if (accomplishments.empty()) {
     /*
@@ -49,6 +52,7 @@ auto FollowTrajectoryAction::accomplished() -> bool
     for (const auto & actor : actors) {
       accomplishments.emplace(actor, false);
     }
+    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "accomplishments.empty() -> false");
     return false;
   } else {
     return std::all_of(
@@ -56,6 +60,7 @@ auto FollowTrajectoryAction::accomplished() -> bool
         auto is_running = [this](const auto & actor) {
           if (trajectory_ref.trajectory.as<Trajectory>().shape.is<Polyline>()) {
             auto evaluation = actor.apply([&](const auto & object) {
+              RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "follow_polyline_trajectory");
               return evaluateCurrentState(object) == "follow_polyline_trajectory";
             });
             return not evaluation.size() or evaluation.min();

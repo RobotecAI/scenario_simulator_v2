@@ -13,6 +13,8 @@
 // limitations under the License.
 
 #include <traffic_simulator/behavior/follow_waypoint_controller.hpp>
+#include <rclcpp/rclcpp.hpp>
+#include <sstream>
 
 namespace traffic_simulator
 {
@@ -296,8 +298,13 @@ auto FollowWaypointController::getPredictedWaypointArrivalState(
 auto FollowWaypointController::getAcceleration(
   const double remaining_distance, const double acceleration, const double speed) const -> double
 {
+    std::ostringstream msg;
+  msg << "---------------- getAcceleration no time ----------------";
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+  msg.str("");
   const auto [local_min_acceleration, local_max_acceleration] =
     getAccelerationLimits(acceleration, speed);
+
 
   const double step_acceleration =
     (local_max_acceleration - local_min_acceleration) / number_of_acceleration_candidates;
@@ -322,6 +329,9 @@ auto FollowWaypointController::getAcceleration(
   }
 
   if (best_acceleration.has_value()) {
+      msg << "step_acceleration " << step_acceleration << " remaining_distance " << remaining_distance << " local_min_acceleration " << local_min_acceleration << " local_max_acceleration " << local_max_acceleration << " best_acceleration " << best_acceleration.value();
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
     return best_acceleration.value();
   } else {
     throw ControllerError(
@@ -334,6 +344,11 @@ auto FollowWaypointController::getAcceleration(
   const double remaining_time_source, const double remaining_distance, const double acceleration,
   const double speed) const -> double
 {
+  std::ostringstream msg;
+  msg << "---------------- getAcceleration ----------------";
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+  msg.str("");
+
   const auto [local_min_acceleration, local_max_acceleration] =
     getAccelerationLimits(acceleration, speed);
 
@@ -344,11 +359,19 @@ auto FollowWaypointController::getAcceleration(
        which the controller is started extremely close to waypoint and nothing
        can be done.
     */
+    msg << "(speed + local_min_acceleration * step_time) * step_time > remaining_distance ";
+    msg << "return local_min_acceleration " << local_min_acceleration << " for speed " << speed << " and distance " << remaining_distance;
+    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+    msg.str("");
     return local_min_acceleration;
   } else if (std::abs(local_min_acceleration - local_max_acceleration) < local_epsilon) {
     /*
        If the range is so tight that there is no choice.
     */
+    msg << "(std::abs(local_min_acceleration - local_max_acceleration) < local_epsilon) ";
+    msg << "return local_min_acceleration " << local_min_acceleration << " for speed " << speed << " and distance " << remaining_distance;
+    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+    msg.str("");
     return local_min_acceleration;
   } else if (std::isinf(remaining_time_source)) {
     /*

@@ -28,11 +28,27 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
+#include <rclcpp/rclcpp.hpp>
+#include <sstream>
 
 namespace traffic_simulator
 {
 namespace entity
 {
+
+std::string poseToString(const geometry_msgs::msg::Pose& pose) {
+    std::ostringstream ss;
+    ss << "position: ["
+       << pose.position.x << ", "
+       << pose.position.y << ", "
+       << pose.position.z << "], orientation: ["
+       << pose.orientation.x << ", "
+       << pose.orientation.y << ", "
+       << pose.orientation.z << ", "
+       << pose.orientation.w << "]";
+    return ss.str();
+}
+
 EgoEntity::EgoEntity(
   const std::string & name, const CanonicalizedEntityStatus & entity_status,
   const std::shared_ptr<hdmap_utils::HdMapUtils> & hdmap_utils_ptr,
@@ -83,7 +99,9 @@ EgoEntity::EgoEntity(
 {
 }
 
-auto EgoEntity::engage() -> void { FieldOperatorApplication::engage(); }
+auto EgoEntity::engage() -> void { 
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "EgoEntity::engage()");
+  FieldOperatorApplication::engage(); }
 
 auto EgoEntity::isEngaged() const -> bool { return engaged(); }
 
@@ -92,11 +110,13 @@ auto EgoEntity::isEngageable() const -> bool { return engageable(); }
 auto EgoEntity::sendCooperateCommand(const std::string & module_name, const std::string & command)
   -> void
 {
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "EgoEntity::sendCooperateCommand()");
   FieldOperatorApplication::sendCooperateCommand(module_name, command);
 }
 
 auto EgoEntity::requestAutoModeForCooperation(const std::string & module_name, bool enable) -> void
 {
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "EgoEntity::requestAutoModeForCooperation()");
   FieldOperatorApplication::requestAutoModeForCooperation(module_name, enable);
 }
 
@@ -128,7 +148,11 @@ auto EgoEntity::getTurnIndicatorsCommandName() const -> std::string
   }
 }
 
-auto EgoEntity::getCurrentAction() const -> std::string { return getLegacyAutowareState(); }
+auto EgoEntity::getCurrentAction() const -> std::string { 
+
+  std::string msg = "EgoEntity::getCurrentAction()";// + getLegacyAutowareState();
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.c_str());
+  return getLegacyAutowareState(); }
 
 auto EgoEntity::getBehaviorParameter() const -> traffic_simulator_msgs::msg::BehaviorParameter
 {
@@ -151,6 +175,7 @@ auto EgoEntity::getObstacle() -> std::optional<traffic_simulator_msgs::msg::Obst
 
 auto EgoEntity::getRouteLanelets(double /*unused horizon*/) -> lanelet::Ids
 {
+  // RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "EgoEntity::getRouteLanelets()");
   lanelet::Ids ids{};
 
   for (const auto & point : getPathWithLaneId().points) {
@@ -162,6 +187,7 @@ auto EgoEntity::getRouteLanelets(double /*unused horizon*/) -> lanelet::Ids
 
 auto EgoEntity::getCurrentPose() const -> const geometry_msgs::msg::Pose &
 {
+  // RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), "EgoEntity::getCurrentPose()");
   return status_->getMapPose();
 }
 
@@ -172,6 +198,7 @@ auto EgoEntity::getWaypoints() -> const traffic_simulator_msgs::msg::WaypointsAr
    * Autoware's trajectory is already visualized in RViz
    * there is no need to visualize it second time
    */
+  
   return traffic_simulator_msgs::msg::WaypointsArray{};
 }
 
@@ -179,6 +206,9 @@ auto EgoEntity::updateFieldOperatorApplication() -> void { spinSome(); }
 
 void EgoEntity::onUpdate(double current_time, double step_time)
 {
+  std::ostringstream msg;
+  msg << "EgoEntity::onUpdate() " <<  is_controlled_by_simulator_ << " " << poseToString(getCurrentPose());
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
   EntityBase::onUpdate(current_time, step_time);
 
   if (is_controlled_by_simulator_) {
@@ -189,10 +219,28 @@ void EgoEntity::onUpdate(double current_time, double step_time)
           behavior_parameter_, step_time, getDefaultMatchingDistanceForLaneletPoseCalculation(),
           target_speed_ ? target_speed_.value() : status_->getTwist().linear.x)) {
       // prefer current lanelet on ss2 side
+      msg.str("");
+      msg << "EgoEntity::onUpdate() targets_speed " << " " << target_speed_.has_value() << " " <<(target_speed_ ? target_speed_.value() : status_->getTwist().linear.x);
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+
+      
+      msg.str("");
+      msg << "EgoEntity::onUpdate() _status " << " " << poseToString((*status_).getMapPose());
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+
+      msg.str("");
+      msg << "EgoEntity::onUpdate() non_canonicalized_updated_status " << " " << poseToString(non_canonicalized_updated_status.value().pose);
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+
+      msg.str("");
       setStatus(non_canonicalized_updated_status.value(), status_->getLaneletIds());
+      msg << "EgoEntity::onUpdate() setStatus " << " " << poseToString(getCurrentPose());
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
     } else {
       enableAutowareControl();
       is_controlled_by_simulator_ = false;
+      std::string msg = "++++++++++++++++++++ EgoEntity::onUpdate() enableAutowareControl " + poseToString(getCurrentPose());
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.c_str());
     }
   } else {
     updateEntityStatusTimestamp(current_time + step_time);
