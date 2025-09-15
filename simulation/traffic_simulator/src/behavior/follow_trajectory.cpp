@@ -74,8 +74,17 @@ auto makeUpdatedStatus(
 
   std::ostringstream msg;
   msg << "+++++++++++++++++++++++ makeUpdatedStatus +++++++++++++++++++++++";
+  msg << std::fixed << std::setprecision(10) << std::boolalpha;
+  msg << " entity_status.time: " << entity_status.time;
+  msg << " entity_status.position : " << entity_status.pose.position.x << ", "
+      << entity_status.pose.position.y << ", " << entity_status.pose.position.z;
+  msg << " entity_status.orientation (x, y, z, w): " << entity_status.pose.orientation.x << ", "
+      << entity_status.pose.orientation.y << ", " << entity_status.pose.orientation.z << ", "
+      << entity_status.pose.orientation.w;
   RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+  msg << std::defaultfloat;
   msg.str("");
+
 
   const auto include_crosswalk = [](const auto & entity_type) {
     return (traffic_simulator_msgs::msg::EntityType::PEDESTRIAN == entity_type.type) ||
@@ -416,6 +425,11 @@ auto makeUpdatedStatus(
                     msg << "---------------- desired_velocity ----------------";
                     RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
                     msg.str("");
+                    msg << std::setprecision(10) << std::fixed << "position " << position.x << " " << position.y << " " << position.z << " target_position " << target_position.x << " " << target_position.y << " " << target_position.z;
+                    msg << " speed " << speed << " desired_acceleration " << desired_acceleration << " desired_speed " << desired_speed;
+                    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+                    msg.str("");
+                    msg << std::defaultfloat;
                    const auto dx = target_position.x - position.x;
                    const auto dy = target_position.y - position.y;
                    /// @note if entity is on lane use pitch from lanelet, otherwise use pitch on target
@@ -484,9 +498,9 @@ auto makeUpdatedStatus(
       follow_waypoint_controller);
   } else {
     auto remaining_time_to_arrival_to_front_waypoint = predicted_state_opt->travel_time;
-    if constexpr (false) {
+    if constexpr (true) {
       // clang-format off
-      std::cout << std::fixed << std::boolalpha << std::string(80, '-') << std::endl;
+      std::cout << std::fixed << std::setprecision(10) << std::boolalpha << std::string(80, '-') << std::endl;
 
       std::cout << "acceleration "
                 << "== " << acceleration
@@ -623,8 +637,18 @@ auto makeUpdatedStatus(
     */
     auto updated_status = entity_status;
 
+    msg << std::fixed << std::setprecision(10) << std::boolalpha;
+    msg << "position before update "
+        << "x " << entity_status.pose.position.x << " y " << entity_status.pose.position.y << " z " << entity_status.pose.position.z;
     updated_status.pose.position += desired_velocity * step_time;
+    msg << " + desired_velocity "
+        << "x " << desired_velocity.x << " y " << desired_velocity.y << " z " << desired_velocity.z;
+    msg << " * step_time " << step_time;
+    msg << " -> after update "
+        << "x " << updated_status.pose.position.x << " y " << updated_status.pose.position.y << " z " << updated_status.pose.position.z;
 
+    msg << "orientation before update "
+        << "x " << entity_status.pose.orientation.x << " y " << entity_status.pose.orientation.y << " z " << entity_status.pose.orientation.z << " w " << entity_status.pose.orientation.w;
     updated_status.pose.orientation = [&]() {
       if (desired_velocity.y == 0 && desired_velocity.x == 0 && desired_velocity.z == 0) {
         /// @note Do not change orientation if there is no designed_velocity vector
@@ -641,6 +665,10 @@ auto makeUpdatedStatus(
         return math::geometry::convertDirectionToQuaternion(desired_velocity);
       }
     }();
+    msg << "orientation after update "
+        << "x " << updated_status.pose.orientation.x << " y " << updated_status.pose.orientation.y << " z " << updated_status.pose.orientation.z << " w " << updated_status.pose.orientation.w;
+    msg << std::defaultfloat;
+    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
 
     /// @note If it is the transition between lanelets: overwrite position to improve precision
     if (entity_status.lanelet_pose_valid) {
@@ -657,6 +685,12 @@ auto makeUpdatedStatus(
             canonicalized_lanelet_pose.value(), next_lanelet_id, desired_velocity,
             desired_velocity_is_global, step_time)) {
           updated_status.pose.position = updated_position.value();
+          auto dx = target_position.x - updated_status.pose.position.x ;
+          auto dy = target_position.y - updated_status.pose.position.y ;
+          auto dz = target_position.z - updated_status.pose.position.z ;
+          msg << "target vs updated position " << " dx " << dx << " dy " << dy << " dz " << dz;
+          RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+          msg.str("");
         }
       }
     }

@@ -102,6 +102,7 @@ auto FollowWaypointController::getTimeRequiredForNonAcceleration(const double ac
 auto FollowWaypointController::getAccelerationLimits(
   const double acceleration, const double speed) const -> std::pair<double, double>
 {
+  std::stringstream msg;
   const auto time_for_non_acceleration = [&, acceleration]() {
     if (std::abs(acceleration) < local_epsilon) {
       return 0.0;
@@ -113,6 +114,17 @@ auto FollowWaypointController::getAccelerationLimits(
 
   const auto local_min_acceleration = [&]() {
     const auto local_min_acceleration = acceleration - max_deceleration_rate * step_time;
+    msg << "local_min_acceleration "
+        << "== std::max(acceleration - max_deceleration_rate * step_time, -max_deceleration) "
+        << "== std::max(" << acceleration << " - " << max_deceleration_rate << " * " << step_time
+        << ", " << -max_deceleration << ") "
+        << "== std::max(" << acceleration << " - " << max_deceleration_rate * step_time << ", "
+        << -max_deceleration << ") "
+        << "== std::max(" << (acceleration - max_deceleration_rate * step_time) << ", "
+        << -max_deceleration << ") "
+        << "== " << local_min_acceleration;
+    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+    msg.str("");
     if (std::abs(speed) < local_epsilon) {
       // If the speed is equal to 0.0, it should no longer be decreased.
       return std::max(0.0, local_min_acceleration);
@@ -131,17 +143,39 @@ auto FollowWaypointController::getAccelerationLimits(
   }();
 
   const auto local_max_acceleration = [&]() {
+    msg << "local_max_acceleration "
+        << "== std::min(acceleration + max_acceleration_rate * step_time, +max_acceleration) "
+        << "== std::min(" << acceleration << " + " << max_acceleration_rate << " * " << step_time
+        << ", " << max_acceleration << ") "
+        << "== std::min(" << acceleration << " + " << max_acceleration_rate * step_time << ", "
+        << max_acceleration << ") "
+        << "== std::min(" << (acceleration + max_acceleration_rate * step_time) << ", "
+        << max_acceleration << ") ";
+    RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+    msg.str("");
     const auto local_max_acceleration = acceleration + max_acceleration_rate * step_time;
     if (std::abs(speed - target_speed) < local_epsilon) {
+      msg << "If the speed is equal to target_speed, it should no longer be increased.";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
       // If the speed is equal to target_speed, it should no longer be increased.
       return std::min(0.0, local_max_acceleration);
     } else if (speed > target_speed) {
+      msg << "If speed is too high, assume that the max acceleration is equal to the min acceleration.";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
       // If speed is too high, assume that the max acceleration is equal to the min acceleration.
       return local_min_acceleration;
     } else if (time_for_non_acceleration > local_epsilon) {
+      msg << "If the acceleration is not 0.0, ensure that there will be sufficient time to set it to 0.0.";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
       // If the acceleration is not 0.0, ensure that there will be sufficient time to set it to 0.0.
       return std::min((target_speed - speed) / time_for_non_acceleration, local_max_acceleration);
     } else {
+      msg << "Otherwise, return an acceleration limited by constraints.";
+      RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+      msg.str("");
       /*
          Otherwise, return an acceleration limited by constraints: it cannot be greater than
          max_acceleration, it cannot be greater than local_max_acceleration (resulting from the max
@@ -161,6 +195,14 @@ auto FollowWaypointController::getAccelerationLimits(
     // Check the validity of the limits.
     const double speed_min = speed + local_min_acceleration * step_time;
     const double speed_max = speed + local_max_acceleration * step_time;
+    RCLCPP_INFO_STREAM(
+      rclcpp::get_logger("traffic_simulator"),
+      "local_min_acceleration: " << local_min_acceleration
+                                 << ", local_max_acceleration: " << local_max_acceleration
+                                 << ", speed: " << speed << ", speed_min: " << speed_min
+                                 << ", speed_max: " << speed_max
+                                 << ", target_speed: " << target_speed
+                                 << ", max_speed: " << max_speed);
     if (
       speed_max < -local_epsilon || speed_max > std::max(max_speed, target_speed) + local_epsilon ||
       speed_min < -local_epsilon || speed_min > std::max(max_speed, target_speed) + local_epsilon) {
@@ -306,11 +348,14 @@ auto FollowWaypointController::getAcceleration(
     getAccelerationLimits(acceleration, speed);
 
   const auto analytic_acceleration = 2 * (remaining_distance - speed * step_time) / std::pow(step_time, 2);
+  msg << "analytic_acceleration " << analytic_acceleration << " remaining_distance " << remaining_distance << " local_min_acceleration " << local_min_acceleration << " local_max_acceleration " << local_max_acceleration << " acceleration " << acceleration << " speed " << speed;
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
+  msg.str("");
 
-  if (analytic_acceleration == std::clamp(analytic_acceleration, local_min_acceleration, local_max_acceleration))
-  {
-    return analytic_acceleration;
-  }
+//  if (analytic_acceleration == std::clamp(analytic_acceleration, local_min_acceleration, local_max_acceleration))
+//  {
+//    return analytic_acceleration;
+//  }
 
   const double step_acceleration =
     (local_max_acceleration - local_min_acceleration) / number_of_acceleration_candidates;
@@ -372,8 +417,8 @@ auto FollowWaypointController::getAcceleration(
     return local_min_acceleration;
   } else if (std::abs(local_min_acceleration - local_max_acceleration) < local_epsilon) {
     /*
-       If the range is so tight that there is no choice.
-    */
+-      If the range is so tight that there is no choice.
+-   */
     msg << "(std::abs(local_min_acceleration - local_max_acceleration) < local_epsilon) ";
     msg << "return local_min_acceleration " << local_min_acceleration << " for speed " << speed << " and distance " << remaining_distance;
     RCLCPP_INFO_STREAM(rclcpp::get_logger("traffic_simulator"), msg.str().c_str());
