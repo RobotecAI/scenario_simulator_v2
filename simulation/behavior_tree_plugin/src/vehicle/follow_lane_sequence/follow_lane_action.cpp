@@ -97,7 +97,7 @@ BT::NodeStatus FollowLaneAction::doAction()
     return BT::NodeStatus::FAILURE;
   }
   if (behavior_parameter_.see_around) {
-    if (getRightOfWayEntities(route_lanelets_).size() != 0) {
+    if (isNeedToRightOfWay(route_lanelets_)) {
       return BT::NodeStatus::FAILURE;
     }
     if (trajectory == nullptr) {
