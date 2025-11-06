@@ -110,7 +110,8 @@ BT::NodeStatus StopAtTrafficLightAction::doAction()
   if (trajectory == nullptr) {
     return BT::NodeStatus::FAILURE;
   }
-  distance_to_stop_target_ = getDistanceToTrafficLightStopLine(route_lanelets_, *trajectory);
+  distance_to_stop_target_ =
+    traffic_lights_->getDistanceToActiveTrafficLightStopLine(route_lanelets_, *trajectory);
   std::optional<double> target_linear_speed;
   if (distance_to_stop_target_) {
     if (distance_to_stop_target_.value() > getHorizon()) {
