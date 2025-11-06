@@ -223,29 +223,6 @@ auto ActionNode::getRightOfWayEntities() const
   return ret;
 }
 
-auto ActionNode::getDistanceToTrafficLightStopLine(
-  const lanelet::Ids & route_lanelets,
-  const math::geometry::CatmullRomSplineInterface & spline) const -> std::optional<double>
-{
-  if (const auto traffic_light_ids = hdmap_utils_->getTrafficLightIdsOnPath(route_lanelets);
-      !traffic_light_ids.empty()) {
-    std::set<double> collision_points = {};
-    for (const auto traffic_light_id : traffic_light_ids) {
-      if (traffic_lights_->isRequiredStopTrafficLightState(traffic_light_id)) {
-        if (
-          const auto collision_point =
-            traffic_simulator::distance::distanceToTrafficLightStopLine(spline, traffic_light_id)) {
-          collision_points.insert(collision_point.value());
-        }
-      }
-    }
-    if (!collision_points.empty()) {
-      return *collision_points.begin();
-    }
-  }
-  return std::nullopt;
-}
-
 auto ActionNode::getDistanceToFrontEntity(
   const math::geometry::CatmullRomSplineInterface & spline) const -> std::optional<double>
 {
