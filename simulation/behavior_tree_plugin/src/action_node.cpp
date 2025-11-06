@@ -174,6 +174,34 @@ auto ActionNode::getYieldStopDistance(const lanelet::Ids & following_lanelets) c
   return std::nullopt;
 }
 
+/// @todo it will be moved to traffic_simulator::route::isNeedToRightOfWay(...)
+auto ActionNode::isNeedToRightOfWay(const lanelet::Ids & following_lanelets) const -> bool
+{
+  auto isTheSameRightOfWay =
+    [&](const std::int64_t & lanelet_id, const std::int64_t & following_lanelet) {
+      const auto right_of_way_lanelet_ids =
+        traffic_simulator::lanelet_wrapper::lanelet_map::rightOfWayLaneletIds(lanelet_id);
+      const auto the_same_right_of_way_it = std::find(
+        right_of_way_lanelet_ids.begin(), right_of_way_lanelet_ids.end(), following_lanelet);
+      return the_same_right_of_way_it != std::end(right_of_way_lanelet_ids);
+    };
+
+  const auto lanelet_ids_list =
+    traffic_simulator::lanelet_wrapper::lanelet_map::rightOfWayLaneletIds(following_lanelets);
+  for (const auto & pose : getOtherEntitiesCanonicalizedLaneletPoses()) {
+    for (const auto & following_lanelet : following_lanelets) {
+      for (const lanelet::Id lanelet_id : lanelet_ids_list.at(following_lanelet)) {
+        if (
+          isSameLaneletId(pose, lanelet_id) &&
+          not isTheSameRightOfWay(lanelet_id, following_lanelet)) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
 auto ActionNode::getRightOfWayEntities(const lanelet::Ids & following_lanelets) const
   -> std::vector<traffic_simulator::CanonicalizedEntityStatus>
 {
