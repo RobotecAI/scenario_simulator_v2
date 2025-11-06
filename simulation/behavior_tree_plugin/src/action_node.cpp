@@ -202,55 +202,6 @@ auto ActionNode::isNeedToRightOfWay(const lanelet::Ids & following_lanelets) con
   return false;
 }
 
-auto ActionNode::getRightOfWayEntities(const lanelet::Ids & following_lanelets) const
-  -> std::vector<traffic_simulator::CanonicalizedEntityStatus>
-{
-  auto is_the_same_right_of_way =
-    [&](const std::int64_t & lanelet_id, const std::int64_t & following_lanelet) {
-      const auto right_of_way_lanelet_ids = hdmap_utils_->getRightOfWayLaneletIds(lanelet_id);
-      const auto the_same_right_of_way_it = std::find(
-        right_of_way_lanelet_ids.begin(), right_of_way_lanelet_ids.end(), following_lanelet);
-      return the_same_right_of_way_it != std::end(right_of_way_lanelet_ids);
-    };
-
-  std::vector<traffic_simulator::CanonicalizedEntityStatus> ret;
-  const auto lanelet_ids_list = hdmap_utils_->getRightOfWayLaneletIds(following_lanelets);
-  for (const auto & [name, status] : other_entity_status_) {
-    for (const auto & following_lanelet : following_lanelets) {
-      for (const lanelet::Id & lanelet_id : lanelet_ids_list.at(following_lanelet)) {
-        if (
-          status.isInLanelet() && traffic_simulator::isSameLaneletId(status, lanelet_id) &&
-          not is_the_same_right_of_way(lanelet_id, following_lanelet)) {
-          ret.emplace_back(status);
-        }
-      }
-    }
-  }
-  return ret;
-}
-
-auto ActionNode::getRightOfWayEntities() const
-  -> std::vector<traffic_simulator::CanonicalizedEntityStatus>
-{
-  if (!canonicalized_entity_status_->isInLanelet()) {
-    return {};
-  }
-  std::vector<traffic_simulator::CanonicalizedEntityStatus> ret;
-  const auto lanelet_ids =
-    hdmap_utils_->getRightOfWayLaneletIds(canonicalized_entity_status_->getLaneletId());
-  if (lanelet_ids.empty()) {
-    return ret;
-  }
-  for (const auto & [name, status] : other_entity_status_) {
-    for (const lanelet::Id & lanelet_id : lanelet_ids) {
-      if (status.isInLanelet() && traffic_simulator::isSameLaneletId(status, lanelet_id)) {
-        ret.emplace_back(status);
-      }
-    }
-  }
-  return ret;
-}
-
 auto ActionNode::getDistanceToFrontEntity(
   const math::geometry::CatmullRomSplineInterface & spline) const -> std::optional<double>
 {

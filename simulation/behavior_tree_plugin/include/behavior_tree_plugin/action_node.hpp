@@ -58,9 +58,6 @@ public:
   auto getFrontEntityNameAndDistanceByTrajectory(
     const std::vector<geometry_msgs::msg::Point> & waypoints, const double width,
     const std::size_t num_segments) const -> std::optional<std::pair<std::string, double>>;
-  auto getRightOfWayEntities() const -> std::vector<traffic_simulator::CanonicalizedEntityStatus>;
-  auto getRightOfWayEntities(const lanelet::Ids & following_lanelets) const
-    -> std::vector<traffic_simulator::CanonicalizedEntityStatus>;
   auto getYieldStopDistance(const lanelet::Ids & following_lanelets) const -> std::optional<double>;
   auto stopEntity() const -> void;
   auto getHorizon() const -> double;
