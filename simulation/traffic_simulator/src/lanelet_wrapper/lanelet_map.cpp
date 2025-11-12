@@ -68,6 +68,30 @@ auto laneletIds() -> lanelet::Ids
   return ids;
 }
 
+auto filterLaneletIds(const lanelet::Ids & lanelet_ids, const char subtype[]) -> lanelet::Ids
+{
+  const auto convertToLanelets = [](const lanelet::Ids & lanelet_ids) -> lanelet::Lanelets {
+    lanelet::Lanelets lanelets;
+    lanelets.reserve(lanelet_ids.size());
+    for (const auto & id : lanelet_ids) {
+      lanelets.push_back(LaneletWrapper::map()->laneletLayer.get(id));
+    }
+    return lanelets;
+  };
+
+  const auto lanelets = convertToLanelets(lanelet_ids);
+  lanelet::Lanelets filtered_lanelets;
+  for (const auto & lanelet : lanelets) {
+    if (lanelet.hasAttribute(lanelet::AttributeName::Subtype)) {
+      lanelet::Attribute attr = lanelet.attribute(lanelet::AttributeName::Subtype);
+      if (attr.value() == subtype) {
+        filtered_lanelets.emplace_back(lanelet);
+      }
+    }
+  }
+  return laneletIds(filtered_lanelets);
+}
+
 auto nearbyLaneletIds(
   const Point & point, const double distance_thresh, const bool include_crosswalk,
   const std::size_t search_count) -> lanelet::Ids

@@ -48,6 +48,8 @@ auto laneletIds(const std::vector<Lanelet> & lanelets) -> lanelet::Ids
 
 auto laneletIds() -> lanelet::Ids;
 
+auto filterLaneletIds(const lanelet::Ids & lanelet_ids, const char subtype[]) -> lanelet::Ids;
+
 auto nearbyLaneletIds(
   const Point & point, const double distance_threshold, const bool include_crosswalk,
   const std::size_t search_count) -> lanelet::Ids;
