@@ -15,9 +15,6 @@
 #ifndef TRAFFIC_SIMULATOR__LANELET_WRAPPER_LANELET_MAP_HPP_
 #define TRAFFIC_SIMULATOR__LANELET_WRAPPER_LANELET_MAP_HPP_
 
-#include <lanelet2_core/geometry/Lanelet.h>
-#include <lanelet2_core/primitives/LaneletSequence.h>
-
 #include <traffic_simulator/lanelet_wrapper/lanelet_wrapper.hpp>
 
 namespace traffic_simulator
@@ -30,6 +27,8 @@ namespace lanelet_map
 auto isInLanelet(const lanelet::Id lanelet_id, const double lanelet_pose_s) -> bool;
 
 auto isInLanelet(const lanelet::Id lanelet_id, const Point point) -> bool;
+
+auto isInIntersection(const lanelet::Id) -> bool;
 
 auto laneletLength(const lanelet::Id lanelet_id) -> double;
 

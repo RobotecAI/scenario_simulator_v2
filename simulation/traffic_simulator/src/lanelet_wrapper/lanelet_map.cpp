@@ -12,13 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <lanelet2_core/primitives/BasicRegulatoryElements.h>
-#include <lanelet2_routing/RoutingGraphContainer.h>
-
-#include <autoware_lanelet2_extension/utility/utilities.hpp>
 #include <geometry/vector3/hypot.hpp>
 #include <geometry/vector3/normalize.hpp>
-#include <traffic_simulator/helper/helper.hpp>
 #include <traffic_simulator/lanelet_wrapper/lanelet_map.hpp>
 #include <traffic_simulator/lanelet_wrapper/pose.hpp>
 
@@ -38,6 +33,11 @@ auto isInLanelet(const lanelet::Id lanelet_id, const Point point) -> bool
 {
   return lanelet::geometry::inside(
     LaneletWrapper::map()->laneletLayer.get(lanelet_id), lanelet::BasicPoint2d(point.x, point.y));
+}
+
+auto isInIntersection(const lanelet::Id lanelet_id) -> bool
+{
+  return LaneletWrapper::map()->laneletLayer.get(lanelet_id).hasAttribute("turn_direction");
 }
 
 auto laneletLength(const lanelet::Id lanelet_id) -> double
