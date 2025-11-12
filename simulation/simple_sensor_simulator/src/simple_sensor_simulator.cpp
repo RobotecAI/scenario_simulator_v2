@@ -51,16 +51,6 @@ ScenarioSimulator::ScenarioSimulator(const rclcpp::NodeOptions & options)
 {
 }
 
-geographic_msgs::msg::GeoPoint ScenarioSimulator::getOrigin()
-{
-  geographic_msgs::msg::GeoPoint origin;
-  origin.latitude = common::getParameter<decltype(origin.latitude)>(
-    get_node_parameters_interface(), "origin_latitude");
-  origin.longitude = common::getParameter<decltype(origin.longitude)>(
-    get_node_parameters_interface(), "origin_longitude");
-  return origin;
-}
-
 ScenarioSimulator::~ScenarioSimulator() {}
 
 int ScenarioSimulator::getSocketPort()
@@ -80,7 +70,6 @@ auto ScenarioSimulator::initialize(const simulation_api_schema::InitializeReques
   builtin_interfaces::msg::Time t;
   simulation_interface::toMsg(req.initialize_ros_time(), t);
   current_ros_time_ = t;
-  hdmap_utils_ = std::make_shared<hdmap_utils::HdMapUtils>(req.lanelet2_map_path(), getOrigin());
   traffic_simulator::lanelet_pose::CanonicalizedLaneletPose::setConsiderPoseByRoadSlope(
     common::getParameter<bool>(get_node_parameters_interface(), "consider_pose_by_road_slope"));
   auto res = simulation_api_schema::InitializeResponse();
