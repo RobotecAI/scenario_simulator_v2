@@ -108,6 +108,10 @@ public:
     -> traffic_simulator::EntityStatus;
 
 protected:
+  virtual bool checkPreconditions() { return true; }
+  virtual BT::NodeStatus doAction() = 0;
+  auto tick() -> BT::NodeStatus override;
+
   traffic_simulator::behavior::Request request_;
   std::shared_ptr<hdmap_utils::HdMapUtils> hdmap_utils_;
   std::shared_ptr<traffic_simulator::TrafficLightsBase> traffic_lights_;
@@ -120,23 +124,6 @@ protected:
   lanelet::Ids route_lanelets_;
   traffic_simulator_msgs::msg::BehaviorParameter behavior_parameter_;
   std::optional<double> lateral_collision_threshold_;
-
-  virtual bool checkPreconditions() { return true; }
-  virtual BT::NodeStatus doAction() = 0;
-
-private:
-  auto foundConflictingEntity(const lanelet::Ids & following_lanelets) const -> bool;
-  auto getDistanceToTargetEntityOnCrosswalk(
-    const math::geometry::CatmullRomSplineInterface & spline,
-    const traffic_simulator::CanonicalizedEntityStatus & status) const -> std::optional<double>;
-  auto getConflictingEntityStatusOnCrossWalk(const lanelet::Ids & route_lanelets) const
-    -> std::vector<traffic_simulator::CanonicalizedEntityStatus>;
-  auto getConflictingEntityStatusOnLane(const lanelet::Ids & route_lanelets) const
-    -> std::vector<traffic_simulator::CanonicalizedEntityStatus>;
-  auto isOtherEntityAtConsideredAltitude(
-    const traffic_simulator::CanonicalizedEntityStatus & entity_status) const -> bool;
-  auto tick() -> BT::NodeStatus override;
-
   std::shared_ptr<EuclideanDistancesMap> euclidean_distances_map_;
 };
 }  // namespace entity_behavior
