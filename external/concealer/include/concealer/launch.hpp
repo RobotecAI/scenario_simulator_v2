@@ -46,6 +46,12 @@ auto ros2_launch(
     return argv;
   }();
 
+  std::cout << "<<<<<<<<<< Launching " << std::endl;
+  for (const auto & arg : argv) {
+    std::cout << arg << " ";
+  }
+  std::cout << std::endl;
+
   if (const auto process_id = fork(); process_id < 0) {
     throw std::system_error(errno, std::system_category());
   } else if (process_id == 0 and execute(argv) < 0) {

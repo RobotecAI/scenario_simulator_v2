@@ -23,18 +23,43 @@ OpenSCENARIO:
   Entities:
     ScenarioObject:
       - name: ego
-        CatalogReference:
-          catalogName: sample_vehicle
-          entryName: sample_vehicle
+        Vehicle:
+          name: ''
+          vehicleCategory: car
+          model3d: "small_car"
+          BoundingBox:
+            Center:
+              x: 1.355
+              y: 0
+              z: 0.75
+            Dimensions:
+              width: 1.475
+              length: 3.395
+              height: 1.8
+          Performance:
+            maxSpeed: 50
+            maxAcceleration: INF
+            maxDeceleration: INF
+          Axles:
+            FrontAxle:
+              maxSteering: 0.5236
+              wheelDiameter: 0.6
+              trackWidth: 1.8
+              positionX: 2
+              positionZ: 0.3
+            RearAxle:
+              maxSteering: 0.5236
+              wheelDiameter: 0.6
+              trackWidth: 1.8
+              positionX: 0
+              positionZ: 0.3
+          Properties:
+            Property: []
         ObjectController:
           Controller:
             name: ''
             Properties:
-              Property:
-                - name: isEgo
-                  value: 'true'
-                - name: maxSpeed
-                  value: 5
+              Property: []
       - name: Npc1
         Vehicle:
           name: ''
@@ -104,6 +129,15 @@ OpenSCENARIO:
                           h: 0
                           p: -0.0
                           r: 0
+              - LongitudinalAction:
+                  SpeedAction:
+                    SpeedActionDynamics:
+                      dynamicsDimension: time
+                      value: 0
+                      dynamicsShape: step
+                    SpeedActionTarget:
+                      AbsoluteTargetSpeed:
+                        value: 2
           - entityRef: Npc1
             PrivateAction:
               - TeleportAction:
